@@ -1,0 +1,30 @@
+[
+  {
+    "name": "BGridSection",
+    "desc": "BOA Grid Section layout component",
+    "sample": "<BGridSection context={context} columnPadding={24} rowPadding={16} contentAlignMode={3}><BGridRow context={context}>{Content}</BGridRow></BGridSection>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "columnPadding",
+        "type": "number",
+        "header": "not required",
+        "desc": "Padding of between columns."
+      },
+      {
+        "name": "rowPadding",
+        "type": "number",
+        "header": "not required",
+        "desc": "Padding for between rows."
+      },
+      {
+        "name": "contentAlignMode",
+        "type": "instanceOf(BComponent.ContentAlignMode)",
+        "header": "not required",
+        "desc": "Alignment mode for children; it provides multi-column, single-column and mobile modes. Default ContentAlignMode.MULTI."
+      }
+    ]
+  }
+]

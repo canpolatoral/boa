@@ -1,0 +1,9 @@
+[
+  {
+    "variantName": "default",
+    "type": "BCriteriaPanel",
+    "props": {
+      "header": "Kriterler"
+    }
+  }
+]

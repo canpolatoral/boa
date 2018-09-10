@@ -1,0 +1,16 @@
+{
+    "name": "b-input-search",
+    "version": "2.1.2",
+    "description": "Boa input search component.",
+    "keywords": "input, search, inputsearch, base, boa",
+    "dependencies": {
+        "b-localization": "^2.1.0",
+        "b-auto-complete": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-form-manager": "^2.1.0",
+        "b-popover": "^2.1.0",
+        "b-icon": "^2.1.0",
+        "autosuggest-highlight": "^3.1.1"
+    }
+}

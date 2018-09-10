@@ -1,0 +1,2168 @@
+{
+    "login": {
+        "$id":"413",
+        "webUserName":"91057182",
+        "userId":18546935,
+        "customerId":91057182,
+        "personelUserName":"Yusuf Ziya Kısa",
+        "gsmNumber":"+90 (2**) 4** ** 23",
+        "gsmNumberList":[{"$id":"414","index":1,"gsmNo":"+90 (2**) 4** ** 23"}],
+        "customerInformation":{
+            "$id":"415",
+            "customerName":"Deniz Ceyda Defne","picture":"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",
+            "customerEmail":"kt.bt.test43865474@gmail.com"
+            },
+        "results":[],
+        "maxSeverityLevel":2,
+        "success":true,
+        "startTime":"0001-01-01T00:00:00",
+        "endTime":"0001-01-01T00:00:00",
+        "isInitializedByBOA":false,
+        "gottenFromCache":false,
+        "businessKey":0
+    },
+    "user": {
+        "$id": "417",
+        "userName": "aboyraz",
+        "userid": 7574,
+        "description": "Ali Boyraz",
+        "userGroupid": 0,
+        "loginFailCount": 0,
+        "name": "Ali Boyraz",
+        "assignment": "BNY",
+        "initials": "AB",
+        "branchId": 99,
+        "unitId": 0,
+        "branch": {
+            "$id": "418",
+            "branchId": 99,
+            "extendedBranchId": 0,
+            "name": "TEST-TEST-Genel Müdürlük",
+            "type": "G09",
+            "region": 1,
+            "officalReportDate": "2015-12-01T00:00:00",
+            "journalDate": "2014-12-31T00:00:00",
+            "city": 34,
+            "clearingOffice": 99,
+            "customerid": 400099,
+            "caseLimit": 0.0000,
+            "receiptDate": "2015-12-01T00:00:00",
+            "country": 13,
+            "orderinCountry": 3,
+            "serverName": "gmexe",
+            "channels": "1",
+            "category": "C",
+            "hrBranchId": 305,
+            "shortName": "GNLM",
+            "openDate": "2000-01-01T00:00:00",
+            "closeDate": "0001-01-01T00:00:00",
+            "reginalOffice": 0,
+            "voip": "",
+            "branchType": "",
+            "isActive": 1,
+            "phoneNumber": "0212 354 11 11",
+            "address": "Büyükdere Cad. No:129/1\r\n34394 Esentepe/İSTANBUL",
+            "faxNumber": "0212 354 12 12",
+            "isInFreeZone": 0,
+            "email": "",
+            "isSelected": false,
+            "isSelectable": true
+        },
+        "workGroupId": 2032,
+        "defaultWorkGroup": {
+            "$id": "419",
+            "iconPath": "people_recipient-team_01TN.png",
+            "accessPointId": 0,
+            "workgroupId": 2032,
+            "name": "BT-Kurumsal Mimari",
+            "parentId": 5218,
+            "type": "Servis",
+            "isAuto": true,
+            "userName": "suntboa",
+            "systemDate": "2010-08-17T10:18:00",
+            "hostName": "SRVSERVICES",
+            "updateUserName": "aeser",
+            "updateSystemDate": "2016-11-29T11:44:59.09",
+            "updateHostName": "BTKNYESERNB",
+            "hostIP": "172.29.16.38",
+            "directorUserId": 1585,
+            "managerUserId": 3437,
+            "isSelected": false,
+            "isSelectable": true
+        },
+        "roleId": 397309,
+        "roleName": "Kıdemli Teknoloji Mimarı.Kurumsal Mimari",
+        "employeeSign": 0,
+        "status": 1,
+        "employeeCase": "Nu",
+        "printType": "2",
+        "registerId": 0,
+        "customerid": 91057182,
+        "voip": "60015537",
+        "languageId": 1,
+        "branchName": "TEST-TEST-Genel Müdürlük",
+        "machineName": "BTKM132NB",
+        "ipAddress": "10.19.8.209",
+        "email": "ali.boyraz@kuveytturk.com.tr",
+        "workGroupBranchList": [
+            {
+                "$id": "420",
+                "branchId": 1,
+                "hrBranchId": 210
+            },
+            {
+                "$id": "421",
+                "branchId": 2,
+                "hrBranchId": 225
+            },
+            {
+                "$id": "422",
+                "branchId": 3,
+                "hrBranchId": 151
+            },
+            {
+                "$id": "423",
+                "branchId": 4,
+                "hrBranchId": 144
+            },
+            {
+                "$id": "424",
+                "branchId": 5,
+                "hrBranchId": 185
+            },
+            {
+                "$id": "425",
+                "branchId": 6,
+                "hrBranchId": 161
+            },
+            {
+                "$id": "426",
+                "branchId": 7,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "427",
+                "branchId": 8,
+                "hrBranchId": 222
+            },
+            {
+                "$id": "428",
+                "branchId": 9,
+                "hrBranchId": 242
+            },
+            {
+                "$id": "429",
+                "branchId": 10,
+                "hrBranchId": 175
+            },
+            {
+                "$id": "430",
+                "branchId": 11,
+                "hrBranchId": 141
+            },
+            {
+                "$id": "431",
+                "branchId": 12,
+                "hrBranchId": 147
+            },
+            {
+                "$id": "432",
+                "branchId": 13,
+                "hrBranchId": 188
+            },
+            {
+                "$id": "433",
+                "branchId": 14,
+                "hrBranchId": 226
+            },
+            {
+                "$id": "434",
+                "branchId": 15,
+                "hrBranchId": 221
+            },
+            {
+                "$id": "435",
+                "branchId": 16,
+                "hrBranchId": 193
+            },
+            {
+                "$id": "436",
+                "branchId": 17,
+                "hrBranchId": 239
+            },
+            {
+                "$id": "437",
+                "branchId": 18,
+                "hrBranchId": 212
+            },
+            {
+                "$id": "438",
+                "branchId": 19,
+                "hrBranchId": 155
+            },
+            {
+                "$id": "439",
+                "branchId": 20,
+                "hrBranchId": 167
+            },
+            {
+                "$id": "440",
+                "branchId": 21,
+                "hrBranchId": 148
+            },
+            {
+                "$id": "441",
+                "branchId": 22,
+                "hrBranchId": 158
+            },
+            {
+                "$id": "442",
+                "branchId": 23,
+                "hrBranchId": 195
+            },
+            {
+                "$id": "443",
+                "branchId": 24,
+                "hrBranchId": 236
+            },
+            {
+                "$id": "444",
+                "branchId": 25,
+                "hrBranchId": 181
+            },
+            {
+                "$id": "445",
+                "branchId": 26,
+                "hrBranchId": 230
+            },
+            {
+                "$id": "446",
+                "branchId": 27,
+                "hrBranchId": 229
+            },
+            {
+                "$id": "447",
+                "branchId": 28,
+                "hrBranchId": 207
+            },
+            {
+                "$id": "448",
+                "branchId": 29,
+                "hrBranchId": 238
+            },
+            {
+                "$id": "449",
+                "branchId": 30,
+                "hrBranchId": 208
+            },
+            {
+                "$id": "450",
+                "branchId": 31,
+                "hrBranchId": 146
+            },
+            {
+                "$id": "451",
+                "branchId": 32,
+                "hrBranchId": 180
+            },
+            {
+                "$id": "452",
+                "branchId": 33,
+                "hrBranchId": 205
+            },
+            {
+                "$id": "453",
+                "branchId": 34,
+                "hrBranchId": 190
+            },
+            {
+                "$id": "454",
+                "branchId": 35,
+                "hrBranchId": 143
+            },
+            {
+                "$id": "455",
+                "branchId": 36,
+                "hrBranchId": 163
+            },
+            {
+                "$id": "456",
+                "branchId": 37,
+                "hrBranchId": 243
+            },
+            {
+                "$id": "457",
+                "branchId": 38,
+                "hrBranchId": 145
+            },
+            {
+                "$id": "458",
+                "branchId": 39,
+                "hrBranchId": 469
+            },
+            {
+                "$id": "459",
+                "branchId": 40,
+                "hrBranchId": 209
+            },
+            {
+                "$id": "460",
+                "branchId": 41,
+                "hrBranchId": 227
+            },
+            {
+                "$id": "461",
+                "branchId": 42,
+                "hrBranchId": 189
+            },
+            {
+                "$id": "462",
+                "branchId": 43,
+                "hrBranchId": 162
+            },
+            {
+                "$id": "463",
+                "branchId": 44,
+                "hrBranchId": 154
+            },
+            {
+                "$id": "464",
+                "branchId": 45,
+                "hrBranchId": 165
+            },
+            {
+                "$id": "465",
+                "branchId": 46,
+                "hrBranchId": 164
+            },
+            {
+                "$id": "466",
+                "branchId": 47,
+                "hrBranchId": 176
+            },
+            {
+                "$id": "467",
+                "branchId": 48,
+                "hrBranchId": 248
+            },
+            {
+                "$id": "468",
+                "branchId": 49,
+                "hrBranchId": 235
+            },
+            {
+                "$id": "469",
+                "branchId": 50,
+                "hrBranchId": 142
+            },
+            {
+                "$id": "470",
+                "branchId": 51,
+                "hrBranchId": 156
+            },
+            {
+                "$id": "471",
+                "branchId": 52,
+                "hrBranchId": 194
+            },
+            {
+                "$id": "472",
+                "branchId": 53,
+                "hrBranchId": 183
+            },
+            {
+                "$id": "473",
+                "branchId": 54,
+                "hrBranchId": 150
+            },
+            {
+                "$id": "474",
+                "branchId": 55,
+                "hrBranchId": 245
+            },
+            {
+                "$id": "475",
+                "branchId": 56,
+                "hrBranchId": 184
+            },
+            {
+                "$id": "476",
+                "branchId": 57,
+                "hrBranchId": 182
+            },
+            {
+                "$id": "477",
+                "branchId": 58,
+                "hrBranchId": 178
+            },
+            {
+                "$id": "478",
+                "branchId": 59,
+                "hrBranchId": 224
+            },
+            {
+                "$id": "479",
+                "branchId": 60,
+                "hrBranchId": 244
+            },
+            {
+                "$id": "480",
+                "branchId": 61,
+                "hrBranchId": 187
+            },
+            {
+                "$id": "481",
+                "branchId": 62,
+                "hrBranchId": 160
+            },
+            {
+                "$id": "482",
+                "branchId": 63,
+                "hrBranchId": 166
+            },
+            {
+                "$id": "483",
+                "branchId": 64,
+                "hrBranchId": 152
+            },
+            {
+                "$id": "484",
+                "branchId": 65,
+                "hrBranchId": 204
+            },
+            {
+                "$id": "485",
+                "branchId": 66,
+                "hrBranchId": 153
+            },
+            {
+                "$id": "486",
+                "branchId": 67,
+                "hrBranchId": 186
+            },
+            {
+                "$id": "487",
+                "branchId": 68,
+                "hrBranchId": 343
+            },
+            {
+                "$id": "488",
+                "branchId": 69,
+                "hrBranchId": 346
+            },
+            {
+                "$id": "489",
+                "branchId": 70,
+                "hrBranchId": 345
+            },
+            {
+                "$id": "490",
+                "branchId": 71,
+                "hrBranchId": 342
+            },
+            {
+                "$id": "491",
+                "branchId": 72,
+                "hrBranchId": 390
+            },
+            {
+                "$id": "492",
+                "branchId": 73,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "493",
+                "branchId": 74,
+                "hrBranchId": 368
+            },
+            {
+                "$id": "494",
+                "branchId": 75,
+                "hrBranchId": 348
+            },
+            {
+                "$id": "495",
+                "branchId": 76,
+                "hrBranchId": 393
+            },
+            {
+                "$id": "496",
+                "branchId": 77,
+                "hrBranchId": 389
+            },
+            {
+                "$id": "497",
+                "branchId": 78,
+                "hrBranchId": 550
+            },
+            {
+                "$id": "498",
+                "branchId": 79,
+                "hrBranchId": 388
+            },
+            {
+                "$id": "499",
+                "branchId": 80,
+                "hrBranchId": 551
+            },
+            {
+                "$id": "500",
+                "branchId": 81,
+                "hrBranchId": 549
+            },
+            {
+                "$id": "501",
+                "branchId": 82,
+                "hrBranchId": 552
+            },
+            {
+                "$id": "502",
+                "branchId": 83,
+                "hrBranchId": 529
+            },
+            {
+                "$id": "503",
+                "branchId": 84,
+                "hrBranchId": 553
+            },
+            {
+                "$id": "504",
+                "branchId": 85,
+                "hrBranchId": 347
+            },
+            {
+                "$id": "505",
+                "branchId": 86,
+                "hrBranchId": 391
+            },
+            {
+                "$id": "506",
+                "branchId": 87,
+                "hrBranchId": 392
+            },
+            {
+                "$id": "507",
+                "branchId": 88,
+                "hrBranchId": 211
+            },
+            {
+                "$id": "508",
+                "branchId": 89,
+                "hrBranchId": 670
+            },
+            {
+                "$id": "509",
+                "branchId": 90,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "510",
+                "branchId": 91,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "511",
+                "branchId": 96,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "512",
+                "branchId": 97,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "513",
+                "branchId": 98,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "514",
+                "branchId": 99,
+                "hrBranchId": 305
+            },
+            {
+                "$id": "515",
+                "branchId": 100,
+                "hrBranchId": 831
+            },
+            {
+                "$id": "516",
+                "branchId": 101,
+                "hrBranchId": 834
+            },
+            {
+                "$id": "517",
+                "branchId": 102,
+                "hrBranchId": 672
+            },
+            {
+                "$id": "518",
+                "branchId": 103,
+                "hrBranchId": 673
+            },
+            {
+                "$id": "519",
+                "branchId": 104,
+                "hrBranchId": 671
+            },
+            {
+                "$id": "520",
+                "branchId": 105,
+                "hrBranchId": 832
+            },
+            {
+                "$id": "521",
+                "branchId": 106,
+                "hrBranchId": 674
+            },
+            {
+                "$id": "522",
+                "branchId": 107,
+                "hrBranchId": 833
+            },
+            {
+                "$id": "523",
+                "branchId": 108,
+                "hrBranchId": 830
+            },
+            {
+                "$id": "524",
+                "branchId": 109,
+                "hrBranchId": 914
+            },
+            {
+                "$id": "525",
+                "branchId": 110,
+                "hrBranchId": 912
+            },
+            {
+                "$id": "526",
+                "branchId": 111,
+                "hrBranchId": 910
+            },
+            {
+                "$id": "527",
+                "branchId": 112,
+                "hrBranchId": 913
+            },
+            {
+                "$id": "528",
+                "branchId": 113,
+                "hrBranchId": 915
+            },
+            {
+                "$id": "529",
+                "branchId": 114,
+                "hrBranchId": 923
+            },
+            {
+                "$id": "530",
+                "branchId": 115,
+                "hrBranchId": 916
+            },
+            {
+                "$id": "531",
+                "branchId": 116,
+                "hrBranchId": 918
+            },
+            {
+                "$id": "532",
+                "branchId": 117,
+                "hrBranchId": 921
+            },
+            {
+                "$id": "533",
+                "branchId": 118,
+                "hrBranchId": 911
+            },
+            {
+                "$id": "534",
+                "branchId": 119,
+                "hrBranchId": 919
+            },
+            {
+                "$id": "535",
+                "branchId": 120,
+                "hrBranchId": 920
+            },
+            {
+                "$id": "536",
+                "branchId": 121,
+                "hrBranchId": 924
+            },
+            {
+                "$id": "537",
+                "branchId": 122,
+                "hrBranchId": 917
+            },
+            {
+                "$id": "538",
+                "branchId": 123,
+                "hrBranchId": 922
+            },
+            {
+                "$id": "539",
+                "branchId": 124,
+                "hrBranchId": 1357
+            },
+            {
+                "$id": "540",
+                "branchId": 125,
+                "hrBranchId": 1355
+            },
+            {
+                "$id": "541",
+                "branchId": 126,
+                "hrBranchId": 1358
+            },
+            {
+                "$id": "542",
+                "branchId": 127,
+                "hrBranchId": 1354
+            },
+            {
+                "$id": "543",
+                "branchId": 128,
+                "hrBranchId": 1353
+            },
+            {
+                "$id": "544",
+                "branchId": 129,
+                "hrBranchId": 1370
+            },
+            {
+                "$id": "545",
+                "branchId": 130,
+                "hrBranchId": 1352
+            },
+            {
+                "$id": "546",
+                "branchId": 131,
+                "hrBranchId": 1350
+            },
+            {
+                "$id": "547",
+                "branchId": 132,
+                "hrBranchId": 1356
+            },
+            {
+                "$id": "548",
+                "branchId": 133,
+                "hrBranchId": 1611
+            },
+            {
+                "$id": "549",
+                "branchId": 134,
+                "hrBranchId": 1531
+            },
+            {
+                "$id": "550",
+                "branchId": 135,
+                "hrBranchId": 1511
+            },
+            {
+                "$id": "551",
+                "branchId": 136,
+                "hrBranchId": 1651
+            },
+            {
+                "$id": "552",
+                "branchId": 137,
+                "hrBranchId": 1351
+            },
+            {
+                "$id": "553",
+                "branchId": 138,
+                "hrBranchId": 1512
+            },
+            {
+                "$id": "554",
+                "branchId": 139,
+                "hrBranchId": 1652
+            },
+            {
+                "$id": "555",
+                "branchId": 140,
+                "hrBranchId": 1653
+            },
+            {
+                "$id": "556",
+                "branchId": 141,
+                "hrBranchId": 1771
+            },
+            {
+                "$id": "557",
+                "branchId": 142,
+                "hrBranchId": 1691
+            },
+            {
+                "$id": "558",
+                "branchId": 143,
+                "hrBranchId": 1811
+            },
+            {
+                "$id": "559",
+                "branchId": 144,
+                "hrBranchId": 1851
+            },
+            {
+                "$id": "560",
+                "branchId": 145,
+                "hrBranchId": 1853
+            },
+            {
+                "$id": "561",
+                "branchId": 146,
+                "hrBranchId": 1852
+            },
+            {
+                "$id": "562",
+                "branchId": 147,
+                "hrBranchId": 1951
+            },
+            {
+                "$id": "563",
+                "branchId": 148,
+                "hrBranchId": 1971
+            },
+            {
+                "$id": "564",
+                "branchId": 149,
+                "hrBranchId": 1993
+            },
+            {
+                "$id": "565",
+                "branchId": 150,
+                "hrBranchId": 1992
+            },
+            {
+                "$id": "566",
+                "branchId": 151,
+                "hrBranchId": 2086
+            },
+            {
+                "$id": "567",
+                "branchId": 152,
+                "hrBranchId": 2081
+            },
+            {
+                "$id": "568",
+                "branchId": 153,
+                "hrBranchId": 2078
+            },
+            {
+                "$id": "569",
+                "branchId": 154,
+                "hrBranchId": 2087
+            },
+            {
+                "$id": "570",
+                "branchId": 155,
+                "hrBranchId": 2132
+            },
+            {
+                "$id": "571",
+                "branchId": 156,
+                "hrBranchId": 2082
+            },
+            {
+                "$id": "572",
+                "branchId": 157,
+                "hrBranchId": 2133
+            },
+            {
+                "$id": "573",
+                "branchId": 158,
+                "hrBranchId": 1731
+            },
+            {
+                "$id": "574",
+                "branchId": 159,
+                "hrBranchId": 2072
+            },
+            {
+                "$id": "575",
+                "branchId": 160,
+                "hrBranchId": 2075
+            },
+            {
+                "$id": "576",
+                "branchId": 161,
+                "hrBranchId": 2085
+            },
+            {
+                "$id": "577",
+                "branchId": 162,
+                "hrBranchId": 2153
+            },
+            {
+                "$id": "578",
+                "branchId": 163,
+                "hrBranchId": 2074
+            },
+            {
+                "$id": "579",
+                "branchId": 164,
+                "hrBranchId": 2154
+            },
+            {
+                "$id": "580",
+                "branchId": 165,
+                "hrBranchId": 2083
+            },
+            {
+                "$id": "581",
+                "branchId": 166,
+                "hrBranchId": 2233
+            },
+            {
+                "$id": "582",
+                "branchId": 167,
+                "hrBranchId": 2213
+            },
+            {
+                "$id": "583",
+                "branchId": 168,
+                "hrBranchId": 2294
+            },
+            {
+                "$id": "584",
+                "branchId": 169,
+                "hrBranchId": 2088
+            },
+            {
+                "$id": "585",
+                "branchId": 170,
+                "hrBranchId": 2295
+            },
+            {
+                "$id": "586",
+                "branchId": 171,
+                "hrBranchId": 2355
+            },
+            {
+                "$id": "587",
+                "branchId": 172,
+                "hrBranchId": 2389
+            },
+            {
+                "$id": "588",
+                "branchId": 173,
+                "hrBranchId": 2383
+            },
+            {
+                "$id": "589",
+                "branchId": 174,
+                "hrBranchId": 2382
+            },
+            {
+                "$id": "590",
+                "branchId": 175,
+                "hrBranchId": 2395
+            },
+            {
+                "$id": "591",
+                "branchId": 176,
+                "hrBranchId": 2376
+            },
+            {
+                "$id": "592",
+                "branchId": 177,
+                "hrBranchId": 2415
+            },
+            {
+                "$id": "593",
+                "branchId": 178,
+                "hrBranchId": 2377
+            },
+            {
+                "$id": "594",
+                "branchId": 179,
+                "hrBranchId": 2378
+            },
+            {
+                "$id": "595",
+                "branchId": 180,
+                "hrBranchId": 2636
+            },
+            {
+                "$id": "596",
+                "branchId": 181,
+                "hrBranchId": 2385
+            },
+            {
+                "$id": "597",
+                "branchId": 182,
+                "hrBranchId": 2392
+            },
+            {
+                "$id": "598",
+                "branchId": 183,
+                "hrBranchId": 2516
+            },
+            {
+                "$id": "599",
+                "branchId": 184,
+                "hrBranchId": 2380
+            },
+            {
+                "$id": "600",
+                "branchId": 185,
+                "hrBranchId": 2676
+            },
+            {
+                "$id": "601",
+                "branchId": 186,
+                "hrBranchId": 2390
+            },
+            {
+                "$id": "602",
+                "branchId": 187,
+                "hrBranchId": 2616
+            },
+            {
+                "$id": "603",
+                "branchId": 188,
+                "hrBranchId": 2696
+            },
+            {
+                "$id": "604",
+                "branchId": 189,
+                "hrBranchId": 2656
+            },
+            {
+                "$id": "605",
+                "branchId": 190,
+                "hrBranchId": 2716
+            },
+            {
+                "$id": "606",
+                "branchId": 191,
+                "hrBranchId": 2379
+            },
+            {
+                "$id": "607",
+                "branchId": 192,
+                "hrBranchId": 2079
+            },
+            {
+                "$id": "608",
+                "branchId": 193,
+                "hrBranchId": 2824
+            },
+            {
+                "$id": "609",
+                "branchId": 194,
+                "hrBranchId": 2796
+            },
+            {
+                "$id": "610",
+                "branchId": 195,
+                "hrBranchId": 2776
+            },
+            {
+                "$id": "611",
+                "branchId": 196,
+                "hrBranchId": 2820
+            },
+            {
+                "$id": "612",
+                "branchId": 197,
+                "hrBranchId": 2859
+            },
+            {
+                "$id": "613",
+                "branchId": 198,
+                "hrBranchId": 2836
+            },
+            {
+                "$id": "614",
+                "branchId": 199,
+                "hrBranchId": 1854
+            },
+            {
+                "$id": "615",
+                "branchId": 200,
+                "hrBranchId": 2842
+            },
+            {
+                "$id": "616",
+                "branchId": 201,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "617",
+                "branchId": 202,
+                "hrBranchId": 468
+            },
+            {
+                "$id": "618",
+                "branchId": 203,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "619",
+                "branchId": 204,
+                "hrBranchId": 2756
+            },
+            {
+                "$id": "620",
+                "branchId": 205,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "621",
+                "branchId": 206,
+                "hrBranchId": 2956
+            },
+            {
+                "$id": "622",
+                "branchId": 207,
+                "hrBranchId": 2845
+            },
+            {
+                "$id": "623",
+                "branchId": 208,
+                "hrBranchId": 2846
+            },
+            {
+                "$id": "624",
+                "branchId": 209,
+                "hrBranchId": 2822
+            },
+            {
+                "$id": "625",
+                "branchId": 210,
+                "hrBranchId": 2819
+            },
+            {
+                "$id": "626",
+                "branchId": 211,
+                "hrBranchId": 2896
+            },
+            {
+                "$id": "627",
+                "branchId": 212,
+                "hrBranchId": 2816
+            },
+            {
+                "$id": "628",
+                "branchId": 213,
+                "hrBranchId": 2936
+            },
+            {
+                "$id": "629",
+                "branchId": 214,
+                "hrBranchId": 2837
+            },
+            {
+                "$id": "630",
+                "branchId": 215,
+                "hrBranchId": 2838
+            },
+            {
+                "$id": "631",
+                "branchId": 216,
+                "hrBranchId": 2867
+            },
+            {
+                "$id": "632",
+                "branchId": 217,
+                "hrBranchId": 2863
+            },
+            {
+                "$id": "633",
+                "branchId": 218,
+                "hrBranchId": 2847
+            },
+            {
+                "$id": "634",
+                "branchId": 219,
+                "hrBranchId": 2826
+            },
+            {
+                "$id": "635",
+                "branchId": 220,
+                "hrBranchId": 2848
+            },
+            {
+                "$id": "636",
+                "branchId": 221,
+                "hrBranchId": 2825
+            },
+            {
+                "$id": "637",
+                "branchId": 222,
+                "hrBranchId": 2866
+            },
+            {
+                "$id": "638",
+                "branchId": 223,
+                "hrBranchId": 2862
+            },
+            {
+                "$id": "639",
+                "branchId": 224,
+                "hrBranchId": 2865
+            },
+            {
+                "$id": "640",
+                "branchId": 225,
+                "hrBranchId": 2843
+            },
+            {
+                "$id": "641",
+                "branchId": 226,
+                "hrBranchId": 2381
+            },
+            {
+                "$id": "642",
+                "branchId": 227,
+                "hrBranchId": 2856
+            },
+            {
+                "$id": "643",
+                "branchId": 228,
+                "hrBranchId": 2864
+            },
+            {
+                "$id": "644",
+                "branchId": 229,
+                "hrBranchId": 2844
+            },
+            {
+                "$id": "645",
+                "branchId": 230,
+                "hrBranchId": 3037
+            },
+            {
+                "$id": "646",
+                "branchId": 231,
+                "hrBranchId": 2818
+            },
+            {
+                "$id": "647",
+                "branchId": 232,
+                "hrBranchId": 2860
+            },
+            {
+                "$id": "648",
+                "branchId": 233,
+                "hrBranchId": 2823
+            },
+            {
+                "$id": "649",
+                "branchId": 234,
+                "hrBranchId": 2997
+            },
+            {
+                "$id": "650",
+                "branchId": 235,
+                "hrBranchId": 2841
+            },
+            {
+                "$id": "651",
+                "branchId": 236,
+                "hrBranchId": 3177
+            },
+            {
+                "$id": "652",
+                "branchId": 237,
+                "hrBranchId": 3379
+            },
+            {
+                "$id": "653",
+                "branchId": 238,
+                "hrBranchId": 3378
+            },
+            {
+                "$id": "654",
+                "branchId": 239,
+                "hrBranchId": 3317
+            },
+            {
+                "$id": "655",
+                "branchId": 240,
+                "hrBranchId": 3380
+            },
+            {
+                "$id": "656",
+                "branchId": 241,
+                "hrBranchId": 3339
+            },
+            {
+                "$id": "657",
+                "branchId": 242,
+                "hrBranchId": 3377
+            },
+            {
+                "$id": "658",
+                "branchId": 243,
+                "hrBranchId": 2839
+            },
+            {
+                "$id": "659",
+                "branchId": 244,
+                "hrBranchId": 3479
+            },
+            {
+                "$id": "660",
+                "branchId": 245,
+                "hrBranchId": 3381
+            },
+            {
+                "$id": "661",
+                "branchId": 246,
+                "hrBranchId": 2173
+            },
+            {
+                "$id": "662",
+                "branchId": 247,
+                "hrBranchId": 3480
+            },
+            {
+                "$id": "663",
+                "branchId": 248,
+                "hrBranchId": 3483
+            },
+            {
+                "$id": "664",
+                "branchId": 249,
+                "hrBranchId": 3478
+            },
+            {
+                "$id": "665",
+                "branchId": 250,
+                "hrBranchId": 3319
+            },
+            {
+                "$id": "666",
+                "branchId": 251,
+                "hrBranchId": 3484
+            },
+            {
+                "$id": "667",
+                "branchId": 252,
+                "hrBranchId": 3521
+            },
+            {
+                "$id": "668",
+                "branchId": 253,
+                "hrBranchId": 3558
+            },
+            {
+                "$id": "669",
+                "branchId": 254,
+                "hrBranchId": 3482
+            },
+            {
+                "$id": "670",
+                "branchId": 255,
+                "hrBranchId": 3539
+            },
+            {
+                "$id": "671",
+                "branchId": 256,
+                "hrBranchId": 3559
+            },
+            {
+                "$id": "672",
+                "branchId": 257,
+                "hrBranchId": 3560
+            },
+            {
+                "$id": "673",
+                "branchId": 258,
+                "hrBranchId": 3561
+            },
+            {
+                "$id": "674",
+                "branchId": 259,
+                "hrBranchId": 3518
+            },
+            {
+                "$id": "675",
+                "branchId": 260,
+                "hrBranchId": 3598
+            },
+            {
+                "$id": "676",
+                "branchId": 261,
+                "hrBranchId": 3599
+            },
+            {
+                "$id": "677",
+                "branchId": 262,
+                "hrBranchId": 3600
+            },
+            {
+                "$id": "678",
+                "branchId": 263,
+                "hrBranchId": 2817
+            },
+            {
+                "$id": "679",
+                "branchId": 264,
+                "hrBranchId": 3601
+            },
+            {
+                "$id": "680",
+                "branchId": 265,
+                "hrBranchId": 3602
+            },
+            {
+                "$id": "681",
+                "branchId": 266,
+                "hrBranchId": 3519
+            },
+            {
+                "$id": "682",
+                "branchId": 267,
+                "hrBranchId": 3603
+            },
+            {
+                "$id": "683",
+                "branchId": 268,
+                "hrBranchId": 5007
+            },
+            {
+                "$id": "684",
+                "branchId": 269,
+                "hrBranchId": 5006
+            },
+            {
+                "$id": "685",
+                "branchId": 270,
+                "hrBranchId": 5008
+            },
+            {
+                "$id": "686",
+                "branchId": 271,
+                "hrBranchId": 3638
+            },
+            {
+                "$id": "687",
+                "branchId": 272,
+                "hrBranchId": 5005
+            },
+            {
+                "$id": "688",
+                "branchId": 273,
+                "hrBranchId": 2391
+            },
+            {
+                "$id": "689",
+                "branchId": 274,
+                "hrBranchId": 2080
+            },
+            {
+                "$id": "690",
+                "branchId": 275,
+                "hrBranchId": 3738
+            },
+            {
+                "$id": "691",
+                "branchId": 276,
+                "hrBranchId": 3698
+            },
+            {
+                "$id": "692",
+                "branchId": 277,
+                "hrBranchId": 2077
+            },
+            {
+                "$id": "693",
+                "branchId": 278,
+                "hrBranchId": 5003
+            },
+            {
+                "$id": "694",
+                "branchId": 279,
+                "hrBranchId": 5009
+            },
+            {
+                "$id": "695",
+                "branchId": 280,
+                "hrBranchId": 5015
+            },
+            {
+                "$id": "696",
+                "branchId": 281,
+                "hrBranchId": 3838
+            },
+            {
+                "$id": "697",
+                "branchId": 282,
+                "hrBranchId": 5038
+            },
+            {
+                "$id": "698",
+                "branchId": 283,
+                "hrBranchId": 2857
+            },
+            {
+                "$id": "699",
+                "branchId": 284,
+                "hrBranchId": 3818
+            },
+            {
+                "$id": "700",
+                "branchId": 285,
+                "hrBranchId": 2073
+            },
+            {
+                "$id": "701",
+                "branchId": 286,
+                "hrBranchId": 5039
+            },
+            {
+                "$id": "702",
+                "branchId": 287,
+                "hrBranchId": 5040
+            },
+            {
+                "$id": "703",
+                "branchId": 288,
+                "hrBranchId": 5041
+            },
+            {
+                "$id": "704",
+                "branchId": 289,
+                "hrBranchId": 5043
+            },
+            {
+                "$id": "705",
+                "branchId": 290,
+                "hrBranchId": 5042
+            },
+            {
+                "$id": "706",
+                "branchId": 291,
+                "hrBranchId": 5044
+            },
+            {
+                "$id": "707",
+                "branchId": 292,
+                "hrBranchId": 5045
+            },
+            {
+                "$id": "708",
+                "branchId": 293,
+                "hrBranchId": 5046
+            },
+            {
+                "$id": "709",
+                "branchId": 294,
+                "hrBranchId": 5048
+            },
+            {
+                "$id": "710",
+                "branchId": 295,
+                "hrBranchId": 5047
+            },
+            {
+                "$id": "711",
+                "branchId": 296,
+                "hrBranchId": 5053
+            },
+            {
+                "$id": "712",
+                "branchId": 297,
+                "hrBranchId": 5050
+            },
+            {
+                "$id": "713",
+                "branchId": 298,
+                "hrBranchId": 5049
+            },
+            {
+                "$id": "714",
+                "branchId": 299,
+                "hrBranchId": 5004
+            },
+            {
+                "$id": "715",
+                "branchId": 301,
+                "hrBranchId": 2821
+            },
+            {
+                "$id": "716",
+                "branchId": 302,
+                "hrBranchId": 5081
+            },
+            {
+                "$id": "717",
+                "branchId": 303,
+                "hrBranchId": 5082
+            },
+            {
+                "$id": "718",
+                "branchId": 304,
+                "hrBranchId": 5080
+            },
+            {
+                "$id": "719",
+                "branchId": 305,
+                "hrBranchId": 2386
+            },
+            {
+                "$id": "720",
+                "branchId": 306,
+                "hrBranchId": 3520
+            },
+            {
+                "$id": "721",
+                "branchId": 307,
+                "hrBranchId": 2084
+            },
+            {
+                "$id": "722",
+                "branchId": 308,
+                "hrBranchId": 2388
+            },
+            {
+                "$id": "723",
+                "branchId": 309,
+                "hrBranchId": 2384
+            },
+            {
+                "$id": "724",
+                "branchId": 310,
+                "hrBranchId": 2387
+            },
+            {
+                "$id": "725",
+                "branchId": 311,
+                "hrBranchId": 2840
+            },
+            {
+                "$id": "726",
+                "branchId": 312,
+                "hrBranchId": 2858
+            },
+            {
+                "$id": "727",
+                "branchId": 313,
+                "hrBranchId": 2849
+            },
+            {
+                "$id": "728",
+                "branchId": 314,
+                "hrBranchId": 2861
+            },
+            {
+                "$id": "729",
+                "branchId": 315,
+                "hrBranchId": 5095
+            },
+            {
+                "$id": "730",
+                "branchId": 316,
+                "hrBranchId": 5056
+            },
+            {
+                "$id": "731",
+                "branchId": 317,
+                "hrBranchId": 5063
+            },
+            {
+                "$id": "732",
+                "branchId": 318,
+                "hrBranchId": 5062
+            },
+            {
+                "$id": "733",
+                "branchId": 319,
+                "hrBranchId": 5057
+            },
+            {
+                "$id": "734",
+                "branchId": 320,
+                "hrBranchId": 5089
+            },
+            {
+                "$id": "735",
+                "branchId": 321,
+                "hrBranchId": 5097
+            },
+            {
+                "$id": "736",
+                "branchId": 322,
+                "hrBranchId": 5088
+            },
+            {
+                "$id": "737",
+                "branchId": 323,
+                "hrBranchId": 5092
+            },
+            {
+                "$id": "738",
+                "branchId": 324,
+                "hrBranchId": 2089
+            },
+            {
+                "$id": "739",
+                "branchId": 325,
+                "hrBranchId": 5096
+            },
+            {
+                "$id": "740",
+                "branchId": 326,
+                "hrBranchId": 5093
+            },
+            {
+                "$id": "741",
+                "branchId": 327,
+                "hrBranchId": 5099
+            },
+            {
+                "$id": "742",
+                "branchId": 328,
+                "hrBranchId": 5101
+            },
+            {
+                "$id": "743",
+                "branchId": 329,
+                "hrBranchId": 5098
+            },
+            {
+                "$id": "744",
+                "branchId": 330,
+                "hrBranchId": 5102
+            },
+            {
+                "$id": "745",
+                "branchId": 331,
+                "hrBranchId": 5100
+            },
+            {
+                "$id": "746",
+                "branchId": 332,
+                "hrBranchId": 5108
+            },
+            {
+                "$id": "747",
+                "branchId": 333,
+                "hrBranchId": 5103
+            },
+            {
+                "$id": "748",
+                "branchId": 334,
+                "hrBranchId": 5110
+            },
+            {
+                "$id": "749",
+                "branchId": 335,
+                "hrBranchId": 5109
+            },
+            {
+                "$id": "750",
+                "branchId": 336,
+                "hrBranchId": 5107
+            },
+            {
+                "$id": "751",
+                "branchId": 337,
+                "hrBranchId": 5139
+            },
+            {
+                "$id": "752",
+                "branchId": 338,
+                "hrBranchId": 5174
+            },
+            {
+                "$id": "753",
+                "branchId": 339,
+                "hrBranchId": 5173
+            },
+            {
+                "$id": "754",
+                "branchId": 340,
+                "hrBranchId": 5172
+            },
+            {
+                "$id": "755",
+                "branchId": 341,
+                "hrBranchId": 5177
+            },
+            {
+                "$id": "756",
+                "branchId": 342,
+                "hrBranchId": 5176
+            },
+            {
+                "$id": "757",
+                "branchId": 343,
+                "hrBranchId": 5175
+            },
+            {
+                "$id": "758",
+                "branchId": 344,
+                "hrBranchId": 5166
+            },
+            {
+                "$id": "759",
+                "branchId": 345,
+                "hrBranchId": 5178
+            },
+            {
+                "$id": "760",
+                "branchId": 346,
+                "hrBranchId": 5181
+            },
+            {
+                "$id": "761",
+                "branchId": 347,
+                "hrBranchId": 5184
+            },
+            {
+                "$id": "762",
+                "branchId": 348,
+                "hrBranchId": 5195
+            },
+            {
+                "$id": "763",
+                "branchId": 349,
+                "hrBranchId": 5194
+            },
+            {
+                "$id": "764",
+                "branchId": 350,
+                "hrBranchId": 5187
+            },
+            {
+                "$id": "765",
+                "branchId": 351,
+                "hrBranchId": 5188
+            },
+            {
+                "$id": "766",
+                "branchId": 352,
+                "hrBranchId": 5197
+            },
+            {
+                "$id": "767",
+                "branchId": 353,
+                "hrBranchId": 5198
+            },
+            {
+                "$id": "768",
+                "branchId": 354,
+                "hrBranchId": 5199
+            },
+            {
+                "$id": "769",
+                "branchId": 355,
+                "hrBranchId": 5200
+            },
+            {
+                "$id": "770",
+                "branchId": 356,
+                "hrBranchId": 5201
+            },
+            {
+                "$id": "771",
+                "branchId": 357,
+                "hrBranchId": 5210
+            },
+            {
+                "$id": "772",
+                "branchId": 358,
+                "hrBranchId": 5204
+            },
+            {
+                "$id": "773",
+                "branchId": 359,
+                "hrBranchId": 5211
+            },
+            {
+                "$id": "774",
+                "branchId": 360,
+                "hrBranchId": 5220
+            },
+            {
+                "$id": "775",
+                "branchId": 361,
+                "hrBranchId": 5222
+            },
+            {
+                "$id": "776",
+                "branchId": 362,
+                "hrBranchId": 5224
+            },
+            {
+                "$id": "777",
+                "branchId": 363,
+                "hrBranchId": 5221
+            },
+            {
+                "$id": "778",
+                "branchId": 364,
+                "hrBranchId": 5226
+            },
+            {
+                "$id": "779",
+                "branchId": 365,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "780",
+                "branchId": 366,
+                "hrBranchId": 5227
+            },
+            {
+                "$id": "781",
+                "branchId": 367,
+                "hrBranchId": 5231
+            },
+            {
+                "$id": "782",
+                "branchId": 368,
+                "hrBranchId": 5230
+            },
+            {
+                "$id": "783",
+                "branchId": 369,
+                "hrBranchId": 5241
+            },
+            {
+                "$id": "784",
+                "branchId": 370,
+                "hrBranchId": 5242
+            },
+            {
+                "$id": "785",
+                "branchId": 371,
+                "hrBranchId": 5244
+            },
+            {
+                "$id": "786",
+                "branchId": 372,
+                "hrBranchId": 5206
+            },
+            {
+                "$id": "787",
+                "branchId": 373,
+                "hrBranchId": 5246
+            },
+            {
+                "$id": "788",
+                "branchId": 374,
+                "hrBranchId": 5270
+            },
+            {
+                "$id": "789",
+                "branchId": 375,
+                "hrBranchId": 5235
+            },
+            {
+                "$id": "790",
+                "branchId": 376,
+                "hrBranchId": 5271
+            },
+            {
+                "$id": "791",
+                "branchId": 377,
+                "hrBranchId": 5272
+            },
+            {
+                "$id": "792",
+                "branchId": 378,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "793",
+                "branchId": 379,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "794",
+                "branchId": 380,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "795",
+                "branchId": 381,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "796",
+                "branchId": 382,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "797",
+                "branchId": 382,
+                "hrBranchId": 5281
+            },
+            {
+                "$id": "798",
+                "branchId": 383,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "799",
+                "branchId": 384,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "800",
+                "branchId": 385,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "801",
+                "branchId": 386,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "802",
+                "branchId": 387,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "803",
+                "branchId": 388,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "804",
+                "branchId": 389,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "805",
+                "branchId": 390,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "806",
+                "branchId": 391,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "807",
+                "branchId": 392,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "808",
+                "branchId": 393,
+                "hrBranchId": 163
+            },
+            {
+                "$id": "809",
+                "branchId": 394,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "810",
+                "branchId": 395,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "811",
+                "branchId": 396,
+                "hrBranchId": 0
+            },
+            {
+                "$id": "812",
+                "branchId": 500,
+                "hrBranchId": 5193
+            },
+            {
+                "$id": "813",
+                "branchId": 501,
+                "hrBranchId": 196
+            },
+            {
+                "$id": "814",
+                "branchId": 502,
+                "hrBranchId": 5297
+            }
+        ],
+        "isTemporaryUser": false,
+        "useDefaultCertificate": false
+    },
+    "channel": {
+        "$id": "815",
+        "today": "2017-03-10T00:00:00",
+        "yesterday": "20170309",
+        "tomorrow": "20170311",
+        "beforeYesterday": "20170308",
+        "afterTomorrow": "20170312",
+        "channelId": 1,
+        "channelName": "Şube",
+        "todayUTC": "20170310",
+        "now": "2017-03-10T14:39:39.8992551",
+        "dbTimeout": 200,
+        "mainChannelId": 1,
+        "applicationName": 2,
+        "isSelected": false,
+        "isSelectable": true
+    },
+    "userManager": {
+        "$id": "816",
+        "workGroupID": 2032,
+        "workGroupName": "BT-Kurumsal Mimari",
+        "directorUserId": 1585,
+        "directorUserName": "zeynepb",
+        "directorName": "Sinem Zeynep Baştaş Şen",
+        "directorEmail": "zeynep.bastas@kuveytturk.com.tr",
+        "managerUserId": 3437,
+        "managerUserNAme": "balcicek",
+        "managerName": "Ökkeş Emin Balçiçek",
+        "managerEmail": "emin.balcicek@kuveytturk.com.tr",
+        "isSelected": false,
+        "isSelectable": true
+    },
+    "deviceHostName":"btkm117nb",
+    "availableDevices": [
+        {
+            "$id": "2878",
+            "id": 7,
+            "alias": "Para Sayma - Hakan",
+            "machineName": "btkm117nb",
+            "branchId": 99,
+            "regionId": 1,
+            "sharingType": 2,
+            "serialNumber": "",
+            "deviceParameters": "COM3",
+            "name": 0,
+            "functionality": 0,
+            "connectivity": 0,
+            "connectionType": 0
+        },
+        {
+            "$id": "2879",
+            "id": 5,
+            "alias": "SMatic - 1.Şube",
+            "machineName": "btkmtest101",
+            "branchId": 1,
+            "regionId": 1,
+            "sharingType": 4,
+            "serialNumber": "",
+            "deviceParameters": "",
+            "name": "SMatic",
+            "functionality": 3,
+            "connectivity": 2,
+            "connectionType": 1
+        },
+        {
+            "$id": "2880",
+            "id": 8,
+            "alias": "Scanner",
+            "machineName": "btkm132nb",
+            "branchId": 1,
+            "regionId": 1,
+            "sharingType": 4,
+            "serialNumber": "",
+            "deviceParameters": "PaperStream",
+            "name": "PaperStream",
+            "functionality": 4,
+            "connectivity": 0,
+            "connectionType": 2
+        }
+    ],
+    "hasTellerProcessInfo" : true
+}

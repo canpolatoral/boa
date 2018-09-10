@@ -1,0 +1,11 @@
+{
+    "name": "b-education-component",
+    "version": "2.0.1",
+    "description": "BOA BPM flow and state select component",
+    "keywords": "education, state, bpm",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-combo-box": "^2.1.0"
+    }
+}

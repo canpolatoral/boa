@@ -1,0 +1,22 @@
+[
+  {
+    "name": "BSurveyComponent",
+    "desc": "BOA Survey Component",
+    "sample": "<BSurveyComponent />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [      
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [      
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [      
+    ]
+  }
+]

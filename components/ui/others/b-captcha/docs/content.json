@@ -1,0 +1,83 @@
+[
+  {
+    "name": "BCaptcha",
+    "desc": "Component wrapper for Google reCAPTCHA v2.",
+    "sample": "<BCaptcha context={context} sitekey={'asdqwe-zxvasd'} />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "sitekey",
+        "type": "string",
+        "header": "required",
+        "desc": "The API client key."
+      },
+      {
+        "name": "grecaptcha",
+        "type": "object",
+        "header": "not required",
+        "desc": "Using that component will oblige you to manage the grecaptcha dep and load the script by yourself."
+      },
+      {
+        "name": "theme",
+        "type": "oneOf(['dark', 'light'])",
+        "header": "not required",
+        "desc": "light or dark The theme of the widget. Default light."
+      },
+      {
+        "name": "type",
+        "type": "oneOf(['image', 'audio'])",
+        "header": "not required",
+        "desc": "image or audio The type of initial captcha. Default image."
+      },
+      {
+        "name": "tabindex",
+        "type": "number",
+        "header": "not required",
+        "desc": "The tabindex on the element. Default 0."
+      },
+      {
+        "name": "size",
+        "type": "oneOf(['compact', 'normal', 'invisible'])",
+        "header": "not required",
+        "desc": "compact, normal or invisible. This allows you to change the size or do an invisible captcha. Default normal."
+      },
+      {
+        "name": "stoken",
+        "type": "string",
+        "header": "not required",
+        "desc": "Set the stoken parameter, which allows the captcha to be used from different domains, see reCAPTCHA secure-token."
+      },
+      {
+        "name": "badge",
+        "type": "oneOf(['bottomright', 'bottomleft', 'inline'])",
+        "header": "not required",
+        "desc": "bottomright, bottomleft or inline. Positions reCAPTCHA badge. Only for invisible reCAPTCHA. Default bottomright."
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the root element."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onChange",
+        "type": "func",
+        "header": "required",
+        "desc": "The function to be called when the user successfully completes the captcha."
+      },
+      {
+        "name": "onExpired",
+        "type": "func",
+        "header": "not required",
+        "desc": "Callback when the challenge is expired and has to be redone by user. By default it will call the onChange with null to signify expired callback."
+      }
+    ]
+  }
+]

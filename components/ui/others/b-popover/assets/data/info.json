@@ -1,0 +1,10 @@
+{
+    "name": "b-popover",
+    "version": "2.1.2",
+    "description": "BOA Popover Component - Wrapped By Using Material Popover Component",
+    "keywords": "popover, base, boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-resizable-beta": "^2.1.0"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "b-device",
+    "version": "2.1.2",
+    "description": "BOA One Device Library.",
+    "keywords": [
+        "b-device",
+        "device"
+    ],
+    "homepage": "http://www.kuveytturk.com",
+    "files": [
+        "LICENSE",
+        "index.js",
+        "README.md"
+    ],
+    "main": "index.js",
+    "author": {
+        "name": "KuveytTurk BOA One Team",
+        "email": "boa@kuveytturk.com",
+        "url": "http://www.kuveytturk.com"
+    },
+    "license": "KuveytTurk",
+    "dependencies": {
+        "b-proxy": "^2.1.0"
+    }
+}

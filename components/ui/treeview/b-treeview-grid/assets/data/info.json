@@ -1,0 +1,17 @@
+{
+    "name": "b-treeview-grid",
+    "version": "2.1.3",
+    "description": "BOA TreeView Grid Component",
+    "keywords": "tree, treeview, view, grid",
+    "dependencies": {
+        "radium": "^0.19.5",
+        "velocity-react": "^1.2.1",
+        "deep-equal": "^1.0.1",
+        "shallowequal": "^0.2.1",
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-linear-panel": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-icon-button": "^2.1.0"
+    }
+}

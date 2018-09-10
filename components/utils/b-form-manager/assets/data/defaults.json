@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "b-form-manager",
+        "props": {
+            "groupName":"groupName",
+            "propertyName": "propertyName"
+        }
+    }
+]

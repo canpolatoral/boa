@@ -1,0 +1,11 @@
+{
+  "name": "<%=componentName%>",
+  "type": "",
+  "version": "1.0.0",
+  "description": "<%=componentName%> component built with React",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": ""
+}

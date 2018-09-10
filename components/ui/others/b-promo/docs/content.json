@@ -1,0 +1,30 @@
+[
+    {
+        "name": "BPromo",
+        "desc": "API Developer Portal Promo Component",
+        "sample": "<BPromo context={this.props.context} text='example text' titlePosition='top' imagePath={'/img/sll.png'}/> "
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name": "text",
+                "type": "string",
+                "header": "Not Required",
+                "desc": "Determines the title of component"
+            },
+            {
+                "name" : "titlePosition",
+                "type" : "string",
+                "header" : "Not Required",
+                "desc" : "Indicates the position of title."
+            },
+            {
+                "name" : "imagePath",
+                "type" : "string",
+                "header" : "Not Required",
+                "desc" : "Indicates the image path."
+            }
+        ]
+    }
+]

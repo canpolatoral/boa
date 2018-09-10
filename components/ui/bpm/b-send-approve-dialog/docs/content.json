@@ -1,0 +1,18 @@
+[
+  {
+      "name": "SendApproveDialog",
+      "desc": "BPM send to screen",
+      "sample": "SendApproveDialog.showApproveDialog(context, sendStateList, flowName, resourceId, ownerWorkgroupId, transactionWorkGroupId, callBack)"
+  },
+  {
+    "name": "Functions",
+    "infoArray": [
+      {
+        "name": "showApproveDialog",
+        "header": "showApproveDialog(context, sendStateList, flowName, resourceId, ownerWorkgroupId, transactionWorkGroupId, callBack) => void",
+        "desc": "Use BPM send to screen",
+        "sample":"SendApproveDialog.showApproveDialog(context, sendStateList, flowName, resourceId, ownerWorkgroupId, transactionWorkGroupId, callBack)"
+      }
+    ]
+  }
+]

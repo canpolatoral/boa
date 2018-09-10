@@ -1,0 +1,9 @@
+﻿[
+  {
+    "variantName": "default",
+    "type": "BGridActionPanel",
+    "props": {
+      "addButtonText": "Ekle"
+    }
+  }
+]

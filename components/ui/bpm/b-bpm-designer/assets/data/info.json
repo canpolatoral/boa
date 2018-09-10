@@ -1,0 +1,11 @@
+{
+    "name": "b-bpm-designer",
+    "version": "2.1.2",
+    "description": "BOA BPM designer",
+    "keywords": "bpmn, designer",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-messaging": "^2.1.0",
+        "bpmn-js": "^0.27.6"
+    }
+}

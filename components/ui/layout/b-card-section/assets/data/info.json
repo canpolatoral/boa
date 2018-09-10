@@ -1,0 +1,9 @@
+{
+    "name": "b-card-section",
+    "version": "2.1.2",
+    "description": "BOA Card Section layout component for responsive card layout. It provides card alignment and transition between mobile and desktop.",
+    "keywords": "card,section,layout,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

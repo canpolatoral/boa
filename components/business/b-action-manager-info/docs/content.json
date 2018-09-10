@@ -1,0 +1,8 @@
+[ 
+    {
+      "name": "BActionManagerInfo",
+      "desc": "Creates and edits action buttons. If it signed a workflow enabled page, actions provide workflow operations defined on workflow definition.",
+      "sample": "<BActionManagerInfo context={context} resourceInfo={resourceInfo}>{Content}</BActionManagerInfo>"
+    }    
+  ]
+  

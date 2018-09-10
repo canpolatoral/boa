@@ -1,0 +1,19 @@
+[
+    {
+        "name": "BLabel",
+        "desc": "Label Base BOA Component",
+        "sample": "<BLabel text='label text' />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name" : "text",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Label text.",
+                "maxWidth": "Max width of label"
+            }
+        ]
+    }
+]

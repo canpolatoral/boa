@@ -1,0 +1,34 @@
+[
+  {
+    "name": "BDynamic",
+    "desc": "BDynamic Component",
+    "sample": ""
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "resourceCode",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the resource code of component."
+      },
+      {
+        "name": "modal",
+        "type": "object",
+        "header": "not required",
+        "desc": "Indicates the model of dynamic form."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onActionClick",
+        "header": "function(event)",
+        "desc": "Fired when user click the action."
+      }
+    ]
+  }
+]

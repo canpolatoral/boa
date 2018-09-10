@@ -1,0 +1,64 @@
+[
+  {
+    "name": "BCheckBox",
+    "desc": "Check Box BOA Component",
+    "sample": "<BCheckBox label='Boa Check Box' checked={false} defaultChecked={false} disabled={true} onCheck={myCheckEvent()} />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "label",
+        "type": "string",
+        "header": "not required",
+        "desc": "label text"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "header": "not required",
+        "desc": "Checkbox is checked if true."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean",
+        "header": "not required",
+        "desc": "The default state of our checkbox component."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "header": "not required",
+        "desc": "Disabled if true."
+      },
+      {
+        "name": "labelPosition",
+        "type": "enum",
+        "header": "not required",
+        "desc": "Where the label will be placed next to the checkbox."
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the error Text."
+      },
+      {
+        "name": "errorTextVisible",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Indicates the error Text Visible"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onCheck",
+        "header": "function(event)",
+        "desc": "Callback function that is fired when the checkbox is checked."
+      }
+    ]
+  }
+]

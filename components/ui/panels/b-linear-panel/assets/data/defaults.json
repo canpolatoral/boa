@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "BLinearPanel",
+        "props": {
+            "padding": 4,
+            "orientation": "vertical"
+        }
+    }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "name": "BRouteHistory",
+    "desc": "BOA BPM route history component.",
+    "sample": "<BRouteHistory context={context}  instanceId={76136809}  />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "instanceId",
+        "type": "number",
+        "header": "required",
+        "desc": "instanceId parameter"
+      },
+      {
+        "name": "inDialog",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Send as true as you are opening as a dialog. Default is false."
+      }
+    ]
+  },
+  {
+    "name": "Functions",
+    "infoArray": [
+      {
+        "name": "showRoute",
+        "header": "showRoute(context, instanceId) => void",
+        "desc": "Use to open route history screen",
+        "sample":"BRouteHistory.showRoute(context, instanceId)"
+      }
+    ]
+  }
+]

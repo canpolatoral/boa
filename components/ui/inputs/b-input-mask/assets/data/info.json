@@ -1,0 +1,10 @@
+{
+    "name": "b-input-mask",
+    "version": "2.1.2",
+    "description": "BOA Input Mask Component - A Component For Input Masking",
+    "keywords": "input, mask, boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-input": "^2.1.0"
+    }
+}

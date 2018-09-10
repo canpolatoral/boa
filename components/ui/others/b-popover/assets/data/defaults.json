@@ -1,0 +1,25 @@
+[
+    {
+        "variantName": "default",
+        "type": "BPopover",
+        "props": {
+            "anchorOrigin": {
+                "vertical": "bottom",
+                "horizontal": "left"
+            },
+            "animated": true,
+            "autoCloseWhenOffScreen": true,
+            "canAutoPosition": true,
+            "open": false,
+            "style": {
+                "overflowY": "auto"
+            },
+            "targetOrigin": {
+                "vertical": "top",
+                "horizontal": "left"
+            },
+            "useLayerForClickAway": true,
+            "zDepth": 1
+        }
+    }
+]

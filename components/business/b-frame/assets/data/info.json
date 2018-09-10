@@ -1,0 +1,9 @@
+{
+    "name": "b-frame",
+    "version": "2.1.2",
+    "description": "React component to wrap your application or component in an iFrame for encapsulation purposes",
+    "keywords": "iframe,boa,frame,webbrowser",
+    "dependencies": {
+        "b-business-component": "^2.1.0"
+    }
+}

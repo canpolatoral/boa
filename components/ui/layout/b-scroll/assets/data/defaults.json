@@ -1,0 +1,17 @@
+[
+    {
+        "variantName": "default",
+        "type": "BScroll",
+        "props": {
+            "handleClass": "inner-handle",
+            "minScrollHandleHeight": 38,
+            "allowOuterScroll": false,
+            "heightRelativeToParent": null,
+            "onScroll": null,
+            "addScrolledClass": false,
+            "freezePosition": false,
+            "flex": null,
+            "rtl": false
+        }
+    }
+]

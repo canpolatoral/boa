@@ -1,0 +1,17 @@
+{
+    "name": "b-chart-form",
+    "version": "2.1.8",
+    "description": "BOA Chart Form",
+    "keywords": "card,chart,form,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-chart-card": "^2.1.0",
+        "b-scroll": "^2.1.0",
+        "element-resize-detector": "^1.1.9",
+        "inline-style-prefixer": "^2.0.4",
+        "b-dynamic-components": "^2.1.0",
+        "b-progress": "^2.1.0",
+        "b-combo-box": "^2.1.0"
+    }
+}

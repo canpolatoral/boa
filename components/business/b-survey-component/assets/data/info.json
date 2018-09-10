@@ -1,0 +1,18 @@
+{
+    "name": "b-survey-component",
+    "version": "2.0.0",
+    "description": "BOA Survey Component",
+    "keywords": "survey, anket, business, boa",
+    "dependencies": {
+        "b-business-component": "^2.1.2",
+        "b-component": "^2.1.0",
+        "b-card": "^2.1.4",
+        "b-label": "^2.1.2",
+        "b-radio-button-group": "^2.1.2",
+        "b-button":"^2.1.3",
+        "b-divider": "^2.1.2",
+        "b-check-box-group": "^2.1.2",
+        "b-progress": "^2.1.2"
+        
+    }
+}

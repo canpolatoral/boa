@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BMainMenu",
+        "props": {
+            "serviceCallLoader": "linear"
+        }
+    }
+]

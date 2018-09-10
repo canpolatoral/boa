@@ -1,0 +1,30 @@
+[
+    {
+        "name": "BInformationText",
+        "desc": "Information Text Base BOA Component",
+        "sample": "<BInformationText labelText='label text'  infoText='info text'  />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+          {
+            "name": "labelText",
+            "type": "propTypes.string",
+            "header":  "not Required",
+            "desc": "The text of the label."
+          },
+          {
+            "name": "infoText",
+            "type": "propTypes.string",
+            "header":  "not Required",
+            "desc": "The text of the info label."
+          },
+          {
+            "name": "labelWidth",
+            "type": "propTypes.number",
+            "header":  "not Required",
+            "desc": "The width of the label."
+          }
+        ]
+    }
+]

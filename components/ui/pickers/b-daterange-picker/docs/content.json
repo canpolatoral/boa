@@ -1,0 +1,100 @@
+[
+    {
+        "name": "BDateRangePicker",
+        "desc": "Date Range Picker BOA Component",
+        "sample": "<BDateRangePicker hintText='Hint Text'  floatingLabelText='Floating Label Text' onChange={myChangeEvent()} mode='potrait' container='dialog' errorText='Field is required' disabled=false firstDayOfWeek=1 autoOk=false okLabel='TAMAM' cancelLabel='İPTAL' />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [ 
+            {
+                "name" : "hintText",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "placeholder text for html input"
+            }, 
+            {
+                "name" : "value",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "error text for html input validation"
+            }, 
+            {
+                "name" : "mode",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "tells the component to display the picker in portrait or landscape mode"
+            }, 
+            {
+                "name" : "container",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "used to control how the BDatePicker will be displayed when the input field is focused"
+            }, 
+            {
+                "name" : "floatingLabelText",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "floating label for BDatePicker"
+            }, 
+            {
+                "name" : "errorText",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "error text for BDatePicker"
+            }, 
+            {
+                "name" : "disabled",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "disables the BDatePicker"
+            }, 
+            {
+                "name" : "firstDayOfWeek",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "used to change the first day of week"
+            }, 
+            {
+                "name" : "autoOk",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "if true, automatically accept and close the picker on select a date"
+            }, 
+            {
+                "name" : "okLabel",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "override the default text of the 'OK' button"
+            }, 
+            {
+                "name" : "cancelLabel",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "override the default text of the 'CANCEL' button"
+            }, 
+            {
+                "name" : "style",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the root element."
+            }, 
+            {
+                "name" : "textFieldStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of DatePicker's TextField element."
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [ 
+            {
+                "name" : "onChange",
+                "header" : "function(event,date)",
+                "desc" : "Fired when picker is changed"
+            }
+        ]
+    }
+]

@@ -1,0 +1,9 @@
+{
+    "name": "b-doc-toc",
+    "version": "2.1.2",
+    "description": "Table of content for documentation styled pages.",
+    "keywords": "toc,tableofcontent,doc,documentation,menu,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

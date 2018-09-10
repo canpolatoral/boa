@@ -1,0 +1,82 @@
+[
+  {
+    "name": "BMenu",
+    "desc": "Menu BOA Component",
+    "sample": "<BMenu classes={this.props.classes}  style={{ padding: '0px 0px 0px 0px' }} listStyle={listStyle} items={backButtonMenuItem} menuItemSelected={this.menuItemSelected.bind(this)}> </BMenu>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "autoWidth",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the width of the menu will be set automatically according to the widths of its children, using proper keyline increments "
+      },
+      {
+        "name": "disableAutoFocus",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the menu will not be auto-focused."
+      },
+      {
+        "name": "initiallyKeyboardFocused",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the menu will be keyboard-focused initially."
+      },
+      {
+        "name": "listStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the underlying List element."
+      },
+      {
+        "name": "maxHeight",
+        "type": "number",
+        "header": "not required",
+        "desc": "The maximum height of the menu in pixels. If specified, the menu will be scrollable if it is taller than the provided height."
+      },
+      {
+        "name": "multiple",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, value must be an array and the menu will support multiple selections."
+      },
+      {
+        "name": "width",
+        "type": "propTypes.stringOrNumber",
+        "header": "not required",
+        "desc": "The width of the menu."
+      },
+      {
+        "name": "items",
+        "type": "propTypes.array",
+        "header": "required",
+        "desc": "item list"
+      },
+      {
+        "name": "value",
+        "type": "propTypes.any",
+        "header": "not required",
+        "desc": "Selected value"
+      },
+      {
+        "name": "parentMenuItem",
+        "type": "propTypes.object",
+        "header": "not required",
+        "desc": "ItemList Parents Info"
+      }
+    ]
+  },
+    {
+      "name": "Events",
+      "infoArray": [
+        {
+          "name": "onEscKeyDown",
+          "header": "function(event)",
+          "desc": "Callback function fired when the menu is focused and the Esc key is pressed."
+        }
+      ]
+    }
+  ]

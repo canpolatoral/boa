@@ -1,0 +1,51 @@
+[
+  {
+    "name": "BCriteriaPanel",
+    "desc": "CriteriaPanel BOA Component",
+    "sample": "<BCriteriaPanel context={this.props.context} onExpandChange={expandChanged} expanded={expanded} expandable={expandable} header={header}>{children}</BCriteriaPanel>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "header",
+        "type": "string",
+        "header": "not required",
+        "desc": "Text of criteria panel header button's text."
+      },
+      {
+        "name": "children",
+        "type": "node",
+        "header": "not required",
+        "desc": "Can be used to render elements inside the CriteriaPanel."
+      },
+      {
+        "name": "expandable",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, this criteria panel is expandable."
+      },
+      {
+        "name": "expanded",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Criteria Panel expanded status."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onExpandChange",
+        "header": "function(event)",
+        "desc": "Callback function fired when the `expanded` state of the criteria panel has changed. @param {boolean} newExpandedState Represents the new `expanded` state of the criteria panel."
+      },
+      {
+        "name": "onResize",
+        "header": "function(event)",
+        "desc": "Calls when resizable component resize. Calls back with (direction: string, styleSize: object, clientSize: object, delta: object)."
+      }
+    ]
+  }
+]

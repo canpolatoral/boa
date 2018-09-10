@@ -1,0 +1,13 @@
+[
+    {
+        "variantName": "default",
+        "type": "BInputMask",
+        "props": {            
+            "onFocus": null,
+            "onBlur": null,
+            "onChange": null,
+            "hintText": "ABC 1234",
+            "floatingLabelText": "Mask Floating Label Text"
+        }
+    }
+]

@@ -1,0 +1,10 @@
+{
+    "name": "b-dynamic",
+    "version": "2.1.1",
+    "description": "Boa dinamik ekran bileşeni",
+    "keywords": "dinamik,dynamic,boa",
+    "dependencies": {
+        "b-business-component": "^2.0.0",
+        "b-dynamic-components": "^2.0.0"
+    }
+}

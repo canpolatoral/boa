@@ -1,0 +1,10 @@
+[
+  {
+    "variantName": "default",
+    "type": "BTreeViewGrid",
+    "props": {
+      "floatingText": "BTreeViewGrid",
+      "title": "Financal Scoring"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+{
+    "name": "b-date-picker",
+    "version": "2.1.2",
+    "description": "Boa date picker bileşeni.",
+    "keywords": "date,picker,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

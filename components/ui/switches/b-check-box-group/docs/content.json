@@ -1,0 +1,70 @@
+[
+    {
+        "name": "BRadioButtonGroup",
+        "desc": "Radio Button BOA Component",
+        "sample": "<BRadioButtonGroup name='BOA RadioButton Group' labelPosition='left' defaultSelected='not_light' style={styles.block} onChange={myCheckEvent()} />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [ 
+            {
+                "name" : "children",
+                "type" : "node",
+                "header" : "not required",
+                "desc" : "Should be used to pass RadioButton components."
+            },
+             {
+                "name" : "className",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The CSS class name of the root element."
+            },
+            {
+                "name" : "defaultSelected",
+                "type" : "any",
+                "header" : "not required",
+                "desc" : "The value property of the radio button that will be selected by default. This takes precedence over the checked property of the RadioButton elements."
+            },
+            {
+                "name" : "labelPosition",
+                "type" : "enum: 'left' 'right'",
+                "header" : "not required",
+                "desc" : "Where the label will be placed for all child radio buttons. This takes precedence over the labelPosition property of the RadioButton elements."
+            },
+            {
+                "name" : "name",
+                "type" : "string",
+                "header" : "required",
+                "desc" : "The name that will be applied to all child radio buttons."
+            },
+            {
+                "name" : "style",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the root element."
+            },
+            {
+                "name" : "valueSelected",
+                "type" : "any",
+                "header" : "not required",
+                "desc" : "The value of the currently selected radio button."
+            },
+            {
+              "name": "errorText",
+              "type": "string",
+              "header": "not required",
+              "desc": "Indicates the error Text."
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [ 
+            {
+                "name" : "onChange",
+                "header" : "function(event)",
+                "desc" : "Callback function that is fired when a radio button has been checked."
+            }
+        ]
+    }
+]

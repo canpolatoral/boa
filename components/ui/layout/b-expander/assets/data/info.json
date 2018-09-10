@@ -1,0 +1,9 @@
+{
+    "name": "b-expander",
+    "version": "2.1.4",
+    "description": "BOA Expander",
+    "keywords": "boa, expander,b-expander",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

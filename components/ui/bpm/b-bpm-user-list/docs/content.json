@@ -1,0 +1,18 @@
+[
+  {
+      "name": "BUserList",
+      "desc": "BPM User list screen",
+      "sample": "BUserList.showUserList(context, callBack)"
+  },
+  {
+    "name": "Functions",
+    "infoArray": [
+      {
+        "name": "showUserList",
+        "header": "showUserList(context, callBack) => void",
+        "desc": "Use to open the BPM User list screen",
+        "sample":"BUserList.showUserList(context, callBack)"
+      }
+    ]
+  }
+]

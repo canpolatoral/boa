@@ -1,0 +1,17 @@
+node_modules/
+main-dev.css
+main-dev.js
+npm-debug.log
+.DS_STORE
+components/**/package
+generator/**/package
+framework/package/
+package
+!build/package
+common/**/package/
+.vs/
+report.html
+dist/
+.idea/
+.vscode/chrome/
+package-lock.json

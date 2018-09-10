@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BLabel",
+        "props": {
+            "text": "Label text"
+        }
+    }
+]

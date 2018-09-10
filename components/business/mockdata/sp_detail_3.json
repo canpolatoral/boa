@@ -1,0 +1,14 @@
+{
+  "$id": "1",
+  "value": {
+  },
+  "results": [],
+  "maxSeverityLevel": 2,
+  "success": true,
+  "startTime": "2017-01-18T16:30:08.1698531+03:00",
+  "endTime": "2017-01-18T16:30:08.2479814+03:00",
+  "key": "BOA.Orchestration.DynamicFormGenerator.SpBrowser.SelectSpParametersAndReturnColumns",
+  "isInitializedByBOA": true,
+  "gottenFromCache": false,
+  "businessKey": 201701180015099970000000084
+}

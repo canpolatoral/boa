@@ -1,0 +1,14 @@
+[
+    {
+        "variantName": "default",
+        "type": "BCalendarPicker",
+        "props": {
+            "style": {
+                "maxLength" : 500,
+                "floatingLabelText": "Floating Label Text",
+                "dateEnable" : true,
+                "isOpen" : true
+            }
+        }
+    }
+]

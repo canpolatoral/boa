@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "BIBANComponent",
+        "props": {
+         "floatingLabelText": "IBAN",
+         "hintText": "IBAN"
+        }
+    }
+]

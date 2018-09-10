@@ -1,0 +1,11 @@
+[
+    {
+        "variantName": "default",
+        "type": "BCard",
+        "props": {
+            "expandable": false,
+            "expanded": null,
+            "initiallyExpanded": false
+        }
+    }
+]

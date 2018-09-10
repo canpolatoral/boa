@@ -1,0 +1,32 @@
+[
+    {
+        "name": "b-localization",
+        "desc": "Editing localizations for BOA One.",
+        "sample": ""
+    },
+    {
+        "name": "functions",
+        "infoArray" : [
+            {
+                "name" : "getDateTimeFormat(format)",
+                "header" : "getDateTimeFormat('format')",
+                "desc" : "returns long datetime format for exp. 'DD.MM.YYYY h:mm:ss'. parameter can be L,LL,LLL,LLL,LT,LTS,l,ll,lll,llll. for more info visit momentjs.com"
+            },
+            {
+                "name" : "formatDateTime(date, format)",
+                "header" : "formatDateTime(date, 'format')",
+                "desc" : "returns string which was formatted. parameter can be L,LL,LLL,LLL,LT,LTS,l,ll,lll,llll. for more info visit momentjs.com"
+            },
+            {
+                "name" : "formatCurrency(currency, format)",
+                "header" : "formatCurrency(currency, 'format')",
+                "desc" : "return string which was formatted. parameter can be D,F,M,FX or money formats(0.0 - 0.0,0 etc.)"
+            },
+            {
+                "name" : "formatMoney(currency)",
+                "header" : "formatMoney(currency)",
+                "desc" : "return string money value which was formatted."
+            }
+        ]
+    }
+]

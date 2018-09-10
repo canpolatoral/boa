@@ -1,0 +1,18 @@
+[
+  {
+    "name": "BFooter",
+    "desc": "Footer item list.",
+    "sample": "<BFooter menuItemlist=[]/>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "menuItemlist",
+        "type": "array",
+        "header": "required",
+        "desc": "List of menu items. If there is only one item in array, all of subtitle are listed directly. But if there are more than 1 item, the titles are loaded on a dropdown list. The subtitles of title are listed, when title selected from dropdown list."
+      }
+    ]
+  }
+]

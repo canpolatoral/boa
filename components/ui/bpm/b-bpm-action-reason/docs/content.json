@@ -1,0 +1,18 @@
+[
+  {
+      "name": "BPMActionReasonDialog",
+      "desc": "Action reason input screen",
+      "sample": "BPMActionReasonDialog.showActionReasonDialog(context, list, callBack)"
+  },
+  {
+    "name": "Functions",
+    "infoArray": [
+      {
+        "name": "showActionReasonDialog",
+        "header": "showActionReasonDialog(context, list, callBack) => void",
+        "desc": "Use the action reasons input screen",
+        "sample":"BPMActionReasonDialog.showActionReasonDialog(context, list, callBack)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+    "name": "b-html-to-react",
+    "version": "2.1.2",
+    "description": "BOA Html To React Component - Renders raw html to react",
+    "keywords": "html, react, raw, rawhtml",
+    "dependencies": {
+        "react": "^15.0.0",
+        "b-component": "^2.1.0"
+    }
+}

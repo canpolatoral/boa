@@ -1,0 +1,72 @@
+[
+  {
+    "name": "BThirdPartyComponent",
+    "desc": "BOA ThirdParty Component",
+    "sample": "<BThirdPartyComponent hintText='Üçüncü Şahıs' labelText='Üçüncü Şahıs' accountNumber='YourAccountNumber' />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "selectedThirdPartyId",
+        "type": "propTypes.number",
+        "header": "Not Required",
+        "desc": "Determines the third party that is currently selected."
+      },
+      {
+        "name": "accountNumber",
+        "type": "propTypes.number",
+        "header": "not Required",
+        "desc": "The hint content to display."
+      },
+      {
+        "name": "hintText",
+        "type": "propTypes.string",
+        "header": "not Required",
+        "desc": "The hint content to display."
+      },
+      {
+        "name": "labelText",
+        "type": "propTypes.string",
+        "header": "not Required",
+        "desc": "The content of the floating label."
+      },
+      {
+        "name": "disabled",
+        "type": "propTypes.bool",
+        "header": "not Required",
+        "desc": "If true, the third party component will be disabled."
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [
+      {
+        "name": "getValue()",
+        "header": "method",
+        "desc": "Returns the selected thart party"
+      },
+      {
+        "name": "getValues()",
+        "header": "method",
+        "desc": "Returns the list of third part."
+      },
+      {
+        "name": "setValues(thirdPartyList)",
+        "header": "method",
+        "desc": "Set the third partyes by third partyes"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onThirdPartySelect",
+        "header": "function(event)",
+        "desc": "Callback function fires when the fec has been selected."
+      }
+    ]
+  }
+]

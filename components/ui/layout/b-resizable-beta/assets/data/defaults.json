@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "BResizableBeta",
+        "props": {
+            "width": 200,
+            "height": 200
+        }
+    }
+]

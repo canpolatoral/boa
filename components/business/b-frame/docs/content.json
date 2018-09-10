@@ -1,0 +1,8 @@
+[
+    {
+        "name": "BFrame",
+        "desc": "Frame BOA Business Component",
+        "sample": "<BFrame style={style} />"
+    }
+   
+]

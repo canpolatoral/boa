@@ -1,0 +1,17 @@
+{
+    "name": "b-base-form",
+    "version": "2.1.8",
+    "description": "BOA Base Form. Basis of Transaction and Browse Form.",
+    "keywords": "base,form,boa",
+    "dependencies": {
+        "lodash": "^4.17.5",
+        "b-component": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-resizable": "^2.1.0",
+        "b-helpers": "^2.1.0",
+        "b-resizable-beta": "^2.1.0",
+        "b-action-manager": "^2.1.0",
+        "b-loading": "^2.1.0",
+        "b-show-hide-panel": "^2.1.0"
+    }
+}

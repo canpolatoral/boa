@@ -1,0 +1,11 @@
+{
+    "name": "b-component-chooser",
+    "version": "2.0.0",
+    "description": "Boa Component Chooser component.",
+    "keywords": "component,boa,Chooser",
+    "dependencies": {
+        "b-component": "^2.0.0",
+        "b-input-action": "^2.0.0",
+        "b-dialog-helper": "^2.0.0"
+    }
+}

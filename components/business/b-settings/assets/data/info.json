@@ -1,0 +1,24 @@
+{
+    "name": "b-settings",
+    "version": "2.1.1",
+    "description": "Boa settings business component.",
+    "keywords": "settings,boa,bsettings",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-popover": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-action-manager": "^2.1.0",
+        "b-label": "^2.1.0",
+        "b-radio-button": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-list": "^2.1.0",
+        "b-list-item": "^2.1.0",
+        "b-grid-list": "^2.1.0",
+        "b-toggle": "^2.1.0",
+        "b-combo-box": "^2.1.0",
+        "b-resource-browser": "^2.1.0",
+        "b-parameter-component": "^2.1.0"
+    }
+}

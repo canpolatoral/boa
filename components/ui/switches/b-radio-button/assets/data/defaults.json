@@ -1,0 +1,12 @@
+[
+    {
+        "variantName": "default",
+        "type": "BRadioButton",
+        "props":
+        {
+            "label": "Sample",
+            "disabled": false,
+            "style": {"marginBottom": 16}
+        }
+    }
+]

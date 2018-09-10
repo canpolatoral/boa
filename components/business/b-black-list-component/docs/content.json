@@ -1,0 +1,46 @@
+[
+    {
+        "name": "BBlackListComponent",
+        "desc": "BBlack List BOA Component",
+        "sample": " <BBlackListComponent context={this.props.context} />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [            
+            {
+                "name" : "blackListContract",
+                "type" : "propTypes.array",
+                "header" : "required",
+                "desc" : "Black list information about identity."
+            },  
+            {
+                "name" : "blackListMernisInfo",
+                "type" : "propTypes.array",
+                "header" : "required",
+                "desc" : "Detail mernis information."
+            },  
+            {
+                "name" : "disableActions",
+                "type" : "propTypes.boolean",
+                "header" : "not required",
+                "desc" : "To force component become readonly."
+            },  
+            {
+                "name" : "isIndividual",
+                "type" : "propTypes.boolean",
+                "header" : "required",
+                "desc" : "Identitiy is Individual or Corporate"
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [ 
+            {
+                "name" : "handleClose",
+                "header" : "function()",
+                "desc" : "Callback function fired when the component is closed"
+            }
+        ]
+    }
+]

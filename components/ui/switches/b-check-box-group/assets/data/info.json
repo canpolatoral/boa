@@ -1,0 +1,11 @@
+{
+    "name": "b-check-box-group",
+    "version": "2.1.2",
+    "description": "Boa checkboxgroup component.",
+    "keywords": "check, checkbox, checklist, checkboxlist,list, boa, group",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-label": "^2.1.0",
+        "b-check-box": "^2.1.0"
+    }
+}

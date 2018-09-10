@@ -1,0 +1,7 @@
+[
+  {
+    "name": "BGridLayout",
+    "desc": "BOA Grid Layout for applying bootstrap column mechanism. Inherits from react-grid-layout.",
+    "sample": "<BGridLayout context={this.props.context} breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}>{this.props.children}</BGridLayout>"
+  }
+]

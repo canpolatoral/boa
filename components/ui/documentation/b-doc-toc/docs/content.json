@@ -1,0 +1,30 @@
+[
+  {
+    "name": "BDocToc",
+    "desc": "Table of Content component for BOA markdown documents.",
+    "sample": "<BDocToc context={context} content='{id: \"intoduction\",type: \"h1\",content:\"Introduction\", children: []' activeItem='{activeItemId}' />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "content",
+        "type": "array",
+        "header": "required",
+        "desc": "Data for table."
+      },
+      {
+        "name": "header",
+        "type": "string",
+        "header": "not required",
+        "desc": "Header text of the component."
+      },
+      {
+        "name": "activeItem",
+        "type": "string",
+        "header": "not required",
+        "desc": "Active item id on component."
+      }
+    ]
+  }
+]

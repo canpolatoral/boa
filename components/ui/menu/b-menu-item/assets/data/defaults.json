@@ -1,0 +1,15 @@
+[
+    {
+        "variantName": "default",
+        "type": "BMenuItem",
+        "props": {
+            "leftIcon": null,
+            "primaryText": "Temel Bankacılık",
+            "rightIcon": null,
+            "checked": false,
+            "disabled": false,
+            "focusState": "none",
+            "insetChildren": false
+        }
+    }
+]

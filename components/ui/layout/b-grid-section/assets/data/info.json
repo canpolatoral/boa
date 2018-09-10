@@ -1,0 +1,10 @@
+{
+    "name": "b-grid-section",
+    "version": "2.1.2",
+    "description": "Grid section component for responsive grid layout.",
+    "keywords": "grid,section,layout,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "element-resize-detector": "^1.1.14"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "name": "b-branch-component",
+    "version": "2.1.3",
+    "description": "BOA Branch Component",
+    "keywords": "branch, branchunit, boa, şube",
+    "dependencies": {
+        "b-combo-box": "^2.1.0",
+        "lodash": "^4.16.4"
+    }
+}

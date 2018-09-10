@@ -1,0 +1,23 @@
+{
+    "name": "b-dynamic-event-designer",
+    "version": "2.1.2",
+    "description": "BOA Dynamic Event Designer component.",
+    "keywords": "event dynamic component",
+    "dependencies": {
+        "b-component": "^2.0.0",
+        "b-dialog-box": "^2.0.0",
+        "b-business-component": "^2.0.0",
+        "b-scroll": "^2.0.0",
+        "b-flex-panel": "^2.0.0",
+        "b-label": "^2.0.0",
+        "b-icon-button": "^2.0.0",
+        "b-action-button": "^2.0.0",
+        "b-action-manager": "^2.0.0",
+        "b-toggle": "^2.0.0",
+        "b-card": "^2.0.0",
+        "b-input": "^2.0.0",
+        "b-combo-box": "^2.0.0",
+        "lodash": "^4.17.5",
+        "b-input-numeric": "^2.0.0"
+    }
+}

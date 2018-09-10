@@ -1,0 +1,38 @@
+[
+    {
+        "type": "BLabel",
+        "props": { 
+            "text": "Label text"
+        }
+    },    
+    {
+        "type": "BDivider",
+        "props": {
+            "inset": false
+        }
+    },
+    {
+        "type": "BLabel",
+        "props": { 
+            "text": "Label text"
+        }
+    },    
+    {
+        "type": "BDivider",
+        "props": {
+            "inset": false
+        }
+    },
+    {
+        "type": "BLabel",
+        "props": { 
+            "text": "Label text"
+        }
+    },    
+    {
+        "type": "BDivider",
+        "props": {
+            "inset": false
+        }
+    }        
+]

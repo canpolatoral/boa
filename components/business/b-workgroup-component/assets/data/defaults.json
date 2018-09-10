@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BWorkgroupComponent",
+        "props": {
+            "workgroupHintText": "Çalışma Grubu"
+        }
+    }
+]

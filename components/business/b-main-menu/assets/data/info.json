@@ -1,0 +1,13 @@
+{
+    "name": "b-main-menu",
+    "version": "2.1.2",
+    "description": "BOA Main Resource Menu component.",
+    "keywords": "main,menu,boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-drawer-menu": "^2.1.0",
+        "b-scroll": "^2.1.0",
+        "b-form-manager": "^2.1.0"
+    }
+}

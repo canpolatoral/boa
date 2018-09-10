@@ -1,0 +1,105 @@
+[
+    {
+        "name": "BCommissionComponent",
+        "desc": "Commission which shows and gets commission's definitions.",
+        "sample": " <BCommissionComponent />"
+    },
+    {
+        "name": "Props",
+        "infoArray": [
+            {
+                "name": "visibilityPaymentInformation ",
+                "type": "boolean",
+                "header": "Required",
+                "desc": "If true, the payment info will automatically visible."
+            },
+            
+            {
+                "name": "visibilityPaymentInformationOptions ",
+                "type": "boolean",
+                "header": "Required",
+                "desc": "If true, the payment info options will automatically visible."
+            },
+
+            {
+                "name": "isSafeOptionChecked ",
+                "type": "boolean",
+                "header": "Required",
+                "desc": "If true, the Safe Option will automatically be checked and then Account Option will be unchecked."
+            },
+
+            {
+                "name": "isAccountOptionChecked ",
+                "type": "boolean",
+                "header": "Required",
+                "desc": "If true, the Account Option will automatically be checked and then Safe Option will be unchecked."
+            },
+
+            {
+                "name": "commissionKey ",
+                "type": "string",
+                "header": "Required",
+                "desc": "To give commission information."
+            },
+
+            {
+                "name": "commissionSerializeId",
+                "type": "number",
+                "header": "not Required",
+                "desc": "To get commission info from serialize table"
+            },
+
+            {
+                "name": "commissionBaseCount",
+                "type": "number",
+                "header": "not Required",
+                "desc": "Set for countable commissions"
+            },
+            
+            {
+                "name": "commissionJournalBusinessKey",
+                "type": "number",
+                "header": "not Required",
+                "desc": "To get commission info from journal table"
+            }
+            
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray": [
+            {
+                "name": "onLoadCompleted",
+                "header": "function()",
+                "desc": "Callback function fires when the component load"
+            },
+
+            {
+                "name": "onCommissionAmountChanged",
+                "header": "function()",
+                "desc": "Callback function fires when the commission amount changed"
+            },
+            
+            {
+                "name": "afterSelectedFECChanged",
+                "header": "function()",
+                "desc": "Callback function fires when the commission amount changed"
+            },
+
+            {
+                "name": "afterCommissionInfoLoaded",
+                "header": "function()",
+                "desc": "Callback function fires when the commission info loaded"
+            },
+
+            {
+                "name": "onPaymentInformationOptionsChanged",
+                "header": "function()",
+                "desc": "Callback function fires when the payment information options changed"
+            }
+            
+            
+
+        ]
+    }
+]

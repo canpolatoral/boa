@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "BGridSection",
+        "props": {
+            "columnPadding": 24,
+            "rowPadding": 16
+        }
+    }
+]

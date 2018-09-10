@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "BWorkgroupUserComponent",
+        "props": {
+            "workgroupHintText": "Çalışma Grubu",
+            "isAllOptionIncluded": "true"
+        }
+    }
+]

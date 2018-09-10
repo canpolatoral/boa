@@ -1,0 +1,9 @@
+[
+  {
+    "name": "BShowHidePanel",
+    "desc": "A component for show or hide content(progress bar etc.).",
+    "sample": "<BShowHidePanel context={context}></BShowHidePanel>"
+  },
+  {
+  }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "name": "b-validator",
+        "desc": "This is BOA.One clientside validation library."
+    },
+    {
+        "name": "Installation",
+        "sample": "npm install --save b-validator"
+    },
+    {
+        "name": "Usage",
+        "sample": "import { BValidator } from 'b-validator'\nvar errors = BValidator.validate(model, schema);"
+    }
+]

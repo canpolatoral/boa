@@ -1,0 +1,16 @@
+[
+    {
+        "variantName": "default",
+        "type": "BInput",
+        "props": {
+            "type": "text",
+            "onFocus": null,
+            "onBlur": null,
+            "onChange": null,
+            "maxLength": 50,
+            "hintText": "Hint Text",
+            "disabled": false,
+            "fullWidth": true            
+        }
+    }
+]

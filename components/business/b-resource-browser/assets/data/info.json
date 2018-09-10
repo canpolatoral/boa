@@ -1,0 +1,22 @@
+{
+    "name": "b-resource-browser",
+    "version": "2.1.9",
+    "description": "BOA Resource Browser",
+    "keywords": "resource, screen, business, boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-form-manager": "^2.1.0",
+        "b-transaction-form": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-const": "^2.1.0",
+        "b-treeview": "^2.1.0",
+        "b-check-box": "^2.1.0",
+        "b-check-box-group": "^2.1.0",
+        "b-scroll": "^2.1.0",
+        "b-loading": "^2.1.0",
+        "b-show-hide-panel": "^2.1.0"
+    }
+}

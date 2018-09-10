@@ -1,0 +1,86 @@
+[
+  {
+    "name": "BAppCard",
+    "desc": "It provides alignment for own children like grid, based on rows and columns.",
+    "sample": "<BAppCard context={context} expandable={expandable} expanded={expanded}>{children}</BAppCard>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "padding",
+        "type": "number",
+        "header": "not required",
+        "desc": "Padding of card content."
+      },
+      {
+        "name": "column",
+        "type": "number",
+        "header": "not required",
+        "desc": "Column index in BCardSection."
+      },
+      {
+        "name": "children",
+        "type": "node",
+        "header": "not required",
+        "desc": "Can be used to render elements inside the Card."
+      },
+      {
+        "name": "containerStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the container element."
+      },
+
+      {
+        "name": "style",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the root element."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the title of new application"
+      },
+      {
+        "name": "svgIcon",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the path of new application button icon"
+      },
+      {
+        "name": "iconTitleText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the title of new application button icon"
+      },
+      {
+        "name": "isNewAppCard",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, this app card component is for new application"
+      },
+      {
+        "name": "buttonTitles",
+        "type": "array",
+        "header": "not required",
+        "desc": "Indicatest the button title of new application card"
+      },
+      {
+        "name": "detailText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the detail text"
+      },
+      {
+        "name": "appLogoPath",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the application logo path"
+      }
+
+    ]
+  }
+]

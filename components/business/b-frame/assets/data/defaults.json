@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BFrame",
+        "props": {
+            "url" : "http://srvnpm3/"
+        }
+    }
+]

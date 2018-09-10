@@ -1,0 +1,7 @@
+[
+    {
+        "name": "BPageHost",
+        "desc": "Page Host BOA One Component",
+        "sample": "<BPageHost pagehost={this.props.pageHost} />"
+    }
+]

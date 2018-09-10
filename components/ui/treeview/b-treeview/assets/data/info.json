@@ -1,0 +1,18 @@
+{
+    "name": "b-treeview",
+    "version": "2.1.9",
+    "description": "BOA TreeViewNew Component",
+    "keywords": "tree, treeview, view",
+    "dependencies": {
+        "radium": "^0.19.5",
+        "velocity-react": "^1.2.1",
+        "deep-equal": "^1.0.1",
+        "shallowequal": "^0.2.1",
+        "react-tiny-virtual-list": "^2.1.0",
+        "is-dom": "^1.0.9",
+        "html5-tag": "^0.3.0",
+        "flattree": "^0.10.0",
+        "element-class": "^0.2.2",
+        "escape-html": "^1.0.3"
+    }
+}

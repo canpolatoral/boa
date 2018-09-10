@@ -1,0 +1,10 @@
+{
+    "name": "b-doc-code",
+    "version": "2.1.2",
+    "description": "Code view box for document viewer.",
+    "keywords": "doc,code,viewer,highlight,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "highlight.js": "^9.11.0"
+    }
+}

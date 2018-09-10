@@ -1,0 +1,11 @@
+[
+    {
+        "variantName": "BSnackbar",
+        "type": "BSnackbar",
+        "props": {
+            "text":"this is message which will show",
+            "closeText": "this is title of close action",
+            "closeCallback": "this will fire if close action click"
+        }
+    }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "BActionManager",
+    "desc": "Creates and edits action buttons. If it signed a workflow enabled page, actions provide workflow operations defined on workflow definition.",
+    "sample": "<BActionManager context={context} resourceInfo={resourceInfo}>{Content}</BActionManager>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "resourceInfo",
+        "type": "object",
+        "header": "required",
+        "desc": "Resource definition of form."
+      },
+      {
+        "name": "visibleHelpButton",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Visibility of Help button. Default true"
+      },
+      {
+        "name": "visibleInfoButton",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Visibility of Info button. Default true"
+      },
+      {
+        "name": "visibleOptionsButton",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Visibility of Options button. Default true"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onActionClick",
+        "header": "function(event)",
+        "desc": "Callback function fired when any action clicked."
+      },
+      {
+        "name": "onHelpClick",
+        "header": "function(event)",
+        "desc": "Callback function fired when the help button is clicked by the mouse."
+      },
+      {
+        "name": "onInfoClick",
+        "header": "function(event)",
+        "desc": "Callback function fired when the info button is clicked by the mouse."
+      },
+      {
+        "name": "onOptionsClick",
+        "header": "function(event)",
+        "desc": "Callback function fired when the options button is clicked by the mouse."
+      },
+      {
+        "name": "onCloseClick",
+        "header": "function(event)",
+        "desc": "Callback function fired when the close button is clicked by the mouse."
+      }
+    ]
+  }
+]

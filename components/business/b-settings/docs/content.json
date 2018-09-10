@@ -1,0 +1,28 @@
+[
+    {
+        "name": "BSettings",
+        "desc": "Settings BOA Business Component",
+        "sample": "<BSettings style={style} />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [  
+            {
+                "name" : "style",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the root element."
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [  
+            {
+                "name" : "settingsMenuClick",
+                "header" : "function(event)",
+                "desc" : "Fired when click"
+            }
+        ]
+    }
+]

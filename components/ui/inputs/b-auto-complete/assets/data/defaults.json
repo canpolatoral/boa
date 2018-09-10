@@ -1,0 +1,63 @@
+[
+  {
+    "variantName": "default",
+    "type": "BAutoComplete",
+    "props": {
+      "floatingLabelText": "Type 'a'",
+      "animated": false,
+      "open": true,
+      "hintText": "Type 'a'",
+      "dataSource": [
+        {
+          "text": "Red"
+        },
+        {
+          "text": "Orange"
+        },
+        {
+          "text": "Yellow"
+        },
+        {
+          "text": "Green"
+        },
+        {
+          "text": "Blue"
+        },
+        {
+          "text": "Purple"
+        },
+        {
+          "text": "Black"
+        },
+        {
+          "text": "White"
+        },
+        {
+          "text": "Tarihi İstanbul"
+        },
+        {
+          "text": "Güzel İzmir"
+        },
+        {
+          "text": "Şırnak"
+        },
+        {
+          "text": "Çanakkale Geçilmez"
+        },
+        {
+          "text": "Önder"
+        },
+        {
+          "text": "Ümit Mutlu"
+        },
+        {
+          "text": "ÖĞÜT"
+        }
+      ],
+      "fullWidth": true,
+      "listStyle": null,
+      "maxSearchResults": 20,
+      "onNewRequest": null
+    }
+  }
+]

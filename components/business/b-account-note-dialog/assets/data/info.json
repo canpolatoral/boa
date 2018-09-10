@@ -1,0 +1,15 @@
+{
+    "name": "b-account-note-dialog",
+    "version": "2.1.3",
+    "description": "Boa BAccontNote Note Dialog Component.",
+    "keywords": "account,note,boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-tab-bar": "^2.1.0",
+        "b-radio-button-group": "^2.1.0",
+        "b-browse-form": "^2.1.0",
+        "b-combo-box": "^2.1.0",
+        "b-black-list-component": "^2.1.0"
+    }
+}

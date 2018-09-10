@@ -1,0 +1,9 @@
+{
+    "name": "b-doc-post",
+    "version": "2.1.2",
+    "description": "Post content with title and picture.",
+    "keywords": "doc,post,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

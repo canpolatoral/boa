@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BThirdPartyComponent",
+        "props": {
+            "hintText": "Üçüncü Şahıs Component"
+        }
+    }
+]

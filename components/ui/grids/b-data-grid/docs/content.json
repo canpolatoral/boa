@@ -1,0 +1,107 @@
+[
+  {
+    "name": "BDataGrid",
+    "desc": "BOA DataGrid Component",
+    "sample": "<BDataGrid context={context}\n    dataSource={self.state.rows}\n    searchText={self.state.searchText}\n    columns={columns}\n    minHeight={350}\n    enableRowSelect={false}\n    enableCellSelect={true}\n    multiSelection={false}\n    showCheckbox={true}\n    headerBarOptions={{\n      show: true,\n      showTitle: true,\n      title: 'Sonuç Listesi',\n      showFiltering: true,\n      showGrouping: true,\n      showMoreOptions: true\n    }}\n    onRowSelectionChanged={this._onRowSelectionChanged}\n    onRowUpdated={this._onRowUpdated}\n    />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "columns",
+        "type": "array of object",
+        "header": "required",
+        "desc": "Data columns of the grid component"
+      },
+      {
+        "name": "dataSource",
+        "type": "array",
+        "header": "not required",
+        "desc": "Data source of the grid component"
+      },
+      {
+        "name": "searchText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Search text for finding specific text in all columns"
+      },
+      {
+        "name": "enableRowSelect",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Property for enabling selecting rows by clicking on them"
+      },
+      {
+        "name": "showCheckbox",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Property for enabling selecting rows by clicking on checkboxes"
+      },
+      {
+        "name": "enableCellSelect",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Property for enabling selecting cells by clicking on them"
+      },
+      {
+        "name": "rowHeight",
+        "type": "number",
+        "header": "not required",
+        "desc": "Property for setting row height"
+      },
+      {
+        "name": "minHeight",
+        "type": "number",
+        "header": "not required",
+        "desc": "Property for setting grid minimum height"
+      },
+      {
+        "name": "minWidth",
+        "type": "number",
+        "header": "not required",
+        "desc": "Property for setting grid minimum width"
+      },
+      {
+        "name": "rowScrollTimeout",
+        "type": "number",
+        "header": "not required",
+        "desc": "Property for setting row scroll animation timeout"
+      },
+      {
+        "name": "multiSelection",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Property for enabling multiple row selection"
+      },
+      {
+        "name": "headerBarOptions",
+        "type": "object",
+        "header": "not required",
+        "desc": "Property for setting header bar button options"
+      },
+      {
+        "name": "selectedIndexes",
+        "type": "array of numbers",
+        "header": "not required",
+        "desc": "Property for selection rows with specific row indexes"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onRowUpdated",
+        "type": "function",
+        "header": "not required",
+        "desc": "Event, fires when a row updated"
+      },
+      {
+        "name": "onRowSelectionChanged",
+        "type": "function",
+        "header": "not required",
+        "desc": "Event, fires when row selection changes"
+      }
+    ]
+  }
+]

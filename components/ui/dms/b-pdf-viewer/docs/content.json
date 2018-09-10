@@ -1,0 +1,32 @@
+[
+    {
+      "name": "BPdfViewer",
+      "desc": "Pdf Viewer",
+      "sample": "<PdfViewer  fileUrl={objectDataUrl}  pdfContainerHeight={10}/>"
+
+      
+    },
+    {
+      "name": "Props",
+      "infoArray": [
+        {
+          "name": "fileUrl",
+          "type": "string",
+          "header": "not required",
+          "desc": "Indicates the file blop:Url."
+        },
+        {
+          "name": "fileContent",
+          "type": "string",
+          "header": "not required",
+          "desc": "Indicates the file Content."
+        },
+        {
+          "name": "pdfContainerHeight",
+          "type": "number",
+          "header": "required",
+          "desc": "Indicates the pdf container height."
+        }
+      ]
+    }
+  ]

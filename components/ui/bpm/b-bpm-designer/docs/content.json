@@ -1,0 +1,29 @@
+[
+  {
+    "name": "BBpmDesigner",
+    "desc": "BOA BPM designer",
+    "sample": "<BBpmDesigner context={context}  diagramXML={...}  />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "diagramXML",
+        "type": "any",
+        "header": "not required",
+        "desc": "xml diagram"
+      }
+    ]
+  },
+  {
+    "name": "Functions",
+    "infoArray": [
+      {
+        "name": "getDefinitions",
+        "header": "getDefinitions() => any",
+        "desc": "definition",
+        "sample":"ref.getDefinitions()"
+      }
+    ]
+  }
+]

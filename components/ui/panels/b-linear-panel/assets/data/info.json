@@ -1,0 +1,9 @@
+{
+    "name": "b-linear-panel",
+    "version": "2.1.2",
+    "description": "BOA LinearPanel bileşeni.",
+    "keywords": "linear,panel,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

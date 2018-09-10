@@ -1,0 +1,41 @@
+{
+  "$id": "1",
+  "value": {
+    "$id": "2",
+    "item1": [
+      {
+        "$id": "3",
+        "parameterName": "@name",
+        "parameterType": "varchar",
+        "parameterMaxLength": 50,
+        "isSelected": false,
+        "isSelectable": true
+      },
+      {
+        "$id": "4",
+        "parameterName": "@value",
+        "parameterType": "int",
+        "parameterMaxLength": 0,
+        "isSelected": false,
+        "isSelectable": true
+      },
+      {
+        "$id": "5",
+        "parameterName": "@Description",
+        "parameterType": "varchar",
+        "parameterMaxLength": 500,
+        "isSelected": false,
+        "isSelectable": true
+      }
+    ]
+  },
+  "results": [],
+  "maxSeverityLevel": 2,
+  "success": true,
+  "startTime": "2017-01-18T16:30:08.1698531+03:00",
+  "endTime": "2017-01-18T16:30:08.2479814+03:00",
+  "key": "BOA.Orchestration.DynamicFormGenerator.SpBrowser.SelectSpParametersAndReturnColumns",
+  "isInitializedByBOA": true,
+  "gottenFromCache": false,
+  "businessKey": 201701180015099970000000084
+}

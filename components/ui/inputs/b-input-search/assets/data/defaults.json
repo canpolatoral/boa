@@ -1,0 +1,168 @@
+[
+    {
+        "variantName": "default",
+        "type": "BInputSearch",
+        "props": {
+            "animated" : false,
+            "open" : true,
+            "hintText" : "Search",
+            "dataSource" : {
+                            "$id": "2",
+                            "children": [{
+                                "$id": "3",
+                                "children": [ {
+                                        "$id": "27",
+                                        "children": [{
+                                            "$id": "28",
+                                            "children": [],
+                                            "id": 161,
+                                            "name": "Akış Tanımlama",
+                                            "sortId": 1,
+                                            "iconName": "",
+                                            "iconColor": "",
+                                            "bundleName": "Main",
+                                            "pageName": "Dashboard",
+                                            "identity": 161,
+                                            "parent": {
+                                                "$ref": "27"
+                                            }
+                                        }, {
+                                            "$id": "29",
+                                            "children": [],
+                                            "id": 164,
+                                            "name": "Akış Listesi",
+                                            "sortId": 2,
+                                            "iconName": "",
+                                            "iconColor": "",
+                                            "bundleName": "Main",
+                                            "pageName": "Dashboard",
+                                            "identity": 164,
+                                            "parent": {
+                                                "$ref": "27"
+                                            }
+                                        }, {
+                                            "$id": "30",
+                                            "children": [],
+                                            "id": 160,
+                                            "name": "İş Akışı ve Ekran Eşleştirme",
+                                            "sortId": 3,
+                                            "iconName": "",
+                                            "iconColor": "",
+                                            "bundleName": "Main",
+                                            "pageName": "Dashboard",
+                                            "identity": 160,
+                                            "parent": {
+                                                "$ref": "27"
+                                            }
+                                        }, {
+                                            "$id": "31",
+                                            "children": [{
+                                                "$id": "32",
+                                                "children": [],
+                                                "id": 8721,
+                                                "name": "Mobil Onay Tanım Listeleme",
+                                                "sortId": 1,
+                                                "iconName": "",
+                                                "iconColor": "",
+                                                "bundleName": "Main",
+                                                "pageName": "Dashboard",
+                                                "identity": 8721,
+                                                "parent": {
+                                                    "$ref": "31"
+                                                }
+                                            }, {
+                                                "$id": "33",
+                                                "children": [],
+                                                "id": 8703,
+                                                "name": "Mobil Onay Tanımlama",
+                                                "sortId": 1,
+                                                "iconName": "",
+                                                "iconColor": "",
+                                                "bundleName": "Main",
+                                                "pageName": "Dashboard",
+                                                "identity": 8703,
+                                                "parent": {
+                                                    "$ref": "31"
+                                                }
+                                            }, {
+                                                "$id": "34",
+                                                "children": [],
+                                                "id": 2858,
+                                                "name": "Mobil Onay Durum Yetkilendirme",
+                                                "sortId": 3,
+                                                "iconName": "",
+                                                "iconColor": "",
+                                                "bundleName": "Main",
+                                                "pageName": "Dashboard",
+                                                "identity": 2858,
+                                                "parent": {
+                                                    "$ref": "31"
+                                                }
+                                            }, {
+                                                "$id": "35",
+                                                "children": [],
+                                                "id": 8704,
+                                                "name": "Mobil Onay Detay Tanımlama",
+                                                "sortId": 9999,
+                                                "iconName": "",
+                                                "iconColor": "",
+                                                "bundleName": "Main",
+                                                "pageName": "Dashboard",
+                                                "identity": 8704,
+                                                "parent": {
+                                                    "$ref": "31"
+                                                }
+                                            }],
+                                            "id": 1372,
+                                            "name": "Mobil Onay Tanımı",
+                                            "sortId": 6,
+                                            "iconName": "",
+                                            "iconColor": "",
+                                            "identity": 1372,
+                                            "parent": {
+                                                "$ref": "27"
+                                            }
+                                        }],
+                                    "name": "Departman Giden Kutusu",
+                                    "sortId": 5,
+                                    "iconName": "",
+                                    "iconColor": "",
+                                    "bundleName": "Main",
+                                    "pageName": "Dashboard",
+                                    "identity": 167,
+                                    "parent": {
+                                        "$ref": "3"
+                                    }
+                                    }],
+                                    "name": "Departman Giden-Gelen Kutusu",
+                                    "sortId": 5,
+                                    "iconName": "",
+                                    "iconColor": "",
+                                    "bundleName": "Main",
+                                    "pageName": "Dashboard",
+                                    "identity": 167,
+                                    "parent": {
+                                        "$ref": "3"
+                                    }
+                                    }],
+                                    "name": "Departman Gelen Kutusu",
+                                    "sortId": 5,
+                                    "iconName": "",
+                                    "iconColor": "",
+                                    "bundleName": "Main",
+                                    "pageName": "Dashboard",
+                                    "identity": 167,
+                                    "parent": {
+                                        "$ref": "3"
+                                    }
+                            },
+            "floatingLabelText": "",
+            "fullWidth" : true, 
+            "maxSearchResults" : 20, 
+            "errorText" : "" 
+        }
+    }
+]
+
+
+                    

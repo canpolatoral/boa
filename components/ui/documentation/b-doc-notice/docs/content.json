@@ -1,0 +1,36 @@
+[
+    {
+        "name": "BDocNotice",
+        "desc": "Notice component for BOA markdown documents.",
+        "sample": "<BDocNotice type='tip' header='Tip Message' content='This is a tip message' />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name" : "type",
+                "type" : "string",
+                "header" : "required",
+                "desc" : "Determines type of the notice. One of: ['tip', 'warning', 'error']"
+            },
+            {
+                "name" : "header",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Header of the notice."
+            },
+            {
+                "name" : "content",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Content of the notice"
+            },
+            {
+                "name" : "fitMode",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "Determines the paddings in interior design. Default false, wide paddings like material."
+            }
+        ]
+    }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "variantName": "tip",
+    "type": "BDocNotice",
+    "props": {
+      "type": "tip",
+      "header": "Tip Message",
+      "content": "This is a tip"
+    }
+  },
+  {
+    "variantName": "tip long message",
+    "type": "BDocNotice",
+    "props": {
+      "type": "tip",
+      "header": "Tip Message",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et finibus risus, a tempus ligula. Nunc nisl lacus, sodales in pulvinar sed, blandit in purus. Vestibulum nec luctus arcu, a facilisis neque. Integer et bibendum neque. Suspendisse potenti. Quisque vulputate elit sit amet nibh pharetra pulvinar. Ut laoreet, est et varius elementum, felis velit blandit sapien, sed mattis orci lectus ut lacus. Etiam ut egestas turpis. Nulla blandit sollicitudin augue vitae ullamcorper. Mauris aliquet ultrices nisl eget efficitur. Quisque et nisl id nibh tristique maximus non tincidunt sem. Donec quis eros metus. Morbi erat sapien, viverra nec vulputate non, suscipit ac elit. Nulla volutpat id ante vitae tincidunt."
+    }
+  },
+  {
+    "variantName": "warning",
+    "type": "BDocNotice",
+    "props": {
+      "type": "warning",
+      "header": "Warning Message",
+      "content": "This is a warning"
+    }
+  },
+  {
+    "variantName": "warning long message",
+    "type": "BDocNotice",
+    "props": {
+      "type": "warning",
+      "header": "Warning Message",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et finibus risus, a tempus ligula. Nunc nisl lacus, sodales in pulvinar sed, blandit in purus. Vestibulum nec luctus arcu, a facilisis neque. Integer et bibendum neque. Suspendisse potenti. Quisque vulputate elit sit amet nibh pharetra pulvinar. Ut laoreet, est et varius elementum, felis velit blandit sapien, sed mattis orci lectus ut lacus. Etiam ut egestas turpis. Nulla blandit sollicitudin augue vitae ullamcorper. Mauris aliquet ultrices nisl eget efficitur. Quisque et nisl id nibh tristique maximus non tincidunt sem. Donec quis eros metus. Morbi erat sapien, viverra nec vulputate non, suscipit ac elit. Nulla volutpat id ante vitae tincidunt."
+    }
+  },
+  {
+    "variantName": "error",
+    "type": "BDocNotice",
+    "props": {
+      "type": "error",
+      "header": "Error Message",
+      "content": "This is a error"
+    }
+  },
+  {
+    "variantName": "error long message",
+    "type": "BDocNotice",
+    "props": {
+      "type": "error",
+      "header": "Error Message",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et finibus risus, a tempus ligula. Nunc nisl lacus, sodales in pulvinar sed, blandit in purus. Vestibulum nec luctus arcu, a facilisis neque. Integer et bibendum neque. Suspendisse potenti. Quisque vulputate elit sit amet nibh pharetra pulvinar. Ut laoreet, est et varius elementum, felis velit blandit sapien, sed mattis orci lectus ut lacus. Etiam ut egestas turpis. Nulla blandit sollicitudin augue vitae ullamcorper. Mauris aliquet ultrices nisl eget efficitur. Quisque et nisl id nibh tristique maximus non tincidunt sem. Donec quis eros metus. Morbi erat sapien, viverra nec vulputate non, suscipit ac elit. Nulla volutpat id ante vitae tincidunt."
+    }
+  }
+]

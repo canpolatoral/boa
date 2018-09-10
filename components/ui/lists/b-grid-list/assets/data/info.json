@@ -1,0 +1,9 @@
+{
+    "name": "b-grid-list",
+    "version": "2.1.2",
+    "description": "BOA List component.",
+    "keywords": "grid list,grid, list, boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

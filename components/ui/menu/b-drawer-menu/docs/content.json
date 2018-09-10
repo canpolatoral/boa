@@ -1,0 +1,97 @@
+[
+  {
+    "name": "BDrawerMenu",
+    "desc": "DrawerMenu BOA Component",
+    "sample": " <BDrawerMenu />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "autoWidth",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the width of the menu will be set automatically according to the widths of its children, using proper keyline increments "
+      },
+      {
+        "name": "disableAutoFocus",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the menu will not be auto-focused."
+      },
+      {
+        "name": "initiallyKeyboardFocused",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the menu will be keyboard-focused initially."
+      },
+      {
+        "name": "listStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the underlying List element."
+      },
+      {
+        "name": "maxHeight",
+        "type": "number",
+        "header": "not required",
+        "desc": "The maximum height of the menu in pixels. If specified, the menu will be scrollable if it is taller than the provided height."
+      },
+      {
+        "name": "multiple",
+        "type": "bool",
+        "header": "not required",
+        "desc": "The maximum height of the menu in pixels. If specified, the menu will be scrollable if it is taller than the provided height."
+      },
+      {
+        "name": "width",
+        "type": "propTypes.stringOrNumber",
+        "header": "not required",
+        "desc": "The width of the menu."
+      },
+      {
+        "name": "items",
+        "type": "PropTypes.array",
+        "header": "required",
+        "desc": "The items of the menu."
+      },
+      {
+        "name": "onChange",
+        "type": "PropTypes.func",
+        "header": "OnChange event of component.",
+        "desc": "The width of the menu."
+      },
+      {
+        "name": "onDrawerMenuUpdate",
+        "type": "PropTypes.func",
+        "header": "not required",
+        "desc": "OnDrawerMenuUpdate event of component."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onChange",
+        "header": "function(event)",
+        "desc": "Callback function fired when the menu is drawer menu updated."
+      },
+      {
+        "name": "onBackButtonClick",
+        "header": "function()",
+        "desc": "Callback function fired when the menu back button is pressed."
+      },
+      {
+        "name": "menuItemSelected",
+        "header": "function()",
+        "desc": "Callback function fired when the item selected."
+      },
+      {
+        "name": "clearBlankItems",
+        "header": "function()",
+        "desc": "Callback function fired to make empty."
+      }
+    ]
+  }
+]

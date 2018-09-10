@@ -1,0 +1,73 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@progress/kendo-ui",
+        "scope": "@progress",
+        "escapedName": "@progress%2fkendo-ui",
+        "name": "@progress/kendo-ui",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\coral\\Desktop\\kendo"
+    ]
+  ],
+  "_from": "@progress/kendo-ui@latest",
+  "_id": "@progress/kendo-ui@2017.3.1026",
+  "_inCache": true,
+  "_location": "/@progress/kendo-ui",
+  "_nodeVersion": "6.11.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/kendo-ui-2017.3.1026.tgz_1509004003803_0.451015347847715"
+  },
+  "_npmUser": {
+    "name": "progress",
+    "email": "npm@progress.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@progress/kendo-ui",
+    "scope": "@progress",
+    "escapedName": "@progress%2fkendo-ui",
+    "name": "@progress/kendo-ui",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@progress/kendo-ui/-/kendo-ui-2017.3.1026.tgz",
+  "_shasum": "366063b1a610cdebb219d8c46c9217cc06b6f098",
+  "_shrinkwrap": null,
+  "_spec": "@progress/kendo-ui",
+  "_where": "C:\\Users\\coral\\Desktop\\kendo",
+  "dependencies": {
+    "jquery": "<=3"
+  },
+  "description": "This package is part of the [Kendo UI for jQuery](http://www.telerik.com/kendo-ui) suite.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "366063b1a610cdebb219d8c46c9217cc06b6f098",
+    "tarball": "https://registry.npmjs.org/@progress/kendo-ui/-/kendo-ui-2017.3.1026.tgz"
+  },
+  "license": "LicenseRef-LICENSE",
+  "main": "js/kendo.all.js",
+  "maintainers": [
+    {
+      "name": "progress",
+      "email": "npm@progress.com"
+    }
+  ],
+  "name": "@progress/kendo-ui",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {},
+  "typings": "index.d.ts",
+  "version": "2017.3.1026"
+}

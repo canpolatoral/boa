@@ -1,0 +1,10 @@
+[
+   {
+      "variantName": "default",
+      "type": "BParameterComponent",
+      "props": {
+         "paramType": "ULKE",
+         "labelText": "Parameter Component"
+      }
+   }
+]

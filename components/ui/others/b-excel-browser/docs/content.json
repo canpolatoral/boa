@@ -1,0 +1,78 @@
+[
+  {
+    "name": "BExcelBrowser",
+    "desc": "BOA Excel Browser Component",
+    "sample": "<BExcelBrowser context={context} floatingLabelText={'Müşteri Listesi'} hintText={'Müşteri Listesi'} valueType={99} />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "floatingLabelText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Text prop of floating label."
+      },
+      {
+        "name": "hintText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the hint text property."
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the error text property."
+      },
+      {
+        "name": "disabled",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Indicates the input is disable or not."
+      },
+      {
+        "name": "isNumeric",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Indicates the input is numeric or not."
+      },
+      {
+        "name": "valueType",
+        "type": "string",
+        "header": "not required",
+        "desc": "Indicates the type of input value."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onClosing",
+        "header": "function(event)",
+        "desc": "Callback function fired when current form is closing."
+      },
+	  {
+        "name": "_clearActionButton",
+        "header": "function(event)",
+        "desc": "Callback function fired when clear action clicked."
+      },
+	  {
+        "name": "_addDirectActionButton",
+        "header": "function(event)",
+        "desc": "Callback function fired when add action clicked."
+      },
+	  {
+        "name": "_addTableActionButton",
+        "header": "function(event)",
+        "desc": "Callback function fired when table action clicked."
+      },
+	  {
+        "name": "_addExcelActionButton",
+        "header": "function(event)",
+        "desc": "Callback function fired when add excel action clicked."
+      }
+    ]
+  }
+]

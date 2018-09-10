@@ -1,0 +1,23 @@
+{
+    "name": "b-third-party-save-dialog",
+    "version": "2.1.2",
+    "description": "BOA Third Party Save Dialog",
+    "keywords": "third, party, thirdparty, save, dialog, savedialog",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-combo-box": "^2.1.0",
+        "b-transaction-form": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-input": "^2.1.0",
+        "b-input-mask": "^2.1.0",
+        "b-radio-button-group": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-mernis-component": "^2.1.0",
+        "b-business-datetime-component": "^2.1.0",
+        "b-tab-bar": "^2.1.0",
+        "b-information-text": "^2.1.0",
+        "b-grid-section": "^2.1.0",
+        "b-grid-row": "^2.1.0"
+    }
+}

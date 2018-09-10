@@ -1,0 +1,29 @@
+[
+  {
+    "name": "BpmMonitor",
+    "desc": "BOA BPM route history and notes monitoring component and screen.",
+    "sample": "<BpmMonitor context={context}  instanceId={76136809}  />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "instanceId",
+        "type": "number",
+        "header": "required",
+        "desc": "BPM instanceId parameter"
+      }
+    ]
+  },
+  {
+    "name": "Functions",
+    "infoArray": [
+      {
+        "name": "showMonitor",
+        "header": "showMonitor(context, instanceId) => void",
+        "desc": "Use to open bpm monitor screen",
+        "sample":"BpmMonitor.showMonitor(context, instanceId)"
+      }
+    ]
+  }
+]

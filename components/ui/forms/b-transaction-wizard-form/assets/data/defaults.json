@@ -1,0 +1,127 @@
+[
+    {
+      "variantName": "default",
+      "type": "BTransactionWizardForm",
+      "props": {
+        "nonLinear":false,
+          "orientation":"Horizantal",
+          "alternativeLabel": false,
+          "activeStep":0,
+          "stepList":[
+            {
+                "action": "FirstStep",
+                "title": "Talepçi Bilgileri",
+                "content": "1. Adım içeriği",
+                "buttonLabel" : "İleri"
+            },
+            {
+                "action": "SecondStep",
+                "title": "Finansman Detayı",
+                "content": "2. Adım içeriği",
+                "buttonLabel" : "İleri"
+            },
+            {
+                "action": "ThirdStep",
+                "title": "Geri Ödeme Planı",
+                "content": "3. Adım içeriği",
+                "buttonLabel" : "İleri"
+            },
+            {
+                "action": "FourthStep",
+                "title": "Döküman Talepleri",
+                "content": "4. Adım içeriği",
+                "buttonLabel" : "Onayla"
+            }
+        ],
+        "finisherPage":
+        {
+          "title": "İşlem Onayı",
+          "content": "Sureç Sona Erdi, Popup açıldı",
+          "width":"400px",
+          "height":"200px"
+        },
+        "resourceInfo": {
+          "id": 184,
+          "name": "Nakit İşlem Listeleme",
+          "channelId": 45,
+          "resourceActionList": [
+            {
+              "resourceId": 184,
+              "actionId": 11,
+              "name": "Bilgi Getir 1",
+              "commandName": "FirstStep",
+              "description": "Bilgi Getir",
+              "iconPath": "Add",
+              "sortId": 1,
+              "actionType":11,
+              "isVirtual": false
+            },
+            {
+              "resourceId": 184,
+              "actionId": 6,
+              "name": "Bilgi Getir 6",
+              "commandName": "SecondStep",
+              "description": "Bilgi Getir",
+              "iconPath": "Delete",
+              "groupName": "Group1",
+              "sortId": 1,
+              "actionType":11,
+              "isVirtual": false
+            },
+
+            {
+              "resourceId": 184,
+              "actionId": 7,
+              "name": "BilgiGetir7",
+              "commandName": "ThirdStep",
+              "description": "Bilgi Getir",
+              "iconPath": "LockOpen",
+              "groupName": "Group1",
+              "sortId": 1,
+              "actionType":11,
+              "isVirtual": false
+            },
+            {
+              "resourceId": 184,
+              "actionId": 8,
+              "name": "Bilgi Getir8",
+              "commandName": "FourthStep",
+              "description": "Bilgi Getir",
+              "iconPath": "Add",
+              "sortId": 1,
+              "actionType":11,
+              "isVirtual": false
+            },
+            {
+              "resourceId": 184,
+              "actionId": 9,
+              "name": "Bilgi Getir9",
+              "commandName": "GetInfo9",
+              "description": "Bilgi Getir",
+              "iconPath": "Add",
+              "sortId": 1,
+              "actionType":11,
+              "isVirtual": false
+            },
+            {
+              "resourceId": 184,
+              "actionId": 10,
+              "name": "Bilgi Getir10",
+              "commandName": "GetInfo10",
+              "description": "Bilgi Getir",
+              "iconPath": "Add",
+              "sortId": 1,
+              "actionType":11
+            }
+          ],
+          "openedBy": 0,
+          "isWorkflow": false,
+          "isRevokable": false,
+          "resourceCode": "TMBRNKLIST",
+          "moduleCode": "Gişe İşlemleri",
+          "isNew": false
+        }
+      }
+    }
+  ]
+  

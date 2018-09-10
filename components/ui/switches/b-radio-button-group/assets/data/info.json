@@ -1,0 +1,11 @@
+{
+    "name": "b-radio-button-group",
+    "version": "2.1.4",
+    "description": "Boa radiobuttongroup component.",
+    "keywords": "radio,button,boa,group,radiogroup,radiobuttongroup",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-label": "^2.1.0",
+        "b-radio-button": "^2.1.0"
+    }
+}

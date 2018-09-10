@@ -1,0 +1,7 @@
+[
+     {
+        "name": "b-device",
+        "desc": "This is BOA library for device api calls.",
+        "sample": "import {cashCount} from 'b-device'\nvar cashCountResponse = cashCount(deviceInstance);"
+    }
+]

@@ -1,0 +1,13 @@
+{
+    "name": "b-action-button",
+    "version": "2.1.3",
+    "description": "Each element of the ActionManager element is this type. It can grouping actions with same groupName field.",
+    "keywords": "action,button,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-popover": "^2.1.0",
+        "b-menu-item": "^2.1.0",
+        "b-icon": "^2.1.0"
+    }
+}

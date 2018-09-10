@@ -1,0 +1,48 @@
+[
+  {
+    "name": "BCardSection",
+    "desc": "BOA Card Section layout component. It provides card alignment and transition between mobile and desktop.",
+    "sample": "<BCardSection context={this.props.context} cardPadding={12} thresholdWidth={1024} thresholdColumnCount={2} contentAlignMode={this.state.contentAlignMode}><BCard context={context}>{Content}</BCard></BCardSection>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "cardPadding",
+        "type": "number",
+        "header": "not required",
+        "desc": "Padding for per card element."
+      },
+      {
+        "name": "cardSectionPadding",
+        "type": "number",
+        "header": "not required",
+        "desc": "Padding for all section."
+      },
+      {
+        "name": "thresholdWidth",
+        "type": "number",
+        "header": "not required",
+        "desc": "Max width for full scattered card panel."
+      },
+      {
+        "name": "thresholdColumnCount",
+        "type": "number",
+        "header": "not required",
+        "desc": "Max column count for full scattered card panel."
+      },
+      {
+        "name": "contentAlignMode",
+        "type": "instanceOf(BComponent.ContentAlignMode)",
+        "header": "not required",
+        "desc": "Alignment mode of cards; it provides multi-column, single-column and mobile modes for cards. Default ContentAlignMode.MULTI."
+      },
+      {
+        "name": "enableSortOnMobile",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Cards sorted by given order in mobil"
+      }
+    ]
+  }
+]

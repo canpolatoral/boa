@@ -1,0 +1,30 @@
+{
+    "id": 184,
+    "name": "Deneme",
+    "iconPath": "",
+    "sortId": 3,
+    "isHidden": false,
+    "isLeaf": true,
+    "description": "BOA One Deneme",
+    "assemblyName": "BOA.UI.CoreBanking.Teller.DepositWithdrawalList",
+    "className": "BOA.UI.CoreBanking.Teller.DepositWithdrawalList",
+    "channelId": 1,
+    "uiType": 1,
+    "resourceActionList": [
+        {
+            "resourceId": 184,
+            "actionId": 11,
+            "name": "Bilgi Getir",
+            "commandName": "GetInfo",
+            "description": "Bilgi Getir",
+            "iconPath": "SettingsBackupRestore",
+            "sortId": 2
+        }
+    ],
+    "openedBy": 0,
+    "isWorkflow": false,
+    "isRevokable": false,
+    "resourceCode": "TMBRNKLIST",
+    "moduleCode": "Gişe İşlemleri",
+    "isNew": false
+}

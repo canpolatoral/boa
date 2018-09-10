@@ -1,0 +1,12 @@
+[
+  {
+    "variantName": "default",
+    "type": "BMoreText",
+    "props": {
+      "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Cras sit amet sapien interdum suscipit lorem non, accumsan erat. Cras gravida malesuada orci. Proin sodales commodo nisl, in eleifend est efficitur id. Curabitur nec bibendum ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sed tincidunt nunc, non condimentum velit. Aliquam elementum mauris vitae lectus iaculis, quis elementum libero egestas. Pellentesque malesuada viverra orci sed egestas. Proin quis est nibh. In fringilla feugiat dignissim.Sed ex augue, blandit at orci quis, suscipit sagittis turpis. Vestibulum in convallis augue. Aenean in iaculis felis, id mattis ex. Suspendisse sollicitudin, lorem sit amet lobortis maximus, dolor dolor congue lectus, at vehicula dolor nunc in nibh. Donec nisl sem, venenatis non mi et, tempus suscipit urna. Ut quis turpis dui. Quisque sit amet magna in nunc blandit fringilla id vitae leo. Cras laoreet dapibus mauris, ut viverra neque ornare vitae. Integer vitae interdum dui. Nunc et porta ante, sit amet dignissim leo. Vivamus blandit est vel augue commodo fermentum. Curabitur fermentum in libero ut congue. Phasellus laoreet accumsan mollis. Donec quis vehicula ligula. Proin pharetra placerat urna in ornare. Donec a vehicula sem, sed sollicitudin purus.",
+      "moreText":"Daha Fazla",
+      "lessText":"Daha Az",
+      "lines":3
+    }
+  }
+]

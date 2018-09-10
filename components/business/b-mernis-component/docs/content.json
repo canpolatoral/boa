@@ -1,0 +1,118 @@
+[
+    {
+        "name": "BMernisComponent",
+        "desc": "Mernis BOA Component",
+        "sample": " <BMernisComponent context={this.props.context} />"
+    },
+    {
+        "name": "Props",
+        "infoArray": [
+            {
+                "name": "identityNumber",
+                "type": "PropTypes.number",
+                "header": "not required",
+                "desc": "Identity number for search."
+            },
+            {
+                "name": "showDialogMessages",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To show or hide dialog messages. Default true."
+            },
+            {
+                "name": "canGetOnlineInfoMoreThanOne",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To make online search more than one in same session. Default false."
+            },
+            {
+                "name": "isTextAndButtonsEnabled",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To enable input field and search button. Default true."
+            },
+            {
+                "name": "isVisibileAddressInfoTab",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To show address tab in Dialog. Default false."
+            },
+            {
+                "name": "isVisibileSearchAndClearButton",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To show search and clear button. Default true."
+            },
+            {
+                "name": "isVisibileSearchOnlineButton",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To show online search button. Default false."
+            },
+            {
+                "name": "showBlackListDialogMessages",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To show Black List Dialog messages. Default false."
+            },
+            {
+                "name": "isBlackListReadonly",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To make Black List Dialog is readonly. Default false."
+            },
+            {
+                "name": "isReadOnly",
+                "type": "PropTypes.bool",
+                "header": "not required",
+                "desc": "To make component is readonly. Default false."
+            },
+            {
+                "name": "searchBehaviourType",
+                "type": "PropTypes.oneOf(['All', 'SearchForRealPerson', 'SearchForCorporate'])",
+                "header": "not required",
+                "desc": "Defines the component's search behaviour. Can be defined only as 'All','SearchForRealPerson' and 'SearchForCorporate'"
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray": [
+            {
+                "name": "lostFocus",
+                "header": "function(event)",
+                "desc": "Callback function fires when the text field losts focus"
+            },
+            {
+                "name": "clearClick",
+                "header": "function(event)",
+                "desc": "Callback function fires when the text field is cleared"
+            },
+            {
+                "name": "searchClick",
+                "header": "function(event)",
+                "desc": "Callback function fires when the search button is clicked."
+            },
+            {
+                "name": "selectedMernisInfoChanged",
+                "header": "function(event)",
+                "desc": "Callback function fires when the selected mernis information is changed."
+            },
+            {
+                "name": "selectedMernisInfoCleared",
+                "header": "function(event)",
+                "desc": "Callback function fires when the selected mernis information is cleared."
+            },
+            {
+                "name": "recordCouldntFind",
+                "header": "function(event)",
+                "desc": "Callback function fires when the search returns no record."
+            },
+            {
+                "name": "mernisNotHealty",
+                "header": "function(event)",
+                "desc": "Callback function fires when an error occured because of the mernis service."
+            }
+        ]
+    }
+]

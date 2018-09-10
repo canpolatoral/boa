@@ -1,0 +1,14 @@
+[
+  {
+    "variantName": "default",
+    "type": "BRadioButtonGroup",
+    "props": {
+      "children": {},
+      "className": "BRadioButtonGroup class",
+      "defaultSelected": "34",
+      "labelPosition": "right",
+      "name": "BOARadioButtonGroup",
+      "headerText": "Şehir Listesi"
+    }
+  }
+]

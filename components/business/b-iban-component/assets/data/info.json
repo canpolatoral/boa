@@ -1,0 +1,12 @@
+{
+    "name": "b-iban-component",
+    "version": "2.0.0",
+    "description": "BOA IBAN Component",
+    "keywords": "iban, business, boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-input-mask": "^2.1.0",
+        "b-dialog-box": "^2.1.0"
+    }
+}

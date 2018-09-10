@@ -1,0 +1,9 @@
+{
+    "name": "b-label",
+    "version": "2.1.2",
+    "description": "BOA Label Component.",
+    "keywords": "label,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

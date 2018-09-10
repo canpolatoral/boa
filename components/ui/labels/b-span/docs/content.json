@@ -1,0 +1,19 @@
+[
+    {
+        "name": "BSpan",
+        "desc": "Span Base BOA Component",
+        "sample": "<BSpan text='span text' />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name" : "text",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Span text.",
+                "maxWidth": "Max width of span"
+            }
+        ]
+    }
+]

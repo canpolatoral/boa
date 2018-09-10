@@ -1,0 +1,11 @@
+﻿[
+  {
+    "variantName": "default",
+    "type": "<%=componentName%>",
+    "props": {
+    },
+    "proptypes": {
+     
+    }
+  }
+]

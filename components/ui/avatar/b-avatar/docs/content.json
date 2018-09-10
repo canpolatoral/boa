@@ -1,0 +1,61 @@
+[
+    {
+        "name": "BAvatar",
+        "desc": "Avatar BOA Component",
+        "sample": "<BAvatar icon={<FontIcon className='muidocs-icon-communication-voicemail' />} color={blue300} backgroundColor={indigo900} size={30} style={style} />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name" : "alt",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Used in combination with src or srcSet to provide an alt attribute for the rendered img element."
+            },
+            {
+                "name" : "children",
+                "type" : "node",
+                "header" : "not required",
+                "desc" : "Can be used, for instance, to render a letter inside the avatar."
+            },
+            {
+                "name" : "classes",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Useful to extend the style applied to components."
+            },
+            {
+
+                "name" : "component",
+                "type" : "union: string |func",
+                "header" : "not required",
+                "desc" : "The component used for the root node. Either a string to use a DOM element or a component."
+            },
+            {
+                "name" : "imgProps",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Properties applied to the img element when the component is used to display an image."
+            },
+            {
+                "name" : "sizes",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The sizes attribute for the img element."
+            },
+            {
+                "name" : "src",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The src attribute for the img element."
+            },
+            {
+                "name" : "srcSet",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The srcSet attribute for the img element."
+            }
+        ]
+    }
+]

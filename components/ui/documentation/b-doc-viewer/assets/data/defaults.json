@@ -1,0 +1,11 @@
+[
+  {
+    "variantName": "default",
+    "type": "BDocViewer",
+    "props": {
+      "content": "export class BDocCode extends BComponent {\n\n  static propTypes = {\n    content: PropTypes.string.isRequired,\n    lang: PropTypes.string,\n    highlight: PropTypes.boolean,\n  };\n  constructor(props) {\n    super(props);\n  }\n  render() {\n    return (\n      <pre>\n        <code>{hljs.highlight(this.props.content)}</code>\n      </pre>\n    );\n  }\n}\nexport default BDocCode;",
+      "lang": "js",
+      "editorType": "atomOneDark"
+    }
+  }
+]

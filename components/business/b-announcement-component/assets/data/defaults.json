@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BAnnouncementComponent",
+        "props": {
+            "noDialog":true
+        }
+    }
+]

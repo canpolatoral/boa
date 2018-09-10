@@ -1,0 +1,485 @@
+{
+    "success": true,
+    "value": [
+        {
+            "name": "BOA Portal",
+            "value": "BOA Portal",
+            "leftIcon": {
+                "dynamicIcon": "NotificationEventNote",
+                "iconProperties": {
+                    "color": "#A23894"
+                }
+            },
+            "allProperties": {
+                "name": "BOA Portal"
+            }
+        },
+        {
+            "name": "Raporlar",
+            "value": "Raporlar",
+            "leftIcon": {
+                "dynamicIcon": "ImageCropFree",
+                "iconProperties": {
+                    "color": "#3E7DBF"
+                }
+            },
+            "items": [
+                {
+                    "name": "Raporlar Subitem 1",
+                    "value": "Raporlar Subitem 1"
+                },
+                {
+                    "name": "Raporlar Subitem 2",
+                    "value": "Raporlar Subitem 2"
+                },
+                {
+                    "name": "Raporlar Subitem 3",
+                    "value": "Raporlar Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Müşteri 360",
+            "value": "Müşteri 360",
+            "leftIcon": {
+                "dynamicIcon": "MapsLocalGasStation",
+                "iconProperties": {
+                    "color": "#805346"
+                }
+            }
+        },
+        {},
+        {
+            "name": "Ana Menü",
+            "value": "Ana Menü",
+            "leftIcon": {
+                "dynamicIcon": "ActionDashboard",
+                "iconProperties": {
+                    "color": "#519F45"
+                }
+            },
+            "items": [
+                {
+                    "name": "Ana Menü Subitem 1",
+                    "value": "Ana Menü Subitem 1"
+                },
+                {
+                    "name": "Ana Menü Subitem 2",
+                    "value": "Ana Menü Subitem 2"
+                },
+                {
+                    "name": "Ana Menü Subitem 3",
+                    "value": "Ana Menü Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Temel Bankacılık İşlemleri",
+            "value": "Temel Bankacılık İşlemleri",
+            "leftIcon": {
+                "dynamicIcon": "ImageRemoveRedEye",
+                "iconProperties": {
+                    "color": "#EE3928"
+                }
+            },
+            "items": [
+                {
+                    "name": "Temel Bankacılık İşlemleri Subitem 1",
+                    "value": "Temel Bankacılık İşlemleri Subitem 1"
+                },
+                {
+                    "name": "Temel Bankacılık İşlemleri Subitem 2",
+                    "value": "Temel Bankacılık İşlemleri Subitem 2"
+                },
+                {
+                    "name": "Temel Bankacılık İşlemleri Subitem 3",
+                    "value": "Temel Bankacılık İşlemleri Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Dış Ticaret",
+            "value": "Dış Ticaret",
+            "leftIcon": {
+                "dynamicIcon": "ActionSwapVerticalCircle",
+                "iconProperties": {
+                    "color": "#F05C2C"
+                }
+            },
+            "items": [
+                {
+                    "name": "Dış Ticaret Subitem 1",
+                    "value": "Dış Ticaret Subitem 1"
+                },
+                {
+                    "name": "Dış Ticaret Subitem 2",
+                    "value": "Dış Ticaret Subitem 2"
+                },
+                {
+                    "name": "Dış Ticaret Subitem 3",
+                    "value": "Dış Ticaret Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Müşteri",
+            "value": "Müşteri",
+            "leftIcon": {
+                "dynamicIcon": "ActionExplore",
+                "iconProperties": {
+                    "color": "#3B54A3"
+                }
+            },
+            "items": [
+                {
+                    "name": "Müşteri Subitem 1",
+                    "value": "Müşteri Subitem 1"
+                },
+                {
+                    "name": "Müşteri Subitem 2",
+                    "value": "Müşteri Subitem 2"
+                },
+                {
+                    "name": "Müşteri Subitem 3",
+                    "value": "Müşteri Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Fon Kullandırma",
+            "value": "Fon Kullandırma",
+            "leftIcon": {
+                "dynamicIcon": "CommunicationEmail",
+                "iconProperties": {
+                    "color": "#16BDD0"
+                }
+            },
+            "items": [
+                {
+                    "name": "Fon Kullandırma Subitem 1",
+                    "value": "Fon Kullandırma Subitem 1"
+                },
+                {
+                    "name": "Fon Kullandırma Subitem 2",
+                    "value": "Fon Kullandırma Subitem 2"
+                },
+                {
+                    "name": "Fon Kullandırma Subitem 3",
+                    "value": "Fon Kullandırma Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Alacak Yönetimi",
+            "value": "Alacak Yönetimi",
+            "leftIcon": {
+                "dynamicIcon": "DeviceAccessAlarm",
+                "iconProperties": {
+                    "color": "#A23894"
+                }
+            },
+            "items": [
+                {
+                    "name": "Alacak Yönetimi Subitem 1",
+                    "value": "Alacak Yönetimi Subitem 1"
+                },
+                {
+                    "name": "Alacak Yönetimi Subitem 2",
+                    "value": "Alacak Yönetimi Subitem 2"
+                },
+                {
+                    "name": "Alacak Yönetimi Subitem 3",
+                    "value": "Alacak Yönetimi Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Mali İşler",
+            "value": "Mali İşler",
+            "leftIcon": {
+                "dynamicIcon": "HardwareSecurity",
+                "iconProperties": {
+                    "color": "#3E7DBF"
+                }
+            },
+            "items": [
+                {
+                    "name": "Mali İşler Subitem 1",
+                    "value": "Mali İşler Subitem 1"
+                },
+                {
+                    "name": "Mali İşler Subitem 2",
+                    "value": "Mali İşler Subitem 2"
+                },
+                {
+                    "name": "Mali İşler Subitem 3",
+                    "value": "Mali İşler Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "ADK",
+            "value": "ADK",
+            "leftIcon": {
+                "dynamicIcon": "ActionShoppingCart",
+                "iconProperties": {
+                    "color": "#805346"
+                }
+            },
+            "items": [
+                {
+                    "name": "ADK Subitem 1",
+                    "value": "ADK Subitem 1"
+                },
+                {
+                    "name": "ADK Subitem 2",
+                    "value": "ADK Subitem 2"
+                },
+                {
+                    "name": "ADK Subitem 3",
+                    "value": "ADK Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Çağrı Merkezi",
+            "value": "Çağrı Merkezi",
+            "leftIcon": {
+                "dynamicIcon": "CommunicationContactPhone",
+                "iconProperties": {
+                    "color": "#519F45"
+                }
+            },
+            "items": [
+                {
+                    "name": "Çağrı Merkezi Subitem 1",
+                    "value": "Çağrı Merkezi Subitem 1"
+                },
+                {
+                    "name": "Çağrı Merkezi Subitem 2",
+                    "value": "Çağrı Merkezi Subitem 2"
+                },
+                {
+                    "name": "Çağrı Merkezi Subitem 3",
+                    "value": "Çağrı Merkezi Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Hazine",
+            "value": "Hazine",
+            "leftIcon": {
+                "dynamicIcon": "NotificationEventNote",
+                "iconProperties": {
+                    "color": "#EE3928"
+                }
+            },
+            "items": [
+                {
+                    "name": "Hazine Subitem 1",
+                    "value": "Hazine Subitem 1"
+                },
+                {
+                    "name": "Hazine Subitem 2",
+                    "value": "Hazine Subitem 2"
+                },
+                {
+                    "name": "Hazine Subitem 3",
+                    "value": "Hazine Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Uluslararası Bankacılık",
+            "value": "Uluslararası Bankacılık",
+            "leftIcon": {
+                "dynamicIcon": "ImageCropFree",
+                "iconProperties": {
+                    "color": "#F05C2C"
+                }
+            },
+            "items": [
+                {
+                    "name": "Uluslararası Bankacılık Subitem 1",
+                    "value": "Uluslararası Bankacılık Subitem 1"
+                },
+                {
+                    "name": "Uluslararası Bankacılık Subitem 2",
+                    "value": "Uluslararası Bankacılık Subitem 2"
+                },
+                {
+                    "name": "Uluslararası Bankacılık Subitem 3",
+                    "value": "Uluslararası Bankacılık Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Çek - Senet",
+            "value": "Çek - Senet",
+            "leftIcon": {
+                "dynamicIcon": "MapsLocalGasStation",
+                "iconProperties": {
+                    "color": "#3B54A3"
+                }
+            },
+            "items": [
+                {
+                    "name": "Çek - Senet Subitem 1",
+                    "value": "Çek - Senet Subitem 1"
+                },
+                {
+                    "name": "Çek - Senet Subitem 2",
+                    "value": "Çek - Senet Subitem 2"
+                },
+                {
+                    "name": "Çek - Senet Subitem 3",
+                    "value": "Çek - Senet Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "İK ve Eğitim",
+            "value": "İK ve Eğitim",
+            "leftIcon": {
+                "dynamicIcon": "AvVolumeOff",
+                "iconProperties": {
+                    "color": "#16BDD0"
+                }
+            },
+            "items": [
+                {
+                    "name": "İK ve Eğitim Subitem 1",
+                    "value": "İK ve Eğitim Subitem 1"
+                },
+                {
+                    "name": "İK ve Eğitim Subitem 2",
+                    "value": "İK ve Eğitim Subitem 2"
+                },
+                {
+                    "name": "İK ve Eğitim Subitem 3",
+                    "value": "İK ve Eğitim Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Teftiş - Risk ve İç Denetim",
+            "value": "Teftiş - Risk ve İç Denetim",
+            "leftIcon": {
+                "dynamicIcon": "HardwareWatch",
+                "iconProperties": {
+                    "color": "#A23894"
+                }
+            },
+            "items": [
+                {
+                    "name": "Teftiş Subitem 1",
+                    "value": "Teftiş Subitem 1"
+                },
+                {
+                    "name": "Teftiş Subitem 2",
+                    "value": "Teftiş Subitem 2"
+                },
+                {
+                    "name": "Teftiş Subitem 3",
+                    "value": "Teftiş Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "İdari Hizmetler ve Satınalma",
+            "value": "İdari Hizmetler ve Satınalma",
+            "leftIcon": {
+                "dynamicIcon": "MapsLocalFlorist",
+                "iconProperties": {
+                    "color": "#3E7DBF"
+                }
+            },
+            "items": [
+                {
+                    "name": "İdari Hizmetler Subitem 1",
+                    "value": "İdari Hizmetler Subitem 1"
+                },
+                {
+                    "name": "İdari Hizmetler Subitem 2",
+                    "value": "İdari Hizmetler Subitem 2"
+                },
+                {
+                    "name": "İdari Hizmetler Subitem 3",
+                    "value": "İdari Hizmetler Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Operasyonel İşlemler",
+            "value": "Operasyonel İşlemler",
+            "leftIcon": {
+                "dynamicIcon": "ImageTimelapse",
+                "iconProperties": {
+                    "color": "#805346"
+                }
+            },
+            "items": [
+                {
+                    "name": "Operasyonel İşlemler Subitem 1",
+                    "value": "Operasyonel İşlemler Subitem 1"
+                },
+                {
+                    "name": "Operasyonel İşlemler Subitem 2",
+                    "value": "Operasyonel İşlemler Subitem 2"
+                },
+                {
+                    "name": "Operasyonel İşlemler Subitem 3",
+                    "value": "Operasyonel İşlemler Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Sigortacılık İşlemleri",
+            "value": "Sigortacılık İşlemleri",
+            "leftIcon": {
+                "dynamicIcon": "CommunicationBusiness",
+                "iconProperties": {
+                    "color": "#519F45"
+                }
+            },
+            "items": [
+                {
+                    "name": "Sigortacılık Subitem 1",
+                    "value": "Sigortacılık Subitem 1"
+                },
+                {
+                    "name": "Sigortacılık Subitem 2",
+                    "value": "Sigortacılık Subitem 2"
+                },
+                {
+                    "name": "Sigortacılık Subitem 3",
+                    "value": "Sigortacılık Subitem 3"
+                }
+            ]
+        },
+        {
+            "name": "Yönetsel İşlemler",
+            "value": "Yönetsel İşlemler",
+            "leftIcon": {
+                "dynamicIcon": "ActionTrackChanges",
+                "iconProperties": {
+                    "color": "#EE3928"
+                }
+            },
+            "items": [
+                {
+                    "name": "Yönetsel İşlemler Subitem 1",
+                    "value": "Yönetsel İşlemler Subitem 1"
+                },
+                {
+                    "name": "Yönetsel İşlemler Subitem 2",
+                    "value": "Yönetsel İşlemler Subitem 2"
+                },
+                {
+                    "name": "Yönetsel İşlemler Subitem 3",
+                    "value": "Yönetsel İşlemler Subitem 3"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "b-divit-helper",
+    "version": "2.1.2",
+    "description": "BOA Divit helper",
+    "keywords": "dms, divit, helper",
+    "dependencies": {
+        "b-divit-component": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-messaging": "^2.1.0",
+        "b-component": "^2.1.0"
+    }
+}

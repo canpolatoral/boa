@@ -1,0 +1,92 @@
+[
+    {
+        "name": "BDateTimePicker",
+        "desc": "Meets BOA need for Date and Time. Month can be selected year and time.",
+        "sample": "<BDateTimepicker context={this.props.context} value={new Date()} minDate={new Date(1975, 0, 1)} maxDate={new Date(2025, 11, 30)} format={'DDMMYYYY hmmss'}/>"
+    },
+    {
+        "name": "Props",
+        "infoArray": [
+            {
+                "name": "firstDayOfWeek",
+                "type": "propTypes.number",
+                "header": "not Required",
+                "desc": "The calendar first day default : 1."
+            },
+            {
+                "name": "value",
+                "type": "Date",
+                "header": "not Required",
+                "desc": "Display Date and Time value."
+            },
+            {
+                "name": "minDate",
+                "type": "Date",
+                "header": "not Required",
+                "desc": "Display Minimun day."
+            },
+            {
+                "name": "maxDate",
+                "type": "Date",
+                "header": "not Required",
+                "desc": "Display Maximum day."
+            },
+            {
+                "name": "format",
+                "type": "propTypes.string",
+                "header": "not Required",
+                "desc": "Which one you want to show date or time or long time or datetime or date and longtime.Using it export enun receiveFormated."
+            },
+            {
+                "name": "isReadOnly",
+                "type": "propTypes.bool",
+                "header": "not Required",
+                "desc": "Only the date is displayed."
+            },
+            {
+                "name": "floatingLabelTextDate",
+                "type": "string",
+                "header": "not Required",
+                "desc": "Calendar section show floating label."
+            },
+            {
+                "name": "floatingLabelTextTime",
+                "type": "string",
+                "header": "not Required",
+                "desc": "Time section show floating label."
+            },
+            {
+                "name": "okLabel",
+                "type": "string",
+                "header": "not Required",
+                "desc": "Date section ok button label text."
+            },
+            {
+                "name": "cancelLabel",
+                "type": "string",
+                "header": "not Required",
+                "desc": "Date section cancel button label text."
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray": [
+            {
+                "name": "onChange",
+                "header": "function(event: object, value: date)",
+                "desc": "Callback function fires when the date or time change."
+            },
+            {
+                "name": "dateOnChange",
+                "header": "function(event: object, value: date)",
+                "desc": "Callback function fires when the date change."
+            },
+            {
+                "name": "timeOnChange",
+                "header": "function(event: object, value: date)",
+                "desc": "Callback function fires when the time change."
+            }
+        ]
+    }
+]

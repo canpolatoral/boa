@@ -1,0 +1,22 @@
+{
+  "name": "Accounting",
+  "prefix": "accounting",
+  "uri": "http://accounting",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "BewitchedStartEvent",
+      "extends": ["bpmn:StartEvent"],
+      "properties": [
+        {
+          "name": "hasAccounting",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ]
+}

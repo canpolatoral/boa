@@ -1,0 +1,31 @@
+{
+    "name": "b-designer",
+    "version": "2.1.6",
+    "description": "Boa dynamic screen designer",
+    "keywords": "dinamik,dynamic,designer,boa",
+    "dependencies": {
+        "react-dnd-html5-backend": "^2.2.0",
+        "react-dnd": "^2.2.0",
+        "b-transaction-form": "^2.0.0",
+        "b-browse-form": "^2.0.0",
+        "b-icon-button": "^2.0.0",
+        "b-card": "^2.0.0",
+        "b-drag-drop": "^2.0.0",
+        "b-dynamic-components": "^2.0.0",
+        "b-drawer": "^2.0.0",
+        "b-component": "^2.0.0",
+        "b-divider": "^2.0.0",
+        "b-scroll": "^2.0.0",
+        "b-business-component": "^2.0.0",
+        "b-grid-section": "^2.0.0",
+        "b-grid-row": "^2.0.0",
+        "b-input": "^2.0.0",
+        "b-combo-box": "^2.0.0",
+        "b-check-box": "^2.0.0",
+        "b-button": "^2.0.0",
+        "b-data-grid": "^2.0.0",
+        "b-messaging": "^2.0.0",
+        "asap": "^2.0.3",
+        "b-dynamic-open-resource-designer": "^2.0.0"
+    }
+}

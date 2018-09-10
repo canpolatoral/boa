@@ -1,0 +1,9 @@
+{
+    "name": "b-side-bar",
+    "version": "2.1.2",
+    "description": "Boa side bar base bileşeni.",
+    "keywords": "side,bar,boa,sidebar",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

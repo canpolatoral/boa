@@ -1,0 +1,14 @@
+{
+    "name": "b-black-list-component",
+    "version": "2.1.2",
+    "description": "BOA black list component.",
+    "keywords": "black,black list,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-data-grid": "^2.1.0",
+        "b-transaction-form": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-dialog-box": "^2.1.0"
+    }
+}

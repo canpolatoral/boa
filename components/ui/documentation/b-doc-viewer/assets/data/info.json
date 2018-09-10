@@ -1,0 +1,10 @@
+{
+    "name": "b-doc-viewer",
+    "version": "2.1.2",
+    "description": "Markdown doc viewer",
+    "keywords": "markdown,md,doc,viewer,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "highlight.js": "^9.12.0"
+    }
+}

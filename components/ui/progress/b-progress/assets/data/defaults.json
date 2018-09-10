@@ -1,0 +1,19 @@
+[
+  {
+    "variantName": "circular",
+    "type": "BProgress",
+    "props": {
+      "progressType": "circular",
+      "mode": "indeterminate",
+      "size": 40
+    }
+  },
+  {
+    "variantName": "linear",
+    "type": "BProgress",
+    "props": {
+      "progressType": "linear",
+      "mode": "indeterminate"
+    }
+  }
+]

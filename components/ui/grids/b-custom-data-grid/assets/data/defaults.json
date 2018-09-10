@@ -1,0 +1,16 @@
+[
+    {
+      "variantName": "default",
+      "type": "BCustomDataGrid",
+      "props": {
+        "buttonList": [
+            {"label":"YETKİLERİN TÜMÜNÜ SEÇ", "name":"CheckAll", "icon":"DoneAll", "disabled": false, "SortOrder": 0}, 
+            {"label":"YETKİLERİN TÜMÜNÜ KALDIR", "name":"UnCheckAll", "icon":"HighlightOff", "disabled": true, "SortOrder": 1}, 
+            {"label":"GERI AL", "name":"Reset", "icon":"rReplay", "disabled": true, "SortOrder": 2}, 
+            {"label":"KOPYALA", "name":"Copy", "icon":"FileCopy", "disabled": true, "SortOrder": 3}, 
+            {"label":"YAPIŞTIR", "name":"Paste", "icon":"Assignment", "disabled": true, "SortOrder": 4}
+        ]
+      }
+    }
+  ]
+  

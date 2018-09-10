@@ -1,0 +1,75 @@
+[
+  {
+    "name": "BSnackbar",
+    "desc": "Snackbars provide lightweight feedback about an operation by showing a brief message at the bottom of the screen. Snackbars can contain an action.",
+    "sample": "<BSnackbar context={this.state.context} open={this.state.open} action={this.state.actionName} autoHideDuration={this.state.autoHideDuration} message={this.state.message} onRequestClose={this.onRequestClose} onActionTouchTap={this.onActionTouchTap} /> "
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "action",
+        "type": "node",
+        "header": "not required",
+        "desc": "The label for the action on the snackbar."
+      },
+      {
+        "name": "autoHideDuration",
+        "type": "number",
+        "header": "not required",
+        "desc": "The number of milliseconds to wait before automatically dismissing. If no value is specified the snackbar will dismiss normally. If a value is provided the snackbar can still be dismissed normally. If a snackbar is dismissed before the timer expires, the timer will be cleared."
+      },
+      {
+        "name": "bodyStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the body element."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "header": "not required",
+        "desc": "The css class name of the root element."
+      },
+      {
+        "name": "contentStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the content element."
+      },
+      {
+        "name": "message",
+        "type": "node",
+        "header": "required",
+        "desc": "The message to be displayed. (Note: If the message is an element or array, and the Snackbar may re-render while it is still open, ensure that the same object remains as the message property if you want to avoid the Snackbar hiding and showing again)"
+      },
+      {
+        "name": "open",
+        "type": "bool",
+        "header": "required",
+        "desc": "Controls whether the Snackbar is opened or not."
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the root element."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onRequestClose",
+        "header": "function(reason: string) => void",
+        "desc": "Fired when the Snackbar is requested to be closed by a click outside the Snackbar, or after the autoHideDuration timer expires. Typically onRequestClose is used to set state in the parent component, which is used to control the Snackbar open prop. The reason parameter can optionally be used to control the response to onRequestClose, for example ignoring clickaway."
+      },
+      {
+        "name": "onActionTouchTap",
+        "header": "function(event)",
+        "desc": "Fired when the action button is touchtapped."
+      }
+    ]
+  }
+]

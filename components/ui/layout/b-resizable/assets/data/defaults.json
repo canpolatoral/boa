@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "BResizable",
+        "props": {
+            "width": 200,
+            "height": 200
+        }
+    }
+]

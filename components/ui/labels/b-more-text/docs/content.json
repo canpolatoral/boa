@@ -1,0 +1,36 @@
+[
+    {
+        "name": "BMoreText",
+        "desc": "React component for truncating multi-line spans and adding an ellipsis",
+        "sample": "<BMoreText text='label text' moreText='Daha Fazla' lessText='Daha Az' lines=5/>"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name": "text",
+                "type": "string",
+                "header": "Not Required",
+                "desc": "Determines the complete label text"
+            },
+            {
+                "name": "moreText",
+                "type": "string",
+                "header": "Not Required",
+                "desc": "Determines the moretext button title"
+            },
+            {
+                "name": "lessText",
+                "type": "string",
+                "header": "Not Required",
+                "desc": "Determines the lessText button title"
+            },
+            {
+                "name": "lines",
+                "type": "number",
+                "header": "Not Required",
+                "desc": "Determines the number of lines will be shown"
+            }
+        ]
+    }
+]

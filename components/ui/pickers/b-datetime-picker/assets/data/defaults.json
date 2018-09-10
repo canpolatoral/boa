@@ -1,0 +1,15 @@
+[
+    {
+        "variantName": "default",
+        "type": "BDateTimePicker",
+        "props": {
+            "hintText": "Hint Text",
+            "errorText": "Field is Required",
+            "maxLength" : 500,
+            "floatingLabelText": "Floating Label Text",
+            "cancelLabel" : "İPTAL",
+            "okLabel" : "TAMAM",
+            "dateEnable" : true
+        }
+    }
+]

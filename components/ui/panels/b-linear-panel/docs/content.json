@@ -1,0 +1,36 @@
+[
+    {
+        "name": "BLinearPanel",
+        "desc": "LinearPanel BOA Component",
+        "sample": "<BLinearPanel context={context} padding=4 orientation='vertical' />"
+    },
+    {
+        "name": "Props",
+        "infoArray": [
+            {
+                "name": "children",
+                "type": "node",
+                "header": "not required",
+                "desc": "Child elements that will be in Linear Panel."
+            },
+            {
+                "name": "padding",
+                "type": "number",
+                "header": "not required",
+                "desc": "Number of px for the padding/spacing between items."
+            },
+            {
+                "name": "orientation",
+                "type": "'vertical', 'horizontal'",
+                "header": "not required",
+                "desc": "Orientation of child elements in panel."
+            },
+            {
+                "name": "style",
+                "type": "object",
+                "header": "not required",
+                "desc": "Override the inline-styles of the root element."
+            }
+        ]
+    }
+]

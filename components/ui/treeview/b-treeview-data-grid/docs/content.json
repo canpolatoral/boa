@@ -1,0 +1,7 @@
+[
+  {
+    "name": "BTreeViewDataGrid",
+    "desc": "BOA TreeViewDataGrid Component",
+    "sample": "<BTreeViewDataGrid data={YourData} />"
+  }  
+]

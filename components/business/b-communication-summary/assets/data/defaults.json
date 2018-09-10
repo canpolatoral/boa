@@ -1,0 +1,13 @@
+[
+    {
+        "variantName": "default",
+        "type": "BCommunicationSummary",
+        "props": {
+            "name": "BCommunicationSummary",
+            "hintText": "Communication",
+            "disabled": false,
+            "defaultChecked": false
+        }
+    }
+  ]
+  

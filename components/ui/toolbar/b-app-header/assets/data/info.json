@@ -1,0 +1,19 @@
+{
+    "name": "b-app-header",
+    "version": "2.1.3",
+    "description": "BOA Application Header component.",
+    "keywords": "app,header,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-divider": "^2.1.0",
+        "b-icon": "^2.1.0",
+        "b-input-search": "^2.1.0",
+        "b-page-host": "^2.1.0",
+        "b-popover": "^2.1.0",
+        "b-progress": "^2.1.0",
+        "b-tab-bar-dynamic": "^2.1.0",
+        "b-icon-menu": "^2.1.0",
+        "b-menu-item": "^2.1.0"
+    }
+}

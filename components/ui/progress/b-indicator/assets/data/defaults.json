@@ -1,0 +1,23 @@
+[
+  {
+    "type": "BIndicator",
+    "props": {
+      "status": "ready",
+      "top": 10,
+      "size": 50,
+      "left": 10,
+      "min": 0,
+      "max": 100,
+      "percentage": 50
+    }
+  },
+  {
+    "type": "BIndicator",
+    "props": {
+      "status": "loading",
+      "top": 100,
+      "size": 50,
+      "left": 10
+    }
+  }
+]

@@ -1,0 +1,7 @@
+[
+    {
+        "name": "BAnnualLeave",
+        "desc": "İzin Bileşeni(Annual Leave)",
+        "sample": "<BAnnualLeave context={this.props.context}/>"
+    }
+]

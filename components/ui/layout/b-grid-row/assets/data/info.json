@@ -1,0 +1,9 @@
+{
+    "name": "b-grid-row",
+    "version": "2.1.2",
+    "description": "Grid Row for responsive grid layout.",
+    "keywords": "grid,row,layout,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

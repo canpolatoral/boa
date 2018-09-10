@@ -1,0 +1,7 @@
+[
+    {
+        "name": "BPageModule",
+        "desc": "BOA Page Module",
+        "sample": "<BPageModule context={this.props.context} />"
+    }
+]

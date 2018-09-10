@@ -1,0 +1,61 @@
+[
+    {
+        "name": "BRDLViewer",
+        "desc": "Show rdl content",
+        "sample": "<BRDLViewer context={context} reportPath={reportPath} reportParameters={reportParameters} reportDatasources={reportDatasources}/>"
+    },
+    {
+        "name": "functions",
+        "infoArray": [
+            {
+                "name": "showRDL(context, displayName, reportPath, reportParameters, reportDatasources, dialogResponseStyle, onClose)",
+                "type": "void",
+                "desc": "show RDL Dialog template",
+                "parameters": [
+                    {
+                        "name": "context",
+                        "type": "any",
+                        "header": "required",
+                        "desc": "application context"
+                    },
+                    {
+                        "name": "displayName",
+                        "type": "string",
+                        "header": "required",
+                        "desc": "popup header"
+                    },
+                    {
+                        "name": "reportPath",
+                        "type": "string",
+                        "header": "required",
+                        "desc": "RLD report path"
+                    },
+                    {
+                        "name": "reportParameters",
+                        "type": "any",
+                        "header": "not required",
+                        "desc": "RLD report parameters"
+                    },
+                    {
+                        "name": "reportDatasources",
+                        "type": "any",
+                        "header": "not required",
+                        "desc": "RLD report data sources"
+                    },
+                    {
+                        "name": "dialogResponseStyle",
+                        "type": "type",
+                        "header": "not required",
+                        "desc": "dialog response actions"
+                    },
+                    {
+                        "name": "onClose",
+                        "type": "function",
+                        "header": "not required",
+                        "desc": "this func occures when user click any action"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,44 @@
+﻿[
+  {
+    "name": "BGridActionPanel",
+    "desc": "BOA Grid Action Panel",
+    "sample": "<BGridActionPanel />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "dataSource",
+        "type": "any",
+        "header": "Required",
+        "desc": "."
+      },
+      {
+        "name": "columns",
+        "type": "any",
+        "header": "Required",
+        "desc": "."
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [
+      {
+        "name": "getValue()",
+        "header": "method",
+        "desc": "Returns the selected item"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onItemSelected",
+        "header": "function(event)",
+        "desc": "Callback function fires when the item has been selected."
+      }
+    ]
+  }
+]

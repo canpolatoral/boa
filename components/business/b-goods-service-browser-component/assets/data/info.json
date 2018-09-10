@@ -1,0 +1,16 @@
+{
+    "name": "b-goods-service-browser-component",
+    "version": "2.1.8",
+    "description": "BOA Goods Service Browser Component.",
+    "keywords": "goods, service, browser, business, boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-grid-section": "^2.1.0",
+        "b-grid-row": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "prop-types": "^15.6.0"
+    }
+}

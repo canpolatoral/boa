@@ -1,0 +1,53 @@
+[
+  {
+    "name": "BDataGrid",
+    "desc": "BOA DataGrid Component",
+    "sample": "<BDataGrid context={context}\n    dataSource={self.state.rows}\n        columns={columns}\n          onRowSelectionChanged={this._onRowSelectionChanged}\n    onRowUpdated={this._onRowUpdated}\n    />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "columns",
+        "type": "array of object",
+        "header": "required",
+        "desc": "Data columns of the grid component"
+      },
+      {
+        "name": "dataSource",
+        "type": "array",
+        "header": "not required",
+        "desc": "Data source of the grid component"
+      },
+      {
+        "name": "headerBarOptions",
+        "type": "object",
+        "header": "not required",
+        "desc": "Property for setting header bar button options"
+      },
+      {
+        "name": "selectedIndexes",
+        "type": "array of numbers",
+        "header": "not required",
+        "desc": "Property for selection rows with specific row indexes"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onRowUpdated",
+        "type": "function",
+        "header": "not required",
+        "desc": "Event, fires when a row updated"
+      },
+      {
+        "name": "onRowSelectionChanged",
+        "type": "function",
+        "header": "not required",
+        "desc": "Event, fires when row selection changes"
+      }
+    ]
+  }
+]

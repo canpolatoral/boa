@@ -1,0 +1,17 @@
+{
+    "name": "b-third-party-relation-persons-component",
+    "version": "2.1.2",
+    "description": "BOA Third Party Relation Persons Component",
+    "keywords": "third, party, thirdparty, thirdpartyrelation, thirdpartyrelationpersons, relation, persons, business, boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-combo-box": "^2.1.0",
+        "b-icon-button": "^2.1.0",
+        "b-third-party-component": "^2.1.0",
+        "b-input": "^2.1.0",
+        "b-radio-button": "^2.1.0",
+        "b-check-box": "^2.1.0",
+        "b-toggle": "^2.1.0"
+    }
+}

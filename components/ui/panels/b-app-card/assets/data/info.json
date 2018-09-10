@@ -1,0 +1,11 @@
+{
+    "name": "b-app-card",
+    "version": "2.1.2",
+    "description": "BOA App Card used for application info at api portal",
+    "keywords": "app, card,panel,boa, api portal",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-grid-section": "^2.1.0",
+        "b-grid-row": "^2.1.0"
+    }
+}

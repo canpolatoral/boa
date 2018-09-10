@@ -1,0 +1,17 @@
+[
+    {
+        "name": "BToolkit",
+        "desc": "BOA Toolkit Component",
+        "sample": "<BToolkit />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [  
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [  
+        ]
+    }
+]

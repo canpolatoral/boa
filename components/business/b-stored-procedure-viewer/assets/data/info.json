@@ -1,0 +1,12 @@
+{
+    "name": "b-stored-procedure-viewer",
+    "version": "2.1.0",
+    "description": "Boa sp viewer component.",
+    "keywords": "sp,stored procedure,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-dialog-box": "^2.1.0"
+    }
+}

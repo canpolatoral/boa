@@ -1,0 +1,42 @@
+[
+  {
+    "name": "BDocPost",
+    "desc": "Post with title and picture.",
+    "sample": "<BDocPost title='title', subTitle='sub title', content='content', imgUrl='url'/>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "title",
+        "type": "string",
+        "header": "required",
+        "desc": "Title of content. It will display with small font."
+      },
+      {
+        "name": "titleHint",
+        "type": "string",
+        "header": "not required",
+        "desc": "Hint of title. It will display with lighter color and smaller font near the title."
+      },
+      {
+        "name": "subTitle",
+        "type": "string",
+        "header": "required",
+        "desc": "Sub title of content. It will display with big font."
+      },
+      {
+        "name": "content",
+        "type": "string",
+        "header": "required",
+        "desc": "Main content. It will display with small font."
+      },
+      {
+        "name": "imgUrl",
+        "type": "string",
+        "header": "required",
+        "desc": "Image URL of content. It must be from a network path."
+      }
+    ]
+  }
+]

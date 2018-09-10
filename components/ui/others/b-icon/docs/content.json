@@ -1,0 +1,7 @@
+[
+    {
+        "name": "BIcon",
+        "desc": "BIcon is used for custom svg icons. Every icon has to be exported as named export",
+        "sample": "var User = require('b-icon').Others.User; <User context={context}/>"
+    }
+]

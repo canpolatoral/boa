@@ -1,0 +1,11 @@
+{
+    "name": "b-channel-component",
+    "version": "2.1.8",
+    "description": "BOA Channel Component",
+    "keywords": "channel, kanal, business, boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-combo-box": "^2.1.0"
+    }
+}

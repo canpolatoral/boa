@@ -1,0 +1,9 @@
+[
+    {
+        "name": "BContentLoader",
+        "desc": "BOA BContentLoader Component",
+        "sample": "<BContentLoader context={context}  />"
+    }
+
+
+]

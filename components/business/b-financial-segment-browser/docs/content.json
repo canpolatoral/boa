@@ -1,0 +1,22 @@
+[
+  {
+    "name": "BResourceBrowser",
+    "desc": "BOA Resource Browser Component",
+    "sample": "<BResourceBrowser />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [      
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [      
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [      
+    ]
+  }
+]

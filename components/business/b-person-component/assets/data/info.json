@@ -1,0 +1,24 @@
+{
+    "name": "b-person-component",
+    "version": "2.1.0",
+    "description": "Boa person component.",
+    "keywords": "person,boa",
+    "dependencies": {
+        "b-base-form": "^2.1.0",
+        "b-branch-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-check-box": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-criteria-panel": "^2.1.0",
+        "b-data-grid": "^2.1.0",
+        "b-datetime-picker": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-input": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-input-numeric": "^2.1.0",
+        "b-label": "^2.1.0",
+        "b-scroll": "^2.1.0",
+        "b-icon-button": "^2.1.0"
+    }
+}

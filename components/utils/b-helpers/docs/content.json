@@ -1,0 +1,15 @@
+[
+    {
+        "name": "b-proxy",
+        "desc": "This is BOA Proxy framework for service calls."
+    },
+    {
+        "name": "Installation",
+        "sample": "npm install --save-dev b-proxy"
+    }
+    ,
+    {
+        "name": "Usage",
+        "sample": "import {proxyCall} from 'b-proxy'\nvar request = {\n    url: '',\n    data: {},\n    dataType: 'json',\n    headers: {},\n    method: 'POST'\n};\nvar promise = proxyCall(request);"
+    }
+]

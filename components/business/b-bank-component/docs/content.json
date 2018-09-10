@@ -1,0 +1,83 @@
+[
+  {
+    "name": "BBankComponent",
+    "desc": "BOA Bank Component",
+    "sample": "<BBankComponent />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "selectedBankId",
+        "type": "number",
+        "header": "Not Required",
+        "desc": "Determines the bank that is currently selected."
+      },
+      {
+        "name": "selectedCityId",
+        "type": "number",
+        "header": "Not Required",
+        "desc": "Determines the city that is currently selected."
+      },
+      {
+        "name": "selectedBranchId",
+        "type": "number",
+        "header": "Not Required",
+        "desc": "Determines the branch that is currently selected."
+      },
+      {
+        "name": "bankType",
+        "type": "number",
+        "header": "Not Required",
+        "desc": "."
+      },
+      {
+        "name": "isClosedBanksInclude",
+        "type": "bool",
+        "header": "Not Required",
+        "desc": "Determines the closed or not closed banks."
+      },
+      {
+        "name": "behaviourType",
+        "type": "string or number",
+        "header": "Not Required",
+        "desc": "Bileşendeki hangi listelerin açık olacağını belirler. Mevcut seçenekler: Behaviour.Bank, Behaviour.BankCity, Behaviour.BankBranch, Behaviour.BankCityBranch"
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [
+      {
+        "name": "getValue()",
+        "header": "method",
+        "desc": "Returns the selected bank"
+      },
+      {
+        "name": "getValues()",
+        "header": "method",
+        "desc": "Returns the list of banks."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onBankSelect",
+        "header": "function(event)",
+        "desc": "Callback function fires when the bank has been selected."
+      },
+      {
+        "name": "onCitySelect",
+        "header": "function(event)",
+        "desc": "Callback function fires when the city has been selected."
+      },
+      {
+        "name": "onBranchSelect",
+        "header": "function(event)",
+        "desc": "Callback function fires when the branch has been selected."
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BTransactionComponent",
+        "props": {
+            "hintText": "Transaction Component"
+        }
+    }
+]

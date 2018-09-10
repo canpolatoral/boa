@@ -1,0 +1,18 @@
+{
+    "name": "b-swift-component",
+    "version": "2.1.2",
+    "description": "BOA Swift Component",
+    "keywords": "bank, banka, business, boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-check-box": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-grid-section": "^2.1.0",
+        "b-grid-row": "^2.1.0",
+        "b-input": "^2.1.0",
+        "b-label": "^2.1.0",
+        "b-browse-form": "^2.1.0"
+    }
+}

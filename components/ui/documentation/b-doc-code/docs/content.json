@@ -1,0 +1,36 @@
+[
+  {
+    "name": "BDocCode",
+    "desc": "Code viewer component.",
+    "sample": "<BDocCode context={context} content={'public static void Main(string[] args) {}'} lang={'cs'} />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "content",
+        "type": "string",
+        "header": "required",
+        "desc": "Code text."
+      },
+      {
+        "name": "lang",
+        "type": "string",
+        "header": "not required",
+        "desc": "Language name for language specific highlighting. When it does not set, component try detect language automatically."
+      },
+      {
+        "name": "highlight",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Option for highlighting. Default True."
+      },
+      {
+        "name": "editorType",
+        "type": "string",
+        "header": "not required",
+        "desc": "Theme name for highlighting. Names referenced from highlight.js."
+      }
+    ]
+  }
+]

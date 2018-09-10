@@ -1,0 +1,94 @@
+[
+  {
+    "name": "BDivitComponent",
+    "desc": "Divit Component",
+    "sample": "<BDivitComponent context={context} divitId={divitId} instanceId={instanceId} editorMode={editorMode}/>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "divitId",
+        "type": "string",
+        "header": "required",
+        "desc": "Divit definition unique id."
+      },
+      {
+        "name": "instanceId",
+        "type": "node",
+        "header": "required",
+        "desc": "Instance id per divit operation."
+      },
+      {
+        "name": "personId",
+        "type": "node",
+        "header": "optional",
+        "desc": "Person Identity; required if you want to show the Person Divit."
+      },
+      {
+        "name": "customerId",
+        "type": "node",
+        "header": "optional",
+        "desc": "Customer No; required if you want to show the Person Divit."
+      },
+      {
+        "name": "editorMode",
+        "type": "string",
+        "header": "required",
+        "desc": "Divit editor mode."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "handleAddFile",
+        "header": "function(event)",
+        "desc": "handle when user click the add file button."
+      },
+      {
+        "name": "handleFileInfo",
+        "header": "function(event)",
+        "desc": "Clear the selected items."
+      },
+      {
+        "name": "handleSelectFile",
+        "header": "function(event)",
+        "desc": "handle when user click the slect file button."
+      },
+      {
+        "name": "handleDocumentDownload",
+        "header": "function(event)",
+        "desc": "handle when user click the document download button."
+      },
+      {
+        "name": "handleDocumentDelete",
+        "header": "function(event)",
+        "desc": "handle when user click the document delete button."
+      },
+      {
+        "name": "handleDeleteAll",
+        "header": "function(event)",
+        "desc": "handle when user click the delete all button."
+      },
+      {
+        "name": "handleDocumentPaste",
+        "header": "function(event)",
+        "desc": "handle when user click the document paste button."
+      },
+      {
+        "name": "handlePrint",
+        "header": "function(event)",
+        "desc": "handle when user click the handle print button."
+      },
+      {
+        "name": "handleFormClosing",
+        "header": "function(event)",
+        "desc": "handle when user click the form closing button."
+      }
+	
+
+    ]
+  }
+]

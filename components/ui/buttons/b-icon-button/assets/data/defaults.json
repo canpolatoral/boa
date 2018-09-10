@@ -1,0 +1,13 @@
+[
+    {
+        "variantName": "default",
+        "type": "BIconButton",
+        "props": {
+            "tooltip": "ToolTip",
+            "tooltipPosition":  "bottom-start",
+            "onClick": null,
+            "svgIcon": null,
+            "fontIcon" : "home"
+        }
+    }
+]

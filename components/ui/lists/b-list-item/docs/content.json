@@ -1,0 +1,30 @@
+[
+    {
+        "name": "BListItem",
+        "desc": "ListItem BOA Component",
+        "sample": "<BListItem context={context} selected primaryText:'Genel' secondaryText:'Genel ayarlar' />"
+    },
+    {
+        "name": "Props",
+        "infoArray": [
+            {
+                "name": "primaryText",
+                "type": "string",
+                "header": "required",
+                "desc": "List Item Primary Text"
+            },
+            {
+                "name": "secondaryText",
+                "type": "string",
+                "header": "not required",
+                "desc": "List Item Secondary Text"
+            },
+            {
+                "name": "selected",
+                "type": "bool",
+                "header": "not required",
+                "desc": "List Item isSelected"
+            }
+        ]
+    }
+]

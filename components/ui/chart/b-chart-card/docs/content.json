@@ -1,0 +1,98 @@
+[
+  {
+    "name": "BChartCard",
+    "desc": "It provides alignment for own children like grid, based on rows and columns.",
+    "sample": "<BChartCard context={context} expandable={expandable} expanded={expanded}>{children}</BChartCard>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "containerStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the container element."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "header": "not required",
+        "desc": "Title of Chart"
+      },
+      {
+        "name": "fieldName",
+        "type": "string",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "series",
+        "type": "array",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "dataSource",
+        "type": "array",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "widgetId",
+        "type": "number",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "resourceCode",
+        "type": "string",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "parameters",
+        "type": "any",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "imageButtonVisibility",
+        "type": "bool",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "refreshButtonVisibility",
+        "type": "bool",
+        "header": "not required",
+        "desc": ""
+      },
+      {
+        "name": "enlargeButtonVisibility",
+        "type": "bool",
+        "header": "not required",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "imageButtonOnClick",
+        "header": "function(event)",
+        "desc": ""
+      },
+      {
+        "name": "refreshButtonOnClick",
+        "header": "function(event)",
+        "desc": ""
+      },
+      {
+        "name": "enlargeButtonOnClick",
+        "header": "function(event)",
+        "desc": ""
+      }
+    ]
+  }
+]

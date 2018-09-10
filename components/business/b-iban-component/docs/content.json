@@ -1,0 +1,39 @@
+[
+  {
+    "name": "BIBANComponent",
+    "desc": "BOA IBAN Component",
+    "sample": "<BIBANComponent />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "iban",
+        "type": "string",
+        "header": "not required",
+        "desc": "iban information without spaces"
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "header": "not required",
+        "desc": "Error Text"
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray":[
+      {
+        "name": "isKTIBAN",
+        "header": "method",
+        "desc": "Returns true if IBAN is KT IBAN."
+      },
+      {
+        "name": "getIBANAccountInfo",
+        "header": "method",
+        "desc": "Gets account info of IBAN."
+      }
+    ]
+  }
+]

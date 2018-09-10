@@ -1,0 +1,16 @@
+{
+    "name": "b-commission-component",
+    "version": "2.1.11",
+    "description": "BOA Commission Component - Wrapped and Developed By Using Desktop Commission Component",
+    "keywords": "commission, business, boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-account-component": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-check-box": "^2.1.0",
+        "b-combo-box": "^2.1.0",
+        "b-fec-component": "^2.1.0",
+        "b-icon-button": "^2.1.0",
+        "b-radio-button-group": "^2.1.0"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "b-action-manager",
+    "version": "2.1.16",
+    "description": "BOA Action Manager component. Generates actions reference from page resourceInfo.",
+    "keywords": "action,manager,worklow,button",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-action-button": "^2.1.0",
+        "b-menu-item": "^2.1.0",
+        "b-icon-button": "^2.1.0",
+        "b-icon-menu": "^2.1.0",
+        "b-input": "^2.1.0",
+        "b-divider": "^2.1.0",
+        "b-flex-panel": "^2.1.0",
+        "b-icon": "^2.1.0",
+        "lodash": "^4.17.5",
+        "element-resize-detector": "^1.1.14"
+    }
+}

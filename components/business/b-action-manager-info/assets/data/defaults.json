@@ -1,0 +1,26 @@
+[
+    {
+       "variantName":"default",
+       "type":"BActionManagerInfo",
+       "props":{
+        "resourceInfo":{
+            "isNew":true,
+            "isSelectable":true,
+            "iconPath":"abstract_class_16tn.png",
+            "name":"BOA One BPM Test",
+            "fullPath":"Ekran Listesi > Ana Menü > Geliştirme Menüsü > Test Menü > İş Akışı Testler > BOA One Test",
+            "isSelected":false,
+            "id":11804,
+            "uiType":0,
+            "resourceCode":"YONTBPMTST",
+            "systemDate":"2017-03-06T09:13:06.6",
+            "businessOwnerWorkgroupName":null,
+            "sortId":1,
+            "isHidden":false,
+            "isLeaf":true,
+            "description":"test"
+        }   
+       }
+    }
+ ]
+ 

@@ -1,0 +1,9 @@
+{
+    "name": "b-more-text",
+    "version": "2.1.2",
+    "description": "React component for truncating multi-line spans and adding an ellipsis",
+    "keywords": "label,boa,truncating, api market, more, less, text",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

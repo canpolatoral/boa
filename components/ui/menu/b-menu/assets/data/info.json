@@ -1,0 +1,12 @@
+{
+    "name": "b-menu",
+    "version": "2.1.2",
+    "description": "Boa BMenu Components.",
+    "keywords": "menu,boa",
+    "dependencies": {
+        "lodash": "^4.17.5",
+        "b-component": "^2.1.0",
+        "b-menu-item": "^2.1.0",
+        "b-icon": "^2.1.0"
+    }
+}

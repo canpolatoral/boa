@@ -1,0 +1,48 @@
+[
+    {
+        "name": "BToolTip",
+        "desc": "BToolTip lets you add tooltips to components easily. ",
+        "sample": "<BToolTip tooltip={<span><b>tool</b> sample <br /><p style={{ color: 'red' }}>second line</p></span>} tooltipPosition='down'>{children}</BToolTip>"
+    },
+    {
+        "name": "Props",
+        "infoArray": [
+            {
+                "name": "children",
+                "type": "node",
+                "header": "required",
+                "desc": "The children element to supply to the tooltip."
+            },
+            {
+                "name": "style",
+                "type": "object",
+                "header": "not required",
+                "desc": "Override the inline-styles of the tooltip element."
+            },
+            {
+                "name": "theme",
+                "type": "object",
+                "header": "not required",
+                "desc": "Theme object."
+            },
+            {
+                "name": "tooltip",
+                "type": "node",
+                "header": "not required",
+                "desc": "Can be used to pass a content element as the content for the tooltip."
+            },
+            {
+                "name": "tooltipPosition",
+                "type": "string",
+                "header": "not required",
+                "desc": "The vertical and horizontal positions, respectively, of the element's tooltip. Possible values are: 'down', 'up', 'right', 'left'. Default is 'up'."
+            },
+            {
+                "name": "tooltipStyle",
+                "type": "object",
+                "header": "not required",
+                "desc": "Override the inline-styles of the tooltip element."
+            }           
+        ]
+    }
+]

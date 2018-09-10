@@ -1,0 +1,139 @@
+import React from 'react';
+import { ListItem, ListItemText } from '@material-ui/core';
+import { BComponent, BComponentComposer } from 'b-component';
+import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
+const styles = theme => ({
+  root: {
+    minHeight:36,
+    paddingTop:12,
+    paddingBottom:12,
+    color: theme.boaPalette.base400,
+    '&:hover': {
+      background: theme.boaPalette.pri300
+    }
+  },
+  selected: {
+    backgroundColor: theme.boaPalette.pri250,
+  },
+  isRTL: {
+    textAlign: 'right'
+  },
+  gutters: {
+    paddingLeft: 24,
+    paddingRight: 24
+  },
+  itemTextRoot: {
+    padding: 0,
+  },
+  itemTextPrimary:{
+    fontSize:14,
+    color:theme.boaPalette.base400,
+  },
+  itemTextSecondary:{
+    fontSize:12,
+    color:theme.boaPalette.base350,
+  }
+});
+
+@BComponentComposer
+@withStyles(styles)
+export class BListItem extends BComponent {
+  static propTypes = {
+    ...BComponent.propTypes,
+    /**
+   * If `true`, the list item will be a button (using `ButtonBase`).
+   */
+    button: PropTypes.bool,
+    /**
+     * The content of the component.
+     */
+    children: PropTypes.node,
+    /**
+     * Useful to extend the style applied to components.
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * @ignore
+     */
+    className: PropTypes.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a DOM element or a component.
+     * By default, it's a `li` when `button` is `false` and a `div` when `button` is `true`.
+     */
+    component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    /**
+     * The container component. Useful when a `ListItemSecondaryAction` is rendered.
+     */
+    ContainerComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    /**
+     * Properties applied to the container element when the component
+     * is used to display a `ListItemSecondaryAction`.
+     */
+    ContainerProps: PropTypes.object,
+    /**
+     * If `true`, compact vertical padding designed for keyboard and mouse input will be used.
+     */
+    dense: PropTypes.bool,
+    /**
+     * @ignore
+     */
+    disabled: PropTypes.bool,
+    /**
+     * If `true`, the left and right padding is removed.
+     */
+    disableGutters: PropTypes.bool,
+    /**
+     * If `true`, a 1px light border is added to the bottom of the list item.
+     */
+    divider: PropTypes.bool,
+
+    selected: PropTypes.bool,
+    primaryText: PropTypes.string.isRequired,
+    secondaryText: PropTypes.string,
+  }
+
+  static defaultProps = {
+    ContainerComponent: 'li',
+    dense: false,
+    disabled: false,
+    disableGutters: false,
+    divider: false,
+    button: true,
+    selected: false,
+  }
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  render() {
+    var { classes, selected, primaryText, secondaryText, ...other } = this.props;
+    const { isRightToLeft } = this.props.context.localization;
+    const className = classNames(
+      classes.root,
+      {
+        [classes.isRTL]: isRightToLeft,
+        [classes.selected]: selected,
+      });
+
+    return <ListItem {...other}
+      classes={{
+        root: className,
+        gutters: classes.gutters // MuiListItemGutters11
+      }}>
+      <ListItemText
+        classes={{
+          root: classes.itemTextRoot,
+          primary: classes.itemTextPrimary,
+          secondary: classes.itemTextSecondary,
+        }}
+        primary={primaryText}
+        secondary={secondaryText} />
+    </ListItem>;
+  }
+}
+
+export default BListItem;

@@ -1,0 +1,16 @@
+{
+    "name": "b-bpm-action-reason-list",
+    "version": "2.1.4",
+    "description": "BOA BPM Action reason list",
+    "keywords": "Action reason list, bpm",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-data-grid": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-messaging": "^2.1.0",
+        "b-base-form": "^2.1.0",
+        "element-resize-detector": "^1.1.14"
+    }
+}

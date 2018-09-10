@@ -1,0 +1,9 @@
+[
+    {
+        "variantName": "default",
+        "type": "BTooltip",
+        "props": {
+            "tooltipPosition": "up"           
+        }
+    }
+]

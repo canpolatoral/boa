@@ -1,0 +1,10 @@
+{
+    "name": "b-bank-component",
+    "version": "2.1.3",
+    "description": "BOA Bank Component",
+    "keywords": "bank, banka, business, boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-combo-box": "^2.1.0"
+    }
+}

@@ -1,0 +1,10 @@
+[
+    {
+          "variantName": "default",
+          "type": "BSwiftComponent",
+           "props": {
+             "hintText" : "Swift Component",
+             "disabled" : false
+        }
+    }
+]

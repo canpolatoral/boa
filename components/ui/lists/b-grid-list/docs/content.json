@@ -1,0 +1,30 @@
+[
+    {
+        "name": "BGridList",
+        "desc": "Grid List BOA Component",
+        "sample": " <BGridList cellHeight={48} cols={2}>{items}</BGridList>"
+    },
+    {
+        "name": "Props",
+        "infoArray": [
+            {
+                "name": "cellHeight",
+                "type": "number",
+                "header": "not required",
+                "desc": "Item CellHeight"
+            },
+            {
+                "name": "cols",
+                "type": "number",
+                "header": "not required",
+                "desc": "Grid column size"
+            },
+            {
+                "name": "items",
+                "type": "array",
+                "header": "not required",
+                "desc": "Grid List Items Array"
+            }
+        ]
+    }
+]

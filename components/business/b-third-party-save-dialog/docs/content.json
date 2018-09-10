@@ -1,0 +1,56 @@
+[
+  {
+    "name": "BThirdPartySaveDialog",
+    "desc": "BOA ThirdParty Save Dialog",
+    "sample": "<BThirdPartySaveDialog />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "resourceInfo",
+        "type": "propTypes.any",
+        "header": "not Required",
+        "desc": "Resource definition of form"
+      },
+      {
+        "name": "resourceCode",
+        "type": "propTypes.string",
+        "header": "not Required",
+        "desc": "The code of form"
+      },
+      {
+        "name": "accountNumber",
+        "type": "propTypes.number",
+        "header": "Required",
+        "desc": "The hint content to display."
+      },
+      {
+        "name": "thirdPartyId",
+        "type": "propTypes.number",
+        "header": "Required",
+        "desc": "Determines the third party that is currently selected."
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [
+      {
+        "name": "openDialog(thirdPartyId, accountNumber)",
+        "header": "method",
+        "desc": "Open dialog by thirdPartyId and accountNumber. thirdPartyId can be null."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onCloseDialog(dialogResponse)",
+        "header": "function(event)",
+        "desc": "Callback function."
+      }
+    ]
+  }
+]

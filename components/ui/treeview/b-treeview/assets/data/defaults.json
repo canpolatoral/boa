@@ -1,0 +1,10 @@
+[
+  {
+    "variantName": "default",
+    "type": "BTreeView",
+    "props": {
+      "floatingText": "BTreeView",
+      "checkable": false
+    }
+  }
+]

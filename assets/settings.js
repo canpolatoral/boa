@@ -1,0 +1,6 @@
+window.BOA_SETTINGS = {
+  "DEVICE_PARAMETERS": {
+    "DEVICE_PORT": 8443,
+    "CONTAINER_PORT": 8444
+  }
+}

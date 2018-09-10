@@ -1,0 +1,74 @@
+[
+    {
+        "variantName": "default",
+        "type": "BSelectListBox",
+        "props": {
+            "name": "BSelectList",
+            "hintText": "Ara",
+            "disabled": false,
+            "defaultChecked": false,
+            "dataSource": [
+                {
+                    "id": 10,
+                    "label": "Test 1 Eyüp"
+                },
+                {
+                    "id": 20,
+                    "label": "Text 2 Ali"
+                },
+                {
+                    "id": 30,
+                    "label": "Text 3 Mehmet Emin"
+                },
+                {
+                    "id": 40,
+                    "label": "text 4 Abdurrahim"
+                },
+                {
+                    "id": 50,
+                    "label": "text 5 Fatih"
+                },
+                {
+                    "id": 60,
+                    "label": "text Mehmet"
+                },
+                {
+                    "id": 70,
+                    "label": "text 7 Mustafa"
+                },
+                {
+                    "id": 80,
+                    "label": "text 8 Ali"
+                },
+                {
+                    "id": 90,
+                    "label": "text 9 Fatih"
+                },
+                {
+                    "id": 100,
+                    "label": "text 10 Emrah"
+                },
+                {
+                    "id": 110,
+                    "label": "text 11 Uğur"
+                },
+                {
+                    "id": 120,
+                    "label": "text 12 Çağrı"
+                },
+                {
+                    "id": 130,
+                    "label": "text 13 Vacit"
+                },
+                {
+                    "id": 140,
+                    "label": "text 14 Canpolat"
+                },
+                {
+                    "id": 150,
+                    "label": "text 15 Nusret"
+                }
+            ]
+        }
+    }
+]

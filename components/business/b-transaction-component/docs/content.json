@@ -1,0 +1,22 @@
+[
+  {
+    "name": "BTransactionComponent",
+    "desc": "BOA Transaction Component",
+    "sample": "<BTransactionComponent />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [      
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [      
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [      
+    ]
+  }
+]

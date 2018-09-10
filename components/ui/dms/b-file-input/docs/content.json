@@ -1,0 +1,57 @@
+[
+  {
+    "name": "BFileInput",
+    "desc": "File Input Component",
+    "sample": "<FileInput id={documentTypeId} as='url' onChange={this.handleFileInputChange.bind(this)} multiple='true'>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "as",
+        "type": "string",
+        "header": "not required",
+        "desc": "what format the FileReader should read the file as (i.e., buffer, binary, url, text). Defaults to url."
+      },
+      {
+        "name": "children",
+        "type": "node",
+        "header": "not required",
+        "desc": "if children is passed into FileReaderInput, then the component will hide the native file input and instead display children. Whenever the custom children are clicked, the component will trigger the native file input prompt. This allows complete control over styling an display."
+      },
+      {
+        "name": "onChange",
+        "type": "func",
+        "header": "not required",
+        "desc": "Fired the item changed."
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "header": "not required",
+        "desc": "The id of item."
+      },
+      {
+        "name": "multiple",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, user can select multiple."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "handleChange",
+        "header": "function(event, results)",
+        "desc": "callback function(event, results). Results will be an array of arrays, the size of which depending on how many files were selected."
+      },
+      {
+        "name": "triggerInput",
+        "header": "function(event, results)",
+        "desc": "Fire when the input trigged."
+      }
+    ]
+  }
+]

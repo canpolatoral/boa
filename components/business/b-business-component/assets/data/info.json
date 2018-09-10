@@ -1,0 +1,12 @@
+{
+    "name": "b-business-component",
+    "version": "2.1.3",
+    "description": "BOA base business component.",
+    "keywords": "boa, business, component",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-proxy": "^2.1.0",
+        "b-ui-proxy": "^2.1.0",
+        "b-progress": "^2.1.0"
+    }
+}

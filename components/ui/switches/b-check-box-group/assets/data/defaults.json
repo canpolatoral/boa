@@ -1,0 +1,36 @@
+[
+    {
+        "variantName": "default",
+        "type": "BCheckBoxGroup",
+        "props":
+        {
+            "children": {},
+            "className": "BCheckBoxGroup class",
+            "defaultSelected": "06",
+            "name": "BCheckBoxGroup",
+            "valueSelected": null,
+            "onChange": null,
+            "style": {"maxWidth": 200},
+            "headerText": "p-Şehir Listesi",
+            "items": [
+                {
+
+                    "label": "İstanbul",
+                    "value": "34"
+                },
+                {
+
+                    "label": "Ankara",
+                    "value": "06"
+                },
+                {
+                    "label": "Kocaeli",
+                    "value": "41",
+                    "disabled": true
+                }
+            ]
+        }
+
+
+    }
+]

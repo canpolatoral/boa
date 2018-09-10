@@ -1,0 +1,20 @@
+{
+    "name": "b-product-browser-component",
+    "version": "2.1.0",
+    "description": "BOA Product Browser Component.",
+    "keywords": "product, browser, business, boa",
+    "dependencies": {
+        "b-business-component": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-grid-section": "^2.1.0",
+        "b-grid-row": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-data-grid": "^2.1.0",
+        "b-base-form": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-treeview": "^2.1.0",
+        "b-transaction-form": "^2.1.0"
+    }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "BProductBrowserComponent",
+    "desc": "BProductBrowserComponent",
+    "sample": " <BProductBrowserComponent />" 
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+    ]
+  }
+]

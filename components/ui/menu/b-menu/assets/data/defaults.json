@@ -1,0 +1,54 @@
+[
+    {
+        "variantName": "default",
+        "type": "BMenu",
+        "props": {
+            "autoWidth": true,
+            "disableAutoFocus": false,
+            "initiallyKeyboardFocused": false,
+            "maxHeight": null,
+            "multiple": false,
+            "items": [
+                {
+                    "text": "İstanbul",
+                    "value": "34",
+                    "rightIcon" : {"fontIcon" : "muidocs-icon-action-home"},
+                    "leftIcon": {
+                      "dynamicIcon": "EventNote",
+                      "iconProperties": {
+                        "style": {
+                          "color": "#A23894"
+                        }
+                      }
+                    }
+                },
+                {
+                    "text": "Ankara",
+                    "value": "06",
+                    "items": [
+                        {
+                            "text": "sincan",
+                            "value": "06_01"
+                        },
+                        {
+                            "text": "kizilay",
+                            "value": "06_02"
+                        }
+                    ]
+                },
+                {
+                    "text": "Kocaeli",
+                    "value": "41",
+                    "leftIcon": {
+                      "dynamicIcon": "EventNote",
+                      "iconProperties": {
+                        "style": {
+                          "color": "#A23894"
+                        }
+                      }
+                    }
+                }
+            ]
+        }
+    }
+]

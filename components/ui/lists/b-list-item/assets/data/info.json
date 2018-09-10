@@ -1,0 +1,10 @@
+{
+    "name": "b-list-item",
+    "version": "2.1.2",
+    "description": "BOA List component.",
+    "keywords": "list,list item,item,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "classnames": "^2.2.5"
+    }
+}

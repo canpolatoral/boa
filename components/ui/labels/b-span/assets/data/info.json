@@ -1,0 +1,9 @@
+{
+    "name": "b-span",
+    "version": "2.1.2",
+    "description": "BOA Span Component.",
+    "keywords": "span,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

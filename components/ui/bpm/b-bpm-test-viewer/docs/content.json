@@ -1,0 +1,24 @@
+[
+    {
+        "name": "BUserNoteItem",
+        "desc": "User Note Item component",
+        "sample": "<BUserNoteItem note='kullanıcı notu' userName='Kullanıcı adı'  />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [ 
+            {
+                "name" : "note",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Note"
+            }, 
+            {
+                "name" : "userName",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "User Name"
+            }
+        ]
+    }
+]

@@ -1,0 +1,15 @@
+{
+    "name": "b-chart-card",
+    "version": "2.1.7",
+    "description": "BOA Chart Card layout component for responsive chart layout. Inherits from Material Card component and Kendo UI Charts.",
+    "keywords": "card,chart,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-business-component": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-loading": "^2.1.0",
+        "b-dialog-box": "^2.1.0",
+        "b-show-hide-panel": "^2.1.0",
+        "b-icon": "^2.1.0"
+    }
+}

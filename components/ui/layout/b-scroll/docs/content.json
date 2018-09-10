@@ -1,0 +1,24 @@
+[
+  {
+    "name": "BScroll",
+    "desc": "BOA scroll component",
+    "sample":  "<BScroll style={} speed={53}  />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "style",
+        "type": "object",
+        "header": "optional",
+        "desc": "Style object"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "header": "optional",
+        "desc": "Vertical scroll speed"
+      }
+    ]
+  }
+]

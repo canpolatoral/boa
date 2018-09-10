@@ -1,0 +1,23 @@
+{
+    "name": "b-streamhub",
+    "version": "1.0.8",
+    "description": "BOA One SignalR Stream Hub Library.",
+    "keywords": [
+        "b-streamHub",
+        "streamHub"
+    ],
+    "homepage": "http://www.kuveytturk.com",
+    "files": [
+        "LICENSE",
+        "index.js",
+        "README.md"
+    ],
+    "main": "index.js",
+    "author": {
+        "name": "KuveytTurk BOA One Team",
+        "email": "boa@kuveytturk.com",
+        "url": "http://www.kuveytturk.com"
+    },
+    "license": "KuveytTurk",
+    "dependencies": {}
+}

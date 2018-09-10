@@ -1,0 +1,160 @@
+[{
+    "name": "BFECComponent",
+    "desc": "BOA FEC Component",
+    "sample": "<BFECComponent hintText='Döviz Cinsi' labelText='Döviz Cinsi' displayMemberPath='fecName' /*Not Required*/ />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [{
+        "name": "selectedFECId",
+        "type": "propTypes.stringOrNumber",
+        "header": "Not Required",
+        "desc": "Determines the FEC that is currently selected."
+      },
+      {
+        "name": "sortOption",
+        "type": "propTypes.stringOrNumber",
+        "header": "Not Required",
+        "desc": "Sort the FECs. Available options is BFECComponent.SortOption.Code, BFECComponent.SortOption.Name, BFECComponent.SortOption.Id"
+      },
+      {
+        "name": "displayMemberPath",
+        "type": "propTypes.string",
+        "header": "Not Required",
+        "desc": "Display your chosen column on fec component. Default column(displayMemberPath) is 'fecName'"
+      },
+      {
+        "name": "fECIdList",
+        "type": "propTypes.array(number)",
+        "header": "Not Required",
+        "desc": "Filter the FECs by given fec Ids."
+      },
+      {
+        "name": "fECCodeList",
+        "type": "propTypes.array(string)",
+        "header": "Not Required",
+        "desc": "Filter the FECs by given fecCodes"
+      },
+      {
+        "name": "fECGroupList",
+        "type": "propTypes.array(number)",
+        "header": "Not Required",
+        "desc": "Filter the FECs by given fec groups"
+      },
+      {
+        "name": "isAllOptionIncluded",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "If true an item will push to the first row of the FEC list. Default value is false."
+      },
+      {
+        "name": "allOptionDescription",
+        "type": "propTypes.string",
+        "header": "Not Required",
+        "desc": "If isAllOptionIncluded is true. Default value is 'Hepsi'"
+      },
+      {
+        "name": "allOptionValue",
+        "type": "propTypes.any",
+        "header": "Not Required",
+        "desc": "If isAllOptionIncluded is true.. Default value is '-1'"
+      },
+      {
+        "name": "isForward",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "Filter the FECs by given isForward. Default value is null."
+      },
+      {
+        "name": "inUse",
+        "type": "propTypes.number",
+        "header": "Not Required",
+        "desc": "Default value is null"
+      },
+      {
+        "name": "timeDepositeAccount",
+        "type": "propTypes.number",
+        "header": "Not Required",
+        "desc": "Default value is null"
+      },
+      {
+        "name": "demandDepositeAccount",
+        "type": "propTypes.number",
+        "header": "Not Required",
+        "desc": "Default value is null"
+      },
+      {
+        "name": "usageCode",
+        "type": "propTypes.string",
+        "header": "Not Required",
+        "desc": "Default value is null"
+      },
+      {
+        "name": "hintText",
+        "type": "propTypes.string",
+        "header": "Not Required",
+        "desc": "The hint content to display."
+      },
+      {
+        "name": "labelText",
+        "type": "propTypes.string",
+        "header": "Not Required",
+        "desc": "The content of the floating label."
+      },
+      {
+        "name": "disableSearch",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "Display the search input field top of the fec component."
+      },
+      {
+        "name": "disabled",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "If true, the FEC component will be disabled. Default valuse is false"
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [{
+        "name": "getValue()",
+        "header": "method",
+        "desc": "Returns the selected FEC"
+      },
+      {
+        "name": "sortValues(sortOption)",
+        "header": "method",
+        "desc": "Sort the FECs. Available options is BFECComponent.SortOption.Code, BFECComponent.SortOption.Name, BFECComponent.SortOption.Id"
+      },
+      {
+        "name": "getValues()",
+        "header": "method",
+        "desc": "Returns the list of FEC"
+      },
+      {
+        "name": "setValuesByIds(fecIdList)",
+        "header": "method",
+        "desc": "Set the FECs by fec Ids"
+      },
+      {
+        "name": "setValuesByCodes(fecCodeList)",
+        "header": "method",
+        "desc": "Set the FECs by fec Codes"
+      },
+      {
+        "name": "setValues(fECList)",
+        "header": "method",
+        "desc": "Set the FECs by your custom FECs"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [{
+      "name": "onFECSelect",
+      "header": "function(event)",
+      "desc": "Callback function fires when the fec has been selected."
+    }]
+  }
+]

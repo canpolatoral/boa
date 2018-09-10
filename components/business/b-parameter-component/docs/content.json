@@ -1,0 +1,184 @@
+[
+  {
+    "name": "BParameterComponent",
+    "desc": "BOA Parameter Component",
+    "sample": "<BParameterComponent paramType='YOURPARAMTYPE' hintText='Your hint text' labelText='Your label text' />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "paramType",
+        "type": "string",
+        "header": "Required",
+        "desc": "The paramType of your component."
+      },
+      {
+        "name": "paramColumns",
+        "type": "arrayOf(PropTypes.shape({name:string.isRequired, header:string, width:number, visible:bool}))",
+        "header": "Not Required",
+        "desc": "Determines the columns of the parameter component. Columns can define an array with => name: string.isRequired, header:string, width:number, visible:bool.  Default columns are paramType, paramCode, paramDescription, paramValue."
+      },
+      {
+        "name": "sortOption",
+        "type": "string or number",
+        "header": "Not Required",
+        "desc": "Sort the parameters. Available options is BParameterComponent.SortOption.Code, BParameterComponent.SortOption.Description, BParameterComponent.SortOption.Value"
+      },
+      {
+        "name": "paramTypeList",
+        "type": "array Of string",
+        "header": "Not Required",
+        "desc": "The collection of paramType."
+      },
+      {
+        "name": "paramCode",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param code"
+      },
+      {
+        "name": "paramDate",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param date"
+      },
+      {
+        "name": "paramValues",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param value"
+      },
+      {
+        "name": "selectedParamCode",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Determines the parameter that is currently selected."
+      },
+      {
+        "name": "paramValue2Filter",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param value 2"
+      },
+      {
+        "name": "paramValue3Filter",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param value 3"
+      },
+      {
+        "name": "paramValue4Filter",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param value 4"
+      },
+      {
+        "name": "paramValue5Filter",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param value 5"
+      },
+      {
+        "name": "paramValue6Filter",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param value 6"
+      },
+      {
+        "name": "paramValue7Filter",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Filter the parameters by param value 7"
+      },
+      {
+        "name": "isAllOptionIncluded",
+        "type": "bool",
+        "header": "not Required",
+        "desc": "If true an item will push to the first row of the parameter list. Default is value is false."
+      },
+      {
+        "name": "allOptionDescription",
+        "type": "string",
+        "header": "not Required",
+        "desc": "If isAllOptionIncluded is true.. Default value is 'Hepsi'"
+      },
+      {
+        "name": "allOptionValue",
+        "type": "any",
+        "header": "not Required",
+        "desc": "If isAllOptionIncluded is true.. Default value is '-1'"
+      },
+      {
+        "name": "hintText",
+        "type": "string",
+        "header": "not Required",
+        "desc": "The hint content to display."
+      },
+      {
+        "name": "labelText",
+        "type": "string",
+        "header": "not Required",
+        "desc": "The content of the floating label."
+      },
+      {
+        "name": "displayMemberPath",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "Display your chosen column on parameter component. Default column is 'paramDescription'"
+      },
+      {
+        "name": "disableSearch",
+        "type": "bool",
+        "header": "not Required",
+        "desc": "Display the search input field top of the fec component."
+      },
+      {
+        "name": "disabled",
+        "type": "bool",
+        "header": "not Required",
+        "desc": "If true, the parameter component will be disabled."
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [
+      {
+        "name": "getValue()",
+        "header": "Method",
+        "desc": "Get the parameter that is currently selected."
+      },
+      {
+        "name": "getValues()",
+        "header": "Method",
+        "desc": "Returns the list of parameters"
+      },
+      {
+        "name": "setValues(parameterList)",
+        "header": "Method(param)",
+        "desc": "Set the Parameters by parameterList"
+      },
+      {
+        "name": "setValuesByCodes(paramCodeList)",
+        "header": "Method(param)",
+        "desc": "Set the Parameters by paramCodes. paramCodeList is a string array"
+      },
+      {
+        "name": "sortValues(sortOption)",
+        "header": "Method",
+        "desc": "Sort the parameters. Available options is BParameterComponent.SortOption.Code, BParameterComponent.SortOption.Description, BParameterComponent.SortOption.Value"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onParameterSelect",
+        "header": "function(event)",
+        "desc": "Callback function fires when the parameter has been selected."
+      }
+    ]
+  }
+]

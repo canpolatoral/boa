@@ -1,0 +1,13 @@
+[
+    {
+        "variantName": "default",
+        "type": "BDateRangePicker",
+        "props": {
+            "hintText": "Hint Text",
+            "errorText": "Field is Required",
+            "floatingLabelText": "Floating Label Text",
+            "cancelLabel" : "İPTAL",
+            "okLabel" : "TAMAM"
+        }
+    }
+]

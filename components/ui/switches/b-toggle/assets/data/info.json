@@ -1,0 +1,11 @@
+{
+    "name": "b-toggle",
+    "version": "2.1.2",
+    "description": "Boa toggle component.",
+    "keywords": "toggle,switch,button,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-icon": "^2.1.0",
+        "b-label": "^2.1.0"
+    }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "BActionButton",
+    "desc": "BOA ActionButton component for action manager operations.",
+    "sample": "<BActionButton context={this.props.context} action={action} onClick={this.click.bind(this, action)} disabled={disabled} />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "action",
+        "type": "object",
+        "header": "required",
+        "desc": "Each of action in resource action list."
+      },
+      {
+        "name": "disabled",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the element will be disabled."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onClick",
+        "header": "function(event)",
+        "desc": "Callback function fired when the element is clicked by the mouse. @param {object} event targeting the element."
+      }
+    ]
+  }
+]

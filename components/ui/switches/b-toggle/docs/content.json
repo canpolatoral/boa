@@ -1,0 +1,116 @@
+[
+    {
+        "name": "BToggle",
+        "desc": "Toggle BOA Component",
+        "sample": "<BToggle label='Toggle' labelPosition:'left' />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name" : "defaultToggled",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "Determines whether the Toggle is initially turned on. Determines whether the Toggle is initially turned on. Determines whether the Toggle is initially turned on."
+            },
+            {
+                "name" : "disabled",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "Will disable the toggle if true."
+            },
+            {
+                "name" : "elementStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the style of element."
+            },
+            {
+                "name" : "iconStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the style of input."
+            },
+            {
+                "name" : "inputStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the style of input."
+            },
+            {
+                "name" : "label",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "The label of toggle component."
+            },
+            {
+                "name" : "labelStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the style of label."
+            },
+            {
+                "name" : "style",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the style."
+            },
+            {
+                "name" : "rippleStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the style of ripple."
+            },
+            {
+                "name" : "trackSwitchedStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the style of track switched."
+            },
+            {
+                "name" : "valueLink",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the value of link."
+            },
+            {
+                "name" : "iconProperties",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Indicates the icon properties."
+            },
+            {
+              "name" : "errorText",
+              "type" : "string",
+              "header" : "not required",
+              "desc" : "Indicates the error Text."
+          }
+        ]
+    },
+    {
+      "name": "Events",
+      "infoArray": [
+        {
+          "name": "setDisable",
+          "header": "function()",
+          "desc": "To set disable prop."
+        },
+        {
+          "name": "setToggled",
+          "header": "function()",
+          "desc": "To set toggle prop."
+        },
+        {
+          "name": "getToggled",
+          "header": "function()",
+          "desc": "To get toggle value."
+        },
+        {
+          "name": "setDisable",
+          "header": "function()",
+          "desc": "To set disable prop."
+        }
+      ]
+    }
+
+]

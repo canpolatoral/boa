@@ -1,0 +1,20 @@
+[
+    {
+        "variantName": "default",
+        "type": "BCheckBox",
+        "props": {
+            "label": "BOA Check Box",
+            "defaultChecked":false,
+            "checked": true,
+            "disabled": false,
+            "onCheck": null,
+            "style": {"maxWidth": 200},
+            "checkedIcon":null,
+            "iconStyle": null,
+            "inputStyle": null,
+            "labelStyle": null,
+            "uncheckedIcon": null,
+            "header":"Checkbox Header"
+        }
+    }
+]

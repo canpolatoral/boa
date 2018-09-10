@@ -1,0 +1,16 @@
+{
+    "name": "b-card",
+    "version": "2.1.4",
+    "description": "BOA Card layout component for responsive card layout. Inherits from Material Card component.",
+    "keywords": "card,panel,boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-card-header": "^2.1.0",
+        "b-grid-section": "^2.1.0",
+        "lodash": "^4.16.4",
+        "b-grid-row": "^2.1.0",
+        "b-button": "^2.1.0",
+        "@material-ui/icons": "^1.0.0-beta.36",
+        "b-form-manager": "^2.1.0"
+    }
+}

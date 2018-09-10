@@ -1,0 +1,14 @@
+[
+    {
+        "variantName": "default",
+        "type": "BBranchComponent",
+        "props": {
+            "isUnitsSelectable": true,
+            "mode":"horizontal",
+            "hintText":"Şube",
+            "labelText":"Şube",
+            "hintTextUnit":"Alt Şube",
+            "labelTextUnit":"Alt Şube"
+        }
+    }
+]

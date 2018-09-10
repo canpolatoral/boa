@@ -1,0 +1,10 @@
+{
+    "name": "b-loading",
+    "version": "2.1.2",
+    "description": "BOA Loading Component",
+    "keywords": "loading, boa",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-progress": "^2.1.0"
+    }
+}

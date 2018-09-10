@@ -1,0 +1,17 @@
+{
+    "name": "b-transaction-wizard-form",
+    "version": "2.1.6",
+    "description": "BOA Transaction Wizard Form. Base form type for card based layout forms.",
+    "keywords": "transaction, wizard, form,boa",
+    "dependencies": {
+        "lodash": "^4.17.5",
+        "b-component": "^2.1.0",
+        "b-tab-bar": "^2.1.0",
+        "b-base-form": "^2.1.0",
+        "b-card-section": "^2.1.0",
+        "b-scroll": "^2.1.0",
+        "b-stepper": "^2.1.0",
+        "b-criteria-panel": "^2.1.0",
+        "element-resize-detector": "^1.1.14"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "b-app-bar",
+    "version": "2.1.6",
+    "description": "BOA app bar component.",
+    "keywords": "app,bar,boa",
+    "dependencies": {
+        "b-icon": "^2.1.0",
+        "b-scroll": "^2.1.0",
+        "b-component": "^2.1.0",
+        "b-drawer": "^2.1.0",
+        "b-icon-button": "^2.1.0",
+        "b-tab-bar": "^2.1.0",
+        "b-main-menu": "^2.1.0",
+        "b-page-host": "^2.1.0",
+        "b-form-manager": "^2.1.0",
+        "b-input-search": "^2.1.0",
+        "b-favorite-menu": "^2.1.0",
+        "b-user-profile": "^2.1.0",
+        "b-avatar": "^2.1.0",
+        "b-button": "^2.1.0",
+        "b-menu-item": "^2.1.0",
+        "b-popover": "^2.1.0",
+        "b-divider": "^2.1.0",
+        "detect-browser": "^1.5.0",
+        "b-settings": "^2.1.0"
+    }
+}

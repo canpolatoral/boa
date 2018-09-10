@@ -1,0 +1,18 @@
+[
+    {
+        "name": "BBusinessComponent",
+        "desc": "BOA Business Component Base",
+        "sample": "<BBusinessComponent context={this.props.context} />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [            
+            {
+                "name" : "serviceCallLoader",
+                "type" : "propTypes.string",
+                "header" : "not required",
+                "desc" : "Defines if loader is LinearProgress or CircularProgress. Can be defined only as 'linear' or 'circular'"
+            }
+        ]
+    }
+]

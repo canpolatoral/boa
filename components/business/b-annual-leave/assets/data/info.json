@@ -1,0 +1,9 @@
+{
+    "name": "b-annual-leave",
+    "version": "2.1.0",
+    "description": "BOA app bar component.",
+    "keywords": "app,bar,boa",
+    "dependencies": {
+        "b-component": "^2.1.0"
+    }
+}

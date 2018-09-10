@@ -1,0 +1,143 @@
+[
+    {
+        "name": "BAppBar",
+        "desc": "App Bar BOA Component",
+        "sample": "<BAppBar 'showMenuIconButton': true, title: 'Kuveyt Türk', isSearchBarEnable: true, searchBarHintText: 'Ekran adı, kodu veya numarası ile ara', tabValue: '12',tabItems: [{text: 'Nakit Yatırma', value: '11'},{ text: 'Nakit Listeleme',value: '12'}]  />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [ 
+            {
+                "name" : "navigationMenuElement",
+                "type" : "element",
+                "header" : "not required",
+                "desc" : "The classname of the icon on the left of the app bar. If you are using a stylesheet for your icons, enter the class name for the icon to be used here."
+            }, 
+            {
+                "name" : "iconElementRight",
+                "type" : "element",
+                "header" : "not required",
+                "desc" : "Similiar to the navigationMenuElement prop except that this element is displayed on the right of the app bar."
+            }, 
+            {
+                "name" : "showMenuIconButton",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "Determines whether or not to display the Menu icon next to the title."
+            }, 
+            {
+                "name" : "title",
+                "type" : "node",
+                "header" : "not required",
+                "desc" : "The title to display on the app bar."
+            }, 
+            {
+                "name" : "zDepth",
+                "type" : "any",
+                "header" : "not required",
+                "desc" : "The zDepth of the component."
+            }, 
+            {
+                "name" : "tabItems",
+                "type" : "array",
+                "header" : "not required",
+                "desc" : "Tab item list for app bar."
+            }, 
+            {
+                "name" : "initialSelectedIndex",
+                "type" : "int",
+                "header" : "not required",
+                "desc" : "Initial Selected Index of Tab Item."
+            }, 
+            {
+                "name" : "leftContent",
+                "type" : "any",
+                "header" : "not required",
+                "desc" : "Left drawer content."
+            }, 
+            {
+                "name" : "rightContent",
+                "type" : "any",
+                "header" : "not required",
+                "desc" : "Right drawer content."
+            }, 
+            {
+                "name" : "isSearchBarEnable",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "If true, search bar in toolbar appers."
+            }, 
+            {
+                "name" : "searchDataSource",
+                "type" : "array",
+                "header" : "not required",
+                "desc" : "Datasource for search bar."
+            }, 
+            {
+                "name" : "leftDrawerWidth",
+                "type" : "number",
+                "header" : "not required",
+                "desc" : "Width of left drawer."
+            }, 
+            {
+                "name" : "rightDrawerWidth",
+                "type" : "number",
+                "header" : "not required",
+                "desc" : "Width of right drawer."
+            }, 
+            {
+                "name" : "profilePicture",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Profile picture for App Bar. (Base64)"
+            }, 
+            {
+                "name" : "searchBarHintText",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Hint Text for Searh Bar."
+            }, 
+            {
+                "name" : "tabValue",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "Hint Text for Searh Bar."
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [ 
+            {
+                "name" : "onLeftIconButtonTouchTap",
+                "header" : "function(event)",
+                "desc" : "Fired when left icon button touched"
+            },
+            {
+                "name" : "onRightIconButtonTouchTap",
+                "header" : "function(event)",
+                "desc" : "Fired when right icon button touched"
+            },
+            {
+                "name" : "onTitleTouchTap",
+                "header" : "function(event)",
+                "desc" : "Fired when title touched"
+            },
+            {
+                "name" : "onTabItemChanged",
+                "header" : "function(value, index, tab)",
+                "desc" : "Fired when tab clicked"
+            },
+            {
+                "name" : "onNewTabOpened",
+                "header" : "function(menuItem, data, showAsNewPage, menuItemSuffix)",
+                "desc" : "Fired when new tab opened"
+            },
+            {
+                "name" : "onMenuDataAcquired",
+                "header" : "function(menuItem, data, showAsNewPage, menuItemSuffix)",
+                "desc" : "Fired when new tab opened"
+            }
+        ]
+    }
+]

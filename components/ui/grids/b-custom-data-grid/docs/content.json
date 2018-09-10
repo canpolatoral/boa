@@ -1,0 +1,50 @@
+[
+    {
+      "name": "BCustomDataGrid",
+      "desc": "BOA Custom Data Grid",
+      "sample": "<BCustomDataGrid />"
+    },
+    {
+      "name": "Props",
+      "infoArray": [
+        {
+          "name": "dataSource",
+          "type": "any",
+          "header": "Required",
+          "desc": "."
+        },
+        {
+          "name": "columns",
+          "type": "any",
+          "header": "Required",
+          "desc": "."
+        },
+        {
+          "name": "buttonList",
+          "type": "any",
+          "header": "Required",
+          "desc": "."
+        }
+      ]
+    },
+    {
+      "name": "Methods",
+      "infoArray": [
+        {
+          "name": "getValue()",
+          "header": "method",
+          "desc": "Returns the selected item"
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "infoArray": [
+        {
+          "name": "onFooterClicked",
+          "header": "function(event)",
+          "desc": "Callback function fires when the item has been selected."
+        }
+      ]
+    }
+  ]

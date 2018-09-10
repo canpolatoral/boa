@@ -1,0 +1,121 @@
+[
+  {
+    "name": "BWorkgroupComponent",
+    "desc": "BOA BWorkgroup Component",
+    "sample": "<BWorkgroupComponent hintText='Your hint text' labelText='Your label text' />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "selectedWorkgroupId",
+        "type": "number",
+        "header": "Not Required",
+        "desc": "Determines the workgroup that is currently selected."
+      },     
+      {
+        "name": "showSelfWorkgroup",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "Default value is false"
+      },
+      {
+        "name": "isDepartmentAndServiceTogether",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "Default value is false"
+      },
+      {
+        "name": "showSelfWorkgroupWithChildList",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "Default value is false"
+      },
+      {
+        "name": "workgroupTypeList",
+        "type": "arrayOf(string)",
+        "header": "Not Required",
+        "desc": "Filter the workgroups by workgroup types."
+      },
+      {
+        "name": "workgroupFilterList",
+        "type": "PropTypes.arrayOf(PropTypes.number)",
+        "header": "Not Required",
+        "desc": "."
+      },
+      {
+        "name": "workWithBranchComponent",
+        "type": "bool",
+        "header": "Not Required",
+        "desc": "Default value is false"
+      },
+      {
+        "name": "workgroupListManual",
+        "type": "arrayOf(object)",
+        "header": "Not Required",
+        "desc": "."
+      },
+      {
+        "name": "isAllOptionIncluded",
+        "type": "bool",
+        "header": "Not Required",
+        "desc": "If true an item will push to the first row of the parameter list. Default is value is false."
+      },
+      {
+        "name": "allOptionDescription",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "If isAllOptionIncluded is true. Default value is 'Hepsi'"
+      },
+      {
+        "name": "hintText",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "The hint content to display."
+      },
+      {
+        "name": "labelText",
+        "type": "string",
+        "header": "Not Required",
+        "desc": "The content of the floating label."
+      },
+      {
+        "name": "disabled",
+        "type": "bool",
+        "header": "Not Required",
+        "desc": "If true, the workgroup user component will be disabled. Default valuse is false"
+      },
+      {
+        "name": "visible",
+        "type": "propTypes.bool",
+        "header": "Not Required",
+        "desc": "If true, the workgroup will be visible. Default valuse is true."
+      }
+    ]
+  },
+  {
+    "name": "Methods",
+    "infoArray": [
+      {
+        "name": "getValue()",
+        "header": "method",
+        "desc": "Returns the selected workgroupr"
+      },
+      {
+        "name": "getValues()",
+        "header": "method",
+        "desc": "Returns the list of workgroups"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onWorkgroupSelect",
+        "header": "function(event)",
+        "desc": "Callback function fires when the fec has been selected."
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+{
+    "id": 184,
+    "name": "Deneme",
+    "iconPath": "",
+    "sortId": 3,
+    "isHidden": false,
+    "isLeaf": true,
+    "description": "BOA One Deneme",
+    "assemblyName": "BOA.UI.CoreBanking.Teller.DepositWithdrawalList",
+    "className": "BOA.UI.CoreBanking.Teller.DepositWithdrawalList",
+    "channelId": 1,
+    "uiType": 1,
+    "resourceActionList": [
+        {
+            "resourceId": 184,
+            "actionId": 3,
+            "name": "Kaydet",
+            "commandName": "Save",
+            "description": "Kaydet",
+            "iconPath": "ContentSave",
+            "sortId": 1
+        }
+    ],
+    "openedBy": 0,
+    "isWorkflow": false,
+    "isRevokable": false,
+    "resourceCode": "TMBRNKLIST",
+    "moduleCode": "Gişe İşlemleri",
+    "isNew": false
+}

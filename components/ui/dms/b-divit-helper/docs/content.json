@@ -1,0 +1,36 @@
+[
+  {
+    "name": "BDivitHelper",
+    "desc": "Divit Helper",
+    "sample": "BDivitHelper.showDivitDialog(this.self.props.context, '286', '9999999', 'Write', this.handleClose.bind(this))"
+  },
+  {
+    "name": "Props",
+    "infoArray": []
+  },
+  {
+    "name": "Methods",
+    "infoArray": [
+      {
+        "name": "showDivitDialog",
+        "header": "showDivitDialog(context, divitId, instanceId, editorMode, callBack)",
+        "desc": "Show the divit dialog."
+      },
+      {
+        "name": "showPersonDivitDialog",
+        "header": "showPersonDivitDialog(context, personId, customerId, editorMode, onClose)",
+        "desc": "Show the person divit dialog."
+      },
+      {
+        "name": "saveFile",
+        "header": "saveFile(base64Content, filename, contentType)",
+        "desc": "Save files to client."
+      },
+      {
+        "name": "base64ToBlob",
+        "header": "base64ToBlob(base64Content, contentType, sliceSize)",
+        "desc": "Converts Base64 string content to blob data."
+      }
+    ]
+  }
+]

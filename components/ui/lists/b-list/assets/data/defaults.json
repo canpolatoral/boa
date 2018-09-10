@@ -1,0 +1,22 @@
+[
+    {
+        "variantName": "default",
+        "type": "BList",
+        "props": {
+            "items": [
+                {
+                    "primaryText": "Genel",
+                    "secondaryText": "Genel ayarlar Bölümü "
+                },
+                {
+                    "primaryText": "Namaz Vakti",
+                    "selected": true
+                },
+                {
+                    "primaryText": "Tema",
+                    "secondaryText":"Tema ayarları"
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,19 @@
+[
+    {
+        "variantName": "default",
+        "type": "BInputNumeric",
+        "props": {
+            "defaultValue": "",
+            "mask": null,
+            "format": null,
+            "onFocus": null,
+            "onBlur": null,
+            "onChange": null,
+            "hintText": "Hint Text",
+            "errorText": "Field is Required",
+            "floatingLabelText": "Floating Label Text",
+            "forceFormatWhenEdit": false,
+            "direction": "ltr"
+        }
+    }
+]

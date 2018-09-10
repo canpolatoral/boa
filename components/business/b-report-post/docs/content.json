@@ -1,0 +1,7 @@
+[
+    {
+        "name": "BReportPost",
+        "desc": "Rapor Postacisi",
+        "sample": "<BReportPost context={this.props.context} />"
+    }
+]

@@ -1,0 +1,19 @@
+{
+    "name": "b-browse-form",
+    "version": "2.1.24",
+    "description": "BOA Browse Form. Lists setted any data with grid specifications.",
+    "keywords": "browse,list,form,boa",
+    "dependencies": {
+        "lodash": "^4.17.5",
+        "b-component": "^2.1.0",
+        "b-base-form": "^2.1.0",
+        "b-card": "^2.1.0",
+        "b-criteria-panel": "^2.1.0",
+        "b-data-grid": "^2.1.0",
+        "b-scroll": "^2.1.0",
+        "element-resize-detector": "^1.1.9",
+        "b-data-grid-dx": "^2.1.0",
+        "b-virtualized-list": "^2.1.0",
+        "react-virtualized": "^9.20.1"
+    }
+}

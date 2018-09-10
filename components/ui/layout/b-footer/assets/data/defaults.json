@@ -1,0 +1,111 @@
+[
+  {
+    "variantName": "default",
+    "type": "BFooter",
+    "props": {
+      "menuItemList": [
+        {
+          "title": "Company",
+          "itemList": [
+            {
+              "subTitle": "About API Market",
+              "link": "#About API Market"
+            },
+            {
+              "subTitle": "Kuveyt Türk",
+              "link": "#Kuveyt Türk"
+            },
+            {
+              "subTitle": "Kuwait Finance House",
+              "link": "#Kuwait Finance House"
+            }
+          ]
+        },
+        {
+          "title": "Products",
+          "itemList": [
+            {
+              "subTitle": "Info",
+              "link": "#Info"
+            },
+            {
+              "subTitle": "Accounts",
+              "link": "#Accounts"
+            },
+            {
+              "subTitle": "Credit Cards",
+              "link": "#Credit Cards"
+            },
+            {
+              "subTitle": "Loans",
+              "link": "#Loans"
+            },
+            {
+              "subTitle": "Payments",
+              "link": "#Payments"
+            },
+            {
+              "subTitle": "Money Transfer",
+              "link": "#Money Transfer"
+            }
+          ]
+        },
+        {
+          "title": "Documentation",
+          "itemList": [
+            {
+              "subTitle": "Getting Started",
+              "link": "#Getting Started"
+            },
+            {
+              "subTitle": "API Calls",
+              "link": "#API Calls"
+            },
+            {
+              "subTitle": "Authorization",
+              "link": "#Authorization"
+            },
+            {
+              "subTitle": "Using Sandbox",
+              "link": "#Using Sandbox"
+            },
+            {
+              "subTitle": "Errors",
+              "link": "#Errors"
+            },
+            {
+              "subTitle": "Going Live",
+              "link": "#Going Live"
+            }
+          ]
+        },
+        {
+          "title": "Community",
+          "itemList": [
+            {
+              "subTitle": "Blog",
+              "link": "#Blog"
+            },
+            {
+              "subTitle": "Forum",
+              "link": "#Forum"
+            }
+          ]
+        },
+        {
+          "title": "Support",
+          "itemList": [
+            {
+              "subTitle": "FAQ",
+              "link": "#FAQ"
+            },
+            {
+              "subTitle": "Contact Us",
+              "link": "#Contact Us"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

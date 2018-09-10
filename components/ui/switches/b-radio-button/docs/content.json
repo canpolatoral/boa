@@ -1,0 +1,84 @@
+[
+    {
+        "name": "BRadioButton",
+        "desc": "Radio Button BOA Component",
+        "sample": "<BRadioButton label='Boa RadioButton' disabled=false style= {'marginBottom': 16} value 'bradiobutton' />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name" : "label",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "label text"
+            },
+             {
+                "name" : "checkedIcon",
+                "type" : "element",
+                "header" : "not required",
+                "desc" : "The icon element to show when the radio button is checked."
+            },
+            {
+                "name" : "disabled",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "If true, the radio button is disabled."
+            },
+            {
+                "name" : "iconStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "inputStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "labelStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "style",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "uncheckedIcon",
+                "type" : "element",
+                "header" : "not required",
+                "desc" : "The icon element to show when the radio button is unchecked."
+            },
+            {
+                "name" : "value",
+                "type" : "any",
+                "header" : "not required",
+                "desc" : "The value of the radio button."
+            },
+            {
+                "name" : "content",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "The content of the radio button."
+            },
+            {
+              "name": "errorText",
+              "type": "string",
+              "header": "not required",
+              "desc": "Indicates the error Text."
+            },
+            {
+              "name": "errorTextVisible",
+              "type": "bool",
+              "header": "not required",
+              "desc": "Indicates the error Text Visible"
+            }
+        ]
+    }
+]

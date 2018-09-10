@@ -1,0 +1,78 @@
+[
+    {
+        "name": "BToggleIcon",
+        "desc": "Boa Toggle Icon BOA Component",
+        "sample": "<BToggleIcon label='Toggle' labelPosition:'left' iconPath='/image.png' title='Accounts'/>"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [
+            {
+                "name" : "defaultToggled",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "Determines whether the Toggle is initially turned on. Determines whether the Toggle is initially turned on. Determines whether the Toggle is initially turned on."
+            },
+            {
+                "name" : "disabled",
+                "type" : "bool",
+                "header" : "not required",
+                "desc" : "Will disable the toggle if true."
+            },
+            {
+                "name" : "iconStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "inputStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "labelStyle",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "style",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the icon element."
+            },
+            {
+                "name" : "uncheckedIcon",
+                "type" : "element",
+                "header" : "not required",
+                "desc" : "The icon element to show when the radio button is unchecked."
+            },
+            {
+                "name" : "value",
+                "type" : "any",
+                "header" : "not required",
+                "desc" : "The value of the radio button."
+            },
+            {
+                "name" : "label",
+                "type" : "node",
+                "header" : "not required",
+                "desc" : "The value of toggle label."
+            },
+            {
+                "name" : "title",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The value of title"
+            },
+            {
+                "name" : "iconPath",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The path of icon"
+            }
+        ]
+    }
+]

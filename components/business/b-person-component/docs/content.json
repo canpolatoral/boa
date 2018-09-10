@@ -1,0 +1,7 @@
+[
+    {
+        "name": "BPersonComponent",
+        "desc": "Person BOA Component",
+        "sample": " <BPersonComponent context={this.props.context} />"
+    }
+]

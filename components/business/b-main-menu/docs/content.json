@@ -1,0 +1,33 @@
+[
+    {
+        "name": "BMainMenu",
+        "desc": "Main Menu BOA Component",
+        "sample": " <BMainMenu context={this.props.context} width={270} />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [            
+            {
+                "name" : "width",
+                "type" : "propTypes.stringOrNumber",
+                "header" : "Required",
+                "desc" : "The width of the menu."
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [ 
+            {
+                "name" : "onMenuItemsSelected",
+                "header" : "function(event)",
+                "desc" : "Callback function fired when the menu item is selected"
+            },
+            {
+              "name" : "onMenuDataAcquired",
+              "header" : "function(event)",
+              "desc" : "Callback function fired when the menu data is acquired"
+          }
+        ]
+    }
+]

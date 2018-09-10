@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "BCreditCardComponent",
+        "props": {
+         "floatingLabelText": "Kredi Kartı No Float Label",
+         "hintText": "Kredi Kartı No Hint Text"
+        }
+    }
+]

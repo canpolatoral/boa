@@ -1,0 +1,11 @@
+[
+    {
+        "variantName": "default",
+        "type": "BInformationText",
+        "props": {
+            "labelText": "Label text",
+            "labelWidth": 100,
+            "infoText": "Info text"
+        }
+    }
+]

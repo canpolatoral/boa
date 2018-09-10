@@ -1,0 +1,85 @@
+[
+    {
+        "name": "BAvatar",
+        "desc": "Avatar BOA Component",
+        "sample": "<BAvatar icon={<FontIcon className='muidocs-icon-communication-voicemail' />} color={blue300} backgroundColor={indigo900} size={30} style={style} />"
+    },
+    {
+        "name": "Props",
+        "infoArray" : [ 
+            {
+                "name" : "backgroundColor",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The backgroundColor of the avatar. Does not apply to image avatars."
+            }, 
+            {
+                "name" : "children",
+                "type" : "node",
+                "header" : "not required",
+                "desc" : "Can be used, for instance, to render a letter inside the avatar."
+            }, 
+            {
+                "name" : "className",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The css class name of the root div or img element."
+            }, 
+            {
+                "name" : "color",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "The icon or letter's color."
+            }, 
+            {
+                "name" : "icon",
+                "type" : "element",
+                "header" : "required",
+                "desc" : "This is the SvgIcon or FontIcon to be used inside the avatar."
+            },  
+            {
+                "name" : "size",
+                "type" : "number",
+                "header" : "not required",
+                "desc" : "This is the size of the avatar in pixels."
+            },  
+            {
+                "name" : "src",
+                "type" : "string",
+                "header" : "not required",
+                "desc" : "If passed in, this component will render an img element. Otherwise, a div will be rendered."
+            },  
+            {
+                "name" : "style",
+                "type" : "object",
+                "header" : "not required",
+                "desc" : "Override the inline-styles of the root element."
+            }
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [ 
+            {
+                "name" : "onFocus",
+                "header" : "function(event)",
+                "desc" : "Fired when user focuses input"
+            }, 
+            {
+                "name" : "onBlur",
+                "header" : "function(event)",
+                "desc" : "Fired when input leaves the focus"
+            }, 
+            {
+                "name" : "onChange",
+                "header" : "function(event)",
+                "desc" : "Fired when input is changed"
+            },
+            {
+                "name" : "onKeyDown",
+                "header" : "function(event)",
+                "desc" : "Fired when key down"
+            }
+        ]
+    }
+]

@@ -1,0 +1,15 @@
+{
+    "name": "b-communication-summary",
+    "version": "2.1.1",
+    "description": "BOA Communication Summary",
+    "keywords": "Communication, Summary, write",
+    "dependencies": {
+        "b-component": "^2.1.0",
+        "b-resizable": "^2.1.0",
+        "b-label": "^2.1.0",
+        "b-proxy": "^2.1.0",
+        "b-input": "^2.1.0",
+        "b-check-box": "^2.1.0",
+        "b-localization": "2.1.0"
+    }
+}

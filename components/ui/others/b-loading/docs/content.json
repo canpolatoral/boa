@@ -1,0 +1,7 @@
+[
+    {
+        "name": "BLoading",
+        "desc": "shows Loading icon",
+        "sample": "<BLoading ref={ref => (this.root = ref)} context={context}></BLoading>"
+    }
+]

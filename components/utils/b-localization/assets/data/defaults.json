@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "Localization",
+        "props": {
+          "createLocalization(languageId)": "constructor method. gets languageId to set locale settings",
+          "DateTimeFormat(date: Date, format)": "return formatted datetime string which you give datetime format"
+        }
+    }
+]

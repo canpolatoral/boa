@@ -1,0 +1,82 @@
+[
+  {
+    "name": "BCard",
+    "desc": "It provides alignment for own children like grid, based on rows and columns.",
+    "sample": "<BCard context={context} expandable={expandable} expanded={expanded}>{children}</BCard>"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "padding",
+        "type": "number",
+        "header": "not required",
+        "desc": "Padding of card content."
+      },
+      {
+        "name": "column",
+        "type": "number",
+        "header": "not required",
+        "desc": "Column index in BCardSection."
+      },
+      {
+        "name": "children",
+        "type": "node",
+        "header": "not required",
+        "desc": "Can be used to render elements inside the Card."
+      },
+      {
+        "name": "containerStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the container element."
+      },
+      {
+        "name": "expandable",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, this card component is expandable. Can be set on any child of the `Card` component."
+      },
+      {
+        "name": "expanded",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Whether this card is expanded. If `true` or `false` the component is controlled. if `null` the component is uncontrolled."
+      },
+      {
+        "name": "initiallyExpanded",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Whether this card is initially expanded."
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the root element."
+      },
+      {
+        "name": "disableGridBehaviour",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Default behaviour on card, children are align in grid layout. This prop provides prevent it. Default False."
+      },
+      {
+        "name": "contentAlignMode",
+        "type": "instanceOf(BComponent.ContentAlignMode)",
+        "header": "not required",
+        "desc": "Alignment mode of cards; it provides multi-column, single-column and mobile modes for cards. Default ContentAlignMode.MULTI."
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onExpandChange",
+        "header": "function(event)",
+        "desc": "Callback function fired when the `expandable` state of the card has changed. @param {boolean} newExpandedState Represents the new `expanded` state of the card."
+      }
+    ]
+  }
+]

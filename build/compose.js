@@ -5,15 +5,16 @@ import webpackCompiler from './webpack/build';
 import fsp from 'fs-promise';
 import mdDocCompiler from './docs/mddoc';
 import packageGenerator from './package/build';
-import packageFrameworkGenerator from './package/framework/build';
 import themeBuilder from './package/themes/build';
 
 var exec = require('./lib/exec').default.exec;
 var cp = require('child_process');
 var fs = require('fs'), path = require('path');
-const componentsRoot = path.resolve('components');
-const frameworkPath = path.resolve('framework');
-const themesRoot = path.join(componentsRoot, 'b-theme');
+
+const componentsRoot = path.resolve('src', 'components');
+const baseRoot = path.resolve('src', 'base', 'b-component');
+const themesRoot = path.resolve('src', 'base', 'b-theme');
+
 import yargs from 'yargs';
 
 /* eslint-disable no-console */
@@ -100,6 +101,7 @@ function startPackaging(componentRoot, compilations, errors) {
 }
 
 function startBasePackaging(baseRoot, compilations) {
+  console.log(baseRoot);
   var pkgRoot = path.join(baseRoot, 'package');
   var basecomponentname = 'b-component';
 
@@ -116,34 +118,6 @@ function startBasePackaging(baseRoot, compilations) {
       .then(() => console.log(getTime() + ' - Built: npm module '.cyan + basecomponentname.green + ' ' + infoVersion.yellow +
         ' [index.js ' + (fileSize(packageIndexJsPath) / 1024).toFixed(1) + 'KB]'))
       .then(()=> publishLocal(pkgRoot, getLocalPublishFolder(basecomponentname)))
-      .then(()=> publishNPM(pkgRoot));
-  });
-}
-
-function startFrameworkPackaging(compilations) {
-  var pkgRoot = path.join(frameworkPath, 'package');
-  var distpath = path.join(frameworkPath, 'package', 'dist', 'js');
-  var frameworkentry = path.join(frameworkPath, 'index.js');
-  // var configpath = path.join('./', 'webpack.framework.js');
-  var frameworkname = 'b-framework';
-
-  var infopath = path.resolve(path.join('build', 'package', 'framework', 'info.json'));
-  changeVersion(infopath);
-  var infoJson = require(infopath);
-  // var infoName = infoJson && infoJson.name ? infoJson.name : '<undefined>';
-  var infoVersion = infoJson && infoJson.version ? ('v' + infoJson.version) : '<version undefined>';
-  var packageIndexJsPath = path.join(pkgRoot, 'index.js');
-
-  compilations.push(() => {
-    return exec(`rimraf ${pkgRoot}`)
-      .then(() => webpackCompiler(frameworkname, frameworkentry, pkgRoot))
-      .then(() => webpackCompiler(frameworkname, frameworkentry, distpath))
-      .then(() => fsp.rename(path.join(distpath, 'bundle.js'), path.join(distpath, frameworkname + '.js')))
-      .then(() => fsp.rename(path.join(pkgRoot, 'bundle.js'), path.join(pkgRoot, 'index.js')))
-      .then(() => packageFrameworkGenerator(frameworkPath))
-      .then(() => console.log(getTime() + ' - Built: npm module '.cyan + frameworkname.green + ' ' + infoVersion.yellow +
-        ' [index.js ' + (fileSize(packageIndexJsPath) / 1024).toFixed(1) + 'KB]'))
-      .then(()=> publishLocal(pkgRoot, getLocalPublishFolder(frameworkname)))
       .then(()=> publishNPM(pkgRoot));
   });
 }
@@ -255,9 +229,6 @@ export default function Build() {
   else if (cmpOptions.base) {
     buildBaseComponent(compilations, errors);
   }
-  else if (cmpOptions.framework) {
-    buildFramework(compilations, errors);
-  }
   else if (cmpOptions.theme) {
     buildTheme(compilations);
   }
@@ -316,17 +287,11 @@ function buildTheme(compilations) {
 }
 
 function buildBaseComponent(compilations, errors) {
-  var baseDirectory = path.join(componentsRoot, 'b-component');
-  startBasePackaging(baseDirectory, compilations, errors);
-}
-
-function buildFramework(compilations, errors) {
-  startFrameworkPackaging(compilations, errors);
+  startBasePackaging(baseRoot, compilations, errors);
 }
 
 function buildAll(compilations, errors) {
   buildBaseComponent(compilations, errors);
-  buildFramework(compilations, errors);
   buildTheme(compilations);
   buildAllComponents(compilations, errors);
 }

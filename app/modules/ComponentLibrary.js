@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Row, Button, Navbar } from 'react-bootstrap';
 import ComponentDesk from './ComponentDesk';
-import { getTheme } from '../../components/b-theme';
+import { getTheme } from '../../src/base/b-theme';
 import Mousetrap from 'mousetrap';
-import { BAppProvider } from '../../components/b-component';
+import { BAppProvider } from '../../src/base/b-component';
 
 export default class ComponentLibrary extends React.Component {
   constructor(props, context) {

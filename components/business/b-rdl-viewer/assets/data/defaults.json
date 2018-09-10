@@ -1,9 +1,0 @@
-[
-   {
-      "variantName":"default",
-      "type":"BRDLViewer",
-      "props":{
-      "isOpenFromDialog": false
-      }
-   }
-]

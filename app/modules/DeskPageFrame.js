@@ -1,12 +1,15 @@
 import * as React from 'react';
-import Components from '../../components/catalog';
-import Events from '../../components/b-component/events';
+import Components from '../../src/components/catalog';
+import Events from '../../src/base/b-component/events';
 import _ from 'lodash';
-import { BLocalization } from '../../components/utils/b-localization';
 import PropTypes from 'prop-types';
-import { setFrameworkBaseMessage } from '../../components/b-component';
+
+import { BLocalization } from '../../src/components/utils/b-localization';
+import { BFormManager } from '../../src/components/utils/b-form-manager';
+
+import { configure } from '../../src/base/b-component';
+
 var applicationContext = require('../data/applicationContext.json');
-// var messagingContext = require('../data/messagingData.js');
 var messagingContext = {};
 
 export default class DeskPageFrame extends React.Component {
@@ -15,7 +18,9 @@ export default class DeskPageFrame extends React.Component {
     this._updateDeviceSize = this._updateDeviceSize.bind(this);
     this.getMessage = this.getMessage.bind(this);
     this.state = { fullScreen: props.fullScreen, languageId: props.languageId, dynamicReload: false, dynamicContent: null };
-    setFrameworkBaseMessage(this.getMessage);
+
+
+    configure(BLocalization, null, BFormManager);
   }
 
   getMessage(groupName, propertyName) {

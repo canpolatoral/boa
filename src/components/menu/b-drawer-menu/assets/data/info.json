@@ -1,0 +1,12 @@
+{
+    "name": "b-drawer-menu",
+    "version": "2.1.2",
+    "description": "Boa drawer menu bileşeni.",
+    "keywords": "drawer,menu,boa",
+    "dependencies": {
+        "lodash": "^4.16.4",
+        "b-component": "^2.1.0",
+        "b-menu": "^2.1.0",
+        "b-divider": "^2.1.0"
+    }
+}

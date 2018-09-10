@@ -1,9 +1,0 @@
-[
-    {
-        "variantName": "default",
-        "type": "BBlackListComponent",
-        "props": {
-            "accountNumber": 444
-        }
-    }
-]

@@ -1,9 +1,0 @@
-[
-    {
-          "variantName": "default",
-          "type": "BSurveyComponent",
-           "props": {
-             "hintText" : "B Survey Component"
-        }
-    }
-]

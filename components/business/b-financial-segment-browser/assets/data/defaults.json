@@ -1,9 +1,0 @@
-[
-    {
-        "variantName": "default",
-        "type": "BFinancialSegmentBrowser",
-        "props": {
-            "hintText": "Financial Segment Browser"
-        }
-    }
-]

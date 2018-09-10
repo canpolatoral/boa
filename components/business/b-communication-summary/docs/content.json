@@ -1,7 +1,0 @@
-[ 
-    {
-      "name": "BCommunicationSummary",
-      "desc": "Creates and edits action buttons.",
-      "sample": "<BCommunicationSummary context={context} resourceInfo={resourceInfo}>{Content}</BCommunicationSummary>"
-    }    
-  ]

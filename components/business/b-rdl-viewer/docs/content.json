@@ -1,7 +1,0 @@
-[
-    {
-        "name": "BRDLViewer",
-        "desc": "Show rdl content",
-        "sample": "<BRDLViewer context={context} reportPath={reportPath} reportParameters={reportParameters} reportDatasources={reportDatasources} />"
-    }
-]

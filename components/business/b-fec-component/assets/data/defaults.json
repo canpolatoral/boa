@@ -1,9 +1,0 @@
-[
-    {
-        "variantName": "default",
-        "type": "BFECComponent",
-        "props": {  
-            "onFECSelect": null 
-        }
-    }
-]

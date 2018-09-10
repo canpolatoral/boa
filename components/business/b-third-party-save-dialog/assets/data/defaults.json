@@ -1,9 +1,0 @@
-[
-    {
-        "variantName": "default",
-        "type": "BThirdPartySaveDialog",
-        "props": {
-            "onCloseDialog": null
-        }
-    }
-]

@@ -1,9 +1,0 @@
-{
-    "name": "b-announcement-component",
-    "version": "2.0.5",
-    "description": "BOA Announcement Component",
-    "keywords": "announcement, business, boa",
-    "dependencies": {
-        "b-business-component": "^2.0.0"
-    }
-}

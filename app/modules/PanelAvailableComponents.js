@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import PanelAvailableComponentItem from './PanelAvailableComponentItem';
-import Components from '../../components/catalog';
+import Components from '../../src/components/catalog';
 import * as TreeHelper from '../helpers/tree/tree';
 import _ from 'lodash';
 

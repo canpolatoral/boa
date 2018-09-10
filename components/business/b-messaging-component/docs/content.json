@@ -1,7 +1,0 @@
-[
-  {
-    "name": "BMessagingComponent",
-    "desc": "BOA Messaging Component",
-    "sample": " <BMessagingComponent context={this.state.context} />"
-  }
-]

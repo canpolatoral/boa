@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import PanelAvailableComponents from './PanelAvailableComponents';
-import { BAutoComplete } from '../../components/ui/inputs/b-auto-complete';
-import { getTheme } from '../../components/b-theme';
+import { BAutoComplete } from '../../src/components/input/b-auto-complete';
+import { getTheme } from '../../src/base/b-theme';
 import DeskPageFrame from './DeskPageFrame';
 var context = [];
 export default class ComponentDesk extends React.Component {

@@ -1,0 +1,15 @@
+{
+    "name": "b-calendar-picker",
+    "version": "2.1.2",
+    "description": "Boa calendar picker component.",
+    "keywords": "calendar,picker,boa",
+    "dependencies": {
+        "react": "^15.0.0",
+        "react-dom": ">=0.14.0",
+        "keycode": "^2.1.7",
+        "warning": "^3.0.0",
+        "b-component": "^2.1.0",
+        "b-input-action": "^2.1.0",
+        "b-button": "^2.1.0"
+    }
+}

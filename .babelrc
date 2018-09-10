@@ -13,788 +13,513 @@
           "expose": "b-framework"
         },
         {
-          "src": "./components/b-component",
+          "src": "./src/base/b-component",
           "expose": "b-component"
         },
         {
-          "src": "./components/b-theme",
+          "src": "./src/base/b-theme",
           "expose": "b-theme"
         },
         {
-          "src": "./components/business/b-access-point-browser",
-          "expose": "b-access-point-browser"
-        },
-        {
-          "src": "./components/business/b-account-component",
-          "expose": "b-account-component"
-        },
-        {
-          "src": "./components/business/b-account-note-dialog",
-          "expose": "b-account-note-dialog"
-        },
-        {
-          "src": "./components/business/b-action-manager",
+          "src": "./src/components/form/b-action-manager",
           "expose": "b-action-manager"
         },
         {
-          "src": "./components/business/b-survey-component",
-          "expose": "b-survey-component"
-        },
-        {
-          "src": "./components/business/b-transaction-component",
-          "expose": "b-transaction-component"
-        },
-        {
-          "src": "./components/business/b-action-manager-info",
+          "src": "./src/components/form/b-action-manager-info",
           "expose": "b-action-manager-info"
         },
+
         {
-          "src": "./components/business/b-communication-summary",
-          "expose": "b-communication-summary"
-        },
-        {
-          "src": "./components/business/b-report-post",
-          "expose": "b-report-post"
-        },
-        {
-          "src": "./components/business/b-annual-leave",
-          "expose": "b-annual-leave"
-        },
-        {
-          "src": "./components/business/b-agreement-viewer",
-          "expose": "b-agreement-viewer"
-        },
-        {
-          "src": "./components/business/b-bank-component",
-          "expose": "b-bank-component"
-        },
-        {
-          "src": "./components/business/b-black-list-component",
-          "expose": "b-black-list-component"
-        },
-        {
-          "src": "./components/business/b-bpm-action-manager",
-          "expose": "b-bpm-action-manager"
-        },
-        {
-          "src": "./components/business/b-branch-component",
-          "expose": "b-branch-component"
-        },
-        {
-          "src": "./components/business/b-prayer-component",
-          "expose": "b-prayer-component"
-        },
-        {
-          "src": "./components/business/b-business-component",
-          "expose": "b-business-component"
-        },
-        {
-          "src": "./components/business/b-business-datetime-component",
-          "expose": "b-business-datetime-component"
-        },
-        {
-          "src": "./components/business/b-calendar-component",
-          "expose": "b-calendar-component"
-        },
-        {
-          "src": "./components/business/b-announcement-component",
-          "expose": "b-announcement-component"
-        },
-        {
-          "src": "./components/business/b-channel-component",
-          "expose": "b-channel-component"
-        },
-        {
-          "src": "./components/business/b-commission-component",
-          "expose": "b-commission-component"
-        },
-        {
-          "src": "./components/business/b-credit-card-component",
-          "expose": "b-credit-card-component"
-        },
-        {
-          "src": "./components/business/b-customer-note-dialog",
-          "expose": "b-customer-note-dialog"
-        },
-        {
-          "src": "./components/business/b-divit-component",
-          "expose": "b-divit-component"
-        },
-        {
-          "src": "./components/business/b-favorite-menu",
-          "expose": "b-favorite-menu"
-        },
-        {
-          "src": "./components/business/b-fec-component",
-          "expose": "b-fec-component"
-        },
-        {
-          "src": "./components/business/b-financial-segment-browser",
-          "expose": "b-financial-segment-browser"
-        },
-        {
-          "src": "./components/business/b-flow-state-component",
-          "expose": "b-flow-state-component"
-        },
-        {
-          "src": "./components/business/b-education-component",
-          "expose": "b-education-component"
-        },
-        {
-          "src": "./components/business/b-frame",
-          "expose": "b-frame"
-        },
-        {
-          "src": "./components/business/b-iban-component",
-          "expose": "b-iban-component"
-        },
-        {
-          "src": "./components/business/b-main-menu",
-          "expose": "b-main-menu"
-        },
-        {
-          "src": "./components/business/b-mernis-component",
-          "expose": "b-mernis-component"
-        },
-        {
-          "src": "./components/business/b-messaging-component",
-          "expose": "b-messaging-component"
-        },
-        {
-          "src": "./components/business/b-money",
-          "expose": "b-money"
-        },
-        {
-          "src": "./components/business/b-parameter-component",
-          "expose": "b-parameter-component"
-        },
-        {
-          "src": "./components/business/b-person-component",
-          "expose": "b-person-component"
-        },
-        {
-          "src": "./components/business/b-product-browser-component",
-          "expose": "b-product-browser-component"
-        },
-        {
-          "src": "./components/business/b-goods-service-browser-component",
-          "expose": "b-goods-service-browser-component"
-        },
-        {
-          "src": "./components/business/b-rdl-dialog-viewer",
-          "expose": "b-rdl-dialog-viewer"
-        },
-        {
-          "src": "./components/business/b-rdl-viewer",
-          "expose": "b-rdl-viewer"
-        },
-        {
-          "src": "./components/business/b-resource-browser",
-          "expose": "b-resource-browser"
-        },
-        {
-          "src": "./components/business/b-settings",
-          "expose": "b-settings"
-        },
-        {
-          "src": "./components/business/b-stored-procedure-viewer",
-          "expose": "b-stored-procedure-viewer"
-        },
-        {
-          "src": "./components/business/b-swift-component",
-          "expose": "b-swift-component"
-        },
-        {
-          "src": "./components/business/b-third-party-component",
-          "expose": "b-third-party-component"
-        },
-        {
-          "src": "./components/business/b-third-party-relation-persons-component",
-          "expose": "b-third-party-relation-persons-component"
-        },
-        {
-          "src": "./components/business/b-third-party-save-dialog",
-          "expose": "b-third-party-save-dialog"
-        },
-        {
-          "src": "./components/business/b-user-component",
-          "expose": "b-user-component"
-        },
-        {
-          "src": "./components/business/b-workgroup-component",
-          "expose": "b-workgroup-component"
-        },
-        {
-          "src": "./components/business/b-workgroup-user-component",
-          "expose": "b-workgroup-user-component"
-        },
-        {
-          "src": "./components/business/b-registry-intellisense-editor",
-          "expose": "b-registry-intellisense-editor"
-        },
-        {
-          "src": "./components/business/b-corporate-customer-list",
-          "expose": "b-corporate-customer-list"
-        },
-        {
-          "src": "./components/dynamic/b-designer",
-          "expose": "b-designer"
-        },
-        {
-          "src": "./components/dynamic/b-drag-drop",
-          "expose": "b-drag-drop"
-        },
-        {
-          "src": "./components/dynamic/b-dynamic",
-          "expose": "b-dynamic"
-        },
-        {
-          "src": "./components/dynamic/b-dynamic-browse",
-          "expose": "b-dynamic-browse"
-        },
-        {
-          "src": "./components/dynamic/b-dynamic-components",
-          "expose": "b-dynamic-components"
-        },
-        {
-          "src": "./components/dynamic/b-dynamic-open-resource-designer",
-          "expose": "b-dynamic-open-resource-designer"
-        },
-        {
-          "src": "./components/dynamic/b-dynamic-transaction",
-          "expose": "b-dynamic-transaction"
-        },
-        {
-          "src": "./components/test-viewers/generic-test-viewer",
+          "src": "./src/components/test-viewers/generic-test-viewer",
           "expose": "generic-test-viewer"
         },
         {
-          "src": "./components/ui/avatar/b-avatar",
+          "src": "./src/components/avatar/b-avatar",
           "expose": "b-avatar"
         },
         {
-          "src": "./components/ui/bpm/b-authorized-user-dialog",
+          "src": "./src/components/bpm/b-authorized-user-dialog",
           "expose": "b-authorized-user-dialog"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-action-reason",
+          "src": "./src/components/bpm/b-bpm-action-reason",
           "expose": "b-bpm-action-reason"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-action-reason-list",
+          "src": "./src/components/bpm/b-bpm-action-reason-list",
           "expose": "b-bpm-action-reason-list"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-designer",
+          "src": "./src/components/bpm/b-bpm-designer",
           "expose": "b-bpm-designer"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-monitor",
+          "src": "./src/components/bpm/b-bpm-monitor",
           "expose": "b-bpm-monitor"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-route-history",
+          "src": "./src/components/bpm/b-bpm-route-history",
           "expose": "b-bpm-route-history"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-test-viewer",
+          "src": "./src/components/bpm/b-bpm-test-viewer",
           "expose": "b-bpm-test-viewer"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-user-note",
+          "src": "./src/components/bpm/b-bpm-user-note",
           "expose": "b-bpm-user-note"
         },
         {
-          "src": "./components/ui/bpm/b-bpm-user-list",
+          "src": "./src/components/bpm/b-bpm-user-list",
           "expose": "b-bpm-user-list"
         },
         {
-          "src": "./components/ui/bpm/b-send-approve-dialog",
+          "src": "./src/components/bpm/b-send-approve-dialog",
           "expose": "b-send-approve-dialog"
         },
         {
-          "src": "./components/ui/buttons/b-action-button",
+          "src": "./src/components/button/b-action-button",
           "expose": "b-action-button"
         },
         {
-          "src": "./components/ui/buttons/b-button",
+          "src": "./src/components/button/b-button",
           "expose": "b-button"
         },
         {
-          "src": "./components/ui/buttons/b-icon-button",
+          "src": "./src/components/button/b-icon-button",
           "expose": "b-icon-button"
         },
         {
-          "src": "./components/ui/chart/b-chart-card",
+          "src": "./src/components/chart/b-chart-card",
           "expose": "b-chart-card"
         },
         {
-          "src": "./components/ui/chart/b-chart-form",
+          "src": "./src/components/chart/b-chart-form",
           "expose": "b-chart-form"
         },
         {
-          "src": "./components/ui/chart/b-dynamic-chart",
+          "src": "./src/components/chart/b-dynamic-chart",
           "expose": "b-dynamic-chart"
         },
         {
-          "src": "./components/ui/chart/b-horizontal-line-chart",
+          "src": "./src/components/chart/b-horizontal-line-chart",
           "expose": "b-horizontal-line-chart"
         },
         {
-          "src": "./components/ui/chart/b-line-chart",
+          "src": "./src/components/chart/b-line-chart",
           "expose": "b-line-chart"
         },
         {
-          "src": "./components/ui/chart/b-pie-chart",
+          "src": "./src/components/chart/b-pie-chart",
           "expose": "b-pie-chart"
         },
         {
-          "src": "./components/ui/chart/b-radar-chart",
+          "src": "./src/components/chart/b-radar-chart",
           "expose": "b-radar-chart"
         },
         {
-          "src": "./components/ui/course/b-course",
+          "src": "./src/components/course/b-course",
           "expose": "b-course"
         },
         {
-          "src": "./components/ui/dialog/b-dialog-box",
+          "src": "./src/components/dialog/b-dialog-box",
           "expose": "b-dialog-box"
         },
         {
-          "src": "./components/ui/dms/b-divit-helper",
+          "src": "./src/components/dms/b-divit-helper",
           "expose": "b-divit-helper"
         },
         {
-          "src": "./components/ui/dms/b-file-input",
+          "src": "./src/components/dms/b-file-input",
           "expose": "b-file-input"
         },
         {
-          "src": "./components/ui/dms/b-icon-input",
+          "src": "./src/components/dms/b-icon-input",
           "expose": "b-icon-input"
         },
         {
-          "src": "./components/ui/dms/b-pdf-viewer",
+          "src": "./src/components/dms/b-pdf-viewer",
           "expose": "b-pdf-viewer"
         },
         {
-          "src": "./components/ui/documentation/b-doc-code",
+          "src": "./src/components/documentation/b-doc-code",
           "expose": "b-doc-code"
         },
         {
-          "src": "./components/ui/documentation/b-doc-menu",
+          "src": "./src/components/documentation/b-doc-menu",
           "expose": "b-doc-menu"
         },
         {
-          "src": "./components/ui/documentation/b-doc-notice",
+          "src": "./src/components/documentation/b-doc-notice",
           "expose": "b-doc-notice"
         },
         {
-          "src": "./components/ui/documentation/b-doc-post",
+          "src": "./src/components/documentation/b-doc-post",
           "expose": "b-doc-post"
         },
         {
-          "src": "./components/ui/documentation/b-doc-toc",
+          "src": "./src/components/documentation/b-doc-toc",
           "expose": "b-doc-toc"
         },
         {
-          "src": "./components/ui/documentation/b-doc-viewer",
+          "src": "./src/components/documentation/b-doc-viewer",
           "expose": "b-doc-viewer"
         },
         {
-          "src": "./components/ui/drawers/b-drawer",
+          "src": "./src/components/drawer/b-drawer",
           "expose": "b-drawer"
         },
         {
-          "src": "./components/ui/forms/b-base-form",
+          "src": "./src/components/form/b-base-form",
           "expose": "b-base-form"
         },
         {
-          "src": "./components/ui/forms/b-browse-form",
+          "src": "./src/components/form/b-browse-form",
           "expose": "b-browse-form"
         },
         {
-          "src": "./components/ui/forms/b-transaction-form",
+          "src": "./src/components/form/b-transaction-form",
           "expose": "b-transaction-form"
         },
         {
-          "src": "./components/ui/forms/b-transaction-wizard-form",
+          "src": "./src/components/form/b-transaction-wizard-form",
           "expose": "b-transaction-wizard-form"
         },
         {
-          "src": "./components/ui/grids/b-data-grid",
+          "src": "./src/components/grid/b-data-grid",
           "expose": "b-data-grid"
         },
         {
-          "src": "./components/ui/grids/b-data-grid-old",
+          "src": "./src/components/grid/b-data-grid-old",
           "expose": "b-data-grid-old"
         },
         {
-          "src": "./components/ui/grids/b-data-grid-dx",
+          "src": "./src/components/grid/b-data-grid-dx",
           "expose": "b-data-grid-dx"
         },
         {
-          "src": "./components/ui/grids/b-data-list-action-panel",
+          "src": "./src/components/grid/b-data-list-action-panel",
           "expose": "b-data-list-action-panel"
         },
         {
-          "src": "./components/ui/grids/b-grid-action-panel",
+          "src": "./src/components/grid/b-grid-action-panel",
           "expose": "b-grid-action-panel"
         },
         {
-          "src": "./components/ui/inputs/b-auto-complete",
+          "src": "./src/components/input/b-auto-complete",
           "expose": "b-auto-complete"
         },
         {
-          "src": "./components/ui/inputs/b-input",
+          "src": "./src/components/input/b-input",
           "expose": "b-input"
         },
         {
-          "src": "./components/ui/inputs/b-input-action",
+          "src": "./src/components/input/b-input-action",
           "expose": "b-input-action"
         },
         {
-          "src": "./components/ui/inputs/b-input-mask",
+          "src": "./src/components/input/b-input-mask",
           "expose": "b-input-mask"
         },
         {
-          "src": "./components/ui/inputs/b-input-numeric",
+          "src": "./src/components/input/b-input-numeric",
           "expose": "b-input-numeric"
         },
         {
-          "src": "./components/ui/inputs/b-input-search",
+          "src": "./src/components/input/b-input-search",
           "expose": "b-input-search"
         },
         {
-          "src": "./components/ui/labels/b-information-text",
+          "src": "./src/components/label/b-information-text",
           "expose": "b-information-text"
         },
         {
-          "src": "./components/ui/labels/b-label",
+          "src": "./src/components/label/b-label",
           "expose": "b-label"
         },
         {
-          "src": "./components/ui/labels/b-span",
+          "src": "./src/components/label/b-span",
           "expose": "b-span"
         },
         {
-          "src": "./components/ui/labels/b-more-text",
+          "src": "./src/components/label/b-more-text",
           "expose": "b-more-text"
         },
         {
-          "src": "./components/ui/layout/b-card-section",
+          "src": "./src/components/layout/b-card-section",
           "expose": "b-card-section"
         },
         {
-          "src": "./components/ui/layout/b-expander",
+          "src": "./src/components/layout/b-expander",
           "expose": "b-expander"
         },
         {
-          "src": "./components/ui/layout/b-flex-panel",
+          "src": "./src/components/layout/b-flex-panel",
           "expose": "b-flex-panel"
         },
         {
-          "src": "./components/ui/layout/b-footer",
+          "src": "./src/components/layout/b-footer",
           "expose": "b-footer"
         },
         {
-          "src": "./components/ui/layout/b-grid-layout",
+          "src": "./src/components/layout/b-grid-layout",
           "expose": "b-grid-layout"
         },
         {
-          "src": "./components/ui/layout/b-grid-row",
+          "src": "./src/components/layout/b-grid-row",
           "expose": "b-grid-row"
         },
         {
-          "src": "./components/ui/layout/b-grid-section",
+          "src": "./src/components/layout/b-grid-section",
           "expose": "b-grid-section"
         },
         {
-          "src": "./components/ui/layout/b-page-module",
+          "src": "./src/components/layout/b-page-module",
           "expose": "b-page-module"
         },
         {
-          "src": "./components/ui/layout/b-resizable",
+          "src": "./src/components/layout/b-resizable",
           "expose": "b-resizable"
         },
         {
-          "src": "./components/ui/layout/b-resizable-beta",
+          "src": "./src/components/layout/b-resizable-beta",
           "expose": "b-resizable-beta"
         },
         {
-          "src": "./components/ui/layout/b-scroll",
+          "src": "./src/components/layout/b-scroll",
           "expose": "b-scroll"
         },
         {
-          "src": "./components/ui/layout/b-side-bar",
+          "src": "./src/components/layout/b-side-bar",
           "expose": "b-side-bar"
         },
         {
-          "src": "./components/ui/layout/b-stepper",
+          "src": "./src/components/layout/b-stepper",
           "expose": "b-stepper"
         },
         {
-          "src": "./components/toolkit/b-toolkit",
+          "src": "./src/components/toolkit/b-toolkit",
           "expose": "b-toolkit"
         },
         {
-          "src": "./components/ui/lists/b-grid-list",
+          "src": "./src/components/list/b-grid-list",
           "expose": "b-grid-list"
         },
         {
-          "src": "./components/ui/lists/b-list",
+          "src": "./src/components/list/b-list",
           "expose": "b-list"
         },
         {
-          "src": "./components/ui/lists/b-virtualized-list",
+          "src": "./src/components/list/b-virtualized-list",
           "expose": "b-virtualized-list"
         },
         {
-          "src": "./components/ui/lists/b-list-item",
+          "src": "./src/components/list/b-list-item",
           "expose": "b-list-item"
         },
         {
-          "src": "./components/ui/menu/b-drawer-menu",
+          "src": "./src/components/menu/b-drawer-menu",
           "expose": "b-drawer-menu"
         },
         {
-          "src": "./components/ui/menu/b-icon-menu",
+          "src": "./src/components/menu/b-icon-menu",
           "expose": "b-icon-menu"
         },
         {
-          "src": "./components/ui/menu/b-menu",
+          "src": "./src/components/menu/b-menu",
           "expose": "b-menu"
         },
         {
-          "src": "./components/ui/menu/b-menu-item",
+          "src": "./src/components/menu/b-menu-item",
           "expose": "b-menu-item"
         },
         {
-          "src": "./components/ui/others/b-captcha",
+          "src": "./src/components/others/b-captcha",
           "expose": "b-captcha"
         },
         {
-          "src": "./components/ui/others/b-carousel",
+          "src": "./src/components/others/b-carousel",
           "expose": "b-carousel"
         },
         {
-          "src": "./components/ui/others/b-divider",
+          "src": "./src/components/others/b-divider",
           "expose": "b-divider"
         },
         {
-          "src": "./components/ui/others/b-excel-browser",
+          "src": "./src/components/others/b-excel-browser",
           "expose": "b-excel-browser"
         },
         {
-          "src": "./components/ui/others/b-html-to-react",
+          "src": "./src/components/others/b-html-to-react",
           "expose": "b-html-to-react"
         },
         {
-          "src": "./components/ui/others/b-icon",
+          "src": "./src/components/others/b-icon",
           "expose": "b-icon"
         },
         {
-          "src": "./components/ui/others/b-image",
+          "src": "./src/components/others/b-image",
           "expose": "b-image"
         },
         {
-          "src": "./components/ui/others/b-loading",
+          "src": "./src/components/others/b-loading",
           "expose": "b-loading"
         },
         {
-          "src": "./components/ui/others/b-popover",
+          "src": "./src/components/others/b-popover",
           "expose": "b-popover"
         },
         {
-          "src": "./components/ui/others/b-promo",
+          "src": "./src/components/others/b-promo",
           "expose": "b-promo"
         },
         {
-          "src": "./components/ui/others/b-snackbar",
+          "src": "./src/components/others/b-snackbar",
           "expose": "b-snackbar"
         },
         {
-          "src": "./components/ui/others/b-content-loader",
+          "src": "./src/components/others/b-content-loader",
           "expose": "b-content-loader"
         },
         {
-          "src": "./components/ui/panels/b-app-card",
+          "src": "./src/components/panel/b-app-card",
           "expose": "b-app-card"
         },
         {
-          "src": "./components/ui/panels/b-card",
+          "src": "./src/components/panel/b-card",
           "expose": "b-card"
         },
         {
-          "src": "./components/ui/panels/b-card-header",
+          "src": "./src/components/panel/b-card-header",
           "expose": "b-card-header"
         },
         {
-          "src": "./components/ui/panels/b-criteria-panel",
+          "src": "./src/components/panel/b-criteria-panel",
           "expose": "b-criteria-panel"
         },
         {
-          "src": "./components/ui/panels/b-linear-panel",
+          "src": "./src/components/panel/b-linear-panel",
           "expose": "b-linear-panel"
         },
         {
-          "src": "./components/ui/panels/b-show-hide-panel",
+          "src": "./src/components/panel/b-show-hide-panel",
           "expose": "b-show-hide-panel"
         },
         {
-          "src": "./components/ui/pickers/b-daterange-picker",
+          "src": "./src/components/picker/b-daterange-picker",
           "expose": "b-daterange-picker"
         },
         {
-          "src": "./components/ui/pickers/b-datetime-picker",
+          "src": "./src/components/picker/b-datetime-picker",
           "expose": "b-datetime-picker"
         },
         {
-          "src": "./components/ui/pickers/b-datetime-picker/Calendar",
+          "src": "./src/components/picker/b-datetime-picker/Calendar",
           "expose": "b-datetime-calendar"
         },
         {
-          "src": "./components/ui/pickers/b-calendar-picker",
+          "src": "./src/components/picker/b-calendar-picker",
           "expose": "b-calendar-picker"
         },
         {
-          "src": "./components/ui/progress/b-indicator",
+          "src": "./src/components/progress/b-indicator",
           "expose": "b-indicator"
         },
         {
-          "src": "./components/ui/progress/b-progress",
+          "src": "./src/components/progress/b-progress",
           "expose": "b-progress"
         },
         {
-          "src": "./components/ui/selects/b-combo-box",
+          "src": "./src/components/select/b-combo-box",
           "expose": "b-combo-box"
         },
         {
-          "src": "./components/ui/selects/b-select-list-box",
+          "src": "./src/components/select/b-select-list-box",
           "expose": "b-select-list-box"
         },
         {
-          "src": "./components/ui/selects/b-combo-box-old",
+          "src": "./src/components/select/b-combo-box-old",
           "expose": "b-combo-box-old"
         },
         {
-          "src": "./components/ui/slider/b-slider",
+          "src": "./src/components/slider/b-slider",
           "expose": "b-slider"
         },
         {
-          "src": "./components/ui/switches/b-check-box",
+          "src": "./src/components/switch/b-check-box",
           "expose": "b-check-box"
         },
         {
-          "src": "./components/ui/switches/b-check-box-group",
+          "src": "./src/components/switch/b-check-box-group",
           "expose": "b-check-box-group"
         },
         {
-          "src": "./components/ui/switches/b-radio-button",
+          "src": "./src/components/switch/b-radio-button",
           "expose": "b-radio-button"
         },
         {
-          "src": "./components/ui/switches/b-radio-button-group",
+          "src": "./src/components/switch/b-radio-button-group",
           "expose": "b-radio-button-group"
         },
         {
-          "src": "./components/ui/switches/b-toggle",
+          "src": "./src/components/switch/b-toggle",
           "expose": "b-toggle"
         },
         {
-          "src": "./components/ui/switches/b-toggle-icon",
+          "src": "./src/components/switch/b-toggle-icon",
           "expose": "b-toggle-icon"
         },
         {
-          "src": "./components/ui/toolbar/b-app-bar",
+          "src": "./src/components/toolbar/b-app-bar",
           "expose": "b-app-bar"
         },
         {
-          "src": "./components/ui/toolbar/b-app-header",
+          "src": "./src/components/toolbar/b-app-header",
           "expose": "b-app-header"
         },
         {
-          "src": "./components/ui/toolbar/b-app-header-kfh",
+          "src": "./src/components/toolbar/b-app-header-kfh",
           "expose": "b-app-header-kfh"
         },
         {
-          "src": "./components/ui/toolbar/b-page-host",
+          "src": "./src/components/toolbar/b-page-host",
           "expose": "b-page-host"
         },
         {
-          "src": "./components/ui/toolbar/b-tab-bar",
+          "src": "./src/components/toolbar/b-tab-bar",
           "expose": "b-tab-bar"
         },
         {
-          "src": "./components/ui/toolbar/b-tab-bar-dynamic",
+          "src": "./src/components/toolbar/b-tab-bar-dynamic",
           "expose": "b-tab-bar-dynamic"
         },
         {
-          "src": "./components/ui/toolbar/b-user-profile",
+          "src": "./src/components/toolbar/b-user-profile",
           "expose": "b-user-profile"
         },
         {
-          "src": "./components/ui/tooltip/b-tool-tip",
+          "src": "./src/components/tooltip/b-tool-tip",
           "expose": "b-tool-tip"
         },
         {
-          "src": "./components/ui/treeview/b-treeview",
+          "src": "./src/components/treeview/b-treeview",
           "expose": "b-treeview"
         },
         {
-          "src": "./components/ui/treeview/b-treeview-data-grid",
+          "src": "./src/components/treeview/b-treeview-data-grid",
           "expose": "b-treeview-data-grid"
         },
         {
-          "src": "./components/ui/treeview/b-treeview-grid",
+          "src": "./src/components/treeview/b-treeview-grid",
           "expose": "b-treeview-grid"
         },
         {
-          "src": "./components/utils/b-const",
-          "expose": "b-const"
-        },
-        {
-          "src": "./components/utils/b-device",
-          "expose": "b-device"
-        },
-        {
-          "src": "./components/utils/b-form-manager",
-          "expose": "b-form-manager"
-        },
-        {
-          "src": "./components/utils/b-helpers",
+          "src": "./src/components/utils/b-helpers",
           "expose": "b-helpers"
         },
         {
-          "src": "./components/utils/b-localization",
-          "expose": "b-localization"
-        },
-        {
-          "src": "./components/utils/b-messaging",
-          "expose": "b-messaging"
-        },
-        {
-          "src": "./components/utils/b-props-loader",
-          "expose": "b-props-loader"
-        },
-        {
-          "src": "./components/utils/b-proxy",
+          "src": "./src/components/utils/b-proxy",
           "expose": "b-proxy"
-        },
-        {
-          "src": "./components/utils/b-ui-proxy",
-          "expose": "b-ui-proxy"
-        },
-        {
-          "src": "./components/utils/b-validator",
-          "expose": "b-validator"
-        },
-        {
-          "src": "./components/dynamic/b-dynamic-event-designer",
-          "expose": "b-dynamic-event-designer"
-        },
-        {
-          "src": "./components/business/b-type-select",
-          "expose": "b-type-select"
         }
       ]
     ],

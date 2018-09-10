@@ -1,9 +1,0 @@
-{
-    "name": "b-bpm-test-viewer",
-    "version": "0.1.0",
-    "description": "BOA BPM user note item.",
-    "keywords": "bpm, user note, note",
-    "dependencies": {
-        "b-component" : "^0.1.0"
-    }
-}

@@ -19,7 +19,6 @@
     "lint": "esw",
     "lint-fix": "esw --fix",
     "lint-watch": "esw --watch",
-    "precommit": "lint-staged",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

@@ -12,7 +12,7 @@ import { Utils } from './utils';
 import { ErrorBoundary } from './boundary';
 import { Sizes, ComponentSize, ContentAlignMode, DialogResponseStyle, DialogResponse, DialogType, Platforms, FormHeaderTransactionTypes } from './types';
 
-export function configure(localization, messaging, formManager) {
+export function injectLocalization(localization, messaging, formManager) {
   BComponent.Localization = localization;
   BComponent.Messaging = messaging;
   BComponent.FormManager = formManager;

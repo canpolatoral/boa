@@ -209,6 +209,7 @@
     "output-file-sync": "^1.1.2",
     "pdfjs-dist": "^1.10.100",
     "postcss-loader": "^1.1.1",
+    "react-element-to-jsx-string": "^14.0.1",
     "react-hot-loader": "3.0.0-beta.7",
     "resolve": "^1.8.1",
     "rimraf": "^2.5.4",

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { BLocalization } from '../../src/components/utils/b-localization';
 import { BFormManager } from '../../src/components/utils/b-form-manager';
 
-import { configure } from '../../src/base/b-component';
+import { injectLocalization } from '../../src/base/b-component';
 
 var applicationContext = require('../data/applicationContext.json');
 var messagingContext = {};
@@ -20,7 +20,7 @@ export default class DeskPageFrame extends React.Component {
     this.state = { fullScreen: props.fullScreen, languageId: props.languageId, dynamicReload: false, dynamicContent: null };
 
 
-    configure(BLocalization, null, BFormManager);
+    injectLocalization(BLocalization, null, BFormManager);
   }
 
   getMessage(groupName, propertyName) {
@@ -32,12 +32,12 @@ export default class DeskPageFrame extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ fullScreen: nextProps.fullScreen, dynamicReload: false, languageId:nextProps.languageId });
+    this.setState({ fullScreen: nextProps.fullScreen, dynamicReload: false, languageId: nextProps.languageId });
   }
 
   componentDidUpdate() {
     if (typeof this.props.componentType === 'function' &&
-            this.state.dynamicReload) {
+      this.state.dynamicReload) {
       const options = {
         type: this.props.componentType,
         props: this.props.data,
@@ -51,7 +51,7 @@ export default class DeskPageFrame extends React.Component {
 
   componentDidMount() {
     if (typeof this.props.componentType === 'function' &&
-            this.state.fullScreen) {
+      this.state.fullScreen) {
       const options = {
         type: this.props.componentType,
         props: this.props.data,
@@ -65,7 +65,7 @@ export default class DeskPageFrame extends React.Component {
 
   loadElement(options) {
     var that = this;
-    options.type().then(function(lazyModule) {
+    options.type().then(function (lazyModule) {
       options.ref = that.guid();
       const context = that.getContext(options);
       let props = _.extend({}, { params: that.props.params, key: options.ref }, options.props, { context: context });
@@ -84,11 +84,11 @@ export default class DeskPageFrame extends React.Component {
             return function render() {
               return fn.apply(this, arguments);
             };
-          } (result.type.prototype.render));
+          }(result.type.prototype.render));
         }
       }
       that.setState({ dynamicContent: result, dynamicReload: false });
-    }).catch(function(err) {
+    }).catch(function (err) {
       // eslint-disable-next-line no-console
       console.log('Failed to load lazy module', err);
     });
@@ -144,13 +144,12 @@ export default class DeskPageFrame extends React.Component {
 
   getContext(options) {
     let language = 1;
-    if ( this.state.languageId != null )
-    {
+    if (this.state.languageId != null) {
       language = this.state.languageId;
     }
     BLocalization.staticConstructor(language);
 
-    return  {
+    return {
       deviceSize: options.deviceSize,
       platform: 3,
       language: language,
@@ -209,7 +208,7 @@ export default class DeskPageFrame extends React.Component {
           return function render() {
             return fn.apply(this, arguments);
           };
-        } (result.type.prototype.render));
+        }(result.type.prototype.render));
       }
     }
     return result;

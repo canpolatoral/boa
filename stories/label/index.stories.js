@@ -1,26 +1,23 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs';
 
-import { getTheme } from '../../src/base/b-theme';
 import { BLabel } from '../../src/components/label/b-label';
 
-var context = {};
-context.theme = getTheme({ themeName: 'violet' });
-context.localization = [];
-context.localization.isRightToLeft = false;
+import PropsViewer from '../base/props-viewer';
+import Playground from '../base/playground';
+import ComponentInfo from '../base/info';
+
+const data = require('../../src/components/label/b-label/docs/content.json');
+const defaults = require('../../src/components/label/b-label/assets/data/defaults.json');
 
 const stories = storiesOf('Labels', module);
 
-stories.addDecorator(withKnobs);
-stories.add('BLabel', () =>
-  <BLabel context={context}
-    text={text('Text', 'Lorem ing elit. Donec malesuada, sem quis lacinia elementum, urna mi elementum metus')}>
-  </BLabel>
-);
-stories.add('BLabelAdvanced', () =>
-  <BLabel context={context}
-    text={text('MoreText', 'Lorem ing elit. Donec malesuada, sem quis lacinia elementum, urna mi elementum metus')}>
-  </BLabel>
+stories.add('BLabel', () => {
+  return (
+    <div style={{ padding: 20, background: 'white' }}>
+      <ComponentInfo component={BLabel} content={data} defaults={defaults} />
+      <Playground component={BLabel} content={data} defaults={defaults} />
+      <PropsViewer component={BLabel} content={data} defaults={defaults} />
+    </div>);
+}
 );

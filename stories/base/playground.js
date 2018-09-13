@@ -10,7 +10,6 @@ import { BDateTimePicker } from 'b-datetime-picker';
 import { BGridActionPanel } from 'b-grid-action-panel';
 import { BDocViewer } from 'b-doc-viewer';
 import { BScroll } from 'b-scroll';
-
 import Context from './context';
 
 export default class Playground extends React.Component {
@@ -58,7 +57,10 @@ export default class Playground extends React.Component {
         if (infoArray.length > 0) {
           let currentProperties = {};
           infoArray.forEach((item) => {
-            currentProperties[item.name] = self.findDefault(item.name);
+            let defaultValue = self.findDefault(item.name);
+            if (defaultValue) {
+              currentProperties[item.name] = defaultValue;
+            }
           });
           this.setState({ availableProperties: infoArray, currentProperties }, () => {
             const code = self.getComponentString();
@@ -86,10 +88,18 @@ export default class Playground extends React.Component {
   }
 
   onPropertyChanged(property, value) {
+    const self = this;
     let currentProperties = Object.assign({}, this.state.currentProperties);
-    currentProperties[property] = value;
-    const code = this.getComponentString();
-    this.setState({ currentProperties, code });
+    if (value) {
+      currentProperties[property] = value;
+    } else {
+      delete currentProperties[property];
+    }
+
+    this.setState({ currentProperties }, () => {
+      const code = self.getComponentString();
+      self.setState({ code });
+    });
   }
 
   getBDateTimePicker(property, value) {
@@ -367,7 +377,7 @@ export default class Playground extends React.Component {
             </div>
           </Paper>
           <div style={{ marginLeft: 100 }}>
-            <RenderedComponent context={this.state.context} {...this.state.currentProperties}></RenderedComponent>
+            <RenderedComponent  {...currentProperties} context={this.state.context}></RenderedComponent>
           </div>
         </div>
         <BDocViewer content={code} editorType='atomOneLight' />

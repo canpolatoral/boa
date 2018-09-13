@@ -1,112 +1,118 @@
 [
-    {
-        "name": "BButton",
-        "desc": "IconButton BOA Component",
-        "sample": "<BButton context={context} type='flat' text='Default' onClick={this._onclick.bind(this)} style={{ marginRight: '10px' }} />"
-    },
-    {
-        "name": "Props",
-        "infoArray": [
-            {
-                "name": "backgroundColor",
-                "type": "string",
-                "header": "not required",
-                "desc": "Color of background"
-            },
-            {
-                "name": "colorType",
-                "type": "string",
-                "header": "not required",
-                "desc": "colorType is for setting primary or secondary color palettes. Can takes 'primary' or 'secondary' strings as values."
-            },
-            {
-                "name": "disabled",
-                "type": "bool",
-                "header": "not required",
-                "desc": "To disable button this attribute should set to true"
-            },
-            {
-                "name": "fontIcon",
-                "type": "string",
-                "header": "not required",
-                "desc": "The CSS class name of the root element."
-            },
-            {
-                "name": "buttonStyle",
-                "type": "object",
-                "header": "not required",
-                "desc": "Override the inline-styles of the button element."
-            },
-            {
-                "name": "fullWidth",
-                "type": "bool",
-                "header": "not required",
-                "desc": "If true, the button will take up the full width of its container."
-            },
-            {
-                "name": "iconProperties",
-                "type": "object",
-                "header": "not required",
-                "desc": "Icon properties like { color: '#00BF7E' }"
-            },
-            {
-                "name": "mini",
-                "type": "bool",
-                "header": "not required",
-                "desc": "Value for setting mini floating action buttons (type='floatingAction')"
-            },
-            {
-                "name": "style",
-                "type": "object",
-                "header": "not required",
-                "desc": "Override the inline-styles of the root element."
-            },
-            {
-                "name": "svgIcon",
-                "type": "string",
-                "header": "not required",
-                "desc": "svg icon for font icon"
-            },
-            {
-                "name": "text",
-                "type": "node",
-                "header": "not required",
-                "desc": "Button text"
-            },
-            {
-                "name": "textPosition",
-                "type": "string",
-                "header": "not required",
-                "desc": "Dont use this property! Value for setting text position releative to the icon. Can takes 'after' or 'before' as values"
-            },
-            {
-                "name": "textStyle",
-                "type": "object",
-                "header": "not required",
-                "desc": "Override the inline-styles of the text element."
-            },
-            {
-                "name": "tooltip",
-                "type": "string",
-                "header": "not required",
-                "desc": "The text to supply to the element's tooltip."
-            },
-            {
-                "name": "type",
-                "type": "string",
-                "header": "required",
-                "desc": "The text to supply to the button type. Can takes 'flat' or 'raised' or 'floatingAction' or 'icon' as values"
-            }
-        ]
-    },
-    {
-        "name": "Events",
-        "infoArray": [
-            {
-                "name": "onClick",
-                "header": "function(event)",
-                "desc": "Fired when button is clicked"
-            }
-        ]
-    }
+  {
+    "name": "BButton",
+    "desc": "IconButton BOA Component",
+    "sample": "<BButton context={context} type='flat' text='Default' onClick={this._onclick.bind(this)} style={{ marginRight: '10px' }} />"
+  },
+  {
+    "name": "Props",
+    "infoArray": [
+      {
+        "name": "backgroundColor",
+        "type": "string",
+        "header": "not required",
+        "desc": "Color of background"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "header": "not required",
+        "desc": "Type of button"
+      },
+      {
+        "name": "colorType",
+        "type": "string",
+        "header": "not required",
+        "desc": "colorType is for setting primary or secondary color palettes. Can takes 'primary' or 'secondary' strings as values."
+      },
+      {
+        "name": "disabled",
+        "type": "bool",
+        "header": "not required",
+        "desc": "To disable button this attribute should set to true"
+      },
+      {
+        "name": "fontIcon",
+        "type": "string",
+        "header": "not required",
+        "desc": "The CSS class name of the root element."
+      },
+      {
+        "name": "buttonStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the button element."
+      },
+      {
+        "name": "fullWidth",
+        "type": "bool",
+        "header": "not required",
+        "desc": "If true, the button will take up the full width of its container."
+      },
+      {
+        "name": "iconProperties",
+        "type": "object",
+        "header": "not required",
+        "desc": "Icon properties like { color: '#00BF7E' }"
+      },
+      {
+        "name": "mini",
+        "type": "bool",
+        "header": "not required",
+        "desc": "Value for setting mini floating action buttons (type='floatingAction')"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the root element."
+      },
+      {
+        "name": "svgIcon",
+        "type": "string",
+        "header": "not required",
+        "desc": "svg icon for font icon"
+      },
+      {
+        "name": "text",
+        "type": "node",
+        "header": "not required",
+        "desc": "Button text"
+      },
+      {
+        "name": "textPosition",
+        "type": "string",
+        "header": "not required",
+        "desc": "Dont use this property! Value for setting text position releative to the icon. Can takes 'after' or 'before' as values"
+      },
+      {
+        "name": "textStyle",
+        "type": "object",
+        "header": "not required",
+        "desc": "Override the inline-styles of the text element."
+      },
+      {
+        "name": "tooltip",
+        "type": "string",
+        "header": "not required",
+        "desc": "The text to supply to the element's tooltip."
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "header": "required",
+        "desc": "The text to supply to the button type. Can takes 'flat' or 'raised' or 'floatingAction' or 'icon' as values"
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "infoArray": [
+      {
+        "name": "onClick",
+        "header": "function(event)",
+        "desc": "Fired when button is clicked"
+      }
+    ]
+  }
 ]

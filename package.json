@@ -10,9 +10,6 @@
     "build-base": "babel-node build/main.js --base",
     "build-theme": "babel-node build/main.js --theme",
     "build-component": "babel-node build/main.js --components=b-content-loader --ps",
-    "dts-component-ui": "babel-node generator/component-dts.js --ui",
-    "dts-component-business": "babel-node generator/component-dts.js --business",
-    "dts-component-single": "babel-node generator/component-dts.js --b-content-loader",
     "webpack-release": "webpack --config webpack-release.config.js",
     "generate-typings-package": "babel-node generator/b-typings",
     "generate-build-package": "babel-node generator/b-build",
@@ -20,7 +17,9 @@
     "lint-fix": "esw --fix",
     "lint-watch": "esw --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "generate-storybook": "babel-node build/story.generator.js"
+
   },
   "lint-staged": {
     "*.js": [

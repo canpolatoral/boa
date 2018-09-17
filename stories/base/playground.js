@@ -271,7 +271,7 @@ export default class Playground extends React.Component {
     } else if (property.type.toLowerCase().includes('string')) {
       return this.getBInput(property, value);
     } else if (property.type.toLowerCase().includes('number')) {
-      return this.BInputNumeric(property, value);
+      return this.getBInputNumeric(property, value);
     } else if (property.type.toLowerCase().includes('bool')) {
       return this.getBToggle(property, value);
     } else if (property.type.toLowerCase().includes('array')) {

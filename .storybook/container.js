@@ -6,7 +6,7 @@ export default class Container extends Component {
     const { story, context } = this.props;
     return (
       <BAppProvider theme={context.theme}>
-        {this.props.children}
+        {story()}
       </BAppProvider>
     );
   }

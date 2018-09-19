@@ -19,7 +19,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "generate-storybook": "babel-node build/story.generator.js"
-
   },
   "lint-staged": {
     "*.js": [
@@ -85,6 +84,7 @@
     "react-google-recaptcha": "^0.9.7",
     "react-grid-layout": "^0.16.6",
     "react-image-crop": "^3.0.11",
+    "react-json-editor-viewer": "^1.0.4",
     "react-pinch-zoom-pan": "^1.4.5",
     "react-resizable-box": "^2.1.0",
     "react-router": "^3.2.1",

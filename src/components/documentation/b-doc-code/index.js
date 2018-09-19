@@ -14,7 +14,7 @@ export class BDocCode extends BComponent {
 
   static defaultProps = {
     highlight: true,
-    editorType: 'github'
+    editorType: 'atomOneDark'
   };
 
   constructor(props, context) {

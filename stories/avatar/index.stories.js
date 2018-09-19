@@ -21,4 +21,3 @@
         <PropsViewer component={BAvatar} content={data} defaults={defaults} />
       </div>);
   });
-  

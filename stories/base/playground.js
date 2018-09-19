@@ -10,13 +10,20 @@ import { BDateTimePicker } from 'b-datetime-picker';
 import { BGridActionPanel } from 'b-grid-action-panel';
 import { BDocViewer } from 'b-doc-viewer';
 import { BScroll } from 'b-scroll';
+import { BDocCode } from 'b-doc-code';
+
 import Context from './context';
+import { getReadablePropTypes } from './utils';
+
+import { action } from '@storybook/addon-actions';
 
 export default class Playground extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.componentPropertySource = [];
     this.onPropertyChanged = this.onPropertyChanged.bind(this);
+    this.componentRef = React.createRef();
+
   }
 
   state = {
@@ -71,6 +78,46 @@ export default class Playground extends React.Component {
     }
   }
 
+  componentDidMount() {
+  }
+
+  componentDidUpdate() {
+    if (!this.constructed) {
+      let availableProperties = [];
+      let currentProperties = {};
+
+      if (this.componentRef && this.componentRef.current && this.componentRef.current.getComponentPropTypes) {
+        availableProperties = getReadablePropTypes(this.componentRef.current.getComponentPropTypes());
+      } else {
+        availableProperties = getReadablePropTypes(this.props.component.propTypes);
+      }
+
+      if (availableProperties && availableProperties.length > 0) {
+        availableProperties.sort((a, b) => {
+          if (a.type < b.type)
+            return -1;
+          if (a.type > b.type)
+            return 1;
+          return 0;
+        });
+      }
+
+      if (this.componentRef && this.componentRef.current && this.componentRef.current.getComponentDefaultProps) {
+        currentProperties = this.componentRef.current.getComponentDefaultProps();
+      } else {
+        currentProperties = this.props.component.defaultProps;
+      }
+
+      const self = this;
+      this.setState({ availableProperties, currentProperties: Object.assign({}, this.state.currentProperties, currentProperties) }, () => {
+        const code = self.getComponentString();
+        self.setState({ code });
+      });
+      this.constructed = true;
+    }
+
+  }
+
   findDefault(propName) {
     if (this.props.defaults && this.props.defaults.length > 0) {
       let defaultProp = this.props.defaults[0];
@@ -89,6 +136,18 @@ export default class Playground extends React.Component {
 
   onPropertyChanged(property, value) {
     const self = this;
+    const availableProperties = this.state.availableProperties;
+    const changedProd = availableProperties.find(x => x.name === property);
+
+    if (changedProd && changedProd.type === 'object') {
+      try {
+        value = JSON.parse(value);
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
+
     let currentProperties = Object.assign({}, this.state.currentProperties);
     if (value) {
       currentProperties[property] = value;
@@ -106,9 +165,9 @@ export default class Playground extends React.Component {
     return (
       <BDateTimePicker
         context={this.state.context}
-        mode="portrait"
-        type="text"
-        format="DDMMYYYY hmmss"
+        mode='portrait'
+        type='text'
+        format='DDMMYYYY hmmss'
         value={value}
         floatingLabelTextDate={property.name}
         floatingLabelTextTime={property.name}
@@ -118,13 +177,28 @@ export default class Playground extends React.Component {
   }
 
   getBInput(property, value) {
+    const availableProperties = this.state.availableProperties;
+    const changedProd = availableProperties.find(x => x.name === property);
+
+    if (changedProd && changedProd.type === 'object') {
+      try {
+        value = JSON.stringify(value);
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
+
     return (
       <BInput
         context={this.state.context}
-        type="text"
+        type='text'
         value={value}
         floatingLabelText={property.name}
         hintText={property.name}
+        multiLine
+        rows={1}
+        rowsMax={4}
         onChange={(e, v) => this.onPropertyChanged(property.name, v)}
       />
     );
@@ -147,7 +221,7 @@ export default class Playground extends React.Component {
       <BToggle
         context={this.state.context}
         label={property.label ? property.label : property.name}
-        labelPosition="left"
+        labelPosition='left'
         defaultToggled={value}
         toggled={value}
         onToggle={(event, isInputChecked) => this.onPropertyChanged(property.name, isInputChecked)}
@@ -258,8 +332,8 @@ export default class Playground extends React.Component {
           multiColumn={false}
           hintText={property.name}
           value={[value]}
-          displayMemberPath="text"
-          valueMemberPath="value"
+          displayMemberPath='text'
+          valueMemberPath='value'
           onSelect={(selectedIndexes, selectedItems, selectedValues) => this.onPropertyChanged(property.name, selectedValues[0])}
           isAllOptionIncluded={false}
         />
@@ -323,6 +397,7 @@ export default class Playground extends React.Component {
 
   render() {
     const { availableProperties } = this.state;
+    const self = this;
 
     if (!availableProperties || availableProperties.length == 0) {
       return null;
@@ -345,7 +420,7 @@ export default class Playground extends React.Component {
       }
     };
 
-    let code = `\`\`\`html \n ${this.state.code} \n \`\`\``;
+    // let code = `\`\`\`html \n ${this.state.code} \n \`\`\``;
 
     const currentProperties = this.state.currentProperties;
 
@@ -364,23 +439,28 @@ export default class Playground extends React.Component {
           }
         })
       ) : (<label>{this.getMessage('DynamicFormGenerator', 'ThereIsNoSelectedComponent')}</label>);
-
     return (
       <div>
-        <BDocViewer content='## Playground' editorType='atomOneLight' />
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <Paper style={{ maxWidth: 300 }}>
-            <div style={style.criteriaPanel}>
-              <BScroll context={this.state.context} option={{ suppressScrollX: true }} style={style.scrollStyle}>
-                <div>{propertiesContent}</div>
-              </BScroll>
-            </div>
-          </Paper>
-          <div style={{ marginLeft: 100 }}>
-            <RenderedComponent  {...currentProperties} context={this.state.context}></RenderedComponent>
+          <div style={{ maxWidth: 300 }}>
+            <BDocViewer content='## Props' editorType='atomOneLight' />
+            <Paper >
+              <div style={style.criteriaPanel}>
+                <BScroll context={this.state.context} option={{ suppressScrollX: true }} style={style.scrollStyle}>
+                  <div>{propertiesContent}</div>
+                </BScroll>
+              </div>
+            </Paper>
+          </div>
+          <div style={{ marginLeft: 100, width: '100%' }}>
+            <BDocViewer content='## Preview' editorType='atomOneLight' />
+            <RenderedComponent  {...currentProperties} ref={this.componentRef} onChange={action(self.getName() + '-onChange')} onClick={action(self.getName() + '-onClick')} context={this.state.context}></RenderedComponent>
           </div>
         </div>
-        <BDocViewer content={code} editorType='atomOneLight' />
+        <BDocViewer content='## Usage' editorType='atomOneLight' />
+        {
+          this.state.code && <BDocCode content={this.state.code} highlight={true} lang={'js'} editorType='atomOneDark' />
+        }
       </div>
     );
   }

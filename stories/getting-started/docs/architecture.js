@@ -2,7 +2,7 @@ export default `# Achitecture
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id lobortis orci. Phasellus pulvinar nulla vel purus rutrum venenatis. Fusce tincidunt nisi nec erat efficitur, vehicula commodo mi posuere. Nunc non cursus nulla, id dictum risus. Vestibulum laoreet, metus at malesuada porta, nisl neque tincidunt velit, vitae ullamcorper ex velit id erat. Nunc sit amet ex porttitor ex venenatis elementum vestibulum eget erat. Vivamus et ipsum auctor nunc viverra congue. Sed ac tortor dictum, consectetur orci vitae, pretium elit. Nam vel mi purus. Sed venenatis sit amet augue a maximus. Mauris id efficitur nulla. Nullam vestibulum neque eget dolor semper, quis malesuada libero convallis. Suspendisse potenti. Mauris mollis orci at ipsum blandit, et mattis nibh sagittis.
 
-## Context
+## Usage
 
 In vitae nisi at erat pellentesque finibus nec sodales quam. Vestibulum consectetur viverra ullamcorper. Pellentesque sodales molestie ante, ac rutrum dolor auctor in. Aliquam eu metus quam. Sed venenatis magna at augue elementum, quis placerat enim convallis. Sed eu metus sapien. Curabitur sit amet diam semper urna consequat varius at sed mauris.
 

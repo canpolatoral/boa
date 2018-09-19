@@ -1,22 +1,25 @@
 
 import React, { Component } from 'react';
 import { configure, setAddon, addDecorator } from '@storybook/react';
-// import '@storybook/addon-knobs/register'
-import infoAddon from '@storybook/addon-info'
 import { setOptions } from '@storybook/addon-options';
 
 import { BComponent, injectLocalization } from '../src/base/b-component';
 import { BLocalization } from '../src/components/utils/b-localization';
 import { BFormManager } from '../src/components/utils/b-form-manager';
+import { getTheme } from '../src/base/b-theme';
 
 import Container from './container'
-
-addDecorator(story => <Container story={story}></Container>)
-setAddon(infoAddon);
-
-injectLocalization(BLocalization, null, BFormManager);
+import MessagingHelper from './messaging';
 
 const req = require.context('../stories', true, /.stories.js$/);
+
+const context = {};
+context.theme = getTheme({ themeName: 'violet' });
+context.localization = [];
+context.localization.isRightToLeft = false;
+
+addDecorator(story => <Container context={context} story={story} />)
+injectLocalization(BLocalization, MessagingHelper, BFormManager);
 
 function loadStories() {
   const gettingStarted = './getting-started/index.stories.js';
@@ -26,14 +29,12 @@ function loadStories() {
       req(filename);
     }
   });
-
 }
 
-
 configure(loadStories, module);
-
 setOptions({
-  showDownPanel: false,
+  showDownPanel: true,
+  downPanelInRight: true,
   name: 'boa-components',
   url: 'https://github.com/kuveytturk/boa-components',
   sidebarAnimations: true

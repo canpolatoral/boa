@@ -1,12 +1,7 @@
 import React from 'react';
 import { BDocViewer } from 'b-doc-viewer';
 
-import Context from './context';
-
 export default class PropsViewer extends React.Component {
-  static state = {
-    context: Context
-  }
 
   constructor(props) {
     super(props);

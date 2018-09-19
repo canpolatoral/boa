@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
 
+String.prototype.splice = function (idx, rem, str) {
+  return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+};
+
 export function getReadablePropTypes(CurrentPropTypes) {
   let typeList = [];
   for (var key in CurrentPropTypes) {

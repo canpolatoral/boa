@@ -28,14 +28,9 @@
           "src": "./src/components/form/b-action-manager-info",
           "expose": "b-action-manager-info"
         },
-
         {
           "src": "./src/components/test-viewers/generic-test-viewer",
           "expose": "generic-test-viewer"
-        },
-        {
-          "src": "./src/components/avatar/b-avatar",
-          "expose": "b-avatar"
         },
         {
           "src": "./src/components/bpm/b-authorized-user-dialog",
@@ -122,10 +117,6 @@
           "expose": "b-course"
         },
         {
-          "src": "./src/components/dialog/b-dialog-box",
-          "expose": "b-dialog-box"
-        },
-        {
           "src": "./src/components/dms/b-divit-helper",
           "expose": "b-divit-helper"
         },
@@ -166,10 +157,6 @@
           "expose": "b-doc-viewer"
         },
         {
-          "src": "./src/components/drawer/b-drawer",
-          "expose": "b-drawer"
-        },
-        {
           "src": "./src/components/form/b-base-form",
           "expose": "b-base-form"
         },
@@ -184,26 +171,6 @@
         {
           "src": "./src/components/form/b-transaction-wizard-form",
           "expose": "b-transaction-wizard-form"
-        },
-        {
-          "src": "./src/components/grid/b-data-grid",
-          "expose": "b-data-grid"
-        },
-        {
-          "src": "./src/components/grid/b-data-grid-old",
-          "expose": "b-data-grid-old"
-        },
-        {
-          "src": "./src/components/grid/b-data-grid-dx",
-          "expose": "b-data-grid-dx"
-        },
-        {
-          "src": "./src/components/grid/b-data-list-action-panel",
-          "expose": "b-data-list-action-panel"
-        },
-        {
-          "src": "./src/components/grid/b-grid-action-panel",
-          "expose": "b-grid-action-panel"
         },
         {
           "src": "./src/components/input/b-auto-complete",
@@ -294,10 +261,6 @@
           "expose": "b-side-bar"
         },
         {
-          "src": "./src/components/layout/b-stepper",
-          "expose": "b-stepper"
-        },
-        {
           "src": "./src/components/toolkit/b-toolkit",
           "expose": "b-toolkit"
         },
@@ -316,10 +279,6 @@
         {
           "src": "./src/components/list/b-list-item",
           "expose": "b-list-item"
-        },
-        {
-          "src": "./src/components/menu/b-drawer-menu",
-          "expose": "b-drawer-menu"
         },
         {
           "src": "./src/components/menu/b-icon-menu",
@@ -430,14 +389,6 @@
           "expose": "b-progress"
         },
         {
-          "src": "./src/components/select/b-combo-box",
-          "expose": "b-combo-box"
-        },
-        {
-          "src": "./src/components/select/b-select-list-box",
-          "expose": "b-select-list-box"
-        },
-        {
           "src": "./src/components/select/b-combo-box-old",
           "expose": "b-combo-box-old"
         },
@@ -514,12 +465,16 @@
           "expose": "b-treeview-grid"
         },
         {
-          "src": "./src/components/utils/b-helpers",
-          "expose": "b-helpers"
+          "src": "./src/utils/b-proxy",
+          "expose": "b-proxy"
         },
         {
-          "src": "./src/components/utils/b-proxy",
-          "expose": "b-proxy"
+          "src": "./src/utils/b-localization",
+          "expose": "b-localization"
+        },
+        {
+          "src": "./src/utils/b-messaging",
+          "expose": "b-messaging"
         }
       ]
     ],

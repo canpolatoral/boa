@@ -26,7 +26,7 @@ function propagateToGlobal(window) {
 
 propagateToGlobal(win);
 
-const COMPONENTS = './src/components/';
+const COMPONENTS = '../src/components/';
 const COMPONENTS_DIRECTORY = path.join(__dirname, COMPONENTS);
 
 
@@ -38,14 +38,14 @@ const getDirectories = (srcpath) => {
 
 
 const createStoryFile = (folderName, packageName, fileName, story) => {
-  if (!fs.existsSync(path.join(__dirname, 'stories'))) {
-    fs.mkdirSync(path.join(__dirname, 'stories'));
+  if (!fs.existsSync(path.join(__dirname, '..', 'stories'))) {
+    fs.mkdirSync(path.join(__dirname, '..', 'stories'));
   } else {
     console.log('SKIP: stories folder exists...');
   }
 
-  if (!fs.existsSync(path.join(__dirname, 'stories', folderName))) {
-    fs.mkdirSync(path.join(__dirname, 'stories', folderName));
+  if (!fs.existsSync(path.join(__dirname, '..', 'stories', folderName))) {
+    fs.mkdirSync(path.join(__dirname, '..', 'stories', folderName));
   } else {
     console.log('SKIP: ' + folderName + ' folder exists...');
   }
@@ -56,8 +56,8 @@ const createStoryFile = (folderName, packageName, fileName, story) => {
   //   console.log('SKIP: ' + packageName + ' folder exists...');
   // }
 
-  console.log('WRITING: ' + path.join(__dirname, 'stories', folderName, packageName, fileName));
-  fs.writeFile(path.join(__dirname, 'stories', folderName, fileName), story, (err) => {
+  console.log('WRITING: ' + path.join(__dirname, '..', 'stories', folderName, packageName, fileName));
+  fs.writeFile(path.join(__dirname, '..', 'stories', folderName, fileName), story, (err) => {
     if (err) {
       console.log(err);
     }
@@ -75,7 +75,7 @@ const generateSingleStory = (folderName, packageName, className) => {
 
   import { ${className} } from '../../src/components/${folderName}/${packageName}';
 
-  import PropsViewer from '../base/props-viewer';
+  import PropsTable from '../base/props-table';
   import Playground from '../base/playground';
   import ComponentInfo from '../base/info';
 
@@ -84,12 +84,12 @@ const generateSingleStory = (folderName, packageName, className) => {
 
   const stories = storiesOf('${capitalizeFirstLetter(folderName)}', module);
 
-  stories.add('${capitalizeFirstLetter(folderName)}', () => {
+  stories.add('${capitalizeFirstLetter(folderName)}', ({ props }) => {
     return (
       <div style={{ padding: 20, background: 'white' }}>
-        <ComponentInfo component={${className}} content={data} defaults={defaults} />
-        <Playground component={${className}} content={data} defaults={defaults} />
-        <PropsViewer component={${className}} content={data} defaults={defaults} />
+        <ComponentInfo {...props} component={${className}} content={data} defaults={defaults} />
+        <Playground {...props} component={${className}} content={data} defaults={defaults} />
+        <PropsTable {...props} component={${className}} content={data} defaults={defaults} />
       </div>);
   });
   `;
@@ -100,19 +100,19 @@ const generateMultipleStory = (folderName, packageName, className) => {
   import React from 'react';
   import { ${className} } from '../../src/components/${folderName}/${packageName}';
 
-  import PropsViewer from '../base/props-viewer';
+  import PropsTable from '../base/props-table';
   import Playground from '../base/playground';
   import ComponentInfo from '../base/info';
 
   const data = require('../../src/components/${folderName}/${packageName}/docs/content.json');
   const defaults = require('../../src/components/${folderName}/${packageName}/assets/data/defaults.json');
 
-  export default () => {
+  export default ({ props }) => {
     return (
       <div style={{ padding: 20, background: 'white' }}>
-        <ComponentInfo component={${className}} content={data} defaults={defaults} />
-        <Playground component={${className}} content={data} defaults={defaults} />
-        <PropsViewer component={${className}} content={data} defaults={defaults} />
+        <ComponentInfo {...props} component={${className}} content={data} defaults={defaults} />
+        <Playground {...props} component={${className}} content={data} defaults={defaults} />
+        <PropsTable {...props} component={${className}} content={data} defaults={defaults} />
       </div>);
   };`;
 };

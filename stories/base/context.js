@@ -5,5 +5,8 @@ var context = {};
 context.theme = getTheme({ themeName: 'violet' });
 context.localization = [];
 context.localization.isRightToLeft = false;
+context.language = 1;
 
-export default context;
+export function getContext() {
+  return context;
+}

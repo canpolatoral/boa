@@ -4,7 +4,7 @@ import TreeView from './treeview';
 import decorators from './decorators';
 import sampleData from './data/sampleData';
 import * as helpers from './helpers';
-import { BComponent, BComponentComposer } from 'b-component';
+import { BComponentComposer, BComponent } from 'b-component';
 import { BButton } from 'b-button';
 import { BIconButton } from 'b-icon-button';
 import { BLinearPanel } from 'b-linear-panel';

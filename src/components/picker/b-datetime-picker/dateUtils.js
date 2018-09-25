@@ -1,7 +1,6 @@
 import warning from 'warning';
 import isString from 'lodash/isString';
-import { BComponent } from 'b-component';
-
+import { BLocalization } from 'b-localization';
 const dayAbbreviation = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
@@ -158,70 +157,70 @@ export function getPatternDate(d, pattern) {
 export function getFormatDecomposition(format) {
   var formats;
   if (!format) {
-    formats = {
+    formats={
       dateFormat: momentFormat.Date,
       timeFormat: undefined
     };
   }
   else if (format === receiveFormat.LD) {
-    formats = {
+    formats={
       dateFormat: momentFormat.Date,
       timeFormat: undefined
     };
   }
   else if (format === receiveFormat.LDLT) {
-    formats = {
+    formats={
       dateFormat: momentFormat.Date,
       timeFormat: momentFormat.hourAndMinuteAndSecond
     };
   }
   else if (format === receiveFormat.LDT) {
-    formats = {
+    formats={
       dateFormat: momentFormat.Date,
       timeFormat: momentFormat.hourAndMinute
     };
   }
   else if (format === receiveFormat.LT) {
-    formats = {
+    formats={
       dateFormat: undefined,
       timeFormat: momentFormat.hourAndMinuteAndSecond
     };
   }
   else if (format === receiveFormat.T) {
-    formats = {
+    formats={
       dateFormat: undefined,
       timeFormat: momentFormat.hourAndMinute
     };
   }
   else {
-    formats = {
+    formats={
       dateFormat: momentFormat.Date,
       timeFormat: undefined
     };
   }
-  formats.dateFormatHint = BComponent.Localization.stringLowerCase(BComponent.Localization.getDateTimeFormat(formats.dateFormat));
+  formats.dateFormatHint=BLocalization.stringLowerCase(BLocalization.getDateTimeFormat(formats.dateFormat));
   if (formats.timeFormat)
-    formats.timeFormatHint = BComponent.Localization.stringLowerCase(BComponent.Localization.getDateTimeFormat(formats.timeFormat));
+    formats.timeFormatHint=BLocalization.stringLowerCase( BLocalization.getDateTimeFormat(formats.timeFormat));
 
-  var dateMask = formats.dateFormatHint;
-  var timeMask = formats.timeFormatHint;
-  dateMask = dateMask.replaceAll('d', 'n');
-  dateMask = dateMask.replaceAll('m', 'n');
-  dateMask = dateMask.replaceAll('y', 'n');
+  var dateMask=formats.dateFormatHint;
+  var timeMask=formats.timeFormatHint;
+  dateMask=dateMask.replaceAll('d', 'n');
+  dateMask=dateMask.replaceAll('m', 'n');
+  dateMask=dateMask.replaceAll('y', 'n');
   if (timeMask) {
-    timeMask = timeMask.replaceAll('s', 'n');
-    timeMask = timeMask.replaceAll('h', 'n');
-    timeMask = timeMask.replaceAll('m', 'n');
+    timeMask=timeMask.replaceAll('s', 'n');
+    timeMask=timeMask.replaceAll('h', 'n');
+    timeMask=timeMask.replaceAll('m', 'n');
   }
 
 
-  formats.dateMask = dateMask;
-  formats.timeMask = timeMask;
+  formats.dateMask=dateMask;
+  formats.timeMask=timeMask;
 
   return formats;
 }
 
-String.prototype.replaceAll = function (target, replacement) {
+String.prototype.replaceAll = function(target, replacement) {
   return this.split(target).join(replacement);
 };
 
@@ -627,9 +626,9 @@ export function calendarMouseWheelToDateTime(displayDateValue, selectedDate, typ
 
 export function getDatePickerStyle(context) {
 
-  const boaPalette = context.theme.boaPalette;
-  const palette = context.theme.palette;
-  let datePicker = {
+  const boaPalette=context.theme.boaPalette;
+  const palette=context.theme.palette;
+  let datePicker= {
     calWorkDay: boaPalette.calWorkDay,
     calWeekend: boaPalette.calWeekend,
     calHoliday: boaPalette.calHoliday,

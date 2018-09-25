@@ -13,7 +13,7 @@ import { get } from './utilities';
 import LookupTable from './lookup-table';
 import { defaultRowRenderer } from './renderer';
 import { preventDefault, addEventListener, removeEventListener } from './dom';
-import { BComponent } from 'b-component';
+import { BLocalization } from 'b-localization';
 
 const noop = () => {};
 
@@ -847,8 +847,8 @@ class InfiniteTree extends events.EventEmitter {
           // filterText = filterText.toLowerCase();
           // keyword = keyword.toLowerCase();
 
-          filterText = BComponent.Localization.stringLowerCase(filterText);
-          keyword = BComponent.Localization.stringLowerCase(keyword);
+          filterText = BLocalization.stringLowerCase(filterText);
+          keyword = BLocalization.stringLowerCase(keyword); 
         }
         node.state.filtered = options.exactMatch ? filterText === keyword : filterText.indexOf(keyword) >= 0;
       } else if (typeof predicate === 'function') {
@@ -1036,23 +1036,23 @@ class InfiniteTree extends events.EventEmitter {
 
   findCheckedAndOpenNodes(nodes, openNodes, checkedNodes, selectedNodes) {
     (nodes || []).forEach(node => {
-      if (node.state.open)
+      if (node.state.open) 
         openNodes.push(node);
 
       if (node.isSelected) {
         if (checkedNodes.indexOf(node) < 0) {
           checkedNodes.push(node);
         }
-      }
+      } 
 
-      if (node.state.selected)
+      if (node.state.selected) 
         selectedNodes.push(node);
 
       if (node.children && node.children.length > 0) {
         this.findCheckedAndOpenNodes(node.children, openNodes, checkedNodes, selectedNodes);
       }
     });
-  }
+  } 
 
   // Loads data in the tree.
   // @param {object|array} data The data is an object or array of objects that defines the node.
@@ -1061,7 +1061,7 @@ class InfiniteTree extends events.EventEmitter {
 
     // Clear lookup table
     this.nodeTable.clear();
-
+ 
     // this.state.checkedNodes = this.nodes.filter(node => node.isSelected);
     // this.state.openNodes = this.nodes.filter(node => node.state.open);
     // let selectedNodes = this.nodes.filter(node => node.state.selected);
@@ -1071,7 +1071,7 @@ class InfiniteTree extends events.EventEmitter {
     this.state.checkedNodes = [];
     this.findCheckedAndOpenNodes(this.nodes, this.state.openNodes, this.state.checkedNodes, selectedNodes);
     this.state.selectedNode =  selectedNodes.length > 0 ? selectedNodes[0] : null;
-
+ 
     const rootNode = ((node = null) => {
       // Finding the root node
       while (node && node.parent !== null) {
@@ -1620,7 +1620,7 @@ class InfiniteTree extends events.EventEmitter {
 
       if (!silent) {
         // Emit a "selectNode" event
-        this.emit('selectNode', node);
+        this.emit('selectNode', node); 
       }
 
       if (autoScroll && this.scrollElement && this.contentElement) {
@@ -1644,9 +1644,9 @@ class InfiniteTree extends events.EventEmitter {
     } else {
       this.state.selectedNode = null;
 
-      if (!silent) {
+      if (!silent) { 
         // Emit a "selectNode" event
-        this.emit('selectNode', node);
+        this.emit('selectNode', node); 
       }
     }
 

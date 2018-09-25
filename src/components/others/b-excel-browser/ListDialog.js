@@ -4,6 +4,7 @@ import { BComponent, BComponentComposer } from 'b-component';
 import { BTransactionForm } from 'b-transaction-form';
 import { BCard } from 'b-card';
 import { BInput } from 'b-input';
+import { BConst } from 'b-const';
 import { BDialogHelper } from 'b-dialog-box';
 @BComponentComposer
 export class ListDialog extends BComponent {
@@ -60,7 +61,7 @@ export class ListDialog extends BComponent {
   }
 
   actionBarButtonClick(e) {
-    if (e.commandName == 'Ok') {
+    if (e.commandName == BConst.ActionCommand.Ok) {
       BDialogHelper.close(this, BComponent.DialogResponse.OK, this.state.value);
     }
   }

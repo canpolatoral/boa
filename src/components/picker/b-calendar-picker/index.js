@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'; 
 import PropTypes from  'prop-types';
 import DatePicker from './DatePicker';
 import DatePickerDialog from './DatePickerDialog';
 import { BComponent } from 'b-component';
 import { BComponentComposer } from 'b-component';
+import { BLocalization } from 'b-localization';
 import {
   getFormatDecomposition,
   receiveFormat,
@@ -77,7 +78,7 @@ export class BCalendarPicker extends BComponent {
   state = {
     formats:this.formats,
     dateFormat: this.formats.dateFormat,
-    localization: BComponent.Localization,
+    localization: BLocalization,
     value: this.getDateToString(this.props.value ? this.props.value:this.getDefaultDate(this.props),  this.getDefaultDate(this.props)),
     autoOk: false,
     disableYearSelection: false,
@@ -101,7 +102,7 @@ export class BCalendarPicker extends BComponent {
     isString(obj) {
       return (Object.prototype.toString.call(obj) === '[object String]');
     }
-
+  
     getDefaultDate(props) {
       let defaultDate=undefined;
       if  (props.defaultValue!=undefined) {
@@ -110,9 +111,9 @@ export class BCalendarPicker extends BComponent {
       else if (props.pageType=='browse') {
       }
       return defaultDate;
-
+  
     }
-
+  
     getDateToString(propDate, defaultDate) {
       let returnDate = defaultDate;
       if (this.isString(propDate)) {
@@ -201,7 +202,7 @@ export class BCalendarPicker extends BComponent {
   }
 
     getValue () {
-      if (this.state.value) {
+      if (this.state.value) {  
         let formats = getFormatDecomposition(this.props.format);
         var returnDate=this.state.value;
         if (formats.timeFormat === undefined) { // sadece tarih gösterilecek ise saat bilgileri temizleniyor.
@@ -230,7 +231,7 @@ export class BCalendarPicker extends BComponent {
         !isEqualDateTime(nextProps.value, this.props.value) ||
         !isEqualDateTime(this.props.minDate, nextProps.minDate) ||
         !isEqualDateTime(this.props.maxDate, nextProps.maxDate) ||
-        (nextProps.mode !== this.props.mode
+        (nextProps.mode !== this.props.mode 
         )
       ) {
         let date = this.getDateToString(nextProps.value, new Date());
@@ -263,7 +264,7 @@ export class BCalendarPicker extends BComponent {
 
     render(){
       const datePicker= getDatePickerStyle(this.props.context);
-
+  
       let dialogContentStyle = {
         minWidth: this.state.mode === 'landscape' ? 479 : 304,
       };
@@ -280,13 +281,13 @@ export class BCalendarPicker extends BComponent {
       else {
         timePaddingLeft =24;
       }
-
+  
       let baseContainerIconStyle = {
         width: 16,
         height: 16,
         marginTop:5
       };
-
+  
       let style = {
         dateTimePickerContainer: {
           display: datePicker.equalWidthContainerDisplay,
@@ -316,13 +317,13 @@ export class BCalendarPicker extends BComponent {
           borderRight:this.props.context.theme.boaPalette.base200,
           borderRightStyle:'solid',
           borderRightWidth:isRtl ? 0:1,
-
+  
           borderLeft:this.props.context.theme.boaPalette.base200,
           borderLeftStyle:'solid',
           borderLeftWidth:isRtl ? 1:0,
-
+  
           borderBottom:'1px solid ' + this.props.context.theme.boaPalette.base200,
-
+  
         },
         datetimeItemSpan: {
           marginTop: 'auto',
@@ -363,9 +364,9 @@ export class BCalendarPicker extends BComponent {
           vertical: 'top',
         },
         baseContainerIconStyle : baseContainerIconStyle,
-
+  
         inputAlign: this.props.pageType=='browse' ? 'center':null,
-
+  
       };
 
       return (

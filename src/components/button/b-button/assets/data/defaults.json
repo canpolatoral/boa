@@ -7,7 +7,7 @@
             "tooltip": "ToolTip",
             "onClick": null,
             "svgIcon": null,
-            "dynamicIcon": "Home",
+            "fontIcon": "muidocs-icon-action-home",
             "text": "Click Me!"
         }
     }

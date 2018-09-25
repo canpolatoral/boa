@@ -3,6 +3,7 @@ import React from 'react'; import PropTypes from 'prop-types';
 import { BComponent, BComponentComposer } from 'b-component';
 import { BTransactionForm } from 'b-transaction-form';
 import { BCard } from 'b-card';
+import { BConst } from 'b-const';
 import { BDialogHelper } from 'b-dialog-box';
 import { BDataGrid } from 'b-data-grid';
 @BComponentComposer
@@ -65,7 +66,7 @@ export class GridDialog extends BComponent {
   }
 
   actionBarButtonClick(e) {
-    if (e.commandName == 'Ok') {
+    if (e.commandName == BConst.ActionCommand.Ok) {
       let value = this.dataGrid.getInstance().getDataSource();
 
       // Sondaki datalarin bos satirlarin tamamini silelim

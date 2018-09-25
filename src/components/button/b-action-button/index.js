@@ -7,6 +7,7 @@ import { BPopover } from 'b-popover';
 import { BMenuItem } from 'b-menu-item';
 import { BIcon, Actions } from 'b-icon';
 import { MenuList } from '@material-ui/core';
+import { BLocalization } from 'b-localization';
 
 @BComponentComposer
 export class BActionButton extends BComponent {
@@ -148,7 +149,7 @@ export class BActionButton extends BComponent {
           BMenuItem context={that.props.context}
           key={subAction.actionId}
           value={subAction.actionId}
-          primaryText={BComponent.Localization.stringUpperCase(subAction.name)}
+          primaryText={BLocalization.stringUpperCase(subAction.name)}
           items={subAction.items}
           rightIcon={rightIcon}
           leftIcon={leftIcon}

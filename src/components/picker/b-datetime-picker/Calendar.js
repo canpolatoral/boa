@@ -9,6 +9,7 @@ import TimeBase from './TimeBase';
 import SpecialDay from './SpecialDay';
 import { BComponent } from 'b-component';
 import { BButton } from 'b-button';
+import { BLocalization } from 'b-localization';
 import { BDivider } from 'b-divider';
 import { BIconButton } from 'b-icon-button';
 import { BInputMask } from 'b-input-mask';
@@ -516,7 +517,7 @@ class Calendar extends BComponent {
   onKeyDownInputDate(e) {
     // const keyCode = e.keyCode || e.charCode || e.which;
     // console.log(keyCode + '-' + keycode(e));
-    // var delimiters = BComponent.Localization.getDelimiters();
+    // var delimiters = BLocalization.getDelimiters();
     // if (keycode(e) != 'enter') {
     //   if (!((keyCode == 35 || keyCode == 36 || keyCode == 37 || keyCode == 39) || // Home, end, left and right arrows
     //       // (e.shiftKey || e.altKey || e.ctrlKey) ||
@@ -543,7 +544,7 @@ class Calendar extends BComponent {
           }
           else if (this.bactioninput && this.bactioninput.getInstance().getValue()) {
             let inputValue = this.bactioninput.getInstance().getValue();
-            let dateValue = BComponent.Localization.getDateValue(inputValue.value);
+            let dateValue = BLocalization.getDateValue(inputValue.value);
             if (dateValue.isValid()) {
               // set focus new date
               let newDate = dateValue._d;

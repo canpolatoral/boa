@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from './DatePicker';
+import { BLocalization } from 'b-localization';
 import {
   getFormatDecomposition,
   receiveFormat,
@@ -92,7 +93,7 @@ export class BDateTimePicker extends BComponent {
     formats:this.formats,
     dateFormat: this.formats.dateFormat,
     timeFormat: this.formats.timeFormat,
-    localization: BComponent.Localization,
+    localization: BLocalization,
     value: this.getDateToString(this.props.value ? this.props.value:this.getDefaultDate(this.props),  this.getDefaultDate(this.props)),
     autoOk: false,
     disableYearSelection: false,

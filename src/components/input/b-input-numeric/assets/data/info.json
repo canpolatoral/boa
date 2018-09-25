@@ -6,5 +6,6 @@
     "dependencies": {
         "b-component": "^2.1.0",
         "b-input": "^2.1.0",
+        "b-localization": "^2.1.0"
     }
 }

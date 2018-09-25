@@ -4,12 +4,14 @@
     "description": "BOA Excel Browser Component.",
     "keywords": "excel, multi-value",
     "dependencies": {
+        "b-localization": "^2.1.0",
         "b-input-action": "^2.1.0",
         "b-dialog-box": "^2.1.0",
         "b-component": "^2.1.0",
         "b-label": "^2.1.0",
         "b-transaction-form": "^2.1.0",
         "b-card": "^2.1.0",
+        "b-const": "^2.1.0",
         "b-data-grid": "^2.1.0",
         "b-input": "^2.1.0"
     }

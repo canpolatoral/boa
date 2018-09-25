@@ -1,0 +1,24 @@
+[
+    {
+        "name": "b-messaging",
+        "desc": "BOA One Messaging library for multilanguage message access on BOA One.",
+        "sample": "getMessage('groupName', 'propertyName')"
+    },
+    {
+        "name" : "Props",
+        "infoArray" : [
+            {
+                "name" : "groupName",
+                "type" : "string",
+                "header" : "required",
+                "desc" : "Group name of message"
+            },
+            {
+                "name" : "propertyName",
+                "type" : "string",
+                "header" : "required",
+                "desc" : "Property name of message."
+            }
+        ]
+    }
+]

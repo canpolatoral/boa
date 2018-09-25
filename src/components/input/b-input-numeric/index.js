@@ -1,6 +1,7 @@
 import React from 'react'; import PropTypes from 'prop-types';
 import { BComponent, BComponentComposer } from 'b-component';
 import { BInput } from 'b-input';
+import { BLocalization } from 'b-localization';
 
 @BComponentComposer
 export class BInputNumeric extends BComponent {
@@ -66,7 +67,7 @@ export class BInputNumeric extends BComponent {
 
   onKeyDown(e) {
     const keyCode = e.keyCode || e.charCode || e.which;
-    var delimiters = BComponent.Localization.getDelimiters();
+    var delimiters = BLocalization.getDelimiters();
     var isTextCursorMoveKey = keyCode == 35 || keyCode == 36 || keyCode == 37 || keyCode == 39; // Home, end, left and right arrows
     var isModifierKey = e.shiftKey || e.altKey || e.ctrlKey;
     var isModifierUsedForClipboard = ((keyCode == 65 || keyCode == 86 || keyCode == 67) && (e.ctrlKey === true || e.metaKey === true)); // Ctrl-A, Ctrl-V, Ctrl-C
@@ -188,7 +189,7 @@ export class BInputNumeric extends BComponent {
   onChange(e) {
     var val = e.target.value;
     var caretPosition = e.target.selectionStart;
-    var delimiters = BComponent.Localization.getDelimiters();
+    var delimiters = BLocalization.getDelimiters();
     var delimitersCount = (val.substring(0, caretPosition).match(new RegExp('[' + delimiters.thousands + ']', 'g')) || []).length;
     var formattedValue = null;
 
@@ -213,7 +214,7 @@ export class BInputNumeric extends BComponent {
   checkNumberFormatIsValid(value) {
     if (!value || value == '' || value == '-') return true;
     if (typeof value === 'string') {
-      var delimiters = BComponent.Localization.getDelimiters();
+      var delimiters = BLocalization.getDelimiters();
       if (value.indexOf(delimiters.thousands + delimiters.thousands) != -1) return false;
       var tempValue = value.replace(new RegExp('[' + delimiters.thousands + ']', 'g'), '');
       if (this.props.format != 'D' && tempValue.indexOf(delimiters.decimal) != -1) {
@@ -232,9 +233,9 @@ export class BInputNumeric extends BComponent {
 
   getParsedValue(value) {
     if (value) {
-      var delimiters = BComponent.Localization.getDelimiters();
+      var delimiters = BLocalization.getDelimiters();
       var tempValue = typeof value === 'number' ? value : value.replace(new RegExp('[' + delimiters.thousands + ']', 'g'), '');
-      var numberValue = this.props.format == 'D' ? BComponent.Localization.getIntegerValue(tempValue) : BComponent.Localization.getFloatValue(tempValue);
+      var numberValue = this.props.format == 'D' ? BLocalization.getIntegerValue(tempValue) : BLocalization.getFloatValue(tempValue);
       if (!isNaN(numberValue)) return numberValue;
     }
     return null;
@@ -255,28 +256,28 @@ export class BInputNumeric extends BComponent {
 
     if (typeof value === 'string') {
       if (!value || value == '' || value == '-') return value;
-      var delimiters = BComponent.Localization.getDelimiters();
+      var delimiters = BLocalization.getDelimiters();
       if (nextFormat != 'D') {
         var tempValue = value.replace(new RegExp('[' + delimiters.thousands + ']', 'g'), '');
         if (tempValue.indexOf(delimiters.decimal) != -1) {
           var splittedValues = tempValue.split(delimiters.decimal);
-          var formatted = BComponent.Localization.formatCurrency(splittedValues[0], nextFormat);
+          var formatted = BLocalization.formatCurrency(splittedValues[0], nextFormat);
           var splittedAfterFormat = formatted.split(delimiters.decimal);
           return splittedAfterFormat[0] + delimiters.decimal +
             (splittedAfterFormat[1].length > splittedValues[1].length ? splittedValues[1] : splittedValues[1].substring(0, splittedAfterFormat[1].length));
         }
         else {
-          tempValue = BComponent.Localization.formatCurrency(tempValue, nextFormat);
+          tempValue = BLocalization.formatCurrency(tempValue, nextFormat);
           if (tempValue.indexOf(delimiters.decimal) != -1) return tempValue.substring(0, tempValue.indexOf(delimiters.decimal));
           else return tempValue;
         }
       }
       else {
-        return BComponent.Localization.formatCurrency(value, nextFormat);
+        return BLocalization.formatCurrency(value, nextFormat);
       }
     }
     else {
-      return BComponent.Localization.formatCurrency(value, nextFormat);
+      return BLocalization.formatCurrency(value, nextFormat);
     }
   }
 

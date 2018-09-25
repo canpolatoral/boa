@@ -1,7 +1,6 @@
 import warning from 'warning';
 import isString from 'lodash/isString';
-import { BComponent } from 'b-component';
-
+import { BLocalization } from 'b-localization';
 const dayAbbreviation = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
@@ -189,9 +188,9 @@ export function getFormatDecomposition(format) {
       timeFormat: undefined
     };
   }
-  formats.dateFormatHint=BComponent.Localization.stringLowerCase(BComponent.Localization.getDateTimeFormat(formats.dateFormat));
+  formats.dateFormatHint=BLocalization.stringLowerCase(BLocalization.getDateTimeFormat(formats.dateFormat));
   if (formats.timeFormat)
-    formats.timeFormatHint=BComponent.Localization.stringLowerCase( BComponent.Localization.getDateTimeFormat(formats.timeFormat));
+    formats.timeFormatHint=BLocalization.stringLowerCase( BLocalization.getDateTimeFormat(formats.timeFormat));
 
   var dateMask=formats.dateFormatHint;
   var timeMask=formats.timeFormatHint;

@@ -1,9 +1,0 @@
-{
-    "name": "b-action-manager-info",
-    "version": "2.1.2",
-    "description": "BOA Action Manager component. Generates actions reference from page resourceInfo.",
-    "keywords": "action,manager,worklow,button,info",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

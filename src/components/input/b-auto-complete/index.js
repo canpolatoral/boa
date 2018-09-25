@@ -8,6 +8,7 @@ import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import {Input, InputAdornment } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { BLocalization } from 'b-localization';
 
 const styles = ({
   input: {
@@ -278,8 +279,8 @@ export class BAutoComplete extends BComponent {
 
       const matches = match(suggestion[this.props.dataSourceConfig.text], query);
       let parts = parse(suggestion[this.props.dataSourceConfig.text], matches);
-      let suggesionText = BComponent.Localization.stringLowerCase(suggestion.text);
-      let queryText = BComponent.Localization.stringLowerCase(query);
+      let suggesionText = BLocalization.stringLowerCase(suggestion.text);
+      let queryText = BLocalization.stringLowerCase(query);
 
       if (Array.isArray(matches) && matches.length < 1) {
        // let indexOfQuery = suggestion.text.toLocaleLowerCase().indexOf('' + query.toLocaleLowerCase());
@@ -322,8 +323,8 @@ export class BAutoComplete extends BComponent {
       // let inputItem = inputValue.toUpperCase();
       // let convertedSource = helpers.convertString(sourceItem);
       // let convertedInput = helpers.convertString(inputItem);
-      let convertedSource = BComponent.Localization.stringLowerCase(suggestion[this.props.dataSourceConfig.text]);
-      let convertedInput = BComponent.Localization.stringLowerCase(inputValue);
+      let convertedSource = BLocalization.stringLowerCase(suggestion[this.props.dataSourceConfig.text]);
+      let convertedInput = BLocalization.stringLowerCase(inputValue);
       convertedSource = convertedSource.replace('i̇', 'i');
       convertedInput = convertedInput.replace('i̇', 'i');
       // let result = convertedSource.indexOf(convertedInput) < 0 ? false : true;

@@ -6,6 +6,7 @@ import CalendarMonth from './CalendarMonth';
 import CalendarToolbar from './CalendarToolbar';
 import { BComponent } from 'b-component';
 import { BButton } from 'b-button';
+import { BLocalization } from 'b-localization';
 import { BDivider } from 'b-divider';
 import { BInputMask } from 'b-input-mask';
 
@@ -508,7 +509,7 @@ class Calendar extends BComponent {
           }
           else if (this.bactioninput && this.bactioninput.getInstance().getValue()) {
             let inputValue = this.bactioninput.getInstance().getValue();
-            let dateValue = BComponent.Localization.getDateValue(inputValue.value);
+            let dateValue = BLocalization.getDateValue(inputValue.value);
             if (dateValue.isValid()) {
               // set focus new date
               let newDate = dateValue._d;

@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import { BLocalization } from 'b-localization';
 import Paper from '@material-ui/core/Paper';
 import BAutoComplete from 'b-auto-complete';
 import Search from '@material-ui/icons/Search';
@@ -673,10 +674,10 @@ export class BInputSearch extends BComponent {
     // const matches = match(suggestion[this.dataSourceConfig.text].toLowerCase(), query);
     const matches = match(suggestion[this.dataSourceConfig.text], query);
     let parts = parse(suggestion[this.dataSourceConfig.text], matches);
-    let suggesionText = BComponent.Localization.stringLowerCase(suggestion.text);
-    let queryText = BComponent.Localization.stringLowerCase(query);
+    let suggesionText = BLocalization.stringLowerCase(suggestion.text);
+    let queryText = BLocalization.stringLowerCase(query);
 
-    // BComponent.Localization.stringLowerCase(text).includes(BComponent.Localization.stringLowerCase(searchText));
+    // BLocalization.stringLowerCase(text).includes(BLocalization.stringLowerCase(searchText));
     if (Array.isArray(matches) && matches.length < 1) {
       let indexOfQuery = suggesionText.indexOf('' + queryText);
       let matchesNotBeginnigIndex = [{ 0: indexOfQuery, 1: indexOfQuery + query.length }];
@@ -726,8 +727,8 @@ export class BInputSearch extends BComponent {
 
   getMenuName(text) {
     let obj = ReactDOM.findDOMNode(this.binputsearch.refs.searchTextField);
-    if (obj.value && BComponent.Localization.stringLowerCase(text).indexOf(BComponent.Localization.stringUpperCase(obj.value)) !== -1) {
-      return React.createElement('span', { style: { color: 'blue' } }, obj.value) + BComponent.Localization.stringUpperCase(text).replace(obj.value, '');
+    if (obj.value && BLocalization.stringLowerCase(text).indexOf(BLocalization.stringUpperCase(obj.value)) !== -1) {
+      return React.createElement('span', { style: { color: 'blue' } }, obj.value) + BLocalization.stringUpperCase(text).replace(obj.value, '');
     }
     else {
       return text;
@@ -750,7 +751,7 @@ export class BInputSearch extends BComponent {
     }
     else {
       if (searchText.length > 2)
-        return BComponent.Localization.stringLowerCase(key).indexOf(BComponent.Localization.stringLowerCase(searchText)) !== -1;
+        return BLocalization.stringLowerCase(key).indexOf(BLocalization.stringLowerCase(searchText)) !== -1;
     }
   }
 

@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { BComponent, BComponentComposer } from 'b-component';
 import { withStyles } from '@material-ui/core/styles';
+import { BLocalization } from 'b-localization';
 import { BIcon } from 'b-icon';
 import _ from 'lodash';
 
@@ -79,7 +80,7 @@ export class BButton extends BComponent {
   }
 
   getLabel() {
-    let label = this.props.allowLabelCase ? this.props.text : BComponent.Localization.stringUpperCase(!this.props.text ? '' : this.props.text);
+    let label = this.props.allowLabelCase ? this.props.text : BLocalization.stringUpperCase(!this.props.text ? '' : this.props.text);
     return this.props.textStyle ? <div style={this.props.textStyle}>{label}</div> : label;
   }
 

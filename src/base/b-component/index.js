@@ -12,11 +12,8 @@ import { Utils } from './utils';
 import { ErrorBoundary } from './boundary';
 import { Sizes, ComponentSize, ContentAlignMode, DialogResponseStyle, DialogResponse, DialogType, Platforms, FormHeaderTransactionTypes } from './types';
 
-export function injectLocalization(localization, messaging, formManager) {
-  BComponent.Localization = localization;
-  BComponent.Messaging = messaging;
-  BComponent.FormManager = formManager;
-}
+import { BLocalization } from 'b-localization';
+import { setMessagingOptions, getMessage } from 'b-messaging';
 
 export class BAppProvider extends Component {
 
@@ -60,12 +57,6 @@ export class BComponent extends Component {
     [CHANNEL]: PropTypes.object
   }
 
-  static Messaging;
-
-  static Localization;
-
-  static FormManager;
-
   constructor(props, context) {
     super(props, context);
     this.unMounted = false;
@@ -77,15 +68,11 @@ export class BComponent extends Component {
   }
 
   getMessage(groupName, propertyName) {
-    if (BComponent.Messaging && BComponent.Messaging.getMessage)
-      return BComponent.Messaging.getMessage(groupName, propertyName);
-    return groupName + propertyName;
+    return getMessage(groupName, propertyName, this.props.context.language).Description;
   }
 
   getMessageCode(groupName, propertyName) {
-    if (BComponent.Messaging && BComponent.Messaging.getMessage)
-      return BComponent.Messaging.getMessageCode(groupName, propertyName);
-    return groupName + propertyName;
+    return getMessage(groupName, propertyName, this.props.context.language).Code;
   }
 
   validateConstraint() {
@@ -334,6 +321,11 @@ export function BComponentComposer(WrappedComponent) {
       // return super.render();
     }
   };
+}
+
+export function setLocalization(options) {
+  setMessagingOptions(options);
+  BLocalization.staticConstructor(options.languageId);
 }
 
 export { Utils } from './utils';

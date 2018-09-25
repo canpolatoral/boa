@@ -1,0 +1,10 @@
+[
+    {
+        "variantName": "default",
+        "type": "Messaging",
+        "props": {
+            "groupName":"groupName",
+            "propertyName": "propertyName"
+        }
+    }
+]

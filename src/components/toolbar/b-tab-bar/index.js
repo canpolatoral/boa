@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from './Tabs';
 import Tab from './Tab';
 import { BComponent, BComponentComposer } from 'b-component';
+import { BLocalization } from 'b-localization';
 import { BButton } from 'b-button';
 import { withStyles } from '@material-ui/core/styles';
 import { BListItem } from 'b-list-item';
@@ -156,7 +157,7 @@ export class BTabBar extends BComponent {
     if (!this.isClosing) {
       this.setState({ value });
       this.props.onChange && this.props.onChange(event, value);
-    }
+    } 
     this.isClosing = false;
     // this.actions && this.actions.updateIndicator();
   };
@@ -264,7 +265,7 @@ export class BTabBar extends BComponent {
     }
 
     let width = isLeftIconButtonVisibile == 'visible' ? 'calc(100% - 68px)' : 'calc(100% - 48px)';
-    let title = BComponent.Localization.stringUpperCase(item.text);
+    let title = BLocalization.stringUpperCase(item.text);
     let titleStyle = { margin: '0 auto !important', width: width, height: '48px', display: 'table-cell', verticalAlign: 'middle' };
 
 
@@ -395,7 +396,7 @@ export class BTabBar extends BComponent {
     if (this.props.mode == 'secondary') {
       return <style>
         {`
-          .b-tab-bar > div > div > div { border-bottom: 1px solid #bdbdbd;}
+          .b-tab-bar > div > div > div { border-bottom: 1px solid #bdbdbd;} 
         `}
       </style>;
     }
@@ -480,7 +481,7 @@ export class BTabBar extends BComponent {
     var indicatorColor = this.props.indicatorColor;
     if (this.props.mode == 'secondary') {
       indicatorColor = this.props.context.theme.boaPalette.pri500;
-    }
+    } 
 
     return (
       <div ref={(el) => { this.tabsDiv = el; }} >
@@ -534,7 +535,7 @@ export class BTabBar extends BComponent {
     }
 
     let width = isLeftIconButtonVisibile == 'visible' ? 'calc(100% - 68px)' : 'calc(100% - 48px)';
-    let title = BComponent.Localization.stringUpperCase(item.text);
+    let title = BLocalization.stringUpperCase(item.text);
     let titleStyle = { margin: '0 auto !important', width: width, height: '48px', display: 'table-cell', verticalAlign: 'middle' };
 
 

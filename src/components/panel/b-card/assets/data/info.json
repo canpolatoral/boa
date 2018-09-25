@@ -11,5 +11,6 @@
         "b-grid-row": "^2.1.0",
         "b-button": "^2.1.0",
         "@material-ui/icons": "^1.0.0-beta.36",
+        "b-form-manager": "^2.1.0"
     }
 }

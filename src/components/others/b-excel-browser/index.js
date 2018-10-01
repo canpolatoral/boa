@@ -96,7 +96,7 @@ export class BExcelBrowser extends BComponent {
       />
     );
 
-    BDialogHelper.showWithResourceCode(this.props.context, '', dialog, 0, 0, this.props.floatingLabelText, this.onDialogClosed.bind(this), dialogStyle);
+    BDialogHelper.show(this.props.context, dialog, 0, 0, this.props.floatingLabelText, this.onDialogClosed.bind(this), dialogStyle);
   }
 
   addTableClicked() {
@@ -115,7 +115,7 @@ export class BExcelBrowser extends BComponent {
       />
     );
 
-    BDialogHelper.showWithResourceCode(this.props.context, '', dialog, 0, 0, this.props.floatingLabelText, this.onDialogClosed.bind(this), dialogStyle);
+    BDialogHelper.show(this.props.context, '', dialog, 0, 0, this.props.floatingLabelText, this.onDialogClosed.bind(this), dialogStyle);
   }
 
   addExcelClicked() {

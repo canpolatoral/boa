@@ -1,9 +1,0 @@
-[
-    {
-        "variantName": "default",
-        "type": "BSlider",
-        "props": {
-            "axis": "x"
-        }
-    }
-]

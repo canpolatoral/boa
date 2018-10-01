@@ -1,9 +1,0 @@
-{
-    "name": "b-show-hide-panel",
-    "version": "2.1.2",
-    "description": "BOA Show hide panel for progress",
-    "keywords": "show,hide,panel,boa,progress",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

@@ -40,6 +40,5 @@ export default class ComponentInfo extends React.Component {
         return defaultProp.props[propName];
       }
     }
-    return '-';
   }
 }

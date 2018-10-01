@@ -61,7 +61,7 @@ class DatePickerDialog extends BComponent {
     monthTitle: PropTypes.node,
     anchorElDate: PropTypes.object,
 
-    dateUpdate:PropTypes.oneOfType([
+    dateUpdate: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.node,
     ]),
@@ -201,112 +201,112 @@ class DatePickerDialog extends BComponent {
       noDialog,
     } = this.props;
 
-    const {open} = this.state;
+    const { open } = this.state;
     let isMobileOrTablet = this.props.context.deviceSize < BComponent.Sizes.MEDIUM;
     var popoverOrigin = { horizontal: 'left', vertical: 'top' };
 
 
-    let calendar=(
+    let calendar = (
       <Calendar
-            autoOk={autoOk}
-            DateTimeFormat={DateTimeFormat}
-            cancelLabel={cancelLabel}
-            context={context}
-            disableYearSelection={disableYearSelection}
-            firstDayOfWeek={firstDayOfWeek}
-            initialDate={initialDate}
-            onTouchTapDay={this.handleTouchTapDay.bind(this)}
-            maxDate={maxDate}
-            minDate={minDate}
-            mode={mode}
-            open={open}
-            ref="calendar"
-            onTouchTapCancel={this.handleTouchTapCancel.bind(this)}
-            onTouchTapOk={this.handleTouchTapOk}
-            todayButtonOnClick={this.todayButtonOnClick.bind(this)}
-            okLabel={okLabel}
-            shouldDisableDate={shouldDisableDate}
-            handleClickToolBar={this.handleClickToolBar.bind(this)}
-            iconStyle={iconStyle}
-            inputStyle={inputStyle}
-            floatingLabelStyle={floatingLabelStyle}
-            isBusiness={isBusiness}
-            style={this.props.style}
-            calendarInfo={calendarInfo}
-            dateFormat={dateFormat}
-            timeFormat={timeFormat}
-            localization={localization}
-            canSelectOldDates={canSelectOldDates}
-            canSelectWeekendDays={canSelectWeekendDays}
-            canSelectSpecialDays={canSelectSpecialDays}
-            isMobile={isMobile}
-            datetimeOption={datetimeOption}
-            yearTitle={yearTitle}
-            monthTitle={monthTitle}
-            todayLabel={todayLabel}
-            dateUpdate={this.dateUpdate.bind(this)}
-            dialogNewSelectDate={dialogNewSelectDate}
-            noDialog={noDialog}
-            />
+        autoOk={autoOk}
+        DateTimeFormat={DateTimeFormat}
+        cancelLabel={cancelLabel}
+        context={context}
+        disableYearSelection={disableYearSelection}
+        firstDayOfWeek={firstDayOfWeek}
+        initialDate={initialDate}
+        onTouchTapDay={this.handleTouchTapDay.bind(this)}
+        maxDate={maxDate}
+        minDate={minDate}
+        mode={mode}
+        open={open}
+        ref="calendar"
+        onTouchTapCancel={this.handleTouchTapCancel.bind(this)}
+        onTouchTapOk={this.handleTouchTapOk}
+        todayButtonOnClick={this.todayButtonOnClick.bind(this)}
+        okLabel={okLabel}
+        shouldDisableDate={shouldDisableDate}
+        handleClickToolBar={this.handleClickToolBar.bind(this)}
+        iconStyle={iconStyle}
+        inputStyle={inputStyle}
+        floatingLabelStyle={floatingLabelStyle}
+        isBusiness={isBusiness}
+        style={this.props.style}
+        calendarInfo={calendarInfo}
+        dateFormat={dateFormat}
+        timeFormat={timeFormat}
+        localization={localization}
+        canSelectOldDates={canSelectOldDates}
+        canSelectWeekendDays={canSelectWeekendDays}
+        canSelectSpecialDays={canSelectSpecialDays}
+        isMobile={isMobile}
+        datetimeOption={datetimeOption}
+        yearTitle={yearTitle}
+        monthTitle={monthTitle}
+        todayLabel={todayLabel}
+        dateUpdate={this.dateUpdate.bind(this)}
+        dialogNewSelectDate={dialogNewSelectDate}
+        noDialog={noDialog}
+      />
     );
 
-    let content=(
+    let content = (
       <BDialog context={this.props.context}
-          modal={false}
-          open={open}
-          onRequestClose={this.handleRequestClose.bind(this)}
-          disableRestoreFocus={true}
-          style={{
-            padding:0
-          }}
-          >
+        modal={false}
+        open={open}
+        onRequestClose={this.handleRequestClose.bind(this)}
+        disableRestoreFocus={true}
+        style={{
+          padding: 0
+        }}
+      >
         {calendar}
       </BDialog>
     );
 
-    let popoverContent=(
+    let popoverContent = (
       <BPopover
-          canAutoPosition={true}
-          isOriginSetted={true}
-          repositionOnUpdate={true}
-          autoCloseWhenOffScreen={false}
-          style={{
-            marginTop:-57,
-            marginLeft:(this.props.pageType!='browse') ? -10:-12,
-            paddingTop: 0,
-            maxWidth: '100%',
-            width: 'calc(100% - 16px)',
-            height: 'calc(100% - 16px)',
-            maxheight: 'calc(100% - 24px)',
-            direction:!this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl'
-          }}
-          isResizable={false}
-          open={open}
-          context={this.props.context}
-          anchorEl={this.root}
-          // anchorEl={this.props.anchorElDate} // For Popover
-          anchorOrigin={popoverOrigin}
-          targetOrigin={popoverOrigin}
-          zDepth={1}
-          bodyStyle={containerStyle}
-          contentStyle={dialogContentStyle}
-          ref={r => this.popover = r}
-          onRequestClose={this.handleRequestClose.bind(this)}
-          scrollableContainer={true}
-          disableRestoreFocus={true}
-          >
+        canAutoPosition={true}
+        isOriginSetted={true}
+        repositionOnUpdate={true}
+        autoCloseWhenOffScreen={false}
+        style={{
+          marginTop: -57,
+          marginLeft: (this.props.pageType != 'browse') ? -10 : -12,
+          paddingTop: 0,
+          maxWidth: '100%',
+          width: 'calc(100% - 16px)',
+          height: 'calc(100% - 16px)',
+          maxheight: 'calc(100% - 24px)',
+          direction: !this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl'
+        }}
+        isResizable={false}
+        open={open}
+        context={this.props.context}
+        anchorEl={this.root}
+        // anchorEl={this.props.anchorElDate} // For Popover
+        anchorOrigin={popoverOrigin}
+        targetOrigin={popoverOrigin}
+        zDepth={1}
+        bodyStyle={containerStyle}
+        contentStyle={dialogContentStyle}
+        ref={r => this.popover = r}
+        onRequestClose={this.handleRequestClose.bind(this)}
+        scrollableContainer={true}
+        disableRestoreFocus={true}
+      >
         <EventListener
-            target="window"
-            onKeyUp={this.handleWindowKeyUp}
-            />
+          target="window"
+          onKeyUp={this.handleWindowKeyUp}
+        />
         {calendar}
       </BPopover>
     );
     return (
-      <div   ref={ref => (this.root = ref)}>
+      <div ref={ref => (this.root = ref)}>
         {this.props.noDialog ?
-          <div> {calendar}</div> : <div> { isMobileOrTablet ? content: popoverContent }  </div>
-       }
+          <div> {calendar}</div> : <div> {isMobileOrTablet ? content : popoverContent}  </div>
+        }
 
       </div>
     );

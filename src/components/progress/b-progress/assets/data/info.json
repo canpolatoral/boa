@@ -1,9 +1,0 @@
-{
-    "name": "b-progress",
-    "version": "2.1.2",
-    "description": "BOA progress component.",
-    "keywords": "progress,base,boa",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

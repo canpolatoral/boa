@@ -1,9 +1,0 @@
-{
-    "name": "b-doc-menu",
-    "version": "2.1.2",
-    "description": "Menu items for pages.",
-    "keywords": "doc,documentation,menu,boa",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

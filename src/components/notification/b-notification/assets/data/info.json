@@ -1,9 +1,0 @@
-{
-    "name": "b-notification",
-    "version": "2.1.2",
-    "description": "BOA Notification",
-    "keywords": "notification, alert",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

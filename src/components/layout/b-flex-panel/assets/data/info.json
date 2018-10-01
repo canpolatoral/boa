@@ -1,9 +1,0 @@
-{
-    "name": "b-flex-panel",
-    "version": "2.1.2",
-    "description": "BOA Flex Panel",
-    "keywords": "boa, flex-panel",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

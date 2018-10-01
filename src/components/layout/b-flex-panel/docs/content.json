@@ -1,7 +1,0 @@
-[
-  {
-    "name": "BFlexPanel",
-    "desc": "BOA Flex Panel",
-    "sample": "<BFlexPanel context={this.props.context} ></BFlexPanel>"
-  }
-]

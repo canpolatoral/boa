@@ -275,9 +275,16 @@ export class BEditorBase extends BComponent {
 export function BComponentComposer(WrappedComponent) {
   return class IIBComponent extends WrappedComponent {
 
+    static propTypes = {
+      ...WrappedComponent.wrappedPropTypes,
+      ...WrappedComponent.propTypes,
+    }
+
     static displayName = `BComponentComposer(${Utils.getDisplayName(WrappedComponent)})`;
 
     getComponentPropTypes() {
+      console.log(WrappedComponent.wrappedPropTypes);
+      console.log(IIBComponent.prototype);
       return this.innerRef ? this.comp.type.propTypes : WrappedComponent.propTypes;
     }
 

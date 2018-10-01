@@ -40,6 +40,5 @@ export default class PropsViewer extends React.Component {
         return defaultProp.props[propName];
       }
     }
-    return '-';
   }
 }

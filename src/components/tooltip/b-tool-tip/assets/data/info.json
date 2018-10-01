@@ -1,9 +1,0 @@
-{
-    "name": "b-tool-tip",
-    "version": "2.1.2",
-    "description": "BOA ToolTip Component - Add Tooltips to The Components",
-    "keywords": "tool-tip, tip, boa",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

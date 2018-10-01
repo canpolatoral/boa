@@ -7,6 +7,10 @@ String.prototype.splice = function (idx, rem, str) {
 export function getReadablePropTypes(CurrentPropTypes) {
   let typeList = [];
   for (var key in CurrentPropTypes) {
+
+    if (key === 'inputAlign') {
+      console.log(CurrentPropTypes);
+    }
     // skip loop if the property is from prototype
     if (!CurrentPropTypes.hasOwnProperty(key)) continue;
 

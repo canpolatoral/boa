@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EventListener from 'react-event-listener';
 import keycode from 'keycode';
 import Calendar from './Calendar';
-import { BPopover } from 'b-popover';
 import { BComponent } from 'b-component';
-import { BDialog } from 'b-dialog-box';
 
 import { dateTimeFormat } from './dateUtils';
 
@@ -60,7 +57,7 @@ class DatePickerDialog extends BComponent {
     datePickerStyle: PropTypes.any,
     anchorElDate: PropTypes.object,
 
-    dateUpdate:PropTypes.oneOfType([
+    dateUpdate: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.node,
     ]),
@@ -121,8 +118,6 @@ class DatePickerDialog extends BComponent {
       DateTimeFormat,
       autoOk,
       cancelLabel,
-      containerStyle,
-      dialogContentStyle,
       disableYearSelection,
       initialDate,
       firstDayOfWeek,
@@ -156,107 +151,53 @@ class DatePickerDialog extends BComponent {
       noDialog,
     } = this.props;
 
-    const {open} = this.state;
-    let isMobileOrTablet = this.props.context.deviceSize < BComponent.Sizes.MEDIUM;
-    var popoverOrigin = { horizontal: 'left', vertical: 'top' };
+    const { open } = this.state;
 
-
-    let calendar=(
+    let calendar = (
       <Calendar
-            autoOk={autoOk}
-            DateTimeFormat={DateTimeFormat}
-            cancelLabel={cancelLabel}
-            context={context}
-            disableYearSelection={disableYearSelection}
-            firstDayOfWeek={firstDayOfWeek}
-            initialDate={initialDate}
-            onTouchTapDay={this.handleTouchTapDay.bind(this)}
-            maxDate={maxDate}
-            minDate={minDate}
-            mode={mode}
-            open={open}
-            ref="calendar"
-            onTouchTapOk={this.handleTouchTapOk}
-            okLabel={okLabel}
-            shouldDisableDate={shouldDisableDate}
-            iconStyle={iconStyle}
-            inputStyle={inputStyle}
-            floatingLabelStyle={floatingLabelStyle}
-            isBusiness={isBusiness}
-            style={this.props.style}
-            calendarInfo={calendarInfo}
-            dateFormat={dateFormat}
-            timeFormat={timeFormat}
-            localization={localization}
-            canSelectOldDates={canSelectOldDates}
-            canSelectWeekendDays={canSelectWeekendDays}
-            canSelectSpecialDays={canSelectSpecialDays}
-            isMobile={isMobile}
-            datetimeOption={datetimeOption}
-            yearTitle={yearTitle}
-            monthTitle={monthTitle}
-            todayLabel={todayLabel}
-            dateUpdate={this.dateUpdate.bind(this)}
-            dialogNewSelectDate={dialogNewSelectDate}
-            noDialog={noDialog}
-            datePickerStyle = {this.props.datePickerStyle}
-            />
+        autoOk={autoOk}
+        DateTimeFormat={DateTimeFormat}
+        cancelLabel={cancelLabel}
+        context={context}
+        disableYearSelection={disableYearSelection}
+        firstDayOfWeek={firstDayOfWeek}
+        initialDate={initialDate}
+        onTouchTapDay={this.handleTouchTapDay.bind(this)}
+        maxDate={maxDate}
+        minDate={minDate}
+        mode={mode}
+        open={open}
+        ref="calendar"
+        onTouchTapOk={this.handleTouchTapOk}
+        okLabel={okLabel}
+        shouldDisableDate={shouldDisableDate}
+        iconStyle={iconStyle}
+        inputStyle={inputStyle}
+        floatingLabelStyle={floatingLabelStyle}
+        isBusiness={isBusiness}
+        style={this.props.style}
+        calendarInfo={calendarInfo}
+        dateFormat={dateFormat}
+        timeFormat={timeFormat}
+        localization={localization}
+        canSelectOldDates={canSelectOldDates}
+        canSelectWeekendDays={canSelectWeekendDays}
+        canSelectSpecialDays={canSelectSpecialDays}
+        isMobile={isMobile}
+        datetimeOption={datetimeOption}
+        yearTitle={yearTitle}
+        monthTitle={monthTitle}
+        todayLabel={todayLabel}
+        dateUpdate={this.dateUpdate.bind(this)}
+        dialogNewSelectDate={dialogNewSelectDate}
+        noDialog={noDialog}
+        datePickerStyle={this.props.datePickerStyle}
+      />
     );
 
-    let content=(
-      <BDialog context={this.props.context}
-          modal={true}
-          open={open}
-          onRequestClose={this.handleRequestClose.bind(this)}
-          disableRestoreFocus={true}>
-        {calendar}
-      </BDialog>
-    );
-
-    let popoverContent=(
-      <BPopover
-          canAutoPosition={true}
-          isOriginSetted={true}
-          repositionOnUpdate={true}
-          autoCloseWhenOffScreen={false}
-          style={{ 
-            marginTop:-57,
-            marginLeft:(this.props.pageType!='browse') ? -10:-12,
-            paddingTop: 0,
-            maxWidth: '100%',
-            width: 'calc(100% - 16px)',
-            height: 'calc(100% - 16px)',
-            maxheight: 'calc(100% - 24px)',
-            direction:!this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl'
-          }}
-          isResizable={false}
-          open={open}
-          context={this.props.context}
-          anchorEl={this.root}
-          // anchorEl={this.props.anchorElDate} // For Popover
-          anchorOrigin={popoverOrigin}
-          targetOrigin={popoverOrigin}
-          zDepth={1}
-          bodyStyle={containerStyle}
-          contentStyle={dialogContentStyle}
-          ref={r => this.popover = r}
-          onRequestClose={this.handleRequestClose.bind(this)}
-          scrollableContainer={true}
-          disableRestoreFocus={true}
-          >
-        {/* <EventListener
-            target="window"
-            onKeyUp={this.handleWindowKeyUp}
-            /> */}
-        {calendar}
-      </BPopover>
-    );
     return (
-      <div   ref={ref => (this.root = ref)}>
-        {/* {this.props.noDialog ? 
-          <div> {calendar}</div> : <div> { isMobileOrTablet ? content: popoverContent }  </div>           
-       } */}
-       <div> {calendar}</div>
+      <div ref={ref => (this.root = ref)}>
+        <div> {calendar}</div>
       </div>
     );
   }

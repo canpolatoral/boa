@@ -128,7 +128,7 @@ ${stories.map((story) => { return `stories.add('${story.name}', require('./${sto
 const dirs = getDirectories(COMPONENTS_DIRECTORY);
 
 dirs.forEach((dir) => {
-  if (dir !== 'utils' && dir !== 'test-viewers') {
+  if (dir === 'picker' && dir !== 'utils' && dir !== 'test-viewers') {
     const subDirs = getDirectories(path.join(COMPONENTS_DIRECTORY, dir));
     if (subDirs.length === 1) {
       subDirs.forEach((sub) => {

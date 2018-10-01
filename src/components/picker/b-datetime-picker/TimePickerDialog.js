@@ -23,7 +23,7 @@ class TimePickerDialog extends BComponent {
 
   constructor(props, context) {
     super(props, context);
-    let formatedlocalizedTime = getLocalizedTime(props.initialDate ? props.initialDate:new Date(), props.datetimeOption,
+    let formatedlocalizedTime = getLocalizedTime(props.initialDate ? props.initialDate : new Date(), props.datetimeOption,
       this.props.timeFormat, this.props.localization);
     this.state = {
       localizedTime: formatedlocalizedTime,
@@ -34,8 +34,8 @@ class TimePickerDialog extends BComponent {
     super.componentWillMount();
     this.BActionInputFocused = false;
     this.setState({
-      date: this.props.initialDate ? this.props.initialDate: new Date(),
-      localizedTime: getLocalizedTime(this.props.initialDate ? this.props.initialDate: new Date(), this.props.datetimeOption,
+      date: this.props.initialDate ? this.props.initialDate : new Date(),
+      localizedTime: getLocalizedTime(this.props.initialDate ? this.props.initialDate : new Date(), this.props.datetimeOption,
         this.props.timeFormat, this.props.localization),
       floatingLabelStyle: this.props.floatingLabelStyle,
       inputStyle: this.props.inputStyle,
@@ -208,7 +208,7 @@ class TimePickerDialog extends BComponent {
       case 'enter':
         if (this.BActionInputFocused) {
           if (this.bInputActionDialogTime && !this.bInputActionDialogTime.getValue()) {
-            this.setState({date:null}, this.handleTouchTapOk);
+            this.setState({ date: null }, this.handleTouchTapOk);
           }
           else {
             this.handleTouchTapOk();
@@ -223,13 +223,13 @@ class TimePickerDialog extends BComponent {
         context={this.props.context}
         DateTimeFormat={DateTimeFormat}
         onTouchTapTime={this.handleTouchTapHour.bind(this)}
-        selectedDate={this.state.date ? this.state.date: new Date()}
+        selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minHour}
         maxValue={maxHour}
         timeType={1}
         format={format}
         localization={localization}
-        />
+      />
     );
   }
   minuteSelector(DateTimeFormat, minMinute, maxMinute, format, localization) {
@@ -240,13 +240,13 @@ class TimePickerDialog extends BComponent {
         context={this.props.context}
         DateTimeFormat={DateTimeFormat}
         onTouchTapTime={this.handleTouchTapMinute.bind(this)}
-        selectedDate={this.state.date ? this.state.date: new Date()}
+        selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minMinute}
         maxValue={maxMinute}
         timeType={2}
         format={format}
         localization={localization}
-        />
+      />
     );
   }
   secondSelector(DateTimeFormat, minSecond, maxSecond, format, localization) {
@@ -256,13 +256,13 @@ class TimePickerDialog extends BComponent {
         context={this.props.context}
         DateTimeFormat={DateTimeFormat}
         onTouchTapTime={this.handleTouchTapSecond.bind(this)}
-        selectedDate={this.state.date ? this.state.date: new Date() }
+        selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minSecond}
         maxValue={maxSecond}
         timeType={3}
         format={format}
         localization={localization}
-        />
+      />
     );
   }
   handleFocusInput() {
@@ -272,7 +272,7 @@ class TimePickerDialog extends BComponent {
     this.BActionInputFocused = false;
   }
   handleWindowOnWheel(event) {
-    let value = getLocalizedTime(this.state.date ? this.state.date: new Date(), this.props.datetimeOption,
+    let value = getLocalizedTime(this.state.date ? this.state.date : new Date(), this.props.datetimeOption,
       this.props.timeFormat, this.props.localization);
     var selectionStart = undefined;
     var selectionEnd = undefined;
@@ -321,29 +321,29 @@ class TimePickerDialog extends BComponent {
     return (
       <div style={style.datetimeContainer}>
         {
-        !isRtl &&
-        this.renderHours()
-      }
+          !isRtl &&
+          this.renderHours()
+        }
         {
-        !isRtl &&
-        this.renderMinutes()
-      }
+          !isRtl &&
+          this.renderMinutes()
+        }
         {
-        !isRtl &&
-        this.renderSeconds()
-      }
+          !isRtl &&
+          this.renderSeconds()
+        }
         {
-        isRtl &&
-        this.renderSeconds()
-      }
+          isRtl &&
+          this.renderSeconds()
+        }
         {
-        isRtl &&
-        this.renderMinutes()
-      }
+          isRtl &&
+          this.renderMinutes()
+        }
         {
-        isRtl &&
-        this.renderHours()
-      }
+          isRtl &&
+          this.renderHours()
+        }
       </div>
     );
   }
@@ -453,9 +453,9 @@ class TimePickerDialog extends BComponent {
     } = this.props;
 
 
-    const open=this.state.open==undefined ? false:this.state.open;
+    const open = this.state.open == undefined ? false : this.state.open;
     // const {prepareStyles} = this.context.muiTheme;
-    const {calendarTextColor} = getDatePickerStyle(this.props.context); // this.context.muiTheme.datePicker;
+    const { calendarTextColor } = getDatePickerStyle(this.props.context); // this.context.muiTheme.datePicker;
     const isLandscape = mode === 'landscape';
     const styles = {
       root: {
@@ -520,13 +520,13 @@ class TimePickerDialog extends BComponent {
         overflow: 'hidden',
       },
     };
-    let dateInputValue = getLocalizedDate(initialDate? initialDate : new Date(), dateFormat, localization);
-    let timeInputValue = getLocalizedTime(this.state.date? this.state.date : new Date(), datetimeOption, timeFormat, localization);
+    let dateInputValue = getLocalizedDate(initialDate ? initialDate : new Date(), dateFormat, localization);
+    let timeInputValue = getLocalizedTime(this.state.date ? this.state.date : new Date(), datetimeOption, timeFormat, localization);
 
 
     var popoverOrigin = { horizontal: 'left', vertical: 'top' };
 
-    let content=(
+    let content = (
 
       <div style={styles.root}>
         <EventListener
@@ -535,15 +535,15 @@ class TimePickerDialog extends BComponent {
         />
         <div style={style.inputContainer}>
           {dateFormat && isMobile &&
-          <div style={style.inputDateItem}>
+            <div style={style.inputDateItem}>
 
-            <div style={{
-              marginLeft:12,
-              marginRight:12,
-              marginTop:12,
+              <div style={{
+                marginLeft: 12,
+                marginRight: 12,
+                marginTop: 12,
 
-            }}>
-              <BInputAction
+              }}>
+                <BInputAction
                   context={this.props.context}
                   hintText={this.props.hintText}
                   onFocus={this.handleFocusInput.bind(this)}
@@ -555,16 +555,16 @@ class TimePickerDialog extends BComponent {
                   floatingLabelStyle={this.state.floatingLabelStyle}
                   inputStyle={this.state.inputStyle}
                   disabled={true}
-                  />
-            </div>
+                />
+              </div>
 
-          </div>
+            </div>
           }
           <div style={style.inputTimeItem}>
             <div style={{
-              marginLeft:12,
-              marginRight:12,
-              marginTop:12
+              marginLeft: 12,
+              marginRight: 12,
+              marginTop: 12
             }}>
               <BInputAction
                 // {...other}
@@ -580,7 +580,7 @@ class TimePickerDialog extends BComponent {
                 rightIconList={null}
                 onFocus={this.handleFocusInput.bind(this)}
                 onBlur={this.handleBlurInput.bind(this)}
-                />
+              />
             </div>
           </div>
 
@@ -597,60 +597,60 @@ class TimePickerDialog extends BComponent {
               okLabel={okLabel}
               onTouchTapCancel={this.handleTouchTapCancel.bind(this)}
               onTouchTapOk={this.handleTouchTapOk.bind(this)}
-              />
+            />
           }
 
         </div>
       </div>
     );
 
-    let popoverContent=(
+    let popoverContent = (
       <BPopover
-          canAutoPosition={true}
-          isOriginSetted={true}
-          useLayerForClickAway={false}
-          repositionOnUpdate={true}
-          canAutoPosition={true}
-          isOriginSetted={true}
-          repositionOnUpdate={true}
-          autoCloseWhenOffScreen={false}
-          style={{
-            marginTop:-12,
-            marginLeft:-12,
-            paddingTop: 0,
-            maxWidth: '100%',
-            width: 'calc(100% - 16px)',
-            height: 'calc(100% - 16px)',
-            maxheight: 'calc(100% - 24px)',
-            direction:!this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl'
-          }}
-          isResizable={false}
-          open={open}
-          context={this.props.context}
-          anchorOrigin={popoverOrigin}
-          targetOrigin={popoverOrigin}
-          zDepth={1}
-          bodyStyle={containerStyle}
-          contentStyle={dialogContentStyle}
-          ref={r => this.popover = r}
-          onRequestClose={this.handleRequestClose.bind(this)}
-          contentStyle={dialogContentStyle}
-          open={open}
-          disableRestoreFocus={true}
-          anchorEl={this.props.anchorEl}
-          >
+        canAutoPosition={true}
+        isOriginSetted={true}
+        useLayerForClickAway={false}
+        repositionOnUpdate={true}
+        canAutoPosition={true}
+        isOriginSetted={true}
+        repositionOnUpdate={true}
+        autoCloseWhenOffScreen={false}
+        style={{
+          marginTop: -12,
+          marginLeft: -12,
+          paddingTop: 0,
+          maxWidth: '100%',
+          width: 'calc(100% - 16px)',
+          height: 'calc(100% - 16px)',
+          maxheight: 'calc(100% - 24px)',
+          direction: !this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl'
+        }}
+        isResizable={false}
+        open={open}
+        context={this.props.context}
+        anchorOrigin={popoverOrigin}
+        targetOrigin={popoverOrigin}
+        zDepth={1}
+        bodyStyle={containerStyle}
+        contentStyle={dialogContentStyle}
+        ref={r => this.popover = r}
+        onRequestClose={this.handleRequestClose.bind(this)}
+        contentStyle={dialogContentStyle}
+        open={open}
+        disableRestoreFocus={true}
+        anchorEl={this.props.anchorEl}
+      >
 
         {content}
 
       </BPopover>
     );
 
-    let dialogContent=(
+    let dialogContent = (
       <BDialog context={this.props.context}
-          modal={false}
-          open={open}
-          onRequestClose={this.handleRequestClose.bind(this)}
-          disableRestoreFocus={true}>
+        modal={false}
+        open={open}
+        onRequestClose={this.handleRequestClose.bind(this)}
+        disableRestoreFocus={true}>
         {content}
       </BDialog>
     );
@@ -660,7 +660,7 @@ class TimePickerDialog extends BComponent {
     return (
       <div
         ref="root">
-        { isMobileOrTablet ? dialogContent: popoverContent }
+        {isMobileOrTablet ? dialogContent : popoverContent}
 
       </div >
     );

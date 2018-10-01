@@ -5,6 +5,9 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import NativeSelect from '@material-ui/core/NativeSelect';
+
+import ReactJson from 'react-json-view';
 
 import { BInput } from 'b-input';
 import { BInputNumeric } from 'b-input-numeric';
@@ -70,18 +73,6 @@ export default class Playground extends BComponent {
   // }
 
   getBInput(property, value) {
-    const availableProperties = this.props.availableProperties;
-    const changedProd = availableProperties.find(x => x.name === property);
-
-    if (changedProd && changedProd.type === 'object') {
-      try {
-        value = JSON.stringify(value);
-      } catch (error) {
-        console.log(error);
-        return;
-      }
-    }
-
     return (
       <BInput
         context={this.props.context}
@@ -119,6 +110,30 @@ export default class Playground extends BComponent {
         toggled={value}
         onToggle={(event, isInputChecked) => this.onPropertyChanged(property.name, isInputChecked)}
       />
+    );
+  }
+
+  getJsonViewer(property, value) {
+    const self = this;
+    return (
+      <div style={{ marginTop: 15 }}>
+        <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
+        <ReactJson
+          src={value}
+          style={{ paddingTop: 10, paddingLeft: 10 }}
+          defaultValue={value === 'array' ? 'array' : null}
+          enableClipboard={false}
+          onAdd={(src) => {
+            self.onPropertyChanged(property.name, src['updated_src']);
+          }}
+          onEdit={(src) => {
+            self.onPropertyChanged(property.name, src['updated_src']);
+          }}
+          onDelete={(src) => {
+            self.onPropertyChanged(property.name, src['updated_src']);
+          }}
+        />
+      </div>
     );
   }
 
@@ -207,31 +222,27 @@ export default class Playground extends BComponent {
   // }
 
   getComponent(property, value) {
-    // if (property.availableValues && Array.isArray(property.availableValues) && property.availableValues.length > 0) {
-    //   let items = [];
-    //   property.availableValues.forEach(value => {
-    //     items.push({ text: String(value), value: value });
-    //   });
-
-    //   let columns = [{ key: 'value', name: 'value' }];
-
-    //   return (
-    //     <BComboBox
-    //       context={this.props.context}
-    //       dataSource={items}
-    //       columns={columns}
-    //       labelText={property.name}
-    //       multiSelect={false}
-    //       multiColumn={false}
-    //       hintText={property.name}
-    //       value={[value]}
-    //       displayMemberPath='text'
-    //       valueMemberPath='value'
-    //       onSelect={(selectedIndexes, selectedItems, selectedValues) => this.onPropertyChanged(property.name, selectedValues[0])}
-    //       isAllOptionIncluded={false}
-    //     />
-    //   );
-    // }
+    const self = this;
+    if (property.values && property.values.length > 0) {
+      return (
+        <div>
+          <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
+            <InputLabel htmlFor="theme">{property.name}</InputLabel>
+            <NativeSelect
+              onChange={
+                (event) => {
+                  self.onPropertyChanged(property.name, event.target.value);
+                }
+              }>
+              {
+                property.values.map((item) => {
+                  return <option value={item}>{item}</option>;
+                })
+              }
+            </NativeSelect>
+          </FormControl>
+        </div>);
+    }
 
     if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
@@ -241,8 +252,8 @@ export default class Playground extends BComponent {
       return this.getBInputNumeric(property, value);
     } else if (property.type.toLowerCase().includes('bool')) {
       return this.getBToggle(property, value);
-    } else if (property.type.toLowerCase().includes('array')) {
-      return this.getBInput(property, value);
+    } else if (property.type.toLowerCase().includes('object') || property.type.toLowerCase().includes('array')) {
+      return this.getJsonViewer(property, this.getDefaultValue(property.type));
     } else {
       return this.getBInput(property, value);
     }
@@ -283,6 +294,9 @@ export default class Playground extends BComponent {
         return '';
       case 'object':
         return {};
+      case 'array': {
+        return [];
+      }
       default:
         return undefined;
     }
@@ -323,7 +337,7 @@ export default class Playground extends BComponent {
                     }
                   </Select>
                 </FormControl>
-                <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
+                <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15, marginBottom: 15 }}>
                   <InputLabel htmlFor="lang">Language</InputLabel>
                   <Select
                     value={this.state.selectedLanguage}
@@ -346,7 +360,7 @@ export default class Playground extends BComponent {
                 </FormControl>
                 {availableProperties.map((property, index) => {
                   if (!property.hidden && property.type !== 'func') {
-                    return <div key={index}>{this.getComponent(property)}</div>;
+                    return <div key={index}>{this.getComponent(property, property.default)}</div>;
                   }
                 })}
               </div>

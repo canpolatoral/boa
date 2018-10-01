@@ -1,9 +1,0 @@
-[
-    {
-        "variantName": "default",
-        "type": "BHtmlToReact",
-        "props": {
-            "html": "<div style='background-color: #ff0000'> deneme 1-2 </div>"
-        }
-    }
-]

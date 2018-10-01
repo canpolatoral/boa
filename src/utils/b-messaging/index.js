@@ -97,8 +97,8 @@ function loadMessagesByGroup(groupName, languageId) {
   let responseLanguage = serviceCallSync(request);
 
   if (responseLanguage.isSuccess) {
-    store.currentLanguage = languageId;
     store.messages[groupName] = responseLanguage.data;
+    store.messages[groupName].languageId = languageId;
   }
 }
 
@@ -152,7 +152,7 @@ export function getMessage(groupName, propertyName, languageId) {
     }
   }
 
-  if (!store.messages || !store.messages[groupName] || messagesRefreshRequired || store.currentLanguage !== languageId ) {
+  if (!store.messages || !store.messages[groupName] || store.messages[groupName].languageId !== languageId || messagesRefreshRequired) {
     loadMessagesByGroup(groupName, languageId || messagingOptions.languageId);
   }
 

@@ -1,9 +1,0 @@
-[
-  {
-    "variantName": "default",
-    "type": "BExpander",
-    "props": {
-        "header": "Başlık"
-    }
-  }
-]

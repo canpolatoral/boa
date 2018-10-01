@@ -1,9 +1,0 @@
-{
-    "name": "b-file-input",
-    "version": "2.1.2",
-    "description": "Boa file input component.",
-    "keywords": "file,input,filereader",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

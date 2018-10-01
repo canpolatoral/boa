@@ -1,9 +1,0 @@
-{
-    "name": "b-flow-doc",
-    "version": "2.1.2",
-    "description": "WPF FlowDocument Viewer",
-    "keywords": "wpf,flowdocument,doc,viewer",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

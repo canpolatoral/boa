@@ -73,10 +73,6 @@
           "expose": "b-send-approve-dialog"
         },
         {
-          "src": "./src/components/button/b-action-button",
-          "expose": "b-action-button"
-        },
-        {
           "src": "./src/components/button/b-button",
           "expose": "b-button"
         },
@@ -137,16 +133,8 @@
           "expose": "b-doc-code"
         },
         {
-          "src": "./src/components/documentation/b-doc-menu",
-          "expose": "b-doc-menu"
-        },
-        {
           "src": "./src/components/documentation/b-doc-notice",
           "expose": "b-doc-notice"
-        },
-        {
-          "src": "./src/components/documentation/b-doc-post",
-          "expose": "b-doc-post"
         },
         {
           "src": "./src/components/documentation/b-doc-toc",
@@ -155,22 +143,6 @@
         {
           "src": "./src/components/documentation/b-doc-viewer",
           "expose": "b-doc-viewer"
-        },
-        {
-          "src": "./src/components/form/b-base-form",
-          "expose": "b-base-form"
-        },
-        {
-          "src": "./src/components/form/b-browse-form",
-          "expose": "b-browse-form"
-        },
-        {
-          "src": "./src/components/form/b-transaction-form",
-          "expose": "b-transaction-form"
-        },
-        {
-          "src": "./src/components/form/b-transaction-wizard-form",
-          "expose": "b-transaction-wizard-form"
         },
         {
           "src": "./src/components/input/b-auto-complete",
@@ -293,24 +265,12 @@
           "expose": "b-menu-item"
         },
         {
-          "src": "./src/components/others/b-captcha",
-          "expose": "b-captcha"
-        },
-        {
-          "src": "./src/components/others/b-carousel",
-          "expose": "b-carousel"
-        },
-        {
           "src": "./src/components/others/b-divider",
           "expose": "b-divider"
         },
         {
           "src": "./src/components/others/b-excel-browser",
           "expose": "b-excel-browser"
-        },
-        {
-          "src": "./src/components/others/b-html-to-react",
-          "expose": "b-html-to-react"
         },
         {
           "src": "./src/components/others/b-icon",
@@ -321,28 +281,8 @@
           "expose": "b-image"
         },
         {
-          "src": "./src/components/others/b-loading",
-          "expose": "b-loading"
-        },
-        {
           "src": "./src/components/others/b-popover",
           "expose": "b-popover"
-        },
-        {
-          "src": "./src/components/others/b-promo",
-          "expose": "b-promo"
-        },
-        {
-          "src": "./src/components/others/b-snackbar",
-          "expose": "b-snackbar"
-        },
-        {
-          "src": "./src/components/others/b-content-loader",
-          "expose": "b-content-loader"
-        },
-        {
-          "src": "./src/components/panel/b-app-card",
-          "expose": "b-app-card"
         },
         {
           "src": "./src/components/panel/b-card",
@@ -353,16 +293,8 @@
           "expose": "b-card-header"
         },
         {
-          "src": "./src/components/panel/b-criteria-panel",
-          "expose": "b-criteria-panel"
-        },
-        {
           "src": "./src/components/panel/b-linear-panel",
           "expose": "b-linear-panel"
-        },
-        {
-          "src": "./src/components/panel/b-show-hide-panel",
-          "expose": "b-show-hide-panel"
         },
         {
           "src": "./src/components/picker/b-daterange-picker",
@@ -381,20 +313,8 @@
           "expose": "b-calendar-picker"
         },
         {
-          "src": "./src/components/progress/b-indicator",
-          "expose": "b-indicator"
-        },
-        {
-          "src": "./src/components/progress/b-progress",
-          "expose": "b-progress"
-        },
-        {
           "src": "./src/components/select/b-combo-box-old",
           "expose": "b-combo-box-old"
-        },
-        {
-          "src": "./src/components/slider/b-slider",
-          "expose": "b-slider"
         },
         {
           "src": "./src/components/switch/b-check-box",
@@ -433,8 +353,8 @@
           "expose": "b-app-header-kfh"
         },
         {
-          "src": "./src/components/toolbar/b-page-host",
-          "expose": "b-page-host"
+          "src": "./src/components/dialog/b-dialog-box",
+          "expose": "b-dialog-box"
         },
         {
           "src": "./src/components/toolbar/b-tab-bar",
@@ -447,10 +367,6 @@
         {
           "src": "./src/components/toolbar/b-user-profile",
           "expose": "b-user-profile"
-        },
-        {
-          "src": "./src/components/tooltip/b-tool-tip",
-          "expose": "b-tool-tip"
         },
         {
           "src": "./src/components/treeview/b-treeview",

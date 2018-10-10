@@ -1,9 +1,0 @@
-{
-    "name": "b-toggle-icon",
-    "version": "2.1.2",
-    "description": "Boa Toggle Icon component.",
-    "keywords": "toggle,switch,button,boa,api,market",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

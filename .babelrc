@@ -9,387 +9,163 @@
       "module-alias",
       [
         {
-          "src": "./framework",
-          "expose": "b-framework"
-        },
-        {
-          "src": "./src/base/b-component",
+          "src": "./src/base",
           "expose": "b-component"
         },
         {
-          "src": "./src/base/b-theme",
+          "src": "./src/base",
           "expose": "b-theme"
         },
         {
-          "src": "./src/components/form/b-action-manager",
-          "expose": "b-action-manager"
-        },
-        {
-          "src": "./src/components/form/b-action-manager-info",
-          "expose": "b-action-manager-info"
-        },
-        {
-          "src": "./src/components/test-viewers/generic-test-viewer",
-          "expose": "generic-test-viewer"
-        },
-        {
-          "src": "./src/components/bpm/b-authorized-user-dialog",
-          "expose": "b-authorized-user-dialog"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-action-reason",
-          "expose": "b-bpm-action-reason"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-action-reason-list",
-          "expose": "b-bpm-action-reason-list"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-designer",
-          "expose": "b-bpm-designer"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-monitor",
-          "expose": "b-bpm-monitor"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-route-history",
-          "expose": "b-bpm-route-history"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-test-viewer",
-          "expose": "b-bpm-test-viewer"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-user-note",
-          "expose": "b-bpm-user-note"
-        },
-        {
-          "src": "./src/components/bpm/b-bpm-user-list",
-          "expose": "b-bpm-user-list"
-        },
-        {
-          "src": "./src/components/bpm/b-send-approve-dialog",
-          "expose": "b-send-approve-dialog"
-        },
-        {
-          "src": "./src/components/button/b-button",
+          "src": "./src/components/Button",
           "expose": "b-button"
         },
         {
-          "src": "./src/components/button/b-icon-button",
+          "src": "./src/components/IconButton",
           "expose": "b-icon-button"
         },
         {
-          "src": "./src/components/chart/b-chart-card",
-          "expose": "b-chart-card"
-        },
-        {
-          "src": "./src/components/chart/b-chart-form",
-          "expose": "b-chart-form"
-        },
-        {
-          "src": "./src/components/chart/b-dynamic-chart",
-          "expose": "b-dynamic-chart"
-        },
-        {
-          "src": "./src/components/chart/b-horizontal-line-chart",
-          "expose": "b-horizontal-line-chart"
-        },
-        {
-          "src": "./src/components/chart/b-line-chart",
-          "expose": "b-line-chart"
-        },
-        {
-          "src": "./src/components/chart/b-pie-chart",
-          "expose": "b-pie-chart"
-        },
-        {
-          "src": "./src/components/chart/b-radar-chart",
-          "expose": "b-radar-chart"
-        },
-        {
-          "src": "./src/components/course/b-course",
-          "expose": "b-course"
-        },
-        {
-          "src": "./src/components/dms/b-divit-helper",
-          "expose": "b-divit-helper"
-        },
-        {
-          "src": "./src/components/dms/b-file-input",
-          "expose": "b-file-input"
-        },
-        {
-          "src": "./src/components/dms/b-icon-input",
-          "expose": "b-icon-input"
-        },
-        {
-          "src": "./src/components/dms/b-pdf-viewer",
-          "expose": "b-pdf-viewer"
-        },
-        {
-          "src": "./src/components/documentation/b-doc-code",
+          "src": "./src/components/DocCode",
           "expose": "b-doc-code"
         },
         {
-          "src": "./src/components/documentation/b-doc-notice",
+          "src": "./src/components/DocNotice",
           "expose": "b-doc-notice"
         },
         {
-          "src": "./src/components/documentation/b-doc-toc",
+          "src": "./src/components/DocToc",
           "expose": "b-doc-toc"
         },
         {
-          "src": "./src/components/documentation/b-doc-viewer",
+          "src": "./src/components/DocViewer",
           "expose": "b-doc-viewer"
         },
         {
-          "src": "./src/components/input/b-auto-complete",
+          "src": "./src/components/AutoComplete",
           "expose": "b-auto-complete"
         },
         {
-          "src": "./src/components/input/b-input",
+          "src": "./src/components/Input",
           "expose": "b-input"
         },
         {
-          "src": "./src/components/input/b-input-action",
+          "src": "./src/components/InputAction",
           "expose": "b-input-action"
         },
         {
-          "src": "./src/components/input/b-input-mask",
+          "src": "./src/components/InputMask",
           "expose": "b-input-mask"
         },
         {
-          "src": "./src/components/input/b-input-numeric",
+          "src": "./src/components/InputNumeric",
           "expose": "b-input-numeric"
         },
         {
-          "src": "./src/components/input/b-input-search",
+          "src": "./src/components/InputSearch",
           "expose": "b-input-search"
         },
         {
-          "src": "./src/components/label/b-information-text",
-          "expose": "b-information-text"
-        },
-        {
-          "src": "./src/components/label/b-label",
+          "src": "./src/components/Label",
           "expose": "b-label"
         },
         {
-          "src": "./src/components/label/b-span",
-          "expose": "b-span"
-        },
-        {
-          "src": "./src/components/label/b-more-text",
-          "expose": "b-more-text"
-        },
-        {
-          "src": "./src/components/layout/b-card-section",
-          "expose": "b-card-section"
-        },
-        {
-          "src": "./src/components/layout/b-expander",
-          "expose": "b-expander"
-        },
-        {
-          "src": "./src/components/layout/b-flex-panel",
-          "expose": "b-flex-panel"
-        },
-        {
-          "src": "./src/components/layout/b-footer",
-          "expose": "b-footer"
-        },
-        {
-          "src": "./src/components/layout/b-grid-layout",
-          "expose": "b-grid-layout"
-        },
-        {
-          "src": "./src/components/layout/b-grid-row",
-          "expose": "b-grid-row"
-        },
-        {
-          "src": "./src/components/layout/b-grid-section",
-          "expose": "b-grid-section"
-        },
-        {
-          "src": "./src/components/layout/b-page-module",
-          "expose": "b-page-module"
-        },
-        {
-          "src": "./src/components/layout/b-resizable",
-          "expose": "b-resizable"
-        },
-        {
-          "src": "./src/components/layout/b-resizable-beta",
+          "src": "./src/components/Resizable",
           "expose": "b-resizable-beta"
         },
         {
-          "src": "./src/components/layout/b-scroll",
+          "src": "./src/components/Scroll",
           "expose": "b-scroll"
         },
         {
-          "src": "./src/components/layout/b-side-bar",
-          "expose": "b-side-bar"
-        },
-        {
-          "src": "./src/components/toolkit/b-toolkit",
-          "expose": "b-toolkit"
-        },
-        {
-          "src": "./src/components/list/b-grid-list",
-          "expose": "b-grid-list"
-        },
-        {
-          "src": "./src/components/list/b-list",
-          "expose": "b-list"
-        },
-        {
-          "src": "./src/components/list/b-virtualized-list",
-          "expose": "b-virtualized-list"
-        },
-        {
-          "src": "./src/components/list/b-list-item",
+          "src": "./src/components/ListItem",
           "expose": "b-list-item"
         },
         {
-          "src": "./src/components/menu/b-icon-menu",
+          "src": "./src/components/IconMenu",
           "expose": "b-icon-menu"
         },
         {
-          "src": "./src/components/menu/b-menu",
+          "src": "./src/components/Menu",
           "expose": "b-menu"
         },
         {
-          "src": "./src/components/menu/b-menu-item",
+          "src": "./src/components/MenuItem",
           "expose": "b-menu-item"
         },
         {
-          "src": "./src/components/others/b-divider",
+          "src": "./src/components/Divider",
           "expose": "b-divider"
         },
         {
-          "src": "./src/components/others/b-excel-browser",
+          "src": "./src/components/ExcelBrowser",
           "expose": "b-excel-browser"
         },
         {
-          "src": "./src/components/others/b-icon",
+          "src": "./src/components/Icon",
           "expose": "b-icon"
         },
         {
-          "src": "./src/components/others/b-image",
-          "expose": "b-image"
-        },
-        {
-          "src": "./src/components/others/b-popover",
+          "src": "./src/components/Popover",
           "expose": "b-popover"
         },
         {
-          "src": "./src/components/panel/b-card",
-          "expose": "b-card"
-        },
-        {
-          "src": "./src/components/panel/b-card-header",
-          "expose": "b-card-header"
-        },
-        {
-          "src": "./src/components/panel/b-linear-panel",
+          "src": "./src/components/LinearPanel",
           "expose": "b-linear-panel"
         },
         {
-          "src": "./src/components/picker/b-daterange-picker",
+          "src": "./src/components/DateRangePicker",
           "expose": "b-daterange-picker"
         },
         {
-          "src": "./src/components/picker/b-datetime-picker",
+          "src": "./src/components/DateTimePicker",
           "expose": "b-datetime-picker"
         },
         {
-          "src": "./src/components/picker/b-datetime-picker/Calendar",
+          "src": "./src/components/CalendarPicker",
           "expose": "b-datetime-calendar"
         },
         {
-          "src": "./src/components/picker/b-calendar-picker",
-          "expose": "b-calendar-picker"
-        },
-        {
-          "src": "./src/components/select/b-combo-box-old",
-          "expose": "b-combo-box-old"
-        },
-        {
-          "src": "./src/components/switch/b-check-box",
+          "src": "./src/components/CheckBox",
           "expose": "b-check-box"
         },
         {
-          "src": "./src/components/switch/b-check-box-group",
+          "src": "./src/components/CheckBoxGroup",
           "expose": "b-check-box-group"
         },
         {
-          "src": "./src/components/switch/b-radio-button",
+          "src": "./src/components/RadioButton",
           "expose": "b-radio-button"
         },
         {
-          "src": "./src/components/switch/b-radio-button-group",
+          "src": "./src/components/RadioButtonGroup",
           "expose": "b-radio-button-group"
         },
         {
-          "src": "./src/components/switch/b-toggle",
+          "src": "./src/components/Toggle",
           "expose": "b-toggle"
         },
         {
-          "src": "./src/components/switch/b-toggle-icon",
-          "expose": "b-toggle-icon"
-        },
-        {
-          "src": "./src/components/toolbar/b-app-bar",
-          "expose": "b-app-bar"
-        },
-        {
-          "src": "./src/components/toolbar/b-app-header",
-          "expose": "b-app-header"
-        },
-        {
-          "src": "./src/components/toolbar/b-app-header-kfh",
-          "expose": "b-app-header-kfh"
-        },
-        {
-          "src": "./src/components/dialog/b-dialog-box",
+          "src": "./src/components/Dialog",
           "expose": "b-dialog-box"
         },
         {
-          "src": "./src/components/toolbar/b-tab-bar",
+          "src": "./src/components/TabBar",
           "expose": "b-tab-bar"
         },
         {
-          "src": "./src/components/toolbar/b-tab-bar-dynamic",
-          "expose": "b-tab-bar-dynamic"
-        },
-        {
-          "src": "./src/components/toolbar/b-user-profile",
-          "expose": "b-user-profile"
-        },
-        {
-          "src": "./src/components/treeview/b-treeview",
+          "src": "./src/components/TreeView",
           "expose": "b-treeview"
         },
         {
-          "src": "./src/components/treeview/b-treeview-data-grid",
-          "expose": "b-treeview-data-grid"
-        },
-        {
-          "src": "./src/components/treeview/b-treeview-grid",
+          "src": "./src/components/TreeViewGrid",
           "expose": "b-treeview-grid"
         },
         {
-          "src": "./src/utils/b-proxy",
-          "expose": "b-proxy"
-        },
-        {
-          "src": "./src/utils/b-localization",
+          "src": "./src/utils",
           "expose": "b-localization"
         },
         {
-          "src": "./src/utils/b-messaging",
+          "src": "./src/utils",
           "expose": "b-messaging"
         }
       ]

@@ -9,12 +9,12 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 import ReactJson from 'react-json-view';
 
-import { BInput } from 'b-input';
-import { BInputNumeric } from 'b-input-numeric';
-import { BToggle } from 'b-toggle';
-import { BScroll } from 'b-scroll';
+import { Input } from 'b-input';
+import { InputNumeric } from 'b-input-numeric';
+import { Toggle } from 'b-toggle';
+import { Scroll } from 'b-scroll';
 
-import { BComponent } from '../../src/base/b-component';
+import { ComponentBase } from 'b-component';
 
 const style = {
   scrollStyle: { maxHeight: 300, padding: '24px', wordWrap: 'break-word' },
@@ -40,11 +40,12 @@ const languageItems = [
   { title: 'العربية', value: 5 }
 ];
 
-export default class Playground extends BComponent {
+export default class Playground extends ComponentBase {
   constructor(props, context) {
     super(props, context);
     this.componentPropertySource = [];
     this.onPropertyChanged = this.onPropertyChanged.bind(this);
+    this.onApplyClick = this.onApplyClick.bind(this);
     this.componentRef = React.createRef();
   }
 
@@ -57,24 +58,13 @@ export default class Playground extends BComponent {
     this.props.onPropertyChanged(property, value);
   }
 
-  // getBDateTimePicker(property, value) {
-  //   return (
-  //     <BDateTimePicker
-  //       context={this.props.context}
-  //       mode='portrait'
-  //       type='text'
-  //       format='DDMMYYYY hmmss'
-  //       value={value}
-  //       floatingLabelTextDate={property.name}
-  //       floatingLabelTextTime={property.name}
-  //       onChange={(e, v) => this.onPropertyChanged(property.name, v)}
-  //     />
-  //   );
-  // }
+  onApplyClick() {
+    this.props.onApplyClick();
+  }
 
   getBInput(property, value) {
     return (
-      <BInput
+      <Input
         context={this.props.context}
         type='text'
         value={value}
@@ -90,7 +80,7 @@ export default class Playground extends BComponent {
 
   getBInputNumeric(property, value) {
     return (
-      <BInputNumeric
+      <InputNumeric
         context={this.props.context}
         value={value}
         floatingLabelText={property.name}
@@ -102,7 +92,7 @@ export default class Playground extends BComponent {
 
   getBToggle(property, value) {
     return (
-      <BToggle
+      <Toggle
         context={this.props.context}
         label={property.label ? property.label : property.name}
         labelPosition='left'
@@ -123,13 +113,13 @@ export default class Playground extends BComponent {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={(src) => {
-            self.onPropertyChanged(property.name, src['updated_src']);
+          onAdd={() => {
           }}
           onEdit={(src) => {
             self.onPropertyChanged(property.name, src['updated_src']);
           }}
           onDelete={(src) => {
+            console.log('delete');
             self.onPropertyChanged(property.name, src['updated_src']);
           }}
         />
@@ -143,83 +133,6 @@ export default class Playground extends BComponent {
       .match(/\s([a-zA-Z]+)/)[1]
       .toLowerCase();
   }
-
-  // getBGridActionPanel(property, dataSource, columns) {
-  //   if (!dataSource) {
-  //     return null;
-  //   }
-
-  //   let hasValue = dataSource.length > 0;
-  //   let gstyle = !hasValue ? { display: 'inline-block', float: 'right' } : {};
-  //   return (
-  //     <div
-  //       style={{ overflow: 'hidden', borderBottom: '1px dotted #bdbdbd', marginBottom: '15px', paddingBottom: '5px', paddingTop: '5px' }}
-  //     >
-  //       <label style={{ color: 'gray', fontSize: '13pt' }}>{property.name}</label>
-  //       <BGridActionPanel
-  //         style={gstyle}
-  //         context={this.props.context}
-  //         showAddButton={true}
-  //         showDeleteButton={true}
-  //         showEditButton={true}
-  //         editable={true}
-  //         editButtonDisabled={!hasValue}
-  //         dontShowGridIfItemNotExists={!hasValue}
-  //         multiSelection={true}
-  //         enableRowSelect={true}
-  //         enableCellSelect={true}
-  //         addButtonText={'Add'}
-  //         showEditButton={false}
-  //         dataSource={dataSource}
-  //         columns={columns}
-  //         onAddClicked={() => {
-  //           let source = Object.assign([], dataSource);
-  //           var row = {};
-  //           columns.forEach(item => {
-  //             row[item.key] = item.type === 'number' ? 100 : item.key;
-  //           });
-  //           source.push(row);
-  //           this.onPropertyChanged(property.name, source);
-  //         }}
-  //         onDeleteClicked={(index) => {
-  //           let source = Object.assign([], dataSource);
-  //           source.splice(index, 1);
-  //           this.onPropertyChanged(property.name, source);
-  //         }}
-  //         onItemUpdated={(index, fieldName, newValue) => {
-  //           let source = Object.assign([], dataSource);
-  //           if (source && source.length > 0) {
-  //             source[index][fieldName] = this.convertType(newValue, this.getType(newValue));
-  //           }
-  //           this.onPropertyChanged(property.name, source);
-  //         }}
-  //       />
-  //     </div>
-  //   );
-  // }
-
-  // getBArray(property, dataSource) {
-  //   if (property.arrayOf) {
-  //     let columns = [
-  //       {
-  //         key: 'value',
-  //         name: property.column,
-  //         type: property.arrayOf,
-  //         editable: true
-  //       }
-  //     ];
-  //     let gridValue = [];
-  //     if (dataSource) {
-  //       dataSource.forEach(item => {
-  //         gridValue.push({ value: item });
-  //       });
-  //     }
-
-  //     return this.getBGridActionPanel(property, dataSource, columns);
-  //   } else {
-  //     return this.getBGridActionPanel(property, dataSource, property.dataGridKeys);
-  //   }
-  // }
 
   getComponent(property, value) {
     const self = this;
@@ -255,7 +168,7 @@ export default class Playground extends BComponent {
     } else if (property.type.toLowerCase().includes('object') || property.type.toLowerCase().includes('array')) {
       return this.getJsonViewer(property, this.getDefaultValue(property.type));
     } else {
-      return this.getBInput(property, value);
+      return null;
     }
   }
 
@@ -311,10 +224,10 @@ export default class Playground extends BComponent {
     }
 
     return (
-      <div style={{ maxWidth: 300 }}>
+      <div style={{ maxWidth: 300, position: 'relative' }}>
         <Paper>
           <div style={style.criteriaPanel}>
-            <BScroll context={this.props.context} option={{ suppressScrollX: true }} style={style.scrollStyle}>
+            <Scroll context={this.props.context} option={{ suppressScrollX: true }} style={style.scrollStyle}>
               <div>
                 <FormControl style={{ maxWidth: 300, width: '100%' }}>
                   <InputLabel htmlFor="theme">Theme</InputLabel>
@@ -364,32 +277,10 @@ export default class Playground extends BComponent {
                   }
                 })}
               </div>
-            </BScroll>
+            </Scroll>
           </div>
         </Paper>
       </div>
     );
   }
-
-  //   <BComboBox
-  //   context={this.props.context}
-  //   hintText="Theme"
-  //   labelText="Theme"
-  //   dataSource={themeItems}
-  //   multiSelect={false}
-  //   multiColumn={false}
-  //   isAllOptionIncluded={false}
-  //   displayMemberPath="title"
-  //   valueMemberPath="value"
-  //   value={[self.state.selectedTheme]}
-  //   onSelect={(index, selectedItems, selectedValues) => {
-  //     self.setState({
-  //       selectedTheme: selectedValues[0]
-  //     });
-  //     if (self.props.onThemeChange) {
-  //       self.props.onThemeChange(selectedValues[0]);
-  //     }
-  //   }}
-  // />
-
 }

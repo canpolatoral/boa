@@ -1,9 +1,0 @@
-{
-    "name": "b-icon",
-    "version": "2.1.4",
-    "description": "BOA BIcon Component",
-    "keywords": "icon, boa, b-icon, bicon",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

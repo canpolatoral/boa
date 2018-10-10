@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import { BAppProvider, BComponent, setLocalization } from 'b-component';
+import { AppProvider, ComponentBase, setLocalization } from 'b-component';
 import { getTheme } from 'b-theme';
-import { BLocalization, } from 'b-localization'
+import { Localization, } from 'b-localization'
 
 import { getContext } from '../stories/base/context';
 
-export default class Container extends BComponent {
+export default class Container extends ComponentBase {
 
   state = {
     context: getContext()
@@ -36,7 +36,7 @@ export default class Container extends BComponent {
 
   onLanguageChange(value) {
     const localization = { isRightToLeft: value === 5 ? true : false }
-    BLocalization.changeLocalizationLanguage(value);
+    Localization.changeLocalizationLanguage(value);
     this.setState({ context: Object.assign({}, this.state.context, { language: value, localization: localization, messagingContext: {} }) });
   }
 
@@ -47,9 +47,9 @@ export default class Container extends BComponent {
     context.props.onLanguageChange = this.onLanguageChange;
 
     return (
-      <BAppProvider theme={this.state.context.theme}>
+      <AppProvider theme={this.state.context.theme}>
         {story(context)}
-      </BAppProvider>
+      </AppProvider>
     );
   }
 }

@@ -1,6 +1,23 @@
 
-import { storiesOf } from '@storybook/react';
+  import React from 'react';
+  import { storiesOf } from '@storybook/react';
 
-const stories = storiesOf('Button', module);
-stories.add('BButton', require('./b-button').default);
-stories.add('BIconButton', require('./b-icon-button').default);
+  import { Button } from '../../src/components/Button';
+
+  import Header from '../base/header';
+  import Props from '../base/props';
+  import Preview from '../base/preview';
+
+  const doc = require('./doc.json');
+
+  const stories = storiesOf('Button', module);
+
+  stories.add('Button', ({ props }) => {
+    return (
+      <div style={{ padding: 20, background: 'white' }}>
+        <Header {...props} component={Button} doc={doc} />
+        <Preview {...props} component={Button} doc={doc} />
+        <Props {...props} component={Button} doc={doc} />
+      </div>);
+  });
+  

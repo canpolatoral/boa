@@ -1,0 +1,196 @@
+{
+	"description": "",
+	"displayName": "Toggle",
+	"methods": [
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleOnToggle",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				},
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	],
+	"props": {
+		"defaultToggled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "The default value of toggle.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "Will disable the toggle if true.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"elementStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the style of element."
+		},
+		"iconStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the style of icon."
+		},
+		"inputStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the style of input."
+		},
+		"label": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "The label of toggle component."
+		},
+		"labelStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the style of label."
+		},
+		"onToggle": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "The event to handle toggle."
+		},
+		"rippleStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the style of ripple."
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the style."
+		},
+		"trackSwitchedStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the style of track switched."
+		},
+		"valueLink": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the value of link."
+		},
+		"iconProperties": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Indicates the icon properties."
+		},
+		"informationText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Indicates the icon information text."
+		},
+		"toggled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "Indicates the toggled or not.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"errorText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"labelPosition": {
+			"defaultValue": {
+				"value": "left",
+				"computed": false
+			},
+			"required": false
+		}
+	},
+	"composes": [
+		"b-component"
+	]
+}

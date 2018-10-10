@@ -1,9 +1,0 @@
-{
-    "name": "b-divider",
-    "version": "2.1.2",
-    "description": "Boa divider bileşeni.",
-    "keywords": "divider,base,boa",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

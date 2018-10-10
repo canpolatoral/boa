@@ -1,9 +1,0 @@
-{
-    "name": "b-doc-notice",
-    "version": "2.1.2",
-    "description": "Notice viewer",
-    "keywords": "notice,tip,warning,error,boa",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

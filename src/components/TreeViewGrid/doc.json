@@ -1,0 +1,213 @@
+{
+	"description": "",
+	"displayName": "TreeViewGrid",
+	"methods": [
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "findNode",
+			"docblock": "Use the findNode method to get a node from the tree view control at the specified value path.\n@param valuePath\n@param value",
+			"modifiers": [],
+			"params": [
+				{
+					"name": "valuePath",
+					"description": null,
+					"type": null
+				},
+				{
+					"name": "value",
+					"description": null,
+					"type": null
+				}
+			],
+			"returns": null,
+			"description": "Use the findNode method to get a node from the tree view control at the specified value path."
+		},
+		{
+			"name": "expandAll",
+			"docblock": "The expandAll method provides a convenient way to open every node in the tree.",
+			"modifiers": [],
+			"params": [],
+			"returns": null,
+			"description": "The expandAll method provides a convenient way to open every node in the tree."
+		},
+		{
+			"name": "collapseAll",
+			"docblock": "The collapseAll method provides a convenient way to close every node in the tree.",
+			"modifiers": [],
+			"params": [],
+			"returns": null,
+			"description": "The collapseAll method provides a convenient way to close every node in the tree."
+		},
+		{
+			"name": "getValue",
+			"docblock": "Get the node that is currently selected\n@returns {*}",
+			"modifiers": [],
+			"params": [],
+			"returns": {
+				"description": null,
+				"type": {
+					"name": "mixed"
+				}
+			},
+			"description": "Get the node that is currently selected"
+		},
+		{
+			"name": "getValues",
+			"docblock": "Get the list of nodes in tree view.",
+			"modifiers": [],
+			"params": [],
+			"returns": null,
+			"description": "Get the list of nodes in tree view."
+		},
+		{
+			"name": "setValues",
+			"docblock": "Set tree view data.\n@param dataSource\n@param props",
+			"modifiers": [],
+			"params": [
+				{
+					"name": "dataSource",
+					"description": null,
+					"type": null
+				}
+			],
+			"returns": null,
+			"description": "Set tree view data."
+		},
+		{
+			"name": "handleOnToggle",
+			"docblock": "Handle function when a node is toggled / clicked. Passes 2 attributes: the data node and it's toggled boolean state.\n@param node\n@param toggled",
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"description": null,
+					"type": null
+				},
+				{
+					"name": "toggled",
+					"description": null,
+					"type": null
+				}
+			],
+			"returns": null,
+			"description": "Handle function when a node is toggled / clicked. Passes 2 attributes: the data node and it's toggled boolean state."
+		},
+		{
+			"name": "findNodeItem",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "data",
+					"type": null
+				},
+				{
+					"name": "valuePath",
+					"type": null
+				},
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "item",
+					"type": null
+				},
+				{
+					"name": "node",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	],
+	"props": {
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"data": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "object"
+					},
+					{
+						"name": "array"
+					}
+				]
+			},
+			"required": true,
+			"description": ""
+		},
+		"selectedNodeId": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"onItemChanged": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"title": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"onOptionClick": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		}
+	},
+	"composes": [
+		"b-component"
+	]
+}

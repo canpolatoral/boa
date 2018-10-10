@@ -1,9 +1,0 @@
-{
-    "name": "b-daterange-picker",
-    "version": "2.1.2",
-    "description": "Boa date range picker bileşeni.",
-    "keywords": "date,picker,boa",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

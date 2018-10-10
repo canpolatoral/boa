@@ -15,3 +15,5 @@ dist/
 .idea/
 .vscode/chrome/
 package-lock.json
+build
+stories/**/doc.json

@@ -1,13 +1,10 @@
-
 import React, { Component } from 'react';
 import { configure, setAddon, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
-
-import { BComponent } from '../src/base/b-component';
+import jquery from 'jquery';
 
 import Container from './container'
 
-import jquery from 'jquery';
 global.$ = jquery;
 global.jQuery = jquery;
 

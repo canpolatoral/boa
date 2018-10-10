@@ -1,9 +1,0 @@
-{
-    "name": "b-time-picker",
-    "version": "2.1.2",
-    "description": "Boa time picker bileşeni.",
-    "keywords": "time,picker,boa",
-    "dependencies": {
-        "b-component": "^2.1.0"
-    }
-}

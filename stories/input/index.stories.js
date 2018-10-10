@@ -1,10 +1,23 @@
 
-import { storiesOf } from '@storybook/react';
+  import React from 'react';
+  import { storiesOf } from '@storybook/react';
 
-const stories = storiesOf('Input', module);
-stories.add('BAutoComplete', require('./b-auto-complete').default);
-stories.add('BInput', require('./b-input').default);
-stories.add('BInputAction', require('./b-input-action').default);
-stories.add('BInputMask', require('./b-input-mask').default);
-stories.add('BInputNumeric', require('./b-input-numeric').default);
-stories.add('BInputSearch', require('./b-input-search').default);
+  import { Input } from '../../src/components/Input';
+
+  import Header from '../base/header';
+  import Props from '../base/props';
+  import Preview from '../base/preview';
+
+  const doc = require('./doc.json');
+
+  const stories = storiesOf('Input', module);
+
+  stories.add('Input', ({ props }) => {
+    return (
+      <div style={{ padding: 20, background: 'white' }}>
+        <Header {...props} component={Input} doc={doc} />
+        <Preview {...props} component={Input} doc={doc} />
+        <Props {...props} component={Input} doc={doc} />
+      </div>);
+  });
+  

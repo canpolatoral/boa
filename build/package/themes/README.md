@@ -1,5 +1,0 @@
-## b-theme
-
-
-### Licence
-KuveytTurk

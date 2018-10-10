@@ -1,0 +1,891 @@
+{
+	"description": "",
+	"displayName": "TreeView",
+	"methods": [
+		{
+			"name": "getFooterText",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "addChildNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "newNodes",
+					"type": null
+				},
+				{
+					"name": "index",
+					"type": null
+				},
+				{
+					"name": "parentNode",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "appendChildNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "newNode",
+					"type": null
+				},
+				{
+					"name": "parentNode",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "checkNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				},
+				{
+					"name": "checked",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "closeNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				},
+				{
+					"name": "options",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getChildNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "parentNode",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getNodeById",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "id",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getNodeFromPoint",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "x",
+					"type": null
+				},
+				{
+					"name": "y",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getOpenNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getRootNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getSelectedNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getSelectedIndex",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getCheckedNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getCheckedNodeIds",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "insertNodeAfter",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "newNode",
+					"type": null
+				},
+				{
+					"name": "referenceNode",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "insertNodeBefore",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "newNode",
+					"type": null
+				},
+				{
+					"name": "referenceNode",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "moveNodeTo",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				},
+				{
+					"name": "parentNode",
+					"type": null
+				},
+				{
+					"name": "index",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "openNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "removeNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				},
+				{
+					"name": "options",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "removeChildNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "parentNode",
+					"type": null
+				},
+				{
+					"name": "options",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "scrollToNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "selectNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "swapNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node1",
+					"type": null
+				},
+				{
+					"name": "node2",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "toggleNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "update",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "updateNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				},
+				{
+					"name": "data",
+					"type": null
+				},
+				{
+					"name": "options",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getFilteredNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "clear",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "toString",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "isLeafSelected",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "expandAll",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "collapseAll",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getSnapshot",
+			"docblock": "Get Snapshot",
+			"modifiers": [],
+			"params": [],
+			"returns": null,
+			"description": "Get Snapshot"
+		},
+		{
+			"name": "setSnapshot",
+			"docblock": "Set Snapshot\n@param {*} snapshot",
+			"modifiers": [],
+			"params": [
+				{
+					"name": "snapshot",
+					"description": null,
+					"type": {
+						"name": "mixed"
+					}
+				}
+			],
+			"returns": null,
+			"description": "Set Snapshot"
+		},
+		{
+			"name": "filterTree",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "keyword",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleOnSearchChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "name",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleOnCheckNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				},
+				{
+					"name": "checked",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleOnselectNode",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "node",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleOnKeyDown",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleOnSearchTextKeyDown",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getStyle",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"data": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "array"
+					},
+					{
+						"name": "object"
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": [],
+				"computed": false
+			}
+		},
+		"width": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "number"
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "100%",
+				"computed": false
+			}
+		},
+		"height": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "number"
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": 400,
+				"computed": false
+			}
+		},
+		"rowHeight": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "number"
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": 36,
+				"computed": false
+			}
+		},
+		"selectedNode": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"selectedNodeId": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"hintText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"expandAll": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"isMultiSelect": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"showFooter": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"selectable": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"caseSensitive": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"exactMatch": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"includeAncestors": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"includeDescendants": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"isCheckable": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"isLeafCheckable": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"showIcons": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"showSearch": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"canCheckChildsByParent": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"tabIndex": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": 0,
+				"computed": false
+			}
+		},
+		"loadNodes": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"shouldSelectNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"scrollOffset": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"scrollToIndex": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onScroll": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onOpenNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onCloseNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onSelectNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onCheckNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onWillOpenNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onWillCloseNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onWillSelectNode": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onContentWillUpdate": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onContentDidUpdate": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onKeyDown": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onKeyUp": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"footerStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"isSingleCheckable": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		}
+	},
+	"composes": [
+		"b-component"
+	]
+}

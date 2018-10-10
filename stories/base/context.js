@@ -1,5 +1,5 @@
 
-import { getTheme } from '../../src/base/b-theme';
+import { getTheme } from 'b-theme';
 
 var context = {};
 context.theme = getTheme({ themeName: 'violet' });

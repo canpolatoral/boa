@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase } from 'b-component';
-import { Button } from 'b-button';
+import { ComponentBase } from '@boa/base';
+import { Button } from '@boa/components/Button';
 
 class CalendarActionButton extends ComponentBase {
 

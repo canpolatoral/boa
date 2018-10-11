@@ -9,12 +9,12 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 import ReactJson from 'react-json-view';
 
-import { Input } from 'b-input';
-import { InputNumeric } from 'b-input-numeric';
-import { Toggle } from 'b-toggle';
-import { Scroll } from 'b-scroll';
+import { Input } from '@boa/components/Input';
+import { InputNumeric } from '@boa/components/InputNumeric';
+import { Toggle } from '@boa/components/Toggle';
+import { Scroll } from '@boa/components/Scroll';
 
-import { ComponentBase } from 'b-component';
+import { ComponentBase } from '@boa/base';
 
 const style = {
   scrollStyle: { maxHeight: 300, padding: '24px', wordWrap: 'break-word' },

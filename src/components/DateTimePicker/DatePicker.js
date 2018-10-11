@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, Sizes } from 'b-component';
-import { Input } from 'b-input';
+import { ComponentBase, Sizes } from '@boa/base';
+import { Input } from '@boa/components/Input';
 import {
   isEqualDateTime,
   getLocalizedDate,

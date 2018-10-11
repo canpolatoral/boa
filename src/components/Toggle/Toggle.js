@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { FormControlLabel, Switch } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { ComponentBase, ComponentComposer } from 'b-component';
-import { Icon } from 'b-icon';
-import { Label } from 'b-label';
+import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Icon } from '@boa/components/Icon';
+import { Label } from '@boa/components/Label';
 
 import merge from 'lodash/merge';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BCheckbox from 'b-check-box';
+import BCheckbox from '@boa/components/CheckBox';
 
 const Checkbox = styled(({ node, ...props }) => (
   <BCheckbox
@@ -35,7 +35,7 @@ const Checkbox = styled(({ node, ...props }) => (
     }
   />
 ))`
-  width: 24px; 
+  width: 24px;
 `;
 
 

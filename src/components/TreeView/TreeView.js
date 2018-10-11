@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentComposer, ComponentBase } from 'b-component';
+import { ComponentComposer, ComponentBase } from '@boa/base';
 import Footer from './components/Footer';
-import BDivider from 'b-divider';
-import { BInputAction } from 'b-input-action';
+import BDivider from '@boa/components/Divider';
+import { BInputAction } from '@boa/components/InputAction';
 import Tree from './Tree';
 
 @ComponentComposer

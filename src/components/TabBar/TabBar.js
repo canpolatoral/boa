@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, ComponentComposer } from 'b-component';
-import { Localization } from 'b-localization';
-import { Button } from 'b-button';
+import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Localization } from '@boa/utils';
+import { Button } from '@boa/components/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { ListItem } from 'b-list-item';
-import { IconMenu } from 'b-icon-menu';
+import { ListItem } from '@boa/components/ListItem';
+import { IconMenu } from '@boa/components/IconMenu';
 
 import Tabs from './Tabs';
 import Tab from './Tab';
 
-var DoubleChevronRight = require('b-icon').Actions.DoubleChevronRight;
-var DoubleChevronLeft = require('b-icon').Actions.DoubleChevronLeft;
+var DoubleChevronRight = require('@boa/components/Icon').Actions.DoubleChevronRight;
+var DoubleChevronLeft = require('@boa/components/Icon').Actions.DoubleChevronLeft;
 
 const styles = theme => ({
   primary: {

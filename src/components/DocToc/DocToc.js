@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase } from 'b-component';
+import { ComponentBase } from '@boa/base';
 
 /**
  * Table of Content component for BOA markdown documents.

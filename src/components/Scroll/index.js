@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ps from './perfect-scrollbar';
 import './scrollbar.scss';
 import merge from 'lodash/merge';
-import { ComponentBase, ComponentComposer, Utils, Platforms } from 'b-component';
+import { ComponentBase, ComponentComposer, Utils, Platforms } from '@boa/base';
 
 const handlerNameByEvent = {
   'ps-scroll-y': 'onScrollY',

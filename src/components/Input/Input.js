@@ -9,7 +9,7 @@ import MuiFormControl from '@material-ui/core/FormControl';
 import MuiFormHelperText from '@material-ui/core/FormHelperText';
 
 import { withStyles } from '@material-ui/core/styles';
-import { ComponentComposer, Utils, EditorBase } from 'b-component';
+import { ComponentComposer, Utils, EditorBase } from '@boa/base';
 
 function baseStyles(theme) {
   return {

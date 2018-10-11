@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MuiIconButton from '@material-ui/core/IconButton/IconButton';
 import MuiChevronLeft from '@material-ui/icons/ChevronLeft';
 import MuiChevronRight from '@material-ui/icons/ChevronRight';
-import { ComponentBase } from 'b-component';
+import { ComponentBase } from '@boa/base';
 
 class CalendarToolbar extends ComponentBase {
 

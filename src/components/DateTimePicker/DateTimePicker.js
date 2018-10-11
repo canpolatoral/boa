@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from './DatePicker';
-import { Localization } from 'b-localization';
+import { Localization } from '@boa/utils';
 import {
   getFormatDecomposition,
   receiveFormat,
@@ -13,9 +13,9 @@ import {
   getDatePickerStyle
 } from './dateUtils';
 
-import { ComponentBase } from 'b-component';
-import { ComponentComposer } from 'b-component';
-import { IconButton } from 'b-icon-button';
+import { ComponentBase } from '@boa/base';
+import { ComponentComposer } from '@boa/base';
+import { IconButton } from '@boa/components/IconButton';
 let maxHour, maxMinute, maxSecond, minHour, minMinute, minSecond;
 
 /**

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import { AppProvider, ComponentBase, setLocalization } from 'b-component';
-import { getTheme } from 'b-theme';
-import { Localization, } from 'b-localization'
+import { AppProvider, ComponentBase, setLocalization, getTheme } from '@boa/base';
+import { Localization } from '@boa/utils';
 
 import { getContext } from '../stories/base/context';
 

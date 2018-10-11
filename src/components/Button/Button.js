@@ -5,9 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiButton from '@material-ui/core/Button';
 import MuiIconButton from '@material-ui/core/IconButton';
 
-import { ComponentBase, ComponentComposer } from 'b-component';
-import { Localization } from 'b-localization';
-import { Icon } from 'b-icon';
+import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Localization } from '@boa/utils';
+import { Icon } from '@boa/components/Icon';
 
 
 const styles = () => ({

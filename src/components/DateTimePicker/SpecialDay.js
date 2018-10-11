@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase } from 'b-component';
-import { Divider } from 'b-divider';
+import { ComponentBase } from '@boa/base';
+import { Divider } from '@boa/components/Divider';
 import {
   cloneDate,
   getFirstDayOfMonth,

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { ComponentBase, Sizes } from 'b-component';
+import { ComponentBase, Sizes } from '@boa/base';
 
 var editorTypes, editorType, tableOfContent;
 

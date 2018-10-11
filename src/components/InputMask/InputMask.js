@@ -1,8 +1,8 @@
 import React from 'react'; import PropTypes from 'prop-types';
 import PredefinedMask from './constants';
 
-import { ComponentBase, ComponentComposer } from 'b-component';
-import { Input } from 'b-input';
+import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Input } from '@boa/components/Input';
 
 
 @ComponentComposer

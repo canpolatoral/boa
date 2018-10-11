@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Draggable from 'react-draggable';
-import { ComponentBase, ComponentComposer } from 'b-component';
+import { ComponentBase, ComponentComposer } from '@boa/base';
 
 import InnerResizable from './resizer';
 

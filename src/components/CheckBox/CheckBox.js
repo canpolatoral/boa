@@ -4,8 +4,8 @@ import merge from 'lodash/merge';
 import { withStyles } from '@material-ui/core/styles';
 import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
 import MuiCheckbox from '@material-ui/core/Checkbox';
-import { Label } from 'b-label';
-import { ComponentBase, ComponentComposer } from 'b-component';
+import { Label } from '@boa/components/Label';
+import { ComponentBase, ComponentComposer } from '@boa/base';
 
 const styles = theme => ({
   root: {

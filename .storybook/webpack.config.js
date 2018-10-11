@@ -20,10 +20,7 @@ const stats = {
 module.exports = {
   resolve: {
     modules: [
-      resolve(__dirname, 'components'),
-      resolve(__dirname, 'app'),
-      resolve(__dirname, 'node_modules/kendo-ui/css/web'),
-      resolve(__dirname, 'node_modules/kendo-ui/css/mobile'),
+      resolve(__dirname, 'src'),
       'node_modules'
     ]
   },

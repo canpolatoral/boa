@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import keycode from 'keycode';
-import Calendar from './Calendar';
-import { Popover } from 'b-popover';
-import { ComponentBase, Sizes } from 'b-component';
-import { Dialog } from 'b-dialog-box';
+import { Popover } from '@boa/components/Popover';
+import { ComponentBase, Sizes } from '@boa/base';
+import { Dialog } from '@boa/components/Dialog';
 
 import { dateTimeFormat } from './dateUtils';
+import Calendar from './Calendar';
 
 
 class DatePickerDialog extends ComponentBase {

@@ -4,9 +4,9 @@ import MuiDialog from '@material-ui/core/Dialog';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import { ComponentBase, ComponentComposer, Utils, DialogType, Sizes } from 'b-component';
-import { Button } from 'b-button';
-import { Icon } from 'b-icon';
+import { ComponentBase, ComponentComposer, Utils, DialogType, Sizes } from '@boa/base';
+import { Button } from '@boa/components/Button';
+import { Icon } from '@boa/components/Icon';
 import { DialogHelper } from './DialogHelper';
 
 @ComponentComposer

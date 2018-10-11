@@ -1,5 +1,5 @@
 
-import { getTheme } from 'b-theme';
+import { getTheme } from '@boa/base';
 
 var context = {};
 context.theme = getTheme({ themeName: 'violet' });

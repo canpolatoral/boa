@@ -12,7 +12,7 @@ var cp = require('child_process');
 var fs = require('fs'), path = require('path');
 
 const componentsRoot = path.resolve('src', 'components');
-const baseRoot = path.resolve('src', 'base', 'b-component');
+const baseRoot = path.resolve('src', 'base', '@boa/base');
 const themesRoot = path.resolve('src', 'base', 'b-theme');
 
 import yargs from 'yargs';
@@ -103,7 +103,7 @@ function startPackaging(componentRoot, compilations, errors) {
 function startBasePackaging(baseRoot, compilations) {
   console.log(baseRoot);
   var pkgRoot = path.join(baseRoot, 'package');
-  var basecomponentname = 'b-component';
+  var basecomponentname = '@boa/base';
 
   var infopath = path.resolve(path.join('build', 'package', 'base', 'info.json'));
   changeVersion(infopath);
@@ -187,7 +187,7 @@ function getDirectories(srcpath, compilations, errors) {
     return fs.statSync(path.join(srcpath, file)).isDirectory();
   });
   directories.forEach(function (directory) {
-    if (directory !== 'b-component' && directory !== 'package' && directory.indexOf('test-viewer') < 0) {
+    if (directory !== '@boa/base' && directory !== 'package' && directory.indexOf('test-viewer') < 0) {
       var possibleCategory = path.join(srcpath, directory);
       if (fileExists(path.join(possibleCategory, 'index.js'))) {
         startPackaging(possibleCategory, compilations, errors);
@@ -205,7 +205,7 @@ function getComponentsDirectories(components, srcpath, compilations, errors) {
     return fs.statSync(path.join(srcpath, file)).isDirectory();
   });
   directories.forEach(function (directory) {
-    if (directory !== 'b-component' && directory !== 'package' && directory.indexOf('test-viewer') < 0) {
+    if (directory !== '@boa/base' && directory !== 'package' && directory.indexOf('test-viewer') < 0) {
       var possibleCategory = path.join(srcpath, directory);
       var componentname = path.basename(possibleCategory).toLowerCase().replace(/\s/g, '-');
       if (fileExists(path.join(possibleCategory, 'index.js')) && components.indexOf(componentname) > -1) {

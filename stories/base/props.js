@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocViewer } from 'b-doc-viewer';
+import { DocViewer } from '@boa/components/DocViewer';
 
 export default class ComponentInfo extends React.Component {
 

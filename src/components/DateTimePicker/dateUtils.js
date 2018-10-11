@@ -1,6 +1,6 @@
 import warning from 'warning';
 import isString from 'lodash/isString';
-import { Localization } from 'b-localization';
+import { Localization } from '@boa/utils';
 
 const dayAbbreviation = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

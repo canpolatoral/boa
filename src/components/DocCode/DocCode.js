@@ -1,6 +1,6 @@
 import React from 'react'; import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
-import { ComponentBase } from 'b-component';
+import { ComponentBase } from '@boa/base';
 
 import styles from './styles';
 

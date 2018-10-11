@@ -1,5 +1,4 @@
-import { Localization } from 'b-localization';
-import { setMessagingOptions } from 'b-messaging';
+import { Localization, setMessagingOptions } from '@boa/utils';
 
 export function setLocalization(options) {
   setMessagingOptions(options);

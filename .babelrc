@@ -9,164 +9,20 @@
       "module-alias",
       [
         {
-          "src": "./src/base",
-          "expose": "b-component"
+          "src": "./src",
+          "expose": "@boa"
         },
         {
           "src": "./src/base",
-          "expose": "b-theme"
+          "expose": "@boa/base"
         },
         {
-          "src": "./src/components/Button",
-          "expose": "b-button"
-        },
-        {
-          "src": "./src/components/IconButton",
-          "expose": "b-icon-button"
-        },
-        {
-          "src": "./src/components/DocCode",
-          "expose": "b-doc-code"
-        },
-        {
-          "src": "./src/components/DocNotice",
-          "expose": "b-doc-notice"
-        },
-        {
-          "src": "./src/components/DocToc",
-          "expose": "b-doc-toc"
-        },
-        {
-          "src": "./src/components/DocViewer",
-          "expose": "b-doc-viewer"
-        },
-        {
-          "src": "./src/components/AutoComplete",
-          "expose": "b-auto-complete"
-        },
-        {
-          "src": "./src/components/Input",
-          "expose": "b-input"
-        },
-        {
-          "src": "./src/components/InputAction",
-          "expose": "b-input-action"
-        },
-        {
-          "src": "./src/components/InputMask",
-          "expose": "b-input-mask"
-        },
-        {
-          "src": "./src/components/InputNumeric",
-          "expose": "b-input-numeric"
-        },
-        {
-          "src": "./src/components/InputSearch",
-          "expose": "b-input-search"
-        },
-        {
-          "src": "./src/components/Label",
-          "expose": "b-label"
-        },
-        {
-          "src": "./src/components/Resizable",
-          "expose": "b-resizable-beta"
-        },
-        {
-          "src": "./src/components/Scroll",
-          "expose": "b-scroll"
-        },
-        {
-          "src": "./src/components/ListItem",
-          "expose": "b-list-item"
-        },
-        {
-          "src": "./src/components/IconMenu",
-          "expose": "b-icon-menu"
-        },
-        {
-          "src": "./src/components/Menu",
-          "expose": "b-menu"
-        },
-        {
-          "src": "./src/components/MenuItem",
-          "expose": "b-menu-item"
-        },
-        {
-          "src": "./src/components/Divider",
-          "expose": "b-divider"
-        },
-        {
-          "src": "./src/components/ExcelBrowser",
-          "expose": "b-excel-browser"
-        },
-        {
-          "src": "./src/components/Icon",
-          "expose": "b-icon"
-        },
-        {
-          "src": "./src/components/Popover",
-          "expose": "b-popover"
-        },
-        {
-          "src": "./src/components/LinearPanel",
-          "expose": "b-linear-panel"
-        },
-        {
-          "src": "./src/components/DateRangePicker",
-          "expose": "b-daterange-picker"
-        },
-        {
-          "src": "./src/components/DateTimePicker",
-          "expose": "b-datetime-picker"
-        },
-        {
-          "src": "./src/components/CalendarPicker",
-          "expose": "b-datetime-calendar"
-        },
-        {
-          "src": "./src/components/CheckBox",
-          "expose": "b-check-box"
-        },
-        {
-          "src": "./src/components/CheckBoxGroup",
-          "expose": "b-check-box-group"
-        },
-        {
-          "src": "./src/components/RadioButton",
-          "expose": "b-radio-button"
-        },
-        {
-          "src": "./src/components/RadioButtonGroup",
-          "expose": "b-radio-button-group"
-        },
-        {
-          "src": "./src/components/Toggle",
-          "expose": "b-toggle"
-        },
-        {
-          "src": "./src/components/Dialog",
-          "expose": "b-dialog-box"
-        },
-        {
-          "src": "./src/components/TabBar",
-          "expose": "b-tab-bar"
-        },
-        {
-          "src": "./src/components/TreeView",
-          "expose": "b-treeview"
-        },
-        {
-          "src": "./src/components/TreeViewGrid",
-          "expose": "b-treeview-grid"
+          "src": "./src/components",
+          "expose": "@boa/components"
         },
         {
           "src": "./src/utils",
-          "expose": "b-localization"
-        },
-        {
-          "src": "./src/utils",
-          "expose": "b-messaging"
+          "expose": "@boa/utils"
         }
       ]
     ],

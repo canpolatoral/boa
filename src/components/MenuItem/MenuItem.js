@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { MuiMenuItem } from '@material-ui/core';
 import { MuiListItemIcon } from '@material-ui/core';
-import { ComponentBase, ComponentComposer } from 'b-component';
-import { Popover } from 'b-popover';
+import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Popover } from '@boa/components/Popover';
 
 const styles = theme => ({
   menuItem: {

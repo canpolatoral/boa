@@ -4,10 +4,10 @@ import TreeView from './treeview';
 import decorators from './decorators';
 import sampleData from './data/sampleData';
 import * as helpers from './helpers';
-import { ComponentComposer, ComponentBase } from 'b-component';
-import { Button } from 'b-button';
-import { IconButton } from 'b-icon-button';
-import { LinearPanel } from 'b-linear-panel';
+import { ComponentComposer, ComponentBase } from '@boa/base';
+import { Button } from '@boa/components/Button';
+import { IconButton } from '@boa/components/IconButton';
+import { LinearPanel } from '@boa/components/LinearPanel';
 
 @ComponentComposer
 class TreeViewGrid extends ComponentBase {

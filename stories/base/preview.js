@@ -3,9 +3,9 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import { ComponentBase } from 'b-component';
-import { DocViewer } from 'b-doc-viewer';
-import { DocCode } from 'b-doc-code';
+import { ComponentBase } from '@boa/base';
+import { DocViewer } from '@boa/components/DocViewer';
+import { DocCode } from '@boa/components/DocCode';
 
 import PropsPanel from './props-panel';
 

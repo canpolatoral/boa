@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, AppProvider } from 'b-component';
-import { Icon } from 'b-icon';
+import { ComponentBase, AppProvider } from '@boa/base';
+import { Icon } from '@boa/components/Icon';
 
 /**
  * Notice component for BOA markdown documents.

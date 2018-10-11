@@ -2,7 +2,8 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import { CHANNEL } from '@material-ui/core/styles/themeListener';
-import { getMessage } from 'b-messaging';
+import { getMessage } from '@boa/utils';
+
 import { Sizes, ComponentSize } from './types';
 import { Utils } from './utils';
 

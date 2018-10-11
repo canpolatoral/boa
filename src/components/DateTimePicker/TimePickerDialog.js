@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import keycode from 'keycode';
-import { Popover } from 'b-popover';
-import { ComponentBase, Sizes } from 'b-component';
-import { InputAction } from 'b-input-action';
-import { Dialog } from 'b-dialog-box';
+import { Popover } from '@boa/components/Popover';
+import { ComponentBase, Sizes } from '@boa/base';
+import { InputAction } from '@boa/components/InputAction';
+import { Dialog } from '@boa/components/Dialog';
 import TimeBase from './TimeBase';
 import CalendarActionButtons from './CalendarActionButtons';
 import {

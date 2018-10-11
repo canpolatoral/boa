@@ -33,7 +33,7 @@ function baseWorkflow(pkgRoot, baseRoot) {
   return fsp.writeFile(npmPath, data)
     .then(() => fsp.copy(licensePath, path.join(pkgRoot, 'LICENSE')))
     .then(() => fsp.copy(readmePath, path.join(pkgRoot, 'README.md')))
-    .then(() => webpackCompiler('b-component', indexPath, pkgRoot, ''));
+    .then(() => webpackCompiler('@boa/base', indexPath, pkgRoot, ''));
 }
 
 export default function BaseCompiler(pkgRoot, baseRoot) {

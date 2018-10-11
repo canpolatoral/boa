@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { withStyles } from '@material-ui/core/styles';
-import { Icon } from 'b-icon';
-import { ComponentBase, ComponentComposer } from 'b-component';
+import { Icon } from '@boa/components/Icon';
+import { ComponentBase, ComponentComposer } from '@boa/base';
 
 const styles = theme => ({
   root: {

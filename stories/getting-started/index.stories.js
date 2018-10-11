@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { DocViewer } from 'b-doc-viewer';
+import { DocViewer } from '@boa/components/DocViewer';
 import Installation from './docs/install';
 import Usage from './docs/usage';
 import Architecture from './docs/architecture';

@@ -4,7 +4,7 @@ import Radium from 'radium';
 import TextField from '@material-ui/core/TextField';
 import Add from '@material-ui/icons/Add';
 import Remove from '@material-ui/icons/Remove';
-import { ComponentBase } from 'b-component';
+import { ComponentBase } from '@boa/base';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 

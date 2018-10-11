@@ -1,7 +1,7 @@
 import React from 'react'; import PropTypes from 'prop-types';
-import { ComponentBase, ComponentComposer } from 'b-component';
-import { Input } from 'b-input';
-import { Localization } from 'b-localization';
+import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Input } from '@boa/components/Input';
+import { Localization } from '@boa/utils';
 
 @ComponentComposer
 class InputNumeric extends ComponentBase {

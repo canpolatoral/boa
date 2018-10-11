@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BCheckbox from 'b-check-box';
+import BCheckbox from '@boa/components/CheckBox';
 import RadioButtonChecked from '@material-ui/icons/RadioButtonChecked';
 import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 

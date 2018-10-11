@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, ComponentComposer, Utils } from 'b-component';
+import { ComponentBase, ComponentComposer, Utils } from '@boa/base';
 
 @ComponentComposer
 class LinearPanel extends ComponentBase {

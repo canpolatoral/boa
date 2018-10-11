@@ -4,12 +4,12 @@ import IconButton from '@material-ui/core/IconButton';
 import RightArrow from '@material-ui/icons/KeyboardArrowRight';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { ComponentBase, ComponentComposer } from 'b-component';
-import { MenuItem } from 'b-menu-item';
-import { Icon } from 'b-icon';
+import { ComponentBase, ComponentComposer } from '@boa/base';
+import { MenuItem } from '@boa/components/MenuItem';
+import { Icon } from '@boa/components/Icon';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import Popover from 'b-popover';
+import Popover from '@boa/components/Popover';
 
 /* eslint-disable no-unused-vars */
 const styles = theme => ({

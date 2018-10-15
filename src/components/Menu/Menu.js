@@ -30,6 +30,7 @@ class Menu extends ComponentBase {
     multiple: false,
     isMenuItemList: false,
     primaryTextPadding: '0px 24px 0px 24px',
+    items: [],
   };
 
   static propTypes = {
@@ -107,23 +108,29 @@ class Menu extends ComponentBase {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /**
      * Item list
-     *
      */
     items: PropTypes.array.isRequired,
     /**
        * ItemList Parents Info
-       *
        */
     parentMenuItem: PropTypes.object,
-
+    /**
+     * @ignore
+     */
     classes: PropTypes.object.isRequired,
-
+    /**
+     *
+     */
     isMenuItemList: PropTypes.bool,
-
+    /**
+     *
+     */
     primaryTextPadding: PropTypes.any
   };
 
-  state = { value: this.props.value };
+  state = {
+    value: this.props.value
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.value != nextProps.value) {

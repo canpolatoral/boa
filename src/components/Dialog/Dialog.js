@@ -9,6 +9,10 @@ import { Button } from '@boa/components/Button';
 import { Icon } from '@boa/components/Icon';
 import { DialogHelper } from './DialogHelper';
 
+/**
+ * Dialog Component is wrapped from `@material-ui/core/Dialog`. Also `DialogHelper` provides a static method called `show`
+ * This method allows create window from outside the render method.
+ */
 @ComponentComposer
 class Dialog extends ComponentBase {
   static propTypes = {

@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import keycode from 'keycode';
+
 import { ComponentBase } from '@boa/base';
-import { Button } from '@boa/components/Button';
 import { Localization } from '@boa/utils';
+import { Button } from '@boa/components/Button';
 import { Divider } from '@boa/components/Divider';
-import { IconButton } from '@boa/components/IconButton';
 import { InputMask } from '@boa/components/InputMask';
-import CalendarActionButtons from './CalendarActionButtons';
-import CalendarMonth from './CalendarMonth';
-import CalendarToolbar from './CalendarToolbar';
+import { IconButton } from '@boa/components/IconButton';
+
 import TimeBase from './TimeBase';
 import SpecialDay from './SpecialDay';
+import CalendarMonth from './CalendarMonth';
+import CalendarToolbar from './CalendarToolbar';
+import CalendarActionButtons from './CalendarActionButtons';
 
 import {
   addDays,
@@ -35,11 +37,15 @@ import {
 
 const daysArray = [...Array(7)];
 
+/**
+ * Calendar component
+ */
 class Calendar extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
   }
+
   static propTypes = {
     DateTimeFormat: PropTypes.func.isRequired,
     autoOk: PropTypes.bool,
@@ -74,7 +80,6 @@ class Calendar extends ComponentBase {
     calendarInfo: PropTypes.array,
     dateFormat: PropTypes.string,
     timeFormat: PropTypes.string,
-    localization: PropTypes.func,
     datetimeOption: PropTypes.object,
     canSelectOldDates: PropTypes.bool,
     canSelectWeekendDays: PropTypes.bool,
@@ -102,6 +107,7 @@ class Calendar extends ComponentBase {
     maxMonth: 11,
     minMonth: 0,
   };
+
   static contextTypes = {
     muiTheme: PropTypes.object,
   };
@@ -113,8 +119,9 @@ class Calendar extends ComponentBase {
     transitionDirection: 'left',
     transitionEnter: true,
   };
+
   SpecialDays = [];
-  CalendarInfoSelectedDate;
+
   componentWillMount() {
     super.componentWillMount();
     this.setState({
@@ -141,8 +148,6 @@ class Calendar extends ComponentBase {
       let calendarInfo = this.props.calendarInfo;
       let date = this.state.displayDate;
       if (date !== undefined) {
-
-
         if (this.CalendarInfoSelectedDate === undefined ||
           this.CalendarInfoSelectedDate.getMonth() !== date.getMonth() ||
           this.CalendarInfoSelectedDate.getFullYear() !== date.getFullYear()) {
@@ -165,6 +170,7 @@ class Calendar extends ComponentBase {
       }
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.dialogNewSelectDate !== undefined && !isEqualDate(nextProps.dialogNewSelectDate, this.props.dialogNewSelectDate)) {
       this.setState({
@@ -248,6 +254,7 @@ class Calendar extends ComponentBase {
       displayDate: addMonths(this.state.displayDate, months),
     });
   };
+
   handleTouchTapYear = (event, year) => {
 
     const date = cloneDate(this.state.selectedYearMonthDate);
@@ -256,6 +263,7 @@ class Calendar extends ComponentBase {
       selectedYearMonthDate: date,
     });
   };
+
   handleTouchTapMonth = (event, month) => {
     const date = cloneDate(this.state.selectedYearMonthDate);
     date.setMonth(month);
@@ -263,17 +271,20 @@ class Calendar extends ComponentBase {
       selectedYearMonthDate: date,
     });
   };
+
   getToolbarInteractions() {
     return {
       prevMonth: monthDiff(this.state.displayDate, this.props.minDate) > 0,
       nextMonth: monthDiff(this.state.displayDate, this.props.maxDate) < 0,
     };
   }
+
   onTouchTapOk = () => {
     const date = cloneDate(this.state.selectedYearMonthDate);
     this.setSelectedDate(date, event);
     this.handleTouchTapDateDisplayMonthDay();
   }
+
   handleTouchTapDateDisplayMonthDay = () => {
     this.setState({
       displayMonthDay: true,
@@ -285,6 +296,7 @@ class Calendar extends ComponentBase {
       displayMonthDay: false,
     });
   };
+
   handleClickToolBar(e) {
     if (this.state.displayMonthDay) {
       this.setState({
@@ -306,6 +318,7 @@ class Calendar extends ComponentBase {
     }
 
   }
+
   handleRemoveDate = (e) => {
     var handleDate;
     if (!this.state.selectedDate) {
@@ -316,6 +329,7 @@ class Calendar extends ComponentBase {
     handleDate.setDate(handleDate.getDate() - 1);
     this.handleChangeDate(e, handleDate);
   }
+
   handleAddDate = (e) => {
     var handleDate;
     if (!this.state.selectedDate) {
@@ -326,11 +340,13 @@ class Calendar extends ComponentBase {
     handleDate.setDate(handleDate.getDate() + 1);
     this.handleChangeDate(e, handleDate);
   }
+
   todayButtonOnClick = (e) => {
     if (this.props.todayButtonOnClick) {
       this.props.todayButtonOnClick(e);
     }
   }
+
   handleChangeDate = (event, date) => {
     this.setState({
       initialDate: date,
@@ -338,6 +354,7 @@ class Calendar extends ComponentBase {
       selectedDate: date,
     });
   };
+
   handleWindowKeyDown = (event) => {
     let oldDate = cloneDate(this.state.selectedDate);
     if (this.props.open) {
@@ -422,9 +439,9 @@ class Calendar extends ComponentBase {
       }
     }
   };
+
   handleWindowOnWheel = (event) => {
-    let value = getLocalizedDate(this.state.selectedDate,
-      this.props.dateFormat, this.props.localization);
+    let value = getLocalizedDate(this.state.selectedDate, this.props.dateFormat);
     var selectionStart = undefined;
     var selectionEnd = undefined;
     var newValue;
@@ -434,7 +451,6 @@ class Calendar extends ComponentBase {
         selectionEnd = event.target.selectionEnd;
         newValue = calendarMouseWheelAction(event.target.selectionStart,
           this.props.dateFormat,
-          this.props.localization,
           value,
           1,
           this.state.selectedDate);
@@ -453,7 +469,6 @@ class Calendar extends ComponentBase {
 
         newValue = calendarMouseWheelAction(event.target.selectionStart,
           this.props.dateFormat,
-          this.props.localization,
           value,
           -1,
           this.state.selectedDate);
@@ -484,6 +499,7 @@ class Calendar extends ComponentBase {
       }
     );
   }
+
   handleBlurInput(e) {
     if (this.props.onBlur) {
       this.props.onBlur(e);
@@ -495,6 +511,7 @@ class Calendar extends ComponentBase {
       }
     );
   }
+
   yearSelector() {
     if (!this.props.disableYearSelection) {
       return (
@@ -508,8 +525,6 @@ class Calendar extends ComponentBase {
           maxValue={this.props.maxDate.getFullYear()}
           timeType={5}
           format={this.props.dateFormat}
-          localization={this.props.localization}
-
         />
 
       );
@@ -517,27 +532,6 @@ class Calendar extends ComponentBase {
   }
 
   onKeyDownInputDate(e) {
-    // const keyCode = e.keyCode || e.charCode || e.which;
-    // console.log(keyCode + '-' + keycode(e));
-    // var delimiters = Localization.getDelimiters();
-    // if (keycode(e) != 'enter') {
-    //   if (!((keyCode == 35 || keyCode == 36 || keyCode == 37 || keyCode == 39) || // Home, end, left and right arrows
-    //       // (e.shiftKey || e.altKey || e.ctrlKey) ||
-    //       (((keyCode == 65 || keyCode == 86 || keyCode == 67) && (e.ctrlKey === true || e.metaKey === true))) || // Ctrl-A, Ctrl-V, Ctrl-C
-    //       ((e.shiftKey && (keyCode == 35 || keyCode == 36 || keyCode == 37 || keyCode == 39))) || // shift-home, shift-end, shift-left, shift-right
-    //       (!e.shiftKey && (keyCode >= 48 && keyCode <= 57 || keyCode >= 96 && keyCode <= 105)) || // Numbers and numeric keypad
-    //       (keyCode == 8 || keyCode == 46) || // Backspace And del
-    //       (keyCode == 9) || // Tab
-    //       (keyCode == 45) || // Ins
-    //       (keyCode == 111 || (e.shiftKey && keyCode == 55)) || // numpad / or normal /
-    //       ((keyCode == 188 &&  delimiters.decimal == ',') || (keyCode == 190 && delimiters.decimal == '.')) || // comma and point;
-    //       // (keyCode == 189 || keyCode == 109) || // dash and subtract
-    //       (e.keyCode == 38 || e.keyCode == 40))) { // upper / lower
-    //     if (e.preventDefault) e.preventDefault();
-    //     return;
-    //   }
-    // }
-
     switch (keycode(e)) {
       case 'enter':
         if (this.inputFocus) {
@@ -584,7 +578,6 @@ class Calendar extends ComponentBase {
           maxValue={this.props.maxMonth}
           timeType={4}
           format={this.props.dateFormat}
-          localization={this.props.localization}
         />
 
       );
@@ -643,6 +636,7 @@ class Calendar extends ComponentBase {
       </div>
     );
   }
+
   renderSelection(style, title, yearOrMounth) {
     return (
       <div style={style.datetimeItem}>
@@ -669,7 +663,6 @@ class Calendar extends ComponentBase {
 
   render() {
     this.setSpecialDays();
-    // const {this.prepareStyles} = this.context.muiTheme;
     const toolbarInteractions = this.getToolbarInteractions();
     const isLandscape = this.props.mode === 'landscape';
     const { calendarTextColor, equalWidthContainerDisplay, equalWidthContainerFlexWrap,
@@ -790,7 +783,7 @@ class Calendar extends ComponentBase {
       onTouchTapOk, // eslint-disable-line no-unused-vars
     } = this.props;
 
-    let dateInputValue = getLocalizedDate(this.state.selectedDate ? this.state.selectedDate : new Date(), this.props.dateFormat, this.props.localization);
+    let dateInputValue = getLocalizedDate(this.state.selectedDate ? this.state.selectedDate : new Date(), this.props.dateFormat);
 
     // ayda kaç hafta olduğu bulunup yüksekliği verilmek zorunda
     const weekArray = getWeekArray(this.state.displayDate, this.props.firstDayOfWeek);
@@ -876,13 +869,10 @@ class Calendar extends ComponentBase {
                     bottomRightInfoEnable={false}
                     bottomLeftInfoEnable={false}
                     fullWidth={false}
-
                   />
                 }
-
               </div>
             </div>
-
             <Divider
               context={this.props.context}
               style={{
@@ -892,10 +882,8 @@ class Calendar extends ComponentBase {
                 marginRight: -12,
                 marginTop: 0
               }} />
-
             <div style={{ marginTop: 15 }}>
               {this.state.displayMonthDay &&
-
                 <CalendarToolbar
                   context={this.props.context}
                   DateTimeFormat={DateTimeFormat}
@@ -905,7 +893,6 @@ class Calendar extends ComponentBase {
                   nextMonth={toolbarInteractions.nextMonth}
                   handleClickToolBar={this.handleClickToolBar.bind(this)}
                   format={this.props.dateFormat}
-                  localization={this.props.localization}
                 />
               }
             </div>
@@ -918,7 +905,7 @@ class Calendar extends ComponentBase {
                   <div style={this.prepareStyles(styles.weekTitle)}>
                     {daysArray.map((event, i) => (
                       <span key={i} style={weekTitleDayStyle}>
-                        {localizedWeekday(DateTimeFormat, i, firstDayOfWeek, this.props.dateFormat, this.props.localization)}
+                        {localizedWeekday(DateTimeFormat, i, firstDayOfWeek, this.props.dateFormat)}
                       </span>
                     ))}
                   </div>
@@ -975,8 +962,6 @@ class Calendar extends ComponentBase {
                 ) :
                 (<div></div>)
               }
-
-
             </div>
           }
         </div>
@@ -988,7 +973,6 @@ class Calendar extends ComponentBase {
             okLabel={okLabel}
             onTouchTapCancel={onTouchTapCancel}
             onTouchTapOk={this.onTouchTapOk}
-
           />
         }
       </div>
@@ -996,10 +980,8 @@ class Calendar extends ComponentBase {
   }
 
   getSpecialDays() {
-
     return (<div>
       {this.props.isBusiness && this.SpecialDays.length > 0 &&
-
         <SpecialDay
           context={this.props.context}
           DateTimeFormat={this.props.DateTimeFormat}
@@ -1007,10 +989,8 @@ class Calendar extends ComponentBase {
           key={`db${(4)}`}
           selectedDate={this.state.displayDate}
           calendarInfo={this.SpecialDays}
-          localization={this.props.localization}
           format={this.props.dateFormat}
         />
-
       }
     </div>
     );

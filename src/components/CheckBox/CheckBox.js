@@ -36,9 +36,12 @@ const styles = theme => ({
   }
 });
 
+/**
+ * CheckBox Component is wrapped from `@material-ui/core/CheckBox`.
+*/
 @ComponentComposer
 @withStyles(styles)
-class BCheckBox extends ComponentBase {
+class CheckBox extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
     /**
@@ -50,19 +53,15 @@ class BCheckBox extends ComponentBase {
      */
     checkedIcon: PropTypes.node,
     /**
-     * Useful to extend the style applied to components.
+     * Useful to extend the style applied to components. @ignore
      */
     classes: PropTypes.object.isRequired,
     /**
-     * @ignore
-     */
-    className: PropTypes.string,
-    /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(['primary', 'secondary']),
+    color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
     /**
-     * @ignore
+     * The default value of component.
      */
     defaultChecked: PropTypes.bool,
     /**
@@ -77,10 +76,6 @@ class BCheckBox extends ComponentBase {
      * The icon to display when the component is unchecked.
      */
     icon: PropTypes.node,
-    /**
-     * The id of the `input` element.
-     */
-    id: PropTypes.string,
     /**
      * If `true`, the component appears indeterminate.
      */
@@ -97,9 +92,9 @@ class BCheckBox extends ComponentBase {
      * Use that property to pass a ref callback to the native input component.
      */
     inputRef: PropTypes.func,
-    /*
-    * @ignore
-    */
+    /**
+     * @ignore
+     */
     name: PropTypes.string,
     /**
      * Callback fired when the state is changed.
@@ -109,10 +104,6 @@ class BCheckBox extends ComponentBase {
      */
     onChange: PropTypes.func,
     /**
-     * @ignore
-     */
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /**
      * The input component property `type`.
      */
     type: PropTypes.string,
@@ -120,10 +111,18 @@ class BCheckBox extends ComponentBase {
      * The value of the component.
      */
     value: PropTypes.string,
-
+    /**
+     * Error message that inside the component.
+     */
     errorText: PropTypes.string,
-
-    errorTextVisible: PropTypes.bool
+    /**
+     * If `true`, and component has label and errorText the errorText will be visible
+     */
+    errorTextVisible: PropTypes.bool,
+    /**
+     * If exists, checkbox will be render with <Label> component
+     */
+    label: PropTypes.string,
   };
 
   static defaultProps = {
@@ -231,4 +230,4 @@ class BCheckBox extends ComponentBase {
   }
 }
 
-export default BCheckBox;
+export default CheckBox;

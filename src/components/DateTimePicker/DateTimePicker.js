@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from './DatePicker';
-import { Localization } from '@boa/utils';
+import { ComponentBase } from '@boa/base';
+import { ComponentComposer } from '@boa/base';
+import { IconButton } from '@boa/components/IconButton';
+
 import {
   getFormatDecomposition,
   receiveFormat,
@@ -13,48 +16,96 @@ import {
   getDatePickerStyle
 } from './dateUtils';
 
-import { ComponentBase } from '@boa/base';
-import { ComponentComposer } from '@boa/base';
-import { IconButton } from '@boa/components/IconButton';
 let maxHour, maxMinute, maxSecond, minHour, minMinute, minSecond;
 
 /**
- * BDateTimePicker
+ * DateTimePicker with Material UI Components.
  */
 @ComponentComposer
 class DateTimePicker extends ComponentBase {
 
   static propTypes = {
     ...ComponentBase.propTypes,
+    /**
+     * Selectable minimum date. Prop could be a Date object or UTC formatted string.
+     */
     minDate: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.instanceOf(Date),
     ]),
+    /**
+     * Selectable max date. Prop could be a Date object or UTC formatted string.
+     */
     maxDate: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.instanceOf(Date),
     ]),
+    /**
+     * Selected date. Prop could be a Date object or UTC formatted string.
+     */
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.instanceOf(Date),
     ]),
+    /**
+     * Default selected value for uncontrolled usage. Prop could be a Date object or UTC formatted string.
+     */
     defaultValue: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.instanceOf(Date),
     ]),
+    /**
+     * @ignore
+     */
     onChange: PropTypes.func,
+    /**
+     * @ignore
+     */
     dateOnChange: PropTypes.func,
+    /**
+     * ignore
+     */
     timeOnChange: PropTypes.func,
+    /**
+     * Hint text for date input.
+     */
     hintTextDate: PropTypes.string,
+    /**
+     * Hint text for text input.
+     */
     hintTextTime: PropTypes.string,
+    /**
+     * Floating label text for date input.
+     */
     floatingLabelTextDate: PropTypes.string,
+    /**
+     * Floating label text for text input.
+     */
     floatingLabelTextTime: PropTypes.string,
+    /**
+     * First day of week.
+     */
     firstDayOfWeek: PropTypes.number,
+    /**
+     * Calendar dialog type.
+     */
     mode: PropTypes.oneOf(['portrait', 'landscape']),
+    /**
+     * Cancel label.
+     */
     cancelLabel: PropTypes.string,
+    /**
+     * OK
+     */
     okLabel: PropTypes.string,
+    /**
+     * @ignore
+     */
     isBusiness: PropTypes.bool,
-    format: PropTypes.string,
+    /**
+     * Picker format
+     */
+    format: PropTypes.string.isRequired,
     canSelectOldDates: PropTypes.bool,
     canSelectWeekendDays: PropTypes.bool,
     canSelectSpecialDays: PropTypes.bool,
@@ -93,7 +144,6 @@ class DateTimePicker extends ComponentBase {
     formats: this.formats,
     dateFormat: this.formats.dateFormat,
     timeFormat: this.formats.timeFormat,
-    localization: Localization,
     value: this.getDateToString(this.props.value ? this.props.value : this.getDefaultDate(this.props), this.getDefaultDate(this.props)),
     autoOk: false,
     disableYearSelection: false,
@@ -102,14 +152,6 @@ class DateTimePicker extends ComponentBase {
       isMinute: (this.formats.timeFormat === undefined) ? false : true,
       isSecond: (this.formats.timeFormat === undefined || this.formats.timeFormat === momentFormat.hourAndMinute) ? false : true,
     },
-    yearTitle: this.getMessage('BOA', 'Year'),
-    monthTitle: this.getMessage('BOA', 'Month'),
-    hourTitle: this.getMessage('BOA', 'Hour'),
-    minuteTitle: this.getMessage('BOA', 'Minute'),
-    secondTitle: this.getMessage('BOA', 'Second'),
-    todayLabel: this.getMessage('BOA', 'Today'),
-    okLabel: (this.props.okLabel) ? this.props.okLabel : this.getMessage('BOA', 'Ok'),
-    cancelLabel: (this.props.cancelLabel) ? this.props.cancelLabel : this.getMessage('BOA', 'Cancel'),
     mode: this.props.mode,
     container: 'inline',
     canSelectOldDates: this.props.canSelectOldDates,
@@ -558,6 +600,8 @@ class DateTimePicker extends ComponentBase {
       );
     }
 
+    const okLabel = (this.props.okLabel) ? this.props.okLabel : this.getMessage('BOA', 'Ok');
+    const cancelLabel = (this.props.cancelLabel) ? this.props.cancelLabel : this.getMessage('BOA', 'Cancel');
 
     return (
       <div>
@@ -582,14 +626,14 @@ class DateTimePicker extends ComponentBase {
           errorTextDate={this.props.errorTextDate}
           errorTextTime={this.props.errorTextTime}
           firstDayOfWeek={this.props.firstDayOfWeek}
-          okLabel={this.state.okLabel}
-          cancelLabel={this.state.cancelLabel}
-          todayLabel={this.state.todayLabel}
-          yearTitle={this.state.yearTitle}
-          monthTitle={this.state.monthTitle}
-          hourTitle={this.state.hourTitle}
-          minuteTitle={this.state.minuteTitle}
-          secondTitle={this.state.secondTitle}
+          okLabel={okLabel}
+          cancelLabel={cancelLabel}
+          todayLabel={this.getMessage('BOA', 'Today')}
+          yearTitle={this.getMessage('BOA', 'Year')}
+          monthTitle={this.getMessage('BOA', 'Month')}
+          hourTitle={this.getMessage('BOA', 'Hour')}
+          minuteTitle={this.getMessage('BOA', 'Minute')}
+          secondTitle={this.getMessage('BOA', 'Second')}
           formatDate={this.props.formatDate}
           fullWidth={this.props.fullWidth}
           datetimeOption={this.state.datetimeOption}
@@ -609,7 +653,6 @@ class DateTimePicker extends ComponentBase {
           dateFormat={this.state.dateFormat}
           timeFormat={this.state.timeFormat}
           formats={this.state.formats}
-          localization={this.state.localization}
           canSelectOldDates={this.state.canSelectOldDates}
           canSelectWeekendDays={this.state.canSelectWeekendDays}
           canSelectSpecialDays={this.state.canSelectSpecialDays}

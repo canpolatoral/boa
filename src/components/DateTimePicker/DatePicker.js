@@ -10,7 +10,6 @@ import {
 import DatePickerDialog from './DatePickerDialog';
 import TimePickerDialog from './TimePickerDialog';
 
-
 class DatePicker extends ComponentBase {
 
   constructor(props, context) {
@@ -85,7 +84,6 @@ class DatePicker extends ComponentBase {
     calendarInfo: PropTypes.array,
     dateFormat: PropTypes.string,
     timeFormat: PropTypes.string,
-    localization: PropTypes.func,
     canSelectOldDates: PropTypes.bool,
     canSelectWeekendDays: PropTypes.bool,
     canSelectSpecialDays: PropTypes.bool,
@@ -269,7 +267,6 @@ class DatePicker extends ComponentBase {
       onShow,
       onTouchTap, // eslint-disable-line no-unused-vars
       shouldDisableDate,
-      localization,
       floatingLabelStyle,
       inputStyle,
       canSelectOldDates,
@@ -297,7 +294,7 @@ class DatePicker extends ComponentBase {
       );
     }
 
-    let inputLocalizedDate = getLocalizedDate(this.state.date, dateFormat, localization);
+    let inputLocalizedDate = getLocalizedDate(this.state.date, dateFormat);
     // inputLocalizedDate=inputLocalizedDate== '' ?undefined:inputLocalizedDate;
     let isMobile= this.isMobile();
     if (dateFormat) {
@@ -357,7 +354,6 @@ class DatePicker extends ComponentBase {
               calendarInfo={calendarInfo}
               dateFormat={dateFormat}
               timeFormat={timeFormat}
-              localization={localization}
               canSelectOldDates={canSelectOldDates}
               canSelectWeekendDays={canSelectWeekendDays}
               canSelectSpecialDays={canSelectSpecialDays}
@@ -397,7 +393,6 @@ class DatePicker extends ComponentBase {
       onFocus, // eslint-disable-line no-unused-vars
       onShow,
       onTouchTap, // eslint-disable-line no-unused-vars
-      localization,
       floatingLabelStyle,
       inputStyle,
       datetimeOption,
@@ -415,7 +410,7 @@ class DatePicker extends ComponentBase {
       // ...other
     } = this.props;
 
-    let inputLocalizedTime = getLocalizedTime(this.state.date, datetimeOption, timeFormat, localization);
+    let inputLocalizedTime = getLocalizedTime(this.state.date, datetimeOption, timeFormat);
     let isMobile= this.isMobile();
     if (timeFormat) {
       return (
@@ -470,7 +465,6 @@ class DatePicker extends ComponentBase {
               style={this.props.style}
               dateFormat={dateFormat}
               timeFormat={timeFormat}
-              localization={localization}
               isMobile={isMobile}
               hourTitle={hourTitle}
               minuteTitle={minuteTitle}

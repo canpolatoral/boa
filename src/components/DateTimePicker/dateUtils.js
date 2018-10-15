@@ -24,20 +24,19 @@ export const momentFormat = {
   hourAndMinuteAndSecond: 'LTS',
   Date: 'L',
 };
-
 /** Convert date to ISO 8601 (YYYY-MM-DD) date string, accounting for current timezone */
 export function formatIso(date) {
   return (new Date(`${date.toDateString()} 12:00:00 +0000`)).toISOString().substring(0, 10);
 }
-export function getLocalizedDate(value, dateformat, localization) {
-  if (localization && dateformat && value) {
-    return localization.formatDateTimeGMT(value, dateformat);
+export function getLocalizedDate(value, dateformat) {
+  if (Localization && dateformat && value) {
+    return Localization.formatDateTimeGMT(value, dateformat);
   }
   return '';
 }
-export function getLocalizedTime(value, datetimeOption, timeformat, localization) {
-  if (localization && timeformat && value) {
-    return localization.formatDateTimeGMT(value, timeformat);
+export function getLocalizedTime(value, datetimeOption, timeformat) {
+  if (Localization && timeformat && value) {
+    return Localization.formatDateTimeGMT(value, timeformat);
   }
   return '';
 }
@@ -50,18 +49,18 @@ export function dateTimeFormat(options) {
     } else if (options.year === 'numeric' && options.month === 'long') {
       return `${monthLongList[date.getMonth()]} ${date.getFullYear()}`;
     } else if (options.item === 'monthYearName') {
-      `${getMonthsLong(date, options.localization, options.format)[date.getMonth()]}`;
-      return `${getMonthsLong(date, options.localization, options.format)[date.getMonth()]} ${date.getFullYear()}`;
+      `${getMonthsLong(date, options.format)[date.getMonth()]}`;
+      return `${getMonthsLong(date, options.format)[date.getMonth()]} ${date.getFullYear()}`;
     } else if (options.weekday === 'narrow') {
       return dayAbbreviation[date.getDay()];
     } else if (options.localizationWeekday === 'narrow') {
-      return getWeekDaysMin(options.localization, date, options.format)[date.getDay()];
+      return getWeekDaysMin(options.date, options.format)[date.getDay()];
     } else if (options.year === 'numeric') {
       return date.getFullYear().toString();
     } else if (options.month === 'numeric') {
       return `${monthLongList[date.getMonth()]}`;
     } else if (options.month === 'monthListName') {
-      return `${getMonthsLong(date, options.localization, options.format)[date.getMonth()]}`;
+      return `${getMonthsLong(date, options.format)[date.getMonth()]}`;
     } else if (options.day === 'numeric') {
       return date.getDate();
     } else if (options.time === 'hour') {
@@ -268,8 +267,8 @@ export function getWeekArray(d, firstDayOfWeek) {
 
   return weekArray;
 }
-export function localizedWeekday(DateTimeFormat, day, firstDayOfWeek, format, localization) {
-  const weekdayFormatter = new DateTimeFormat({ localizationWeekday: 'narrow', localization: localization, format: format });
+export function localizedWeekday(DateTimeFormat, day, firstDayOfWeek, format) {
+  const weekdayFormatter = new DateTimeFormat({ localizationWeekday: 'narrow', format: format });
   const firstDayDate = getFirstDayOfWeek();
 
   return weekdayFormatter.format(addDays(firstDayDate, day + firstDayOfWeek));
@@ -345,9 +344,9 @@ export function monthDiff(d1, d2) {
 export function yearDiff(d1, d2) {
   return ~~(monthDiff(d1, d2) / 12);
 }
-export function getFocusDateTimeItem1(startIndex, format, localization) {
-  if (localization && format) {
-    let patern = localization.getDateTimeFormat(format);
+export function getFocusDateTimeItem1(startIndex, format) {
+  if (Localization && format) {
+    let patern = Localization.getDateTimeFormat(format);
     if (patern) {
       let item = '';
       if (patern.length - 1 !== startIndex) {
@@ -389,8 +388,8 @@ export function getFocusDateTimeItem1(startIndex, format, localization) {
   }
   return undefined;
 }
-export function getFocusDateTimeItem(value, startIndex, format, localization, type) {
-  if (localization && format) {
+export function getFocusDateTimeItem(value, startIndex, format, type) {
+  if (format) {
     if (value) {
       let item = '';
       let itemBefore = '';
@@ -423,37 +422,37 @@ export function getFocusDateTimeItem(value, startIndex, format, localization, ty
   }
   return undefined;
 }
-export function getMonthsLong(date, localization, format) {
+export function getMonthsLong(date, format) {
   let newValue = getLocalizedDate(date);
-  var momentObject = localization.getFormattedDateLocale(newValue, format);
+  var momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._months;
 }
-export function getMonthsShort(localization, newValue, format) {
-  var momentObject = localization.getFormattedDateLocale(newValue, format);
+export function getMonthsShort(newValue, format) {
+  var momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._monthsShort;
 }
-export function getWeekDays(localization, newValue, format) {
-  var momentObject = localization.getFormattedDateLocale(newValue, format);
+export function getWeekDays(newValue, format) {
+  var momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._weekdays;
 }
-export function getWeekDaysShort(localization, newValue, format) {
-  var momentObject = localization.getFormattedDateLocale(newValue, format);
+export function getWeekDaysShort(newValue, format) {
+  var momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._monthsShort;
 }
-export function getWeekDaysMin(localization, newValue, format) {
-  var momentObject = localization.getFormattedDateLocale(newValue, format);
+export function getWeekDaysMin(newValue, format) {
+  var momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._weekdaysMin;
 }
-export function calendarMouseWheelAction(startIndex, format, localization, date, type, orijinalDate) {
+export function calendarMouseWheelAction(startIndex, format, date, type, orijinalDate) {
 
-  let newValue = getFocusDateTimeItem(date, startIndex, format, localization, type);
+  let newValue = getFocusDateTimeItem(date, startIndex, format, type);
 
-  var momentObject = localization.getFormattedDateLocale(newValue, format);
+  var momentObject = Localization.getFormattedDateLocale(newValue, format);
   if (momentObject && momentObject._isValid) {
     return momentObject._d;
   }
   else if (momentObject !== undefined && !momentObject._isValid) {
-    let pf = localization.getFormattedDateLocale(newValue, format)._pf;
+    let pf = Localization.getFormattedDateLocale(newValue, format)._pf;
     let oldDate = cloneDate(orijinalDate);
     if (pf.overflow === 1) {
       // months
@@ -478,8 +477,8 @@ export function calendarMouseWheelAction(startIndex, format, localization, date,
   }
   return undefined;
 }
-export function calendarMouseWheelAction1(startIndex, format, localization, date, type) {
-  let dateTimeItem = getFocusDateTimeItem(startIndex, format, localization);
+export function calendarMouseWheelAction1(startIndex, format, date, type) {
+  let dateTimeItem = getFocusDateTimeItem(startIndex, format);
   if (dateTimeItem) {
     if (dateTimeItem === 'DD') {
       if (type === 1)

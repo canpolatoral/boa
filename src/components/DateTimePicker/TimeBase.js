@@ -23,7 +23,6 @@ class TimeBase extends ComponentBase {
     wordings: PropTypes.object,
     timeType: PropTypes.number.isRequired,
     format: PropTypes.string,
-    localization: PropTypes.func,
   };
 
   static contextTypes = {
@@ -80,7 +79,6 @@ class TimeBase extends ComponentBase {
         selectedTime = selectedDate.getMonth();
         timeFormated = new DateTimeFormat({
           month: 'monthListName',
-          localization: this.props.localization,
           format: this.props.format,
         }).format(dateCheck);
       }

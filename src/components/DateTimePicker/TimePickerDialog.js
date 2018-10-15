@@ -61,7 +61,6 @@ class TimePickerDialog extends ComponentBase {
     floatingLabelStyle: PropTypes.object,
     dateFormat: PropTypes.string,
     timeFormat: PropTypes.string,
-    localization: PropTypes.func,
     isMobile: PropTypes.bool,
     hourTitle: PropTypes.node,
     minuteTitle: PropTypes.node,
@@ -88,7 +87,7 @@ class TimePickerDialog extends ComponentBase {
   constructor(props, context) {
     super(props, context);
     let formatedlocalizedTime = getLocalizedTime(props.initialDate ? props.initialDate : new Date(), props.datetimeOption,
-      this.props.timeFormat, this.props.localization);
+      this.props.timeFormat);
     this.state = {
       localizedTime: formatedlocalizedTime,
     };
@@ -100,7 +99,7 @@ class TimePickerDialog extends ComponentBase {
     this.setState({
       date: this.props.initialDate ? this.props.initialDate : new Date(),
       localizedTime: getLocalizedTime(this.props.initialDate ? this.props.initialDate : new Date(), this.props.datetimeOption,
-        this.props.timeFormat, this.props.localization),
+        this.props.timeFormat),
       floatingLabelStyle: this.props.floatingLabelStyle,
       inputStyle: this.props.inputStyle,
     });
@@ -217,7 +216,7 @@ class TimePickerDialog extends ComponentBase {
     }
   }
 
-  hourSelector(DateTimeFormat, minHour, maxHour, format, localization) {
+  hourSelector(DateTimeFormat, minHour, maxHour, format) {
     return (
       <TimeBase
         key="hours"
@@ -229,12 +228,11 @@ class TimePickerDialog extends ComponentBase {
         maxValue={maxHour}
         timeType={1}
         format={format}
-        localization={localization}
       />
     );
   }
 
-  minuteSelector(DateTimeFormat, minMinute, maxMinute, format, localization) {
+  minuteSelector(DateTimeFormat, minMinute, maxMinute, format) {
 
     return (
       <TimeBase
@@ -247,12 +245,11 @@ class TimePickerDialog extends ComponentBase {
         maxValue={maxMinute}
         timeType={2}
         format={format}
-        localization={localization}
       />
     );
   }
 
-  secondSelector(DateTimeFormat, minSecond, maxSecond, format, localization) {
+  secondSelector(DateTimeFormat, minSecond, maxSecond, format) {
     return (
       <TimeBase
         key="seconds"
@@ -264,7 +261,6 @@ class TimePickerDialog extends ComponentBase {
         maxValue={maxSecond}
         timeType={3}
         format={format}
-        localization={localization}
       />
     );
   }
@@ -278,8 +274,7 @@ class TimePickerDialog extends ComponentBase {
   }
 
   handleWindowOnWheel(event) {
-    let value = getLocalizedTime(this.state.date ? this.state.date : new Date(), this.props.datetimeOption,
-      this.props.timeFormat, this.props.localization);
+    let value = getLocalizedTime(this.state.date ? this.state.date : new Date(), this.props.datetimeOption, this.props.timeFormat);
     var selectionStart = undefined;
     var selectionEnd = undefined;
     var newValue;
@@ -287,7 +282,6 @@ class TimePickerDialog extends ComponentBase {
       if (event && event.wheelDelta !== 0 && event.wheelDelta / 120 > 0) {
         newValue = calendarMouseWheelAction(event.target.selectionStart,
           this.props.timeFormat,
-          this.props.localization,
           value,
           1,
           this.state.date);
@@ -303,7 +297,6 @@ class TimePickerDialog extends ComponentBase {
       else {
         newValue = calendarMouseWheelAction(event.target.selectionStart,
           this.props.timeFormat,
-          this.props.localization,
           value,
           -1,
           this.state.date);
@@ -363,7 +356,6 @@ class TimePickerDialog extends ComponentBase {
       style, // eslint-disable-line no-unused-vars
       DateTimeFormat,
       timeFormat,
-      localization,
       datetimeOption,
       hourTitle,
       minHour,
@@ -376,7 +368,7 @@ class TimePickerDialog extends ComponentBase {
             <span style={style.datetimeItemSpan}>{hourTitle}</span>
           </div>
           <div style={style.datetimeListContainer}>
-            {this.hourSelector(DateTimeFormat, minHour, maxHour, timeFormat, localization)}
+            {this.hourSelector(DateTimeFormat, minHour, maxHour, timeFormat)}
           </div>
         </div>
       );
@@ -393,7 +385,6 @@ class TimePickerDialog extends ComponentBase {
       maxMinute,
       minMinute,
       timeFormat,
-      localization,
       datetimeOption,
       minuteTitle,
     } = this.props;
@@ -404,7 +395,7 @@ class TimePickerDialog extends ComponentBase {
             <span style={style.datetimeItemSpan}>{minuteTitle}</span>
           </div>
           <div style={style.datetimeListContainer}>
-            {this.minuteSelector(DateTimeFormat, minMinute, maxMinute, timeFormat, localization)}
+            {this.minuteSelector(DateTimeFormat, minMinute, maxMinute, timeFormat)}
           </div>
         </div>
       );
@@ -419,7 +410,6 @@ class TimePickerDialog extends ComponentBase {
       style, // eslint-disable-line no-unused-vars
       DateTimeFormat,
       timeFormat,
-      localization,
       datetimeOption,
       minSecond,
       maxSecond,
@@ -432,7 +422,7 @@ class TimePickerDialog extends ComponentBase {
             <span style={style.datetimeItemSpan}>{secondTitle}</span>
           </div>
           <div style={style.datetimeListContainer}>
-            {this.secondSelector(DateTimeFormat, minSecond, maxSecond, timeFormat, localization)}
+            {this.secondSelector(DateTimeFormat, minSecond, maxSecond, timeFormat)}
           </div>
         </div>
       );
@@ -454,7 +444,6 @@ class TimePickerDialog extends ComponentBase {
       floatingLabelText,
       timeFormat,
       dateFormat,
-      localization,
       datetimeOption,
       hintText,
       initialDate,
@@ -528,8 +517,8 @@ class TimePickerDialog extends ComponentBase {
         overflow: 'hidden',
       },
     };
-    let dateInputValue = getLocalizedDate(initialDate ? initialDate : new Date(), dateFormat, localization);
-    let timeInputValue = getLocalizedTime(this.state.date ? this.state.date : new Date(), datetimeOption, timeFormat, localization);
+    let dateInputValue = getLocalizedDate(initialDate ? initialDate : new Date(), dateFormat);
+    let timeInputValue = getLocalizedTime(this.state.date ? this.state.date : new Date(), datetimeOption, timeFormat);
 
 
     var popoverOrigin = { horizontal: 'left', vertical: 'top' };

@@ -88,8 +88,10 @@ const generateSingleStory = (component) => {
 propagateToGlobal(win);
 const dirs = getDirectories(COMPONENTS_DIRECTORY);
 
+const storyNotRequired = ['Scroll', 'Icon', 'Resizable', 'Dialog', 'LinearPanel', 'ListItem', 'MenuItem'];
+
 dirs.forEach((dir) => {
-  if (dir != 'Scroll' && dir != 'Icon' && dir != 'Resizable') {
+  if (!storyNotRequired.find(x => x === dir)) {
     if (options.component === 'all' || dir == options.component) {
       const story = generateSingleStory(dir);
       createStoryFile(dir, 'index.stories.js', story);

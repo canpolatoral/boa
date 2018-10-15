@@ -20,7 +20,7 @@ const styles = () => ({
 });
 
 /**
- * BOA Button Component
+ * Button Component is wrapped from `@material-ui/core/Button`.
 */
 @ComponentComposer
 @withStyles(styles)
@@ -77,7 +77,7 @@ class Button extends ComponentBase {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    colorType: PropTypes.string,
+    colorType: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
     /**
      * Override the style of element
      */
@@ -106,7 +106,7 @@ class Button extends ComponentBase {
 
   static defaultProps = {
     type: 'raised',
-    text: 'click',
+    text: '',
     allowLabelCase: true,
     textPosition: 'center',
     buttonSize: 'medium'

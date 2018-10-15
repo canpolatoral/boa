@@ -57,9 +57,15 @@ class IconMenu extends ComponentBase {
      * vertical: [top, middle, bottom]
      * horizontal: [left, center, right].
      */
-    anchorOrigin: PropTypes.object,
+    anchorOrigin: PropTypes.shape({
+      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
+      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
+    }),
 
-    transformOrigin: PropTypes.object,
+    transformOrigin: PropTypes.shape({
+      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
+      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
+    }),
     /**
      * If true, the popover will apply transitions when
      * it gets added to the DOM.
@@ -67,7 +73,7 @@ class IconMenu extends ComponentBase {
     animated: PropTypes.bool,
 
     /**
-     * The CSS class name of the root element.
+     * @ignore
      */
     className: PropTypes.string,
 
@@ -103,7 +109,10 @@ class IconMenu extends ComponentBase {
      * vertical: [top, middle, bottom]
      * horizontal: [left, center, right].
      */
-    targetOrigin: PropTypes.object,
+    targetOrigin: PropTypes.shape({
+      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
+      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
+    }),
 
     /**
      * Sets the delay in milliseconds before closing the

@@ -40,6 +40,10 @@ export default class Playground extends ComponentBase {
 
     Object.keys(propMetaData).sort().forEach((key) => {
       const prop = propMetaData[key];
+
+      if (prop.description && prop.description.includes('@ignore'))
+        return;
+
       const property = { name: key, type: self.getPropType(prop), values: self.getAavailableValues(prop), default: self.getDefaultValue(prop) };
       availableProperties.push(property);
       const defaultValue = self.getDefaultValue(prop);
@@ -166,7 +170,8 @@ export default class Playground extends ComponentBase {
           </div>
           <div style={{ marginLeft: 100, width: '100%' }}>
             <DocViewer content='## Preview' editorType='github' />
-            <RenderedComponent {...currentProperties} ref={this.componentRef} onChange={action(self.getName() + '-onChange')} onClick={action(self.getName() + '-onClick')} context={this.props.context}></RenderedComponent>
+            {this.props.sample}
+            {!this.props.sample && <RenderedComponent {...currentProperties} ref={this.componentRef} onChange={action(self.getName() + '-onChange')} onClick={action(self.getName() + '-onClick')} context={this.props.context}></RenderedComponent>}
           </div>
         </div>
         {
@@ -178,7 +183,7 @@ export default class Playground extends ComponentBase {
   getComponentString() {
     const RenderedComponent = this.props.component;
     const RenderedComponentString = reactElementToJSXString((<RenderedComponent context={this.props.context} {...this.state.currentProperties}></RenderedComponent>), { displayName: this.getName.bind(this), filterProps: ['context', 'maxFontSize', 'minFontSize'] });
-    return `import ${this.getName()} from '@boa-components';
+    return `import ${this.getName()} from '@boa/components/${this.getName()}';
 
 ${RenderedComponentString}`;
   }

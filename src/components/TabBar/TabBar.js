@@ -61,9 +61,15 @@ class TabBar extends ComponentBase {
     onRightIconClick: PropTypes.func,
     style: PropTypes.object,
     value: PropTypes.any,
+    /**
+     * @ignore
+     */
     tabItems: PropTypes.array,
     centered: PropTypes.bool,
     children: PropTypes.node,
+    /**
+     * @ignore
+     */
     classes: PropTypes.object.isRequired,
     fullWidth: PropTypes.bool,
     indicatorClassName: PropTypes.string,
@@ -91,7 +97,8 @@ class TabBar extends ComponentBase {
     value: 0,
     leftIconButtonVisibility: false,
     rightIconButtonVisibility: false,
-    disableIcons: false
+    disableIcons: false,
+    tabItems: []
   }
 
   state = {
@@ -278,21 +285,20 @@ class TabBar extends ComponentBase {
 
     return (
       this.props.disableIcons
-        ?
-          <div style={this.props.tabLabelStyle}>{title}</div>
-        :
-          <div
-            style={{
-              textAlign: 'center',
-              height: '48px',
-              direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr'
-            }}>
-            {leftIconButton}
-            {rightIconButton}
-            <div style={titleStyle}>
-              <div style={{ display: '-webkit-box', webkitLineClamp: '2', webkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</div>
-            </div>
-          </div>);
+        ? (<div style={this.props.tabLabelStyle}>{title}</div>)
+        : (<div
+          style={{
+            textAlign: 'center',
+            height: '48px',
+            direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr'
+          }}>
+          {leftIconButton}
+          {rightIconButton}
+          <div style={titleStyle}>
+            <div style={{ display: '-webkit-box', webkitLineClamp: '2', webkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</div>
+          </div>
+        </div>)
+    );
   }
 
   renderTabScrollButton() {
@@ -346,7 +352,7 @@ class TabBar extends ComponentBase {
             labelContainer: classes.labelContainer
           }}
           style={tabStyle}
-          />
+        />
       );
     });
     return tabItems;
@@ -375,11 +381,6 @@ class TabBar extends ComponentBase {
   }
 
   render() {
-
-    // var textColor = this.props.textColor;
-    // if (this.props.mode == 'secondary') {
-    //   textColor = this.props.context.theme.boaPalette.pri500;
-    // }
     let type = this.props.containerType ? this.props.containerType : 'default';
     switch (type) {
       case 'default':

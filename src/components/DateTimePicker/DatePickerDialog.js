@@ -51,7 +51,6 @@ class DatePickerDialog extends ComponentBase {
     calendarInfo: PropTypes.array,
     dateFormat: PropTypes.string,
     timeFormat: PropTypes.string,
-    localization: PropTypes.func,
     datetimeOption: PropTypes.object,
     canSelectOldDates: PropTypes.bool,
     canSelectWeekendDays: PropTypes.bool,
@@ -183,7 +182,6 @@ class DatePickerDialog extends ComponentBase {
       calendarInfo,
       dateFormat,
       timeFormat,
-      localization,
       canSelectOldDates,
       canSelectWeekendDays,
       canSelectSpecialDays,
@@ -234,7 +232,6 @@ class DatePickerDialog extends ComponentBase {
         calendarInfo={calendarInfo}
         dateFormat={dateFormat}
         timeFormat={timeFormat}
-        localization={localization}
         canSelectOldDates={canSelectOldDates}
         canSelectWeekendDays={canSelectWeekendDays}
         canSelectSpecialDays={canSelectSpecialDays}

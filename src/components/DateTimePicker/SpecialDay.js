@@ -78,7 +78,6 @@ class SpecialDay extends ComponentBase {
     specialDayType: PropTypes.number,
     calendarInfo: PropTypes.array,
     selectedDate: PropTypes.object.isRequired,
-    localization: PropTypes.func,
     format: PropTypes.string,
   };
   static defaultProps = {
@@ -175,7 +174,7 @@ class SpecialDay extends ComponentBase {
     let itemTwo = new Date(list[list.length - 1].day);
     let HolidayName = itemOne.description ? itemOne.description.replace('1*', '') : '';
 
-    let MonthNameList = getMonthsShort(this.props.localization, itemOneDate, this.props.format);
+    let MonthNameList = getMonthsShort(itemOneDate, this.props.format);
     let MonthName = MonthNameList[itemOneDate.getMonth()];
     let beginDay = itemOneDate.getDate();
     let EndDay = itemTwo.getDate();
@@ -197,7 +196,7 @@ class SpecialDay extends ComponentBase {
     let itemOne = list[0];
     let itemOneDate = new Date(itemOne.day);
     let HolidayName = itemOne.description ? itemOne.description.replace('1*', '') : '';
-    let MonthNameList = getMonthsShort(this.props.localization, itemOneDate, this.props.format);
+    let MonthNameList = getMonthsShort(itemOneDate, this.props.format);
     let MonthName = MonthNameList[itemOneDate.getMonth()];
     let beginDay = itemOneDate.getDate();
     let singleHoliday = (

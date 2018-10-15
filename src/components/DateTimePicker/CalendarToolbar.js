@@ -19,7 +19,6 @@ class CalendarToolbar extends ComponentBase {
     prevMonth: PropTypes.bool,
     handleClickToolBar: PropTypes.func,
     format: PropTypes.string,
-    localization: PropTypes.func,
   };
 
   static defaultProps = {
@@ -94,7 +93,6 @@ class CalendarToolbar extends ComponentBase {
 
     const dateTimeFormatted = new DateTimeFormat({
       item: 'monthYearName',
-      localization: this.props.localization,
       format: this.props.format,
     }).format(displayDate);
 

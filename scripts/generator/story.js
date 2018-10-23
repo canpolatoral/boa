@@ -16,7 +16,7 @@ global.navigator = {
   }
 };
 
-const COMPONENTS = '../src/components/';
+const COMPONENTS = '../../src/components/';
 const COMPONENTS_DIRECTORY = path.join(__dirname, COMPONENTS);
 
 const options = yargs.option('component', {
@@ -41,18 +41,18 @@ const getDirectories = (srcpath) => {
 
 
 const createStoryFile = (folderName, fileName, story) => {
-  if (!fs.existsSync(path.join(__dirname, '..', 'stories'))) {
-    fs.mkdirSync(path.join(__dirname, '..', 'stories'));
+  if (!fs.existsSync(path.join(__dirname, '..', '..', 'stories'))) {
+    fs.mkdirSync(path.join(__dirname, '..', '..', 'stories'));
   }
 
-  if (!fs.existsSync(path.join(__dirname, '..', 'stories', folderName))) {
-    fs.mkdirSync(path.join(__dirname, '..', 'stories', folderName));
+  if (!fs.existsSync(path.join(__dirname, '..', '..', 'stories', folderName))) {
+    fs.mkdirSync(path.join(__dirname, '..', '..', 'stories', folderName));
   } else {
     console.log('SKIP: ' + folderName + ' folder exists...');
   }
 
-  console.log('WRITING: ' + path.join(__dirname, '..', 'stories', folderName, fileName));
-  fs.writeFile(path.join(__dirname, '..', 'stories', folderName, fileName), story, (err) => {
+  console.log('WRITING: ' + path.join(__dirname, '..', '..', 'stories', folderName, fileName));
+  fs.writeFile(path.join(__dirname, '..', '..', 'stories', folderName, fileName), story, (err) => {
     if (err) {
       console.log(err);
     }

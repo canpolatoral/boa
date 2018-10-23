@@ -1,4 +1,4 @@
-﻿var exec = require('../lib/exec').default.exec;
+﻿import exec from '../exec';
 
 export default function BuildDistributable(componentname, componententry, distpath, testentry, ignoredFiles) {
   if (ignoredFiles) {

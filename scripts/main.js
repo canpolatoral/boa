@@ -3,7 +3,6 @@ import path from 'path';
 import fse from 'fs-extra';
 
 import exec from './exec';
-import buildCommonJs from './build-common';
 import webpackCompiler from './webpack/build';
 
 async function copyFile(file) {
@@ -32,11 +31,17 @@ async function createPackageFile() {
   return newPackageData;
 }
 
+function getIgnoredFiles() {
+  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'), { encoding: 'utf8' });
+  const { dependencies } = JSON.parse(packageData);
+  return dependencies ? Object.keys(dependencies) : '';
+}
+
 async function build() {
   try {
     await exec(`rimraf ${path.join(__dirname, '../build/**')}`);
-    await buildCommonJs(path.join(__dirname, '../build'), 'boa-components', path.join(__dirname, '../src/index.js'), '');
-    await webpackCompiler('boa-components', path.join(__dirname, '../src/index.js'), path.join(__dirname, '../build'), '', '');
+    //  await buildCommonJs(path.join(__dirname, '../build'), 'boa-components', path.join(__dirname, '../src/index.js'), '');
+    await webpackCompiler('@boa/components', path.join(__dirname, '../src/index.js'), path.join(__dirname, '../build'), '', getIgnoredFiles());
     await copyFile(path.join(__dirname, '../README.md'));
     await copyFile(path.join(__dirname, '../LICENSE'));
     await createPackageFile();

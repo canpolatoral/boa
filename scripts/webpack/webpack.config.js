@@ -14,7 +14,7 @@ module.exports = function(env) {
     },
     output: {
       path: dispath,
-      filename: options.optimizeMinimize ? '[name].min.js' : '[name].js',
+      filename: options.optimizeMinimize ? 'index.min.js' : 'index.js',
       library: componentname,
       libraryTarget: 'umd'
     },

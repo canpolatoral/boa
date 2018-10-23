@@ -10,8 +10,8 @@
     "lint": "esw",
     "lint-fix": "esw --fix",
     "lint-watch": "esw --watch",
-    "generate-storybook": "babel-node scripts/story.generator.js",
-    "generate-info": "babel-node scripts/info.generator.js",
+    "generate-storybook": "babel-node scripts/generator/story.js",
+    "generate-info": "babel-node scripts/generator/info.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "start": "npm run generate-info && npm run generate-storybook && npm run storybook"
@@ -25,7 +25,9 @@
   "dependencies": {
     "@material-ui/core": "1.2.1",
     "@material-ui/icons": "1.1.0",
+    "element-class": "^0.2.2",
     "highlight.js": "^9.11.0",
+    "html5-tag": "^0.3.0",
     "iban": "^0.0.10",
     "infinite-tree": "^1.16.2",
     "lodash": "^4.17.10",
@@ -42,6 +44,7 @@
     "react-json-view": "^1.19.1",
     "react-scrollbar-size": "^2.1.0",
     "shallowequal": "^0.2.2",
+    "scroll": "^2.0.3",
     "styled-components": "^1.4.4",
     "velocity-react": "^1.4.1",
     "warning": "^3.0.0"

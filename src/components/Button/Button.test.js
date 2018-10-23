@@ -17,10 +17,15 @@ describe('<Button /> tests', () => {
     assert.strictEqual(wrapper.props().type, 'raised');
   });
 
-  it('should change type', () => {
+  it('should change type to flat', () => {
     const wrapper = shallow(<Button type='flat' label='click' />).first().shallow();
     assert.strictEqual(wrapper.name(), 'Button');
     assert.strictEqual(wrapper.props().type, 'flat');
+  });
+
+  it('should change type to icon', () => {
+    const wrapper = shallow(<Button type='icon' dynamicIcon='Home' label='click' />).first().shallow().first().shallow();
+    assert.strictEqual(wrapper.childAt(0).type(), SvgIcons['Home']);
   });
 
   it('should render a <MuiButton> element', () => {
@@ -28,7 +33,7 @@ describe('<Button /> tests', () => {
     assert.strictEqual(wrapper.type(), MuiButton);
   });
 
-  it('should render dynamicIcon', () => {
+  it('should render a dynamicIcon', () => {
     const wrapper = shallow(<Button label='click' dynamicIcon='Home' />).first().shallow().first().shallow();
     assert.strictEqual(wrapper.childAt(0).type(), SvgIcons['Home']);
   });

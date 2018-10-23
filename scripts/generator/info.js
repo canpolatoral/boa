@@ -3,8 +3,8 @@ import fs from 'fs';
 import yargs from 'yargs';
 import { parse } from 'react-docgen';
 
-const COMPONENTS = '../src/components/';
-const STORIES = '../stories/';
+const COMPONENTS = '../../src/components/';
+const STORIES = '../../stories/';
 const COMPONENTS_DIRECTORY = path.join(__dirname, COMPONENTS);
 const STORIES_DIRECTORY = path.join(__dirname, STORIES);
 

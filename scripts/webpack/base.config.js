@@ -10,7 +10,7 @@ const baseConfig = {
   entry: undefined,
   output: undefined,
   externals: undefined,
-  module: { 
+  module: {
     rules: [
       {
         test: /\.js?$/,
@@ -18,8 +18,8 @@ const baseConfig = {
         use: [
           {
             loader: 'babel-loader',
-            options: { 
-              babelrc: false,
+            options: {
+              babelrc: true,
               presets: ['es2015', 'stage-0', 'react'],
               plugins: [require('babel-plugin-transform-decorators-legacy').default]
             }
@@ -51,7 +51,7 @@ const baseConfig = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV':  JSON.stringify('production') 
+        'NODE_ENV':  JSON.stringify('production')
       }
     })
   ]

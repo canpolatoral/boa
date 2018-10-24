@@ -1,5 +1,6 @@
 import React from 'react';
-import { MuiListItem, MuiListItemText } from '@material-ui/core';
+import MuiListItem from '@material-ui/core/ListItem';
+import MuiListItemText from '@material-ui/core/ListItemText';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';

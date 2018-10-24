@@ -188,7 +188,7 @@ class Header extends ComponentBase {
             disabled={!this.props.node.editableColumn1}
             maxLenght={this.props.node.columnsMaxLenght}
             type={this.props.node.type ? this.props.node.type : 'text'}
-            onChange={(value: any) => {
+            onChange={(value) => {
               if (!this.props.node.children) {
                 this.props.node.type == 'number' ?
                   this.props.node.column1 = value.target.valueAsNumber : this.props.node.column1 = value.target.value;
@@ -216,7 +216,7 @@ class Header extends ComponentBase {
             type={this.props.node.type ? this.props.node.type : 'text'}
             disabled={!this.props.node.editableColumn2}
             maxLenght={this.props.node.columnsMaxLenght}
-            onChange={(value: any) => {
+            onChange={(value) => {
               if (!this.props.node.children) {
                 this.props.node.type == 'number' ?
                   this.props.node.column2 = value.target.valueAsNumber : this.props.node.column2 = value.target.value;
@@ -244,7 +244,7 @@ class Header extends ComponentBase {
             type={this.props.node.type ? this.props.node.type : 'text'}
             disabled={!this.props.node.editableColumn3}
             maxLenght={this.props.node.columnsMaxLenght}
-            onChange={(value: any) => {
+            onChange={(value) => {
               if (!this.props.node.children) {
                 this.props.node.type == 'number' ?
                   this.props.node.column3 = value.target.valueAsNumber : this.props.node.column3 = value.target.value;
@@ -272,7 +272,7 @@ class Header extends ComponentBase {
             disabled={!this.props.node.editableColumn4}
             value={this.props.node.column4}
             maxLenght={this.props.node.columnsMaxLenght}
-            onChange={(value: any) => {
+            onChange={(value) => {
               if (!this.props.node.children) {
                 this.props.node.type == 'number' ?
                   this.props.node.column4 = value.target.valueAsNumber : this.props.node.column4 = value.target.value;

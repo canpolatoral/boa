@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { MuiMenuItem } from '@material-ui/core';
-import { MuiListItemIcon } from '@material-ui/core';
+import MuiMenuItem from '@material-ui/core/MenuItem';
+import MuiListItemIcon from '@material-ui/core/ListItemIcon';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Popover } from '@boa/components/Popover';
 

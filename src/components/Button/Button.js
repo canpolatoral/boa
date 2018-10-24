@@ -31,9 +31,9 @@ class Button extends ComponentBase {
     */
     ...ComponentBase.propTypes,
     /**
-     * Button type should be `raised`, `flat`, `fab` or `icon`.
+     * Button type should be `contained`, `flat`, `fab` or `icon`.
      */
-    type: PropTypes.oneOf(['raised', 'flat', 'fab', 'icon']).isRequired,
+    type: PropTypes.oneOf(['contained', 'flat', 'fab', 'icon']).isRequired,
     /**
      * Button content.
      */
@@ -105,7 +105,7 @@ class Button extends ComponentBase {
   };
 
   static defaultProps = {
-    type: 'raised',
+    type: 'contained',
     text: '',
     allowLabelCase: true,
     textPosition: 'center',
@@ -162,6 +162,7 @@ class Button extends ComponentBase {
 
     return (
       <MuiButton
+        id={this.props.id}
         style={buttonStyle}
         fullWidth={this.props.fullWidth}
         color={this.props.colorType}

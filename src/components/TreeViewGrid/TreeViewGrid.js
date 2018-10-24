@@ -154,9 +154,6 @@ class TreeViewGrid extends ComponentBase {
 
   }
 
-  findNodeItem(data, valuePath, value) {
-    return helpers.findNodeItem(data, valuePath, value);
-  }
   onChange(item, node) {
     let data = this.state.data;
     // var temp = data.children.find(x=>x.id == node.id);

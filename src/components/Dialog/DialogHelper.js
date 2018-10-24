@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { getMessage } from '@boa/utils';
-import { ComponentBase, AppProvider } from '@boa/base';
-import { Button, DialogType } from '@boa/components/Button';
+import { ComponentBase, AppProvider, DialogType } from '@boa/base';
+import { Button } from '@boa/components/Button';
 
 import Dialog from './Dialog';
 

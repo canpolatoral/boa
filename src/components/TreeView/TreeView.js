@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentComposer, ComponentBase } from '@boa/base';
 import Footer from './components/Footer';
-import BDivider from '@boa/components/Divider';
-import { BInputAction } from '@boa/components/InputAction';
+import Divider from '@boa/components/Divider';
+import InputAction from '@boa/components/InputAction';
 import Tree from './Tree';
 
 @ComponentComposer
@@ -647,7 +647,7 @@ class TreeView extends ComponentBase {
       <div style={style.mainDiv}>
         {this.props.showSearch && (
           <div className="b-treeview-search-input" style={style.inputDiv}>
-            <BInputAction
+            <InputAction
               ref={r => (this.searchInput = r)}
               style={{ width: style.width }}
               startAdornmentStyle={style.startAdornmentStyle}
@@ -710,7 +710,7 @@ class TreeView extends ComponentBase {
         {this.props.isCheckable &&
           this.props.showFooter && (
             <div>
-              <BDivider style={{ margin: 0 }} />
+              <Divider style={{ margin: 0 }} />
               <Footer style={this.props.footerStyle} context={this.props.context}>
                 {this.getFooterText()}
               </Footer>

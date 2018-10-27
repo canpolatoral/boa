@@ -17,7 +17,7 @@ class DocViewer extends ComponentBase {
     /**
      * Editor type that will be colored
      */
-    editorType: PropTypes.oneOf('androidStudio', 'atomOneDark', 'atomOneLight', 'github', 'monokaiSublime', 'raiinbow', 'vs', 'xcode')
+    editorType: PropTypes.oneOf(['androidStudio', 'atomOneDark', 'atomOneLight', 'github', 'monokaiSublime', 'raiinbow', 'vs', 'xcode'])
   };
 
   static defaultProps = {

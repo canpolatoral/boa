@@ -1,7 +1,7 @@
 import React from 'react';
 import { DocViewer } from '@boa/components/DocViewer';
 
-export default class ComponentInfo extends React.Component {
+export default class PropsTable extends React.Component {
 
   constructor(props) {
     super(props);
@@ -41,7 +41,7 @@ export default class ComponentInfo extends React.Component {
       if (prop.type && prop.type.name === 'func')
         return;
 
-      doc = doc + '\n' + `|${self.getPropName(prop, key)}|${self.getPropType(prop).replace('|', '&#124; ')}|${prop.defaultValue ? prop.defaultValue.value : ''}|${prop.description ? prop.description.split('\n').join('<br>') : ''}|`;
+      doc = doc + '\n' + `|${self.getPropName(prop, key)}|${self.getPropType(prop)}|${self.getDefaultValue(prop)}|${self.getPropDescription(prop)}|`;
     });
 
     return doc;
@@ -62,28 +62,35 @@ export default class ComponentInfo extends React.Component {
     let propType = '';
     if (prop && prop.type) {
       propType = prop.type.name;
+
       if (prop.type.raw)
         propType = prop.type.raw;
-      if (prop.type.value) {
-        if (Array.isArray(prop.type.value)) {
-          if (prop.type.value[0].value) { // oneOf
-            propType = 'oneOf(';
-            prop.type.value.forEach((item) => {
-              propType = propType + item.value + ', ';
-            });
-            propType = propType.slice(0, propType.length - 2) + ')';
-          } else { // oneOfType
-            propType = 'oneOfType(';
-            prop.type.value.forEach((item) => {
-              propType = propType + item.name + ', ';
-            });
-            propType = propType.slice(0, propType.length - 2) + ')';
-          }
-        } else if (typeof prop.type.value === 'object') {
-          propType = prop.type.name + '(' + prop.type.value.name + ')';
-        }
+
+      if (prop.type.name === 'shape') {
+        propType = prop.type.name;
+      } else if (prop.type.name === 'enum') {
+        propType = prop.type.name + ' &#124;';
+        prop.type.value.forEach((item) => {
+          propType = propType + ` \`${item.value}\`, `;
+        });
+      } else if (prop.type.name === 'union') {
+        propType = prop.type.name + ' &#124;';
+        prop.type.value.forEach((item) => {
+          propType = propType + ` \`${item.name}${item.value || ''}\`, `;
+        });
+      } else if (typeof prop.type.value === 'object') {
+        propType = prop.type.name + '(' + prop.type.value.name + ')';
       }
     }
-    return propType;
+
+    return propType.replace('|', '&#124; ');
+  }
+
+  getDefaultValue(prop) {
+    return (prop.defaultValue && prop.defaultValue.value && prop.defaultValue.value.split) ? prop.defaultValue.value.split('\n').join('<br>') : '';
+  }
+
+  getPropDescription(prop) {
+    return prop.description ? prop.description.split('\n').join('<br>') : '';
   }
 }

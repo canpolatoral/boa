@@ -105,7 +105,7 @@ class IconButton extends ComponentBase {
     /**
      * Tooltip position
      */
-    tooltipPosition: PropTypes.oneOf('bottom-end', 'bottom-start', 'bottom', 'left-end', 'left-start', 'left', 'right-end', 'right-start', 'right', 'top-end', 'top-start', 'top'),
+    tooltipPosition: PropTypes.oneOf(['bottom-end', 'bottom-start', 'bottom', 'left-end', 'left-start', 'left', 'right-end', 'right-start', 'right', 'top-end', 'top-start', 'top']),
   };
 
   static defaultProps = {

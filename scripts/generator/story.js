@@ -1,44 +1,21 @@
 import path from 'path';
 import fs from 'fs';
-import jsdom from 'jsdom';
 import yargs from 'yargs';
-
-var doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
-var win = doc.defaultView;
-global.document = doc;
-global.window = win;
-global.navigator = {
-  userAgent: 'node.js',
-  serviceWorker: {
-    register: (...args) => {
-      console.log(args);
-    }
-  }
-};
 
 const COMPONENTS = '../../src/components/';
 const COMPONENTS_DIRECTORY = path.join(__dirname, COMPONENTS);
+const storyNotRequired = ['Scroll', 'Icon', 'Resizable', 'Dialog', 'LinearPanel', 'ListItem', 'MenuItem'];
 
 const options = yargs.option('component', {
   default: 'all',
   type: 'string'
 }).argv;
 
-function propagateToGlobal(window) {
-  for (let key in window) {
-    if (!window.hasOwnProperty(key)) continue;
-    if (key in global) continue;
-
-    global[key] = window[key];
-  }
-}
-
 const getDirectories = (srcpath) => {
   return fs.readdirSync(srcpath).filter((file) => {
     return fs.statSync(path.join(srcpath, file)).isDirectory();
   });
 };
-
 
 const createStoryFile = (folderName, fileName, story) => {
   if (!fs.existsSync(path.join(__dirname, '..', '..', 'stories'))) {
@@ -67,7 +44,7 @@ const generateSingleStory = (component) => {
   import { ${component} } from '../../src/components/${component}';
 
   import Header from '../base/header';
-  import Props from '../base/props';
+  import Props from '../base/props-table';
   import Preview from '../base/preview';
 
   const doc = require('./doc.json');
@@ -85,16 +62,17 @@ const generateSingleStory = (component) => {
   `;
 };
 
-propagateToGlobal(win);
-const dirs = getDirectories(COMPONENTS_DIRECTORY);
+const generate = () => {
+  const dirs = getDirectories(COMPONENTS_DIRECTORY);
 
-const storyNotRequired = ['Scroll', 'Icon', 'Resizable', 'Dialog', 'LinearPanel', 'ListItem', 'MenuItem'];
-
-dirs.forEach((dir) => {
-  if (!storyNotRequired.find(x => x === dir)) {
-    if (options.component === 'all' || dir == options.component) {
-      const story = generateSingleStory(dir);
-      createStoryFile(dir, 'index.stories.js', story);
+  dirs.forEach((dir) => {
+    if (!storyNotRequired.find(x => x === dir)) {
+      if (options.component === 'all' || dir == options.component) {
+        const story = generateSingleStory(dir);
+        createStoryFile(dir, 'index.stories.js', story);
+      }
     }
-  }
-});
+  });
+};
+
+generate();

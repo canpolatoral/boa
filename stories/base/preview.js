@@ -44,7 +44,7 @@ export default class Playground extends ComponentBase {
       if (prop.description && prop.description.includes('@ignore'))
         return;
 
-      const property = { name: key, type: self.getPropType(prop), values: self.getAavailableValues(prop), default: self.getDefaultValue(prop) };
+      const property = { name: key, type: self.getPropType(prop), value: self.getPropValue(prop), values: self.getAavailableValues(prop), default: self.getDefaultValue(prop) };
       availableProperties.push(property);
       const defaultValue = self.getDefaultValue(prop);
       if (defaultValue)
@@ -65,6 +65,7 @@ export default class Playground extends ComponentBase {
       });
     }
 
+    currentProperties.data = this.props.sampleData;
     this.setState({ availableProperties, currentProperties }, () => {
       const code = self.getComponentString();
       this.setState({ code });
@@ -76,29 +77,36 @@ export default class Playground extends ComponentBase {
     let propType = '';
     if (prop && prop.type) {
       propType = prop.type.name;
+
       if (prop.type.raw)
         propType = prop.type.raw;
-      if (prop.type.value) {
-        if (Array.isArray(prop.type.value)) {
-          if (prop.type.value[0].value) { // oneOf
-            propType = 'oneOf(';
-            prop.type.value.forEach((item) => {
-              propType = propType + item.value + ', ';
-            });
-            propType = propType.slice(0, propType.length - 2) + ')';
-          } else { // oneOfType
-            propType = 'oneOfType(';
-            prop.type.value.forEach((item) => {
-              propType = propType + item.name + ', ';
-            });
-            propType = propType.slice(0, propType.length - 2) + ')';
-          }
-        } else if (typeof prop.type.value === 'object') {
-          propType = prop.type.name + '(' + prop.type.value.name + ')';
-        }
+
+      if (prop.type.name === 'shape') {
+        propType = prop.type.name;
+      }
+      if (prop.type.name === 'enum') {
+        propType = prop.type.name;
+        prop.type.value.forEach((item) => {
+          propType = propType + `| \`${item.value}\``;
+        });
+      }
+      if (prop.type.name === 'union') {
+        propType = prop.type.name;
+        prop.type.value.forEach((item) => {
+          propType = propType + `| \`${item.name}\``;
+        });
+      }
+      if (typeof prop.type.value === 'object') {
+        propType = prop.type.name + '(' + prop.type.value.name + ')';
       }
     }
     return propType;
+  }
+
+  getPropValue(prop) {
+    if (prop && prop.type && prop.type.value) {
+      return prop.type.value;
+    }
   }
 
   getAavailableValues(prop) {
@@ -116,7 +124,13 @@ export default class Playground extends ComponentBase {
   }
 
   getDefaultValue(prop) {
-    return prop.defaultValue ? prop.defaultValue.value : null;
+    if (prop.defaultValue && prop.defaultValue.value) {
+      if (typeof prop.defaultValue.value === 'string' && prop.defaultValue.value.includes('{')) {
+        return null;
+      }
+      return prop.defaultValue.value;
+    }
+    return null;
   }
 
   getName() {
@@ -182,7 +196,7 @@ export default class Playground extends ComponentBase {
 
   getComponentString() {
     const RenderedComponent = this.props.component;
-    const RenderedComponentString = reactElementToJSXString((<RenderedComponent context={this.props.context} {...this.state.currentProperties}></RenderedComponent>), { displayName: this.getName.bind(this), filterProps: ['context', 'maxFontSize', 'minFontSize'] });
+    const RenderedComponentString = reactElementToJSXString((<RenderedComponent {...this.props} {...this.state.currentProperties}></RenderedComponent>), { displayName: this.getName.bind(this), filterProps: ['context', 'maxFontSize', 'minFontSize'] });
     return `import ${this.getName()} from '@boa/components/${this.getName()}';
 
 ${RenderedComponentString}`;

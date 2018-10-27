@@ -1,9 +1,9 @@
 {
-  "name": "boaonewebcomponents",
+  "name": "boa-components",
   "version": "0.1.0",
-  "description": "BOA.One.WebComponents Project",
+  "description": "BOA UI Components",
   "main": "index.js",
-  "author": "KT BOA One Team",
+  "author": "Kuveyt Türk BOA One Team",
   "scripts": {
     "pre-build": "rimraf build",
     "build-umd": "babel-node scripts/main.js",
@@ -19,7 +19,7 @@
     "generate-info": "babel-node scripts/generator/info.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "start": "npm run generate-info && npm run generate-storybook && npm run storybook"
+    "start": "npm run storybook"
   },
   "lint-staged": {
     "*.js": [
@@ -39,6 +39,7 @@
     "jquery": "^3.3.1",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
+    "node-sass": "^4.9.4",
     "numeral": "^2.0.4",
     "perfect-scrollbar": "0.6.12",
     "phone-formatter": "^0.0.2",
@@ -117,7 +118,6 @@
     "lodash-compat": "^3.10.2",
     "marked": "^0.3.19",
     "mocha": "^3.1.1",
-    "node-sass": "^4.9.4",
     "object-assign": "^4.1.0",
     "puppeteer": "^1.5.0",
     "postcss-loader": "^1.1.1",

@@ -17,7 +17,6 @@ const directories = fs.readdirSync(COMPONENTS_DIRECTORY).filter((file) => {
   return fs.statSync(path.join(COMPONENTS_DIRECTORY, file)).isDirectory();
 });
 
-
 const generateDocument = (component) => {
   if (component == 'Scroll' || component == 'Icon')
     return;
@@ -27,17 +26,12 @@ const generateDocument = (component) => {
   const componentInfo = parse(fileContent);
   repair(componentInfo);
 
-  // if (componentInfo.composes && componentInfo.composes.length > 0) {
-  //   componentInfo.composes.forEach((item) => {
-
-  //   })
-  // }
   if (!fs.existsSync(path.join(STORIES_DIRECTORY, component))) {
     fs.mkdirSync(path.join(STORIES_DIRECTORY, component));
   }
+
   fs.writeFileSync(path.join(STORIES_DIRECTORY, component, 'doc.json'), JSON.stringify(componentInfo, null, '\t'), { flag: 'w', encoding: 'utf8' });
 };
-
 
 const repair = (obj) => {
   for (var property in obj) {
@@ -64,8 +58,12 @@ const repair = (obj) => {
   }
 };
 
+const generate = () => {
+  directories.forEach((dir) => {
+    if (options.component === 'all' || dir == options.component)
+      generateDocument(dir);
+  });
+};
 
-directories.forEach((dir) => {
-  if (options.component === 'all' || dir == options.component)
-    generateDocument(dir);
-});
+generate();
+

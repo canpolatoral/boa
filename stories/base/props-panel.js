@@ -127,6 +127,48 @@ export default class Playground extends ComponentBase {
     );
   }
 
+  // getShape(property, value) {
+  //   const self = this;
+  //   return (
+  //     <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
+  //       <InputLabel htmlFor="theme">{property.name}</InputLabel>
+  //       <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
+  //         {
+  //           Object.keys(property.value).map((key) => {
+  //             return (
+  //               <InputLabel htmlFor={property.name + key}>{key}</InputLabel>
+  //             );
+  //           })
+  //         }
+  //       </FormControl>
+  //     </FormControl>
+  //     // <FormControl style={{ maxWidth: 300, width: '100%' }}>
+  //     //   <InputLabel htmlFor="theme">{property.name}</InputLabel>
+  //     //   {
+  //     //     Object.keys(property.value).map((key) => {
+  //     //       return (
+  //     //         <div>
+  //     //           <InputLabel htmlFor="theme">{key}</InputLabel>
+  //     //           <NativeSelect
+  //     //             onChange={
+  //     //               (event) => {
+  //     //                 // self.onPropertyChanged(property.name, event.target.value);
+  //     //               }
+  //     //             }>
+  //     //             {
+  //     //               property.value[key].value.map((item) => {
+  //     //                 return <option value={item}>{item}</option>;
+  //     //               })
+  //     //             }
+  //     //           </NativeSelect>
+  //     //         </div>
+  //     //       );
+  //     //     })
+  //     //   }
+  //     // </FormControl>
+  //   );
+  // }
+
   getType(obj) {
     return {}.toString
       .call(obj)
@@ -156,8 +198,10 @@ export default class Playground extends ComponentBase {
           </FormControl>
         </div>);
     }
-
-    if (property.type.toLowerCase().includes('date')) {
+    else if (property.type.toLowerCase().includes('shape')) {
+      return this.getShape(property, value);
+    }
+    else if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
     } else if (property.type.toLowerCase().includes('string')) {
       return this.getBInput(property, value);

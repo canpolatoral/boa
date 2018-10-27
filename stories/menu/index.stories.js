@@ -5,7 +5,7 @@
   import { Menu } from '../../src/components/Menu';
 
   import Header from '../base/header';
-  import Props from '../base/props';
+  import Props from '../base/props-table';
   import Preview from '../base/preview';
 
   const doc = require('./doc.json');

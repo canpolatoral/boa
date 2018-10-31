@@ -51,3 +51,11 @@ jobs:
       - run:
           name: Unit tests
           command: npm run test-unit
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - checkout
+      - test_unit:
+          requires:
+            - checkout

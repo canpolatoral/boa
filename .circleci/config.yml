@@ -49,6 +49,9 @@ jobs:
             # we need to parse the revs for the actual master
             echo 'export CHANGED_FILES=$(git diff --name-only $(git rev-parse origin/master)...)' >> $BASH_ENV
       - run:
+          name: Lint
+          command: npm run lint
+      - run:
           name: Unit tests
           command: npm run test-unit
 workflows:

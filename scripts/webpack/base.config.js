@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import webpack from 'webpack';
 import yargs from 'yargs';
 
@@ -21,40 +22,40 @@ const baseConfig = {
             options: {
               babelrc: true,
               presets: ['es2015', 'stage-0', 'react'],
-              plugins: [require('babel-plugin-transform-decorators-legacy').default]
-            }
+              plugins: [require('babel-plugin-transform-decorators-legacy').default],
+            },
 
-          }
+          },
 
-        ]
+        ],
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
         use: [{
-          loader: 'style-loader' // creates style nodes from JS strings
+          loader: 'style-loader', // creates style nodes from JS strings
         }, {
-          loader: 'css-loader' // translates CSS into CommonJS
+          loader: 'css-loader', // translates CSS into CommonJS
         }, {
-          loader: 'sass-loader' // compiles Sass to CSS
-        }]
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
       },
       {
         test: /\.(eot|svg|jpe?g|png|gif|ttf|woff2?)$/,
-        use: 'url-loader'
-      }
-    ]
+        use: 'url-loader',
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV':  JSON.stringify('production')
-      }
-    })
-  ]
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+  ],
 };
 
 if (options.optimizeMinimize) {

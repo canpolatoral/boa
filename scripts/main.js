@@ -1,8 +1,8 @@
-﻿import 'colors';
+/* eslint-disable no-console */
+
+import 'colors';
 import path from 'path';
 import fse from 'fs-extra';
-
-// import exec from './exec';
 import webpackCompiler from './webpack/build';
 
 async function copyFile(file) {
@@ -12,8 +12,9 @@ async function copyFile(file) {
 }
 
 async function createPackageFile() {
-  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'), { encoding: 'utf8' });
-  // eslint-disable-next-line
+  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'),
+    { encoding: 'utf8' });
+
   const { nyc, scripts, devDependencies, workspaces, ...packageDataOther } = JSON.parse(
     packageData,
   );
@@ -32,7 +33,8 @@ async function createPackageFile() {
 }
 
 function getIgnoredFiles() {
-  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'), { encoding: 'utf8' });
+  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'),
+    { encoding: 'utf8' });
   const { dependencies } = JSON.parse(packageData);
   return dependencies ? Object.keys(dependencies) : '';
 }
@@ -40,8 +42,11 @@ function getIgnoredFiles() {
 async function build() {
   try {
     // await exec(`rimraf ${path.join(__dirname, '../build/**')}`);
-    //  await buildCommonJs(path.join(__dirname, '../build'), 'boa-components', path.join(__dirname, '../src/index.js'), '');
-    await webpackCompiler('@boa/components', path.join(__dirname, '../src/index.js'), path.join(__dirname, '../build/umd'), '', getIgnoredFiles());
+    // await buildCommonJs(path.join(__dirname, '../build'),
+    //  'boa-components', path.join(__dirname, '../src/index.js'), '');
+    const indexPath = path.join(__dirname, '../src/index.js');
+    const umdPath = path.join(__dirname, '../build/umd');
+    await webpackCompiler('@boa/components', indexPath, umdPath, '', getIgnoredFiles());
     await copyFile(path.join(__dirname, '../README.md'));
     await copyFile(path.join(__dirname, '../LICENSE'));
     await createPackageFile();

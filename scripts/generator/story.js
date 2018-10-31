@@ -1,14 +1,17 @@
+/* eslint-disable no-console */
+
 import path from 'path';
 import fs from 'fs';
 import yargs from 'yargs';
 
 const COMPONENTS = '../../src/components/';
 const COMPONENTS_DIRECTORY = path.join(__dirname, COMPONENTS);
-const storyNotRequired = ['Scroll', 'Icon', 'Resizable', 'Dialog', 'LinearPanel', 'ListItem', 'MenuItem'];
+const storyNotRequired =
+  ['Scroll', 'Icon', 'Resizable', 'Dialog', 'LinearPanel', 'ListItem', 'MenuItem'];
 
 const options = yargs.option('component', {
   default: 'all',
-  type: 'string'
+  type: 'string',
 }).argv;
 
 const getDirectories = (srcpath) => {
@@ -25,10 +28,10 @@ const createStoryFile = (folderName, fileName, story) => {
   if (!fs.existsSync(path.join(__dirname, '..', '..', 'stories', folderName))) {
     fs.mkdirSync(path.join(__dirname, '..', '..', 'stories', folderName));
   } else {
-    console.log('SKIP: ' + folderName + ' folder exists...');
+    console.log(`SKIP: ${folderName} folder exists...`);
   }
 
-  console.log('WRITING: ' + path.join(__dirname, '..', '..', 'stories', folderName, fileName));
+  console.log(`WRITING: ${path.join(__dirname, '..', '..', 'stories', folderName, fileName)}`);
   fs.writeFile(path.join(__dirname, '..', '..', 'stories', folderName, fileName), story, (err) => {
     if (err) {
       console.log(err);
@@ -67,7 +70,7 @@ const generate = () => {
 
   dirs.forEach((dir) => {
     if (!storyNotRequired.find(x => x === dir)) {
-      if (options.component === 'all' || dir == options.component) {
+      if (options.component === 'all' || dir === options.component) {
         const story = generateSingleStory(dir);
         createStoryFile(dir, 'index.stories.js', story);
       }

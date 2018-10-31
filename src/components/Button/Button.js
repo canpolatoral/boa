@@ -9,7 +9,7 @@ import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Localization } from '@boa/utils';
 import { Icon } from '@boa/components/Icon';
 
-
+// test
 const styles = () => ({
   label: {
     width: '100%',

@@ -50,9 +50,9 @@
     "react-draggable": "^3.0.3",
     "react-event-listener": "^0.6.4",
     "react-json-view": "^1.19.1",
-    "react-scrollbar-size": "^2.1.0",
-    "shallowequal": "^0.2.2",
     "scroll": "^2.0.3",
+    "shallowequal": "^0.2.2",
+    "stifle": "^1.0.2",
     "styled-components": "^1.4.4",
     "velocity-react": "^1.4.1",
     "warning": "^3.0.0"

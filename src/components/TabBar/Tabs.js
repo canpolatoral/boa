@@ -4,12 +4,13 @@ import warning from 'warning';
 import classNames from 'classnames';
 import EventListener from 'react-event-listener';
 import debounce from 'lodash/debounce';
-import ScrollbarSize from 'react-scrollbar-size';
 import { getNormalizedScrollLeft, detectScrollType } from 'normalize-scroll-left';
 import scroll from 'scroll';
+import ScrollbarSize from '@boa/components/ScrollbarSize';
+import { withStyles } from '@material-ui/core/styles';
 import TabIndicator from './TabIndicator';
 import TabScrollButton from './TabScrollButton';
-import { withStyles } from '@material-ui/core/styles';
+
 
 export const styles = theme => ({
   root: {

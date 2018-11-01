@@ -51,7 +51,7 @@ export default class Playground extends ComponentBase {
 
   state = {
     selectedTheme: 'violet',
-    selectedLanguage: 1
+    selectedLanguage: 1,
   };
 
   onPropertyChanged(property, value) {
@@ -271,7 +271,7 @@ export default class Playground extends ComponentBase {
       <div style={{ maxWidth: 300, position: 'relative' }}>
         <Paper>
           <div style={style.criteriaPanel}>
-            <Scroll context={this.props.context} option={{ suppressScrollX: true }} style={style.scrollStyle}>
+            <Scroll context={this.props.context} option={{ suppressScrollX: true }} style={style.scrollStyle} divStyle={style.scrollStyle}>
               <div>
                 <FormControl style={{ maxWidth: 300, width: '100%' }}>
                   <InputLabel htmlFor="theme">Theme</InputLabel>

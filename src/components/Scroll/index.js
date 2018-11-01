@@ -1,9 +1,8 @@
 import React from 'react'; import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import ps from './perfect-scrollbar';
-import './scrollbar.scss';
 import merge from 'lodash/merge';
 import { ComponentBase, ComponentComposer, Utils, Platforms } from '@boa/base';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 const handlerNameByEvent = {
   'ps-scroll-y': 'onScrollY',
@@ -44,28 +43,29 @@ export class Scroll extends ComponentBase {
     divStyle: { overflow: 'auto' }
   }
 
-  state = { disabled: this.props.disabled };
+  state = {
+    disabled: this.props.disabled
+  };
 
   constructor(props, context) {
     super(props, context);
-    this._handlerByEvent = new Map();
+    this.handlerByEvent = new Map();
   }
 
   componentDidMount() {
     super.componentDidMount();
-    if (this._mbcontainer) {
+    if (this.mbContainer) {
       this.fixMobileScroll();
     } else {
       let innerStyleScroll = { minScrollbarLength: 16 }; // scrool min height 16 px olması isteniyor.
-
-      ps.initialize(this._container, merge(innerStyleScroll, this.props.option));
+      this.ps = new PerfectScrollbar(this.container, merge(innerStyleScroll, this.props.option));
       // hook up events
       Object.keys(handlerNameByEvent).forEach((key) => {
         const callback = this.props[handlerNameByEvent[key]];
         if (callback) {
-          const handler = () => callback(this._container);
-          this._handlerByEvent.set(key, handler);
-          this._container.addEventListener(key, handler, false);
+          const handler = () => callback(this.container);
+          this.handlerByEvent.set(key, handler);
+          this.container.addEventListener(key, handler, false);
         }
       });
     }
@@ -73,7 +73,7 @@ export class Scroll extends ComponentBase {
 
   componentDidUpdate() {
     super.componentDidMount();
-    if (this._mbcontainer) {
+    if (this.mbContainer) {
       this.fixMobileScroll();
     }
   }
@@ -81,12 +81,13 @@ export class Scroll extends ComponentBase {
   componentWillUnmount() {
     super.componentWillUnmount();
     // unhook up evens
-    Object.keys(this._handlerByEvent).forEach((value, key) => {
-      this._container.removeEventListener(key, value, false);
+    Object.keys(this.handlerByEvent).forEach((value, key) => {
+      this.container.removeEventListener(key, value, false);
     });
-    this._handlerByEvent.clear();
-    if (this._container) {
-      ps.destroy(this._container);
+    this.handlerByEvent.clear();
+    if (this.ps) {
+      this.ps.destroy();
+      this.ps = null;
     }
   }
 
@@ -95,7 +96,7 @@ export class Scroll extends ComponentBase {
   }
 
   fixMobileScroll() {
-    var mbcontainerDomNode = ReactDOM.findDOMNode(this._mbcontainer);
+    var mbcontainerDomNode = ReactDOM.findDOMNode(this.mbContainer);
     var parentHeight;
     if (mbcontainerDomNode.parentNode.clientHeight != 0) {
       parentHeight = mbcontainerDomNode.parentNode.clientHeight;
@@ -112,25 +113,24 @@ export class Scroll extends ComponentBase {
     this.setState({ disabled: value });
   }
 
-  // methods can be invoked by outside
   setScrollTop(top) {
-    if (this._container) {
-      this._container.scrollTop = top;
-      ps.update(this._container);
+    if (this.container) {
+      this.container.scrollTop = top;
+      this.ps.update();
       return true;
     }
     return false;
   }
 
   setScrollLeft(left) {
-    if (this._container) {
+    if (this.container) {
       if (!this.props.context.localization.isRightToLeft) {
-        this._container.scrollLeft = left;
+        this.container.scrollLeft = left;
       }
       else {
-        this._container.scrollRight = left;
+        this.container.scrollRight = left;
       }
-      ps.update(this._container);
+      this.ps.update();
       return true;
     }
     return false;
@@ -143,7 +143,7 @@ export class Scroll extends ComponentBase {
   render() {
     let childs = Utils.getFormChildren(this.props.children, this.state.disabled);
     const { context } = this.props;
-    let divStyle = {};
+    let divStyle = { overflow: 'auto' };
     divStyle = Object.assign({}, divStyle, this.props.divStyle);
     let innerStyle = { direction: 'ltr' };
     innerStyle = Object.assign({}, innerStyle, this.props.style);
@@ -154,7 +154,7 @@ export class Scroll extends ComponentBase {
         divStyle = divStyle = Object.assign({}, divStyle, { direction: 'rtl', '-webkit-overflow-scrolling': 'touch' });
       }
       return (
-        <div style={divStyle} ref={(ref) => { this._mbcontainer = ref; }}>
+        <div style={divStyle} ref={(ref) => { this.mbContainer = ref; }}>
           <div style={innerStyle}>
             {childs}
           </div>
@@ -165,7 +165,7 @@ export class Scroll extends ComponentBase {
         divStyle = { direction: 'rtl' };
       }
       return (
-        <div className="scrollbar-container" style={divStyle} ref={(ref) => { this._container = ref; }}>
+        <div className="scrollbar-container" style={divStyle} ref={(ref) => { this.container = ref; }}>
           <div style={innerStyle}>
             {childs}
           </div>

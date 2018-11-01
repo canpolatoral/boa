@@ -1,22 +1,6 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { resolve } = require('path');
-const stats = {
-  assets: true,
-  children: false,
-  chunks: false,
-  hash: false,
-  modules: false,
-  publicPath: false,
-  timings: true,
-  version: false,
-  warnings: true,
-  colors: {
-    green: '\u001b[32m',
-  },
-};
+
 module.exports = {
   resolve: {
     modules: [

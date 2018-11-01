@@ -2,6 +2,7 @@
 
 import 'colors';
 import path from 'path';
+import glob from 'glob';
 import fse from 'fs-extra';
 import webpackCompiler from './webpack/build';
 
@@ -39,16 +40,25 @@ function getIgnoredFiles() {
   return dependencies ? Object.keys(dependencies) : '';
 }
 
+function copyScssFiles(from, to) {
+  const files = glob.sync('**/*.scss', { cwd: from });
+  const cmds = files.map(file => fse.copy(path.resolve(from, file), path.resolve(to, file)));
+  return Promise.all(cmds);
+}
+
 async function build() {
   try {
     // await exec(`rimraf ${path.join(__dirname, '../build/**')}`);
     // await buildCommonJs(path.join(__dirname, '../build'),
     //  'boa-components', path.join(__dirname, '../src/index.js'), '');
     const indexPath = path.join(__dirname, '../src/index.js');
+    const srcParh = path.resolve(__dirname, '../src');
     const umdPath = path.join(__dirname, '../build/umd');
+    const buildPath = path.join(__dirname, '../build');
     await webpackCompiler('@boa/components', indexPath, umdPath, '', getIgnoredFiles());
     await copyFile(path.join(__dirname, '../README.md'));
     await copyFile(path.join(__dirname, '../LICENSE'));
+    copyScssFiles(srcParh, buildPath);
     await createPackageFile();
   } catch (err) {
     if (err.stack) {

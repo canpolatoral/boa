@@ -2,9 +2,9 @@ import ComponentBase,
 {
   ComponentBaseInstance,
   ComponentBaseProps
-} from '../../base/ComponentBase'
+} from '../../base/ComponentBase';
 
-interface ButtonProps extends ComponentBaseProps {
+export interface ButtonProps extends ComponentBaseProps {
   type: string;
   text?: string;
   textPosition?: string;
@@ -25,8 +25,9 @@ interface ButtonProps extends ComponentBaseProps {
   buttonSize?: string;
 }
 
-interface ButtonInstance extends ComponentBaseInstance {
-}
+// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
 
-export class Button extends ComponentBase<ButtonProps, ButtonInstance> { }
+// export interface ButtonInstance extends ComponentBaseInstance {
+// }
 
+export default class Button extends ComponentBase<ButtonProps, ComponentBaseInstance> { }

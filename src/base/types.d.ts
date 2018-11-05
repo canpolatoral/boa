@@ -1,4 +1,3 @@
-
 export const Platforms: {
   "1": string;
   "2": string;

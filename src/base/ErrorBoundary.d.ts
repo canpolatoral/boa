@@ -1,11 +1,10 @@
 import * as React from 'react';
-import ComponentBase, { ComponentBaseProps, ComponentBaseInstance } from './ComponentBase';
 
-interface ErrorBoundaryProps extends ComponentBaseProps {
+export interface ErrorBoundaryProps {
+  children: Node;
 }
 
-interface ErrorBoundaryInstance extends ComponentBaseInstance {
+export interface ErrorBoundaryInstance extends React.Component<any, any> {
 }
 
-
-export default class ErrorBoundary extends ComponentBase<ErrorBoundaryProps, ErrorBoundaryInstance> { }
+export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryInstance> { }

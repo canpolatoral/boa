@@ -35,6 +35,25 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_npm_cache
+      - *install_js
+      - run:
+          name: Export changed files
+          command: |
+            # changed files on this branch
+            # `git diff --name-only master` but since the checkout used reset --hard
+            # we need to parse the revs for the actual master
+            echo 'export CHANGED_FILES=$(git diff --name-only $(git rev-parse origin/master)...)' >> $BASH_ENV
+      - run:
+          name: JS Lint
+          command: npm run lint
+      - run:
+          name: TS Lint
+          command: npm run typescript
   test_unit:
     <<: *defaults
     steps:
@@ -49,9 +68,6 @@ jobs:
             # we need to parse the revs for the actual master
             echo 'export CHANGED_FILES=$(git diff --name-only $(git rev-parse origin/master)...)' >> $BASH_ENV
       - run:
-          name: Lint
-          command: npm run lint
-      - run:
           name: Unit tests
           command: npm run test-unit
 workflows:
@@ -59,6 +75,9 @@ workflows:
   pipeline:
     jobs:
       - checkout
-      - test_unit:
+      - lint:
           requires:
             - checkout
+      - test_unit:
+          requires:
+            - lint

@@ -100,4 +100,3 @@ export const levelOrange500 = '#F79651';
 export const levelOrange400 = '#F9B381';
 export const levelOrange300 = '#FBD0B1';
 export const levelOrange200 = '#FEEEE2';
-

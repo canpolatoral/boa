@@ -1,32 +1,35 @@
+/* eslint-disable react/no-unused-prop-types */
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'lodash/merge';
 import { CHANNEL } from '@material-ui/core/styles/themeListener';
-import { getMessage } from '@boa/utils';
+import { getMessage } from '@boa/utils'; // eslint-disable-line import/no-unresolved
+import { ComponentSize } from './types';
+import { shallowEqual } from './utils';
 
-import { Sizes, ComponentSize } from './types';
-import { Utils } from './utils';
-
-export class ComponentBase extends Component {
+export default class ComponentBase extends Component {
   static propTypes = {
-    snapshot: PropTypes.object,
+    context: PropTypes.object,
     disabled: PropTypes.bool,
-    valueConstraint: PropTypes.object,
-    size: PropTypes.instanceOf(ComponentSize),
-    newLine: PropTypes.bool,
+    id: PropTypes.string,
     isVisible: PropTypes.bool,
-    style: PropTypes.object
+    newLine: PropTypes.bool,
+    persistState: PropTypes.bool,
+    size: PropTypes.instanceOf(ComponentSize),
+    snapKey: PropTypes.string,
+    snapshot: PropTypes.object,
+    style: PropTypes.object,
+    valueConstraint: PropTypes.object,
   }
 
   static defaultProps = {
     disabled: false,
     size: ComponentSize.LARGE,
     newLine: false,
-    isVisible: true
+    isVisible: true,
   }
 
   static contextTypes = {
-    [CHANNEL]: PropTypes.object
+    [CHANNEL]: PropTypes.object,
   }
 
   constructor(props, context) {
@@ -39,45 +42,36 @@ export class ComponentBase extends Component {
     }
   }
 
-  getMessage(groupName, propertyName) {
-    return getMessage(groupName, propertyName, this.props.context.language).Description;
-  }
-
-  getMessageCode(groupName, propertyName) {
-    return getMessage(groupName, propertyName, this.props.context.language).Code;
-  }
-
-  validateConstraint() {
-    return true;
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.snapshot) this.setSnapshot(nextProps.snapshot);
-  }
-
   componentWillMount() {
     if (this.props.snapshot) this.setSnapshot(this.props.snapshot);
   }
 
   componentDidMount() { }
 
-  /* eslint-disable no-unused-vars */
-  componentDidUpdate(prevProps, prevState) { }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.snapshot) this.setSnapshot(nextProps.snapshot);
+  }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
+  }
+
+  // eslint-disable-next-line no-unused-vars
   componentWillUpdate(nextProps, nextState) { }
-  /* eslint-enable no-unused-vars */
+
+  // eslint-disable-next-line no-unused-vars
+  componentDidUpdate(prevProps, prevState) { }
 
   componentWillUnmount() {
     this.unMounted = true;
-
-    let disposeMethod = this.__dispose || this._dispose;
+    // eslint-disable-next-line no-underscore-dangle
+    const disposeMethod = this.__dispose || this._dispose;
     if (disposeMethod) {
       try {
         disposeMethod.bind(this)();
-      }
-      catch (e) {
+      } catch (e) {
         /* eslint-disable no-console */
-        console.error('An error occured while component disposing: ' + JSON.stringify(e));
+        console.error(`An error occured while component disposing: ${JSON.stringify(e)}`);
         /* eslint-enable no-console */
       }
     }
@@ -87,62 +81,25 @@ export class ComponentBase extends Component {
     return this;
   }
 
+  getMessage(groupName, propertyName) {
+    return getMessage(groupName, propertyName, this.props.context.language).Description;
+  }
+
+  getMessageCode(groupName, propertyName) {
+    return getMessage(groupName, propertyName, this.props.context.language).Code;
+  }
+
   getSnapKey(childSnapKey) {
     return this.props.snapKey ? `${this.props.snapKey}_${childSnapKey}` : childSnapKey;
-  }
-
-  setStyle(size, platform, style) {
-    switch (size) {
-      case Sizes.SMALL:
-        return style.small;
-      case Sizes.MEDIUM:
-        return merge({}, style.small, style.medium);
-      case Sizes.LARGE:
-        return merge({}, style.small, style.medium, style.large);
-    }
-  }
-
-  shallowEqual(objA, objB) {
-    if (objA === objB) {
-      return true;
-    }
-    if (typeof objA !== 'object' || objA === null ||
-      typeof objB !== 'object' || objB === null) {
-      return false;
-    }
-    const keysA = Object.keys(objA);
-    const keysB = Object.keys(objB);
-    if (keysA.length !== keysB.length) {
-      return false;
-    }
-    const bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
-    for (let i = 0; i < keysA.length; i++) {
-      if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return !this.shallowEqual(this.props, nextProps) || !this.shallowEqual(this.state, nextState);
-  }
-
-  debugLog(message, level = 0) {
-    /* debug=0, test=1, preprod=2, production=3*/
-    if (level >= Utils.getLogLevel()) {
-      /* eslint-disable no-console */
-      console.log(message);
-      /* eslint-enable no-console */
-    }
   }
 
   getChildId(childName) {
     let id = this.props.id;
     if (!id) {
-      id = 'bcmp_' + Math.random().toString().replace(/[\.,]/g, '');
+      // eslint-disable-next-line no-useless-escape
+      id = `bcmp_ ${Math.random().toString().replace(/[\.,]/g, '')}`;
     }
-    return id + '_' + (childName || 'child');
+    return `${id}_${(childName || 'child')}`;
   }
 
   getSnapshot() {
@@ -150,6 +107,7 @@ export class ComponentBase extends Component {
   }
 
   setSnapshot(snapshot) {
+    // eslint-disable-next-line react/no-direct-mutation-state
     this.state = Object.assign({}, this.state, snapshot);
   }
 
@@ -161,5 +119,10 @@ export class ComponentBase extends Component {
       }, this);
     }
     return message;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  validateConstraint() {
+    return true;
   }
 }

@@ -23,6 +23,7 @@ async function createPackageFile() {
     ...packageDataOther,
     main: './index.js',
     module: './index.es.js',
+    typings: 'index.d.ts',
     private: false,
   };
   const buildPath = path.resolve(__dirname, '../build/package.json');
@@ -40,8 +41,8 @@ function getIgnoredFiles() {
   return dependencies ? Object.keys(dependencies) : '';
 }
 
-function copyScssFiles(from, to) {
-  const files = glob.sync('**/*.scss', { cwd: from });
+function copyTypingsFiles(from, to) {
+  const files = glob.sync('**/*.d.ts', { cwd: from });
   const cmds = files.map(file => fse.copy(path.resolve(from, file), path.resolve(to, file)));
   return Promise.all(cmds);
 }
@@ -58,7 +59,7 @@ async function build() {
     await webpackCompiler('@boa/components', indexPath, umdPath, '', getIgnoredFiles());
     await copyFile(path.join(__dirname, '../README.md'));
     await copyFile(path.join(__dirname, '../LICENSE'));
-    copyScssFiles(srcParh, buildPath);
+    copyTypingsFiles(srcParh, buildPath);
     await createPackageFile();
   } catch (err) {
     if (err.stack) {

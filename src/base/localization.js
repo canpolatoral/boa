@@ -1,6 +1,9 @@
-import { Localization, setMessagingOptions } from '@boa/utils';
+import {
+  Localization,
+  setMessagingOptions,
+} from '@boa/utils'; // eslint-disable-line import/no-unresolved
 
-export function setLocalization(options) {
+export default function setLocalization(options) {
   setMessagingOptions(options);
   Localization.staticConstructor(options.languageId);
 }

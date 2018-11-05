@@ -19,12 +19,6 @@ const baseConfig = {
         use: [
           {
             loader: 'babel-loader',
-            options: {
-              babelrc: true,
-              presets: ['es2015', 'stage-0', 'react'],
-              plugins: [require('babel-plugin-transform-decorators-legacy').default],
-            },
-
           },
 
         ],

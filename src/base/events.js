@@ -1,7 +1,7 @@
 export default {
   once(el, type, callback) {
-    let typeArray = type ? type.split(' ') : [];
-    let recursiveFunction = (e) => {
+    const typeArray = type ? type.split(' ') : [];
+    const recursiveFunction = (e) => {
       e.target.removeEventListener(e.type, recursiveFunction);
       return callback(e);
     };
@@ -12,9 +12,9 @@ export default {
   on(el, type, callback) {
     if (el.addEventListener) {
       el.addEventListener(type, callback);
-    }
-    else {
+    } else {
       // IE8+ Support
+      // eslint-disable-next-line
       el.attachEvent('on' + type, () => {
         callback.call(el);
       });
@@ -23,9 +23,9 @@ export default {
   off(el, type, callback) {
     if (el.removeEventListener) {
       el.removeEventListener(type, callback);
-    }
-    else {
+    } else {
       // IE8+ Support
+      // eslint-disable-next-line
       el.detachEvent('on' + type, callback);
     }
   },

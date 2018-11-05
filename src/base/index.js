@@ -1,9 +1,9 @@
-export * from './AppProvider';
-export * from './ComponentBase';
-export * from './ComponentComposer';
-export * from './EditorBase';
-export * from './ErrorBoundary';
-export * from './localization';
-export * from './theme';
+export { default as AppProvider } from './AppProvider';
+export { default as ComponentBase } from './ComponentBase';
+export { default as ComponentComposer } from './ComponentComposer';
+export { default as EditorBase } from './EditorBase';
+export { default as ErrorBoundary } from './ErrorBoundary';
+export { default as setLocalization } from './localization';
+export { default as getTheme } from './theme';
 export * from './types';
 export * from './utils';

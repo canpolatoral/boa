@@ -1,10 +1,9 @@
 import React from 'react';
 import { Utils } from './utils';
-import { ErrorBoundary } from './ErrorBoundary';
+import ErrorBoundary from './ErrorBoundary';
 
-export function ComponentComposer(WrappedComponent) {
+export default function ComponentComposer(WrappedComponent) {
   return class IIBComponent extends WrappedComponent {
-
     static propTypes = {
       ...WrappedComponent.propTypes,
     }
@@ -23,19 +22,16 @@ export function ComponentComposer(WrappedComponent) {
       return this.innerRef || this;
     }
 
-    getDisplayName() {
-      return IIBComponent.displayName;
-    }
-
     render() {
       if (this.props.isVisible || this.props.isVisible === undefined) {
-        this.comp;
-        if (IIBComponent.displayName.includes('WithStyles') || IIBComponent.prototype.__proto__.constructor.name.includes('WithStyles')) {
-          let innerComp = super.render();
-          let newProps = {
+        // eslint-disable-next-line no-proto
+        if (IIBComponent.prototype.__proto__.constructor.name.includes('WithStyles') ||
+          IIBComponent.displayName.includes('WithStyles')) {
+          const innerComp = super.render();
+          const newProps = {
             ref: r => {
               this.innerRef = r;
-            }
+            },
           };
           this.comp = React.cloneElement(innerComp, newProps);
         } else {
@@ -48,9 +44,7 @@ export function ComponentComposer(WrappedComponent) {
           </ErrorBoundary>
         );
       }
-      else {
-        return null;
-      }
+      return null;
     }
   };
 }

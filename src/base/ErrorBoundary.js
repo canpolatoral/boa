@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
-export class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
+export default class ErrorBoundary extends Component {
+  static propTypes = {
+    children: PropTypes.node,
   }
 
-  componentDidCatch(error, info) {
+  state = {
+    hasError: false,
+  }
+
+  constructor(props) {
+    super(props);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose() {
+    this.setState({ open: false });
+  }
+
+  componentDidCatch(error) {
     // Display fallback UI
-    this.setState({ hasError: true, error: error, info: info, open: true });
+    this.setState({ hasError: true, error, open: true });
     // You can also log the error to an error reporting service
     // logErrorToMyService(error, info); // client exception log
   }
-
-  handleClose = value => {
-    this.setState({ value, open: false });
-  };
 
   showErrorDialog(error) {
     return (
@@ -42,16 +56,13 @@ export class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-
       // You can render any custom fallback UI
       // eslint-disable-next-line no-console
       console.log('Error Occured: ', this.state.error);
       // eslint-enable-next-line no-console
       return this.showErrorDialog(this.state.error);
       // return <h1>Something went wrong. {this.state.error}</h1>;
-
-    } else {
-      return this.props.children;
     }
+    return this.props.children;
   }
 }

@@ -1,5 +1,5 @@
 /* eslint no-var: 0, vars-on-top: 0 */
-require('babel-core/register');
+require('@babel/register');
 const path = require('path');
 const webpackBaseConfig = require('../../scripts/webpack/base.config').default;
 

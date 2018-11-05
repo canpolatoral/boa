@@ -1,16 +1,18 @@
+/* eslint-disable react/prefer-stateless-function */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { CssBaseline } from '@material-ui/core';
-import { ErrorBoundary } from './ErrorBoundary';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import ErrorBoundary from './ErrorBoundary';
 
-export class AppProvider extends Component {
+export default class AppProvider extends Component {
   static propTypes = {
+    children: PropTypes.node,
     theme: PropTypes.object,
   };
 
   render() {
-    let muiTheme = this.props.theme || createMuiTheme();
+    const muiTheme = this.props.theme || createMuiTheme();
     return (
       <ErrorBoundary>
         <MuiThemeProvider theme={muiTheme}>

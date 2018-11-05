@@ -1,3 +1,4 @@
+/* eslint-disable */
 export var Sizes;
 (function (Sizes) {
   Sizes[Sizes['XSMALL'] = 1] = 'XSMALL';

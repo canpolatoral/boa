@@ -4,18 +4,20 @@ import merge from 'lodash/merge';
 import { withStyles } from '@material-ui/core/styles';
 import MuiButton from '@material-ui/core/Button';
 import MuiIconButton from '@material-ui/core/IconButton';
-
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { Localization } from '@boa/utils';
-import { Icon } from '@boa/components/Icon';
+import {
+  ComponentBase,
+  ComponentComposer,
+} from '@boa/base'; // eslint-disable-line import/no-unresolved
+import { Localization } from '@boa/utils'; // eslint-disable-line import/no-unresolved
+import { Icon } from '@boa/components/Icon'; // eslint-disable-line import/no-unresolved
 
 const styles = () => ({
   label: {
     width: '100%',
     display: 'inherit',
     alignItems: 'inherit',
-    justifyContent: 'inherit'
-  }
+    justifyContent: 'inherit',
+  },
 });
 
 /**
@@ -30,29 +32,26 @@ class Button extends ComponentBase {
     */
     ...ComponentBase.propTypes,
     /**
-     * Button type should be `contained`, `flat`, `fab` or `icon`.
+     * If `false` , content of the button wil be upper case
      */
-    type: PropTypes.oneOf(['contained', 'flat', 'fab', 'icon']).isRequired,
-    /**
-     * Button content.
-     */
-    text: PropTypes.string,
-    /**
-     * Styles applied to the span element that wraps the children.
-     */
-    textStyle: PropTypes.object,
-    /**
-     * Text position on the button.
-     */
-    textPosition: PropTypes.oneOf(['center', 'left', 'right']),
+    allowLabelCase: PropTypes.bool,
     /**
      * Size of button.
      */
     buttonSize: PropTypes.oneOf(['small', 'medium', 'large']),
     /**
-     * If type 'icon' tooltip will generate on icon button
+     * The color of the component.
+     * It supports those theme colors that make sense for this component.
      */
-    tooltip: PropTypes.string,
+    colorType: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
+    /**
+     * If `true`, the button will be disabled.
+     */
+    disabled: PropTypes.bool,
+    /**
+     * Icon name from BOA icon library.
+     */
+    dynamicIcon: PropTypes.string,
     /**
      * Font icon name from font icon's library.
      */
@@ -62,45 +61,49 @@ class Button extends ComponentBase {
      */
     fullWidth: PropTypes.bool,
     /**
-     * SVG Icon name from material svg icon library.
+     * Custom icon
      */
-    svgIcon: PropTypes.string,
-    /**
-     * Icon name from BOA icon library.
-     */
-    dynamicIcon: PropTypes.string,
+    icon: PropTypes.any,
     /**
      * Icon props
      */
     iconProperties: PropTypes.object,
     /**
-     * The color of the component. It supports those theme colors that make sense for this component.
-     */
-    colorType: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
-    /**
-     * Override the style of element
-     */
-    style: PropTypes.object,
-    /**
      * If `true`, and `variant` is `'fab'`, will use mini floating action button styling.
      */
     mini: PropTypes.bool,
-    /**
-     * If `true`, the button will be disabled.
-     */
-    disabled: PropTypes.bool,
     /**
      * @ignore
      */
     onClick: PropTypes.func,
     /**
-     * If `false` , content of the button wil be upper case
+     * Override the style of element
      */
-    allowLabelCase: PropTypes.bool,
+    style: PropTypes.object,
     /**
-     * Custom icon
+     * SVG Icon name from material svg icon library.
      */
-    icon: PropTypes.any
+    svgIcon: PropTypes.string,
+    /**
+     * Button content.
+     */
+    text: PropTypes.string,
+    /**
+     * Text position on the button.
+     */
+    textPosition: PropTypes.oneOf(['center', 'left', 'right']),
+    /**
+     * Styles applied to the span element that wraps the children.
+     */
+    textStyle: PropTypes.object,
+    /**
+     * If type 'icon' tooltip will generate on icon button
+     */
+    tooltip: PropTypes.string,
+    /**
+     * Button type should be `contained`, `flat`, `fab` or `icon`.
+     */
+    type: PropTypes.oneOf(['contained', 'flat', 'fab', 'icon']).isRequired,
   };
 
   static defaultProps = {
@@ -108,14 +111,15 @@ class Button extends ComponentBase {
     text: '',
     allowLabelCase: true,
     textPosition: 'center',
-    buttonSize: 'medium'
+    buttonSize: 'medium',
   };
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      disabled: props.disabled
+      disabled: props.disabled,
     };
+    this.onClick = this.onClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -135,28 +139,30 @@ class Button extends ComponentBase {
   }
 
   getLabel() {
-    let label = this.props.allowLabelCase ? this.props.text : Localization.stringUpperCase(!this.props.text ? '' : this.props.text);
-    return this.props.textStyle ? <div style={this.props.textStyle}>{label}</div> : label;
+    const { allowLabelCase, text, textStyle } = this.props;
+    const label = allowLabelCase ? text : Localization.stringUpperCase(!text ? '' : text);
+    return textStyle ? <div style={textStyle}>{label}</div> : label;
   }
 
   createButtonElement(variant) {
     let props = this.props;
-    if (variant != 'fab') {
+    const { textPosition, allowLabelCase, style } = this.props;
+    if (variant !== 'fab') {
       props = Object.assign({}, props);
-      let iconStyle = this.getLabel() == null || this.getLabel() == '' ? null : { marginRight: 8 };
-      let iconProp = props.iconProperties;
+      const iconStyle = !this.getLabel() ? null : { marginRight: 8 };
+      const iconProp = props.iconProperties;
       if (iconProp) {
         iconProp.style = merge(iconStyle, iconProp.style);
       } else {
         props.iconProperties = { style: iconStyle };
       }
     }
-    let icon = Icon.getIcon(props);
-    let buttonStyle = {
-      justifyContent: this.props.textPosition == 'right' ? 'flex-end' : this.props.textPosition,
-      textAlign: this.props.textPosition,
-      textTransform: this.props.allowLabelCase ? 'none' : '',
-      ...this.props.style
+    const icon = Icon.getIcon(props);
+    const buttonStyle = {
+      justifyContent: textPosition === 'right' ? 'flex-end' : textPosition,
+      textAlign: textPosition,
+      textTransform: allowLabelCase ? 'none' : '',
+      ...style,
     };
 
     return (
@@ -168,7 +174,7 @@ class Button extends ComponentBase {
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
         disableFocusRipple={this.state.disabled}
-        onClick={this.onClick.bind(this)}
+        onClick={this.onClick.bind}
         variant={variant}
         size={this.props.buttonSize}
         mini={this.props.mini}
@@ -186,7 +192,7 @@ class Button extends ComponentBase {
         style={this.props.style}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        onClick={this.onClick.bind(this)}
+        onClick={this.onClick.bind}
       >
         {Icon.getIcon(this.props)}
       </MuiIconButton>
@@ -194,11 +200,10 @@ class Button extends ComponentBase {
   }
 
   createButton() {
-    if (this.props.type && this.props.type == 'icon') {
+    if (this.props.type && this.props.type === 'icon') {
       return this.createIconButtonElement();
-    } else {
-      return this.createButtonElement(this.props.type);
     }
+    return this.createButtonElement(this.props.type);
   }
 
   render() {

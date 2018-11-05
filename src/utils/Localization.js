@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import Moment from 'moment';
 import Numeral from 'numeral';
 import IBAN from 'iban';
@@ -5,52 +6,50 @@ import phoneFormatter from 'phone-formatter';
 
 import 'numeral/locales';
 
-export function getLocalization() {
-  return Localization.getLocalizationLanguage();
-}
-
 export class Localization {
   static language = 'en';
+
   static languageId = 2;
+
   static currencyFormats = {
     D: '0',
     F: '0.00',
     M: '0.0,',
-    FX: '0.0,00'
+    FX: '0.0,00',
   };
 
   static numberFormats = {
     D: '0',
-    F: '0,0'
+    F: '0,0',
   };
 
   static staticConstructor(_languageId) {
-    var locales = {
+    const locales = {
       ar: {
         delimiters: {
           thousands: ',',
-          decimal: '.'
+          decimal: '.',
         },
         abbreviations: {
           thousand: 'ألف',
           million: 'مليون',
           billion: 'مليار',
-          trillion: 'تريليون'
+          trillion: 'تريليون',
         },
-        ordinal: function () {
+        ordinal: () => {
           return ' ';
         },
         currency: {
-          symbol: 'KD'
-        }
-      }
+          symbol: 'KD',
+        },
+      },
     };
 
     this.languageId = _languageId;
-    if (this.languageId == 1) this.language = 'tr';
-    else if (this.languageId == 3) this.language = 'de';
-    else if (this.languageId == 4) this.language = 'ru';
-    else if (this.languageId == 5) this.language = 'ar-ly';
+    if (this.languageId === 1) this.language = 'tr';
+    else if (this.languageId === 3) this.language = 'de';
+    else if (this.languageId === 4) this.language = 'ru';
+    else if (this.languageId === 5) this.language = 'ar-ly';
 
     if (!Numeral.locales.hasOwnProperty('ar-ly')) {
       Numeral.register('locale', 'ar-ly', locales.ar);
@@ -60,14 +59,14 @@ export class Localization {
   }
 
   static createLocalizationContext(_languageId) {
-    let localization = {
-      isRightToLeft: false
+    const localization = {
+      isRightToLeft: false,
     };
 
     this.languageId = _languageId;
 
     // Arapçca(language=5) olan dilde ekranlar sağdan sola render edilecek
-    if (this.languageId == 5) {
+    if (this.languageId === 5) {
       localization.isRightToLeft = true;
     }
 
@@ -77,10 +76,10 @@ export class Localization {
   static changeLocalizationLanguage(_languageId) {
     this.languageId = _languageId;
     this.language = 'en';
-    if (this.languageId == 1) this.language = 'tr';
-    else if (this.languageId == 3) this.language = 'de';
-    else if (this.languageId == 4) this.language = 'ru';
-    else if (this.languageId == 5) this.language = 'ar-ly';
+    if (this.languageId === 1) this.language = 'tr';
+    else if (this.languageId === 3) this.language = 'de';
+    else if (this.languageId === 4) this.language = 'ru';
+    else if (this.languageId === 5) this.language = 'ar-ly';
 
     Moment.locale(this.language);
     Numeral.locale(this.language);
@@ -122,7 +121,7 @@ export class Localization {
   }
 
   static getIntegerValue(value) {
-    return parseInt(Numeral(value)._value);
+    return parseInt(Numeral(value)._value, 10);
   }
 
   /**
@@ -132,25 +131,23 @@ export class Localization {
    */
   static formatCurrency(currency, format) {
     if (format) {
-      if (format == 'D') {
+      if (format === 'D') {
         return Numeral(currency).format(this.currencyFormats.D);
       }
-      else if (format == 'F') {
+      if (format === 'F') {
         return Numeral(currency).format(this.currencyFormats.F);
       }
-      else if (format == 'M') {
+      if (format === 'M') {
         return Numeral(currency).format(this.currencyFormats.M);
       }
-      else if (format == 'FX') {
+      if (format === 'FX') {
         return Numeral(currency).format(this.currencyFormats.FX);
       }
-      else {
-        return Numeral(currency).format(format);
-      }
+
+      return Numeral(currency).format(format);
     }
-    else {
-      return Numeral(currency).format(this.currencyFormats.M);
-    }
+
+    return Numeral(currency).format(this.currencyFormats.M);
   }
 
   /**
@@ -167,21 +164,18 @@ export class Localization {
    * @param {*} format
    */
   static formatNumber(number, format) {
-
     if (format) {
-      if (format == 'D') {
+      if (format === 'D') {
         return Numeral(number).format(this.numberFormats.D);
       }
-      else if (format == 'F') {
+      if (format === 'F') {
         return Numeral(number).format(this.numberFormats.F);
       }
-      else {
-        return number;
-      }
+
+      return number;
     }
-    else {
-      return Numeral(number).format(this.numberFormats.D);
-    }
+
+    return Numeral(number).format(this.numberFormats.D);
   }
 
 
@@ -190,23 +184,20 @@ export class Localization {
    * @param {*} value
    */
   static formatCreditCard(value) {
+    if (value == null || value === undefined) return null;
 
-    if (value == null || value == undefined)
-      return null;
-
-    var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    var matches = v.match(/\d{4,16}/g);
-    var match = matches && matches[0] || '';
-    var parts = [];
+    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    const matches = v.match(/\d{4,16}/g);
+    const match = matches && matches[0] || '';
+    const parts = [];
     let i = 0;
     for (i = 0; i < match.length; i += 4) {
       parts.push(match.substring(i, i + 4));
     }
     if (parts.length) {
       return parts.join(' ');
-    } else {
-      return value;
     }
+    return value;
   }
 
   /**
@@ -214,39 +205,34 @@ export class Localization {
    * @param {*} value
    */
   static formatIban(value) {
-    if (value == null || value == undefined)
-      return null;
+    if (value == null || value === undefined) return null;
     return IBAN.printFormat(value);
-
   }
 
   static formatTelephoneNumber(value, format) {
     let defaultFormat = '0 (NNN) NNN NN NN';
-    if (value == null || value == undefined)
-      return null;
-    if (format)
-      defaultFormat = format;
+    if (value == null || value === undefined) return null;
+    if (format) defaultFormat = format;
 
-    let normalizedNumber = phoneFormatter.normalize(value);
+    const normalizedNumber = phoneFormatter.normalize(value);
     return phoneFormatter.format(normalizedNumber, defaultFormat);
-
   }
 
   /*
     String Functions
   */
   static stringUpperCase(value) {
-    if (this.languageId == 1) {
-      var letters = { 'i': 'İ', 'ş': 'Ş', 'ğ': 'Ğ', 'ü': 'Ü', 'ö': 'Ö', 'ç': 'Ç', 'ı': 'I' };
-      value = value.replace(/(([iışğüçö]))/g, function (letter) { return letters[letter]; });
+    if (this.languageId === 1) {
+      const letters = { i: 'İ', ş: 'Ş', ğ: 'Ğ', ü: 'Ü', ö: 'Ö', ç: 'Ç', ı: 'I' };
+      value = value.replace(/(([iışğüçö]))/g, (letter) => { return letters[letter]; });
     }
     return value.toUpperCase();
   }
 
   static stringLowerCase(value) {
-    if (this.languageId == 1) {
-      var letters = { 'İ': 'i', 'I': 'ı', 'Ş': 'ş', 'Ğ': 'ğ', 'Ü': 'ü', 'Ö': 'ö', 'Ç': 'ç' };
-      value = value.replace(/(([İIŞĞÜÇÖ]))/g, function (letter) { return letters[letter]; });
+    if (this.languageId === 1) {
+      const letters = { İ: 'i', I: 'ı', Ş: 'ş', Ğ: 'ğ', Ü: 'ü', Ö: 'ö', Ç: 'ç' };
+      value = value.replace(/(([İIŞĞÜÇÖ]))/g, (letter) => { return letters[letter]; });
     }
     return value.toLowerCase();
   }
@@ -254,4 +240,8 @@ export class Localization {
   static getDelimiters() {
     return Numeral.localeData().delimiters;
   }
+}
+
+export function getLocalization() {
+  return Localization.getLocalizationLanguage();
 }

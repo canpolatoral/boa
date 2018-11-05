@@ -32,30 +32,31 @@ function serviceCallSync(request) {
     dataType: request.dataType || 'json',
     contentType: 'application/json; charset=utf-8',
     headers: request.headers,
-    success: function (response) {
+    success(response) {
       result.isSuccess = true;
       result.data = response;
     },
-    error: function (jqXhr, textStatus, errorThrown) {
+    error(jqXhr, textStatus, errorThrown) {
       result.isSuccess = false;
       result.error = errorThrown;
-    }
+    },
   };
 
-  $.ajax(requestObj);
+  $.ajax(requestObj); // eslint-disable-line no-undef
   return result;
 }
 
 function getMessagesVersion() {
   const now = new Date();
-  const dateString = now.getFullYear() + '.' + now.getMonth() + '.' + now.getDate() + '.' + now.getHours() + '.' + now.getMinutes();
+  // eslint-disable-next-line max-len
+  const dateString = `${now.getFullYear()}.${now.getMonth()}.${now.getDate()}.${now.getHours()}.${now.getMinutes()}`;
 
   const request = {
-    servicePath: messagingOptions.versionPath + '?v=' + dateString,
+    servicePath: `${messagingOptions.versionPath}?v=${dateString}`,
     baseUrl: messagingOptions.path,
     async: false,
     cache: true,
-    method: 'GET'
+    method: 'GET',
   };
 
   const response = serviceCallSync(request);
@@ -67,14 +68,15 @@ function getMessagesVersion() {
 
 function getVersionOfMessagingGroup(groupName) {
   if (store.versions && store.versions.length > 0) {
-    const group = store.versions.find(x => x.ClassName == groupName);
+    const group = store.versions.find(x => x.ClassName === groupName);
     return group ? group.Version : undefined;
   }
+  return null;
 }
 
 function loadMessagesByGroup(groupName, languageId) {
   const version = getVersionOfMessagingGroup(groupName);
-  const fileName = messagingOptions.fileNameFormat.replace('{0}', groupName) + '?v=' + version;
+  const fileName = `${messagingOptions.fileNameFormat.replace('{0}', groupName)}?v=${version}`;
   let baseUrl = messagingOptions.path;
 
   switch (languageId) {
@@ -88,13 +90,13 @@ function loadMessagesByGroup(groupName, languageId) {
 
   const request = {
     servicePath: fileName,
-    baseUrl: baseUrl,
+    baseUrl,
     async: false,
     cache: true,
-    method: 'GET'
+    method: 'GET',
   };
 
-  let responseLanguage = serviceCallSync(request);
+  const responseLanguage = serviceCallSync(request);
 
   if (responseLanguage.isSuccess) {
     store.messages[groupName] = responseLanguage.data;
@@ -103,8 +105,7 @@ function loadMessagesByGroup(groupName, languageId) {
 }
 
 function isVersionCheckRequired() {
-  if (!store.versions || store.versions.length === 0)
-    return true;
+  if (!store.versions || store.versions.length === 0) return true;
 
   let lastReadDate = store.lastReadDate;
   lastReadDate = lastReadDate.setMinutes(lastReadDate.getMinutes() + 1);
@@ -126,25 +127,26 @@ export function setMessagingOptions(options) {
       versionPath: DEFAULT_VERSION_PATH,
       fileNameFormat: DEFAULT_FILE_NAME_FORMAT,
       timeout: DEFAULT_TIMEOUT,
-      languageId: DEFAULT_LANGUAGE_ID
+      languageId: DEFAULT_LANGUAGE_ID,
     };
   }
 }
 
 
 export function getMessage(groupName, propertyName, languageId) {
-  let versionCheckRequired = isVersionCheckRequired();
+  const versionCheckRequired = isVersionCheckRequired();
   let messagesRefreshRequired = false;
-  let clientVersion, serverVersion;
+  let clientVersion; let
+    serverVersion;
 
   if (versionCheckRequired) {
     const responseVersion = getMessagesVersion();
     if (!responseVersion.isSuccess) {
-      return { Description: groupName + '.' + propertyName, Code: propertyName };
+      return { Description: `${groupName}.${propertyName}`, Code: propertyName };
     }
 
     clientVersion = getVersionOfMessagingGroup(messagingOptions.store, groupName);
-    serverVersion = responseVersion.data.find(x => x.ClassName == groupName).Version;
+    serverVersion = responseVersion.data.find(x => x.ClassName === groupName).Version;
 
     messagesRefreshRequired = clientVersion !== serverVersion;
     if (messagesRefreshRequired) {
@@ -152,12 +154,18 @@ export function getMessage(groupName, propertyName, languageId) {
     }
   }
 
-  if (!store.messages || !store.messages[groupName] || store.messages[groupName].languageId !== languageId || messagesRefreshRequired) {
+  const messages = store.messages;
+  const messageGroup = messages[groupName];
+  const messagesNotExists = !messages || !messageGroup;
+  const languageNotExists = (messages && messageGroup && messageGroup.languageId !== languageId);
+
+  if (messagesNotExists || languageNotExists || messagesRefreshRequired) {
     loadMessagesByGroup(groupName, languageId || messagingOptions.languageId);
   }
 
-  if (store.messages && store.messages[groupName] && store.messages[groupName].find(x => x.PropertyName == propertyName)) {
-    return store.messages[groupName].find(x => x.PropertyName == propertyName);
+  if (messages && messageGroup && messageGroup.find(x => x.PropertyName === propertyName)) {
+    return messageGroup.find(x => x.PropertyName === propertyName);
   }
-  return { Description: groupName + '.' + propertyName };
+
+  return { Description: `${groupName}.${propertyName}` };
 }

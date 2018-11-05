@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MuiDivider from '@material-ui/core/Divider';
-
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import {
+  ComponentBase,
+  ComponentComposer,
+} from '@boa/base'; // eslint-disable-line import/no-unresolved
 
 @ComponentComposer
 class Divider extends ComponentBase {
-
   static propTypes = {
     ...ComponentBase.propTypes,
     absolute: PropTypes.bool,
@@ -30,7 +31,7 @@ class Divider extends ComponentBase {
     /**
      * If `true`, the divider will have a lighter color.
      */
-    light: PropTypes.bool
+    light: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -38,19 +39,16 @@ class Divider extends ComponentBase {
     absolute: false,
     component: 'hr',
     inset: false,
-    light: false
-  }
-  constructor(props, context) {
-    super(props, context);
+    light: false,
   }
 
   render() {
-    var innerStyle = {
+    let innerStyle = {
       width: 'calc(100% -24)',
       marginBottom: 12,
       marginLeft: 12,
       marginRight: 12,
-      marginTop: 12
+      marginTop: 12,
     };
 
     const { style, ...props } = this.props;

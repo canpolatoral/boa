@@ -2,15 +2,14 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-let None = (props) => {
+const None = (props) => {
   return (
-    <SvgIcon {...props} >
-    </SvgIcon>
+    <SvgIcon {...props} />
   );
 };
 
 None.defaultProps = {
-  viewBox: '0 0 24 24'
+  viewBox: '0 0 24 24',
 };
 
 export default IconComposer(None);

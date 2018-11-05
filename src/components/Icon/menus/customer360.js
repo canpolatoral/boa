@@ -1,10 +1,11 @@
+/* eslint-disable max-len */
 import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-let Customer360 = (props) => {
+const Customer360 = (props) => {
   return (
-    <SvgIcon {...props} >
+    <SvgIcon {...props}>
       <path fill="none" d="M0,0h24v24H0V0z" />
       <g>
         <path d="M12,11.5c0.8,0,1.4-0.3,1.9-0.8s0.8-1.2,0.8-1.9s-0.3-1.4-0.8-1.9C13.4,6.3,12.8,6,12,6s-1.4,0.3-1.9,0.8C9.5,7.3,9.3,8,9.3,8.8s0.3,1.4,0.8,1.9S11.2,11.5,12,11.5z" />
@@ -16,7 +17,7 @@ let Customer360 = (props) => {
 };
 
 Customer360.defaultProps = {
-  viewBox: '0 0 24 24'
+  viewBox: '0 0 24 24',
 };
 
 export default IconComposer(Customer360);

@@ -1,12 +1,13 @@
+/* eslint-disable max-len */
 import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-let User = (props) => {
+const User = (props) => {
   /* eslint-disable no-unused-vars */
-  var {context, ...otherProps} = props;
+  const { context, ...otherProps } = props;
   /* eslint-enable no-unused-vars */
   return (
-    <SvgIcon {...otherProps} >
+    <SvgIcon {...otherProps}>
       <defs>
         <clipPath id="clip-path">
           <circle id="SVGID" style={{ fill: 'none' }} cx="32" cy="32" r="32" />
@@ -22,8 +23,8 @@ let User = (props) => {
   );
 };
 
-User.defaultProps = { 
-  viewBox: '0 0 64 64' 
+User.defaultProps = {
+  viewBox: '0 0 64 64',
 };
 
 export default User;

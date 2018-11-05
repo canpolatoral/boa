@@ -1,13 +1,14 @@
+/* eslint-disable max-len */
 import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-let CountryFlags = (props) => {
+const CountryFlags = (props) => {
   // eslint-disable-next-line no-unused-vars
-  var { context, flagCode, ...otherProps } = props;
+  const { context, flagCode, ...otherProps } = props;
 
-  if (props.flagCode == 'TR' || props.flagCode == 'TL' || props.flagCode == 'TRY') {
+  if (props.flagCode === 'TR' || props.flagCode === 'TL' || props.flagCode === 'TRY') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#e30a17' }} />
         <circle cx="9.2" cy="12" r="4.2" style={{ fill: '#fff' }} />
         <circle cx="10.2" cy="12" r="3.3" style={{ fill: '#e30a17' }} />
@@ -15,9 +16,9 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'AED') {
+  if (props.flagCode === 'AED') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="9" width="22" height="6" style={{ fill: '#fff' }} />
         <rect x="1" y="4" width="22" height="5.5" style={{ fill: '#00732f' }} />
         <rect x="1" y="14.5" width="22" height="5.5" />
@@ -25,18 +26,18 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'ALM (ton)') {
+  if (props.flagCode === 'ALM (ton)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3c0.2,0.5-0.1,1.1-0.6,1.3C10.8,18,10.7,18,10.6,18z" style={{ fill: '#848789' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.6,0-1-0.4-1.1-0.9c0-0.1,0-0.3,0.1-0.4l1.1-3.3c0.3-0.8,1.1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#848789' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.5,8.8,5,9.8,5h4.5c0.9,0,1.7,0.5,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#848789' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'ALT (gr)') {
+  if (props.flagCode === 'ALT (gr)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         {/* <path d="M21.61,18H2.39a1,1,0,0,1-1-1.32l3.1-9.31A2,2,0,0,1,6.44,6H17.56a2,2,0,0,1,1.9,1.37l3.1,9.31A1,1,0,0,1,21.61,18Z" style={{ fill: '#ffbf53' }} /> */}
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#FFBF53' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#FFBF53' }} />
@@ -44,17 +45,17 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'ATS') {
+  if (props.flagCode === 'ATS') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#ed2939' }} />
         <rect x="1" y="9.3" width="22" height="5.3" style={{ fill: '#fff' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'AUD') {
+  if (props.flagCode === 'AUD') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#134b8e' }} />
         <rect x="1" y="4" width="11.9" height="8" style={{ fill: '#134b8e' }} />
         <polygon points="12.9 6.8 8.2 6.8 8.2 4 5.8 4 5.8 6.8 1 6.8 1 9.2 5.8 9.2 5.8 12 8.2 12 8.2 9.2 12.9 9.2 12.9 6.8" style={{ fill: '#fff' }} />
@@ -71,55 +72,55 @@ let CountryFlags = (props) => {
         <polygon points="18.1 5.8 18.2 6.3 18.8 6.1 18.5 6.6 19 6.9 18.4 6.9 18.5 7.5 18.1 7.1 17.7 7.5 17.7 6.9 17.2 6.9 17.7 6.6 17.3 6.1 17.9 6.3 18.1 5.8" style={{ fill: '#fff' }} />
         <polygon points="20.7 9 20.9 9.6 21.4 9.4 21.1 9.9 21.6 10.1 21 10.2 21.1 10.8 20.7 10.3 20.3 10.8 20.4 10.2 19.8 10.1 20.3 9.9 20 9.4 20.5 9.6 20.7 9" style={{ fill: '#fff' }} />
         <polygon points="19.3 12.1 19.4 12.5 19.8 12.5 19.5 12.7 19.6 13.1 19.3 12.9 18.9 13.1 19 12.7 18.8 12.5 19.1 12.5 19.3 12.1" style={{ fill: '#fff' }} />
-      </SvgIcon >
+      </SvgIcon>
     );
   }
-  else if (props.flagCode == 'BEF') {
+  if (props.flagCode === 'BEF') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#ed2939' }} />
         <rect x="1" y="4" width="14.7" height="16" style={{ fill: '#fae042' }} />
         <rect x="1" y="4" width="7.3" height="16" />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'BHD') {
+  if (props.flagCode === 'BHD') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path d="M1,4H23V20H1" style={{ fill: '#fff' }} />
         <path d="M23,4H6.4L9.8,5.6,6.4,7.2,9.8,8.8,6.4,10.4,9.8,12,6.4,13.6l3.4,1.6L6.4,16.8l3.4,1.6L6.4,20H23" style={{ fill: '#ce1126' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'CAD') {
+  if (props.flagCode === 'CAD') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: 'red' }} />
         <rect x="6" y="4" width="12" height="16" style={{ fill: '#fff' }} />
         <path d="M12,7.5l-.8,1.4c0,.2-.2.2-.3.1l-.5-.3.4,2.1c.1.4-.2.4-.3.2L9.4,10l-.2.5c0,.1-.1.1-.2.1l-1.2-.3.3,1.1c.1.3.1.4-.1.4l-.4.2,2.1,1.7a.37.37,0,0,1,.1.3l-.2.6c.7-.1,1.3-.2,2.1-.3a.22.22,0,0,1,.2.2l-.1,2.2h.3L12,14.5a.22.22,0,0,1,.2-.2c.7.1,1.3.2,2.1.3l-.2-.6a.37.37,0,0,1,.1-.3L16.3,12h-.4c-.2-.1-.1-.2-.1-.4l.3-1.1-1.2.3a.35.35,0,0,1-.2-.1l-.1-.7-.9,1.1c-.1.2-.4.2-.3-.2l.4-2.1-.7.2c-.2.1-.3.1-.4-.1" style={{ fill: 'red' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'CAG (gr)') {
+  if (props.flagCode === 'CAG (gr)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <circle cx="12" cy="12" r="8.5" style={{ fill: '#e8a049' }} />
         <path d="M12,5a7,7,0,1,1-7,7,7,7,0,0,1,7-7m0-3A10,10,0,1,0,22,12,10,10,0,0,0,12,2Z" style={{ fill: '#ffbf53' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'CHF') {
+  if (props.flagCode === 'CHF') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#d52b1e' }} />
         <rect x="7" y="10" width="10" height="4" style={{ fill: '#fff' }} />
         <rect x="10" y="7" width="4" height="10" style={{ fill: '#fff' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'CNY') {
+  if (props.flagCode === 'CNY') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1.05" y="4" width="21.91" height="16" style={{ fill: '#de2910' }} />
         <polygon points="4.71 6.35 5.18 7.77 6.67 7.77 5.46 8.65 5.92 10.07 4.71 9.19 3.5 10.07 3.96 8.65 2.75 7.77 4.25 7.77 4.71 6.35" style={{ fill: '#ffde00' }} />
         <polygon points="8.61 5.6 8.59 6.09 9.04 6.28 8.56 6.4 8.53 6.89 8.27 6.47 7.79 6.6 8.11 6.22 7.84 5.8 8.3 5.98 8.61 5.6" style={{ fill: '#ffde00' }} />
@@ -129,44 +130,44 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'CU (ton)') {
+  if (props.flagCode === 'CU (ton)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#da8a67' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#da8a67' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#da8a67' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'CZK') {
+  if (props.flagCode === 'CZK') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#d7141a' }} />
         <rect x="1" y="4" width="22" height="8" style={{ fill: '#fff' }} />
         <path d="M12,12,1,4V20Z" style={{ fill: '#11457e' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'DEM') {
+  if (props.flagCode === 'DEM') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#fff' }} />
         <rect x="1" y="9.3" width="22" height="5.3" style={{ fill: '#fff' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'DKK') {
+  if (props.flagCode === 'DKK') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#c60c30' }} />
         <rect x="6.5" y="4" width="3" height="16" style={{ fill: '#fff' }} />
         <rect x="1" y="10.5" width="22" height="3" style={{ fill: '#fff' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'ESP') {
+  if (props.flagCode === 'ESP') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#c60b1e' }} />
         <rect x="1" y="8" width="22" height="8" style={{ fill: '#ffc400' }} />
         <path d="M5.6,11.2h0Z" style={{ fill: 'none;stroke:#000;stroke-linejoin:round;stroke-width:0.008320000022649765px' }} />
@@ -308,9 +309,9 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'EUR') {
+  if (props.flagCode === 'EUR') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#09509e' }} />
         <polyline points="12.16 6.87 12.8 6.87 12.29 7.25 12.48 7.87 11.97 7.49 11.46 7.87 11.66 7.25 11.14 6.87 11.78 6.87 11.97 6.27 12.16 6.87" style={{ fill: '#fbed21' }} />
         <polyline points="12.19 16.73 12.83 16.73 12.31 17.11 12.51 17.73 12 17.35 11.49 17.73 11.69 17.11 11.17 16.73 11.81 16.73 12 16.13 12.19 16.73" style={{ fill: '#fbed21' }} />
@@ -327,27 +328,27 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'FIM') {
+  if (props.flagCode === 'FIM') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#fff' }} />
         <rect x="1" y="10" width="22" height="4" style={{ fill: '#003580' }} />
         <rect x="7" y="4" width="4" height="16" style={{ fill: '#003580' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'FRF') {
+  if (props.flagCode === 'FRF') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="7.33" height="16" style={{ fill: '#1e3364' }} />
         <rect x="8.33" y="4" width="7.33" height="16" style={{ fill: '#fff' }} />
         <rect x="15.67" y="4" width="7.33" height="16" style={{ fill: '#ee4136' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'GBP') {
+  if (props.flagCode === 'GBP') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#273376' }} />
         <polygon points="23 9.6 14.2 9.6 14.2 4 9.8 4 9.8 9.6 1 9.6 1 14.4 9.8 14.4 9.8 20 14.2 20 14.2 14.4 23 14.4 23 9.6" style={{ fill: '#fff' }} />
         <polygon points="23 18.16 3.52 4 1 4 1 5.85 20.46 20 23 20 23 18.16" style={{ fill: '#fff' }} />
@@ -360,45 +361,45 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'GMS (gr)') {
+  if (props.flagCode === 'GMS (gr)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#C0C0C0' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#C0C0C0' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#C0C0C0' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'IEP') {
+  if (props.flagCode === 'IEP') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4.04" width="7.5" height="16" style={{ fill: '#169b62' }} />
         <rect x="8.3" y="4.04" width="7.3" height="16" style={{ fill: '#fff' }} />
         <rect x="15.5" y="4.04" width="7.5" height="16" style={{ fill: '#ff883e' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'ITL') {
+  if (props.flagCode === 'ITL') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="7.5" height="16" style={{ fill: '#009246' }} />
         <rect x="8.3" y="4" width="7.3" height="16" style={{ fill: '#fff' }} />
         <rect x="15.5" y="4" width="7.5" height="16" style={{ fill: '#ce2b37' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'JPY') {
+  if (props.flagCode === 'JPY') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1.1" y="4.1" width="21.8" height="15.8" style={{ fill: '#f9f9f9' }} />
         <path d="M22.8,4.3V19.8H1.3V4.3H22.8M23,4H1V20H23V4Z" style={{ fill: '#f2f2f2' }} />
         <circle cx="12" cy="12" r="5" style={{ fill: '#bc002d' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'KWD') {
+  if (props.flagCode === 'KWD') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="6" style={{ fill: '#007a3d' }} />
         <rect x="1" y="10" width="22" height="4" style={{ fill: '#fff' }} />
         <rect x="1" y="14" width="22" height="6" style={{ fill: '#ce1126' }} />
@@ -406,18 +407,18 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'LUF') {
+  if (props.flagCode === 'LUF') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="12" width="22" height="8" style={{ fill: '#00a1de' }} />
         <rect x="1" y="4" width="22" height="8" style={{ fill: '#ed2939' }} />
         <rect x="1" y="9.3" width="22" height="5.3" style={{ fill: '#fff' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'MYR') {
+  if (props.flagCode === 'MYR') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#dc241f' }} />
         <rect x="1" y="15.08" width="22" height="1.23" style={{ fill: '#fff' }} />
         <rect x="1" y="12.61" width="22" height="1.23" style={{ fill: '#fff' }} />
@@ -431,27 +432,27 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'NI (ton)') {
+  if (props.flagCode === 'NI (ton)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#bdbaae' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#bdbaae' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#bdbaae' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'NLG') {
+  if (props.flagCode === 'NLG') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#fff' }} />
         <rect x="1" y="4" width="22" height="5.5" style={{ fill: '#ae1c28' }} />
         <rect x="1" y="14.5" width="22" height="5.5" style={{ fill: '#21468b' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'NOK') {
+  if (props.flagCode === 'NOK') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#ef2b2d' }} />
         <rect x="7" y="4" width="4" height="16" style={{ fill: '#fff' }} />
         <rect x="1" y="10" width="22" height="4" style={{ fill: '#fff' }} />
@@ -460,18 +461,18 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'PB (ton)') {
+  if (props.flagCode === 'PB (ton)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#808080' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#808080' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#808080' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'PHP') {
+  if (props.flagCode === 'PHP') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#0038a8' }} />
         <rect x="1" y="12" width="22" height="8" style={{ fill: '#ce1126' }} />
         <path d="M12.5,12,1,20V4" style={{ fill: '#fff' }} />
@@ -482,27 +483,27 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'PLD (gr)') {
+  if (props.flagCode === 'PLD (gr)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#68a864' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#68a864' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#68a864' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'PLT (gr)') {
+  if (props.flagCode === 'PLT (gr)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#6286d3' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#6286d3' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#6286d3' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'PTE') {
+  if (props.flagCode === 'PTE') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: 'red' }} />
         <rect x="1" y="4" width="8.8" height="16" style={{ fill: '#060' }} />
         <path d="M13.3,14.8c-1.4,0-7.6-3.9-7.6-4.5L6,9.7c.6.9,7,4.7,7.6,4.5l-.3.6" style={{ fill: '#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.025724949315190315px' }} />
@@ -647,43 +648,43 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'QAR') {
+  if (props.flagCode === 'QAR') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#8d1b3d' }} />
         <path d="M7.5,20H1V4H7.5l1.8.9-1.8.9,1.8.9-1.8.9,1.8.9-1.8.8,1.8.9-1.8.9,1.7.9-1.8.9,1.8.9-1.8.9,1.8.9-1.8.9,1.8.9-1.8.9,1.8.9Z" style={{ fill: '#fff' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'RUB') {
+  if (props.flagCode === 'RUB') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="5.3" style={{ fill: '#fafafa' }} />
         <rect x="1" y="14" width="22" height="6" style={{ fill: '#d52b1e' }} />
         <rect x="1" y="9" width="22" height="5.5" style={{ fill: '#0039a6' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'SAR') {
+  if (props.flagCode === 'SAR') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#006c35' }} />
         <path d="M10,8.1h0c-.1.1-.3.3-.3.4v.2c0,.1.1.1.2,0l.1-.1c0-.1-.1.1-.1-.1a.76.76,0,0,1,.1-.4Zm1.3,0a.1.1,0,0,0-.1.1c0,.1-.2.2-.1.5a1.48,1.48,0,0,1,.1.7c-.1.1-.1.1-.1.2a.19.19,0,0,1-.3,0l-.2-.2V8.6c-.1-.1-.2-.1-.2,0a1.62,1.62,0,0,0-.5.9c0,.2-.1.1-.2,0s-.1-1-.3-.9c-.2.8.2,1.5.4,1.4.2.1.3-.3.4-.7l.1-.1c0,.5,0,.6.2.8s.5,0,.6,0l.2-.2c.1-.1.1-.1.2,0s.1.2.2.3.4,0,.5-.1a.37.37,0,0,0,.1-.3.14.14,0,0,1,.2,0,.14.14,0,0,0,0,.2c.1.1.1,0,.1,0a.78.78,0,0,0,.3-.4.1.1,0,0,0-.1-.1c-.1,0-.1,0-.1.1s-.2.1-.3,0a.6.6,0,0,1-.1-.4s-.1-.2,0-.2h.2a.76.76,0,0,0-.2-.4.19.19,0,0,0-.3,0,.31.31,0,0,0-.1.2A.37.37,0,0,0,12,9a1.45,1.45,0,0,1,.2.7.35.35,0,0,1-.2.1c-.1,0-.2,0-.2-.4a2.48,2.48,0,0,0-.1-.9c-.3-.3-.3-.4-.4-.4Zm-.4.1a.1.1,0,0,0-.1.1,2.27,2.27,0,0,1-.1.4c0,.1.1.2.2,0a.76.76,0,0,0,.1-.4.1.1,0,0,0-.1-.1Zm1.6,0h0a.76.76,0,0,0-.1.4c0,.1.1.2.2.3.3.4.5.7.8,1.1,0,.3.1.6.1.8a13.33,13.33,0,0,1,0,2c.1,0,.3-.2.4-.5V10.6a10.93,10.93,0,0,1,.8,1.5c.1,0,.1-.6,0-.7a9.05,9.05,0,0,0-.6-1.1c0-.1-.2-.2-.3-.5a2.18,2.18,0,0,0-.1-.6c0-.3.1,0,.1-.1a3,3,0,0,0-.4-.8c-.1-.1-.1-.1-.2,0a.3.3,0,0,0,0,.4l-.1-.1-.3-.3a.77.77,0,0,0-.3-.1Zm4.6,0c-.1,0-.1.1,0,0-.1.1-.2.2-.2.3A.9.9,0,0,0,17,9v.1h0c-.3-.3.1-.1-.1-.3s-.2-.3-.4-.4-.1-.1-.1,0v.4c0,.1.1.2.1.3a2.7,2.7,0,0,0,.7.8c0,.6.1,1.2.1,1.8,0,.3-.1.6-.2.6a.14.14,0,0,1-.2,0c-.1,0-.3-.4-.3-.4a.19.19,0,0,0-.3,0,7.26,7.26,0,0,0-.5.9c0,.1-.2.1-.3,0-.3-.4-.1-1-.2-.9a.77.77,0,0,0-.1.9,1.38,1.38,0,0,0,.3.4c.2.1.3,0,.4,0a1.08,1.08,0,0,0,.2-.7c.1-.2.2-.1.3-.1s.1.2.2.2.3.2.5,0l.3-.3a11.75,11.75,0,0,0,0-1.9c.1.2.2.3.3.5,0,.5.1,1.1.1,1.6,0,.1.3-.3.3-.5v-.5a5.58,5.58,0,0,0,.5.8.85.85,0,0,0,0-.7,9.22,9.22,0,0,1-.5-.8c0-.3-.1-.6-.1-.8s-.1-.4-.1-.6-.1-.3,0-.3.1,0,.1-.1-.2-.7-.3-.9-.1-.1-.2.1a.45.45,0,0,0,0,.5,7.84,7.84,0,0,1,.2,1.4c-.1-.2-.3-.4-.4-.6V8.9h.1l.1-.1c-.1,0-.3-.3-.4-.6ZM5.2,8.3c-.1,0-.1,0-.1.1a1.44,1.44,0,0,0,.2.3V9a.44.44,0,0,0,.1-.3c0-.1,0-.4-.2-.4Zm13.5,0h0a.66.66,0,0,0-.1.6,20.41,20.41,0,0,1,.3,3.4.37.37,0,0,1-.1.3c-.1.1-.2.3-.3.4a.76.76,0,0,1-.4.2c-.2.1-.2.3,0,.3a1.22,1.22,0,0,0,1-.5,1.07,1.07,0,0,0,.2-.6,13.7,13.7,0,0,0-.2-3V9.1c0-.1.1,0,.2-.1-.1,0-.4-.5-.6-.7Zm-3.4,0h0a1.51,1.51,0,0,0-.2.8,14.47,14.47,0,0,1,.4,3.5c.1,0,.2-.3.3-.5v-.8a12,12,0,0,0-.3-2c-.1-.3.2,0,.2-.2a5.94,5.94,0,0,1-.4-.8Zm-8.4,0h0c-.1.1-.1.1-.1.2a.1.1,0,0,1-.1-.1V8.3h0v.1h0V8.3h0a.1.1,0,0,0-.1.1s0,.2.1.2c0,.2.3.1.3-.1s0-.1-.1-.2ZM9,8.3H8.9a.3.3,0,0,0,0,.4.35.35,0,0,1,.1.2c-.3.2-.9.6-.9.7h.4c.1,0,.7-.7.7-.7a.1.1,0,0,1-.1-.1V8.7c.2-.1.1-.3,0-.4Zm5.7,0h0a1.42,1.42,0,0,0-.2.6c.2,1.1.2,2,.3,3.1,0,.1,0,.3-.1.3a3.92,3.92,0,0,1-1,.8s.1.3.3.3.6-.2.9-.7a1.06,1.06,0,0,0,.2-.5,21.58,21.58,0,0,0-.2-2.8V9.2a.1.1,0,0,0,.1-.1c0-.1-.2-.5-.3-.8Zm-8.8,0a.1.1,0,0,0-.1.1v.5a2.92,2.92,0,0,1,.2.9c0,.4-.2.2-.2,0a1.63,1.63,0,0,0,0-.7c0-.1-.1-.1-.2-.1s-.3.2-.3.5a.49.49,0,0,1-.1.3c0,.2-.1.3-.2,0s-.1-.9-.2-.7c0,.5-.1,1.3.3,1.3s.2-.8.4-.9c0-.1.1-.1.1,0v.7a.27.27,0,0,0,.3.3.37.37,0,0,1,.3.1,4.87,4.87,0,0,0,.1,1.2s.3.1.3-.7c0-.5-.1-.8,0-.9s.1-.1.2,0,.2.2.4.1.5-.2.5-.4a1.27,1.27,0,0,0-.1-.6.14.14,0,0,1,0-.2c.1.1.1.1.1,0a.52.52,0,0,0-.2-.4c-.5-.1-.6-.1-.7.1a1.85,1.85,0,0,0,.2.7c0,.1.1.2.1.3H6.9l-.2-.2a.69.69,0,0,0,0-.5c0-.1-.1-.2-.2-.3s-.1-.1-.2,0a.85.85,0,0,0,0,.7.77.77,0,0,1,.1.3c0,.1-.1.1-.1,0A2.49,2.49,0,0,1,6.2,9c0-.2,0-.5-.2-.6,0-.1,0-.1-.1-.1Zm1.7,0h0c-.2.1-.3.2-.2.3.1.7.2,1.3.3,2a.35.35,0,0,1-.1.2c-.2-.1-.2-.3-.5-.3a.43.43,0,0,0-.4.4v.5c.1.2.3.1.4.1s.2-.2.3-.1h0a.9.9,0,0,1-.5.7c-.5.1-.7.1-.9-.1s0-.8-.2-.7c-.6,1.7,1.5,1.9,1.7.1a.1.1,0,0,1,.1-.1v.1c0,1.6-1.7,1.8-1.9,1.2-.1-.1-.1-.4-.1-.6s0-.2-.1-.2-.2.1-.2.3v.4c.1,1.3,2.2.7,2.5-.3.2-.6,0-1,.1-1h0c.2.2.5,0,.6,0s.1-.1.1,0c.2.1.4.1.5-.1s.1-.4.1-.6a.35.35,0,0,0-.2.1H9v.2H8.9c0-.2-.3-.3-.4.1a.19.19,0,0,1-.3,0c0-.2-.1-.3-.3-.2-.1-.5-.1-.9-.2-1.4.1,0,.2.1.2,0,0-.4-.1-.9-.3-1h0c.1.1,0,.1,0,0Zm6.4,0c-.1,0-.2,0-.1.2s.2.2.2.4,0,.3,0,.3.1-.2.2-.3a.71.71,0,0,0-.3-.6ZM9,8.5a.1.1,0,0,1,.1.1v.1A.1.1,0,0,1,9,8.6V8.5Zm9.3.3c-.1,0-.2.1-.1.2s.2.3.2.4v.4a1,1,0,0,0,.1-.4c0-.2-.1-.6-.2-.6Zm-5.1.1h0c0,.2,0,.2.1.3L13.1,9c-.1-.1,0-.1.1-.1Zm1.1.6h0l-.1.1a.1.1,0,0,1-.1-.1V9.4h0v.1h0V9.4h0a.1.1,0,0,0-.1.1s0,.2.1.2.5,0,.4-.2c-.1.1-.1,0-.2,0Zm-5.4,0h0c-.2.1-.2.3-.1.5s.2.1.2.1.2-.3.2-.3,0-.1-.2.1V9.8c-.1-.1-.1-.1-.1-.3.1.1.1,0,0,0Zm7.7.1c-.1,0-.2,0-.2.2V10s0,.1-.1,0l-.1-.1H16c0,.1-.1.1,0,.2s.4.5.5.5v-.5a.1.1,0,0,1,.1-.1h.1a.37.37,0,0,0-.1-.3c.1-.1,0-.1,0-.1Zm-6.3.5h0c-.2.2-.2.2-.2.4a3.93,3.93,0,0,0,.2.6,2.49,2.49,0,0,1,.1.8,2,2,0,0,1-.9.9c-.2.1-.3,0-.4,0h0a.31.31,0,0,1-.1-.2H9a2.55,2.55,0,0,0,.9-.9.63.63,0,0,0,0-.6c0-.1-.1-.2-.1-.3h0s.2.1.2,0a1.69,1.69,0,0,0-.2-.5.19.19,0,0,0-.3,0,.6.6,0,0,0-.1.4,1.38,1.38,0,0,1,.3.4h0v.3c0,.1-.6.6-.6.6h0v-.4h0c-.2.1-.2.5-.3.6a7.3,7.3,0,0,0-1.3.9c-.2.2,1.1-.3,1.2-.3h0a.31.31,0,0,0,.1.2.57.57,0,0,0,.7.2,2.72,2.72,0,0,0,1-.8c0-.1.1-.1.2-.1a1.49,1.49,0,0,0,1.4.7c.2-.2.1-.3,0-.3a.78.78,0,0,1-.4-.3c0-.1,0-.2.2-.3.4-.1.9-.1,1.3-.2,0-.1.1-.3.1-.4a.1.1,0,0,1,.1-.1H11.9a.93.93,0,0,0,1-.7c0-.3-.1-.5-.5-.5a.44.44,0,0,0-.4.6c0,.1,0,.2-.1.2-.5,0-1.1.4-1.1.6h0l-.1-.1a1.92,1.92,0,0,0-.4-1.2v-.2Zm1.3.2h0l-.1.1a.1.1,0,0,1-.1-.1v-.1h0v.1h0v-.1h0a.1.1,0,0,0-.1.1s0,.2.1.2.5,0,.4-.2c-.1.1-.1.1-.2,0Zm5.4.2h0l-.8.5c-.1.1,0,.3,0,.3a5.58,5.58,0,0,0,.8-.5v-.3Zm-4.7.1h.1a.1.1,0,0,1,.1.1h-.1c-.1,0-.2,0-.1-.1Zm-6.5.1a1.37,1.37,0,0,0-1,.8L6,10.9c0-.1,0-.2-.2-.2Zm1.2.2H7a.31.31,0,0,1,.1.2H6.9c0-.1,0-.1.1-.2Zm9.8.2c-.1,0-.1.1-.1.2s.1.3.1.4V12a.37.37,0,0,0,.2-.3c.1-.2,0-.6-.2-.6.1,0,0-.1,0,0Zm-8.3.3c-.1,0-.1,0-.1.1s.2.1.2.3v.3a.44.44,0,0,0,.1-.3c.1-.1,0-.3-.2-.4Zm2.5.4h0a1.27,1.27,0,0,1,.6.1c.2,0,.2.1.1.2s-.3.1-.3.3v.2h-.1c-.1-.1-.4-.2-.4-.6-.1-.2,0-.2.1-.2ZM4.9,12h0a1.22,1.22,0,0,0-.2,1.1.37.37,0,0,0,.3.1,1.06,1.06,0,0,0,.2-.5c0-.1-.1-.1-.1,0s-.1.1-.2,0V12Zm7.8.5h0c-.1,0-.2.1-.3.2v.1c0,.1.1,0,.1,0s.1,0,.1.1V13s.1.1.1,0c.2-.1.3-.1.5-.2s.1-.2,0-.2a.37.37,0,0,0-.3.1c-.1,0-.1,0-.1-.1,0,.1,0,0-.1-.1Zm5,.2h-.1a.1.1,0,0,0,0,.2s.1.1,0,.1a.1.1,0,0,0-.1.1v.1A2.57,2.57,0,0,0,18,13c.1,0,0-.1,0-.1h-.1a.1.1,0,0,1,0-.2c0,.1,0,0-.2,0Zm-2.1,2.5h0a.25.25,0,0,0-.1.4h-7c-.4,0-1.9-.1-1.9-.1a1.54,1.54,0,0,0,1.4.6h7.5c-.1.2,0,.5.1.5h0c.1,0,.1,0,.2-.1h1.1c.1.1.1.2.2.1s.3-.1.3-.4c0,0,0-.6-.4-.6h-.4a3.08,3.08,0,0,1-.9-.1s.1-.2,0-.3h-.1c.1.1.1,0,0,0Zm.2.9h1c.1,0,0,.2,0,.2h-.3c0-.1-.2-.1-.3,0h-.5c0-.1,0-.2.1-.2Z" style={{ fill: '#fff' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'SEK') {
+  if (props.flagCode === 'SEK') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#006aa7' }} />
         <rect x="7" y="4" width="4" height="16" style={{ fill: '#fecc00' }} />
         <rect x="1" y="10" width="22" height="4" style={{ fill: '#fecc00' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'SGD') {
+  if (props.flagCode === 'SGD') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="8" style={{ fill: '#f42a41' }} />
         <rect x="1" y="12" width="22" height="8" style={{ fill: '#fff' }} />
         <path d="M4.61,8A3.14,3.14,0,0,1,6.43,5.14a2.84,2.84,0,0,0-.66-.07,2.94,2.94,0,0,0,0,5.87,2.84,2.84,0,0,0,.66-.08A3.14,3.14,0,0,1,4.61,8Z" style={{ fill: '#fff' }} />
@@ -695,28 +696,28 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'SN (ton)') {
+  if (props.flagCode === 'SN (ton)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#d3d4d5' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#d3d4d5' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#d3d4d5' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'TRY') {
+  if (props.flagCode === 'TRY') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style="fill:#e30a17" />
         <circle cx="9.2" cy="12" r="4.2" style="fill:#fff" />
         <circle cx="10.2" cy="12" r="3.3" style="fill:#e30a17" />
         <polygon points="12.5 12 16.2 13.2 13.9 10 13.9 14 16.2 10.8 12.5 12" style="fill:#fff" />
-      </SvgIcon >
+      </SvgIcon>
     );
   }
-  else if (props.flagCode == 'USD') {
+  if (props.flagCode === 'USD') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <rect x="1" y="4" width="22" height="16" style={{ fill: '#fff' }} />
         <rect x="1" y="4" width="22" height="1.2" style={{ fill: '#be2033' }} />
         <rect x="1" y="6.5" width="22" height="1.2" style={{ fill: '#be2033' }} />
@@ -779,17 +780,17 @@ let CountryFlags = (props) => {
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'ZCeyrek') {
+  if (props.flagCode === 'ZCeyrek') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <circle cx="12" cy="12" r="7" style={{ fill: '#e8a049' }} />
         <path d="M12,7a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-4a9,9,0,1,0,9,9,9,9,0,0,0-9-9Z" style={{ fill: '#ffbf53' }} />
       </SvgIcon>
     );
   }
-  else if (props.flagCode == 'ZN (ton)') {
+  if (props.flagCode === 'ZN (ton)') {
     return (
-      <SvgIcon {...otherProps} >
+      <SvgIcon {...otherProps}>
         <path class="st0" d="M10.6,18H2.4c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4l1.1,3.3C11.8,17.3,11.3,18,10.6,18z" style={{ fill: '#666666' }} />
         <path class="st0" d="M22.6,16.7c0.2,0.6-0.3,1.3-0.9,1.3h-8.2c-0.7,0-1.2-0.7-0.9-1.3l1.1-3.3c0.3-0.8,1-1.4,1.9-1.4h4.1c0.9,0,1.6,0.6,1.9,1.4L22.6,16.7z" style={{ fill: '#666666' }} />
         <path class="st0" d="M16.6,11H7.4c-0.7,0-1.2-0.7-0.9-1.3l1.2-3.3C8,5.6,8.8,5,9.8,5h4.5c0.9,0,1.8,0.6,2.1,1.4l1.2,3.3C17.7,10.3,17.3,11,16.6,11z" style={{ fill: '#666666' }} />
@@ -797,11 +798,12 @@ let CountryFlags = (props) => {
     );
   }
 
+  return null;
 };
 
 CountryFlags.defaultProps = {
   viewBox: '0 0 24 24',
-  ByFecCode: false
+  ByFecCode: false,
 };
 
 export default CountryFlags;

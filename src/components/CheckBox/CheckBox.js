@@ -4,36 +4,39 @@ import merge from 'lodash/merge';
 import { withStyles } from '@material-ui/core/styles';
 import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
 import MuiCheckbox from '@material-ui/core/Checkbox';
-import { Label } from '@boa/components/Label';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Label } from '@boa/components/Label'; // eslint-disable-line import/no-unresolved
+import {
+  ComponentBase,
+  ComponentComposer,
+} from '@boa/base'; // eslint-disable-line import/no-unresolved
 
 const styles = theme => ({
   root: {
     margin: 0,
-    height: 30
+    height: 30,
   },
   checked: {
     margin: 0,
-    color: theme.boaPalette.pri500
+    color: theme.boaPalette.pri500,
   },
   disabled: {
     margin: 0,
-    color: theme.boaPalette.base250
+    color: theme.boaPalette.base250,
   },
   labelLTR: {
     color: theme.boaPalette.base450,
     fontSize: 14,
     marginLeft: 12,
     marginRight: 0,
-    marginTop: -3
+    marginTop: -3,
   },
   labelRTL: {
     color: theme.boaPalette.base450,
     fontSize: 14,
     marginLeft: 0,
     marginRight: 12,
-    marginTop: -3
-  }
+    marginTop: -3,
+  },
 });
 
 /**
@@ -57,7 +60,8 @@ class CheckBox extends ComponentBase {
      */
     classes: PropTypes.object.isRequired,
     /**
-     * The color of the component. It supports those theme colors that make sense for this component.
+     * The color of the component.
+     * It supports those theme colors that make sense for this component.
      */
     color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
     /**
@@ -72,6 +76,14 @@ class CheckBox extends ComponentBase {
      * If `true`, the ripple effect will be disabled.
      */
     disableRipple: PropTypes.bool,
+    /**
+     * Error message that inside the component.
+     */
+    errorText: PropTypes.string,
+    /**
+     * If `true`, and component has label and errorText the errorText will be visible
+     */
+    errorTextVisible: PropTypes.bool,
     /**
      * The icon to display when the component is unchecked.
      */
@@ -93,14 +105,15 @@ class CheckBox extends ComponentBase {
      */
     inputRef: PropTypes.func,
     /**
+     * If exists, checkbox will be render with <Label> component
+     */
+    label: PropTypes.string,
+    /**
      * @ignore
      */
     name: PropTypes.string,
     /**
-     * Callback fired when the state is changed.
-     *
-     * @param {object} event The event source of the callback
-     * @param {boolean} checked The `checked` value of the switch
+     * @ignore
      */
     onChange: PropTypes.func,
     /**
@@ -111,46 +124,31 @@ class CheckBox extends ComponentBase {
      * The value of the component.
      */
     value: PropTypes.string,
-    /**
-     * Error message that inside the component.
-     */
-    errorText: PropTypes.string,
-    /**
-     * If `true`, and component has label and errorText the errorText will be visible
-     */
-    errorTextVisible: PropTypes.bool,
-    /**
-     * If exists, checkbox will be render with <Label> component
-     */
-    label: PropTypes.string,
   };
 
   static defaultProps = {
     ...ComponentBase.defaultProps,
     color: 'primary',
     indeterminate: false,
-    errorTextVisible: true
+    errorTextVisible: true,
   };
 
   state = {
-    isChecked: this.props.checked != undefined ? this.props.checked : this.props.defaultChecked || false,
-    disabled: this.props.disabled
+    isChecked: this.props.checked || this.props.defaultChecked,
+    disabled: this.props.disabled,
   };
 
   constructor(props, context) {
     super(props, context);
     this.onCheck = this.onCheck.bind(this);
-    this.state = {
-      isChecked: this.props.checked != undefined ? this.props.checked : this.props.defaultChecked || false,
-      disabled: this.props.disabled
-    };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.checked !== this.props.checked || nextProps.disabled !== this.props.disabled) {
-      this.setState({ isChecked: nextProps.checked, disabled: nextProps.disabled });
-    } else if (nextProps.defaultChecked !== this.props.defaultChecked || nextProps.disabled !== this.props.disabled) {
-      this.setState({ isChecked: nextProps.defaultChecked, disabled: nextProps.disabled });
+    const { checked, defaultChecked, disabled } = nextProps;
+    if (checked !== this.props.checked || disabled !== this.props.disabled) {
+      this.setState({ isChecked: checked, disabled });
+    } else if (defaultChecked !== this.props.defaultChecked || disabled !== this.props.disabled) {
+      this.setState({ isChecked: defaultChecked, disabled });
     }
   }
 
@@ -181,19 +179,17 @@ class CheckBox extends ComponentBase {
   }
 
   render() {
-    let errorStyle = {
+    const style = { height: 24, width: 24, marginTop: -3 };
+    const boxStyle = merge(style, this.props.style ? this.props.style : {});
+    const { classes, label, context } = this.props;
+    const { localization } = context;
+    const errorStyle = {
       color: this.props.context.theme.boaPalette.error500,
       fontSize: 11,
       marginTop: 2,
       height: 16,
-      textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left'
+      textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left',
     };
-    let style = { height: 24, width: 24, marginTop: -3 };
-
-    let boxStyle = merge(style, this.props.style ? this.props.style : {});
-
-    const { classes, label } = this.props;
-
     const checkBox = (
       <MuiCheckbox
         name={this.props.name}
@@ -206,7 +202,7 @@ class CheckBox extends ComponentBase {
         indeterminate={this.props.indeterminate}
         classes={{
           checked: classes.checked,
-          disabled: classes.disabled
+          disabled: classes.disabled,
         }}
         onChange={this.onCheck}
       />
@@ -217,8 +213,8 @@ class CheckBox extends ComponentBase {
         <MuiFormControlLabel
           control={checkBox}
           classes={{
-            label: this.props.context.localization.isRightToLeft ? classes.labelRTL : classes.labelLTR,
-            root: classes.root
+            label: localization.isRightToLeft ? classes.labelRTL : classes.labelLTR,
+            root: classes.root,
           }}
           label={label}
         />

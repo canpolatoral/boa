@@ -1,5 +1,5 @@
 export { default as Button } from './Button';
-// export { default as CheckBox } from './CheckBox';
+export { default as CheckBox } from './CheckBox';
 // export { default as DateTimePicker } from './DateTimePicker';
 // export { default as Dialog } from './Dialog';
 // export { default as Divider } from './Divider';

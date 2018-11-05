@@ -1,8 +1,8 @@
 import ComponentBase,
 {
-  ComponentBaseProps,
-  ComponentBaseInstance
-} from '../base/ComponentBase'
+  ComponentBaseInstance,
+  ComponentBaseProps
+} from '../../base/ComponentBase'
 
 interface ButtonProps extends ComponentBaseProps {
   type: string;

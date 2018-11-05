@@ -1,13 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase } from '@boa/base';
+import { ComponentBase } from '@boa/base'; // eslint-disable-line import/no-unresolved
+
+const getMinLevel = (content) => {
+  let level = 0;
+  if (content.length > 0) level = content[0].level;
+  content.forEach((item) => {
+    if (item.level < level) level = item.level;
+  });
+  return level;
+};
 
 /**
  * Table of Content component for BOA markdown documents.
 */
 class DocToc extends ComponentBase {
-
   static propTypes = {
+    /**
+     * Active item id on component.
+     */
+    activeItem: PropTypes.string,
     /**
      * Data for table. [{id, level, content, [children]}]
      */
@@ -17,17 +29,13 @@ class DocToc extends ComponentBase {
      */
     header: PropTypes.string,
     /**
-     * Active item id on component.
-     */
-    activeItem: PropTypes.string,
-    /**
      * Event for item clicked.
      */
     linkOnClick: PropTypes.func,
     /**
      * Override style of component.
      */
-    style: PropTypes.object
+    style: PropTypes.object,
   };
 
   static defaultProps = {
@@ -36,12 +44,8 @@ class DocToc extends ComponentBase {
   };
 
   state = {
-    activeItem: this.props.activeItem
+    activeItem: this.props.activeItem,
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.activeItem) {
@@ -53,9 +57,9 @@ class DocToc extends ComponentBase {
     const mainStyle = Object.assign({
       borderLeftColor: this.props.context.theme.boaPalette.pri500,
       borderLeftWidth: 3,
-      borderLeftStyle: 'solid'
+      borderLeftStyle: 'solid',
     }, this.props.style);
-    this.minLevel = this.getMinLevel(this.props.content);
+    this.minLevel = getMinLevel(this.props.content);
     const content = this.populateContent(this.props.content);
 
     return (
@@ -65,21 +69,13 @@ class DocToc extends ComponentBase {
     );
   }
 
-  getMinLevel(content) {
-    var level = 0;
-    if (content.length > 0)
-      level = content[0].level;
-    content.forEach((item) => {
-      if (item.level < level) level = item.level;
-    });
-    return level;
-  }
-
   onClick(id) {
-    if (this.state.activeItem != id) {
+    if (this.state.activeItem !== id) {
       this.setState({ activeItem: id });
     }
-    this.props.linkOnClick && this.props.linkOnClick(id);
+    if (this.props.linkOnClick) {
+      this.props.linkOnClick(id);
+    }
   }
 
   getLinkStyle(content, isHeader) {
@@ -91,12 +87,10 @@ class DocToc extends ComponentBase {
       userSelect: 'none',
       lineHeight: '16px',
       fontSize: '13px',
-      cursor: 'pointer'
+      cursor: 'pointer',
     };
-    if (isHeader === true)
-      style.fontWeight = 'bold';
-    if (content === this.state.activeItem)
-      style.color = this.props.context.theme.boaPalette.pri500;
+    if (isHeader === true) style.fontWeight = 'bold';
+    if (content === this.state.activeItem) style.color = this.props.context.theme.boaPalette.pri500;
     return style;
   }
 
@@ -107,16 +101,7 @@ class DocToc extends ComponentBase {
       listStyleType: 'none',
       lineHeight: '16px',
       marginTop: index === -1 ? 0 : 8,
-      marginLeft: level ? (level - this.minLevel) * 12 : undefined
-    };
-  }
-
-  getListStyle() {
-    return {
-      listStyleType: 'none',
-      paddingLeft: 12,
-      marginTop: 0,
-      marginBottom: 1
+      marginLeft: level ? (level - this.minLevel) * 12 : undefined,
     };
   }
 
@@ -124,18 +109,35 @@ class DocToc extends ComponentBase {
     const headerId = 'top_of_page';
     const items = children.map((child, index) => {
       return (
+        // eslint-disable-next-line react/no-array-index-key
         <li key={index} style={this.getListItemStyle(child.level, index)}>
-          {child && <label style={this.getLinkStyle(child.id)} onClick={this.onClick.bind(this, child.id)}>{child.content}</label>}
+          {child && (
+            <label
+              style={this.getLinkStyle(child.id)}
+              onClick={this.onClick.bind(this, child.id)}>
+              {child.content}
+            </label>)}
           {child.children ? this.populateContent(child.children, level + 1) : null}
         </li>);
-    }
-    );
+    });
+    const listStyle = {
+      listStyleType: 'none',
+      paddingLeft: 12,
+      marginTop: 0,
+      marginBottom: 1,
+    };
     return (
-      <ul style={this.getListStyle()}>
-        {level === 0 ? (
-          <li style={this.getListItemStyle(0, -1)}>
-            <label style={this.getLinkStyle(headerId, true)} onClick={this.onClick.bind(this, headerId)}>{this.props.header}</label>
-          </li>) : null}
+      <ul style={listStyle}>
+        {
+          level === 0 ? (
+            <li style={this.getListItemStyle(0, -1)}>
+              <label
+                style={this.getLinkStyle(headerId, true)}
+                onClick={this.onClick.bind(this, headerId)}>
+                {this.props.header}
+              </label>
+            </li>) : null
+        }
         {items}
       </ul>);
   }

@@ -1,6 +1,5 @@
-
-
-let styles = {
+/* eslint-disable max-len, import/prefer-default-export */
+const styles = {
   gray: {
     columnRow: 'display: table-row; color:#757575; height:40px;',
     columnCell: 'display: table-cell; font-weight: bold; padding: 6px; vertical-align:middle;',
@@ -48,7 +47,7 @@ let styles = {
     oddCell: 'display: table-cell; border-top:1px solid rgb(64,64,64); border-bottom:1px solid rgb(64,64,64); padding: 6px;',
     evenRow: 'display: table-row;',
     evenCell: 'display: table-cell; border-top:1px solid rgb(64,64,64); border-bottom:1px solid rgb(64,64,64); background:rgba(64,64,64,.1); padding: 6px;',
-  }
+  },
 };
 
 
@@ -62,6 +61,6 @@ export function getStyle(color) {
     oddRow: styles[color].oddRow,
     oddCell: styles[color].oddCell,
     evenRow: styles[color].evenRow,
-    evenCell: styles[color].evenCell
+    evenCell: styles[color].evenCell,
   };
 }

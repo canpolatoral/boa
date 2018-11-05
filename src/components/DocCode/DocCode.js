@@ -1,14 +1,13 @@
+/* eslint-disable react/no-danger */
 import React from 'react'; import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
-import { ComponentBase } from '@boa/base';
-
+import { ComponentBase } from '@boa/base'; // eslint-disable-line import/no-unresolved
 import styles from './styles';
 
 /**
  * Code documentation component
 */
 class DocCode extends ComponentBase {
-
   static propTypes = {
     ...ComponentBase.propTypes,
     /**
@@ -16,30 +15,33 @@ class DocCode extends ComponentBase {
      */
     content: PropTypes.string.isRequired,
     /**
-     * Code language.
+     * Editor type that will be colored
      */
-    lang: PropTypes.string,
+    editorType: PropTypes.oneOf([
+      'androidStudio',
+      'atomOneDark',
+      'atomOneLight',
+      'github',
+      'monokaiSublime',
+      'raiinbow',
+      'vs',
+      'xcode']),
     /**
      * If `true`, the code will be highlighted.
      */
     highlight: PropTypes.bool,
-
     /**
-     * Editor type that will be colored
+     * Code language.
      */
-    editorType: PropTypes.oneOf(['androidStudio', 'atomOneDark', 'atomOneLight', 'github', 'monokaiSublime', 'raiinbow', 'vs', 'xcode'])
+    lang: PropTypes.string,
   };
 
   static defaultProps = {
     content: 'console.log(\'Hello world\');',
     lang: 'js',
     highlight: true,
-    editorType: 'github'
+    editorType: 'github',
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
     return (
@@ -48,13 +50,22 @@ class DocCode extends ComponentBase {
   }
 
   getMarkup() {
-    const language = hljs.getLanguage(this.props.lang);
-    const content = this.props.highlight ? language ? hljs.highlight(this.props.lang, this.props.content).value : hljs.highlightAuto(this.props.content).value : this.props.content;
+    const { lang, highlight, content } = this.props;
+    const language = hljs.getLanguage(lang);
+    let contentHighlighted;
+    if (highlight && language) {
+      contentHighlighted = hljs.highlight(lang, content).value;
+    } else if (highlight) {
+      contentHighlighted = hljs.highlightAuto(this.props.content).value;
+    } else {
+      contentHighlighted = content;
+    }
+
     const css = this.props.highlight ? this.getHighlightCSS() : null;
 
     return `
       <pre>
-        <code class="hljs">${content}</code>
+        <code class="hljs">${contentHighlighted}</code>
       </pre>
       ${css}
     `;

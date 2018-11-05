@@ -1,14 +1,24 @@
+/* eslint-disable react/no-danger */
 import React from 'react'; import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
-import { ComponentBase } from '@boa/base';
+import { ComponentBase } from '@boa/base'; // eslint-disable-line import/no-unresolved
 import marked from './marked';
 import CodeStyles from './styles';
+
+const editorTypes = [
+  'androidStudio',
+  'atomOneDark',
+  'atomOneLight',
+  'github',
+  'monokaiSublime',
+  'raiinbow',
+  'vs',
+  'xcode'];
 
 /**
  * Markdown doc viewer
 */
 class DocViewer extends ComponentBase {
-
   static propTypes = {
     /**
      * Markdown content of documentation.
@@ -17,19 +27,19 @@ class DocViewer extends ComponentBase {
     /**
      * Editor type that will be colored
      */
-    editorType: PropTypes.oneOf(['androidStudio', 'atomOneDark', 'atomOneLight', 'github', 'monokaiSublime', 'raiinbow', 'vs', 'xcode'])
+    editorType: PropTypes.oneOf(editorTypes),
   };
 
   static defaultProps = {
     content: '',
-    editorType: 'atomOneDark'
+    editorType: 'atomOneDark',
   };
 
   static getTableOfContent(source) {
-    var cap;
-    var src = source.replace(/^ +$/gm, '');
-    var exp = /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/;
-    var tokens = [];
+    let cap;
+    let src = source.replace(/^ +$/gm, '');
+    const exp = /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/;
+    const tokens = [];
     while (src) {
       cap = exp.exec(src);
       if (cap) {
@@ -37,32 +47,30 @@ class DocViewer extends ComponentBase {
         tokens.push({
           level: cap[1].length,
           content: cap[2],
-          id: cap[2].toString().toLowerCase().trim().replace(/&/g, '-and-').replace(/[\s\W-]+/g, '-')
-          // id: cap[2].trim().toLowerCase().replace(/[^\w\- ]+/g, '').replace(/\s/g, '-').replace(/\-+$/, '')
-          // id: cap[2].toLowerCase().replace(/[^\w]+/g, '-')
+          id: cap[2].toString().toLowerCase().trim().replace(/&/g, '-and-')
+            .replace(/[\s\W-]+/g, '-'),
         });
-        continue;
+      } else {
+        src = src.replace(/.*/, '').substr(1);
       }
-      src = src.replace(/.*/, '').substr(1);
     }
     return tokens;
   }
 
   state = {
-    editorType: this.props.editorType
+    editorType: this.props.editorType,
   }
 
   constructor(props, context) {
     super(props, context);
     marked.setOptions({
-      highlight: function (str, lang) {
+      highlight(str, lang) {
         if (lang && hljs.getLanguage(lang)) {
           return hljs.highlight(lang, str).value;
-        } else {
-          return hljs.highlightAuto(str).value;
         }
+        return hljs.highlightAuto(str).value;
       },
-      context: props.context
+      context: props.context,
     });
     this.changeEditorType = this.changeEditorType.bind(this);
   }
@@ -78,21 +86,22 @@ class DocViewer extends ComponentBase {
   }
 
   render() {
-    const editorTypes = ['androidStudio', 'atomOneDark', 'atomOneLight', 'github', 'monokaiSublime', 'rainbow', 'vs', 'xcode'];
     marked.setOptions({
-      context: this.props.context
+      context: this.props.context,
     });
     marked.setEditorTypes(editorTypes);
     marked.setEditorType(this.state.editorType);
     let rawMarkup = marked(this.props.content);
     rawMarkup = this.getStyle() + rawMarkup;
     return (
-      <div style={{ width: '100%' }}
+      <div
+        style={{ width: '100%' }}
         dangerouslySetInnerHTML={{ __html: rawMarkup }}
         onInput={this.changeEditorType} />
     );
   }
 
+  /* eslint-disable max-len, class-methods-use-this */
   getStyle() {
     return `
     <style>
@@ -105,7 +114,7 @@ class DocViewer extends ComponentBase {
   getTableOfContent() {
     return marked.getTableOfContent();
   }
-
+  /* eslint-enable max-len, class-methods-use-this */
 }
 
 export default DocViewer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, AppProvider } from '@boa/base';
-import { Icon } from '@boa/components/Icon';
+import { ComponentBase, AppProvider } from '@boa/base'; // eslint-disable-line import/no-unresolved
+import { Icon } from '@boa/components/Icon'; // eslint-disable-line import/no-unresolved
 
 /**
  * Notice component for BOA markdown documents.
@@ -9,33 +9,29 @@ import { Icon } from '@boa/components/Icon';
 class DocNotice extends ComponentBase {
   static propTypes = {
     /**
-     * Determines type of the notice.
-     */
-    type: PropTypes.oneOf(['info', 'tip', 'warning', 'error']).isRequired,
-    /**
-     * Header of the notice.
-     */
-    header: PropTypes.string,
-    /**
      * Notice text
      */
     content: PropTypes.string,
     /**
      * Determines the paddings in interior design. Default false, wide paddings like material.
      */
-    fitMode: PropTypes.bool
+    fitMode: PropTypes.bool,
+    /**
+     * Header of the notice.
+     */
+    header: PropTypes.string,
+    /**
+     * Determines type of the notice.
+     */
+    type: PropTypes.oneOf(['info', 'tip', 'warning', 'error']).isRequired,
   };
 
   static defaultProps = {
     type: 'tip',
     fitMode: false,
     header: 'Tip Message',
-    content: 'This is a tip message.'
+    content: 'This is a tip message.',
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
     const style = this.getStyle();
@@ -45,7 +41,7 @@ class DocNotice extends ComponentBase {
           float: 'left',
           marginLeft: -36,
           marginTop: -2,
-          height: 24
+          height: 24,
         }}>
           <AppProvider theme={this.props.context.theme}>
             {this.getIcon()}
@@ -58,15 +54,40 @@ class DocNotice extends ComponentBase {
   }
 
   getStyle() {
-    let style = this.props.fitMode ?
+    const style = this.props.fitMode ?
       { padding: '12px 12px 12px 48px', margin: '16px 0px', width: '100%' } :
       { padding: '12px 24px 12px 60px', margin: '16px 0px', width: '100%' };
 
     switch (this.props.type) {
-      case 'info': Object.assign(style, { background: 'rgba(2,136,209,.15)', color: 'rgba(2,136,209,1)' }); break;
-      case 'tip': Object.assign(style, { background: 'rgba(2,136,209,.15)', color: 'rgba(2,136,209,1)' }); break;
-      case 'warning': Object.assign(style, { background: 'rgba(255,145,0,.15)', color: 'rgba(255,145,0, 1)' }); break;
-      case 'error': Object.assign(style, { background: 'rgba(255,82,82,.15)', color: 'rgba(255,82,82, 1)' }); break;
+      case 'info': {
+        Object.assign(style, {
+          background: 'rgba(2,136,209,.15)',
+          color: 'rgba(2,136,209,1)',
+        });
+        break;
+      }
+      case 'tip': {
+        Object.assign(style, {
+          background: 'rgba(2,136,209,.15)',
+          color: 'rgba(2,136,209,1)',
+        });
+        break;
+      }
+      case 'warning': {
+        Object.assign(style, {
+          background: 'rgba(255,145,0,.15)',
+          color: 'rgba(255,145,0, 1)',
+        });
+        break;
+      }
+      case 'error': {
+        Object.assign(style, {
+          background: 'rgba(255,82,82,.15)',
+          color: 'rgba(255,82,82, 1)',
+        });
+        break;
+      }
+      default: return null;
     }
     return style;
   }
@@ -77,8 +98,8 @@ class DocNotice extends ComponentBase {
         const icon = {
           dynamicIcon: 'Info',
           iconProperties: {
-            color: 'rgba(2,136,209,1)'
-          }
+            color: 'rgba(2,136,209,1)',
+          },
         };
         return Icon.getIcon(icon);
       }
@@ -86,8 +107,8 @@ class DocNotice extends ComponentBase {
         const icon = {
           dynamicIcon: 'Star',
           iconProperties: {
-            color: 'rgba(2,136,209,1)'
-          }
+            color: 'rgba(2,136,209,1)',
+          },
         };
         return Icon.getIcon(icon);
       }
@@ -97,8 +118,8 @@ class DocNotice extends ComponentBase {
           iconProperties: {
             color: 'rgba(255,145,0, 1)',
             float: 'left',
-            marginLeft: -36
-          }
+            marginLeft: -36,
+          },
         };
         return Icon.getIcon(icon);
       }
@@ -108,11 +129,12 @@ class DocNotice extends ComponentBase {
           iconProperties: {
             color: 'rgba(255,82,82, 1)',
             float: 'left',
-            marginLeft: -36
-          }
+            marginLeft: -36,
+          },
         };
         return Icon.getIcon(icon);
       }
+      default: return null;
     }
   }
 }

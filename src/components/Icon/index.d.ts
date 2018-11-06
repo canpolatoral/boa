@@ -17,6 +17,8 @@ export const Icon: {
   getIcon(cmpProps: any): any;
 };
 
+export default Icon;
+
 export class Add extends IconBase { }
 export class ArrowDownward extends IconBase { }
 export class ArrowLeft extends IconBase { }

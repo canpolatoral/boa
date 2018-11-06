@@ -4,18 +4,21 @@ import IconButton from '@material-ui/core/IconButton';
 import RightArrow from '@material-ui/icons/KeyboardArrowRight';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { MenuItem } from '@boa/components/MenuItem';
-import { Icon } from '@boa/components/Icon';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import Popover from '@boa/components/Popover';
+import Popover from '@boa/components/Popover'; // eslint-disable-line import/no-unresolved
+import {
+  ComponentBase,
+  ComponentComposer,
+} from '@boa/base'; // eslint-disable-line import/no-unresolved
+import { MenuItem } from '@boa/components/MenuItem'; // eslint-disable-line import/no-unresolved
+import { Icon } from '@boa/components/Icon'; // eslint-disable-line import/no-unresolved
 
 /* eslint-disable no-unused-vars */
 const styles = theme => ({
   menuItem: {},
   primary: {},
-  icon: {}
+  icon: {},
 });
 /* eslint-enable no-unused-vars */
 @ComponentComposer
@@ -26,29 +29,32 @@ class IconMenu extends ComponentBase {
     /**
      * Type of the `IconButton` to render.
      */
-    iconType: PropTypes.oneOf(['vertical', 'horizontal', 'custom']).isRequired,
+    anchorOrigin: PropTypes.shape({
+      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
+      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
+    }),
 
     /*
      * to set origin from outside
     */
-    isOriginSetted: PropTypes.bool,
+    animated: PropTypes.bool,
 
     /**
      * Custom icon for 'IconButton' to render.
      */
-    customIcon: PropTypes.object,
+    classes: PropTypes.object.isRequired,
 
     /**
      * Item list
      *
      */
-    items: PropTypes.array,
+    className: PropTypes.string,
 
     /**
      * Menu item list
      *
      */
-    menuItems: PropTypes.array,
+    customIcon: PropTypes.object,
 
     /**
      * This is the point on the icon where the menu
@@ -57,30 +63,24 @@ class IconMenu extends ComponentBase {
      * vertical: [top, middle, bottom]
      * horizontal: [left, center, right].
      */
-    anchorOrigin: PropTypes.shape({
-      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
-      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
-    }),
+    iconStyle: PropTypes.object,
 
-    transformOrigin: PropTypes.shape({
-      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
-      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
-    }),
+    iconType: PropTypes.oneOf(['vertical', 'horizontal', 'custom']).isRequired,
     /**
      * If true, the popover will apply transitions when
      * it gets added to the DOM.
      */
-    animated: PropTypes.bool,
+    isOriginSetted: PropTypes.bool,
 
     /**
      * @ignore
      */
-    className: PropTypes.string,
+    items: PropTypes.array,
 
     /**
      * Override the inline-styles of the underlying icon element.
      */
-    iconStyle: PropTypes.object,
+    menuItems: PropTypes.array,
 
     /**
      * Override the inline-styles of the menu element.
@@ -95,12 +95,12 @@ class IconMenu extends ComponentBase {
     /**
      * If true, the `IconMenu` is opened.
      */
-    open: PropTypes.bool,
+    onChange: PropTypes.func,
 
     /**
      * Override the inline-styles of the root element.
      */
-    style: PropTypes.object,
+    onClick: PropTypes.func,
 
     /**
      * This is the point on the menu which will stick to the menu
@@ -109,10 +109,7 @@ class IconMenu extends ComponentBase {
      * vertical: [top, middle, bottom]
      * horizontal: [left, center, right].
      */
-    targetOrigin: PropTypes.shape({
-      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
-      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
-    }),
+    open: PropTypes.bool,
 
     /**
      * Sets the delay in milliseconds before closing the
@@ -120,21 +117,27 @@ class IconMenu extends ComponentBase {
      * If set to 0 then the auto close functionality
      * will be disabled.
      */
-    touchTapCloseDelay: PropTypes.number,
+    style: PropTypes.object,
 
     /**
      * If true, the popover will render on top of an invisible
      * layer, which will prevent clicks to the underlying elements.
      */
-    useLayerForClickAway: PropTypes.bool,
+    targetOrigin: PropTypes.shape({
+      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
+      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
+    }),
 
     /* Callback function fired when the menu item is selected */
-    onChange: PropTypes.func,
+    touchTapCloseDelay: PropTypes.number,
 
     /* Callback function fired when the IconButton element is clicked */
-    onClick: PropTypes.func,
+    transformOrigin: PropTypes.shape({
+      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
+      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
+    }),
 
-    classes: PropTypes.object.isRequired
+    useLayerForClickAway: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -157,7 +160,7 @@ class IconMenu extends ComponentBase {
     },
     touchTapCloseDelay: 200,
     useLayerForClickAway: false,
-    menuStyle: { minWidth: '240px' }
+    menuStyle: { minWidth: '240px' },
   };
 
   state = {
@@ -179,6 +182,7 @@ class IconMenu extends ComponentBase {
       this.handleClose();
     }
   }
+
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
@@ -189,34 +193,44 @@ class IconMenu extends ComponentBase {
 
   render() {
     const { anchorEl } = this.state;
-    const menuItems =
-      this.props.menuItems ? this.props.menuItems.map((item) => {
+    let menuItems = [];
+
+    if (this.props.menuItems) {
+      menuItems = this.props.menuItems.map((item) => {
         return React.cloneElement(item, {
           onTouchTap: () => {
             if (!item.props.menuItems) this.handleClose();
-          }
+          },
         });
-      }) :
-        this.props.items ?
-          (this.props.items.map((item) => {
-            const rightIcon = item.items && item.items.length ?
-              <RightArrow /> :
-              item.rightIcon && (item.rightIcon.fontIcon || item.rightIcon.svgIcon) ? Icon.getIcon(item.rightIcon) : null;
-            const leftIcon = item.leftIcon && (item.leftIcon.fontIcon || item.leftIcon.svgIcon) ? Icon.getIcon(item.leftIcon) : null;
+      });
+    } else if (this.props.items) {
+      menuItems = (this.props.items.map((item) => {
+        let rightIcon;
+        if (item.items && item.items.length) {
+          rightIcon = <RightArrow />;
+        } else if (item.rightIcon && (item.rightIcon.fontIcon || item.rightIcon.svgIcon)) {
+          Icon.getIcon(item.rightIcon);
+        }
 
-            return (
-              <MenuItem
-                className={this.props.classes.menuItem}
-                context={this.props.context}
-                key={item.value}
-                value={item.value}
-                primaryText={item.text}
-                items={item.items}
-                rightIcon={rightIcon}
-                leftIcon={leftIcon}
-                itemSelected={this.onChange.bind(this)} />
-            );
-          })) : [];
+        let leftIcon;
+        if (item.leftIcon && (item.leftIcon.fontIcon || item.leftIcon.svgIcon)) {
+          leftIcon = Icon.getIcon(item.leftIcon);
+        }
+
+        return (
+          <MenuItem
+            className={this.props.classes.menuItem}
+            context={this.props.context}
+            key={item.value}
+            value={item.value}
+            primaryText={item.text}
+            items={item.items}
+            rightIcon={rightIcon}
+            leftIcon={leftIcon}
+            itemSelected={this.onChange} />
+        );
+      }));
+    }
 
     let icon = <MoreVertIcon />;
     switch (this.props.iconType) {
@@ -256,8 +270,8 @@ class IconMenu extends ComponentBase {
           >
             {menuItems}
           </MenuList>
-        </Popover >
-      </div >
+        </Popover>
+      </div>
     );
   }
 }

@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { withStyles } from '@material-ui/core/styles';
-import { Icon } from '@boa/components/Icon';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Icon } from '@boa/components/Icon'; // eslint-disable-line import/no-unresolved
+import {
+  ComponentBase,
+  ComponentComposer,
+} from '@boa/base'; // eslint-disable-line import/no-unresolved
 
 const styles = theme => ({
   root: {
@@ -63,11 +66,8 @@ class IconButton extends ComponentBase {
     */
     ...ComponentBase.propTypes,
     /**
-     * Tooltip
-     */
-    tooltip: PropTypes.string,
-    /**
-     * The color of the component. It supports those theme colors that make sense for this component.
+     * The color of the component.
+     * It supports those theme colors that make sense for this component.
      */
     color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
     /**
@@ -79,33 +79,50 @@ class IconButton extends ComponentBase {
      */
     disableRipple: PropTypes.bool,
     /**
-     * If `true`, the base button will have a keyboard focus ripple. disableRipple` must also be `false`.
+     * Icon name from BOA icon library.
+     */
+    dynamicIcon: PropTypes.string,
+    /**
+     * If `true`, the base button will have a keyboard focus ripple.
+     * disableRipple` must also be `false`.
      */
     focusRipple: PropTypes.bool,
+    /**
+      * Font icon name from font icon's library.
+     */
+    fontIcon: PropTypes.string,
     /**
      * @ignore
      */
     onClick: PropTypes.func,
     /**
      * Override the style of element
-     */
-    style: PropTypes.object,
-    /**
-      * Font icon name from font icon's library.
       */
-    fontIcon: PropTypes.string,
+    style: PropTypes.object,
     /**
      * SVG Icon name from material svg icon library.
      */
     svgIcon: PropTypes.string,
     /**
-     * Icon name from BOA icon library.
+     * Tooltip
      */
-    dynamicIcon: PropTypes.string,
+    tooltip: PropTypes.string,
     /**
      * Tooltip position
      */
-    tooltipPosition: PropTypes.oneOf(['bottom-end', 'bottom-start', 'bottom', 'left-end', 'left-start', 'left', 'right-end', 'right-start', 'right', 'top-end', 'top-start', 'top']),
+    tooltipPosition: PropTypes.oneOf([
+      'bottom-end',
+      'bottom-start',
+      'bottom',
+      'left-end',
+      'left-start',
+      'left',
+      'right-end',
+      'right-start',
+      'right',
+      'top-end',
+      'top-start',
+      'top']),
   };
 
   static defaultProps = {
@@ -114,7 +131,7 @@ class IconButton extends ComponentBase {
     color: 'default',
     disabled: false,
     disableRipple: false,
-    focusRipple: true
+    focusRipple: true,
   };
 
   constructor(props, context) {
@@ -148,7 +165,9 @@ class IconButton extends ComponentBase {
   }
 
   onBlur(e) {
-    this.props.onBlur && this.props.onBlur(e);
+    if (this.props.onBlur) {
+      this.props.onBlur(e);
+    }
   }
 
   handleTooltipClose = () => {
@@ -160,13 +179,12 @@ class IconButton extends ComponentBase {
   };
 
   render() {
-
     const { classes } = this.props;
-    let tooltipTitle = this.props.tooltip;
-    let tooltipPosition = this.props.tooltipPosition;
+    const tooltipTitle = this.props.tooltip;
+    const tooltipPosition = this.props.tooltipPosition;
 
 
-    let iconButton = (
+    const iconButton = (
       <ButtonBase
         classes={{
           root: classes.root,
@@ -184,7 +202,7 @@ class IconButton extends ComponentBase {
 
     return (
       tooltipTitle ?
-        (<Tooltip title={tooltipTitle} placement={tooltipPosition} >{iconButton}</Tooltip>)
+        (<Tooltip title={tooltipTitle} placement={tooltipPosition}>{iconButton}</Tooltip>)
         :
         iconButton
     );

@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Icon } from '@boa/components/Icon';
 import { Label } from '@boa/components/Label';
-
 import merge from 'lodash/merge';
 
 const styles = theme => ({
@@ -17,14 +16,14 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row-reverse',
     justifyContent: 'space-between',
-    direction: 'ltr'
+    direction: 'ltr',
   },
   label: {
-    color: theme.boaPalette.base400
+    color: theme.boaPalette.base400,
   },
   isRTL: {
-    flexDirection: 'row'
-  }
+    flexDirection: 'row',
+  },
 });
 
 @ComponentComposer
@@ -50,7 +49,19 @@ class Toggle extends ComponentBase {
     /**
      * Indicates the style of icon.
      */
+    errorText: PropTypes.string,
+    /**
+     * Indicates the icon properties.
+     */
+    iconProperties: PropTypes.object,
+    /**
+     * Indicates the style of icon.
+     */
     iconStyle: PropTypes.object,
+    /**
+     * Indicates the icon information text.
+     */
+    informationText: PropTypes.string,
     /**
      * Indicates the style of input.
      */
@@ -76,6 +87,10 @@ class Toggle extends ComponentBase {
      */
     style: PropTypes.object,
     /**
+     * Indicates the toggled or not.
+     */
+    toggled: PropTypes.bool,
+    /**
      * Indicates the style of track switched.
      */
     trackSwitchedStyle: PropTypes.object,
@@ -83,20 +98,6 @@ class Toggle extends ComponentBase {
      * Indicates the value of link.
      */
     valueLink: PropTypes.object,
-    /**
-     * Indicates the icon properties.
-     */
-    iconProperties: PropTypes.object,
-    /**
-     * Indicates the icon information text.
-     */
-    informationText: PropTypes.string,
-    /**
-     * Indicates the toggled or not.
-     */
-    toggled: PropTypes.bool,
-
-    errorText: PropTypes.string,
   };
 
   static defaultProps = {
@@ -107,17 +108,13 @@ class Toggle extends ComponentBase {
     defaultToggled: false,
     disabled: false,
     toggled: false,
-    labelPosition: 'left'
+    labelPosition: 'left',
   };
 
   state = {
     disabled: this.props.disabled,
-    toggled: this.props.toggled
+    toggled: this.props.toggled,
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   componentWillReceiveProps(nextProps) {
     super.componentWillReceiveProps(nextProps);
@@ -125,7 +122,8 @@ class Toggle extends ComponentBase {
       this.setState({ disabled: nextProps.disabled });
     }
 
-    if ((this.props.toggled != nextProps.toggled) && (nextProps.toggled != this.state.toggled)) {
+    if ((this.props.toggled !== nextProps.toggled) &&
+      (nextProps.toggled !== this.state.toggled)) {
       this.setState({ toggled: nextProps.toggled });
     }
   }
@@ -157,7 +155,7 @@ class Toggle extends ComponentBase {
   }
 
   render() {
-    let errorStyle = {
+    const errorStyle = {
       color: this.props.context.theme.boaPalette.error500,
       fontSize: 11,
       marginTop: 2,
@@ -165,24 +163,28 @@ class Toggle extends ComponentBase {
       textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left',
     };
     const { classes } = this.props;
-    var props = Object.assign({}, this.props);
+    const props = Object.assign({}, this.props);
     const { isRightToLeft } = this.props.context.localization;
 
     if (this.state.disabled) {
-      var iconProperties = { width: 20, height: 20, disabled: 'disabled' };
+      const iconProperties = {
+        width: 20,
+        height: 20,
+        disabled: 'disabled',
+      };
       if (isRightToLeft) merge(iconProperties, { style: { marginLeft: 10 } });
       else merge(iconProperties, { style: { marginRight: 10 } });
-      props.iconProperties = merge(iconProperties, props.iconProperties ? props.iconProperties : {});
+      props.iconProperties = merge(iconProperties, props.iconProperties || {});
     } else {
-      iconProperties = { style: { width: 20, height: 20 } };
+      const iconProperties = { style: { width: 20, height: 20 } };
       if (isRightToLeft) merge(iconProperties, { style: { marginLeft: 10 } });
       else merge(iconProperties, { style: { marginRight: 10 } });
-      props.iconProperties = merge(iconProperties, props.iconProperties ? props.iconProperties : {});
+      props.iconProperties = merge(iconProperties, props.iconProperties || {});
     }
-    var toggleIcon = Icon.getIcon(props);
+    const toggleIcon = Icon.getIcon(props);
 
     const rootClass = classNames(classes.root, {
-      [classes.isRTL]: isRightToLeft
+      [classes.isRTL]: isRightToLeft,
     });
 
     return (
@@ -203,7 +205,7 @@ class Toggle extends ComponentBase {
             }
             classes={{
               root: rootClass,
-              label: classes.label
+              label: classes.label,
             }}
             label={this.props.label}
           />
@@ -216,7 +218,11 @@ class Toggle extends ComponentBase {
           ) : null}
           {this.props.informationText ? (
             <Label
-              style={{ height: 16, fontSize: '11px', color: this.props.context.theme.boaPalette.base400 }}
+              style={{
+                height: 16,
+                fontSize: '11px',
+                color: this.props.context.theme.boaPalette.base400,
+              }}
               context={this.props.context}
               text={this.props.informationText}
             />

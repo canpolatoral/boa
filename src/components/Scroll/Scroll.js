@@ -19,32 +19,31 @@ const handlerNameByEvent = {
 Object.freeze(handlerNameByEvent);
 @ComponentComposer
 class Scroll extends ComponentBase {
-
   static propTypes = {
     ...ComponentBase.propTypes,
     children: PropTypes.node.isRequired,
     disabled: PropTypes.bool,
-    option: PropTypes.object,
-    onScrollY: PropTypes.func,
-    onScrollX: PropTypes.func,
-    onScrollUp: PropTypes.func,
+    divStyle: PropTypes.object,
     onScrollDown: PropTypes.func,
     onScrollLeft: PropTypes.func,
     onScrollRight: PropTypes.func,
-    onYReachStart: PropTypes.func,
-    onYReachEnd: PropTypes.func,
-    onXReachStart: PropTypes.func,
+    onScrollUp: PropTypes.func,
+    onScrollX: PropTypes.func,
+    onScrollY: PropTypes.func,
     onXReachEnd: PropTypes.func,
+    onXReachStart: PropTypes.func,
+    onYReachEnd: PropTypes.func,
+    onYReachStart: PropTypes.func,
+    option: PropTypes.object,
     style: PropTypes.object,
-    divStyle: PropTypes.object
   };
 
   static defaultProps = {
-    divStyle: { overflow: 'auto' }
+    divStyle: { overflow: 'auto' },
   }
 
   state = {
-    disabled: this.props.disabled
+    disabled: this.props.disabled,
   };
 
   constructor(props, context) {
@@ -57,7 +56,8 @@ class Scroll extends ComponentBase {
     if (this.mbContainer) {
       this.fixMobileScroll();
     } else {
-      let innerStyleScroll = { minScrollbarLength: 16 }; // scrool min height 16 px olması isteniyor.
+      // scrool min height 16 px olması isteniyor.
+      const innerStyleScroll = { minScrollbarLength: 16 };
       this.ps = new PerfectScrollbar(this.container, merge(innerStyleScroll, this.props.option));
       // hook up events
       Object.keys(handlerNameByEvent).forEach((key) => {
@@ -96,17 +96,17 @@ class Scroll extends ComponentBase {
   }
 
   fixMobileScroll() {
-    var mbcontainerDomNode = ReactDOM.findDOMNode(this.mbContainer);
-    var parentHeight;
-    if (mbcontainerDomNode.parentNode.clientHeight != 0) {
+    const mbcontainerDomNode = ReactDOM.findDOMNode(this.mbContainer);
+    let parentHeight;
+    if (mbcontainerDomNode.parentNode.clientHeight !== 0) {
       parentHeight = mbcontainerDomNode.parentNode.clientHeight;
     } else { // workaround olarak tab için konuldu. burası kökten düzeltilmeli (coral)
-      var oldHeight = mbcontainerDomNode.parentNode.parentNode.style.height;
+      const oldHeight = mbcontainerDomNode.parentNode.parentNode.style.height;
       mbcontainerDomNode.parentNode.parentNode.style.height = '';
       parentHeight = mbcontainerDomNode.parentNode.clientHeight;
       mbcontainerDomNode.parentNode.parentNode.style.height = oldHeight;
     }
-    mbcontainerDomNode.style.height = parentHeight.toString() + 'px';
+    mbcontainerDomNode.style.height = `${parentHeight.toString()}px`;
   }
 
   setDisable(value) {
@@ -126,8 +126,7 @@ class Scroll extends ComponentBase {
     if (this.container) {
       if (!this.props.context.localization.isRightToLeft) {
         this.container.scrollLeft = left;
-      }
-      else {
+      } else {
         this.container.scrollRight = left;
       }
       this.ps.update();
@@ -141,17 +140,20 @@ class Scroll extends ComponentBase {
   }
 
   render() {
-    let childs = Utils.getFormChildren(this.props.children, this.state.disabled);
+    const childs = Utils.getFormChildren(this.props.children, this.state.disabled);
     const { context } = this.props;
     let divStyle = { overflow: 'auto' };
     divStyle = Object.assign({}, divStyle, this.props.divStyle);
     let innerStyle = { direction: 'ltr' };
     innerStyle = Object.assign({}, innerStyle, this.props.style);
 
-    if (context.platform == Platforms.MOBILE || context.platform == Platforms.TABLET) {
+    if (context.platform === Platforms.MOBILE || context.platform === Platforms.TABLET) {
       divStyle = Object.assign({}, divStyle, { '-webkit-overflow-scrolling': 'touch' });
       if (this.props.context.localization.isRightToLeft) {
-        divStyle = divStyle = Object.assign({}, divStyle, { direction: 'rtl', '-webkit-overflow-scrolling': 'touch' });
+        divStyle = Object.assign({}, divStyle, {
+          direction: 'rtl',
+          '-webkit-overflow-scrolling': 'touch',
+        });
       }
       return (
         <div style={divStyle} ref={(ref) => { this.mbContainer = ref; }}>
@@ -160,19 +162,20 @@ class Scroll extends ComponentBase {
           </div>
         </div>
       );
-    } else {
-      if (this.props.context.localization.isRightToLeft) {
-        divStyle = { direction: 'rtl' };
-      }
-      return (
-        <div className="scrollbar-container" style={divStyle} ref={(ref) => { this.container = ref; }}>
-          <div style={innerStyle}>
-            {childs}
-          </div>
-        </div>
-      );
     }
+    if (this.props.context.localization.isRightToLeft) {
+      divStyle = { direction: 'rtl' };
+    }
+    return (
+      <div
+        className="scrollbar-container"
+        style={divStyle}
+        ref={(ref) => { this.container = ref; }}>
+        <div style={innerStyle}>
+          {childs}
+        </div>
+      </div>
+    );
   }
 }
-
 export default Scroll;

@@ -14,14 +14,25 @@ const styles = {
 
 class ScrollbarSize extends Component {
   static propTypes = {
-    onLoad: PropTypes.func,
     onChange: PropTypes.func,
+    onLoad: PropTypes.func,
   };
 
   static defaultProps = {
     onLoad: null,
     onChange: null,
   };
+
+  handleResize = stifle(() => {
+    const { onChange } = this.props;
+
+    const prevHeight = this.scrollbarHeight;
+    const prevWidth = this.scrollbarWidth;
+    this.setMeasurements();
+    if (prevHeight !== this.scrollbarHeight || prevWidth !== this.scrollbarWidth) {
+      onChange({ scrollbarHeight: this.scrollbarHeight, scrollbarWidth: this.scrollbarWidth });
+    }
+  }, 166); // Corresponds to 10 frames at 60 Hz.
 
   componentDidMount() {
     const { onLoad } = this.props;
@@ -40,17 +51,6 @@ class ScrollbarSize extends Component {
     this.scrollbarHeight = this.node.offsetHeight - this.node.clientHeight;
     this.scrollbarWidth = this.node.offsetWidth - this.node.clientWidth;
   };
-
-  handleResize = stifle(() => {
-    const { onChange } = this.props;
-
-    const prevHeight = this.scrollbarHeight;
-    const prevWidth = this.scrollbarWidth;
-    this.setMeasurements();
-    if (prevHeight !== this.scrollbarHeight || prevWidth !== this.scrollbarWidth) {
-      onChange({ scrollbarHeight: this.scrollbarHeight, scrollbarWidth: this.scrollbarWidth });
-    }
-  }, 166); // Corresponds to 10 frames at 60 Hz.
 
   render() {
     const { onChange } = this.props;

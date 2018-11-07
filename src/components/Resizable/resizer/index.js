@@ -1,3 +1,5 @@
+/* eslint-disable no-bitwise, jsx-a11y/click-events-have-key-events,
+jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Resizer from './resizer';
@@ -12,60 +14,60 @@ const directions = [
 export default class Resizable extends Component {
   static propTypes = {
     children: PropTypes.any,
-    onClick: PropTypes.func,
-    onDoubleClick: PropTypes.func,
-    onMouseDown: PropTypes.func,
-    onResizeStop: PropTypes.func,
-    onResizeStart: PropTypes.func,
-    onTouchStart: PropTypes.func,
-    onResize: PropTypes.func,
-    customStyle: PropTypes.object,
-    handleStyle: PropTypes.shape({
-      top: PropTypes.object,
-      right: PropTypes.object,
-      bottom: PropTypes.object,
-      left: PropTypes.object,
-      topRight: PropTypes.object,
-      bottomRight: PropTypes.object,
-      bottomLeft: PropTypes.object,
-      topLeft: PropTypes.object,
-    }),
-    handleClass: PropTypes.shape({
-      top: PropTypes.string,
-      right: PropTypes.string,
-      bottom: PropTypes.string,
-      left: PropTypes.string,
-      topRight: PropTypes.string,
-      bottomRight: PropTypes.string,
-      bottomLeft: PropTypes.string,
-      topLeft: PropTypes.string,
-    }),
-    isResizable: PropTypes.shape({
-      top: PropTypes.bool,
-      right: PropTypes.bool,
-      bottom: PropTypes.bool,
-      left: PropTypes.bool,
-      topRight: PropTypes.bool,
-      bottomRight: PropTypes.bool,
-      bottomLeft: PropTypes.bool,
-      topLeft: PropTypes.bool,
-    }),
     customClass: PropTypes.string,
-    width: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
+    customStyle: PropTypes.object,
+    extendsProps: PropTypes.object,
+    grid: PropTypes.arrayOf(PropTypes.number),
+    handleClass: PropTypes.shape({
+      bottom: PropTypes.string,
+      bottomLeft: PropTypes.string,
+      bottomRight: PropTypes.string,
+      left: PropTypes.string,
+      right: PropTypes.string,
+      top: PropTypes.string,
+      topLeft: PropTypes.string,
+      topRight: PropTypes.string,
+    }),
+    handleStyle: PropTypes.shape({
+      bottom: PropTypes.object,
+      bottomLeft: PropTypes.object,
+      bottomRight: PropTypes.object,
+      left: PropTypes.object,
+      right: PropTypes.object,
+      top: PropTypes.object,
+      topLeft: PropTypes.object,
+      topRight: PropTypes.object,
+    }),
     height: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.string,
     ]),
-    minWidth: PropTypes.number,
-    minHeight: PropTypes.number,
-    maxWidth: PropTypes.number,
-    maxHeight: PropTypes.number,
-    grid: PropTypes.arrayOf(PropTypes.number),
+    isResizable: PropTypes.shape({
+      bottom: PropTypes.bool,
+      bottomLeft: PropTypes.bool,
+      bottomRight: PropTypes.bool,
+      left: PropTypes.bool,
+      right: PropTypes.bool,
+      top: PropTypes.bool,
+      topLeft: PropTypes.bool,
+      topRight: PropTypes.bool,
+    }),
     lockAspectRatio: PropTypes.bool.isRequired,
-    extendsProps: PropTypes.object,
+    maxHeight: PropTypes.number,
+    maxWidth: PropTypes.number,
+    minHeight: PropTypes.number,
+    minWidth: PropTypes.number,
+    onClick: PropTypes.func,
+    onDoubleClick: PropTypes.func,
+    onMouseDown: PropTypes.func,
+    onResize: PropTypes.func,
+    onResizeStart: PropTypes.func,
+    onResizeStop: PropTypes.func,
+    onTouchStart: PropTypes.func,
+    width: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
   };
 
   static defaultProps = {
@@ -73,14 +75,19 @@ export default class Resizable extends Component {
     onResize: () => null,
     onResizeStop: () => null,
     isResizable: {
-      top: true, right: true, bottom: true, left: true,
-      topRight: true, bottomRight: true, bottomLeft: true, topLeft: true,
+      top: true,
+      right: true,
+      bottom: true,
+      left: true,
+      topRight: true,
+      bottomRight: true,
+      bottomLeft: true,
+      topLeft: true,
     },
     customStyle: {},
     handleStyle: {},
     handleClass: {},
     grid: [1, 1],
-    lockAspectRatio: false,
   }
 
   constructor(props, context) {
@@ -182,7 +189,7 @@ export default class Resizable extends Component {
       width: width !== 'auto' ? newWidth : 'auto',
       height: height !== 'auto' ? newHeight : 'auto',
     });
-    const resizable = this.refs.resizable;
+    const resizable = this.resizable;
     const styleSize = {
       width: newWidth || this.state.width,
       height: newHeight || this.state.height,
@@ -201,7 +208,7 @@ export default class Resizable extends Component {
   onMouseUp() {
     const { isActive, direction, original } = this.state;
     if (!isActive) return;
-    const resizable = this.refs.resizable;
+    const resizable = this.resizable;
     const styleSize = this.getBoxSize();
     const clientSize = {
       width: resizable.clientWidth,
@@ -218,8 +225,8 @@ export default class Resizable extends Component {
   onResizeStart(direction, e) {
     const ev = e.touches ? e.touches[0] : e;
     const clientSize = {
-      width: this.refs.resizable.clientWidth,
-      height: this.refs.resizable.clientHeight,
+      width: this.resizable.clientWidth,
+      height: this.resizable.clientHeight,
     };
     this.props.onResizeStart(direction, this.getBoxSize(), clientSize, e);
     const size = this.getBoxSize();
@@ -239,7 +246,7 @@ export default class Resizable extends Component {
     let width = '0';
     let height = '0';
     if (typeof window !== 'undefined') {
-      const style = window.getComputedStyle(this.refs.resizable, null);
+      const style = window.getComputedStyle(this.resizable, null);
       width = ~~style.getPropertyValue('width').replace('px', '');
       height = ~~style.getPropertyValue('height').replace('px', '');
     }
@@ -247,17 +254,18 @@ export default class Resizable extends Component {
   }
 
   setSize(size) {
+    const { width, height } = this.state;
     this.setState({
-      width: this.state.width || size.width,
-      height: this.state.height || size.height,
+      width: width || size.width,
+      height: height || size.height,
     });
   }
 
   getBoxStyle() {
     const getSize = key => {
       if (typeof this.state[key] === 'undefined' || this.state[key] === 'auto') return 'auto';
-      else if (/px$/.test(this.state[key].toString())) return this.state[key];
-      else if (/%$/.test(this.state[key].toString())) return this.state[key];
+      if (/px$/.test(this.state[key].toString())) return this.state[key];
+      if (/%$/.test(this.state[key].toString())) return this.state[key];
       return `${this.state[key]}px`;
     };
     return {
@@ -304,10 +312,10 @@ export default class Resizable extends Component {
       };
     const style = this.getBoxStyle();
     const { onClick, customStyle, customClass,
-            onMouseDown, onDoubleClick, onTouchStart } = this.props;
+      onMouseDown, onDoubleClick, onTouchStart } = this.props;
     return (
       <div
-        ref="resizable"
+        ref={r => this.resizable = r}
         style={{
           position: 'relative',
           ...userSelect,

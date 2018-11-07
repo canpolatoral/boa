@@ -1,3 +1,5 @@
+/* eslint-disable no-bitwise, jsx-a11y/click-events-have-key-events,
+jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
@@ -70,13 +72,13 @@ const styles = {
 
 export default class Resizer extends Component {
   static propTypes = {
+    className: PropTypes.string,
     onResizeStart: PropTypes.func,
+    replaceStyles: PropTypes.object,
     type: PropTypes.oneOf([
       'top', 'right', 'bottom', 'left',
       'topRight', 'bottomRight', 'bottomLeft', 'topLeft',
     ]).isRequired,
-    replaceStyles: PropTypes.object,
-    className: PropTypes.string,
   }
 
   constructor(props, context) {

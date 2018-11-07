@@ -1,26 +1,23 @@
-
 import React from 'react';
 import Draggable from 'react-draggable';
 import { ComponentBase, ComponentComposer } from '@boa/base';
-
 import InnerResizable from './resizer';
 
 const boxStyle = {
   width: '100%',
   height: '100%',
-  display: 'inline-block'
+  display: 'inline-block',
 };
 
 const contentStyle = {
   width: '100%',
   height: '100%',
   display: 'inline-block',
-  overflow: 'auto'
+  overflow: 'auto',
 };
 
 @ComponentComposer
 class Resizable extends ComponentBase {
-
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -38,7 +35,7 @@ class Resizable extends ComponentBase {
       },
       maxWidth: props.maxWidth,
       maxHeight: props.maxHeight,
-      enable: props.enable
+      enable: props.enable,
     };
     this.onResizeStart = this.onResizeStart.bind(this);
     this.onResize = this.onResize.bind(this);
@@ -100,9 +97,9 @@ class Resizable extends ComponentBase {
       const target = this.props.bounds === 'parent'
         ? parent
         : document.querySelector(this.props.bounds);
-      const self = this.wrapper;
+      const self = this;
       if (target instanceof HTMLElement && parent instanceof HTMLElement) {
-        const selfRect = self.getBoundingClientRect();
+        const selfRect = self.wrapper.getBoundingClientRect();
         const selfLeft = selfRect.left;
         const selfTop = selfRect.top;
         const targetRect = target.getBoundingClientRect();
@@ -143,9 +140,9 @@ class Resizable extends ComponentBase {
       const target = this.props.bounds === 'parent'
         ? parent
         : document.querySelector(this.props.bounds);
-      const self = this.wrapper;
+      const self = this;
       if (target instanceof HTMLElement && parent instanceof HTMLElement) {
-        const selfRect = self.getBoundingClientRect();
+        const selfRect = self.wrapper.getBoundingClientRect();
         const parentRect = parent.getBoundingClientRect();
         selfLeft = selfRect.left;
         selfTop = selfRect.top;
@@ -184,7 +181,11 @@ class Resizable extends ComponentBase {
   }
 
   updateSize(size) {
-    this.resizable.updateSize({ width: size.width || this.props.default.width, height: size.height || this.props.default.height });
+    const defaultSizes = this.props.default;
+    this.resizable.updateSize({
+      width: size.width || defaultSizes.width,
+      height: size.height || defaultSizes.height,
+    });
   }
 
   updatePosition(position) {
@@ -237,7 +238,7 @@ class Resizable extends ComponentBase {
             isResizable={this.props.isResizable}
           >
             <div
-              className='b-resizable-content'
+              className="b-resizable-content"
               style={{ ...contentStyle }}
             >
               {this.props.children}

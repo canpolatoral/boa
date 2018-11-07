@@ -7,7 +7,7 @@ export interface ComponentBaseProps {
   isVisible?: boolean;
   newLine?: boolean;
   persistState?: boolean;
-  size?: number;
+  componentSize?: number;
   snapKey?: string;
   snapshot?: object;
   style?: object;

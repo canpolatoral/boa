@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import EventListener from 'react-event-listener';
 import React from 'react';
 import { spy } from 'sinon';
-import ScrollbarSize from './';
+import ScrollbarSize from './ScrollbarSize';
 
 describe('<ScrollbarSize />', () => {
   describe('prop: onLoad', () => {

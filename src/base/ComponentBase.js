@@ -8,13 +8,19 @@ import { shallowEqual } from './utils';
 
 export default class ComponentBase extends Component {
   static propTypes = {
+    componentSize: PropTypes.oneOf([
+      ComponentSize.LARGE,
+      ComponentSize.MEDIUM,
+      ComponentSize.SMALL,
+      ComponentSize['1'],
+      ComponentSize['2'],
+      ComponentSize['3']]),
     context: PropTypes.object,
     disabled: PropTypes.bool,
     id: PropTypes.string,
     isVisible: PropTypes.bool,
     newLine: PropTypes.bool,
     persistState: PropTypes.bool,
-    size: PropTypes.instanceOf(ComponentSize),
     snapKey: PropTypes.string,
     snapshot: PropTypes.object,
     style: PropTypes.object,
@@ -23,7 +29,7 @@ export default class ComponentBase extends Component {
 
   static defaultProps = {
     disabled: false,
-    size: ComponentSize.LARGE,
+    componentSize: ComponentSize.LARGE,
     newLine: false,
     isVisible: true,
   }

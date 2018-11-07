@@ -182,7 +182,7 @@ export class Utils {
               let newChild = React.cloneElement(child,
                 {
                   key: child.props.key ? child.props.key : this.getUniqueKey(true),
-                  size: child.props.size ? child.props.size : ComponentSize.LARGE,
+                  componentSize: child.props.componentSize ? child.props.componentSize : ComponentSize.LARGE,
                   newLine: child.props.newLine ? child.props.newLine : false,
                   disabled: child.props && child.props.disabled ? true : isDisabled
                 });

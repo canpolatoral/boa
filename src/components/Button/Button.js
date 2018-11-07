@@ -174,7 +174,7 @@ class Button extends ComponentBase {
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
         disableFocusRipple={this.state.disabled}
-        onClick={this.onClick.bind}
+        onClick={this.onClick}
         variant={variant}
         size={this.props.buttonSize}
         mini={this.props.mini}
@@ -192,7 +192,7 @@ class Button extends ComponentBase {
         style={this.props.style}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        onClick={this.onClick.bind}
+        onClick={this.onClick}
       >
         {Icon.getIcon(this.props)}
       </MuiIconButton>

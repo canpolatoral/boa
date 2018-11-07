@@ -1,12 +1,12 @@
 
 import { getTheme } from '@boa/base';
 
-var context = {};
+const context = {};
 context.theme = getTheme({ themeName: 'violet' });
 context.localization = [];
 context.localization.isRightToLeft = false;
 context.language = 1;
 
-export function getContext() {
+export default function getContext() {
   return context;
 }

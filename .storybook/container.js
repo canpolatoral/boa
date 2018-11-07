@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { AppProvider, ComponentBase, setLocalization, getTheme } from '@boa/base';
 import { Localization } from '@boa/utils';
 
-import { getContext } from '../stories/base/context';
+import getContext from '../stories/base/context';
 
 export default class Container extends ComponentBase {
 

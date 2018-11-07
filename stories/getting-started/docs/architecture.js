@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 export default `# Achitecture
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id lobortis orci. Phasellus pulvinar nulla vel purus rutrum venenatis. Fusce tincidunt nisi nec erat efficitur, vehicula commodo mi posuere. Nunc non cursus nulla, id dictum risus. Vestibulum laoreet, metus at malesuada porta, nisl neque tincidunt velit, vitae ullamcorper ex velit id erat. Nunc sit amet ex porttitor ex venenatis elementum vestibulum eget erat. Vivamus et ipsum auctor nunc viverra congue. Sed ac tortor dictum, consectetur orci vitae, pretium elit. Nam vel mi purus. Sed venenatis sit amet augue a maximus. Mauris id efficitur nulla. Nullam vestibulum neque eget dolor semper, quis malesuada libero convallis. Suspendisse potenti. Mauris mollis orci at ipsum blandit, et mattis nibh sagittis.

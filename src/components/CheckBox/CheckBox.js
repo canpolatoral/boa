@@ -133,15 +133,20 @@ class CheckBox extends ComponentBase {
     errorTextVisible: true,
   };
 
+  /* eslint-disable max-len */
   state = {
-    isChecked: this.props.checked || this.props.defaultChecked,
-    disabled: this.props.disabled,
+    isChecked: this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
   };
 
   constructor(props, context) {
     super(props, context);
     this.onCheck = this.onCheck.bind(this);
+    this.state = {
+      isChecked: this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
+      disabled: this.props.disabled,
+    };
   }
+  /* eslint-enable max-len */
 
   componentWillReceiveProps(nextProps) {
     const { checked, defaultChecked, disabled } = nextProps;

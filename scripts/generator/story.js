@@ -41,16 +41,14 @@ const createStoryFile = (folderName, fileName, story) => {
 
 const generateSingleStory = (component) => {
   return `
+  /* eslint-disable max-len */
   import React from 'react';
   import { storiesOf } from '@storybook/react';
-
   import { ${component} } from '../../src/components/${component}';
-
   import Header from '../base/header';
   import Props from '../base/props-table';
   import Preview from '../base/preview';
-
-  const doc = require('./doc.json');
+  import doc from './doc.json';
 
   const stories = storiesOf('${component}', module);
 
@@ -61,8 +59,7 @@ const generateSingleStory = (component) => {
         <Preview {...props} component={${component}} doc={doc} />
         <Props {...props} component={${component}} doc={doc} />
       </div>);
-  });
-  `;
+  });`;
 };
 
 const generate = () => {

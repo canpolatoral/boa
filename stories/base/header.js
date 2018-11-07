@@ -1,24 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DocViewer } from '@boa/components/DocViewer';
 
 export default class ComponentInfo extends React.Component {
+  static propTypes = {
+    doc: PropTypes.any,
+  }
 
-  constructor(props) {
-    super(props);
+  prepareData() {
+    let doc = `# ${this.props.doc.displayName}`;
+    doc = `${doc}\n${this.props.doc.description}`;
+
+    return doc;
   }
 
   render() {
     const data = this.prepareData();
     return (
-      <DocViewer content={data} editorType='github' />
+      <DocViewer content={data} editorType="github" />
     );
   }
-
-  prepareData() {
-    let doc = '# ' + this.props.doc.displayName;
-    doc = doc + '\n' + this.props.doc.description;
-
-    return doc;
-  }
-
 }

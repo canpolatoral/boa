@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 export default `# Installation
 
 <p class="description">Install Material-UI, the world's most popular React UI framework.</p>

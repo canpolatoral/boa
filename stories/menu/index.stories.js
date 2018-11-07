@@ -1,14 +1,12 @@
 
+  /* eslint-disable max-len */
   import React from 'react';
   import { storiesOf } from '@storybook/react';
-
   import { Menu } from '../../src/components/Menu';
-
   import Header from '../base/header';
   import Props from '../base/props-table';
   import Preview from '../base/preview';
-
-  const doc = require('./doc.json');
+  import doc from './doc.json';
 
   const stories = storiesOf('Menu', module);
 
@@ -20,4 +18,3 @@
         <Props {...props} component={Menu} doc={doc} />
       </div>);
   });
-  

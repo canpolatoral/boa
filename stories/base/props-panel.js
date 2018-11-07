@@ -1,26 +1,23 @@
 import React from 'react';
-
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
-
 import ReactJson from 'react-json-view';
-
 import { Input } from '@boa/components/Input';
 import { InputNumeric } from '@boa/components/InputNumeric';
 import { Toggle } from '@boa/components/Toggle';
 import { Scroll } from '@boa/components/Scroll';
-
 import { ComponentBase } from '@boa/base';
+import { generateDefaultValue } from './utils';
 
 const style = {
   scrollStyle: { maxHeight: 300, padding: '24px', wordWrap: 'break-word' },
   menuItem: { paddingBottom: '12px', wordWrap: 'break-word' },
   menuItemDivider: { marginLeft: '0', marginRight: '0', marginTop: '6px', marginBottom: '18px' },
-  buttonStyle: { height: 40, minWidth: '100%', textAlign: 'left' }
+  buttonStyle: { height: 40, minWidth: '100%', textAlign: 'left' },
 };
 
 const themeItems = [
@@ -37,7 +34,7 @@ const languageItems = [
   { title: 'English', value: 2 },
   { title: 'Deutsch', value: 3 },
   { title: 'русский', value: 4 },
-  { title: 'العربية', value: 5 }
+  { title: 'العربية', value: 5 },
 ];
 
 export default class Playground extends ComponentBase {
@@ -66,7 +63,7 @@ export default class Playground extends ComponentBase {
     return (
       <Input
         context={this.props.context}
-        type='text'
+        type="text"
         value={value}
         floatingLabelText={property.name}
         hintText={property.name}
@@ -95,7 +92,7 @@ export default class Playground extends ComponentBase {
       <Toggle
         context={this.props.context}
         label={property.label ? property.label : property.name}
-        labelPosition='left'
+        labelPosition="left"
         defaultToggled={value}
         toggled={value}
         onToggle={(event, isInputChecked) => this.onPropertyChanged(property.name, isInputChecked)}
@@ -116,11 +113,10 @@ export default class Playground extends ComponentBase {
           onAdd={() => {
           }}
           onEdit={(src) => {
-            self.onPropertyChanged(property.name, src['updated_src']);
+            self.onPropertyChanged(property.name, src.updated_src);
           }}
           onDelete={(src) => {
-            console.log('delete');
-            self.onPropertyChanged(property.name, src['updated_src']);
+            self.onPropertyChanged(property.name, src.updated_src);
           }}
         />
       </div>
@@ -169,13 +165,6 @@ export default class Playground extends ComponentBase {
   //   );
   // }
 
-  getType(obj) {
-    return {}.toString
-      .call(obj)
-      .match(/\s([a-zA-Z]+)/)[1]
-      .toLowerCase();
-  }
-
   getComponent(property, value) {
     const self = this;
     if (property.values && property.values.length > 0) {
@@ -198,72 +187,29 @@ export default class Playground extends ComponentBase {
           </FormControl>
         </div>);
     }
-    else if (property.type.toLowerCase().includes('shape')) {
+    if (property.type.toLowerCase().includes('shape')) {
       return this.getShape(property, value);
     }
-    else if (property.type.toLowerCase().includes('date')) {
+    if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
-    } else if (property.type.toLowerCase().includes('string')) {
+    } if (property.type.toLowerCase().includes('string')) {
       return this.getBInput(property, value);
-    } else if (property.type.toLowerCase().includes('number')) {
+    } if (property.type.toLowerCase().includes('number')) {
       return this.getBInputNumeric(property, value);
-    } else if (property.type.toLowerCase().includes('bool')) {
+    } if (property.type.toLowerCase().includes('bool')) {
       return this.getBToggle(property, value);
-    } else if (property.type.toLowerCase().includes('object') || property.type.toLowerCase().includes('array')) {
-      return this.getJsonViewer(property, this.getDefaultValue(property.type));
-    } else {
-      return null;
+    } if (property.type.toLowerCase().includes('object') ||
+      property.type.toLowerCase().includes('array')) {
+      return this.getJsonViewer(property, generateDefaultValue(property.type));
     }
-  }
-
-  convertType(value, type) {
-    switch (type) {
-      case 'number': {
-        if (typeof value === 'number') return value;
-        let convertedValue = Number(value);
-        if (!convertedValue || isNaN(convertedValue)) convertedValue = this.getDefaultValue(type);
-        return convertedValue;
-      }
-      case 'boolean': {
-        if (typeof value === 'boolean') return value;
-        let convertedValue = Boolean(value);
-        if (!convertedValue || isNaN(convertedValue)) convertedValue = this.getDefaultValue(type);
-        return convertedValue;
-      }
-      case 'string': {
-        if (typeof value === 'string') return value;
-        let convertedValue = String(value);
-        if (!convertedValue || isNaN(convertedValue)) convertedValue = this.getDefaultValue(type);
-        return convertedValue;
-      }
-      default:
-        return undefined;
-    }
-  }
-
-  getDefaultValue(type) {
-    switch (type) {
-      case 'number':
-        return 0;
-      case 'boolean':
-        return false;
-      case 'string':
-        return '';
-      case 'object':
-        return {};
-      case 'array': {
-        return [];
-      }
-      default:
-        return undefined;
-    }
+    return null;
   }
 
   render() {
     const { availableProperties } = this.props;
     const self = this;
 
-    if (!availableProperties || availableProperties.length == 0) {
+    if (!availableProperties || availableProperties.length === 0) {
       return null;
     }
 
@@ -271,7 +217,11 @@ export default class Playground extends ComponentBase {
       <div style={{ maxWidth: 300, position: 'relative' }}>
         <Paper>
           <div style={style.criteriaPanel}>
-            <Scroll context={this.props.context} option={{ suppressScrollX: true }} style={style.scrollStyle} divStyle={style.scrollStyle}>
+            <Scroll
+              context={this.props.context}
+              option={{ suppressScrollX: true }}
+              style={style.scrollStyle}
+              divStyle={style.scrollStyle}>
               <div>
                 <FormControl style={{ maxWidth: 300, width: '100%' }}>
                   <InputLabel htmlFor="theme">Theme</InputLabel>
@@ -280,7 +230,7 @@ export default class Playground extends ComponentBase {
                     onChange={
                       (event) => {
                         self.setState({
-                          selectedTheme: event.target.value
+                          selectedTheme: event.target.value,
                         });
                         if (self.props.onThemeChange) {
                           self.props.onThemeChange(event.target.value);
@@ -294,14 +244,21 @@ export default class Playground extends ComponentBase {
                     }
                   </Select>
                 </FormControl>
-                <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15, marginBottom: 15 }}>
+                <FormControl
+                  style={
+                    {
+                      maxWidth: 300,
+                      width: '100%',
+                      marginTop: 15,
+                      marginBottom: 15,
+                    }}>
                   <InputLabel htmlFor="lang">Language</InputLabel>
                   <Select
                     value={this.state.selectedLanguage}
                     onChange={
                       (event) => {
                         self.setState({
-                          selectedLanguage: event.target.value
+                          selectedLanguage: event.target.value,
                         });
                         if (self.props.onThemeChange) {
                           self.props.onLanguageChange(event.target.value);
@@ -315,10 +272,15 @@ export default class Playground extends ComponentBase {
                     }
                   </Select>
                 </FormControl>
-                {availableProperties.map((property, index) => {
+                {availableProperties.map((property, i) => {
+                  /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {
-                    return <div key={index}>{this.getComponent(property, property.default)}</div>;
+                    return (
+                      <div key={i}>
+                        {this.getComponent(property, property.default)}
+                      </div>);
                   }
+                  return undefined;
                 })}
               </div>
             </Scroll>

@@ -1,14 +1,12 @@
 
+  /* eslint-disable max-len */
   import React from 'react';
   import { storiesOf } from '@storybook/react';
-
   import { DocToc } from '../../src/components/DocToc';
-
   import Header from '../base/header';
   import Props from '../base/props-table';
   import Preview from '../base/preview';
-
-  const doc = require('./doc.json');
+  import doc from './doc.json';
 
   const stories = storiesOf('DocToc', module);
 
@@ -20,4 +18,3 @@
         <Props {...props} component={DocToc} doc={doc} />
       </div>);
   });
-  

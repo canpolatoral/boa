@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 export default `# What is BOA?
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ipsum elit, gravida at semper quis, molestie mollis augue. Donec fringilla lacus vitae nunc fermentum, id sagittis velit consectetur. Quisque mollis metus quis fermentum viverra. In lacus odio, condimentum at viverra mattis, ultricies in sem. Aenean maximus tortor id justo maximus, et condimentum diam porttitor. Fusce eu consectetur erat. Suspendisse nec pretium tellus. Fusce interdum viverra velit ut volutpat. Etiam aliquam neque id diam volutpat, et commodo lacus venenatis. Mauris mollis ex tortor, nec sollicitudin est viverra sit amet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis iaculis, nisi in varius dapibus, ante elit finibus velit, quis tempor nunc nibh et dui. Suspendisse dignissim volutpat mi, eget euismod orci varius faucibus. Ut imperdiet nisl velit, sed vulputate augue pharetra in. Maecenas sit amet hendrerit ante, id sagittis elit.
 

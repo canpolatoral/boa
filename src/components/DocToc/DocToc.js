@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase } from '@boa/base'; // eslint-disable-line import/no-unresolved
+import { ComponentBase } from '@boa/base';
 
 const getMinLevel = (content) => {
   let level = 0;

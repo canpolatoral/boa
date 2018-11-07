@@ -7,9 +7,9 @@ import MuiIconButton from '@material-ui/core/IconButton';
 import {
   ComponentBase,
   ComponentComposer,
-} from '@boa/base'; // eslint-disable-line import/no-unresolved
-import { Localization } from '@boa/utils'; // eslint-disable-line import/no-unresolved
-import { Icon } from '@boa/components/Icon'; // eslint-disable-line import/no-unresolved
+} from '@boa/base';
+import { Localization } from '@boa/utils'; //
+import { Icon } from '@boa/components/Icon'; //
 
 const styles = () => ({
   label: {

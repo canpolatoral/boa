@@ -19,6 +19,11 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['babel', 'import', 'jsx-a11y', 'mocha'],
+  settings: {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
   rules: {
     'linebreak-style': 'off', // Don't play nicely with Windows
     'arrow-body-style': 'off', // Incompatible with prettier

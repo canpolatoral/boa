@@ -6,13 +6,13 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import Popover from '@boa/components/Popover'; // eslint-disable-line import/no-unresolved
+import { Popover } from '@boa/components/Popover';
 import {
   ComponentBase,
   ComponentComposer,
-} from '@boa/base'; // eslint-disable-line import/no-unresolved
-import { MenuItem } from '@boa/components/MenuItem'; // eslint-disable-line import/no-unresolved
-import { Icon } from '@boa/components/Icon'; // eslint-disable-line import/no-unresolved
+} from '@boa/base'; //
+import { MenuItem } from '@boa/components/MenuItem';
+import { Icon } from '@boa/components/Icon';
 
 /* eslint-disable no-unused-vars */
 const styles = theme => ({

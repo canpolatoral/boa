@@ -4,7 +4,7 @@ import MuiDivider from '@material-ui/core/Divider';
 import {
   ComponentBase,
   ComponentComposer,
-} from '@boa/base'; // eslint-disable-line import/no-unresolved
+} from '@boa/base';
 
 @ComponentComposer
 class Divider extends ComponentBase {

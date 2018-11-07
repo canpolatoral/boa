@@ -2,7 +2,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CHANNEL } from '@material-ui/core/styles/themeListener';
-import { getMessage } from '@boa/utils'; // eslint-disable-line import/no-unresolved
+import { getMessage } from '@boa/utils';
 import { ComponentSize } from './types';
 import { shallowEqual } from './utils';
 

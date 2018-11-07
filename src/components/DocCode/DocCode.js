@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import React from 'react'; import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
-import { ComponentBase } from '@boa/base'; // eslint-disable-line import/no-unresolved
+import { ComponentBase } from '@boa/base';
 import styles from './styles';
 
 /**

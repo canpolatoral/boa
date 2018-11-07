@@ -13,18 +13,18 @@ const styles = theme => ({
     paddingBottom: 12,
     color: theme.boaPalette.base400,
     '&:hover': {
-      background: theme.boaPalette.pri300
-    }
+      background: theme.boaPalette.pri300,
+    },
   },
   selected: {
     backgroundColor: theme.boaPalette.pri250,
   },
   isRTL: {
-    textAlign: 'right'
+    textAlign: 'right',
   },
   gutters: {
     paddingLeft: 24,
-    paddingRight: 24
+    paddingRight: 24,
   },
   itemTextRoot: {
     padding: 0,
@@ -36,7 +36,7 @@ const styles = theme => ({
   itemTextSecondary: {
     fontSize: 12,
     color: theme.boaPalette.base350,
-  }
+  },
 });
 
 /**
@@ -95,9 +95,9 @@ class ListItem extends ComponentBase {
      */
     divider: PropTypes.bool,
 
-    selected: PropTypes.bool,
     primaryText: PropTypes.string.isRequired,
     secondaryText: PropTypes.string,
+    selected: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -109,12 +109,9 @@ class ListItem extends ComponentBase {
     button: true,
     selected: false,
   }
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
-    var { classes, selected, primaryText, secondaryText, ...other } = this.props;
+    const { classes, selected, primaryText, secondaryText, ...other } = this.props;
     const { isRightToLeft } = this.props.context.localization;
     const className = classNames(
       classes.root,
@@ -123,20 +120,23 @@ class ListItem extends ComponentBase {
         [classes.selected]: selected,
       });
 
-    return <MuiListItem {...other}
-      classes={{
-        root: className,
-        gutters: classes.gutters // MuiListItemGutters11
-      }}>
-      <MuiListItemText
+    return (
+      <MuiListItem
+        {...other}
         classes={{
-          root: classes.itemTextRoot,
-          primary: classes.itemTextPrimary,
-          secondary: classes.itemTextSecondary,
-        }}
-        primary={primaryText}
-        secondary={secondaryText} />
-    </MuiListItem>;
+          root: className,
+          gutters: classes.gutters, // MuiListItemGutters11
+        }}>
+        <MuiListItemText
+          classes={{
+            root: classes.itemTextRoot,
+            primary: classes.itemTextPrimary,
+            secondary: classes.itemTextSecondary,
+          }}
+          primary={primaryText}
+          secondary={secondaryText} />
+      </MuiListItem>
+    );
   }
 }
 

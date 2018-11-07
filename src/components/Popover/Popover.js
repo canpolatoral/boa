@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import MuiPopover from '@material-ui/core/Popover';
-
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Resizable } from '@boa/components/Resizable';
+
 @ComponentComposer
 class Popover extends ComponentBase {
   static propTypes = {
@@ -30,7 +30,9 @@ class Popover extends ComponentBase {
         PropTypes.number,
         PropTypes.oneOf(['left', 'center', 'right']),
       ]),
-      vertical: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['top', 'center', 'bottom'])]),
+      vertical: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf(['top', 'center', 'bottom'])]),
     }),
     /**
      * This is the position that may be used
@@ -39,8 +41,8 @@ class Popover extends ComponentBase {
      * the application's client area.
      */
     anchorPosition: PropTypes.shape({
-      top: PropTypes.number,
       left: PropTypes.number,
+      top: PropTypes.number,
     }),
     /*
      * This determines which anchor prop to refer to to set
@@ -62,6 +64,10 @@ class Popover extends ComponentBase {
      * so it's simply `document.body` most of the time.
      */
     container: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    /**
+     * If true, the modal will not restore focus to previously focused element once modal is hidden.
+     */
+    disableRestoreFocus: PropTypes.bool,
     /**
      * The elevation of the popover.
      */
@@ -109,6 +115,7 @@ class Popover extends ComponentBase {
      * Callback fired when the component is exiting.
      */
     onExiting: PropTypes.func,
+    onRequestClose: PropTypes.func,
     /**
      * If `true`, the popover is visible.
      */
@@ -134,12 +141,15 @@ class Popover extends ComponentBase {
         PropTypes.number,
         PropTypes.oneOf(['left', 'center', 'right']),
       ]),
-      vertical: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['top', 'center', 'bottom'])]),
+      vertical: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf(['top', 'center', 'bottom'])]),
     }),
     /**
-     * Transition component.
-     */
+      * Transition component.
+      */
     transition: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+
     /**
      * Set to 'auto' to automatically calculate transition time based on height.
      */
@@ -148,12 +158,6 @@ class Popover extends ComponentBase {
       PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
       PropTypes.oneOf(['auto']),
     ]),
-    onRequestClose: PropTypes.func,
-
-    /**
-     * If true, the modal will not restore focus to previously focused element once modal is hidden. (input bileşeninin focusunda açıyorsanız can kurtarır!)
-     */
-    disableRestoreFocus:PropTypes.bool
   }
 
   static defaultProps = {
@@ -171,7 +175,7 @@ class Popover extends ComponentBase {
     },
     // transition: Grow,
     transitionDuration: 'auto',
-    disableRestoreFocus:false
+    disableRestoreFocus: false,
   }
 
   state = {
@@ -184,6 +188,7 @@ class Popover extends ComponentBase {
     super(props, context);
     this.onRequestClose = this.onRequestClose.bind(this);
     this.openPopover = this.openPopover.bind(this);
+    this.onResize = this.onResize.bind(this);
   }
 
   getValue() {
@@ -199,7 +204,12 @@ class Popover extends ComponentBase {
   }
 
   manualOpen(openElement, width) {
-    this.setState({ open: true, anchorEl: openElement, style: Object.assign({}, this.state.style, { width: width }) });
+    const { style } = this.state;
+    this.setState({
+      open: true,
+      anchorEl: openElement,
+      style: Object.assign({}, style, { width }),
+    });
   }
 
   manualClose() {
@@ -207,27 +217,25 @@ class Popover extends ComponentBase {
   }
 
   onRequestClose(reason) {
-    {
-      if (reason == 'clickAway') {
-        this.setState({ open: false });
-      }
-      if (this.props.onRequestClose) {
-        this.props.onRequestClose(reason);
-      }
+    if (reason === 'clickAway') {
+      this.setState({ open: false });
+    }
+    if (this.props.onRequestClose) {
+      this.props.onRequestClose(reason);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.open != nextProps.open) {
+    if (this.props.open !== nextProps.open) {
       this.setState({ open: nextProps.open, anchorEl: nextProps.anchorEl });
     }
   }
 
   onResize(e, direction, refToResizableElement) {
     try {
-      let resizableParent = ReactDOM.findDOMNode(this.resizable).parentNode;
-      resizableParent.style.height = (refToResizableElement.height) + 'px';
-      resizableParent.style.width = (refToResizableElement.width) + 'px';
+      const resizableParent = ReactDOM.findDOMNode(this.resizable).parentNode;
+      resizableParent.style.height = `${refToResizableElement.height}px`;
+      resizableParent.style.width = `${refToResizableElement.width}px`;
     } catch (ex) {
       this.debugLog(ex);
     }
@@ -240,15 +248,14 @@ class Popover extends ComponentBase {
         <Resizable
           context={this.props.context}
           ref={r => this.resizable = r}
-          bounds='parent'
+          bounds="parent"
           minWidth={200}
           minHeight={100}
           default={{ x: 0, y: 0, width: '100%', height: '100%' }}
-          onResize={this.onResize.bind(this)}>
+          onResize={this.onResize}>
           {this.props.children}
         </Resizable>;
-    }
-    else {
+    } else {
       children = this.props.children;
     }
     return (
@@ -258,7 +265,6 @@ class Popover extends ComponentBase {
         anchorReference={this.props.anchorReference}
         anchorPosition={this.props.anchorPosition}
         anchorOrigin={this.props.anchorOrigin}
-        children={children}
         className={this.props.className}
         onClose={this.props.onRequestClose}
         open={this.state.open}
@@ -270,8 +276,9 @@ class Popover extends ComponentBase {
         transitionDuration={this.props.transitionDuration}
         disableRestoreFocus={this.props.disableRestoreFocus}
         PaperProps={this.props.PaperProps}
-        marginThreshold={this.props.marginThreshold}
-      />
+        marginThreshold={this.props.marginThreshold}>
+        {children}
+      </MuiPopover>
     );
   }
 }

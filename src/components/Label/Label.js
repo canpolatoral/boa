@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase, ComponentComposer } from '@boa/base';
+import parseFontSize from './utils';
 
 /**
  * Label component
@@ -10,8 +11,8 @@ class Label extends ComponentBase {
   constructor(props, context) {
     super(props, context);
 
-    let minFontSize = this.parseFontSize(this.props.minFontSize);
-    let maxFontSize = this.parseFontSize(this.props.maxFontSize);
+    const minFontSize = parseFontSize(this.props.minFontSize);
+    const maxFontSize = parseFontSize(this.props.maxFontSize);
     let fontSize = 12;
     if (minFontSize && minFontSize > fontSize) {
       fontSize = minFontSize;
@@ -21,7 +22,7 @@ class Label extends ComponentBase {
     }
 
     this.state = {
-      fontSize: fontSize + 'px'
+      fontSize: `${fontSize}px`,
     };
   }
 
@@ -29,33 +30,21 @@ class Label extends ComponentBase {
     /**
      * Label text
      */
-    text: PropTypes.string,
+    maxFontSize: PropTypes.number,
     /**
      * Override style of element.
      */
-    style: PropTypes.object,
     maxWidth: PropTypes.number,
     minFontSize: PropTypes.number,
-    maxFontSize: PropTypes.number,
-    textAlign: PropTypes.string
+    style: PropTypes.object,
+    text: PropTypes.string,
+    textAlign: PropTypes.string,
   };
 
   static defaultProps = {
     minFontSize: Number.NEGATIVE_INFINITY,
-    maxFontSize: Number.POSITIVE_INFINITY
+    maxFontSize: Number.POSITIVE_INFINITY,
   };
-
-  parseFontSize(fontSize) {
-    if (fontSize && (typeof fontSize === 'number' || (typeof fontSize === 'string' && fontSize.length > 0))) {
-      if (typeof fontSize === 'string') {
-        return parseFloat(fontSize.replace(/[a-zA-Z\s]/gi, ''));
-      }
-
-      return fontSize;
-    }
-
-    return null;
-  }
 
   componentDidMount() {
     this.checkLabelFontSize(this.props);
@@ -67,38 +56,40 @@ class Label extends ComponentBase {
 
   checkLabelFontSize(props) {
     if (props.maxWidth && this.label && this.label.offsetWidth > props.maxWidth) {
-      let currentFontSize = this.parseFontSize(this.label.style && this.label.style.fontSize) || 12;
-      let minFontSize = this.parseFontSize(props.minFontSize);
-      let maxFontSize = this.parseFontSize(props.maxFontSize);
+      const currentFontSize = parseFontSize(this.label.style && this.label.style.fontSize) || 12;
+      const minFontSize = parseFontSize(props.minFontSize);
+      const maxFontSize = parseFontSize(props.maxFontSize);
 
       let newFontSize = currentFontSize * props.maxWidth / this.label.offsetWidth;
       newFontSize = Math.max(Math.min(newFontSize, maxFontSize), minFontSize);
-      this.setState({ fontSize: newFontSize + 'px' });
+      this.setState({ fontSize: `${newFontSize}px` });
     }
   }
 
   render() {
     let styleDiv;
-    let style = Object.assign({ fontSize: this.state.fontSize }, this.props.context.theme.label, this.props.style);
+    const style = Object.assign({
+      fontSize: this.state.fontSize,
+    }, this.props.context.theme.label, this.props.style);
     if (!this.props.context.localization.isRightToLeft) {
       if (this.props.maxWidth) {
-        styleDiv = { textAlign: 'left', width: this.props.maxWidth + 'px' };
+        styleDiv = { textAlign: 'left', width: `${this.props.maxWidth}px` };
       } else {
         styleDiv = { textAlign: 'left' };
       }
+    } else if (this.props.maxWidth) {
+      styleDiv = { textAlign: 'right', width: `${this.props.maxWidth}px` };
     } else {
-      if (this.props.maxWidth) {
-        styleDiv = { textAlign: 'right', width: this.props.maxWidth + 'px' };
-      } else {
-        styleDiv = { textAlign: 'right' };
-      }
+      styleDiv = { textAlign: 'right' };
     }
 
-    this.props.textAlign && Object.assign(styleDiv, { textAlign: this.props.textAlign });
+    if (this.props.textAlign) {
+      Object.assign(styleDiv, { textAlign: this.props.textAlign });
+    }
 
     return (
       <div style={Object.assign(styleDiv, style)}>
-        <label ref={r => (this.label = r)}>{this.props.text}</label>
+        <label ref={(r) => { (this.label = r); }}>{this.props.text}</label>
       </div>
     );
   }

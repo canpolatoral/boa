@@ -100,5 +100,6 @@ module.exports = {
     'jsx-a11y/no-autofocus': 'off', // We are a library, people do what they want.
 
     'no-plusplus': 'off',
+    'no-return-assign': 'off',
   },
 };

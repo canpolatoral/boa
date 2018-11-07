@@ -10,7 +10,13 @@ import { Icon } from '@boa/components/Icon';
 
 /* eslint-disable no-unused-vars */
 const styles = theme => ({
-  menuItem: { paddingBottom: '6px', paddingTop: '6px', paddingLeft: '0px', paddingRight: '0px', height: 'auto' },
+  menuItem: {
+    paddingBottom: '6px',
+    paddingTop: '6px',
+    paddingLeft: '0px',
+    paddingRight: '0px',
+    height: 'auto',
+  },
   gutters: { padding: '0px' },
   primary: {},
   icon: {},
@@ -20,7 +26,6 @@ const styles = theme => ({
 @ComponentComposer
 @withStyles(styles)
 class Menu extends ComponentBase {
-
   static defaultProps = {
     ...ComponentBase.defaultProps,
     autoWidth: true,
@@ -43,6 +48,10 @@ class Menu extends ComponentBase {
      */
     autoWidth: PropTypes.bool,
     /**
+     * @ignore
+     */
+    classes: PropTypes.object.isRequired,
+    /**
      * If true, the menu will not be auto-focused.
      */
     disableAutoFocus: PropTypes.bool,
@@ -51,10 +60,17 @@ class Menu extends ComponentBase {
      */
     initiallyKeyboardFocused: PropTypes.bool,
     /**
-     * Override the inline-styles of the underlying `List` element.
+     *
      */
-    style: PropTypes.object,
-
+    isMenuItemList: PropTypes.bool,
+    /**
+     * Item list
+     */
+    items: PropTypes.array.isRequired,
+    /**
+     * If true, `value` must be an array and the menu will support
+     * multiple selections.
+     */
     listStyle: PropTypes.object,
     /**
      * The maximum height of the menu in pixels. If specified,
@@ -86,6 +102,7 @@ class Menu extends ComponentBase {
      */
     onEscKeyDown: PropTypes.func,
     /**
+    /**
      * Callback function fired when a menu item is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the menu item.
@@ -93,6 +110,18 @@ class Menu extends ComponentBase {
      * @param {number} index The index of the menu item.
      */
     onItemTouchTap: PropTypes.func,
+    /**
+       * ItemList Parents Info
+       */
+    parentMenuItem: PropTypes.object,
+    /**
+     *
+     */
+    primaryTextPadding: PropTypes.any,
+    /**
+     * Override the inline-styles of the underlying `List` element.
+     */
+    style: PropTypes.object,
     /**
      * If `multiple` is true, an array of the `value`s of the selected
      * menu items. Otherwise, the `value` of the selected menu item.
@@ -106,41 +135,23 @@ class Menu extends ComponentBase {
      * proper keyline increments (64px for desktop, 56px otherwise).
      */
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    /**
-     * Item list
-     */
-    items: PropTypes.array.isRequired,
-    /**
-       * ItemList Parents Info
-       */
-    parentMenuItem: PropTypes.object,
-    /**
-     * @ignore
-     */
-    classes: PropTypes.object.isRequired,
-    /**
-     *
-     */
-    isMenuItemList: PropTypes.bool,
-    /**
-     *
-     */
-    primaryTextPadding: PropTypes.any
   };
 
   state = {
-    value: this.props.value
+    value: this.props.value,
   };
 
+  constructor(props) {
+    super(props);
+    this.menuItemSelected = this.menuItemSelected.bind(this);
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (this.props.value != nextProps.value) {
+    if (this.props.value !== nextProps.value) {
       this.setState({
-        value: nextProps.value
+        value: nextProps.value,
       });
     }
-  }
-  constructor(props, context) {
-    super(props, context);
   }
 
   menuItemSelected(parameters) {
@@ -151,6 +162,8 @@ class Menu extends ComponentBase {
   }
 
   getIcon(iconProp) {
+    const isRightToLeft = this.props.context.localization.isRightToLeft;
+
     if (iconProp) {
       let iconProperties = null;
       if (iconProp.svgIcon || iconProp.fontIcon || iconProp.dynamicIcon) {
@@ -158,67 +171,71 @@ class Menu extends ComponentBase {
           style: {
             height: '20px',
             width: '20px',
-            margin: !this.props.context.localization.isRightToLeft ? 'auto 0px auto 24px' : 'auto 24px auto 12px',
+            margin: !isRightToLeft ? 'auto 0px auto 24px' : 'auto 24px auto 12px',
             right: 0,
             top: '50%',
-            color: this.props.context.theme.boaPalette.base400
+            color: this.props.context.theme.boaPalette.base400,
             // transform:'translate(0%, -50%)'
-          }
+          },
         }, iconProp.iconProperties || {});
       }
       if (iconProperties) {
         iconProp.iconProperties = iconProperties;
       }
 
-      let icon = Icon.getIcon(iconProp);
-      return icon ? icon : iconProp;
+      const icon = Icon.getIcon(iconProp);
+      return icon || iconProp;
     }
     return null;
   }
 
   render() {
     let menuItems = null;
-
+    const isRightToLeft = this.props.context.localization.isRightToLeft;
     if (this.props.isMenuItemList && this.props.items) {
-
       menuItems = this.props.items.map((item) => {
         if ((item.props.menuItems && item.props.menuItems.length > 0)) {
           return React.cloneElement(item, {
             itemSelected: (parameters) => {
               this.menuItemSelected(parameters);
             },
-            items: item.props.menuItems
+            items: item.props.menuItems,
           });
         }
         if (!item.props.primaryText) {
-          return (<MuiDivider style={{ marginBottom: '12px', marginTop: '12px' }} key={Math.random()} />);
+          return (
+            <MuiDivider
+              style={{
+                marginBottom: '12px',
+                marginTop: '12px',
+              }}
+              key={Math.random()} />);
         }
 
         return item;
       });
-    }
-    else {
+    } else {
       menuItems = this.props.items.map((item) => {
         // eğer ekran ise aktif mi değil mi!
         if (item && item.allProperties && item.allProperties.typeId &&
           !(item.allProperties.typeId === 1 || item.allProperties.typeId === 2)) {
-          return (<div></div>);
+          return (<div />);
         }
 
-        let rightIcon = item.items && item.items.length ?
+        const rightIcon = item.items && item.items.length ?
           this.getIcon({
             dynamicIcon: !this.props.context.localization.isRightToLeft ?
-              'ChevronRight' : 'ChevronLeft'
+              'ChevronRight' : 'ChevronLeft',
           }) :
           this.getIcon(item.rightIcon);
-        let leftIcon = this.getIcon(item.leftIcon);
+        const leftIcon = this.getIcon(item.leftIcon);
         let itemStyle = merge({
           lineHeight: null,
           whiteSpace: 'normal',
           minHeight: 24,
           fontSize: 14,
           paddingleft: !this.props.context.localization.isRightToLeft ? '12px' : '0px',
-          paddingRight: !this.props.context.localization.isRightToLeft ? '12px' : '0px'
+          paddingRight: !this.props.context.localization.isRightToLeft ? '12px' : '0px',
         }, item.style || {});
         if (item && item.leftIcon && item.leftIcon.dynamicIcon === 'ChevronLeft') {
           itemStyle = merge({
@@ -227,11 +244,11 @@ class Menu extends ComponentBase {
             minHeight: 24,
             fontSize: 16,
             paddingleft: !this.props.context.localization.isRightToLeft ? '0px' : '12px',
-            paddingRight: !this.props.context.localization.isRightToLeft ? '0px' : '12px'
+            paddingRight: !this.props.context.localization.isRightToLeft ? '0px' : '12px',
           }, item.style || {});
         }
-        let innerDivStyle = merge({
-          padding: !this.props.context.localization.isRightToLeft ? '10px 40px 10px 72px' : '10px 72px 10px 40px'
+        const innerDivStyle = merge({
+          padding: !isRightToLeft ? '10px 40px 10px 72px' : '10px 72px 10px 40px',
         }, item.innerDivStyle || {});
         return item.value || item.text ? (
           <MenuItem
@@ -246,7 +263,7 @@ class Menu extends ComponentBase {
             style={itemStyle}
             primaryTextPadding={this.props.primaryTextPadding}
             innerDivStyle={innerDivStyle}
-            itemSelected={this.menuItemSelected.bind(this)}
+            itemSelected={this.menuItemSelected}
             width={this.props.width}
             allProperties={item.allProperties} />
         ) : <MuiDivider style={{ marginBottom: '12px', marginTop: '12px' }} key={Math.random()} />;

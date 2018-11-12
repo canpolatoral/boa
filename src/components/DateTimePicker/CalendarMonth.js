@@ -54,6 +54,7 @@ class CalendarMonth extends Component {
   constructor(props, context) {
     super(props, context);
     this.SpecialDays = [];
+    this.handleTouchTapDay = this.handleTouchTapDay.bind(this);
   }
 
   getDayType(day, calendarInfo) {
@@ -135,11 +136,11 @@ class CalendarMonth extends Component {
     }, this);
   }
 
-  handleTouchTapDay = (event, date) => {
+  handleTouchTapDay(event, date) {
     if (this.props.onTouchTapDay) {
       this.props.onTouchTapDay(event, date);
     }
-  };
+  }
 
   isSelectedDateDisabled() {
     return this.selectedDateDisabled;

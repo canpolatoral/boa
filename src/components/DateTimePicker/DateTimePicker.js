@@ -190,13 +190,16 @@ class DateTimePicker extends ComponentBase {
     this.onChange = this.onChange.bind(this);
     this.dateOnChange = this.dateOnChange.bind(this);
     this.timeOnChange = this.timeOnChange.bind(this);
+    this.handleRemoveDate = this.handleRemoveDate.bind(this);
+    this.handleAddDate = this.handleAddDate.bind(this);
+    this.dateUpdate = this.dateUpdate.bind(this);
   }
 
   onChange(event, value) {
     if (this.props.onChange) {
       this.props.onChange(event, value);
     }
-    if (this.prop.onDynamicChange) {
+    if (this.props.onDynamicChange) {
       this.props.onDynamicChange(event);
     }
   }
@@ -220,7 +223,7 @@ class DateTimePicker extends ComponentBase {
     });
   }
 
-  handleRemoveDate = (e) => {
+  handleRemoveDate(e) {
     let handleDate;
     if (this.getValue()) {
       handleDate = new Date(this.getValue());
@@ -235,7 +238,7 @@ class DateTimePicker extends ComponentBase {
     }
   }
 
-  handleAddDate = (e) => {
+  handleAddDate(e) {
     let handleDate;
     if (this.getValue()) {
       handleDate = new Date(this.getValue());
@@ -250,7 +253,7 @@ class DateTimePicker extends ComponentBase {
     }
   }
 
-  dateUpdate = (oldDate, newDate, changeType, isSetState) => {
+  dateUpdate(oldDate, newDate, changeType, isSetState) {
     isSetState = true;
     const setNewDate = cloneDate(newDate);
     const dateNow = new Date();

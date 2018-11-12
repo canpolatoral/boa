@@ -103,6 +103,16 @@ class DatePicker extends ComponentBase {
     inlineGridMode: false,
   };
 
+  constructor(props, context) {
+    super(props, context);
+    this.handleDateAccept = this.handleDateAccept.bind(this);
+    this.handleTimeAccept = this.handleTimeAccept.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleFocusDateInput = this.handleFocusDateInput.bind(this);
+    this.handleFocusTimeInput = this.handleFocusTimeInput.bind(this);
+    this.dateUpdate = this.dateUpdate.bind(this);
+  }
+
   componentWillMount() {
     super.componentWillMount();
     const lastValue = this.props.value || this.props.defaultDate;
@@ -159,7 +169,7 @@ class DatePicker extends ComponentBase {
     }
   }
 
-  handleDateAccept = (date) => {
+  handleDateAccept(date) {
     if (date && this.state.date) {
       const newDate = new Date(date.getFullYear(),
         date.getMonth(),
@@ -210,17 +220,17 @@ class DatePicker extends ComponentBase {
     return null;
   }
 
-  handleFocusDateInput = (event) => {
+  handleFocusDateInput(event) {
     event.preventDefault();
     this.openDateDialog(event);
   }
 
-  handleFocusTimeInput = (event) => {
+  handleFocusTimeInput(event) {
     this.openTimeDialog(event);
     event.preventDefault();
   }
 
-  dateUpdate = (oldDate, newDate, changeType) => {
+  dateUpdate(oldDate, newDate, changeType) {
     if (this.props.dateUpdate) {
       this.props.dateUpdate(oldDate, newDate, changeType);
     }

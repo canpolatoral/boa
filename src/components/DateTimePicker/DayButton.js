@@ -160,18 +160,18 @@ function getStyles(props, context, state) {
       }
     }
   } else if (isEqualDate(date, new Date())) {
-      labelColor = datePicker.selectTextColor;
-      backgroundColor = datePicker.todayButtonBackgroundColor;
-      hoverSelectedAndTodayBorder = datePicker.dayBorder;
-      // hoverSelectedAndTodayPadding = 2;
-      backgroundClip = 'content-box';
-      buttonStateOpacity = 1;
-      buttonStateTransform = 'scale(1)';
-    } else if (hover || selected) {
-      labelColor = datePicker.selectTextColor;
-      buttonStateOpacity = selected ? 1 : 0.6;
-      buttonStateTransform = 'scale(1)';
-    }
+    labelColor = datePicker.selectTextColor;
+    backgroundColor = datePicker.todayButtonBackgroundColor;
+    hoverSelectedAndTodayBorder = datePicker.dayBorder;
+    // hoverSelectedAndTodayPadding = 2;
+    backgroundClip = 'content-box';
+    buttonStateOpacity = 1;
+    buttonStateTransform = 'scale(1)';
+  } else if (hover || selected) {
+    labelColor = datePicker.selectTextColor;
+    buttonStateOpacity = selected ? 1 : 0.6;
+    buttonStateTransform = 'scale(1)';
+  }
   return {
     root: {
       boxSizing: 'border-box',
@@ -232,29 +232,36 @@ class DayButton extends Component {
     hover: false,
   };
 
+  constructor(props, context) {
+    super(props, context);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleKeyboardFocus = this.handleKeyboardFocus.bind(this);
+  }
+
   handleMouseEnter = () => {
     if (!this.props.disabled) {
       this.setState({ hover: true });
     }
   };
 
-  handleMouseLeave = () => {
+  handleMouseLeave() {
     if (!this.props.disabled) {
       this.setState({ hover: false });
     }
-  };
+  }
 
-  handleTouchTap = (event) => {
+  handleTouchTap(event) {
     if (!this.props.disabled && this.props.onTouchTap) {
       this.props.onTouchTap(event, this.props.date);
     }
-  };
+  }
 
-  handleKeyboardFocus = (event, keyboardFocused) => {
+  handleKeyboardFocus(event, keyboardFocused) {
     if (!this.props.disabled && this.props.onKeyboardFocus) {
       this.props.onKeyboardFocus(event, keyboardFocused, this.props.date);
     }
-  };
+  }
 
   render() {
     const {

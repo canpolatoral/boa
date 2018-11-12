@@ -85,12 +85,18 @@ class TimePickerDialog extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
-    const formatedlocalizedTime = getLocalizedTime(props.initialDate || new Date(),
-      props.datetimeOption,
-      this.props.timeFormat);
-    this.state = {
-      localizedTime: formatedlocalizedTime,
-    };
+    this.show = this.show.bind(this);
+    this.dismiss = this.dismiss.bind(this);
+    this.handleTouchTapCancel = this.handleTouchTapCancel.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.handleTouchTapOk = this.handleTouchTapOk.bind(this);
+    this.handleTouchTapHour = this.handleTouchTapHour.bind(this);
+    this.handleTouchTapMinute = this.handleTouchTapMinute.bind(this);
+    this.handleTouchTapSecond = this.handleTouchTapSecond.bind(this);
+    this.handleFocusInput = this.handleFocusInput.bind(this);
+    this.handleBlurInput = this.handleBlurInput.bind(this);
+    this.handleWindowOnWheel = this.handleWindowOnWheel.bind(this);
+    this.onKeyDownInputTime = this.onKeyDownInputTime.bind(this);
   }
 
   componentWillMount() {
@@ -115,7 +121,7 @@ class TimePickerDialog extends ComponentBase {
     }
   }
 
-  show = () => {
+  show() {
     if (this.props.onShow && !this.state.open) {
       this.props.onShow();
     }
@@ -124,7 +130,7 @@ class TimePickerDialog extends ComponentBase {
     });
   }
 
-  dismiss = () => {
+  dismiss() {
     if (this.props.onDismiss && this.state.open) {
       this.props.onDismiss();
     }
@@ -133,16 +139,16 @@ class TimePickerDialog extends ComponentBase {
     });
   }
 
-  handleTouchTapCancel = () => {
+  handleTouchTapCancel() {
     this.dismiss();
   }
 
-  handleRequestClose = () => {
+  handleRequestClose() {
     this.dismiss();
     this.popover.manualClose();
   }
 
-  handleTouchTapOk = () => {
+  handleTouchTapOk() {
     if (this.props.onAccept) {
       this.props.onAccept(this.state.date);
     }
@@ -151,7 +157,7 @@ class TimePickerDialog extends ComponentBase {
     });
   }
 
-  handleTouchTapHour = (event, hour) => {
+  handleTouchTapHour(event, hour) {
     const { date } = this.state;
     if (date) {
       const newDate = new Date(date.setHours(hour));
@@ -169,7 +175,7 @@ class TimePickerDialog extends ComponentBase {
     }
   }
 
-  handleTouchTapMinute = (event, minute) => {
+  handleTouchTapMinute(event, minute) {
     const { date } = this.state;
     if (date) {
       const newDate = new Date(date.setMinutes(minute));
@@ -186,7 +192,7 @@ class TimePickerDialog extends ComponentBase {
     }
   }
 
-  handleTouchTapSecond = (event, second) => {
+  handleTouchTapSecond(event, second) {
     const { date } = this.state;
     if (date) {
       const newDate = new Date(date.setSeconds(second));
@@ -203,7 +209,53 @@ class TimePickerDialog extends ComponentBase {
     }
   }
 
-  onKeyDownInputTime = (e) => {
+  handleFocusInput() {
+    this.BActionInputFocused = true;
+  }
+
+  handleBlurInput() {
+    this.BActionInputFocused = false;
+  }
+
+  handleWindowOnWheel(event) {
+    const value = getLocalizedTime(this.state.date || new Date(),
+      this.props.datetimeOption,
+      this.props.timeFormat);
+    let selectionStart;
+    let selectionEnd;
+    let newValue;
+    if (event && this.BActionInputFocused && event.target) {
+      if (event && event.wheelDelta !== 0 && event.wheelDelta / 120 > 0) {
+        newValue = calendarMouseWheelAction(event.target.selectionStart,
+          this.props.timeFormat,
+          value,
+          1,
+          this.state.date);
+        selectionStart = event.target.selectionStart;
+        selectionEnd = event.target.selectionEnd;
+        this.setState({
+          date: newValue,
+        });
+      } else {
+        newValue = calendarMouseWheelAction(event.target.selectionStart,
+          this.props.timeFormat,
+          value,
+          -1,
+          this.state.date);
+        selectionStart = event.target.selectionStart;
+        selectionEnd = event.target.selectionEnd;
+        this.setState({
+          date: newValue,
+        });
+      }
+    }
+    if (selectionStart !== undefined && selectionEnd !== undefined) {
+      event.target.selectionStart = selectionStart;
+      event.target.selectionEnd = selectionEnd;
+    }
+  }
+
+  onKeyDownInputTime(e) {
     switch (keycode(e)) {
       case 'enter': {
         if (this.BActionInputFocused) {
@@ -267,51 +319,6 @@ class TimePickerDialog extends ComponentBase {
     );
   }
 
-  handleFocusInput = () => {
-    this.BActionInputFocused = true;
-  }
-
-  handleBlurInput = () => {
-    this.BActionInputFocused = false;
-  }
-
-  handleWindowOnWheel = (event) => {
-    const value = getLocalizedTime(this.state.date || new Date(),
-      this.props.datetimeOption,
-      this.props.timeFormat);
-    let selectionStart;
-    let selectionEnd;
-    let newValue;
-    if (event && this.BActionInputFocused && event.target) {
-      if (event && event.wheelDelta !== 0 && event.wheelDelta / 120 > 0) {
-        newValue = calendarMouseWheelAction(event.target.selectionStart,
-          this.props.timeFormat,
-          value,
-          1,
-          this.state.date);
-        selectionStart = event.target.selectionStart;
-        selectionEnd = event.target.selectionEnd;
-        this.setState({
-          date: newValue,
-        });
-      } else {
-        newValue = calendarMouseWheelAction(event.target.selectionStart,
-          this.props.timeFormat,
-          value,
-          -1,
-          this.state.date);
-        selectionStart = event.target.selectionStart;
-        selectionEnd = event.target.selectionEnd;
-        this.setState({
-          date: newValue,
-        });
-      }
-    }
-    if (selectionStart !== undefined && selectionEnd !== undefined) {
-      event.target.selectionStart = selectionStart;
-      event.target.selectionEnd = selectionEnd;
-    }
-  }
 
   renderRTLTimeSelections() {
     const {

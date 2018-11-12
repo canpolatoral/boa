@@ -112,7 +112,28 @@ class Calendar extends ComponentBase {
     transitionEnter: true,
   };
 
-  SpecialDays = [];
+  constructor(props, context) {
+    super(props, context);
+    this.SpecialDays = [];
+    this.handleTouchTapDay = this.handleTouchTapDay.bind(this);
+    this.handleTouchTapMonth = this.handleTouchTapMonth.bind(this);
+    this.handleTouchTapYear = this.handleTouchTapYear.bind(this);
+    this.handleMonthChange = this.handleMonthChange.bind(this);
+    this.handleTouchTapDateDisplayMonthDay = this.handleTouchTapDateDisplayMonthDay.bind(this);
+    this.handleTouchTapDateDisplayYear = this.handleTouchTapDateDisplayYear.bind(this);
+    this.handleClickToolBar = this.handleClickToolBar.bind(this);
+    this.handleRemoveDate = this.handleRemoveDate.bind(this);
+    this.handleAddDate = this.handleAddDate.bind(this);
+    this.todayButtonOnClick = this.todayButtonOnClick.bind(this);
+    this.handleChangeDate = this.handleChangeDate.bind(this);
+    this.handleWindowKeyDown = this.handleWindowKeyDown.bind(this);
+    this.handleWindowOnWheel = this.handleWindowOnWheel.bind(this);
+    this.handleFocusInput = this.handleFocusInput.bind(this);
+    this.handleBlurInput = this.handleBlurInput.bind(this);
+    this.onTouchTapOk = this.onTouchTapOk.bind(this);
+    this.onKeyDownInputDate = this.onKeyDownInputDate.bind(this);
+    this.onChangeInputDate = this.onChangeInputDate.bind(this);
+  }
 
   componentWillMount() {
     super.componentWillMount();
@@ -122,34 +143,6 @@ class Calendar extends ComponentBase {
       floatingLabelStyle: this.props.floatingLabelStyle,
       inputStyle: this.props.inputStyle,
     });
-  }
-
-  setSpecialDays() {
-    if (this.props.calendarInfo && this.props.calendarInfo.length > 0 && this.state.displayDate) {
-      const calendarInfo = this.props.calendarInfo;
-      const date = this.state.displayDate;
-      if (date !== undefined) {
-        if (this.CalendarInfoSelectedDate === undefined ||
-          this.CalendarInfoSelectedDate.getMonth() !== date.getMonth() ||
-          this.CalendarInfoSelectedDate.getFullYear() !== date.getFullYear()) {
-          this.CalendarInfoSelectedDate = date;
-          this.SpecialDays = [];
-          for (let i = 0; i < calendarInfo.length; i++) {
-            let beginDate = cloneDate(getFirstDayOfMonth(date));
-            let endDate = cloneDate(getFirstDayOfMonth(date));
-            beginDate = new Date(beginDate.setMonth(beginDate.getMonth() - 1));
-            endDate = new Date(endDate.setMonth(endDate.getMonth() + 2));
-            if (calendarInfo[i] && calendarInfo[i].day) {
-              const calendarDay = new Date(calendarInfo[i].day);
-              if (isBetweenDates(calendarDay, beginDate, endDate)) {
-                calendarInfo[i].day = new Date(calendarInfo[i].day);
-                this.SpecialDays.push(calendarInfo[i]);
-              }
-            }
-          }
-        }
-      }
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -171,18 +164,6 @@ class Calendar extends ComponentBase {
     }
   }
 
-  getSelectedDate() {
-    return this.state.selectedDate;
-  }
-
-  isSelectedDateDisabled() {
-    if (!this.state.displayMonthDay) {
-      return false;
-    }
-
-    return this.refs.calendar.isSelectedDateDisabled();
-  }
-
   addSelectedDays(days) {
     return addDays(this.state.selectedDate, days);
   }
@@ -193,6 +174,67 @@ class Calendar extends ComponentBase {
 
   addSelectedYears(years) {
     addYears(this.state.selectedDate, years);
+  }
+
+  isSelectedDateDisabled() {
+    if (!this.state.displayMonthDay) {
+      return false;
+    }
+
+    return this.refs.calendar.isSelectedDateDisabled();
+  }
+
+  getCalendarMonth(DateTimeFormat, minDate, maxDate) {
+    const calendarMonth = (
+      <CalendarMonth
+        DateTimeFormat={DateTimeFormat}
+        context={this.props.context}
+        displayDate={this.state.displayDate}
+        firstDayOfWeek={this.props.firstDayOfWeek}
+        key={this.state.displayDate.toDateString()}
+        minDate={minDate}
+        maxDate={maxDate}
+        onTouchTapDay={this.handleTouchTapDay}
+        ref="calendar"
+        selectedDate={this.state.selectedDate}
+        shouldDisableDate={this.props.shouldDisableDate}
+        calendarInfo={this.SpecialDays}
+        isBusiness={this.props.isBusiness}
+        canSelectOldDates={this.props.canSelectOldDates}
+        canSelectWeekendDays={this.props.canSelectWeekendDays}
+        canSelectSpecialDays={this.props.canSelectSpecialDays}
+      />
+    );
+    return calendarMonth;
+  }
+
+  getSpecialDays() {
+    return (
+      <div>
+        {this.props.isBusiness && this.SpecialDays.length > 0 &&
+          <SpecialDay
+            context={this.props.context}
+            DateTimeFormat={this.props.DateTimeFormat}
+            specialDayType={1}
+            key={`db${(4)}`}
+            selectedDate={this.state.displayDate}
+            calendarInfo={this.SpecialDays}
+            format={this.props.dateFormat}
+          />
+        }
+      </div>
+    );
+  }
+
+  getSelectedDate() {
+    return this.state.selectedDate;
+  }
+
+  getToolbarInteractions() {
+    return {
+      prevMonth: monthDiff(this.state.displayDate, this.props.minDate) > 0,
+      nextMonth: monthDiff(this.state.displayDate, this.props.maxDate) < 0,
+    };
   }
 
   setDisplayDate(date, newSelectedDate) {
@@ -227,64 +269,79 @@ class Calendar extends ComponentBase {
     }
   }
 
-  handleTouchTapDay = (event, date) => {
+  setSpecialDays() {
+    if (this.props.calendarInfo && this.props.calendarInfo.length > 0 && this.state.displayDate) {
+      const calendarInfo = this.props.calendarInfo;
+      const date = this.state.displayDate;
+      if (date !== undefined) {
+        if (this.CalendarInfoSelectedDate === undefined ||
+          this.CalendarInfoSelectedDate.getMonth() !== date.getMonth() ||
+          this.CalendarInfoSelectedDate.getFullYear() !== date.getFullYear()) {
+          this.CalendarInfoSelectedDate = date;
+          this.SpecialDays = [];
+          for (let i = 0; i < calendarInfo.length; i++) {
+            let beginDate = cloneDate(getFirstDayOfMonth(date));
+            let endDate = cloneDate(getFirstDayOfMonth(date));
+            beginDate = new Date(beginDate.setMonth(beginDate.getMonth() - 1));
+            endDate = new Date(endDate.setMonth(endDate.getMonth() + 2));
+            if (calendarInfo[i] && calendarInfo[i].day) {
+              const calendarDay = new Date(calendarInfo[i].day);
+              if (isBetweenDates(calendarDay, beginDate, endDate)) {
+                calendarInfo[i].day = new Date(calendarInfo[i].day);
+                this.SpecialDays.push(calendarInfo[i]);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  handleTouchTapDay(event, date) {
     this.setSelectedDate(date);
 
     if (this.props.onTouchTapDay) this.props.onTouchTapDay(event, date);
-  };
+  }
 
-  handleMonthChange = (months) => {
+  handleMonthChange(months) {
     const { displayDate } = this.state;
     this.setState({
       transitionDirection: months >= 0 ? 'left' : 'right',
       displayDate: addMonths(displayDate, months),
     });
-  };
+  }
 
-  handleTouchTapYear = (event, year) => {
+  handleTouchTapYear(event, year) {
     const { selectedYearMonthDate } = this.state;
     const date = cloneDate(selectedYearMonthDate);
     date.setFullYear(year);
     this.setState({
       selectedYearMonthDate: date,
     });
-  };
+  }
 
-  handleTouchTapMonth = (event, month) => {
+  handleTouchTapMonth(event, month) {
     const { selectedYearMonthDate } = this.state;
     const date = cloneDate(selectedYearMonthDate);
     date.setMonth(month);
     this.setState({
       selectedYearMonthDate: date,
     });
-  };
-
-  getToolbarInteractions() {
-    return {
-      prevMonth: monthDiff(this.state.displayDate, this.props.minDate) > 0,
-      nextMonth: monthDiff(this.state.displayDate, this.props.maxDate) < 0,
-    };
   }
 
-  onTouchTapOk = () => {
-    const date = cloneDate(this.state.selectedYearMonthDate);
-    this.setSelectedDate(date);
-    this.handleTouchTapDateDisplayMonthDay();
-  }
-
-  handleTouchTapDateDisplayMonthDay = () => {
+  handleTouchTapDateDisplayMonthDay() {
     this.setState({
       displayMonthDay: true,
     });
-  };
+  }
 
-  handleTouchTapDateDisplayYear = () => {
+  handleTouchTapDateDisplayYear() {
     this.setState({
       displayMonthDay: false,
     });
-  };
+  }
 
-  handleClickToolBar = (e) => {
+  handleClickToolBar(e) {
     const { displayDate, displayMonthDay, selectedYearMonthDate } = this.state;
     const { handleClickToolBar } = this.props;
 
@@ -307,7 +364,7 @@ class Calendar extends ComponentBase {
     }
   }
 
-  handleRemoveDate = (e) => {
+  handleRemoveDate(e) {
     let handleDate;
     if (!this.state.selectedDate) {
       handleDate = new Date();
@@ -318,7 +375,7 @@ class Calendar extends ComponentBase {
     this.handleChangeDate(e, handleDate);
   }
 
-  handleAddDate = (e) => {
+  handleAddDate(e) {
     let handleDate;
     if (!this.state.selectedDate) {
       handleDate = new Date();
@@ -329,21 +386,21 @@ class Calendar extends ComponentBase {
     this.handleChangeDate(e, handleDate);
   }
 
-  todayButtonOnClick = (e) => {
+  todayButtonOnClick(e) {
     if (this.props.todayButtonOnClick) {
       this.props.todayButtonOnClick(e);
     }
   }
 
-  handleChangeDate = (event, date) => {
+  handleChangeDate(event, date) {
     this.setState({
       initialDate: date,
       displayDate: getFirstDayOfMonth(date),
       selectedDate: date,
     });
-  };
+  }
 
-  handleWindowKeyDown = (event) => {
+  handleWindowKeyDown(event) {
     const oldDate = cloneDate(this.state.selectedDate);
     if (this.props.open) {
       switch (keycode(event)) {
@@ -425,9 +482,9 @@ class Calendar extends ComponentBase {
         default: break;
       }
     }
-  };
+  }
 
-  handleWindowOnWheel = (event) => {
+  handleWindowOnWheel(event) {
     const value = getLocalizedDate(this.state.selectedDate, this.props.dateFormat);
     let selectionStart;
     let selectionEnd;
@@ -474,7 +531,7 @@ class Calendar extends ComponentBase {
     }
   }
 
-  handleFocusInput = (e) => {
+  handleFocusInput(e) {
     if (this.props.onFocus) {
       this.props.onFocus(e);
     }
@@ -486,7 +543,7 @@ class Calendar extends ComponentBase {
     );
   }
 
-  handleBlurInput = (e) => {
+  handleBlurInput(e) {
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
@@ -498,27 +555,13 @@ class Calendar extends ComponentBase {
     );
   }
 
-  yearSelector() {
-    if (!this.props.disableYearSelection) {
-      return (
-        <TimeBase
-          key="years"
-          context={this.props.context}
-          DateTimeFormat={this.props.DateTimeFormat}
-          onTouchTapTime={this.handleTouchTapYear}
-          selectedDate={this.state.selectedYearMonthDate}
-          minValue={this.props.minDate.getFullYear()}
-          maxValue={this.props.maxDate.getFullYear()}
-          timeType={5}
-          format={this.props.dateFormat}
-        />
-
-      );
-    }
-    return null;
+  onTouchTapOk() {
+    const date = cloneDate(this.state.selectedYearMonthDate);
+    this.setSelectedDate(date);
+    this.handleTouchTapDateDisplayMonthDay();
   }
 
-  onKeyDownInputDate = (e) => {
+  onKeyDownInputDate(e) {
     switch (keycode(e)) {
       case 'enter': {
         if (this.inputFocus) {
@@ -547,7 +590,7 @@ class Calendar extends ComponentBase {
     }
   }
 
-  onChangeInputDate = () => {
+  onChangeInputDate() {
     if (this.bactioninput && this.bactioninput.getInstance().getValue()) {
       // console.log(val);
     }
@@ -572,28 +615,24 @@ class Calendar extends ComponentBase {
     return null;
   }
 
-  getCalendarMonth(DateTimeFormat, minDate, maxDate) {
-    const calendarMonth = (
-      <CalendarMonth
-        DateTimeFormat={DateTimeFormat}
-        context={this.props.context}
-        displayDate={this.state.displayDate}
-        firstDayOfWeek={this.props.firstDayOfWeek}
-        key={this.state.displayDate.toDateString()}
-        minDate={minDate}
-        maxDate={maxDate}
-        onTouchTapDay={this.handleTouchTapDay}
-        ref="calendar"
-        selectedDate={this.state.selectedDate}
-        shouldDisableDate={this.props.shouldDisableDate}
-        calendarInfo={this.SpecialDays}
-        isBusiness={this.props.isBusiness}
-        canSelectOldDates={this.props.canSelectOldDates}
-        canSelectWeekendDays={this.props.canSelectWeekendDays}
-        canSelectSpecialDays={this.props.canSelectSpecialDays}
-      />
-    );
-    return calendarMonth;
+  yearSelector() {
+    if (!this.props.disableYearSelection) {
+      return (
+        <TimeBase
+          key="years"
+          context={this.props.context}
+          DateTimeFormat={this.props.DateTimeFormat}
+          onTouchTapTime={this.handleTouchTapYear}
+          selectedDate={this.state.selectedYearMonthDate}
+          minValue={this.props.minDate.getFullYear()}
+          maxValue={this.props.maxDate.getFullYear()}
+          timeType={5}
+          format={this.props.dateFormat}
+        />
+
+      );
+    }
+    return null;
   }
 
   renderYearAndMounthSelector() {
@@ -960,24 +999,6 @@ class Calendar extends ComponentBase {
             okLabel={okLabel}
             onTouchTapCancel={onTouchTapCancel}
             onTouchTapOk={this.onTouchTapOk}
-          />
-        }
-      </div>
-    );
-  }
-
-  getSpecialDays() {
-    return (
-      <div>
-        {this.props.isBusiness && this.SpecialDays.length > 0 &&
-          <SpecialDay
-            context={this.props.context}
-            DateTimeFormat={this.props.DateTimeFormat}
-            specialDayType={1}
-            key={`db${(4)}`}
-            selectedDate={this.state.displayDate}
-            calendarInfo={this.SpecialDays}
-            format={this.props.dateFormat}
           />
         }
       </div>

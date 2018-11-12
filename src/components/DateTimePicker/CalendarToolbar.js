@@ -27,6 +27,13 @@ class CalendarToolbar extends ComponentBase {
     transitionDirection: 'up',
   };
 
+  constructor(props, context) {
+    super(props, context);
+    this.handleClickToolBar = this.handleClickToolBar.bind(this);
+    this.handleTouchTapPrevMonth = this.handleTouchTapPrevMonth.bind(this);
+    this.handleTouchTapNextMonth = this.handleTouchTapNextMonth.bind(this);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayDate !== this.props.displayDate) {
       const direction = nextProps.displayDate > this.props.displayDate ? 'left' : 'right';
@@ -36,19 +43,19 @@ class CalendarToolbar extends ComponentBase {
     }
   }
 
-  handleTouchTapPrevMonth = () => {
+  handleTouchTapPrevMonth() {
     if (this.props.onMonthChange) {
       this.props.onMonthChange(-1);
     }
-  };
+  }
 
-  handleTouchTapNextMonth = () => {
+  handleTouchTapNextMonth() {
     if (this.props.onMonthChange) {
       this.props.onMonthChange(1);
     }
-  };
+  }
 
-  handleClickToolBar = () => {
+  handleClickToolBar() {
     if (this.props.handleClickToolBar) {
       this.props.handleClickToolBar();
     }

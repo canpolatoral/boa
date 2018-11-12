@@ -62,19 +62,26 @@ class TimeButton extends ComponentBase {
     hover: false,
   };
 
-  handleMouseEnter = () => {
+  constructor(props, context) {
+    super(props, context);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleTouchTap = this.handleTouchTap.bind(this);
+  }
+
+  handleMouseEnter() {
     this.setState({ hover: true });
-  };
+  }
 
-  handleMouseLeave = () => {
+  handleMouseLeave() {
     this.setState({ hover: false });
-  };
+  }
 
-  handleTouchTap = (event) => {
+  handleTouchTap(event) {
     if (this.props.onTouchTap) {
       this.props.onTouchTap(event, this.props.time);
     }
-  };
+  }
 
   render() {
     const {

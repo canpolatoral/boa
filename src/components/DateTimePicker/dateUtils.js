@@ -596,10 +596,6 @@ export function getDatePickerStyle(context) {
   return datePicker;
 }
 
-export function isString(obj) {
-  return (Object.prototype.toString.call(obj) === '[object String]');
-}
-
 export function getDefaultDate(props) {
   let defaultDate;
   if (props.defaultValue != undefined) {
@@ -612,7 +608,7 @@ export function getDefaultDate(props) {
 
 export function getDateToString(propDate, defaultDate) {
   let returnDate = defaultDate;
-  if (this.isString(propDate)) {
+  if (isString(propDate)) {
     returnDate = new Date(propDate);
     if (isNaN(returnDate)) {
       returnDate = defaultDate;

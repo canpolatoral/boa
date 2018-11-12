@@ -73,16 +73,29 @@ class DatePickerDialog extends ComponentBase {
     open: false,
   };
 
-  show = () => {
+  constructor(props, context) {
+    super(props, context);
+    this.show = this.show.bind(this);
+    this.dismiss = this.dismiss.bind(this);
+    this.handleTouchTapDay = this.handleTouchTapDay.bind(this);
+    this.handleTouchTapCancel = this.handleTouchTapCancel.bind(this);
+    this.todayButtonOnClick = this.todayButtonOnClick.bind(this);
+    this.dateUpdate = this.dateUpdate.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.handleTouchTapOk = this.handleTouchTapOk.bind(this);
+    this.handleWindowKeyUp = this.handleWindowKeyUp.bind(this);
+  }
+
+  show() {
     if (this.props.onShow && !this.state.open) {
       this.props.onShow();
     }
     this.setState({
       open: true,
     });
-  };
+  }
 
-  dismiss = () => {
+  dismiss() {
     if (this.props.onDismiss && this.state.open) {
       this.props.onDismiss();
     }
@@ -92,7 +105,7 @@ class DatePickerDialog extends ComponentBase {
     });
   }
 
-  handleTouchTapDay = (event, date) => {
+  handleTouchTapDay(event, date) {
     if (this.props.onAccept) {
       this.props.onAccept(date);
     }
@@ -101,11 +114,11 @@ class DatePickerDialog extends ComponentBase {
     });
   }
 
-  handleTouchTapCancel = () => {
+  handleTouchTapCancel() {
     this.dismiss();
   }
 
-  todayButtonOnClick = () => {
+  todayButtonOnClick() {
     if (this.props.onAccept) {
       const today = new Date();
       const handleDate = new Date(this.refs.calendar.getSelectedDate());
@@ -119,17 +132,17 @@ class DatePickerDialog extends ComponentBase {
     });
   }
 
-  handleClickToolBar = () => {
-
+  // eslint-disable-next-line
+  handleClickToolBar() {
   }
 
-  dateUpdate = (oldDate, newDate, changeType) => {
+  dateUpdate(oldDate, newDate, changeType) {
     if (this.props.dateUpdate) {
       this.props.dateUpdate(oldDate, newDate, changeType);
     }
   }
 
-  handleRequestClose = () => {
+  handleRequestClose() {
     if (this.props.onAccept) {
       this.props.onAccept(this.refs.calendar.getSelectedDate());
     }
@@ -143,12 +156,12 @@ class DatePickerDialog extends ComponentBase {
     });
   }
 
-  handleTouchTapOk = () => {
+  handleTouchTapOk() {
     this.handleRequestClose();
   }
 
-  handleWindowKeyUp = () => {
-
+  // eslint-disable-next-line
+  handleWindowKeyUp() {
   }
 
   render() {

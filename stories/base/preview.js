@@ -7,7 +7,7 @@ import { DocCode } from '@boa/components/DocCode';
 import PropsPanel from './props-panel';
 import * as Utils from './utils';
 
-export default class Playground extends ComponentBase {
+export default class Preview extends ComponentBase {
   constructor(props, context) {
     super(props, context);
     this.componentPropertySource = [];
@@ -152,7 +152,7 @@ export default class Playground extends ComponentBase {
         {...this.props}
         {...this.state.currentProperties} />), {
         displayName: this.getName.bind(this),
-        filterProps: ['context', 'maxFontSize', 'minFontSize'],
+        filterProps: ['context', 'maxFontSize', 'minFontSize', 'doc'],
       });
     return `import ${this.getName()} from '@boa/components/${this.getName()}';
 

@@ -25,6 +25,11 @@ class TimeBase extends ComponentBase {
     muiTheme: PropTypes.object.isRequired,
   };
 
+  constructor(props, context) {
+    super(props, context);
+    this.handleTouchTapTime = this.handleTouchTapTime.bind(this);
+  }
+
   componentDidMount() {
     this.scrollToSelectedTime();
   }
@@ -122,11 +127,11 @@ class TimeBase extends ComponentBase {
     container.scrollTop = scrollYOffset;
   }
 
-  handleTouchTapTime = (event, time) => {
+  handleTouchTapTime(event, time) {
     if (this.props.onTouchTapTime) {
       this.props.onTouchTapTime(event, time);
     }
-  };
+  }
 
   render() {
     const styles = {

@@ -6,7 +6,8 @@ import {
   cloneDate,
   getFirstDayOfMonth,
   getMonthsShort,
-  getDatePickerStyle
+  getDatePickerStyle,
+  getDayList,
 } from './dateUtils';
 
 const dayType = {
@@ -20,16 +21,16 @@ const dayType = {
 
 function getStyles(props, type) {
   const datePicker = getDatePickerStyle(props.context);
-  let dateTextColor = datePicker.DateTextColor;
-  let EveHolidayBoxColor = datePicker.calEve;
-  let HolidayBoxColor = datePicker.calHoliday;
+  const dateTextColor = datePicker.DateTextColor;
+  const EveHolidayBoxColor = datePicker.calEve;
+  const HolidayBoxColor = datePicker.calHoliday;
   return {
     root: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      borderTop: '1px solid ' + dateTextColor,
-      borderBottom: '1px solid ' + dateTextColor,
+      borderTop: `1px solid ${dateTextColor}`,
+      borderBottom: `1px solid ${dateTextColor}`,
       paddingTop: 12,
       paddingBottom: 12,
 
@@ -39,18 +40,18 @@ function getStyles(props, type) {
       flexDirection: 'row',
       marginleft: 1,
       alignItems: 'center',
-      marginTop: -2
+      marginTop: -2,
     },
     item: {
       height: 24,
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     itemDate: {
       fontSize: 11,
       color: props.context.theme.boaPalette.base300,
-      marginLeft: 4
+      marginLeft: 4,
     },
     itemDescription: {
       opacity: 1,
@@ -64,157 +65,102 @@ function getStyles(props, type) {
       background: type === dayType.Eve ? EveHolidayBoxColor : HolidayBoxColor,
     },
   };
-
 }
 
 class SpecialDay extends ComponentBase {
-
-  constructor(props, context) {
-    super(props, context);
-  }
-
   static propTypes = {
-    DateTimeFormat: PropTypes.func.isRequired,
-    specialDayType: PropTypes.number,
     calendarInfo: PropTypes.array,
-    selectedDate: PropTypes.object.isRequired,
+    DateTimeFormat: PropTypes.func.isRequired,
     format: PropTypes.string,
+    selectedDate: PropTypes.object.isRequired,
+    specialDayType: PropTypes.number,
   };
+
   static defaultProps = {
     selected: false,
     disabled: false,
     calendarInfo: [],
   };
-  getDayList(calendarInfo, selectedDate, dayType, betweenDayCount) {
-    // let monthFirstDate = cloneDate(getFirstDayOfMonth(selectedDate));
-    let specialDayStringArray = [];
-    let selectedMonth = selectedDate.getMonth();
 
-    for (let i = 0; i < calendarInfo.length; i++) {
-      // aynı ay içerisinde bir özel gün bulundu ise betweenDayCount kadar ileri geri gidilerek günler bulunur
-      // aynı degerleri tekrardan gezmemek için var olan list içerisinde dolaşılıp break yapılur
-      let sameValue = false;
-      if (specialDayStringArray !== undefined && specialDayStringArray.length > 0) {
-        for (let list = 0; list < specialDayStringArray.length; list++) {
-          if (specialDayStringArray[list] !== undefined && specialDayStringArray[list].length > 0) {
-            for (let item = 0; item < specialDayStringArray[list].length; item++) {
-              let itemList = specialDayStringArray[list];
-              if (itemList[item] !== undefined && itemList[item].day === calendarInfo[i].day) {
-                sameValue = true;
-              }
-            }
-          }
-        }
-        if (sameValue) continue;
-      }
-      if (dayType === calendarInfo[i].dayType && calendarInfo[i].day.getMonth() === selectedMonth) {
-
-        let itemspecialDayString = [];
-        itemspecialDayString.push(calendarInfo[i]);
-        let negativeBetweenDaylength = i - betweenDayCount;
-
-
-        for (let j = i - 1; j > negativeBetweenDaylength; j--) {
-          if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
-            break;
-          }
-          else {
-            itemspecialDayString.push(calendarInfo[j]);
-          }
-        }
-
-
-        let positiveBetweenDaylength = i + betweenDayCount;
-        for (let j = i + 1; j < positiveBetweenDaylength; j++) {
-          if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
-            break;
-          }
-          else {
-            itemspecialDayString.push(calendarInfo[j]);
-          }
-        }
-        specialDayStringArray.push(itemspecialDayString);
-      }
-
-    }
-    return specialDayStringArray;
-  }
   getSpecialDayList(calendarInfo, selectedDate) {
     const styleEve = getStyles(this.props, dayType.Eve);
     const styleHoliday = getStyles(this.props, dayType.Holiday);
     const betweenDayCount = 5;
-    let returnObject = [];
-    let EveList = this.getDayList(calendarInfo, selectedDate, dayType.Eve, betweenDayCount);
-    let HolidayList = this.getDayList(calendarInfo, selectedDate, dayType.Holiday, betweenDayCount);
-    let Eve = this.getHoliday(EveList, styleEve);
-    let Holiday = this.getHoliday(HolidayList, styleHoliday);
+    const returnObject = [];
+    const EveList = getDayList(calendarInfo, selectedDate, dayType.Eve, betweenDayCount);
+    const HolidayList = getDayList(calendarInfo, selectedDate, dayType.Holiday, betweenDayCount);
+    const Eve = this.getHoliday(EveList, styleEve);
+    const Holiday = this.getHoliday(HolidayList, styleHoliday);
     if (Eve && Eve.length > 0) returnObject.push(Eve);
     if (Holiday && Holiday.length > 0) returnObject.push(Holiday);
     return returnObject;
   }
+
   getHoliday(Mainlist, style) {
-    let MainDiv = [];
+    const MainDiv = [];
     for (let i = 0; i < Mainlist.length; i++) {
       let eveItem;
-      let list = Mainlist[i];
+      const list = Mainlist[i];
       if (list.length > 1) {
-
         eveItem = this.getMultiHoliday(list, style);
-      }
-      else {
+      } else {
         eveItem = this.getSingleHoliday(list, style);
       }
       MainDiv.push(eveItem);
     }
     return MainDiv;
   }
-  getMultiHoliday(list, style) {
-    let itemOne = list[0];
-    let itemOneDate = new Date(itemOne.day);
-    let itemTwo = new Date(list[list.length - 1].day);
-    let HolidayName = itemOne.description ? itemOne.description.replace('1*', '') : '';
 
-    let MonthNameList = getMonthsShort(itemOneDate, this.props.format);
-    let MonthName = MonthNameList[itemOneDate.getMonth()];
-    let beginDay = itemOneDate.getDate();
-    let EndDay = itemTwo.getDate();
-    let multiHoliday = (
+  getMultiHoliday(list, style) {
+    const itemOne = list[0];
+    const itemOneDate = new Date(itemOne.day);
+    const itemTwo = new Date(list[list.length - 1].day);
+    const HolidayName = itemOne.description ? itemOne.description.replace('1*', '') : '';
+
+    const MonthNameList = getMonthsShort(itemOneDate, this.props.format);
+    const MonthName = MonthNameList[itemOneDate.getMonth()];
+    const beginDay = itemOneDate.getDate();
+    const EndDay = itemTwo.getDate();
+    const multiHoliday = (
       <div style={style.item}>
-        <div style={style.Box}></div>
+        <div style={style.Box} />
         <div style={style.child}>
           <div style={Object.assign({}, style.itemDate, { marginLeft: 6 })}>
-            {beginDay}-{EndDay} {MonthName}</div>
-          <div style={Object.assign({}, style.itemDate, { marginLeft: 0 })} >:</div>
+            {beginDay}-{EndDay} {MonthName}
+          </div>
+          <div style={Object.assign({}, style.itemDate, { marginLeft: 0 })}>:</div>
           <div style={style.itemDescription}>{HolidayName}</div>
         </div>
       </div>
     );
     return multiHoliday;
   }
-  getSingleHoliday(list, style) {
 
-    let itemOne = list[0];
-    let itemOneDate = new Date(itemOne.day);
-    let HolidayName = itemOne.description ? itemOne.description.replace('1*', '') : '';
-    let MonthNameList = getMonthsShort(itemOneDate, this.props.format);
-    let MonthName = MonthNameList[itemOneDate.getMonth()];
-    let beginDay = itemOneDate.getDate();
-    let singleHoliday = (
+  getSingleHoliday(list, style) {
+    const itemOne = list[0];
+    const itemOneDate = new Date(itemOne.day);
+    const HolidayName = itemOne.description ? itemOne.description.replace('1*', '') : '';
+    const MonthNameList = getMonthsShort(itemOneDate, this.props.format);
+    const MonthName = MonthNameList[itemOneDate.getMonth()];
+    const beginDay = itemOneDate.getDate();
+    const monthStyle = Object.assign({}, style.itemDate, { marginLeft: 6 });
+    const singleHoliday = (
       <div style={style.item}>
-        <div style={style.Box}></div>
+        <div style={style.Box} />
         <div style={style.child}>
-          <div style={Object.assign({}, style.itemDate, { marginLeft: 6 })}>{beginDay} {MonthName}</div>
-          <div style={Object.assign({}, style.itemDate, { marginLeft: 0 })} >:</div>
+          <div style={monthStyle}>{beginDay} {MonthName}</div>
+          <div style={Object.assign({}, style.itemDate, { marginLeft: 0 })}>:</div>
           <div style={style.itemDescription}>{HolidayName}</div>
         </div>
       </div>
     );
     return singleHoliday;
   }
-  render() {
-    let monthFirstDate = cloneDate(getFirstDayOfMonth(this.props.selectedDate));
 
-    let specialDays = this.getSpecialDayList(this.props.calendarInfo, monthFirstDate);
+  render() {
+    const monthFirstDate = cloneDate(getFirstDayOfMonth(this.props.selectedDate));
+
+    const specialDays = this.getSpecialDayList(this.props.calendarInfo, monthFirstDate);
 
     return (
       <div>
@@ -226,11 +172,11 @@ class SpecialDay extends ComponentBase {
               marginBottom: 0,
               marginLeft: 0,
               marginRight: 0,
-              marginTop: 12
+              marginTop: 12,
             }} />
         }
         {specialDays.length > 0 &&
-          <div >
+          <div>
             <Divider
               context={this.props.context}
               style={{
@@ -238,7 +184,7 @@ class SpecialDay extends ComponentBase {
                 marginBottom: 12,
                 marginLeft: -12,
                 marginRight: -12,
-                marginTop: 14
+                marginTop: 14,
               }} />
             {specialDays}
             <Divider
@@ -248,7 +194,7 @@ class SpecialDay extends ComponentBase {
                 marginBottom: 0,
                 marginLeft: -12,
                 marginRight: -12,
-                marginTop: 12
+                marginTop: 12,
               }} />
           </div>
         }

@@ -4,7 +4,6 @@ import { ComponentBase } from '@boa/base';
 import { Button } from '@boa/components/Button';
 
 class CalendarActionButton extends ComponentBase {
-
   static propTypes = {
     autoOk: PropTypes.bool,
     cancelLabel: PropTypes.node,
@@ -12,10 +11,6 @@ class CalendarActionButton extends ComponentBase {
     onTouchTapCancel: PropTypes.func,
     onTouchTapOk: PropTypes.func,
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   renderCancelButton() {
     const { cancelLabel } = this.props;
@@ -32,6 +27,7 @@ class CalendarActionButton extends ComponentBase {
 
   renderOkButton() {
     const { okLabel } = this.props;
+    const disabled = this.refs.calendar && this.refs.calendar.isSelectedDateDisabled();
     return (
       <div>
         {!this.props.autoOk &&
@@ -41,7 +37,7 @@ class CalendarActionButton extends ComponentBase {
             text={okLabel}
             colorType="primary"
             onClick={this.props.onTouchTapOk}
-            disabled={this.refs.calendar !== undefined && this.refs.calendar.isSelectedDateDisabled()}
+            disabled={disabled}
           />
         }
       </div>
@@ -58,7 +54,7 @@ class CalendarActionButton extends ComponentBase {
         maxHeight: 48,
         padding: 0,
         paddingTop: 6,
-        paddingBottom: 6
+        paddingBottom: 6,
       },
       flatButtons: {
         fontsize: 14,

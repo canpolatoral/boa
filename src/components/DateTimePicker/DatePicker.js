@@ -11,92 +11,87 @@ import DatePickerDialog from './DatePickerDialog';
 import TimePickerDialog from './TimePickerDialog';
 
 class DatePicker extends ComponentBase {
-
-  constructor(props, context) {
-    super(props, context);
-  }
-
   static propTypes = {
-    DateTimeFormat: PropTypes.func,
     autoOk: PropTypes.bool,
+    calendarInfo: PropTypes.array,
+    cancelLabel: PropTypes.node,
+    canSelectOldDates: PropTypes.bool,
+    canSelectSpecialDays: PropTypes.bool,
+    canSelectWeekendDays: PropTypes.bool,
     className: PropTypes.string,
     container: PropTypes.oneOf(['dialog', 'inline']),
+    containerStyle: PropTypes.object,
+    dateFormat: PropTypes.string,
+    dateOnChange: PropTypes.func,
+    DateTimeFormat: PropTypes.func,
+    datetimeOption: PropTypes.object,
+    dateUpdate: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.node,
+    ]),
     defaultDate: PropTypes.object,
     dialogContentStyle: PropTypes.object,
-    containerStyle: PropTypes.object,
+    dialogNewSelectDate: PropTypes.instanceOf(Date),
+    disabled: PropTypes.bool,
     disableYearSelection: PropTypes.bool,
+    errorTextDate: PropTypes.string,
+    errorTextTime: PropTypes.string,
     firstDayOfWeek: PropTypes.number,
+    floatingLabelStyle: PropTypes.object,
+    floatingLabelTextDate: PropTypes.string,
+    floatingLabelTextTime: PropTypes.string,
     formatDate: PropTypes.func,
-    minDate: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    hintStyle: PropTypes.object,
+    hintText: PropTypes.string,
+    hintTextDate: PropTypes.string,
+    hintTextTime: PropTypes.string,
+    hourTitle: PropTypes.node,
+    iconStyle: PropTypes.object,
+    inlineGridMode: PropTypes.bool,
+    inputStyle: PropTypes.object,
+    isBusiness: PropTypes.bool,
+    leftIconList: PropTypes.array,
     maxDate: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.instanceOf(Date),
     ]),
+    maxHour: PropTypes.number,
+    maxMinute: PropTypes.number,
+    maxSecond: PropTypes.number,
+    minDate: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date),
+    ]),
+    minHour: PropTypes.number,
+    minMinute: PropTypes.number,
+    minSecond: PropTypes.number,
+    minuteTitle: PropTypes.node,
+    mode: PropTypes.oneOf(['portrait', 'landscape']),
+    monthTitle: PropTypes.node,
+    okLabel: PropTypes.node,
+    onChange: PropTypes.func,
+    onDismiss: PropTypes.func,
+    onFocus: PropTypes.func,
+    onShow: PropTypes.func,
+    onTouchTap: PropTypes.func,
+    prefixText: PropTypes.any,
+    rightIconList: PropTypes.array,
+    secondTitle: PropTypes.node,
+    shouldDisableDate: PropTypes.func,
+    style: PropTypes.object,
+    suffixText: PropTypes.any,
+    textFieldStyle: PropTypes.object,
+    timeFormat: PropTypes.string,
+    timeOnChange: PropTypes.func,
+    todayLabel: PropTypes.node,
+    underlineFocusStyle: PropTypes.object,
+    underlineStyle: PropTypes.object,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.object,
       PropTypes.instanceOf(Date),
     ]),
-    dialogNewSelectDate: PropTypes.instanceOf(Date),
-    mode: PropTypes.oneOf(['portrait', 'landscape']),
-    okLabel: PropTypes.node,
-    cancelLabel: PropTypes.node,
-    todayLabel: PropTypes.node,
     yearTitle: PropTypes.node,
-    monthTitle: PropTypes.node,
-    hourTitle: PropTypes.node,
-    minuteTitle: PropTypes.node,
-    secondTitle: PropTypes.node,
-    onChange: PropTypes.func,
-    dateOnChange: PropTypes.func,
-    timeOnChange: PropTypes.func,
-    onDismiss: PropTypes.func,
-    onFocus: PropTypes.func,
-    onShow: PropTypes.func,
-    onTouchTap: PropTypes.func,
-    shouldDisableDate: PropTypes.func,
-    style: PropTypes.object,
-    textFieldStyle: PropTypes.object,
-    hintText: PropTypes.string,
-    leftIconList: PropTypes.array,
-    rightIconList: PropTypes.array,
-    floatingLabelTextDate: PropTypes.string,
-    floatingLabelTextTime: PropTypes.string,
-    floatingLabelStyle: PropTypes.object,
-    inputStyle: PropTypes.object,
-    hintTextDate: PropTypes.string,
-    hintTextTime: PropTypes.string,
-    datetimeOption: PropTypes.object,
-    maxHour: PropTypes.number,
-    minHour: PropTypes.number,
-    maxMinute: PropTypes.number,
-    minMinute: PropTypes.number,
-    maxSecond: PropTypes.number,
-    minSecond: PropTypes.number,
-    iconStyle: PropTypes.object,
-    hintStyle: PropTypes.object,
-    underlineStyle: PropTypes.object,
-    underlineFocusStyle: PropTypes.object,
-    isBusiness: PropTypes.bool,
-    calendarInfo: PropTypes.array,
-    dateFormat: PropTypes.string,
-    timeFormat: PropTypes.string,
-    canSelectOldDates: PropTypes.bool,
-    canSelectWeekendDays: PropTypes.bool,
-    canSelectSpecialDays: PropTypes.bool,
-    disabled: PropTypes.bool,
-    dateUpdate:PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-    ]),
-    errorTextDate: PropTypes.string,
-    errorTextTime: PropTypes.string,
-    inlineGridMode:PropTypes.bool,
-    prefixText:PropTypes.any,
-    suffixText:PropTypes.any
   };
 
   static defaultProps = {
@@ -105,7 +100,7 @@ class DatePicker extends ComponentBase {
     disableYearSelection: false,
     firstDayOfWeek: 1,
     style: {},
-    inlineGridMode:false
+    inlineGridMode: false,
   };
 
   componentWillMount() {
@@ -127,7 +122,7 @@ class DatePicker extends ComponentBase {
   }
 
   isMobile() {
-    if (this.props.context.deviceSize == Sizes.SMALL) return true;
+    if (this.props.context.deviceSize === Sizes.SMALL) return true;
     return false;
   }
 
@@ -136,7 +131,7 @@ class DatePicker extends ComponentBase {
   }
 
   openDateDialog(event) {
-    var element=event.currentTarget;
+    const element = event.currentTarget;
     if (this.getDate() !== undefined) {
       this.setState({
         dialogDate: this.getDate(),
@@ -151,9 +146,7 @@ class DatePicker extends ComponentBase {
   }
 
   openTimeDialog(event) {
-
     if (this.getDate() !== undefined) {
-
       this.setState({
         dialogDate: this.getDate(),
         anchorElTime: event.currentTarget,
@@ -166,9 +159,9 @@ class DatePicker extends ComponentBase {
     }
   }
 
-  handleDateAccept(date) {
+  handleDateAccept = (date) => {
     if (date && this.state.date) {
-      var newDate = new Date(date.getFullYear(),
+      const newDate = new Date(date.getFullYear(),
         date.getMonth(),
         date.getDate(),
         this.props.timeFormat ? this.state.date.getHours() : 0,
@@ -184,7 +177,7 @@ class DatePicker extends ComponentBase {
 
   handleTimeAccept(date) {
     if (date && this.state.date) {
-      var newDate = new Date(this.state.date.getFullYear(),
+      const newDate = new Date(this.state.date.getFullYear(),
         this.state.date.getMonth(),
         this.state.date.getDate(),
         date.getHours(),
@@ -214,33 +207,35 @@ class DatePicker extends ComponentBase {
     if (props.value instanceof Date) {
       return props.value;
     }
+    return null;
   }
 
-  handleFocusDateInput(event) {
+  handleFocusDateInput = (event) => {
     event.preventDefault();
     this.openDateDialog(event);
-
   }
 
-  handleFocusTimeInput(event) {
+  handleFocusTimeInput = (event) => {
     this.openTimeDialog(event);
     event.preventDefault();
   }
 
-  dateUpdate(oldDate, newDate, changeType) {
+  dateUpdate = (oldDate, newDate, changeType) => {
     if (this.props.dateUpdate) {
       this.props.dateUpdate(oldDate, newDate, changeType);
     }
   }
 
   validateConstraint() {
-    const {dateFormat, timeFormat} = this.props;
+    const { dateFormat, timeFormat } = this.props;
+    const instanceDate = this.bActionInputDate.getInstance();
+    const instanceTime = this.bActionInputTime.getInstance();
 
-    const dateResult = dateFormat ? (this.bActionInputDate.getInstance() ? this.bActionInputDate.getInstance().validateConstraint() : true) :true;
+    const dateResult = (dateFormat && instanceDate) ? instanceDate.validateConstraint() : true;
     if (!dateResult) {
       return dateResult;
     }
-    const timeResult = timeFormat ? (this.bActionInputTime ? this.bActionInputTime.getInstance().validateConstraint() : true) :true;
+    const timeResult = (timeFormat && instanceTime) ? instanceTime.validateConstraint() : true;
     return dateResult && timeResult;
   }
 
@@ -283,35 +278,35 @@ class DatePicker extends ComponentBase {
       dialogNewSelectDate,
       hintTextDate,
       errorTextDate,
-      noDialog
+      noDialog,
     } = this.props;
 
-    let cloneSuffixText=this.props.suffixText;
+    let cloneSuffixText = this.props.suffixText;
 
-    if (this.props.pageType!='browse' &&  this.props.suffixText) {
+    if (this.props.pageType !== 'browse' && this.props.suffixText) {
       cloneSuffixText = React.cloneElement(
-        this.props.suffixText, { onClick: this.handleFocusDateInput.bind(this) }
+        this.props.suffixText, { onClick: this.handleFocusDateInput.bind(this) },
       );
     }
 
-    let inputLocalizedDate = getLocalizedDate(this.state.date, dateFormat);
+    const inputLocalizedDate = getLocalizedDate(this.state.date, dateFormat);
     // inputLocalizedDate=inputLocalizedDate== '' ?undefined:inputLocalizedDate;
-    let isMobile= this.isMobile();
+    const isMobile = this.isMobile();
     if (dateFormat) {
       return (
         <div
-        style={{
-          width: timeFormat ?  '65%' : '100%',
-        }}
-        ref={r => this.rootDate = r}
+          style={{
+            width: timeFormat ? '65%' : '100%',
+          }}
+          ref={r => this.rootDate = r}
         >
           {!this.props.noDialog &&
-          <Input
+            <Input
               context={this.props.context}
               valueConstraint={valueConstraint}
               hintText={hintTextDate}
               floatingLabelText={floatingLabelTextDate}
-              onFocus={this.handleFocusDateInput.bind(this)}
+              onFocus={this.handleFocusDateInput}
               value={inputLocalizedDate}
               mask={this.props.formats.dateMask}
               prefixText={this.props.prefixText}
@@ -320,60 +315,59 @@ class DatePicker extends ComponentBase {
               ref={r => this.bActionInputDate = r}
               disabled={disabled}
               errorText={errorTextDate}
-              inputStyle={{cursor:'pointer'}}
+              inputStyle={{ cursor: 'pointer' }}
               inlineGridMode={this.props.inlineGridMode}
-              />
-        }
+            />
+          }
           <DatePickerDialog
-              // {...this.props} todo: geride kalanlar olmuş olabilir bu kullanım hatalı
-              DateTimeFormat={DateTimeFormat}
-              noDialog={noDialog}
-              autoOk={autoOk}
-              anchorElDate={this.state.anchorElDate}
-              context={this.props.context}
-              cancelLabel={cancelLabel}
-              container={container}
-              containerStyle={containerStyle}
-              dialogContentStyle={dialogContentStyle}
-              disableYearSelection={disableYearSelection}
-              firstDayOfWeek={firstDayOfWeek}
-              initialDate={this.state.dialogDate}
-              maxDate={maxDate}
-              minDate={minDate}
-              mode={mode}
-              okLabel={okLabel}
-              onAccept={this.handleDateAccept.bind(this)}
-              onShow={onShow}
-              onDismiss={onDismiss}
-              ref="dateDialogWindow"
-              shouldDisableDate={shouldDisableDate}
-              inputStyle={inputStyle}
-              floatingLabelStyle={floatingLabelStyle}
-              isBusiness={isBusiness}
-              style={this.props.style}
-              calendarInfo={calendarInfo}
-              dateFormat={dateFormat}
-              timeFormat={timeFormat}
-              canSelectOldDates={canSelectOldDates}
-              canSelectWeekendDays={canSelectWeekendDays}
-              canSelectSpecialDays={canSelectSpecialDays}
-              isMobile={isMobile}
-              datetimeOption={datetimeOption}
-              yearTitle={yearTitle}
-              todayLabel={todayLabel}
-              monthTitle={monthTitle}
-              dateUpdate={this.dateUpdate.bind(this)}
-              dialogNewSelectDate={dialogNewSelectDate}
-              pageType={this.props.pageType}
-              />
+            // {...this.props} todo: geride kalanlar olmuş olabilir bu kullanım hatalı
+            DateTimeFormat={DateTimeFormat}
+            noDialog={noDialog}
+            autoOk={autoOk}
+            anchorElDate={this.state.anchorElDate}
+            context={this.props.context}
+            cancelLabel={cancelLabel}
+            container={container}
+            containerStyle={containerStyle}
+            dialogContentStyle={dialogContentStyle}
+            disableYearSelection={disableYearSelection}
+            firstDayOfWeek={firstDayOfWeek}
+            initialDate={this.state.dialogDate}
+            maxDate={maxDate}
+            minDate={minDate}
+            mode={mode}
+            okLabel={okLabel}
+            onAccept={this.handleDateAccept}
+            onShow={onShow}
+            onDismiss={onDismiss}
+            ref="dateDialogWindow"
+            shouldDisableDate={shouldDisableDate}
+            inputStyle={inputStyle}
+            floatingLabelStyle={floatingLabelStyle}
+            isBusiness={isBusiness}
+            style={this.props.style}
+            calendarInfo={calendarInfo}
+            dateFormat={dateFormat}
+            timeFormat={timeFormat}
+            canSelectOldDates={canSelectOldDates}
+            canSelectWeekendDays={canSelectWeekendDays}
+            canSelectSpecialDays={canSelectSpecialDays}
+            isMobile={isMobile}
+            datetimeOption={datetimeOption}
+            yearTitle={yearTitle}
+            todayLabel={todayLabel}
+            monthTitle={monthTitle}
+            dateUpdate={this.dateUpdate}
+            dialogNewSelectDate={dialogNewSelectDate}
+            pageType={this.props.pageType}
+          />
         </div>
       );
     }
-    else {
-      return (
-        <div></div>
-      );
-    }
+
+    return (
+      <div />
+    );
   }
 
   renderTime() {
@@ -410,22 +404,22 @@ class DatePicker extends ComponentBase {
       // ...other
     } = this.props;
 
-    let inputLocalizedTime = getLocalizedTime(this.state.date, datetimeOption, timeFormat);
-    let isMobile= this.isMobile();
+    const inputLocalizedTime = getLocalizedTime(this.state.date, datetimeOption, timeFormat);
+    const isMobile = this.isMobile();
     if (timeFormat) {
       return (
         <div style={{
           width: '35%',
-          paddingLeft:24
+          paddingLeft: 24,
         }}>
 
           {!this.props.noDialog &&
-          <Input
+            <Input
               context={this.props.context}
               valueConstraint={valueConstraint}
               hintText={this.props.hintTextTime}
               floatingLabelText={this.props.floatingLabelTextTime}
-              onFocus={this.handleFocusTimeInput.bind(this)}
+              onFocus={this.handleFocusTimeInput}
               value={inputLocalizedTime}
               ref={r => this.bActionInputTime = r}
               inputStyle={inputStyle}
@@ -436,48 +430,46 @@ class DatePicker extends ComponentBase {
               errorText={errorTextTime}
               prefixText={null}
               suffixText={null}
-              />
-        }
+            />
+          }
           <TimePickerDialog
-              DateTimeFormat={DateTimeFormat}
-              context={this.props.context}
-              cancelLabel={cancelLabel}
-              container={container}
-              containerStyle={containerStyle}
-              dialogContentStyle={dialogContentStyle}
-              initialDate={this.state.dialogDate}
-              mode={mode}
-              anchorEl={this.state.anchorElTime}
-              okLabel={okLabel}
-              onAccept={this.handleTimeAccept.bind(this)}
-              onShow={onShow}
-              onDismiss={onDismiss}
-              ref="timeDialogWindow"
-              maxHour={maxHour}
-              minHour={minHour}
-              maxMinute={maxMinute}
-              minMinute={minMinute}
-              maxSecond={maxSecond}
-              minSecond={minSecond}
-              datetimeOption={datetimeOption}
-              inputStyle={inputStyle}
-              floatingLabelStyle={floatingLabelStyle}
-              style={this.props.style}
-              dateFormat={dateFormat}
-              timeFormat={timeFormat}
-              isMobile={isMobile}
-              hourTitle={hourTitle}
-              minuteTitle={minuteTitle}
-              secondTitle={secondTitle}
-              />
+            DateTimeFormat={DateTimeFormat}
+            context={this.props.context}
+            cancelLabel={cancelLabel}
+            container={container}
+            containerStyle={containerStyle}
+            dialogContentStyle={dialogContentStyle}
+            initialDate={this.state.dialogDate}
+            mode={mode}
+            anchorEl={this.state.anchorElTime}
+            okLabel={okLabel}
+            onAccept={this.handleTimeAccept}
+            onShow={onShow}
+            onDismiss={onDismiss}
+            ref="timeDialogWindow"
+            maxHour={maxHour}
+            minHour={minHour}
+            maxMinute={maxMinute}
+            minMinute={minMinute}
+            maxSecond={maxSecond}
+            minSecond={minSecond}
+            datetimeOption={datetimeOption}
+            inputStyle={inputStyle}
+            floatingLabelStyle={floatingLabelStyle}
+            style={this.props.style}
+            dateFormat={dateFormat}
+            timeFormat={timeFormat}
+            isMobile={isMobile}
+            hourTitle={hourTitle}
+            minuteTitle={minuteTitle}
+            secondTitle={secondTitle}
+          />
         </div>);
     }
-    else {
-      return (
-        <div></div>
-      );
-    }
 
+    return (
+      <div />
+    );
   }
 
   render() {
@@ -490,9 +482,9 @@ class DatePicker extends ComponentBase {
 
     return (
       <div>{
-      !isRtl &&
+        !isRtl &&
         <div style={{
-          display:'flex'
+          display: 'flex',
 
           // height:60
         }}>
@@ -505,24 +497,24 @@ class DatePicker extends ComponentBase {
             this.renderTime()
           }
         </div>
-        }
-        {
-        isRtl &&
-        <div style={{
-          display:'flex',
-          // height:60,
-          alignItems:'baseline'
-        }}>
-          {
-            timeFormat &&
-            this.renderTime()
-          }
-          {
-            dateFormat &&
-            this.renderDate()
-          }
-        </div>
       }
+        {
+          isRtl &&
+          <div style={{
+            display: 'flex',
+            // height:60,
+            alignItems: 'baseline',
+          }}>
+            {
+              timeFormat &&
+              this.renderTime()
+            }
+            {
+              dateFormat &&
+              this.renderDate()
+            }
+          </div>
+        }
       </div>
     );
   }

@@ -1,25 +1,26 @@
+/* eslint-disable react/jsx-no-bind, react/no-this-in-sfc */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { getMessage } from '@boa/utils';
 import { ComponentBase, AppProvider, DialogType } from '@boa/base';
 import { Button } from '@boa/components/Button';
-
 import Dialog from './Dialog';
 
-export class DialogHelper {
+export default class DialogHelper {
   static dialogCounter = 0;
 
   static dialogDivs = {};
+
   static dialogRefs = {};
 
-  /** internal methods **/
+  /** internal methods * */
   static getContentRef(key) {
     return this.dialogRefs[key].contentRef;
   }
 
-  /** internal methods **/
+  /** internal methods * */
   static clearRefs(key) {
-    let idleDialogDiv = this.dialogDivs[key];
+    const idleDialogDiv = this.dialogDivs[key];
     delete this.dialogRefs[key];
     delete this.dialogDivs[key];
     ReactDOM.unmountComponentAtNode(idleDialogDiv);
@@ -39,13 +40,14 @@ export class DialogHelper {
     onClose,
     style,
     onClosing,
-    showHeader = true
+    showHeader = true,
   ) {
     let thisRef;
     let dialogContentRef;
-    let actions = [];
-    const dialogKey = 'dialogKey_' + this.dialogCounter++;
+    const actions = [];
+    const dialogKey = `dialogKey_${this.dialogCounter++}`;
 
+    // eslint-disable-next-line
     const createAction = (context, text, type, focus) => {
       return (
         <Button
@@ -53,7 +55,7 @@ export class DialogHelper {
           style={{
             color: context.theme.boaPalette.pri500,
             fontWeight: 'bold',
-            fontSize: '13px'
+            fontSize: '13px',
           }}
           type="flat"
           text={getMessage('BOA', text, context.language)}
@@ -66,29 +68,32 @@ export class DialogHelper {
 
     if (
       content &&
-      (typeof content == 'string' ||
+      (typeof content === 'string' ||
         content instanceof Array ||
-        ((content instanceof Object && content.mainContent !== undefined) || dialogResponseStyle != null))
+        ((content instanceof Object && content.mainContent !== undefined)
+          || dialogResponseStyle != null))
     ) {
-      if (dialogResponseStyle == ComponentBase.DialogResponseStyle.OK) {
+      if (dialogResponseStyle === ComponentBase.DialogResponseStyle.OK) {
         actions.push(createAction(context, 'Ok', ComponentBase.DialogResponse.OK, true));
-      } else if (dialogResponseStyle == ComponentBase.DialogResponseStyle.YESCANCEL) {
+      } else if (dialogResponseStyle === ComponentBase.DialogResponseStyle.YESCANCEL) {
         actions.push(createAction(context, 'Yes', ComponentBase.DialogResponse.YES, true));
         actions.push(createAction(context, 'Cancel', ComponentBase.DialogResponse.CANCEL, false));
-      } else if (dialogResponseStyle == ComponentBase.DialogResponseStyle.YESNO) {
+      } else if (dialogResponseStyle === ComponentBase.DialogResponseStyle.YESNO) {
         actions.push(createAction(context, 'Yes', ComponentBase.DialogResponse.YES, true));
         actions.push(createAction(context, 'No', ComponentBase.DialogResponse.NO, false));
-      } else if (dialogResponseStyle == ComponentBase.DialogResponseStyle.YESNOCANCEL) {
+      } else if (dialogResponseStyle === ComponentBase.DialogResponseStyle.YESNOCANCEL) {
         actions.push(createAction(context, 'Yes', ComponentBase.DialogResponse.YES, true));
         actions.push(createAction(context, 'No', ComponentBase.DialogResponse.NO, false));
         actions.push(createAction(context, 'Cancel', ComponentBase.DialogResponse.CANCEL, false));
       } else actions.push(createAction(context, 'Ok', ComponentBase.DialogResponse.OK, true));
     }
 
-    let titleBackgroundColor =
-      Object.keys(DialogHelper.dialogRefs).length >= 1 ? context.theme.boaPalette.base300 : context.theme.boaPalette.pri500;
+    const titleBackgroundColor =
+      Object.keys(DialogHelper.dialogRefs).length >= 1 ?
+        context.theme.boaPalette.base300 :
+        context.theme.boaPalette.pri500;
 
-    let dialogElement = (
+    const dialogElement = (
       <AppProvider theme={context.theme}>
         <Dialog
           context={context}
@@ -101,21 +106,20 @@ export class DialogHelper {
           onRequestClose={this.onClose}
           onClosing={onClosing}
           ref={r => (thisRef = r)}
-          open={true}
+          open
           title={title}
           titleBackgroundColor={titleBackgroundColor}
           actions={actions}
-          showHeader={showHeader}>
-        </Dialog>
+          showHeader={showHeader} />
       </AppProvider>
     );
 
-    let dialogDiv = document.createElement('div');
+    const dialogDiv = document.createElement('div');
     document.body.appendChild(dialogDiv);
     this.dialogDivs[dialogKey] = dialogDiv;
 
     ReactDOM.render(dialogElement, dialogDiv, () => {
-      this.dialogRefs[dialogKey] = { dialog: thisRef, onClose: onClose, contentRef: dialogContentRef };
+      this.dialogRefs[dialogKey] = { dialog: thisRef, onClose, contentRef: dialogContentRef };
     });
 
     return thisRef;
@@ -125,13 +129,13 @@ export class DialogHelper {
     context,
     message,
     results,
-    dialogType = DialogType.INFO,
-    dialogResponseStyle = ComponentBase.DialogResponseStyle.OK,
+    dialogType = DialogType.INFO, // eslint-disable-line no-unused-vars
+    dialogResponseStyle = ComponentBase.DialogResponseStyle.OK, // eslint-disable-line no-unused-vars, max-len
     title,
     onClose,
-    style
+    style,
   ) {
-    var errorMessage = [];
+    const errorMessage = [];
     if (message) {
       errorMessage.push(message);
     }
@@ -146,38 +150,42 @@ export class DialogHelper {
         (dialogResponseStyle = ComponentBase.DialogResponseStyle.OK),
         title,
         onClose,
-        style
+        style,
       );
     }
   }
 
   static showPage(context, content, title, onClose, style) {
-    this.show(context, content, DialogType.INFO, ComponentBase.DialogResponseStyle.OK, title, onClose, style);
+    this.show(context, content, DialogType.INFO,
+      ComponentBase.DialogResponseStyle.OK, title, onClose, style);
   }
 
   static close(component, dialogResponse = ComponentBase.DialogResponse.NONE, returnValue) {
     let dialogKey;
-    let idleDialog;
-    let idleDialogDiv;
     if (component && component.props && component.props.dialogKey) {
       dialogKey = component.props.dialogKey;
     } else {
       dialogKey = Object.keys(this.dialogRefs).slice(-1)[0];
     }
-    idleDialog = this.dialogRefs[dialogKey];
-    idleDialogDiv = this.dialogDivs[dialogKey];
+    const idleDialog = this.dialogRefs[dialogKey];
+    const idleDialogDiv = this.dialogDivs[dialogKey];
 
     if (
       !idleDialog.dialog.props.onClosing ||
-      (idleDialog.dialog.props.onClosing && idleDialog.dialog.props.onClosing(idleDialog.dialog, idleDialog.contentRef))
+      (idleDialog.dialog.props.onClosing &&
+        idleDialog.dialog.props.onClosing(idleDialog.dialog, idleDialog.contentRef))
     ) {
       delete this.dialogRefs[dialogKey];
       delete this.dialogDivs[dialogKey];
 
       idleDialog.dialog.getInstance().setState({ open: false }, () => {
         setTimeout(() => {
-          idleDialog.onClose && idleDialog.onClose(dialogResponse, returnValue);
-          idleDialog.contentRef && idleDialog.contentRef.onClose && idleDialog.contentRef.onClose(dialogResponse, returnValue);
+          if (idleDialog.onClose) {
+            idleDialog.onClose(dialogResponse, returnValue);
+          }
+          if (idleDialog.contentRef && idleDialog.contentRef.onClose) {
+            idleDialog.contentRef.onClose(dialogResponse, returnValue);
+          }
           ReactDOM.unmountComponentAtNode(idleDialogDiv);
           document.body.removeChild(idleDialogDiv);
         }, 200);

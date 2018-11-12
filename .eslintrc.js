@@ -101,5 +101,6 @@ module.exports = {
 
     'no-plusplus': 'off',
     'no-return-assign': 'off',
+    "react/no-string-refs": 'off'
   },
 };

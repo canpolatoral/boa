@@ -6,12 +6,9 @@ import TimeButton from './TimeButton';
 import { cloneDate } from './dateUtils';
 
 class TimeBase extends ComponentBase {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   static propTypes = {
     DateTimeFormat: PropTypes.func.isRequired,
+    format: PropTypes.string,
     maxValue: PropTypes.number.isRequired,
     minValue: PropTypes.number.isRequired,
     onTouchTapTime: PropTypes.func,
@@ -20,9 +17,8 @@ class TimeBase extends ComponentBase {
       PropTypes.object.isRequired,
       PropTypes.instanceOf(Date).isRequired,
     ]),
-    wordings: PropTypes.object,
     timeType: PropTypes.number.isRequired,
-    format: PropTypes.string,
+    wordings: PropTypes.object,
   };
 
   static contextTypes = {
@@ -45,44 +41,40 @@ class TimeBase extends ComponentBase {
     } = this.props;
 
     const times = [];
-    var maxTime = this.props.maxValue;
-    var minTime = this.props.minValue;
+    const maxTime = this.props.maxValue;
+    const minTime = this.props.minValue;
     const dateCheck = cloneDate(selectedDate);
 
     for (let time = minTime; time <= maxTime; time++) {
       const selectedProps = {};
-      var selectedTime = '';
-      var timeFormated = '';
+      let selectedTime = '';
+      let timeFormated = '';
       if (timeType === 1) {
         dateCheck.setHours(time);
         selectedTime = selectedDate.getHours();
         timeFormated = new DateTimeFormat({
           time: 'hour',
         }).format(dateCheck);
-      }
-      else if (timeType === 2) {
+      } else if (timeType === 2) {
         dateCheck.setMinutes(time);
         selectedTime = selectedDate.getMinutes();
         timeFormated = new DateTimeFormat({
           time: 'minute',
         }).format(dateCheck);
-      }
-      else if (timeType === 3) {
+      } else if (timeType === 3) {
         dateCheck.setSeconds(time);
         selectedTime = selectedDate.getSeconds();
         timeFormated = new DateTimeFormat({
           time: 'second',
         }).format(dateCheck);
-      }
-      else if (timeType === 4) {
+      } else if (timeType === 4) {
         dateCheck.setMonth(time);
         selectedTime = selectedDate.getMonth();
         timeFormated = new DateTimeFormat({
           month: 'monthListName',
           format: this.props.format,
         }).format(dateCheck);
-      }
-      else if (timeType === 5) {
+      } else if (timeType === 5) {
         dateCheck.setFullYear(time);
         selectedTime = selectedDate.getFullYear();
         timeFormated = new DateTimeFormat({
@@ -126,8 +118,7 @@ class TimeBase extends ComponentBase {
 
     const containerHeight = container.clientHeight;
     const timeButtonNodeHeight = timeButtonNode.clientHeight || 32;
-
-    const scrollYOffset = (timeButtonNode.offsetTop + timeButtonNodeHeight / 2) - containerHeight / 2;
+    const scrollYOffset = (timeButtonNode.offsetTop + timeButtonNodeHeight / 2) - containerHeight / 2; // eslint-disable-line max-len
     container.scrollTop = scrollYOffset;
   }
 
@@ -163,7 +154,7 @@ class TimeBase extends ComponentBase {
             this.getTimes()
           }
         </div>
-      </div >
+      </div>
     );
   }
 }

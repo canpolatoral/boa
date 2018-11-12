@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
 import MuiDialog from '@material-ui/core/Dialog';
@@ -7,10 +8,11 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { ComponentBase, ComponentComposer, Utils, DialogType, Sizes } from '@boa/base';
 import { Button } from '@boa/components/Button';
 import { Icon } from '@boa/components/Icon';
-import { DialogHelper } from './DialogHelper';
+import DialogHelper from './DialogHelper';
 
 /**
- * Dialog Component is wrapped from `@material-ui/core/Dialog`. Also `DialogHelper` provides a static method called `show`
+ * Dialog Component is wrapped from `@material-ui/core/Dialog`.
+ * Also `DialogHelper` provides a static method called `show`
  * This method allows create window from outside the render method.
  */
 @ComponentComposer
@@ -20,15 +22,27 @@ class Dialog extends ComponentBase {
     /**
      * Dialog children, usually the included sub-components.
      */
+    autoDetectWindowHeight: PropTypes.bool,
+    /**
+     * Dialog children, usually the included sub-components.
+     */
     children: PropTypes.node.isRequired,
     /**
-     * Useful to extend the style applied to components.
+     * @ignore
      */
     classes: PropTypes.object,
     /**
      * @ignore
      */
     className: PropTypes.string,
+    /**
+     * If `true`, hitting escape will not fire the `onClose` callback.
+     */
+    content: PropTypes.any,
+    /**
+     * If `true`, it will be full-screen
+     */
+    dialogBoxContentPadding: PropTypes.any,
     /**
      * If `true`, clicking the backdrop will not fire the `onClose` callback.
      */
@@ -37,6 +51,11 @@ class Dialog extends ComponentBase {
      * If `true`, hitting escape will not fire the `onClose` callback.
      */
     disableEscapeKeyDown: PropTypes.bool,
+    /**
+     * If true, the modal will not restore focus to previously focused element once modal is hidden.
+     * (input bileşeninin focusunda açıyorsanız can kurtarır!)
+     */
+    disableRestoreFocus: PropTypes.bool,
     /**
      * If `true`, it will be full-screen
      */
@@ -99,6 +118,14 @@ class Dialog extends ComponentBase {
      * Properties applied to the `Paper` element.
      */
     PaperProps: PropTypes.object,
+    repositionOnUpdate: PropTypes.bool,
+    showHeader: PropTypes.bool,
+    style: PropTypes.object,
+    titleBackgroundColor: PropTypes.string,
+    /**
+     * If true, the modal will not restore focus to previously focused element once modal is hidden.
+     */
+    titleWithCloseButtonEnabled: PropTypes.bool,
     /**
      * Transition component.
      */
@@ -107,28 +134,10 @@ class Dialog extends ComponentBase {
      * The duration for the transition, in milliseconds.
      * You may specify a single timeout for all transitions, or individually with an object.
      */
-    transitionDuration: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number })]),
-    titleWithCloseButtonEnabled: PropTypes.bool,
-
-    autoDetectWindowHeight: PropTypes.bool,
-
-    // autoScrollBodyContent: PropTypes.bool,
-
-    repositionOnUpdate: PropTypes.bool,
-
-    content: PropTypes.any,
-
-    style: PropTypes.object,
-
-    titleBackgroundColor: PropTypes.string,
-    /**
-     * If true, the modal will not restore focus to previously focused element once modal is hidden. (input bileşeninin focusunda açıyorsanız can kurtarır!)
-     */
-    disableRestoreFocus: PropTypes.bool,
-
-    showHeader: PropTypes.bool,
-
-    dialogBoxContentPadding: PropTypes.any
+    transitionDuration: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
+    ]),
   };
 
   static defaultProps = {
@@ -143,17 +152,20 @@ class Dialog extends ComponentBase {
     modal: false,
     repositionOnUpdate: true,
     showHeader: true,
-    dialogBoxContentPadding: '24px'
+    dialogBoxContentPadding: '24px',
   };
 
   state = {
     open: this.props.open,
-    title: this.props.title
+    title: this.props.title,
   };
 
   constructor(props, context) {
     super(props, context);
+    this.fireClosable = this.fireClosable.bind(this);
     this.open = this.open.bind(this);
+    this.onCloseClicked = this.onCloseClicked.bind(this);
+    this.onEnter = this.onEnter.bind(this);
   }
 
   getValue() {
@@ -165,7 +177,7 @@ class Dialog extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
-    let { open, title } = nextProps;
+    const { open, title } = nextProps;
     this.setState({ open, title });
   }
 
@@ -182,28 +194,31 @@ class Dialog extends ComponentBase {
   }
 
   onCloseClicked() {
-    this.props.onRequestClose && this.props.onRequestClose();
+    if (this.props.onRequestClose) this.props.onRequestClose();
   }
 
   open(open) {
     this.setState({ open }, () => {
-      if (open == false) this.props.dialogKey && DialogHelper.clearRefs(this.props.dialogKey);
+      if (open === false && this.props.dialogKey) DialogHelper.clearRefs(this.props.dialogKey);
     });
   }
 
   fireClosable() {
-    return this.props.onClosing && this.props.onClosing(this, DialogHelper.getContentRef(this.props.dialogKey));
+    if (this.props.onClosing) {
+      this.props.onClosing(this, DialogHelper.getContentRef(this.props.dialogKey));
+    }
   }
 
-  getIcon(type, context) {
+  getIcon(type) {
+    const context = this.props.context;
     const iconStyle = { width: '48px', height: '48px' };
     switch (type) {
       case DialogType.INFO: {
         const icon = {
           dynamicIcon: 'Info',
           iconProperties: {
-            style: { ...iconStyle, color: context.theme.boaPalette.warning500 }
-          }
+            style: { ...iconStyle, color: context.theme.boaPalette.warning500 },
+          },
         };
         return Icon.getIcon(icon);
       }
@@ -211,8 +226,8 @@ class Dialog extends ComponentBase {
         const icon = {
           dynamicIcon: 'Help',
           iconProperties: {
-            style: { ...iconStyle, color: context.theme.boaPalette.info500 }
-          }
+            style: { ...iconStyle, color: context.theme.boaPalette.info500 },
+          },
         };
         return Icon.getIcon(icon);
       }
@@ -220,8 +235,8 @@ class Dialog extends ComponentBase {
         const icon = {
           dynamicIcon: 'Error',
           iconProperties: {
-            style: { ...iconStyle, color: context.theme.boaPalette.warning500 }
-          }
+            style: { ...iconStyle, color: context.theme.boaPalette.warning500 },
+          },
         };
         return Icon.getIcon(icon);
       }
@@ -229,8 +244,8 @@ class Dialog extends ComponentBase {
         const icon = {
           dynamicIcon: 'Error',
           iconProperties: {
-            style: { ...iconStyle, color: context.theme.boaPalette.warning500 }
-          }
+            style: { ...iconStyle, color: context.theme.boaPalette.warning500 },
+          },
         };
         return Icon.getIcon(icon);
       }
@@ -238,24 +253,33 @@ class Dialog extends ComponentBase {
         const icon = {
           dynamicIcon: 'CheckCircle',
           iconProperties: {
-            style: { ...iconStyle, color: context.theme.boaPalette.success500 }
-          }
+            style: { ...iconStyle, color: context.theme.boaPalette.success500 },
+          },
         };
         return Icon.getIcon(icon);
       }
+      default: return null;
     }
   }
 
   prepareDialog() {
-    let { context, content, children, dialogType, dialogKey, style, dialogRefs, titleWithCloseButtonEnabled, showHeader } = this.props;
+    const {
+      context,
+      content,
+      children,
+      dialogType,
+      dialogKey,
+      style,
+      dialogRefs,
+      showHeader,
+    } = this.props;
+    const isRightToLeft = context.localization.isRightToLeft;
+    let titleWithCloseButtonEnabled = this.props.titleWithCloseButtonEnabled;
     let contentProps;
     let customContentStyle = {};
-    // let customBodyStyle = {};
-    // let titleWithCloseButtonEnabled = false;
     let fullScreen = false;
     let dialogContent;
-    let dialogSubContent = [];
-    // let autoScrollBodyContent = false;
+    const dialogSubContent = [];
     let dialog = {};
     let isObject = false;
 
@@ -266,18 +290,18 @@ class Dialog extends ComponentBase {
       color: context.theme.boaPalette.base450,
       borderTopWidth: '1px',
       borderTopStyle: 'solid',
-      borderTopColor: 'transparent'
+      borderTopColor: 'transparent',
     };
 
-    Object.assign(headerStyle, this.props.context.localization.isRightToLeft ? { marginLeft: '24px' } : { marginRight: '24px' });
+    Object.assign(headerStyle, isRightToLeft ? { marginLeft: '24px' } : { marginRight: '24px' });
 
     /* eslint-disable no-console  */
     if (!children) {
       if (!content) {
         dialogContent = '';
-        console.log('Dialog: ' + content);
+        console.log(`Dialog: ${content}`);
       } else if (
-        typeof content == 'string' ||
+        typeof content === 'string' ||
         content instanceof Array ||
         (content instanceof Object && content.mainContent !== undefined)
       ) {
@@ -286,7 +310,7 @@ class Dialog extends ComponentBase {
 
           dialogContent = '';
           content.forEach(item => {
-            dialogContent += item + '<br />';
+            dialogContent += `${item}<br />`;
           });
           dialogContent = dialogContent.replace('\n', '<br />');
         } else if (content instanceof Object) {
@@ -296,31 +320,51 @@ class Dialog extends ComponentBase {
           dialogContent.push(
             <div id="dialogHeader" style={headerStyle}>
               {content.mainContent}
-            </div>
+            </div>,
           );
 
-          let subObj = [];
-          let subObjStyle = {
+          const subObj = [];
+          const subObjStyle = {
             overflow: 'auto',
             height: '60vh',
             paddingLeft: '98px',
-            paddingBottom: '24px'
+            paddingBottom: '24px',
           };
+
           Object.assign(
             subObjStyle,
             this.props.context.localization.isRightToLeft
               ? { paddingLeft: '24px', paddingRight: '98px', direction: 'rtl' }
-              : { direction: 'ltr' }
+              : { direction: 'ltr' },
           );
+
           Object.assign(
             subObjStyle,
-            this.props.context.deviceSize <= Sizes.SMALL ? { paddingLeft: '24px', paddingRight: '24px' } : {}
+            context.deviceSize <= Sizes.SMALL ? { paddingLeft: '24px', paddingRight: '24px' } : {},
           );
 
           content.subcontents.forEach(item => {
-            subObj.push(<div style={{ marginTop: '24px', fontSize: '11px', color: context.theme.boaPalette.base400 }}>{item.header}</div>);
+            subObj.push(
+              (
+                <div
+                  style={{
+                    marginTop: '24px',
+                    fontSize: '11px',
+                    color: context.theme.boaPalette.base400,
+                  }}>{item.header}
+                </div>
+              ),
+            );
             item.contents.forEach(i => {
-              subObj.push(<div style={{ fontSize: '13px', color: context.theme.boaPalette.base450 }}>{i}</div>);
+              subObj.push(
+                (
+                  <div style={{
+                    fontSize: '13px',
+                    color: context.theme.boaPalette.base450,
+                  }}>{i}
+                  </div>
+                ),
+              );
             });
           });
 
@@ -328,9 +372,8 @@ class Dialog extends ComponentBase {
             <div
               id="scrollDiv"
               onScroll={event => {
-                let scrollDivStyle = document.getElementById('scrollDiv').style;
-                let headerDivStyle = document.getElementById('dialogHeader').style;
-
+                const scrollDivStyle = document.getElementById('scrollDiv').style;
+                const headerDivStyle = document.getElementById('dialogHeader').style;
                 if (event.target.scrollTop > 0) {
                   scrollDivStyle.borderTopColor = context.theme.boaPalette.base200;
                   scrollDivStyle.borderTopStyle = 'solid';
@@ -345,29 +388,27 @@ class Dialog extends ComponentBase {
               style={subObjStyle}
             >
               {subObj}
-            </div>
+            </div>,
           );
+        } else if (typeof content === 'string' && content.includes('\n')) {
+          const text = content.replace(/\n/gi, '#00100#');
+          const textArray = text.split('#00100#');
+          dialogContent = '';
+          textArray.forEach(item => {
+            dialogContent += `${item}<br />`;
+          });
+          dialogContent = dialogContent.replace('\n', '<br />');
         } else {
-          if (typeof content == 'string' && content.includes('\n')) {
-            let text = content.replace(/\n/gi, '#00100#');
-            let textArray = text.split('#00100#');
-            dialogContent = '';
-            textArray.forEach(item => {
-              dialogContent += item + '<br />';
-            });
-            dialogContent = dialogContent.replace('\n', '<br />');
-          } else {
-            dialogContent = Utils.getShowStatusMessageReplacedText(content);
-          }
+          dialogContent = Utils.getShowStatusMessageReplacedText(content);
         }
         // console.log('Dialog: ' + dialogContent);
       } else {
         contentProps = {
           inDialog: true,
-          dialogKey: dialogKey,
+          dialogKey,
           ref: r => {
             if (dialogRefs[dialogKey]) dialogRefs[dialogKey].contentRef = r;
-          }
+          },
         };
         // console.log('Dialog: ' + typeof content);
         if (content.type.prototype && content.type.prototype.isReactComponent) {
@@ -379,13 +420,18 @@ class Dialog extends ComponentBase {
           maxWidth: 'none',
           height: '90vh',
           width: '90vw',
-          overflow: 'hidden'
+          overflow: 'hidden',
         };
 
-        if (style && style.height && typeof style.height === 'string' && style.height.includes('%'))
+        // eslint-disable-next-line max-len
+        if (style && style.height && typeof style.height === 'string' && style.height.includes('%')) {
           style.height = style.height.replace('%', 'vh');
-        if (style && style.width && typeof style.width === 'string' && style.width.includes('%'))
+        }
+
+        // eslint-disable-next-line max-len
+        if (style && style.width && typeof style.width === 'string' && style.width.includes('%')) {
           style.width = style.width && style.width.replace('%', 'vw');
+        }
 
         customContentStyle = Object.assign({}, customContentStyle, style);
         titleWithCloseButtonEnabled = showHeader;
@@ -393,9 +439,7 @@ class Dialog extends ComponentBase {
     } else {
       dialogContent = children;
     }
-    /* eslint-enable no-console */
-
-    let dIcon = this.getIcon(dialogType, context);
+    const dIcon = this.getIcon(dialogType);
 
     if (titleWithCloseButtonEnabled) {
       if (customContentStyle.width > window.innerWidth) {
@@ -415,21 +459,21 @@ class Dialog extends ComponentBase {
     }
 
     dialog = {
-      dialogContent: dialogContent,
-      children: children,
+      dialogContent,
+      children,
       icon: dIcon,
       subContent: dialogSubContent,
-      isObject: isObject,
-      titleWithCloseButtonEnabled: titleWithCloseButtonEnabled,
-      customContentStyle: customContentStyle,
-      fullScreen: fullScreen,
-      contentProps: contentProps
+      isObject,
+      titleWithCloseButtonEnabled,
+      customContentStyle,
+      fullScreen,
+      contentProps,
     };
     return dialog;
   }
 
   onEnter() {
-    let scrollDiv = document.getElementById('scrollDiv');
+    const scrollDiv = document.getElementById('scrollDiv');
     if (scrollDiv != null) {
       if (scrollDiv.offsetHeight < scrollDiv.scrollHeight) {
         scrollDiv.style.borderBottomColor = this.props.context.theme.boaPalette.base200;
@@ -442,86 +486,101 @@ class Dialog extends ComponentBase {
   }
 
   render() {
-    // this.prepareTitleWithCloseButton(this.state.title);
     const { leftTitleButton, title } = this.state;
+    const context = this.props.context;
+    const dialog = this.prepareDialog();
 
-    let dialog = this.prepareDialog();
-
-    // let children;
-
+    // eslint-disable-next-line
     dialog.titleWithCloseButtonEnabled
       ? !dialog.contentProps
         ? dialog.dialogContent
         : React.cloneElement(dialog.dialogContent, dialog.contentProps)
       : {};
-    let titleBackgroundColor = this.props.titleBackgroundColor
-      ? this.props.titleBackgroundColor
-      : Object.keys(DialogHelper.dialogRefs).length >= 1
-        ? this.props.context.theme.boaPalette.base300
-        : this.props.context.theme.boaPalette.pri500;
 
-    let objLine = {
+    const titleBackgroundColor = this.props.titleBackgroundColor ||
+      Object.keys(DialogHelper.dialogRefs).length >= 1 ?
+      context.theme.boaPalette.base300 :
+      context.theme.boaPalette.pri500;
+
+    const objLine = {
       height: '1px',
-      borderBottomColor: this.props.context.theme.boaPalette.base200,
+      borderBottomColor: context.theme.boaPalette.base200,
       borderBottomStyle: 'solid',
       borderBottomWidth: '1px',
-      marginBottom: '-1px'
+      marginBottom: '-1px',
     };
+
     Object.assign(
       objLine,
-      this.props.context.localization.isRightToLeft
+      context.localization.isRightToLeft
         ? { marginLeft: '24px', marginRight: '96px' }
-        : { marginLeft: '96px', marginRight: '24px' }
+        : { marginLeft: '96px', marginRight: '24px' },
     );
-    Object.assign(objLine, this.props.context.deviceSize <= Sizes.SMALL ? { marginRight: '24px', marginLeft: '24px' } : {});
 
-    let closeButtonStyle = { top: 0, right: 0 };
-    Object.assign(closeButtonStyle, this.props.context.localization.isRightToLeft ? { paddingLeft: '12px' } : { paddingRight: '12px' });
-    if (this.props.context.deviceSize <= Sizes.SMALL) {
-      Object.assign(closeButtonStyle, this.props.context.localization.isRightToLeft ? { paddingLeft: '4px' } : { paddingRight: '4px' });
+    Object.assign(objLine,
+      context.deviceSize <= Sizes.SMALL ?
+        { marginRight: '24px', marginLeft: '24px' } :
+        {},
+    );
+
+    const closeButtonStyle = { top: 0, right: 0 };
+
+    Object.assign(closeButtonStyle, context.localization.isRightToLeft ?
+      { paddingLeft: '12px' } :
+      { paddingRight: '12px' },
+    );
+
+    if (context.deviceSize <= Sizes.SMALL) {
+      Object.assign(closeButtonStyle, context.localization.isRightToLeft ?
+        { paddingLeft: '4px' } :
+        { paddingRight: '4px' },
+      );
     }
 
-    let titleStyle = { flex: 1, paddingTop: '9px' };
-    if (this.props.context.deviceSize <= Sizes.SMALL) {
+    const titleStyle = { flex: 1, paddingTop: '9px' };
+    if (context.deviceSize <= Sizes.SMALL) {
       Object.assign(
         titleStyle,
-        this.props.context.localization.isRightToLeft
+        context.localization.isRightToLeft
           ? !leftTitleButton && { paddingRight: '44px' }
-          : !leftTitleButton && { paddingLeft: '44px' }
+          : !leftTitleButton && { paddingLeft: '44px' },
       );
     } else {
-      Object.assign(titleStyle, this.props.context.localization.isRightToLeft ? { paddingRight: '60px' } : { paddingLeft: '60px' });
+      Object.assign(titleStyle, context.localization.isRightToLeft ?
+        { paddingRight: '60px' } :
+        { paddingLeft: '60px' },
+      );
     }
-    let dialogFormStyle = {
+    const dialogFormStyle = {
       boxSizing: 'border-box',
       width: '100%',
       fontSize: '16px',
       textAlign: 'center',
-      color: this.props.context.theme.boaPalette.comp500,
+      color: context.theme.boaPalette.comp500,
       background: titleBackgroundColor,
       padding: '0px',
       display: 'flex',
-      direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr'
+      direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
     };
 
-    let dialogForm = this.props.showHeader ? (
-      <MuiDialogTitle disableTypography={true} style={dialogFormStyle}>
+    const dialogForm = this.props.showHeader ? (
+      <MuiDialogTitle disableTypography style={dialogFormStyle}>
         {leftTitleButton && <div>{leftTitleButton}</div>}
         <div style={titleStyle}>{title}</div>
         <div style={closeButtonStyle}>
           <Button
-            context={this.props.context}
+            context={context}
             type="icon"
             style={{ width: '40px', height: '40px' }}
             dynamicIcon={'Close'}
-            iconProperties={{ nativeColor: this.props.context.theme.boaPalette.comp500 }}
-            onClick={this.onCloseClicked.bind(this)}
+            iconProperties={{ nativeColor: context.theme.boaPalette.comp500 }}
+            onClick={this.onCloseClicked}
           />
         </div>
       </MuiDialogTitle>
     ) : null;
 
-    let dialogBoxContent = this.props.style ? (
+    const dialogBoxContent = this.props.style ? (
       <MuiDialogContent style={this.props.style}>{dialog.dialogContent}</MuiDialogContent>
     ) :
       (
@@ -534,13 +593,13 @@ class Dialog extends ComponentBase {
                 padding: '0px',
                 minHeight: '96px',
                 fontSize: '16px',
-                direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr'
+                direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
               }}
             >
-              {this.props.context.deviceSize > Sizes.SMALL && (
+              {context.deviceSize > Sizes.SMALL && (
                 <div
                   style={
-                    this.props.context.localization.isRightToLeft
+                    context.localization.isRightToLeft
                       ? { paddingTop: '24px', paddingRight: '24px' }
                       : { paddingTop: '24px', paddingLeft: '24px' }
                   }
@@ -548,10 +607,17 @@ class Dialog extends ComponentBase {
                   {dialog.icon}
                 </div>
               )}
-              <div style={{ padding: this.props.dialogBoxContentPadding, display: 'flex', alignItems: 'center' }}>
-                {this.props.content instanceof Array || (typeof this.props.content == 'string' && typeof dialog.dialogContent == 'string' && dialog.dialogContent.includes('<br />')) ? (
-                  <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
-                ) : (
+              <div style={{
+                padding: this.props.dialogBoxContentPadding,
+                display: 'flex',
+                alignItems: 'center',
+              }}>
+                {this.props.content instanceof Array ||
+                  (typeof this.props.content === 'string' &&
+                    typeof dialog.dialogContent === 'string' &&
+                      dialog.dialogContent.includes('<br />')) ? (
+                    <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
+                  ) : (
                     dialog.dialogContent
                   )}
               </div>
@@ -569,14 +635,15 @@ class Dialog extends ComponentBase {
         open={this.state.open}
         onClose={this.props.onRequestClose}
         PaperProps={{ style: dialog.customContentStyle }}
-        onEntered={this.onEnter.bind(this)}
-        onExiting={this.props.onClosing ? this.fireClosable.bind(this) : undefined}
+        onEntered={this.onEnter}
+        onExiting={this.props.onClosing ? this.fireClosable : undefined}
         contentProps={dialog.contentProps}
         disableRestoreFocus={this.props.disableRestoreFocus}
       >
         {dialog.titleWithCloseButtonEnabled && dialogForm}
         {dialog.titleWithCloseButtonEnabled ? dialog.dialogContent : dialogBoxContent}
-        {!dialog.titleWithCloseButtonEnabled ? this.props.actions && <MuiDialogActions>{this.props.actions}</MuiDialogActions> : null}
+        {(!dialog.titleWithCloseButtonEnabled && this.props.actions)
+          && <MuiDialogActions>{this.props.actions}</MuiDialogActions>}
       </MuiDialog>
     );
   }

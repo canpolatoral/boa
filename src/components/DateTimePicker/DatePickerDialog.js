@@ -1,39 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
-import keycode from 'keycode';
 import { Popover } from '@boa/components/Popover';
 import { ComponentBase, Sizes } from '@boa/base';
 import { Dialog } from '@boa/components/Dialog';
-
 import { dateTimeFormat } from './dateUtils';
 import Calendar from './Calendar';
 
-
 class DatePickerDialog extends ComponentBase {
-
-  constructor(props, context) {
-    super(props, context);
-  }
-
   static propTypes = {
-    DateTimeFormat: PropTypes.func,
+    anchorElDate: PropTypes.object,
     animation: PropTypes.func,
     autoOk: PropTypes.bool,
+    calendarInfo: PropTypes.array,
     cancelLabel: PropTypes.node,
+    canSelectOldDates: PropTypes.bool,
+    canSelectSpecialDays: PropTypes.bool,
+    canSelectWeekendDays: PropTypes.bool,
     container: PropTypes.oneOf(['dialog', 'inline']),
     containerStyle: PropTypes.object,
+    dateFormat: PropTypes.string,
+    DateTimeFormat: PropTypes.func,
+    datetimeOption: PropTypes.object,
+    dateUpdate: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.node,
+    ]),
     dialogContentStyle: PropTypes.object,
+    dialogNewSelectDate: PropTypes.instanceOf(Date),
     disableYearSelection: PropTypes.bool,
     firstDayOfWeek: PropTypes.number,
+    floatingLabelStyle: PropTypes.object,
+    hintStyle: PropTypes.object,
     initialDate: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.object,
       PropTypes.instanceOf(Date),
     ]),
-    minDate: PropTypes.instanceOf(Date),
+    inputStyle: PropTypes.object,
+    isBusiness: PropTypes.bool,
+    isMobile: PropTypes.bool,
     maxDate: PropTypes.instanceOf(Date),
+    minDate: PropTypes.instanceOf(Date),
     mode: PropTypes.oneOf(['portrait', 'landscape']),
+    monthTitle: PropTypes.node,
     okLabel: PropTypes.node,
     onAccept: PropTypes.func,
     onDismiss: PropTypes.func,
@@ -41,31 +51,13 @@ class DatePickerDialog extends ComponentBase {
     open: PropTypes.bool,
     shouldDisableDate: PropTypes.func,
     style: PropTypes.object,
-    todayButtonOnClick: PropTypes.func,
-    inputStyle: PropTypes.object,
-    floatingLabelStyle: PropTypes.object,
-    hintStyle: PropTypes.object,
-    underlineStyle: PropTypes.object,
-    underlineFocusStyle: PropTypes.object,
-    isBusiness: PropTypes.bool,
-    calendarInfo: PropTypes.array,
-    dateFormat: PropTypes.string,
     timeFormat: PropTypes.string,
-    datetimeOption: PropTypes.object,
-    canSelectOldDates: PropTypes.bool,
-    canSelectWeekendDays: PropTypes.bool,
-    canSelectSpecialDays: PropTypes.bool,
-    isMobile: PropTypes.bool,
+    todayButtonOnClick: PropTypes.func,
     todayLabel: PropTypes.node,
-    yearTitle: PropTypes.node,
-    monthTitle: PropTypes.node,
-    anchorElDate: PropTypes.object,
+    underlineFocusStyle: PropTypes.object,
 
-    dateUpdate: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-    ]),
-    dialogNewSelectDate: PropTypes.instanceOf(Date),
+    underlineStyle: PropTypes.object,
+    yearTitle: PropTypes.node,
   };
 
   static defaultProps = {
@@ -115,8 +107,8 @@ class DatePickerDialog extends ComponentBase {
 
   todayButtonOnClick = () => {
     if (this.props.onAccept) {
-      var today = new Date();
-      var handleDate = new Date(this.refs.calendar.getSelectedDate());
+      const today = new Date();
+      const handleDate = new Date(this.refs.calendar.getSelectedDate());
       today.setHours(handleDate.getHours());
       today.setMinutes(handleDate.getMinutes());
       today.setSeconds(handleDate.getSeconds());
@@ -131,9 +123,8 @@ class DatePickerDialog extends ComponentBase {
 
   }
 
-  dateUpdate(oldDate, newDate, changeType) {
+  dateUpdate = (oldDate, newDate, changeType) => {
     if (this.props.dateUpdate) {
-
       this.props.dateUpdate(oldDate, newDate, changeType);
     }
   }
@@ -142,7 +133,11 @@ class DatePickerDialog extends ComponentBase {
     if (this.props.onAccept) {
       this.props.onAccept(this.refs.calendar.getSelectedDate());
     }
-    this.popover && this.popover.manualClose();
+
+    if (this.popover && this.popover.manualClose) {
+      this.popover.manualClose();
+    }
+
     this.setState({
       open: false,
     });
@@ -152,11 +147,8 @@ class DatePickerDialog extends ComponentBase {
     this.handleRequestClose();
   }
 
-  handleWindowKeyUp = (event) => {
-    switch (keycode(event)) {
-      case 'enter':
+  handleWindowKeyUp = () => {
 
-    }
   }
 
   render() {
@@ -199,11 +191,11 @@ class DatePickerDialog extends ComponentBase {
     } = this.props;
 
     const { open } = this.state;
-    let isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
-    var popoverOrigin = { horizontal: 'left', vertical: 'top' };
+    const isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
+    const popoverOrigin = { horizontal: 'left', vertical: 'top' };
 
 
-    let calendar = (
+    const calendar = (
       <Calendar
         autoOk={autoOk}
         DateTimeFormat={DateTimeFormat}
@@ -212,18 +204,18 @@ class DatePickerDialog extends ComponentBase {
         disableYearSelection={disableYearSelection}
         firstDayOfWeek={firstDayOfWeek}
         initialDate={initialDate}
-        onTouchTapDay={this.handleTouchTapDay.bind(this)}
+        onTouchTapDay={this.handleTouchTapDay}
         maxDate={maxDate}
         minDate={minDate}
         mode={mode}
         open={open}
         ref="calendar"
-        onTouchTapCancel={this.handleTouchTapCancel.bind(this)}
+        onTouchTapCancel={this.handleTouchTapCancel}
         onTouchTapOk={this.handleTouchTapOk}
-        todayButtonOnClick={this.todayButtonOnClick.bind(this)}
+        todayButtonOnClick={this.todayButtonOnClick}
         okLabel={okLabel}
         shouldDisableDate={shouldDisableDate}
-        handleClickToolBar={this.handleClickToolBar.bind(this)}
+        handleClickToolBar={this.handleClickToolBar}
         iconStyle={iconStyle}
         inputStyle={inputStyle}
         floatingLabelStyle={floatingLabelStyle}
@@ -240,41 +232,42 @@ class DatePickerDialog extends ComponentBase {
         yearTitle={yearTitle}
         monthTitle={monthTitle}
         todayLabel={todayLabel}
-        dateUpdate={this.dateUpdate.bind(this)}
+        dateUpdate={this.dateUpdate}
         dialogNewSelectDate={dialogNewSelectDate}
         noDialog={noDialog}
       />
     );
 
-    let content = (
-      <Dialog context={this.props.context}
+    const content = (
+      <Dialog
+        context={this.props.context}
         modal={false}
         open={open}
-        onRequestClose={this.handleRequestClose.bind(this)}
-        disableRestoreFocus={true}
+        onRequestClose={this.handleRequestClose}
+        disableRestoreFocus
         style={{
-          padding: 0
+          padding: 0,
         }}
       >
         {calendar}
       </Dialog>
     );
 
-    let popoverContent = (
+    const popoverContent = (
       <Popover
-        canAutoPosition={true}
-        isOriginSetted={true}
-        repositionOnUpdate={true}
+        canAutoPosition
+        isOriginSetted
+        repositionOnUpdate
         autoCloseWhenOffScreen={false}
         style={{
           marginTop: -57,
-          marginLeft: (this.props.pageType != 'browse') ? -10 : -12,
+          marginLeft: (this.props.pageType !== 'browse') ? -10 : -12,
           paddingTop: 0,
           maxWidth: '100%',
           width: 'calc(100% - 16px)',
           height: 'calc(100% - 16px)',
           maxheight: 'calc(100% - 24px)',
-          direction: !this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl'
+          direction: !this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl',
         }}
         isResizable={false}
         open={open}
@@ -286,9 +279,9 @@ class DatePickerDialog extends ComponentBase {
         bodyStyle={containerStyle}
         contentStyle={dialogContentStyle}
         ref={r => this.popover = r}
-        onRequestClose={this.handleRequestClose.bind(this)}
-        scrollableContainer={true}
-        disableRestoreFocus={true}
+        onRequestClose={this.handleRequestClose}
+        scrollableContainer
+        disableRestoreFocus
       >
         <EventListener
           target="window"

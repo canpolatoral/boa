@@ -1,3 +1,4 @@
+/* eslint-disable */
 import warning from 'warning';
 import isString from 'lodash/isString';
 import { Localization } from '@boa/utils';
@@ -44,26 +45,26 @@ export function dateTimeFormat(options) {
   this.format = function (date) {
     if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
       return `${dayList[date.getDay()]}, ${monthList[date.getMonth()]} ${date.getDate()}`;
-    } else if (options.year === 'numeric' && options.month === 'numeric' && options.day === 'numeric') {
+    } if (options.year === 'numeric' && options.month === 'numeric' && options.day === 'numeric') {
       return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-    } else if (options.year === 'numeric' && options.month === 'long') {
+    } if (options.year === 'numeric' && options.month === 'long') {
       return `${monthLongList[date.getMonth()]} ${date.getFullYear()}`;
-    } else if (options.item === 'monthYearName') {
+    } if (options.item === 'monthYearName') {
       `${getMonthsLong(date, options.format)[date.getMonth()]}`;
       return `${getMonthsLong(date, options.format)[date.getMonth()]} ${date.getFullYear()}`;
-    } else if (options.weekday === 'narrow') {
+    } if (options.weekday === 'narrow') {
       return dayAbbreviation[date.getDay()];
-    } else if (options.localizationWeekday === 'narrow') {
+    } if (options.localizationWeekday === 'narrow') {
       return getWeekDaysMin(options.date, options.format)[date.getDay()];
-    } else if (options.year === 'numeric') {
+    } if (options.year === 'numeric') {
       return date.getFullYear().toString();
-    } else if (options.month === 'numeric') {
+    } if (options.month === 'numeric') {
       return `${monthLongList[date.getMonth()]}`;
-    } else if (options.month === 'monthListName') {
+    } if (options.month === 'monthListName') {
       return `${getMonthsLong(date, options.format)[date.getMonth()]}`;
-    } else if (options.day === 'numeric') {
+    } if (options.day === 'numeric') {
       return date.getDate();
-    } else if (options.time === 'hour') {
+    } if (options.time === 'hour') {
       return date.getHours();
     } else if (options.time === 'minute') {
       return date.getMinutes();
@@ -111,10 +112,8 @@ export function cloneDate(d) {
   if (d) {
     return new Date(d.getTime());
   }
-  else {
-    return undefined;
-  }
 
+  return undefined;
 }
 export function cloneAsDate(d) {
   const clonedDate = cloneDate(d);
@@ -129,8 +128,7 @@ export function getDaysInMonth(d) {
     resultDate.setDate(resultDate.getDate() - 1);
     return resultDate.getDate();
   }
-  else return undefined;
-
+  return undefined;
 }
 export function getPatternDate(d, pattern) {
   if (d instanceof Date && pattern) {
@@ -139,55 +137,48 @@ export function getPatternDate(d, pattern) {
   return undefined;
 }
 export function getFormatDecomposition(format) {
-  var formats;
+  let formats;
   if (!format) {
     formats = {
       dateFormat: momentFormat.Date,
-      timeFormat: undefined
+      timeFormat: undefined,
     };
-  }
-  else if (format === receiveFormat.LD) {
+  } else if (format === receiveFormat.LD) {
     formats = {
       dateFormat: momentFormat.Date,
-      timeFormat: undefined
+      timeFormat: undefined,
     };
-  }
-  else if (format === receiveFormat.LDLT) {
+  } else if (format === receiveFormat.LDLT) {
     formats = {
       dateFormat: momentFormat.Date,
-      timeFormat: momentFormat.hourAndMinuteAndSecond
+      timeFormat: momentFormat.hourAndMinuteAndSecond,
     };
-  }
-  else if (format === receiveFormat.LDT) {
+  } else if (format === receiveFormat.LDT) {
     formats = {
       dateFormat: momentFormat.Date,
-      timeFormat: momentFormat.hourAndMinute
+      timeFormat: momentFormat.hourAndMinute,
     };
-  }
-  else if (format === receiveFormat.LT) {
+  } else if (format === receiveFormat.LT) {
     formats = {
       dateFormat: undefined,
-      timeFormat: momentFormat.hourAndMinuteAndSecond
+      timeFormat: momentFormat.hourAndMinuteAndSecond,
     };
-  }
-  else if (format === receiveFormat.T) {
+  } else if (format === receiveFormat.T) {
     formats = {
       dateFormat: undefined,
-      timeFormat: momentFormat.hourAndMinute
+      timeFormat: momentFormat.hourAndMinute,
     };
-  }
-  else {
+  } else {
     formats = {
       dateFormat: momentFormat.Date,
-      timeFormat: undefined
+      timeFormat: undefined,
     };
   }
   formats.dateFormatHint = Localization.stringLowerCase(Localization.getDateTimeFormat(formats.dateFormat));
-  if (formats.timeFormat)
-    formats.timeFormatHint = Localization.stringLowerCase(Localization.getDateTimeFormat(formats.timeFormat));
+  if (formats.timeFormat) formats.timeFormatHint = Localization.stringLowerCase(Localization.getDateTimeFormat(formats.timeFormat));
 
-  var dateMask = formats.dateFormatHint;
-  var timeMask = formats.timeFormatHint;
+  let dateMask = formats.dateFormatHint;
+  let timeMask = formats.timeFormatHint;
   dateMask = dateMask.replaceAll('d', 'n');
   dateMask = dateMask.replaceAll('m', 'n');
   dateMask = dateMask.replaceAll('y', 'n');
@@ -207,10 +198,8 @@ export function getFirstDayOfMonth(d) {
   if (d) {
     return new Date(d.getFullYear(), d.getMonth(), 1);
   }
-  else {
-    return undefined;
-  }
 
+  return undefined;
 }
 export function getFirstDayOfWeek() {
   const now = new Date();
@@ -232,19 +221,17 @@ export function getWeekArray(d, firstDayOfWeek) {
       week[weekArray.length ? 'push' : 'unshift'](null);
     }
     if (week.length > 0 && week[0] == null) {
-      var firstDayOfMonth = cloneDate(week[emptyDays]);
-      for (var j = emptyDays; j > -1; j--) {
+      const firstDayOfMonth = cloneDate(week[emptyDays]);
+      for (let j = emptyDays; j > -1; j--) {
         if (week[j] === null) {
           firstDayOfMonth.setDate(firstDayOfMonth.getDate() - 1);
           week[j] = cloneDate(firstDayOfMonth);
         }
       }
-
-    }
-    else if (week.length == 7 && week[6] == null) {
-      var lastDayOfMonth = cloneDate(week[7 - emptyDays - 1]);
-      var beginIndex = 7 - emptyDays;
-      for (var i = beginIndex; i < 7; i++) {
+    } else if (week.length == 7 && week[6] == null) {
+      const lastDayOfMonth = cloneDate(week[7 - emptyDays - 1]);
+      const beginIndex = 7 - emptyDays;
+      for (let i = beginIndex; i < 7; i++) {
         if (week[i] === null) {
           lastDayOfMonth.setDate(lastDayOfMonth.getDate() + 1);
           week[i] = cloneDate(lastDayOfMonth);
@@ -268,7 +255,7 @@ export function getWeekArray(d, firstDayOfWeek) {
   return weekArray;
 }
 export function localizedWeekday(DateTimeFormat, day, firstDayOfWeek, format) {
-  const weekdayFormatter = new DateTimeFormat({ localizationWeekday: 'narrow', format: format });
+  const weekdayFormatter = new DateTimeFormat({ localizationWeekday: 'narrow', format });
   const firstDayDate = getFirstDayOfWeek();
 
   return weekdayFormatter.format(addDays(firstDayDate, day + firstDayOfWeek));
@@ -310,17 +297,14 @@ export function substructDay(d1, d2) {
   if (isEqualDate(d1, d2)) {
     return 0;
   }
-  else {
-    return (d2.getTime() - d1.getTime()) / (24 * 60 * 60 * 1000);
-  }
 
+  return (d2.getTime() - d1.getTime()) / (24 * 60 * 60 * 1000);
 }
 export function isBeforeDate(d1, d2) {
   const date1 = cloneAsDate(d1);
   const date2 = cloneAsDate(d2);
 
   return (date1.getTime() < date2.getTime());
-
 }
 export function isAfterDate(d1, d2) {
   const date1 = cloneAsDate(d1);
@@ -346,7 +330,7 @@ export function yearDiff(d1, d2) {
 }
 export function getFocusDateTimeItem1(startIndex, format) {
   if (Localization && format) {
-    let patern = Localization.getDateTimeFormat(format);
+    const patern = Localization.getDateTimeFormat(format);
     if (patern) {
       let item = '';
       if (patern.length - 1 !== startIndex) {
@@ -359,14 +343,13 @@ export function getFocusDateTimeItem1(startIndex, format) {
             patern[i] === 'm' ||
             patern[i] === 's' ||
             patern[i] === 'a') {
-            item = item + patern[i];
-          }
-          else {
+            item += patern[i];
+          } else {
             break;
           }
         }
       }
-      if (0 !== startIndex) {
+      if (startIndex !== 0) {
         for (let i = startIndex - 1; i < patern.length; i--) {
           if (patern[i] === 'M' ||
             patern[i] === 'Y' ||
@@ -376,9 +359,8 @@ export function getFocusDateTimeItem1(startIndex, format) {
             patern[i] === 'm' ||
             patern[i] === 's' ||
             patern[i] === 'a') {
-            item = item + patern[i];
-          }
-          else {
+            item += patern[i];
+          } else {
             break;
           }
         }
@@ -397,16 +379,14 @@ export function getFocusDateTimeItem(value, startIndex, format, type) {
       for (let i = startIndex; i >= 0; i--) {
         if (value[i] !== ' ' && !isNaN(Number(value[i])) && itemBefore.length === 0) {
           item = value[i] + item.toString();
-        }
-        else {
+        } else {
           itemBefore = value[i] + itemBefore.toString();
         }
       }
       for (let j = startIndex + 1; j < value.length; j++) {
         if (value[j] !== ' ' && !isNaN(Number(value[j])) && itemAfter.length === 0) {
           item = item.toString() + value[j];
-        }
-        else {
+        } else {
           itemAfter = itemAfter.toString() + value[j];
         }
       }
@@ -423,54 +403,53 @@ export function getFocusDateTimeItem(value, startIndex, format, type) {
   return undefined;
 }
 export function getMonthsLong(date, format) {
-  let newValue = getLocalizedDate(date);
-  var momentObject = Localization.getFormattedDateLocale(newValue, format);
+  const newValue = getLocalizedDate(date);
+  const momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._months;
 }
 export function getMonthsShort(newValue, format) {
-  var momentObject = Localization.getFormattedDateLocale(newValue, format);
+  const momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._monthsShort;
 }
 export function getWeekDays(newValue, format) {
-  var momentObject = Localization.getFormattedDateLocale(newValue, format);
+  const momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._weekdays;
 }
 export function getWeekDaysShort(newValue, format) {
-  var momentObject = Localization.getFormattedDateLocale(newValue, format);
+  const momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._monthsShort;
 }
 export function getWeekDaysMin(newValue, format) {
-  var momentObject = Localization.getFormattedDateLocale(newValue, format);
+  const momentObject = Localization.getFormattedDateLocale(newValue, format);
   return momentObject._locale._weekdaysMin;
 }
 export function calendarMouseWheelAction(startIndex, format, date, type, orijinalDate) {
+  const newValue = getFocusDateTimeItem(date, startIndex, format, type);
 
-  let newValue = getFocusDateTimeItem(date, startIndex, format, type);
-
-  var momentObject = Localization.getFormattedDateLocale(newValue, format);
+  const momentObject = Localization.getFormattedDateLocale(newValue, format);
   if (momentObject && momentObject._isValid) {
     return momentObject._d;
   }
-  else if (momentObject !== undefined && !momentObject._isValid) {
-    let pf = Localization.getFormattedDateLocale(newValue, format)._pf;
-    let oldDate = cloneDate(orijinalDate);
+  if (momentObject !== undefined && !momentObject._isValid) {
+    const pf = Localization.getFormattedDateLocale(newValue, format)._pf;
+    const oldDate = cloneDate(orijinalDate);
     if (pf.overflow === 1) {
       // months
       return cloneDate(addMonths(oldDate, type));
     }
-    else if (pf.overflow === 2) {
+    if (pf.overflow === 2) {
       // days
       return cloneDate(addDays(oldDate, type));
     }
-    else if (pf.overflow === 3) {
+    if (pf.overflow === 3) {
       // hours
       return cloneDate(addHours(oldDate, type));
     }
-    else if (pf.overflow === 4) {
+    if (pf.overflow === 4) {
       // minutes
       return cloneDate(addMinutes(oldDate, type));
     }
-    else if (pf.overflow === 5) {
+    if (pf.overflow === 5) {
       // seconds
       return cloneDate(addSeconds(oldDate, type));
     }
@@ -486,58 +465,50 @@ export function calendarMouseWheelAction1(startIndex, format, date, type) {
       else
         return addDays(date, -1);
     }
-    else if (dateTimeItem === 'YYYY') {
+    if (dateTimeItem === 'YYYY') {
       if (type === 1)
         return addYears(date, 1);
-      else
-        return addYears(date, -1);
+      return addYears(date, -1);
     }
-    else if (dateTimeItem === 'MM') {
+    if (dateTimeItem === 'MM') {
       if (type === 1)
         return addMonths(date, 1);
-      else
-        return addMonths(date, -1);
+      return addMonths(date, -1);
     }
-    else if (dateTimeItem === 'h') {
+    if (dateTimeItem === 'h') {
       if (type === 1)
         return addHours(date, 1);
-      else
-        return addHours(date, -1);
+      return addHours(date, -1);
     }
-    else if (dateTimeItem === 'mm') {
+    if (dateTimeItem === 'mm') {
       if (type === 1)
         return addMinutes(date, 1);
-      else
-        return addMinutes(date, -1);
+      return addMinutes(date, -1);
     }
     else if (dateTimeItem === 'ss') {
       if (type === 1)
         return addSeconds(date, 1);
-      else
-        return addSeconds(date, -1);
+      return addSeconds(date, -1);
     }
     else if (dateTimeItem === 'a') {
       if (type === 1)
         return addHours(date, 12);
-      else
-        return addSeconds(date, -12);
+      return addSeconds(date, -12);
     }
   }
 }
 export function calendarMouseWheel(value, selectionStart, selectionEnd, deltaMode, seperator) {
   if (value && deltaMode && selectionStart !== undefined && selectionEnd !== undefined) {
-    var array = value.split(seperator);
-    var selectionValue = '';
-    var index = '';
-    array.forEach(function (item, i) {
+    const array = value.split(seperator);
+    let selectionValue = '';
+    let index = '';
+    array.forEach((item, i) => {
       if (!selectionValue) {
         if (item.length >= selectionStart) {
           selectionValue = item;
           index = i;
-        }
-        else selectionStart = selectionStart - (item.length + 1);
+        } else selectionStart -= (item.length + 1);
       }
-
     }, this);
 
     if (deltaMode === 'up' && !isNaN(Number(selectionValue))) {
@@ -545,7 +516,7 @@ export function calendarMouseWheel(value, selectionStart, selectionEnd, deltaMod
       array[index] = selectionValue;
       return arrayToString(array, seperator);
     }
-    else if (deltaMode === 'down' && !isNaN(Number(selectionValue))) {
+    if (deltaMode === 'down' && !isNaN(Number(selectionValue))) {
       selectionValue = Number(selectionValue) - 1;
       array[index] = selectionValue;
       return arrayToString(array, seperator);
@@ -554,45 +525,38 @@ export function calendarMouseWheel(value, selectionStart, selectionEnd, deltaMod
   return undefined;
 }
 export function arrayToString(array, seperator) {
-  var returnString = '';
+  let returnString = '';
   for (let i = 0; i < array.length; i++) {
-    returnString = returnString + (array.length - 1 === i ? (array[i]) : (array[i] + seperator));
+    returnString += (array.length - 1 === i ? (array[i]) : (array[i] + seperator));
   }
   return returnString;
 }
 export function calendarMouseWheelToDateTime(displayDateValue, selectedDate, type, datetimeOption) {
   if (displayDateValue && selectedDate instanceof Date && type) {
     var clone = cloneDate(selectedDate);
-    var array = displayDateValue.split(seperator);
+    const array = displayDateValue.split(seperator);
     if (type === 1 && array.length === 3) {
       clone.setDate(Number(array[0]));
       clone.setMonth(Number(array[1]) - 1);
       clone.setFullYear(Number(array[2]));
-    }
-    else if (type === 2 && array.length === 3) {
+    } else if (type === 2 && array.length === 3) {
       clone.setHours(Number(array[0]));
       clone.setMinutes(Number(array[1]));
       clone.setSeconds(Number(array[2]));
+    } else if (type === 2 && array.length === 2) {
+      if (datetimeOption.isHour) clone.setHours(Number(array[0]));
+      if (datetimeOption.isMinute) clone.setMinutes(Number(array[1]));
+      if (datetimeOption.isSecond) clone.setSeconds(Number(array[1]));
     }
-    else if (type === 2 && array.length === 2) {
-      if (datetimeOption.isHour)
-        clone.setHours(Number(array[0]));
-      if (datetimeOption.isMinute)
-        clone.setMinutes(Number(array[1]));
-      if (datetimeOption.isSecond)
-        clone.setSeconds(Number(array[1]));
-    }
-  }
-  else {
+  } else {
     warning(false, 'unexpected params');
   }
   return clone;
 }
 export function getDatePickerStyle(context) {
-
   const boaPalette = context.theme.boaPalette;
   const palette = context.theme.palette;
-  let datePicker = {
+  const datePicker = {
     calWorkDay: boaPalette.calWorkDay,
     calWeekend: boaPalette.calWeekend,
     calHoliday: boaPalette.calHoliday,
@@ -601,7 +565,7 @@ export function getDatePickerStyle(context) {
     dayBackgroundsShape: '3px',
     color: palette.primary1Color,
     dayButtonColor: boaPalette.base500,
-    dayBorder: '1px solid ' + boaPalette.pri500,
+    dayBorder: `1px solid ${boaPalette.pri500}`,
     holidayButtonColor: boaPalette.base300,
     holidayTextColor: boaPalette.base300,
     dateTextColor: boaPalette.base500,
@@ -632,3 +596,100 @@ export function getDatePickerStyle(context) {
   return datePicker;
 }
 
+export function isString(obj) {
+  return (Object.prototype.toString.call(obj) === '[object String]');
+}
+
+export function getDefaultDate(props) {
+  let defaultDate;
+  if (props.defaultValue != undefined) {
+    defaultDate = props.defaultValue;
+  } else if (props.pageType == 'browse') {
+    // defaultDate=new Date();
+  }
+  return defaultDate;
+}
+
+export function getDateToString(propDate, defaultDate) {
+  let returnDate = defaultDate;
+  if (this.isString(propDate)) {
+    returnDate = new Date(propDate);
+    if (isNaN(returnDate)) {
+      returnDate = defaultDate;
+    }
+  } else if (propDate) {
+    returnDate = propDate;
+  }
+  if (propDate === null || propDate === undefined) {
+    return null;
+  }
+  return returnDate;
+}
+
+export function clearTime(returnDate) {
+  returnDate.setHours(0);
+  returnDate.setMinutes(0);
+  returnDate.setSeconds(0);
+
+  return returnDate;
+}
+
+export function clearTimeZone(returnDate) {
+  return new Date((returnDate).getTime() - ((returnDate).getTimezoneOffset() * 60000));
+}
+
+export function clearJustTimeZone(returnDate) {
+  return new Date((returnDate).getTime());
+}
+
+
+export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount) {
+  // let monthFirstDate = cloneDate(getFirstDayOfMonth(selectedDate));
+  const specialDayStringArray = [];
+  const selectedMonth = selectedDate.getMonth();
+
+  for (let i = 0; i < calendarInfo.length; i++) {
+    // aynı ay içerisinde bir özel gün bulundu ise betweenDayCount kadar ileri geri gidilerek günler bulunur
+    // aynı degerleri tekrardan gezmemek için var olan list içerisinde dolaşılıp break yapılur
+    let sameValue = false;
+    if (specialDayStringArray !== undefined && specialDayStringArray.length > 0) {
+      for (let list = 0; list < specialDayStringArray.length; list++) {
+        if (specialDayStringArray[list] !== undefined && specialDayStringArray[list].length > 0) {
+          for (let item = 0; item < specialDayStringArray[list].length; item++) {
+            const itemList = specialDayStringArray[list];
+            if (itemList[item] !== undefined && itemList[item].day === calendarInfo[i].day) {
+              sameValue = true;
+            }
+          }
+        }
+      }
+      if (sameValue) continue;
+    }
+    if (dayType === calendarInfo[i].dayType && calendarInfo[i].day.getMonth() === selectedMonth) {
+      const itemspecialDayString = [];
+      itemspecialDayString.push(calendarInfo[i]);
+      const negativeBetweenDaylength = i - betweenDayCount;
+
+
+      for (let j = i - 1; j > negativeBetweenDaylength; j--) {
+        if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
+          break;
+        } else {
+          itemspecialDayString.push(calendarInfo[j]);
+        }
+      }
+
+
+      const positiveBetweenDaylength = i + betweenDayCount;
+      for (let j = i + 1; j < positiveBetweenDaylength; j++) {
+        if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
+          break;
+        } else {
+          itemspecialDayString.push(calendarInfo[j]);
+        }
+      }
+      specialDayStringArray.push(itemspecialDayString);
+    }
+  }
+  return specialDayStringArray;
+}

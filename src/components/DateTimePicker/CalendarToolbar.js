@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import MuiIconButton from '@material-ui/core/IconButton/IconButton';
@@ -6,19 +8,14 @@ import MuiChevronRight from '@material-ui/icons/ChevronRight';
 import { ComponentBase } from '@boa/base';
 
 class CalendarToolbar extends ComponentBase {
-
-  constructor(props, context) {
-    super(props, context);
-  }
-
   static propTypes = {
     DateTimeFormat: PropTypes.func.isRequired,
     displayDate: PropTypes.object.isRequired,
+    format: PropTypes.string,
+    handleClickToolBar: PropTypes.func,
     nextMonth: PropTypes.bool,
     onMonthChange: PropTypes.func,
     prevMonth: PropTypes.bool,
-    handleClickToolBar: PropTypes.func,
-    format: PropTypes.string,
   };
 
   static defaultProps = {
@@ -51,7 +48,7 @@ class CalendarToolbar extends ComponentBase {
     }
   };
 
-  handleClickToolBar() {
+  handleClickToolBar = () => {
     if (this.props.handleClickToolBar) {
       this.props.handleClickToolBar();
     }
@@ -72,13 +69,13 @@ class CalendarToolbar extends ComponentBase {
         height: 38,
         width: '100%',
         marginTop: 8,
-        cursor: 'pointer'
+        cursor: 'pointer',
       },
       titleText: {
         height: 'inherit',
         textAlign: 'center',
         cursor: 'pointer',
-        color: this.props.context.theme.boaPalette.base450
+        color: this.props.context.theme.boaPalette.base450,
       },
       iconButton: {
         width: 40,
@@ -86,8 +83,8 @@ class CalendarToolbar extends ComponentBase {
         padding: 0,
         marginTop: -2,
         marginLeft: this.props.context.localization.isRightToLeft ? 0 : 2,
-        marginRight: this.props.context.localization.isRightToLeft ? 2 : 0
-      }
+        marginRight: this.props.context.localization.isRightToLeft ? 2 : 0,
+      },
     };
     const { DateTimeFormat, displayDate } = this.props;
 
@@ -105,7 +102,7 @@ class CalendarToolbar extends ComponentBase {
         >
           <MuiChevronLeft />
         </MuiIconButton>
-        <div style={styles.titleDiv} key={dateTimeFormatted} onClick={this.handleClickToolBar.bind(this)}>
+        <div style={styles.titleDiv} key={dateTimeFormatted} onClick={this.handleClickToolBar}>
           {dateTimeFormatted}
         </div>
         <MuiIconButton

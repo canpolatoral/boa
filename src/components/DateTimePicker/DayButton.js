@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isEqualDate, getDatePickerStyle } from './dateUtils';
-
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 function getStyles(props, context, state) {
@@ -14,7 +13,7 @@ function getStyles(props, context, state) {
   let buttonStateOpacity = 0;
   let buttonStateTransform = 'scale(0)';
   let hoverSelectedAndTodayBorder = 'none';
-  let hoverSelectedAndTodayPadding = 0;
+  const hoverSelectedAndTodayPadding = 0;
   let backgroundClip = '';
   const daysType = {
     EmptyDay: -1,
@@ -34,8 +33,7 @@ function getStyles(props, context, state) {
       hoverSelectedAndTodayBorder = datePicker.dayBorder;
       // hoverSelectedAndTodayPadding = 2;
       backgroundClip = 'content-box';
-    }
-    else if (hover || selected) {
+    } else if (hover || selected) {
       labelColor = datePicker.alternateTextColor;
       backgroundColor = datePicker.alternateTextColor;
       buttonStateOpacity = selected ? 1 : 0.6;
@@ -44,8 +42,7 @@ function getStyles(props, context, state) {
       // hoverSelectedAndTodayPadding = 2;
       backgroundClip = 'content-box';
     }
-  }
-  else if (isBusiness) {
+  } else if (isBusiness) {
     if (dayInfo.dayType === daysType.WorkDay) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
@@ -55,8 +52,7 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else if (hover || selected) {
+      } else if (hover || selected) {
         labelColor = datePicker.dayButtonColor;
         backgroundColor = datePicker.calWorkDay;
         buttonStateOpacity = selected ? 1 : 0.6;
@@ -64,15 +60,13 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else {
+      } else {
         labelColor = datePicker.dayButtonColor;
         backgroundColor = datePicker.calWorkDay;
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    }
-    else if (dayInfo.dayType === daysType.WeekendDay) {
+    } else if (dayInfo.dayType === daysType.WeekendDay) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -81,8 +75,7 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else if (hover || selected) {
+      } else if (hover || selected) {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calWeekend;
         buttonStateOpacity = selected ? 1 : 0.6;
@@ -90,15 +83,13 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else {
+      } else {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calWeekend;
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    }
-    else if (dayInfo.dayType === daysType.Holiday) {
+    } else if (dayInfo.dayType === daysType.Holiday) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -107,8 +98,7 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else if (hover || selected) {
+      } else if (hover || selected) {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calHoliday;
         buttonStateOpacity = selected ? 1 : 0.6;
@@ -116,15 +106,13 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else {
+      } else {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calHoliday;
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    }
-    else if (dayInfo.dayType === daysType.Eve) {
+    } else if (dayInfo.dayType === daysType.Eve) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -133,8 +121,7 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else if (hover || selected) {
+      } else if (hover || selected) {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calEve;
         buttonStateOpacity = selected ? 1 : 0.6;
@@ -142,15 +129,13 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else {
+      } else {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calEve;
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    }
-    else if (dayInfo.dayType === daysType.ReliHoliday) {
+    } else if (dayInfo.dayType === daysType.ReliHoliday) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -159,8 +144,7 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else if (hover || selected) {
+      } else if (hover || selected) {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calReliHoliday;
         buttonStateOpacity = selected ? 1 : 0.6;
@@ -168,17 +152,14 @@ function getStyles(props, context, state) {
         hoverSelectedAndTodayBorder = datePicker.dayBorder;
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
-      }
-      else {
+      } else {
         labelColor = datePicker.holidayButtonColor;
         backgroundColor = datePicker.calReliHoliday;
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
     }
-  }
-  else {
-    if (isEqualDate(date, new Date())) {
+  } else if (isEqualDate(date, new Date())) {
       labelColor = datePicker.selectTextColor;
       backgroundColor = datePicker.todayButtonBackgroundColor;
       hoverSelectedAndTodayBorder = datePicker.dayBorder;
@@ -186,13 +167,11 @@ function getStyles(props, context, state) {
       backgroundClip = 'content-box';
       buttonStateOpacity = 1;
       buttonStateTransform = 'scale(1)';
-    }
-    else if (hover || selected) {
+    } else if (hover || selected) {
       labelColor = datePicker.selectTextColor;
       buttonStateOpacity = selected ? 1 : 0.6;
       buttonStateTransform = 'scale(1)';
     }
-  }
   return {
     root: {
       boxSizing: 'border-box',
@@ -202,21 +181,21 @@ function getStyles(props, context, state) {
       position: 'relative',
       WebkitTapHighlightColor: 'rgba(0,0,0,0)', // Remove mobile color flashing (deprecated)
       width: 40,
-      height: 40
+      height: 40,
     },
     label: {
       color: labelColor,
       fontWeight: '400',
       position: 'relative',
       fontSize: 14,
-      marginTop: -1
+      marginTop: -1,
     },
     buttonState: {
-      backgroundColor: backgroundColor,
+      backgroundColor,
       borderRadius: datePicker.dayBackgroundsShape,
       border: hoverSelectedAndTodayBorder,
       padding: hoverSelectedAndTodayPadding,
-      backgroundClip: backgroundClip,
+      backgroundClip,
       height: 36,
       left: 2,
       opacity: buttonStateOpacity,
@@ -231,15 +210,13 @@ function getStyles(props, context, state) {
 
 class DayButton extends Component {
   static propTypes = {
-    DateTimeFormat: PropTypes.func.isRequired,
+    context: PropTypes.object,
     date: PropTypes.object,
+    DateTimeFormat: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     onKeyboardFocus: PropTypes.func,
     onTouchTap: PropTypes.func,
     selected: PropTypes.bool,
-    dayInfo: PropTypes.object,
-    isBusiness: PropTypes.bool,
-    context: PropTypes.object
   };
 
   static defaultProps = {

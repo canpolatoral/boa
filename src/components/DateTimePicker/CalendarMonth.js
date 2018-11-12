@@ -20,7 +20,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    height: 40
+    height: 40,
   },
 };
 
@@ -35,8 +35,12 @@ const dayType = {
 
 class CalendarMonth extends Component {
   static propTypes = {
+    calendarInfo: PropTypes.array,
+    canSelectOldDates: PropTypes.bool,
+    canSelectSpecialDays: PropTypes.bool,
+    canSelectWeekendDays: PropTypes.bool,
+    context: PropTypes.object,
     DateTimeFormat: PropTypes.func.isRequired,
-    autoOk: PropTypes.bool,
     displayDate: PropTypes.object.isRequired,
     firstDayOfWeek: PropTypes.number,
     isBusiness: PropTypes.bool,
@@ -45,22 +49,12 @@ class CalendarMonth extends Component {
     onTouchTapDay: PropTypes.func,
     selectedDate: PropTypes.object,
     shouldDisableDate: PropTypes.func,
-    calendarInfo: PropTypes.array,
-    canSelectOldDates: PropTypes.bool,
-    canSelectWeekendDays: PropTypes.bool,
-    canSelectSpecialDays: PropTypes.bool,
-    context: PropTypes.object
   };
 
-  isSelectedDateDisabled() {
-    return this.selectedDateDisabled;
+  constructor(props, context) {
+    super(props, context);
+    this.SpecialDays = [];
   }
-
-  handleTouchTapDay = (event, date) => {
-    if (this.props.onTouchTapDay) {
-      this.props.onTouchTapDay(event, date);
-    }
-  };
 
   getDayType(day, calendarInfo) {
     if (day === null) return { dayType: dayType.EmptyDay };
@@ -70,7 +64,7 @@ class CalendarMonth extends Component {
     if (calendarInfo) {
       for (let i = 0; i < calendarInfo.length; i++) {
         if (calendarInfo[i] && calendarInfo[i].day) {
-          let calendarDay = new Date(calendarInfo[i].day);
+          const calendarDay = new Date(calendarInfo[i].day);
           if (isEqualDate(calendarDay, day)) {
             return calendarInfo[i];
           }
@@ -79,35 +73,13 @@ class CalendarMonth extends Component {
     }
     return { dayType: dayType.EmptyDay };
   }
-  shouldDisableDate(day, displayDate, dayInfo, canSelectOldDates, canSelectWeekendDays, canSelectSpecialDays) {
-    if (day === null) return false;
-    let disabled = !isBetweenDates(day, this.props.minDate, this.props.maxDate);
-    if (!disabled && this.props.shouldDisableDate) disabled = this.props.shouldDisableDate(day);
-
-    let dateNow = new Date();
-    let subDay = substructDay(dateNow, day);
-    if (!canSelectOldDates && subDay < 0) {
-      disabled = true;
-    }
-    if (dayInfo.dayType !== dayType.EmptyDay) {
-      if (!canSelectWeekendDays && dayInfo.dayType === dayType.WeekendDay) {
-        disabled = true;
-      }
-      if (!canSelectSpecialDays &&
-        (dayInfo.dayType === dayType.Eve || dayInfo.dayType === dayType.ReliHoliday || dayInfo.dayType === dayType.Holiday)) {
-        disabled = true;
-      }
-    }
-
-    return disabled;
-  }
-  SpecialDays = [];
 
   getWeekElements() {
     const weekArray = getWeekArray(this.props.displayDate, this.props.firstDayOfWeek);
 
     return weekArray.map((week, i) => {
       return (
+        // eslint-disable-next-line
         <div key={i} style={styles.week}>
           {this.getDayElements(week, i)}
         </div>
@@ -132,8 +104,11 @@ class CalendarMonth extends Component {
       const isSameDate = isEqualDate(selectedDate, day);
 
 
-      let dayInfo = this.getDayType(day, calendarInfo);
-      const disabled = this.shouldDisableDate(day, displayDate, dayInfo, canSelectOldDates, canSelectWeekendDays, canSelectSpecialDays);
+      const dayInfo = this.getDayType(day, calendarInfo);
+      const options = {
+        day, displayDate, dayInfo, canSelectOldDates, canSelectWeekendDays, canSelectSpecialDays,
+      };
+      const disabled = this.shouldDisableDate(options);
 
       if (dayInfo.dayType !== dayType.EmptyDay) {
         this.SpecialDays.push(dayInfo);
@@ -158,6 +133,51 @@ class CalendarMonth extends Component {
         />
       );
     }, this);
+  }
+
+  handleTouchTapDay = (event, date) => {
+    if (this.props.onTouchTapDay) {
+      this.props.onTouchTapDay(event, date);
+    }
+  };
+
+  isSelectedDateDisabled() {
+    return this.selectedDateDisabled;
+  }
+
+  shouldDisableDate(options) {
+    const {
+      day,
+      dayInfo,
+      canSelectOldDates,
+      canSelectWeekendDays,
+      canSelectSpecialDays,
+    } = options;
+
+    if (day === null) return false;
+    let disabled = !isBetweenDates(day, this.props.minDate, this.props.maxDate);
+    if (!disabled && this.props.shouldDisableDate) disabled = this.props.shouldDisableDate(day);
+
+    const dateNow = new Date();
+    const subDay = substructDay(dateNow, day);
+    if (!canSelectOldDates && subDay < 0) {
+      disabled = true;
+    }
+    if (dayInfo.dayType !== dayType.EmptyDay) {
+      if (!canSelectWeekendDays && dayInfo.dayType === dayType.WeekendDay) {
+        disabled = true;
+      }
+      if (!canSelectSpecialDays &&
+        (
+          dayInfo.dayType === dayType.Eve ||
+          dayInfo.dayType === dayType.ReliHoliday ||
+          dayInfo.dayType === dayType.Holiday
+        )) {
+        disabled = true;
+      }
+    }
+
+    return disabled;
   }
 
   render() {

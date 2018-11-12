@@ -14,61 +14,60 @@ import {
   calendarMouseWheelAction,
   isEqualDateTime,
   getLocalizedDate,
-  getDatePickerStyle
+  getDatePickerStyle,
 } from './dateUtils';
 
 
 class TimePickerDialog extends ComponentBase {
-
   static propTypes = {
-    DateTimeFormat: PropTypes.func,
+    anchorEl: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.node,
+    ]),
     animation: PropTypes.func,
     autoOk: PropTypes.bool,
     cancelLabel: PropTypes.node,
     container: PropTypes.oneOf(['dialog', 'inline']),
     containerStyle: PropTypes.object,
+    dateFormat: PropTypes.string,
+    DateTimeFormat: PropTypes.func,
+    datetimeOption: PropTypes.object,
     dialogContentStyle: PropTypes.object,
+    dialogItemStyle: PropTypes.object,
+    floatingLabelStyle: PropTypes.object,
+    handleTouchTapHour: PropTypes.func,
+    handleTouchTapMinute: PropTypes.func,
+    handleTouchTapSecond: PropTypes.func,
+    hintStyle: PropTypes.object,
+    hourTitle: PropTypes.node,
     initialDate: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.object,
       PropTypes.instanceOf(Date),
     ]),
+    inputStyle: PropTypes.object,
+    isMobile: PropTypes.bool,
+    maxHour: PropTypes.number,
+    maxMinute: PropTypes.number,
+    maxSecond: PropTypes.number,
+    minHour: PropTypes.number,
+    minMinute: PropTypes.number,
+    minSecond: PropTypes.number,
+    minuteTitle: PropTypes.node,
     mode: PropTypes.oneOf(['portrait', 'landscape']),
     okLabel: PropTypes.node,
     onAccept: PropTypes.func,
-    onTimeChange: PropTypes.func,
     onDismiss: PropTypes.func,
     onShow: PropTypes.func,
-    open: PropTypes.bool,
-    style: PropTypes.object,
-    minHour: PropTypes.number,
-    maxHour: PropTypes.number,
-    minMinute: PropTypes.number,
-    maxMinute: PropTypes.number,
-    minSecond: PropTypes.number,
-    maxSecond: PropTypes.number,
-    datetimeOption: PropTypes.object,
-    handleTouchTapHour: PropTypes.func,
-    handleTouchTapMinute: PropTypes.func,
-    handleTouchTapSecond: PropTypes.func,
-    onTouchTapTimeOk: PropTypes.func,
+    onTimeChange: PropTypes.func,
     onTouchTapTimeCancel: PropTypes.func,
-    hintStyle: PropTypes.object,
-    underlineStyle: PropTypes.object,
-    underlineFocusStyle: PropTypes.object,
-    dialogItemStyle: PropTypes.object,
-    inputStyle: PropTypes.object,
-    floatingLabelStyle: PropTypes.object,
-    dateFormat: PropTypes.string,
-    timeFormat: PropTypes.string,
-    isMobile: PropTypes.bool,
-    hourTitle: PropTypes.node,
-    minuteTitle: PropTypes.node,
+    onTouchTapTimeOk: PropTypes.func,
+    open: PropTypes.bool,
     secondTitle: PropTypes.node,
-    anchorEl: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.node,
-    ]),
+    style: PropTypes.object,
+    timeFormat: PropTypes.string,
+    underlineFocusStyle: PropTypes.object,
+    underlineStyle: PropTypes.object,
   };
 
   static defaultProps = {
@@ -86,7 +85,8 @@ class TimePickerDialog extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
-    let formatedlocalizedTime = getLocalizedTime(props.initialDate ? props.initialDate : new Date(), props.datetimeOption,
+    const formatedlocalizedTime = getLocalizedTime(props.initialDate || new Date(),
+      props.datetimeOption,
       this.props.timeFormat);
     this.state = {
       localizedTime: formatedlocalizedTime,
@@ -97,8 +97,9 @@ class TimePickerDialog extends ComponentBase {
     super.componentWillMount();
     this.BActionInputFocused = false;
     this.setState({
-      date: this.props.initialDate ? this.props.initialDate : new Date(),
-      localizedTime: getLocalizedTime(this.props.initialDate ? this.props.initialDate : new Date(), this.props.datetimeOption,
+      date: this.props.initialDate || new Date(),
+      localizedTime: getLocalizedTime(this.props.initialDate || new Date(),
+        this.props.datetimeOption,
         this.props.timeFormat),
       floatingLabelStyle: this.props.floatingLabelStyle,
       inputStyle: this.props.inputStyle,
@@ -151,13 +152,13 @@ class TimePickerDialog extends ComponentBase {
   }
 
   handleTouchTapHour = (event, hour) => {
-    if (this.state.date) {
-      var newDate = new Date(this.state.date.setHours(hour));
+    const { date } = this.state;
+    if (date) {
+      const newDate = new Date(date.setHours(hour));
       this.setState({
         date: newDate,
       });
-    }
-    else {
+    } else {
       this.setState({
         date: new Date((new Date()).setHours(hour)),
       });
@@ -169,15 +170,15 @@ class TimePickerDialog extends ComponentBase {
   }
 
   handleTouchTapMinute = (event, minute) => {
-    if (this.state.date) {
-      var newDate = new Date(this.state.date.setMinutes(minute));
+    const { date } = this.state;
+    if (date) {
+      const newDate = new Date(date.setMinutes(minute));
       this.setState({
         date: newDate,
       });
-    }
-    else {
+    } else {
       this.setState({
-        date: new Date((new Date()).setMinutes(minute))
+        date: new Date((new Date()).setMinutes(minute)),
       });
     }
     if (this.props.handleTouchTapMinute) {
@@ -186,13 +187,13 @@ class TimePickerDialog extends ComponentBase {
   }
 
   handleTouchTapSecond = (event, second) => {
-    if (this.state.date) {
-      var newDate = new Date(this.state.date.setSeconds(second));
+    const { date } = this.state;
+    if (date) {
+      const newDate = new Date(date.setSeconds(second));
       this.setState({
         date: newDate,
       });
-    }
-    else {
+    } else {
       this.setState({
         date: new Date((new Date()).setMinutes(second)),
       });
@@ -202,17 +203,19 @@ class TimePickerDialog extends ComponentBase {
     }
   }
 
-  onKeyDownInputTime(e) {
+  onKeyDownInputTime = (e) => {
     switch (keycode(e)) {
-      case 'enter':
+      case 'enter': {
         if (this.BActionInputFocused) {
           if (this.bInputActionDialogTime && !this.bInputActionDialogTime.getValue()) {
             this.setState({ date: null }, this.handleTouchTapOk);
-          }
-          else {
+          } else {
             this.handleTouchTapOk();
           }
         }
+        break;
+      }
+      default: break;
     }
   }
 
@@ -222,7 +225,7 @@ class TimePickerDialog extends ComponentBase {
         key="hours"
         context={this.props.context}
         DateTimeFormat={DateTimeFormat}
-        onTouchTapTime={this.handleTouchTapHour.bind(this)}
+        onTouchTapTime={this.handleTouchTapHour}
         selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minHour}
         maxValue={maxHour}
@@ -233,13 +236,12 @@ class TimePickerDialog extends ComponentBase {
   }
 
   minuteSelector(DateTimeFormat, minMinute, maxMinute, format) {
-
     return (
       <TimeBase
         key="minutes"
         context={this.props.context}
         DateTimeFormat={DateTimeFormat}
-        onTouchTapTime={this.handleTouchTapMinute.bind(this)}
+        onTouchTapTime={this.handleTouchTapMinute}
         selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minMinute}
         maxValue={maxMinute}
@@ -255,7 +257,7 @@ class TimePickerDialog extends ComponentBase {
         key="seconds"
         context={this.props.context}
         DateTimeFormat={DateTimeFormat}
-        onTouchTapTime={this.handleTouchTapSecond.bind(this)}
+        onTouchTapTime={this.handleTouchTapSecond}
         selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minSecond}
         maxValue={maxSecond}
@@ -265,19 +267,21 @@ class TimePickerDialog extends ComponentBase {
     );
   }
 
-  handleFocusInput() {
+  handleFocusInput = () => {
     this.BActionInputFocused = true;
   }
 
-  handleBlurInput() {
+  handleBlurInput = () => {
     this.BActionInputFocused = false;
   }
 
-  handleWindowOnWheel(event) {
-    let value = getLocalizedTime(this.state.date ? this.state.date : new Date(), this.props.datetimeOption, this.props.timeFormat);
-    var selectionStart = undefined;
-    var selectionEnd = undefined;
-    var newValue;
+  handleWindowOnWheel = (event) => {
+    const value = getLocalizedTime(this.state.date || new Date(),
+      this.props.datetimeOption,
+      this.props.timeFormat);
+    let selectionStart;
+    let selectionEnd;
+    let newValue;
     if (event && this.BActionInputFocused && event.target) {
       if (event && event.wheelDelta !== 0 && event.wheelDelta / 120 > 0) {
         newValue = calendarMouseWheelAction(event.target.selectionStart,
@@ -287,14 +291,10 @@ class TimePickerDialog extends ComponentBase {
           this.state.date);
         selectionStart = event.target.selectionStart;
         selectionEnd = event.target.selectionEnd;
-        /* if (this.props.onTimeChange) {
-          this.props.onTimeChange(newValue, 1);
-        }*/
         this.setState({
           date: newValue,
         });
-      }
-      else {
+      } else {
         newValue = calendarMouseWheelAction(event.target.selectionStart,
           this.props.timeFormat,
           value,
@@ -373,6 +373,7 @@ class TimePickerDialog extends ComponentBase {
         </div>
       );
     }
+    return null;
   }
 
   renderMinutes() {
@@ -400,6 +401,7 @@ class TimePickerDialog extends ComponentBase {
         </div>
       );
     }
+    return null;
   }
 
   renderSeconds() {
@@ -427,6 +429,7 @@ class TimePickerDialog extends ComponentBase {
         </div>
       );
     }
+    return null;
   }
 
   render() {
@@ -448,12 +451,11 @@ class TimePickerDialog extends ComponentBase {
       hintText,
       initialDate,
       isMobile,
-      autoOk
+      autoOk,
     } = this.props;
 
-
-    const open = this.state.open == undefined ? false : this.state.open;
-    const { calendarTextColor } = getDatePickerStyle(this.props.context); // this.context.muiTheme.datePicker;
+    const open = this.state.open;
+    const { calendarTextColor } = getDatePickerStyle(this.props.context);
     const isLandscape = mode === 'landscape';
     const styles = {
       root: {
@@ -517,18 +519,20 @@ class TimePickerDialog extends ComponentBase {
         overflow: 'hidden',
       },
     };
-    let dateInputValue = getLocalizedDate(initialDate ? initialDate : new Date(), dateFormat);
-    let timeInputValue = getLocalizedTime(this.state.date ? this.state.date : new Date(), datetimeOption, timeFormat);
+    const dateInputValue = getLocalizedDate(initialDate || new Date(), dateFormat);
+    const timeInputValue = getLocalizedTime(this.state.date || new Date(),
+      datetimeOption,
+      timeFormat);
 
 
-    var popoverOrigin = { horizontal: 'left', vertical: 'top' };
+    const popoverOrigin = { horizontal: 'left', vertical: 'top' };
 
-    let content = (
+    const content = (
 
       <div style={styles.root}>
         <EventListener
           target="window"
-          onWheel={this.handleWindowOnWheel.bind(this)}
+          onWheel={this.handleWindowOnWheel}
         />
         <div style={style.inputContainer}>
           {dateFormat && isMobile &&
@@ -543,15 +547,15 @@ class TimePickerDialog extends ComponentBase {
                 <InputAction
                   context={this.props.context}
                   hintText={this.props.hintText}
-                  onFocus={this.handleFocusInput.bind(this)}
-                  onBlur={this.handleBlurInput.bind(this)}
+                  onFocus={this.handleFocusInput}
+                  onBlur={this.handleBlurInput}
                   value={dateInputValue}
                   ref={r => this.bInputActionDialogDate = r}
                   leftIconList={null}
                   rightIconList={null}
                   floatingLabelStyle={this.state.floatingLabelStyle}
                   inputStyle={this.state.inputStyle}
-                  disabled={true}
+                  disabled
                 />
               </div>
 
@@ -561,7 +565,7 @@ class TimePickerDialog extends ComponentBase {
             <div style={{
               marginLeft: 12,
               marginRight: 12,
-              marginTop: 12
+              marginTop: 12,
             }}>
               <InputAction
                 // {...other}
@@ -571,12 +575,12 @@ class TimePickerDialog extends ComponentBase {
                 value={timeInputValue}
                 ref={r => this.bInputActionDialogTime = r}
                 floatingLabelStyle={this.state.floatingLabelStyle}
-                onKeyDown={this.onKeyDownInputTime.bind(this)}
+                onKeyDown={this.onKeyDownInputTime}
                 inputStyle={this.state.inputStyle}
                 leftIconList={null}
                 rightIconList={null}
-                onFocus={this.handleFocusInput.bind(this)}
-                onBlur={this.handleBlurInput.bind(this)}
+                onFocus={this.handleFocusInput.bind}
+                onBlur={this.handleBlurInput.bind}
               />
             </div>
           </div>
@@ -592,8 +596,8 @@ class TimePickerDialog extends ComponentBase {
               autoOk={autoOk}
               cancelLabel={cancelLabel}
               okLabel={okLabel}
-              onTouchTapCancel={this.handleTouchTapCancel.bind(this)}
-              onTouchTapOk={this.handleTouchTapOk.bind(this)}
+              onTouchTapCancel={this.handleTouchTapCancel}
+              onTouchTapOk={this.handleTouchTapOk}
             />
           }
 
@@ -601,15 +605,12 @@ class TimePickerDialog extends ComponentBase {
       </div>
     );
 
-    let popoverContent = (
+    const popoverContent = (
       <Popover
-        canAutoPosition={true}
-        isOriginSetted={true}
+        canAutoPosition
+        isOriginSetted
         useLayerForClickAway={false}
-        repositionOnUpdate={true}
-        canAutoPosition={true}
-        isOriginSetted={true}
-        repositionOnUpdate={true}
+        repositionOnUpdate
         autoCloseWhenOffScreen={false}
         style={{
           marginTop: -12,
@@ -619,7 +620,7 @@ class TimePickerDialog extends ComponentBase {
           width: 'calc(100% - 16px)',
           height: 'calc(100% - 16px)',
           maxheight: 'calc(100% - 24px)',
-          direction: !this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl'
+          direction: !this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl',
         }}
         isResizable={false}
         open={open}
@@ -630,10 +631,8 @@ class TimePickerDialog extends ComponentBase {
         bodyStyle={containerStyle}
         contentStyle={dialogContentStyle}
         ref={r => this.popover = r}
-        onRequestClose={this.handleRequestClose.bind(this)}
-        contentStyle={dialogContentStyle}
-        open={open}
-        disableRestoreFocus={true}
+        onRequestClose={this.handleRequestClose}
+        disableRestoreFocus
         anchorEl={this.props.anchorEl}
       >
 
@@ -642,24 +641,25 @@ class TimePickerDialog extends ComponentBase {
       </Popover>
     );
 
-    let dialogContent = (
-      <Dialog context={this.props.context}
+    const dialogContent = (
+      <Dialog
+        context={this.props.context}
         modal={false}
         open={open}
-        onRequestClose={this.handleRequestClose.bind(this)}
-        disableRestoreFocus={true}>
+        onRequestClose={this.handleRequestClose}
+        disableRestoreFocus>
         {content}
       </Dialog>
     );
 
 
-    let isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
+    const isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
     return (
       <div
         ref="root">
         {isMobileOrTablet ? dialogContent : popoverContent}
 
-      </div >
+      </div>
     );
   }
 }

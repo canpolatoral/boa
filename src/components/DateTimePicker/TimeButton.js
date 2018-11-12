@@ -5,12 +5,18 @@ import { ComponentBase } from '@boa/base';
 
 function getStyles(props, context, state) {
   const { selected, time } = props;
-
+  const { palette, boaPalette } = props.context.theme;
   const { hover } = state;
+  let background = 'none';
+
+  if (hover && selected) background = boaPalette.pri300;
+  else if (hover) background = boaPalette.base150;
+  else if (selected) background = boaPalette.pri250;
+
   return {
     root: {
       boxSizing: 'border-box',
-      color: time === new Date().getFullYear() && props.context.theme.palette.primary1Color,
+      color: time === new Date().getFullYear() && palette.primary1Color,
       display: 'block',
       fontSize: 14,
       margin: '0 auto',
@@ -20,15 +26,14 @@ function getStyles(props, context, state) {
       width: '100%',
       height: '48px',
       WebkitTapHighlightColor: 'rgba(0,0,0,0)', // Remove mobile color flashing (deprecated)
-      background: hover && selected ? props.context.theme.boaPalette.pri300 : hover ? props.context.theme.boaPalette.base150 : selected ?  props.context.theme.boaPalette.pri250 : 'none',
-
+      background,
     },
     label: {
       alignSelf: 'center',
-      color: selected ? props.context.theme.boaPalette.pri500 : props.context.theme.boaPalette.base450,
-      background: selected ? props.context.theme.boaPalette.pri250 : 'none',
+      color: selected ? boaPalette.pri500 : boaPalette.base450,
+      background: selected ? boaPalette.pri250 : 'none',
       fontSize: selected ? 14 : 14,
-      fontWeight: hover ? 400 : selected ? 400 : 400,
+      fontWeight: 400,
       position: 'relative',
       top: -1,
 
@@ -37,10 +42,6 @@ function getStyles(props, context, state) {
 }
 
 class TimeButton extends ComponentBase {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,

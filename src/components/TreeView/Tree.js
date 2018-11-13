@@ -9,19 +9,21 @@ import Radiobox from './components/Radiobox';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 
 @ComponentComposer
-export class Tree extends ComponentBase {
+class Tree extends ComponentBase {
   constructor(props, context) {
     super(props, context);
+    this.tree = null;
+    this.handleOnNodeClick = this.handleOnNodeClick.bind(this);
   }
-  tree = null;
 
+  // eslint-disable-next-line
   handleOnNodeClick(tree, props, node) {
     let isCheckable = node.isCheckable === undefined ? true : node.isCheckable;
     if (props.isLeafCheckable && node.hasChildren()) {
       isCheckable = false;
     }
     if (isCheckable) {
-      let checked = !node.isSelected;
+      const checked = !node.isSelected;
       tree.checkNode(node, checked);
       if (props.onCheckNode) {
         props.onCheckNode(node, checked);
@@ -30,8 +32,7 @@ export class Tree extends ComponentBase {
   }
 
   render() {
-    let props = this.props;
-
+    const props = this.props;
     return (
       <InfiniteTree
         ref={node => {
@@ -59,11 +60,7 @@ export class Tree extends ComponentBase {
         onScroll={props.onScroll}
         onKeyUp={props.onKeyUp}
         onKeyDown={props.onKeyDown}
-        shouldSelectNode={node => {
-          // if (!node || node === this.tree.getSelectedNode()) {
-          //   return false;
-          // }
-          console.log(node);
+        shouldSelectNode={() => {
           return true;
         }}
       >
@@ -85,7 +82,7 @@ export class Tree extends ComponentBase {
       toggleState = 'opened';
     }
 
-    let _checkBox =
+    const checkBox =
       props.isCheckable &&
       (props.isMultiSelect ? (
         <Checkbox
@@ -100,18 +97,18 @@ export class Tree extends ComponentBase {
           }}
         />
       ) : (
-        <Radiobox
-          context={props.context}
-          node={node}
-          rowHeight={props.rowHeight}
-          onChange={(event, isInputChecked) => {
-            tree.checkNode(node, isInputChecked);
-            if (props.onCheckNode) {
-              props.onCheckNode(node, isInputChecked);
-            }
-          }}
-        />
-      ));
+          <Radiobox
+            context={props.context}
+            node={node}
+            rowHeight={props.rowHeight}
+            onChange={(event, isInputChecked) => {
+              tree.checkNode(node, isInputChecked);
+              if (props.onCheckNode) {
+                props.onCheckNode(node, isInputChecked);
+              }
+            }}
+          />
+        ));
 
     return (
       <TreeNode
@@ -137,8 +134,14 @@ export class Tree extends ComponentBase {
             }
           }}
         />
-        {props.isLeafCheckable ? node.children.length == 0 && _checkBox : _checkBox}
-        {props.showIcons && <NodeIcon state={toggleState} context={props.context} icon={node.icon} rowHeight={props.rowHeight} />}
+        {props.isLeafCheckable ? node.children.length === 0 && checkBox : checkBox}
+        {props.showIcons && (
+          <NodeIcon
+            state={toggleState}
+            context={props.context}
+            icon={node.icon}
+            rowHeight={props.rowHeight} />
+        )}
         <Text
           onClick={() => {
             this.handleOnNodeClick(tree, props, node);
@@ -150,26 +153,29 @@ export class Tree extends ComponentBase {
             <span style={{ lineHeight: '15px', display: 'inline-block', verticalAlign: 'middle' }}>
               {this.highlightSearchTerm(node)}
               <br />
-              <span style={{ color: props.context.theme.boaPalette.base400, fontWeight: '400', fontSize: '12px' }}>{node.detail}</span>
+              <span style={{
+                color: props.context.theme.boaPalette.base400,
+                fontWeight: '400',
+                fontSize: '12px',
+              }}>
+                {node.detail}
+              </span>
             </span>
           ) : (
-            this.highlightSearchTerm(node)
-          )}
+              this.highlightSearchTerm(node)
+            )}
         </Text>
       </TreeNode>
     );
   }
 
-  wrap(match) {
-    return '<span class="highlighted">' + match + '</span>';
-  }
 
   highlightSearchTerm(node) {
     if (this.props.filterText && node.name) {
-      let term = this.props.filterText;
-      let regex = new RegExp(term, 'gi');
-      let p = node.name.replace(regex, match => this.wrap(match));
-      return <span dangerouslySetInnerHTML={{ __html: p }} />;
+      const term = this.props.filterText;
+      const regex = new RegExp(term, 'gi');
+      const p = node.name.replace(regex, match => `<span class="highlighted">${match}</span>`);
+      return <span dangerouslySetInnerHTML={{ __html: p }} />; // eslint-disable-line
     }
     return node.name;
   }

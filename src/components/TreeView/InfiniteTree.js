@@ -3,11 +3,15 @@ import InfiniteTree from './core';
 import VirtualList from './virtual-list';
 import _ from 'lodash';
 
+const lcfirst = str => {
+  str += '';
+  return str.charAt(0).toLowerCase() + str.substr(1);
+};
+
 export default class extends Component {
   static displayName = 'InfiniteTree';
 
   tree = null;
-  state = { nodes: [] };
 
   eventHandlers = {
     onContentWillUpdate: null,
@@ -17,30 +21,49 @@ export default class extends Component {
     onSelectNode: null,
     onWillOpenNode: null,
     onWillCloseNode: null,
-    onWillSelectNode: null
+    onWillSelectNode: null,
   };
 
+  componentDidMount() {
+    const { r } = this.state;
+    this.generateTree();
+    this.setState({ r: !r }); // dialogtaki bugdan dolayı eklendi.
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (nextProps != this.props) {
-      if (
-        nextProps.isMultiSelect != this.props.isMultiSelect ||
-        nextProps.isLeafCheckable != this.props.isLeafCheckable ||
-        nextProps.canCheckChildsByParent != this.props.canCheckChildsByParent || 
-        nextProps.isSingleCheckable != this.props.isSingleCheckable
-      ) {
-        this.tree.options.isMultiSelect = nextProps.isMultiSelect;
-        this.tree.options.isLeafCheckable = nextProps.isLeafCheckable;
-        this.tree.options.canCheckChildsByParent = nextProps.canCheckChildsByParent;
-        this.tree.options.isSingleCheckable = nextProps.isSingleCheckable;
-        this.tree.loadData(this.tree.nodes);
-      } else if (nextProps.expandAll != this.props.expandAll) {
-        this.tree.options.expandAll = nextProps.expandAll;
-        this.expandOrCollapse(nextProps.expandAll);
-      }
-      if (nextProps.data != this.props.data) {
-        this.tree.loadData(nextProps.data);
-      }
+    if (
+      nextProps.isMultiSelect !== this.props.isMultiSelect ||
+      nextProps.isLeafCheckable !== this.props.isLeafCheckable ||
+      nextProps.canCheckChildsByParent !== this.props.canCheckChildsByParent ||
+      nextProps.isSingleCheckable !== this.props.isSingleCheckable
+    ) {
+      this.tree.options.isMultiSelect = nextProps.isMultiSelect;
+      this.tree.options.isLeafCheckable = nextProps.isLeafCheckable;
+      this.tree.options.canCheckChildsByParent = nextProps.canCheckChildsByParent;
+      this.tree.options.isSingleCheckable = nextProps.isSingleCheckable;
+      this.tree.loadData(this.tree.nodes);
+    } else if (nextProps.expandAll !== this.props.expandAll) {
+      this.tree.options.expandAll = nextProps.expandAll;
+      this.expandOrCollapse(nextProps.expandAll);
     }
+    if (nextProps.data !== this.props.data) {
+      this.tree.loadData(nextProps.data);
+    }
+  }
+
+  componentWillUnmount() {
+    Object.keys(this.eventHandlers).forEach(key => {
+      if (!this.eventHandlers[key]) {
+        return;
+      }
+
+      const eventName = lcfirst(key.substr(2)); // e.g. onUpdate -> update
+      this.tree.removeListener(eventName, this.eventHandlers[key]);
+      this.eventHandlers[key] = null;
+    });
+
+    this.tree.destroy();
+    this.tree = null;
   }
 
   expandOrCollapse(isExpand) {
@@ -53,14 +76,9 @@ export default class extends Component {
       });
     };
 
-    let nodes = this.tree.nodes;
+    const nodes = this.tree.nodes;
     expander(nodes);
     this.tree.loadData(nodes);
-  }
-
-  componentDidMount() {
-    this.generateTree();
-    this.setState({ r: !this.state.r }); // dialogtaki bugdan dolayı eklendi.
   }
 
   generateTree() {
@@ -109,11 +127,12 @@ export default class extends Component {
     };
 
     // Gets (or sets) the current vertical position of the scroll bar.
-    // @param {number} [value] If the value is specified, indicates the new position to set the scroll bar to.
+    // @param {number} [value] If the value is specified,
+    // indicates the new position to set the scroll bar to.
     // @return {number} Returns the vertical scroll position.
     this.tree.scrollTop = value => {
       if (!this.tree || !this.virtualList) {
-        return;
+        return undefined;
       }
 
       if (value !== undefined) {
@@ -128,11 +147,11 @@ export default class extends Component {
       this.tree.emit('contentWillUpdate');
       this.setState(
         () => ({
-          nodes: this.tree.nodes
+          nodes: this.tree.nodes,
         }),
         () => {
           this.tree.emit('contentDidUpdate');
-        }
+        },
       );
     };
 
@@ -150,21 +169,6 @@ export default class extends Component {
     this.tree.generateTree = this.generateTree.bind(this);
   }
 
-  componentWillUnmount() {
-    Object.keys(this.eventHandlers).forEach(key => {
-      if (!this.eventHandlers[key]) {
-        return;
-      }
-
-      const eventName = lcfirst(key.substr(2)); // e.g. onUpdate -> update
-      this.tree.removeListener(eventName, this.eventHandlers[key]);
-      this.eventHandlers[key] = null;
-    });
-
-    this.tree.destroy();
-    this.tree = null;
-  }
-
   render() {
     const {
       tabIndex,
@@ -179,7 +183,7 @@ export default class extends Component {
       style,
       children,
       onKeyDown,
-      onKeyUp
+      onKeyUp,
     } = this.props;
 
     const render = typeof children === 'function' ? children : rowRenderer;
@@ -197,8 +201,13 @@ export default class extends Component {
       virtualListProps.onScroll = this.onScroll;
     }
 
+    /* eslint-disable jsx-a11y/no-static-element-interactions,max-len */
     return (
-      <div style={{ ...style }} onKeyDown={onKeyDown} onKeyUp={onKeyUp} tabIndex={tabIndex}>
+      <div
+        style={{ ...style }}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
+        tabIndex={tabIndex}>
         <VirtualList
           ref={node => {
             this.virtualList = node;
@@ -211,17 +220,9 @@ export default class extends Component {
           itemSize={index => {
             const node = this.tree.nodes[index];
             if (node && node.state.filtered === false) return 0;
-
-            // if (typeof rowHeight === 'function') {
-            //   return rowHeight({
-            //     node: this.tree.nodes[index],
-            //     tree: this.tree
-            //   });
-            // }
-
             return node.isHidden ? 0 : rowHeight; // Number or Array
           }}
-          renderItem={({ index, style }) => {
+          renderItem={({ index, style }) => { // eslint-disable-line
             let row = null;
 
             if (typeof render === 'function') {
@@ -229,7 +230,7 @@ export default class extends Component {
               if (node && node.state.filtered !== false && !node.isHidden) {
                 row = render({
                   node: this.tree.nodes[index],
-                  tree: this.tree
+                  tree: this.tree,
                 });
               }
             }
@@ -247,16 +248,12 @@ export default class extends Component {
             .b-treeview { -ms-overflow-style: block!important; font-weight: 400;}
             .b-treeview::-webkit-scrollbar { display: block!important; }
             .b-treeview > div { overflow:initial!important }
-            .b-treeview-search-input div:before { border-bottom-color: ${this.props.context.theme.boaPalette.base200}!important; } 
+            .b-treeview-search-input div:before { border-bottom-color: ${this.props.context.theme.boaPalette.base200}!important; }
             .b-treeview span.highlighted { color: ${this.props.context.theme.boaPalette.pri500}; background-color: #b618ce29; }
           `}
         </style>
       </div>
     );
+    /* eslint-enable jsx-a11y/no-static-element-interactions,max-len */
   }
 }
-
-const lcfirst = str => {
-  str += '';
-  return str.charAt(0).toLowerCase() + str.substr(1);
-};

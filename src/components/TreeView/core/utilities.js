@@ -8,15 +8,16 @@ export const trim = (str, chars = ' \f\n\r\t\v') => {
   return str;
 };
 
+// eslint-disable-next-line
 export const get = (function() {
-  const re = new RegExp(/[\w\-]+|\[[^\]]*\]+/g);
+  const re = new RegExp(/[\w\-]+|\[[^\]]*\]+/g); // eslint-disable-line
 
   return (object, path, defaultValue) => {
     if (!object || typeof object !== 'object') {
       return defaultValue;
     }
 
-    path = '' + path;
+    path = `${path}`;
 
     const keys = path.match(re);
     if (!keys) {

@@ -2,8 +2,11 @@ import extend from './extend';
 
 class Node {
   id = null;
+
   parent = null;
+
   children = [];
+
   state = {};
 
   constructor(node) {
@@ -12,6 +15,7 @@ class Node {
     this.children = this.children || [];
   }
 
+  /* eslint-disable max-len */
   // Returns a boolean value indicating whether a node is a descendant of a given node or not.
   // @param {object} node Specifies the node that may be contained by (a descendant of) a specified node.
   // @return {boolean} Returns true if a node is a descendant of a specified node, otherwise false. A

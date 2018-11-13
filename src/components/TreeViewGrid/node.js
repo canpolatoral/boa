@@ -5,26 +5,26 @@ import NodeHeader from './header';
 
 class TreeNode extends React.Component {
   static propTypes = {
-    style: PropTypes.object.isRequired,
-    node: PropTypes.object.isRequired,
-    decorators: PropTypes.object.isRequired,
     animations: PropTypes.oneOfType([
       PropTypes.object,
-      PropTypes.bool
+      PropTypes.bool,
     ]).isRequired,
-    onToggle: PropTypes.func,
-    onChange: PropTypes.func,
-    isRightToLeft: PropTypes.bool,
+    column1: PropTypes.string,
+    column2: PropTypes.string,
+    column3: PropTypes.string,
+    column4: PropTypes.string,
+    columnsMaxLenght: PropTypes.number,
+    decorators: PropTypes.object.isRequired,
     editableColumn1: PropTypes.bool,
     editableColumn2: PropTypes.bool,
     editableColumn3: PropTypes.bool,
     editableColumn4: PropTypes.bool,
+    isRightToLeft: PropTypes.bool,
+    node: PropTypes.object.isRequired,
+    onChange: PropTypes.func,
+    onToggle: PropTypes.func,
+    style: PropTypes.object.isRequired,
     type: PropTypes.string,
-    columnsMaxLenght: PropTypes.number,
-    column1: PropTypes.string,
-    column2: PropTypes.string,
-    column3: PropTypes.string,
-    column4: PropTypes.string
   };
 
   constructor(props, context) {
@@ -33,8 +33,8 @@ class TreeNode extends React.Component {
   }
 
   onClick() {
-    let toggled = !this.props.node.toggled;
-    let onToggle = this.props.onToggle;
+    const toggled = !this.props.node.toggled;
+    const onToggle = this.props.onToggle;
     if (onToggle) {
       onToggle(this.props.node, toggled);
     }
@@ -45,33 +45,22 @@ class TreeNode extends React.Component {
     if (props.animations === false) {
       return false;
     }
-    let anim = Object.assign({}, props.animations, props.node.animations);
+    const anim = Object.assign({}, props.animations, props.node.animations);
     return {
       toggle: anim.toggle(this.props),
-      drawer: anim.drawer(this.props)
+      drawer: anim.drawer(this.props),
     };
   }
 
   decorators() {
     // Merge Any Node Based Decorators Into The Pack
     const props = this.props;
-    let nodeDecorators = props.node.decorators || {};
+    const nodeDecorators = props.node.decorators || {};
     return Object.assign({}, props.decorators, nodeDecorators);
   }
 
-  render() {
-    const decorators = this.decorators();
-    const animations = this.animations();
-    return (
-      <li style={Object.assign({
-        borderTop: this.props.index == 0 ? '0 px' : '1px solid ' + this.props.context.theme.boaPalette.base200,
-        borderLeft: this.props.isRightToLeft ? null : '1px solid ' + this.props.context.theme.boaPalette.base200,
-        borderRight: this.props.isRightToLeft ? '1px solid ' + this.props.context.theme.boaPalette.base200 : null,
-      }, this.props.style.base)} ref="topLevel">
-        {this.renderHeader(decorators, animations)}
-        {this.renderDrawer(decorators, animations)}
-      </li>
-    );
+  eventBubbles() {
+    return { onToggle: this.props.onToggle };
   }
 
   renderDrawer(decorators, animations) {
@@ -122,7 +111,7 @@ class TreeNode extends React.Component {
         {children.map((child, index) =>
           <TreeNode
             context={this.props.context}
-            {...this._eventBubbles()}
+            {...this.eventBubbles()}
             key={child.id || index}
             node={child}
             decorators={this.props.decorators}
@@ -130,8 +119,7 @@ class TreeNode extends React.Component {
             style={this.props.style}
             index={index}
             onChange={this.props.onChange}
-            isRightToLeft={this.props.isRightToLeft}>
-          </TreeNode>
+            isRightToLeft={this.props.isRightToLeft} />,
         )}
       </ul>
     );
@@ -151,8 +139,22 @@ class TreeNode extends React.Component {
     );
   }
 
-  _eventBubbles() {
-    return { onToggle: this.props.onToggle };
+  render() {
+    const decorators = this.decorators();
+    const animations = this.animations();
+    const theme = this.props.context.theme;
+    return (
+      <li
+        style={Object.assign({
+          borderTop: this.props.index === 0 ? '0 px' : `1px solid ${theme.boaPalette.base200}`,
+          borderLeft: this.props.isRightToLeft ? null : `1px solid ${theme.boaPalette.base200}`,
+          borderRight: this.props.isRightToLeft ? `1px solid ${theme.boaPalette.base200}` : null,
+        }, this.props.style.base)}
+        ref="topLevel">
+        {this.renderHeader(decorators, animations)}
+        {this.renderDrawer(decorators, animations)}
+      </li>
+    );
   }
 }
 

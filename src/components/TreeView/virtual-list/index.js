@@ -11,19 +11,22 @@ import {
   SCROLL_CHANGE_REQUESTED,
   positionProp,
   scrollProp,
-  sizeProp
+  sizeProp,
 } from './constants';
 
-const STYLE_WRAPPER = { overflow: 'auto', willChange: 'transform', WebkitOverflowScrolling: 'touch' };
+const STYLE_WRAPPER = {
+  overflow: 'auto',
+  willChange: 'transform',
+  WebkitOverflowScrolling: 'touch',
+};
 const STYLE_INNER = { position: 'relative', overflow: 'hidden', width: '100%', minHeight: '100%' };
-const STYLE_ITEM = { position: 'absolute', left: 0,     minWidth: '100%' };
+const STYLE_ITEM = { position: 'absolute', left: 0, minWidth: '100%' };
 
 export default class VirtualList extends PureComponent {
   static defaultProps = {
     overscanCount: 3,
-    scrollDirection: DIRECTION_VERTICAL,
-    width: '100%'
   };
+
   static propTypes = {
     estimatedItemSize: PropTypes.number,
     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
@@ -31,29 +34,26 @@ export default class VirtualList extends PureComponent {
     itemSize: PropTypes.oneOfType([PropTypes.number, PropTypes.array, PropTypes.func]).isRequired,
     overscanCount: PropTypes.number,
     renderItem: PropTypes.func.isRequired,
-    scrollOffset: PropTypes.number,
-    scrollToIndex: PropTypes.number,
-    scrollToAlignment: PropTypes.oneOf([ALIGN_START, ALIGN_CENTER, ALIGN_END]),
     scrollDirection: PropTypes.oneOf([DIRECTION_HORIZONTAL, DIRECTION_VERTICAL]).isRequired,
-    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+    scrollOffset: PropTypes.number,
+    scrollToAlignment: PropTypes.oneOf([ALIGN_START, ALIGN_CENTER, ALIGN_END]),
+    scrollToIndex: PropTypes.number,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   };
 
   sizeAndPositionManager = new SizeAndPositionManager({
     itemCount: this.props.itemCount,
     itemSizeGetter: ({ index }) => this.getSize(index),
-    estimatedItemSize: this.getEstimatedItemSize()
+    estimatedItemSize: this.getEstimatedItemSize(),
   });
 
   state = {
-    offset: this.props.scrollOffset || (this.props.scrollToIndex != null && this.getOffsetForIndex(this.props.scrollToIndex)) || 0,
-    scrollChangeReason: SCROLL_CHANGE_REQUESTED
+    offset: this.props.scrollOffset ||
+      (this.props.scrollToIndex != null && this.getOffsetForIndex(this.props.scrollToIndex)) || 0,
+    scrollChangeReason: SCROLL_CHANGE_REQUESTED,
   };
 
-  _styleCache = {};
-
-  _getRef = node => {
-    this.rootNode = node;
-  };
+  styleCache = {};
 
   componentDidMount() {
     const { scrollOffset, scrollToIndex } = this.props;
@@ -66,15 +66,25 @@ export default class VirtualList extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { estimatedItemSize, itemCount, itemSize, scrollOffset, scrollToAlignment, scrollToIndex } = this.props;
-    const scrollPropsHaveChanged = nextProps.scrollToIndex !== scrollToIndex || nextProps.scrollToAlignment !== scrollToAlignment;
-    const itemPropsHaveChanged =
-      nextProps.itemCount !== itemCount || nextProps.itemSize !== itemSize || nextProps.estimatedItemSize !== estimatedItemSize;
+    const {
+      estimatedItemSize,
+      itemCount, itemSize,
+      scrollOffset,
+      scrollToAlignment,
+      scrollToIndex,
+    } = this.props;
+
+    const scrollPropsHaveChanged = nextProps.scrollToIndex !== scrollToIndex ||
+      nextProps.scrollToAlignment !== scrollToAlignment;
+
+    const itemPropsHaveChanged = nextProps.itemCount !== itemCount ||
+      nextProps.itemSize !== itemSize ||
+      nextProps.estimatedItemSize !== estimatedItemSize;
 
     if (nextProps.itemCount !== itemCount || nextProps.estimatedItemSize !== estimatedItemSize) {
       this.sizeAndPositionManager.updateConfig({
         itemCount: nextProps.itemCount,
-        estimatedItemSize: this.getEstimatedItemSize(nextProps)
+        estimatedItemSize: this.getEstimatedItemSize(nextProps),
       });
     }
 
@@ -85,12 +95,12 @@ export default class VirtualList extends PureComponent {
     if (nextProps.scrollOffset !== scrollOffset) {
       this.setState({
         offset: nextProps.scrollOffset,
-        scrollChangeReason: SCROLL_CHANGE_REQUESTED
+        scrollChangeReason: SCROLL_CHANGE_REQUESTED,
       });
     } else if (scrollPropsHaveChanged || (nextProps.scrollToIndex && itemPropsHaveChanged)) {
       this.setState({
-        offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount),
-        scrollChangeReason: SCROLL_CHANGE_REQUESTED
+        offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount), // eslint-disable-line
+        scrollChangeReason: SCROLL_CHANGE_REQUESTED,
       });
     }
   }
@@ -103,38 +113,7 @@ export default class VirtualList extends PureComponent {
     }
   }
 
-  handleScroll = e => {
-    const { onScroll } = this.props;
-    const offset = this.getNodeOffset();
-
-    if (offset < 0 || this.state.offset === offset || e.target !== this.rootNode) {
-      return;
-    }
-
-    this.setState({
-      offset,
-      scrollChangeReason: SCROLL_CHANGE_OBSERVED
-    });
-
-    if (typeof onScroll === 'function') {
-      onScroll(offset, e);
-    }
-  };
-
-  getEstimatedItemSize(props = this.props) {
-    return props.estimatedItemSize || (typeof props.itemSize === 'number' && props.itemSize) || 50;
-  }
-
-  getNodeOffset() {
-    const { scrollDirection } = this.props;
-    return this.rootNode[scrollProp[scrollDirection]];
-  }
-
-  scrollTo(value) {
-    const { scrollDirection } = this.props;
-    this.rootNode[scrollProp[scrollDirection]] = value;
-  }
-
+  // eslint-disable-next-line max-len
   getOffsetForIndex(index, scrollToAlignment = this.props.scrollToAlignment, itemCount = this.props.itemCount) {
     const { scrollDirection } = this.props;
 
@@ -145,7 +124,7 @@ export default class VirtualList extends PureComponent {
     return this.sizeAndPositionManager.getUpdatedOffsetForIndex({
       align: scrollToAlignment,
       containerSize: this.props[sizeProp[scrollDirection]],
-      targetIndex: index
+      targetIndex: index,
     });
   }
 
@@ -160,7 +139,7 @@ export default class VirtualList extends PureComponent {
   }
 
   getStyle(index) {
-    const style = this._styleCache[index];
+    const style = this.styleCache[index];
     if (style) {
       return style;
     }
@@ -168,15 +147,52 @@ export default class VirtualList extends PureComponent {
     const { scrollDirection } = this.props;
     const { size, offset } = this.sizeAndPositionManager.getSizeAndPositionForIndex(index);
 
-    return (this._styleCache[index] = {
+    return (this.styleCache[index] = {
       ...STYLE_ITEM,
       [sizeProp[scrollDirection]]: size,
-      [positionProp[scrollDirection]]: offset
+      [positionProp[scrollDirection]]: offset,
     });
   }
 
+  getEstimatedItemSize(props = this.props) {
+    return props.estimatedItemSize || (typeof props.itemSize === 'number' && props.itemSize) || 50;
+  }
+
+  getNodeOffset() {
+    const { scrollDirection } = this.props;
+    return this.rootNode[scrollProp[scrollDirection]];
+  }
+
+  getRef = node => {
+    this.rootNode = node;
+  };
+
+
+  handleScroll = e => {
+    const { onScroll } = this.props;
+    const offset = this.getNodeOffset();
+
+    if (offset < 0 || this.state.offset === offset || e.target !== this.rootNode) {
+      return;
+    }
+
+    this.setState({
+      offset,
+      scrollChangeReason: SCROLL_CHANGE_OBSERVED,
+    });
+
+    if (typeof onScroll === 'function') {
+      onScroll(offset, e);
+    }
+  };
+
+  scrollTo(value) {
+    const { scrollDirection } = this.props;
+    this.rootNode[scrollProp[scrollDirection]] = value;
+  }
+
   recomputeSizes(startIndex = 0) {
-    this._styleCache = {};
+    this.styleCache = {};
     this.sizeAndPositionManager.resetItem(startIndex);
   }
 
@@ -201,7 +217,7 @@ export default class VirtualList extends PureComponent {
     const { start, stop } = this.sizeAndPositionManager.getVisibleRange({
       containerSize: this.props[sizeProp[scrollDirection]],
       offset,
-      overscanCount
+      overscanCount,
     });
     const items = [];
 
@@ -209,14 +225,22 @@ export default class VirtualList extends PureComponent {
       items.push(
         renderItem({
           index,
-          style: this.getStyle(index)
-        })
+          style: this.getStyle(index),
+        }),
       );
     }
 
+    /* eslint-disable max-len */
     return (
-      <div ref={this._getRef} {...props} onScroll={this.handleScroll} style={{ ...STYLE_WRAPPER, ...style, height, width }}>
-        <div style={{ ...STYLE_INNER, [sizeProp[scrollDirection]]: this.sizeAndPositionManager.getTotalSize() }}>{items}</div>
+      <div
+        ref={this.getRef}
+        {...props}
+        onScroll={this.handleScroll}
+        style={{ ...STYLE_WRAPPER, ...style, height, width }}>
+        <div
+          style={{ ...STYLE_INNER, [sizeProp[scrollDirection]]: this.sizeAndPositionManager.getTotalSize() }}>
+          {items}
+        </div>
       </div>
     );
   }

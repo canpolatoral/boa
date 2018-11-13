@@ -1,5 +1,6 @@
+/* eslint-disable no-restricted-globals */
 /* Forked from react-virtualized 💖 */
-import {ALIGN_START, ALIGN_END, ALIGN_CENTER} from './constants';
+import { ALIGN_START, ALIGN_END, ALIGN_CENTER } from './constants';
 
 export default class SizeAndPositionManager {
   constructor({
@@ -7,27 +8,27 @@ export default class SizeAndPositionManager {
     itemSizeGetter,
     estimatedItemSize,
   }) {
-    this._itemSizeGetter = itemSizeGetter;
-    this._itemCount = itemCount;
-    this._estimatedItemSize = estimatedItemSize;
+    this.itemSizeGetter = itemSizeGetter;
+    this.itemCount = itemCount;
+    this.estimatedItemSize = estimatedItemSize;
 
     // Cache of size and position data for items, mapped by item index.
-    this._itemSizeAndPositionData = {};
+    this.itemSizeAndPositionData = {};
 
     // Measurements for items up to this index can be trusted; items afterward should be estimated.
-    this._lastMeasuredIndex = -1;
+    this.lastMeasuredIndex = -1;
   }
 
   updateConfig({
     itemCount,
     estimatedItemSize,
   }) {
-    this._itemCount = itemCount;
-    this._estimatedItemSize = estimatedItemSize;
+    this.itemCount = itemCount;
+    this.estimatedItemSize = estimatedItemSize;
   }
 
   getLastMeasuredIndex() {
-    return this._lastMeasuredIndex;
+    return this.lastMeasuredIndex;
   }
 
   /**
@@ -35,23 +36,23 @@ export default class SizeAndPositionManager {
    * It just-in-time calculates (or used cached values) for items leading up to the index.
    */
   getSizeAndPositionForIndex(index) {
-    if (index < 0 || index >= this._itemCount) {
-      throw Error(`Requested index ${index} is outside of range 0..${this._itemCount}`);
+    if (index < 0 || index >= this.itemCount) {
+      throw Error(`Requested index ${index} is outside of range 0..${this.itemCount}`);
     }
 
-    if (index > this._lastMeasuredIndex) {
-      let lastMeasuredSizeAndPosition = this.getSizeAndPositionOfLastMeasuredItem();
+    if (index > this.lastMeasuredIndex) {
+      const lastMeasuredSizeAndPosition = this.getSizeAndPositionOfLastMeasuredItem();
       let offset = lastMeasuredSizeAndPosition.offset +
         lastMeasuredSizeAndPosition.size;
 
-      for (var i = this._lastMeasuredIndex + 1; i <= index; i++) {
-        let size = this._itemSizeGetter({index: i});
+      for (let i = this.lastMeasuredIndex + 1; i <= index; i++) {
+        const size = this.itemSizeGetter({ index: i });
 
         if (size == null || isNaN(size)) {
           throw Error(`Invalid size returned for index ${i} of value ${size}`);
         }
 
-        this._itemSizeAndPositionData[i] = {
+        this.itemSizeAndPositionData[i] = {
           offset,
           size,
         };
@@ -59,16 +60,16 @@ export default class SizeAndPositionManager {
         offset += size;
       }
 
-      this._lastMeasuredIndex = index;
+      this.lastMeasuredIndex = index;
     }
 
-    return this._itemSizeAndPositionData[index];
+    return this.itemSizeAndPositionData[index];
   }
 
   getSizeAndPositionOfLastMeasuredItem() {
-    return this._lastMeasuredIndex >= 0
-      ? this._itemSizeAndPositionData[this._lastMeasuredIndex]
-      : {offset: 0, size: 0};
+    return this.lastMeasuredIndex >= 0
+      ? this.itemSizeAndPositionData[this.lastMeasuredIndex]
+      : { offset: 0, size: 0 };
   }
 
   /**
@@ -78,8 +79,9 @@ export default class SizeAndPositionManager {
   */
   getTotalSize() {
     const lastMeasuredSizeAndPosition = this.getSizeAndPositionOfLastMeasuredItem();
-
-    return lastMeasuredSizeAndPosition.offset + lastMeasuredSizeAndPosition.size + (this._itemCount - this._lastMeasuredIndex - 1) * this._estimatedItemSize;
+    return lastMeasuredSizeAndPosition.offset +
+      lastMeasuredSizeAndPosition.size +
+      (this.itemCount - this.lastMeasuredIndex - 1) * this.estimatedItemSize;
   }
 
   /**
@@ -121,26 +123,26 @@ export default class SizeAndPositionManager {
     return Math.max(0, Math.min(totalSize - containerSize, idealOffset));
   }
 
-  getVisibleRange({containerSize, offset, overscanCount}) {
+  getVisibleRange({ containerSize, offset, overscanCount }) {
     const totalSize = this.getTotalSize();
 
     if (totalSize === 0) { return {}; }
 
     const maxOffset = offset + containerSize;
-    let start = this._findNearestItem(offset);
+    let start = this.findNearestItem(offset);
     let stop = start;
 
     const datum = this.getSizeAndPositionForIndex(start);
     offset = datum.offset + datum.size;
 
-    while (offset < maxOffset && stop < this._itemCount - 1) {
+    while (offset < maxOffset && stop < this.itemCount - 1) {
       stop++;
       offset += this.getSizeAndPositionForIndex(stop).size;
     }
 
     if (overscanCount) {
       start = Math.max(0, start - overscanCount);
-      stop = Math.min(stop + overscanCount, this._itemCount - 1);
+      stop = Math.min(stop + overscanCount, this.itemCount - 1);
     }
 
     return {
@@ -152,13 +154,14 @@ export default class SizeAndPositionManager {
   /**
    * Clear all cached values for items after the specified index.
    * This method should be called for any item that has changed its size.
-   * It will not immediately perform any calculations; they'll be performed the next time getSizeAndPositionForIndex() is called.
+   * It will not immediately perform any calculations;
+   * they'll be performed the next time getSizeAndPositionForIndex() is called.
    */
   resetItem(index) {
-    this._lastMeasuredIndex = Math.min(this._lastMeasuredIndex, index - 1);
+    this.lastMeasuredIndex = Math.min(this.lastMeasuredIndex, index - 1);
   }
 
-  _binarySearch({low, high, offset}) {
+  binarySearch({ low, high, offset }) {
     let middle;
     let currentOffset;
 
@@ -168,7 +171,7 @@ export default class SizeAndPositionManager {
 
       if (currentOffset === offset) {
         return middle;
-      } else if (currentOffset < offset) {
+      } if (currentOffset < offset) {
         low = middle + 1;
       } else if (currentOffset > offset) {
         high = middle - 1;
@@ -178,21 +181,22 @@ export default class SizeAndPositionManager {
     if (low > 0) {
       return low - 1;
     }
+    return null;
   }
 
-  _exponentialSearch({index, offset}) {
+  _exponentialSearch({ index, offset }) {
     let interval = 1;
 
     while (
-      index < this._itemCount &&
+      index < this.itemCount &&
       this.getSizeAndPositionForIndex(index).offset < offset
     ) {
       index += interval;
       interval *= 2;
     }
 
-    return this._binarySearch({
-      high: Math.min(index, this._itemCount - 1),
+    return this.binarySearch({
+      high: Math.min(index, this.itemCount - 1),
       low: Math.floor(index / 2),
       offset,
     });
@@ -214,23 +218,27 @@ export default class SizeAndPositionManager {
     offset = Math.max(0, offset);
 
     const lastMeasuredSizeAndPosition = this.getSizeAndPositionOfLastMeasuredItem();
-    const lastMeasuredIndex = Math.max(0, this._lastMeasuredIndex);
+    const lastMeasuredIndex = Math.max(0, this.lastMeasuredIndex);
 
     if (lastMeasuredSizeAndPosition.offset >= offset) {
       // If we've already measured items within this range just use a binary search as it's faster.
-      return this._binarySearch({
+      return this.binarySearch({
         high: lastMeasuredIndex,
         low: 0,
         offset,
       });
-    } else {
-      // If we haven't yet measured this high, fallback to an exponential search with an inner binary search.
-      // The exponential search avoids pre-computing sizes for the full set of items as a binary search would.
-      // The overall complexity for this approach is O(log n).
-      return this._exponentialSearch({
-        index: lastMeasuredIndex,
-        offset,
-      });
     }
+
+    /**
+      * If we haven't yet measured this high,
+      * fallback to an exponential search with an inner binary search.
+      * The exponential search avoids pre-computing sizes for
+      * the full set of items as a binary search would.
+      * The overall complexity for this approach is O(log n).
+     */
+    return this.exponentialSearch({
+      index: lastMeasuredIndex,
+      offset,
+    });
   }
 }

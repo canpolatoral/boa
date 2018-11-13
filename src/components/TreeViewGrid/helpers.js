@@ -1,91 +1,102 @@
-
-
 export const setSelectedNode = (data, valuePath, value) => {
-  if (data[valuePath] == value) {
+  if (data[valuePath] === value) {
     return data;
   }
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {
-      let node = setSelectedNode(data.children[i], valuePath, value);
+      const node = setSelectedNode(data.children[i], valuePath, value);
       if (node != null) {
         data.toggled = true;
         return node;
       }
     }
   }
+  return null;
 };
 
 export const sumNodeHeader = (data, firstNode) => {
   let newData = {};
-  let columnsSum = { column1: 0, column2: 0, column3: 0, column4: 0 };
+  const columnsSum = { column1: 0, column2: 0, column3: 0, column4: 0 };
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {
-      let columns = sumNodeHeader(data.children[i], false);
+      const columns = sumNodeHeader(data.children[i], false);
       if (columns) {
-        columns.column1 ? columnsSum.column1 = Number(columnsSum.column1) + Number(columns.column1) : null;
-        columns.column2 ? columnsSum.column2 = Number(columnsSum.column2) + Number(columns.column2) : null;
-        columns.column3 ? columnsSum.column3 = Number(columnsSum.column3) + Number(columns.column3) : null;
-        columns.column4 ? columnsSum.column4 = Number(columnsSum.column4) + Number(columns.column4) : null;
+        if (columns.column1) {
+          columnsSum.column1 = Number(columnsSum.column1) + Number(columns.column1);
+        }
+        if (columns.column2) {
+          columnsSum.column2 = Number(columnsSum.column2) + Number(columns.column2);
+        }
+        if (columns.column3) {
+          columnsSum.column3 = Number(columnsSum.column3) + Number(columns.column3);
+        }
+        if (columns.column4) {
+          columnsSum.column4 = Number(columnsSum.column4) + Number(columns.column4);
+        }
       }
     }
     if (!firstNode) {
       newData = Object.assign(data, columnsSum);
-    }
-    else {
+    } else {
       newData = data;
     }
     return newData;
   }
-  else {
-    let columns = { column1: data.column1, column2: data.column2, column3: data.column3, column4: data.column4 };
-    return columns;
-  }
+
+  return {
+    column1: data.column1,
+    column2: data.column2,
+    column3: data.column3,
+    column4: data.column4,
+  };
 };
 
 
 export const findNode = (data, valuePath, value) => {
-  if (data[valuePath] == value) {
+  if (data[valuePath] === value) {
     return data;
   }
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {
-      let node = findNode(data.children[i], valuePath, value);
+      const node = findNode(data.children[i], valuePath, value);
       if (node != null) {
         return node;
       }
     }
   }
+  return null;
 };
 
 
 export const collapseAll = (data) => {
-  if (data.toggled == true) {
+  if (data.toggled === true) {
     data.toggled = false;
   }
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {
-      let node = collapseAll(data.children[i]);
+      const node = collapseAll(data.children[i]);
       if (node != null) {
         return node;
       }
     }
   }
+  return null;
 };
 
 export const expandAll = (data) => {
   data.toggled = true;
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {
-      let node = expandAll(data.children[i]);
+      const node = expandAll(data.children[i]);
       if (node != null) {
         return node;
       }
     }
   }
+  return null;
 };
 
 export const handleOnToggleItems = (node, toggled) => {
-
   if (this.selectedNode) {
     this.selectedNode.active = false;
   }
@@ -107,10 +118,11 @@ export const unSelectAll = (data) => {
   data.active = false;
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {
-      let node = unSelectAll(data.children[i]);
+      const node = unSelectAll(data.children[i]);
       if (node != null) {
         return node;
       }
     }
   }
+  return null;
 };

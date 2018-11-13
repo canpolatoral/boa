@@ -1,62 +1,52 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentComposer, ComponentBase } from '@boa/base';
+import { Divider } from '@boa/components/Divider';
+import { InputAction } from '@boa/components/InputAction';
 import Footer from './components/Footer';
-import Divider from '@boa/components/Divider';
-import InputAction from '@boa/components/InputAction';
 import Tree from './Tree';
 
 @ComponentComposer
 class TreeView extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
-
-    // Tree data structure, or a collection of tree data structures....
+    canCheckChildsByParent: PropTypes.bool,
+    caseSensitive: PropTypes.bool,
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-
-    // Width of the tree.
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-    // Height of the tree.
-    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-
-    // Either a fixed height, an array containing the heights of all the rows.
-    rowHeight: PropTypes.oneOfType([PropTypes.number]),
-
-    // Tree data structure, or a collection of tree data structures.
-    selectedNode: PropTypes.object,
-
-    selectedNodeId: PropTypes.number,
-
-    hintText: PropTypes.string,
-
-    // Whether to open all nodes when tree is loaded.
+    exactMatch: PropTypes.bool,
     expandAll: PropTypes.bool,
-
+    footerStyle: PropTypes.object,
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    hintText: PropTypes.string,
+    includeAncestors: PropTypes.bool,
+    includeDescendants: PropTypes.bool,
+    isCheckable: PropTypes.bool,
+    isLeafCheckable: PropTypes.bool,
     isMultiSelect: PropTypes.bool,
+    isSingleCheckable: PropTypes.bool,
+    loadNodes: PropTypes.func,
+    onCheckNode: PropTypes.func,
+    onCloseNode: PropTypes.func,
+    onContentDidUpdate: PropTypes.func,
+    onContentWillUpdate: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
+    onOpenNode: PropTypes.func,
+    onScroll: PropTypes.func,
+    onSelectNode: PropTypes.func,
+    onWillCloseNode: PropTypes.func,
+    onWillOpenNode: PropTypes.func,
+    onWillSelectNode: PropTypes.func,
+    rowHeight: PropTypes.oneOfType([PropTypes.number]),
+    scrollOffset: PropTypes.number,
+    scrollToIndex: PropTypes.number,
+    selectable: PropTypes.bool,
+    selectedNode: PropTypes.object,
+    selectedNodeId: PropTypes.number,
+    shouldSelectNode: PropTypes.func,
 
     showFooter: PropTypes.bool,
-
-    // Whether or not a node is selectable in the tree.
-    selectable: PropTypes.bool,
-
-    // Whether or not a node is selectable in the tree.
-    caseSensitive: PropTypes.bool,
-
-    // Whether or not a node is selectable in the tree.
-    exactMatch: PropTypes.bool,
-
-    // Whether or not a node is selectable in the tree.
-    includeAncestors: PropTypes.bool,
-
-    // Whether or not a node is selectable in the tree.
-    includeDescendants: PropTypes.bool,
-
-    // Whether or not a node is checkable in the tree.
-    isCheckable: PropTypes.bool,
-
-    // Whether or not a node is only leaf nodes checakble in the tree.
-    isLeafCheckable: PropTypes.bool,
 
     // Whether or not a node is selectable in the tree.
     showIcons: PropTypes.bool,
@@ -64,63 +54,11 @@ class TreeView extends ComponentBase {
     // Whether or not a node is selectable in the tree.
     showSearch: PropTypes.bool,
 
-    canCheckChildsByParent: PropTypes.bool,
-
+    style: PropTypes.object,
     // Specifies the tab order to make tree focusable.
     tabIndex: PropTypes.number,
-
-    // Loads nodes on demand.
-    loadNodes: PropTypes.func,
-
-    // Provides a function to determine if a node can be selected or deselected. The function must return `true` or `false`.
-    // This function will not take effect if `selectable` is not `true`.
-    shouldSelectNode: PropTypes.func,
-
-    // Controls the scroll offset.
-    scrollOffset: PropTypes.number,
-
-    // Node index to scroll to.
-    scrollToIndex: PropTypes.number,
-
-    // Callback invoked whenever the scroll offset changes.
-    onScroll: PropTypes.func,
-
-    // Callback invoked when a node is opened.
-    onOpenNode: PropTypes.func,
-
-    // Callback invoked when a node is closed.
-    onCloseNode: PropTypes.func,
-
-    // Callback invoked when a node is selected or deselected.
-    onSelectNode: PropTypes.func,
-
-    // Callback invoked when a node is selected or deselected.
-    onCheckNode: PropTypes.func,
-
-    // Callback invoked before opening a node.
-    onWillOpenNode: PropTypes.func,
-
-    // Callback invoked before closing a node.
-    onWillCloseNode: PropTypes.func,
-
-    // Callback invoked before selecting or deselecting a node.
-    onWillSelectNode: PropTypes.func,
-
-    // Callback invoked before updating the tree.
-    onContentWillUpdate: PropTypes.func,
-
-    // Callback invoked when the tree is updated.
-    onContentDidUpdate: PropTypes.func,
-
-    // Callback invoked when the tree is updated.
-    onKeyDown: PropTypes.func,
-
-    // Callback invoked when the tree is updated.
-    onKeyUp: PropTypes.func,
-
-    style: PropTypes.object,
-    footerStyle: PropTypes.object,
-    isSingleCheckable: PropTypes.bool
+    // Width of the tree.
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   static defaultProps = {
@@ -143,7 +81,7 @@ class TreeView extends ComponentBase {
     showIcons: true,
     showSearch: true,
     canCheckChildsByParent: true,
-    isSingleCheckable: false
+    isSingleCheckable: false,
   };
 
   searchActionButton = {
@@ -151,7 +89,7 @@ class TreeView extends ComponentBase {
     iconProperties: { color: 'primary' },
     onClick: () => {
       this.filterTree();
-    }
+    },
   };
 
   clearActionButton = {
@@ -159,28 +97,27 @@ class TreeView extends ComponentBase {
     iconProperties: { color: this.props.context.theme.boaPalette.pri500 },
     onClick: () => {
       this.filterTree(null);
-    }
+    },
   };
 
   state = {
     filterText: '',
     footerText: this.getMessage('BOA', 'TreeviewItemNotSelected'),
-    selectedNode: this.props.selectedNodeId ? { id: this.props.selectedNodeId } : this.props.selectedNode
+    selectedNode: this.props.selectedNodeId ? {
+      id: this.props.selectedNodeId,
+    } : this.props.selectedNode,
   };
 
   constructor(props, context) {
     super(props, context);
+    this.tree = null;
+    this.searchTextTimer = null;
+    this.checkedNodesFromDataSource = [];
   }
 
-  tree = null;
-  searchTextTimer;
-  checkedNodesFromDataSource = [];
-
   componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
-      if (nextProps.data !== this.props.data) {
-        this.filterTree(null);
-      }
+    if (nextProps.data !== this.props.data) {
+      this.filterTree(null);
     }
   }
 
@@ -188,7 +125,7 @@ class TreeView extends ComponentBase {
     super.componentDidMount();
 
     if (this.state.selectedNode) {
-      let node = this.getNodeById(this.state.selectedNode.id);
+      const node = this.getNodeById(this.state.selectedNode.id);
       this.selectNode(node);
     }
   }
@@ -197,24 +134,24 @@ class TreeView extends ComponentBase {
     let footerText = this.getMessage('BOA', 'TreeviewItemNotSelected');
 
     if (this.state.filterText) {
-      let nodes = this.getFilteredNodes();
+      const nodes = this.getFilteredNodes();
       footerText = this.getMessage('BOA', 'TreeviewItemNotFound');
       if (nodes.length > 0) {
-        footerText = nodes.length + ' ' + this.getMessage('BOA', 'TreeviewItemFound');
+        footerText = `${nodes.length} ${this.getMessage('BOA', 'TreeviewItemFound')}`;
       }
       return footerText;
     }
 
-    let nodes = this.getCheckedNodes();
+    const nodes = this.getCheckedNodes();
     if (nodes.length > 0) {
-      footerText = nodes.length + ' ' + this.getMessage('BOA', 'TreeviewItemSelected');
+      footerText = `${nodes.length} ${this.getMessage('BOA', 'TreeviewItemSelected')}`;
     }
     return footerText;
   }
 
   // Get the selected value
   getValue() {
-    let props = this.props;
+    const props = this.props;
     if (props.isCheckable) {
       return this.getCheckedNodes();
     }
@@ -329,16 +266,15 @@ class TreeView extends ComponentBase {
   // Gets an array of checked nodes.
   // @return {array} Returns an array of Node objects containing checked nodes.
   getCheckedNodes() {
-    if (this.tree)
-      return this.tree.getCheckedNodes();
+    if (this.tree) return this.tree.getCheckedNodes();
     return [];
   }
 
   // Gets an array of checked node Ids.
   // @return {array} Returns an array of Id integers containing checked node ids.
   getCheckedNodeIds() {
-    let checkedNodes = this.getCheckedNodes();
-    let checkedNodeId = [];
+    const checkedNodes = this.getCheckedNodes();
+    const checkedNodeId = [];
     checkedNodes.forEach(node => {
       checkedNodeId.push(node.id);
     }, this);
@@ -413,7 +349,7 @@ class TreeView extends ComponentBase {
   // @return {boolean} Returns true on success, false otherwise.
   selectNode(node) {
     if (this.tree) {
-      let success = this.tree.selectNode(node);
+      const success = this.tree.selectNode(node);
       if (success && node) {
         // this.scrollToNode(node);
         this.setState({ selectedNode: node });
@@ -440,9 +376,8 @@ class TreeView extends ComponentBase {
     return this.tree.toggleNode(node);
   }
 
-  // Updates the tree.
+  // eslint-disable-next-line
   update() {
-    // return this.tree.update();
   }
 
   // Updates the data of a node.
@@ -476,7 +411,7 @@ class TreeView extends ComponentBase {
   }
 
   isLeafSelected() {
-    let selectedNode = this.getSelectedNode();
+    const selectedNode = this.getSelectedNode();
     if (selectedNode) {
       if (selectedNode.children && Array.isArray(selectedNode.children) && selectedNode.children.length > 0) {
         return false;
@@ -505,7 +440,7 @@ class TreeView extends ComponentBase {
    * @param {*} snapshot
    */
   setSnapshot(snapshot) {
-    let { state } = snapshot;
+    const { state } = snapshot;
     this.setState({ ...state });
   }
 
@@ -521,7 +456,7 @@ class TreeView extends ComponentBase {
       return;
     }
 
-    let filterText = this.searchInput.getInstance().getValue();
+    const filterText = this.searchInput.getInstance().getValue();
     keyword = filterText || keyword || '';
 
     if (!keyword) {
@@ -535,7 +470,7 @@ class TreeView extends ComponentBase {
       caseSensitive: this.props.caseSensitive,
       exactMatch: this.props.exactMatch,
       includeAncestors: this.props.includeAncestors,
-      includeDescendants: this.props.includeDescendants
+      includeDescendants: this.props.includeDescendants,
     });
 
     this.setState({ filterText: keyword });
@@ -543,7 +478,7 @@ class TreeView extends ComponentBase {
 
   handleOnSearchChange = name => event => {
     this.setState({
-      [name]: event.target.value
+      [name]: event.target.value,
     });
   };
 
@@ -553,7 +488,9 @@ class TreeView extends ComponentBase {
 
   handleOnselectNode(node) {
     this.state.selectedNode = node;
-    this.props.onSelectNode && this.props.onSelectNode(node);
+    if (this.props.onSelectNode) {
+      this.props.onSelectNode(node);
+    }
   }
 
   handleOnKeyDown(event) {
@@ -578,13 +515,16 @@ class TreeView extends ComponentBase {
       this.selectNode(nextNode);
     } else if (this.props.isCheckable && event.keyCode === 13) {
       // Enter
-      let isCheckable = node.isCheckable === undefined ? true : node.isCheckable;
+      const isCheckable = node.isCheckable === undefined ? true : node.isCheckable;
       if (isCheckable) {
         this.checkNode(node);
         this.handleOnCheckNode(node, node.isSelected);
       }
     }
-    this.props.onKeyDown && this.props.onKeyDown(event);
+
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(event);
+    }
   }
 
   handleOnSearchTextKeyDown(event) {
@@ -593,7 +533,7 @@ class TreeView extends ComponentBase {
     const { keyCode } = event;
     const ENTER = 13;
 
-    if (keyCode == ENTER) {
+    if (keyCode === ENTER) {
       this.filterTree();
       clearTimeout(this.searchTextTimer);
     } else {
@@ -604,44 +544,44 @@ class TreeView extends ComponentBase {
   }
 
   getStyle() {
-    let mainDiv = {
+    const mainDiv = {
       outline: 'none',
       background: 'white',
       boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
-      ...this.props.style
+      ...this.props.style,
     };
 
-    let width = typeof this.props.width === 'string' ? this.props.width : this.props.width + 'px';
+    const width = typeof this.props.width === 'string' ? this.props.width : `${this.props.width}px`;
 
-    let startAdornmentStyle = { paddingLeft: '24px', marginLeft: '0', paddingBottom: '12px', marginTop: '6px' };
+    const startAdornmentStyle = { paddingLeft: '24px', marginLeft: '0', paddingBottom: '12px', marginTop: '6px' };
     if (this.props.context.localization.isRightToLeft) {
       startAdornmentStyle.paddingLeft = '0px';
       startAdornmentStyle.paddingRight = '24px';
     }
 
-    let endAdornmentStyle = { paddingBottom: '12px', marginTop: '6px', paddingRight: '12px' };
+    const endAdornmentStyle = { paddingBottom: '12px', marginTop: '6px', paddingRight: '12px' };
     if (this.props.context.localization.isRightToLeft) {
       endAdornmentStyle.paddingLeft = '12px';
       endAdornmentStyle.paddingRight = '0px';
     }
 
-    let inputDiv = {
+    const inputDiv = {
       marginTop: '0px',
       marginBottom: '18px',
-      height: '30px'
+      height: '30px',
     };
 
     return {
-      mainDiv: mainDiv,
-      width: width,
-      startAdornmentStyle: startAdornmentStyle,
-      endAdornmentStyle: endAdornmentStyle,
-      inputDiv: inputDiv
+      mainDiv,
+      width,
+      startAdornmentStyle,
+      endAdornmentStyle,
+      inputDiv,
     };
   }
 
   render() {
-    let style = this.getStyle();
+    const style = this.getStyle();
 
     return (
       <div style={style.mainDiv}>

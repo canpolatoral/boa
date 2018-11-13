@@ -13,13 +13,13 @@ import { LinearPanel } from '@boa/components/LinearPanel';
 class TreeViewGrid extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
-    style: PropTypes.object,
     data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
-    selectedNodeId: PropTypes.number,
     disabled: PropTypes.bool,
     onItemChanged: PropTypes.func,
-    title: PropTypes.string,
     onOptionClick: PropTypes.func,
+    selectedNodeId: PropTypes.number,
+    style: PropTypes.object,
+    title: PropTypes.string,
   };
 
   static defaultProps = {
@@ -29,7 +29,7 @@ class TreeViewGrid extends ComponentBase {
   };
 
   state = {
-    disabled: this.props.disabled
+    disabled: this.props.disabled,
   };
 
   constructor(props, context) {
@@ -44,11 +44,10 @@ class TreeViewGrid extends ComponentBase {
    */
   componentWillMount() {
     if (!this.state.data && !this.props.data) {
-      let data = sampleData;
+      const data = sampleData;
       // let summedData = helpers.sumNodeHeader(data, true);
       this.setValues(data);
-    }
-    else if (this.props.data) {
+    } else if (this.props.data) {
       // let summedData = helpers.sumNodeHeader(this.props.data, true);
       this.setValues(this.props.data);
     }
@@ -59,7 +58,7 @@ class TreeViewGrid extends ComponentBase {
    * @param nextProps
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.data != this.props.data) {
+    if (nextProps.data !== this.props.data) {
       this.setValues(nextProps.data);
     }
     if (nextProps.disabled !== this.props.disabled) {
@@ -77,7 +76,7 @@ class TreeViewGrid extends ComponentBase {
    * @param value
    */
   findNode(valuePath, value) {
-    let data = this.getValues();
+    const data = this.getValues();
     return helpers.findNode(data, valuePath, value);
   }
 
@@ -94,7 +93,7 @@ class TreeViewGrid extends ComponentBase {
    * The expandAll method provides a convenient way to open every node in the tree.
    */
   expandAll = () => {
-    let data = this.state.data;
+    const data = this.state.data;
     helpers.expandAll(data);
     this.setState({ data: Object.assign({}, data) });
   }
@@ -103,7 +102,7 @@ class TreeViewGrid extends ComponentBase {
    * The collapseAll method provides a convenient way to close every node in the tree.
    */
   collapseAll = () => {
-    let data = this.state.data;
+    const data = this.state.data;
     helpers.collapseAll(data);
     this.setState({ data: Object.assign({}, data) });
   }
@@ -113,7 +112,7 @@ class TreeViewGrid extends ComponentBase {
    * @returns {*}
    */
   getValue() {
-    let obj = this.selectedNode || {};
+    const obj = this.selectedNode || {};
     return Object.assign({}, obj);
   }
 
@@ -134,7 +133,8 @@ class TreeViewGrid extends ComponentBase {
   }
 
   /**
-   * Handle function when a node is toggled / clicked. Passes 2 attributes: the data node and it's toggled boolean state.
+   * Handle function when a node is toggled / clicked.
+   * Passes 2 attributes: the data node and it's toggled boolean state.
    * @param node
    * @param toggled
    */
@@ -151,11 +151,10 @@ class TreeViewGrid extends ComponentBase {
     }
     this.selectedNode = node;
     this.setState({ cursor: Object.assign({}, node) });
-
   }
 
   onChange(item, node) {
-    let data = this.state.data;
+    const data = this.state.data;
     // var temp = data.children.find(x=>x.id == node.id);
     this.selectedNode = helpers.setSelectedNode(data, 'id', node.id);
     if (this.selectedNode) {
@@ -178,36 +177,59 @@ class TreeViewGrid extends ComponentBase {
 
     // let summedData = helpers.sumNodeHeader(data, true);
     this.setValues(data);
-
   }
 
   render() {
-    let { context } = this.props;
-    return (<div>
-      <div style={{ paddingBottom: 12, paddingLeft: 12, paddingRight: 12, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ fontSize: 16, color: context.theme.boaPalette.base400 }}>{this.props.title}</div>
-        <LinearPanel orientation='horizontal'>
-          <Button context={context} text={this.getMessage('Loans', 'ExpandAll')} colorType='primary' onClick={this.expandAll} />
-          <Button context={context} text={this.getMessage('Loans', 'CollapseAll')} colorType='primary' onClick={this.collapseAll} />
-          <IconButton
-            style={{ width: 34, height: 34 }}
+    const { context } = this.props;
+    return (
+      <div>
+        <div style={{
+          paddingBottom: 12,
+          paddingLeft: 12,
+          paddingRight: 12,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+          <div
+            style={{
+              fontSize: 16,
+              color: context.theme.boaPalette.base400,
+            }}>
+            {this.props.title}
+          </div>
+          <LinearPanel orientation="horizontal">
+            <Button
+              context={context}
+              text={this.getMessage('Loans', 'ExpandAll')}
+              colorType="primary"
+              onClick={this.expandAll} />
+            <Button
+              context={context}
+              text={this.getMessage('Loans', 'CollapseAll')}
+              colorType="primary"
+              onClick={this.collapseAll} />
+            <IconButton
+              style={{ width: 34, height: 34 }}
+              context={context}
+              iconProperties={{ nativeColor: this.props.context.theme.boaPalette.pri500 }}
+              dynamicIcon="MoreVert"
+              onClick={this.props.onOptionClick} />
+          </LinearPanel>
+        </div>
+        <div style={{ borderBottom: `1px solid ${this.props.context.theme.boaPalette.base200}` }}>
+          <TreeView
             context={context}
-            iconProperties={{ nativeColor: this.props.context.theme.boaPalette.pri500 }}
-            dynamicIcon='MoreVert'
-            onClick={this.props.onOptionClick} />
-        </LinearPanel>
+            ref={r => this.treeView = r}
+            data={this.state.data}
+            onToggle={this.handleOnToggle}
+            onChange={this.onChange}
+            isRightToLeft={this.props.context.localization.isRightToLeft}
+            decorators={decorators} />
+        </div>
       </div>
-      <div style={{ borderBottom: '1px solid ' + this.props.context.theme.boaPalette.base200 }}>
-        <TreeView
-          context={context}
-          ref={r => this.treeView = r}
-          data={this.state.data}
-          onToggle={this.handleOnToggle}
-          onChange={this.onChange}
-          isRightToLeft={this.props.context.localization.isRightToLeft}
-          decorators={decorators} />
-      </div>
-    </div>);
+    );
   }
 }
 

@@ -11,7 +11,7 @@ const Text = styled.span`
   line-height: ${props => props.rowHeight}px;
   font-size:14px;
   color: ${props => props.context.theme.boaPalette.base450};
-  padding-${props => (props.context.localization.isRightToLeft ? 'left': 'right')}: 6px;
+  padding-${props => (props.context.localization.isRightToLeft ? 'left' : 'right')}: 6px;
   white-space: nowrap;
 
   &:after {

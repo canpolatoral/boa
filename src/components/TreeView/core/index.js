@@ -1,4 +1,4 @@
-/* eslint no-continue: 0 */
+/* eslint-disable max-len */
 /* eslint operator-assignment: 0 */
 import events from 'events';
 import classNames from 'classnames';
@@ -15,15 +15,15 @@ import { defaultRowRenderer } from './renderer';
 import { preventDefault, addEventListener, removeEventListener } from './dom';
 import { Localization } from '@boa/utils';
 
-const noop = () => {};
+const noop = () => { };
 
 const error = (format, ...args) => {
   let argIndex = 0;
   const message =
-    'Error: ' +
+    `Error: ${
     format.replace(/%s/g, () => {
       return args[argIndex++];
-    });
+    })}`;
   try {
     // This error was thrown as a convenience so that you can use this stack
     // to find the callsite that caused this error to fire.
@@ -54,8 +54,8 @@ const createRootNode = rootNode => {
       open: true, // always open
       path: '',
       prefixMask: '',
-      total: 0
-    }
+      total: 0,
+    },
   });
 };
 
@@ -76,24 +76,33 @@ class InfiniteTree extends events.EventEmitter {
     noDataClass: 'infinite-tree-no-data',
     noDataText: 'No data',
     nodeIdAttr: 'data-id',
-    togglerClass: 'infinite-tree-toggler'
+    togglerClass: 'infinite-tree-toggler',
   };
+
   state = {
     openNodes: [],
     checkedNodes: [],
     rootNode: createRootNode(),
-    selectedNode: null
+    selectedNode: null,
   };
+
   clusterize = null;
+
   nodeTable = new LookupTable();
+
   nodes = [];
+
   rows = [];
+
   filtered = false;
 
   // The following elements will have no effect in the stealth mode
   scrollElement = null;
+
   contentElement = null;
+
   draggableTarget = null;
+
   droppableTarget = null;
 
   contentListener = {
@@ -103,7 +112,7 @@ class InfiniteTree extends events.EventEmitter {
       // Wrap stopPropagation that allows click event handler to stop execution
       // by setting the cancelBubble property
       const stopPropagation = event.stopPropagation;
-      event.stopPropagation = function() {
+      event.stopPropagation = () => {
         // Setting the cancelBubble property in browsers that don't support it doesn't hurt.
         // Of course it doesn't actually cancel the bubbling, but the assignment itself is safe.
         event.cancelBubble = true;
@@ -187,7 +196,6 @@ class InfiniteTree extends events.EventEmitter {
     // https://developer.mozilla.org/en-US/docs/Web/Events/dragend
     // The dragend event is fired when a drag operation is being ended (by releasing a mouse button or hitting the escape key).
     dragend: () => {
-
       const { hoverClass = '' } = this.options.droppable;
 
       // Draggable
@@ -240,7 +248,7 @@ class InfiniteTree extends events.EventEmitter {
           type: 'dragenter',
           draggableTarget: this.draggableTarget,
           droppableTarget: itemTarget,
-          node: node
+          node,
         });
       }
 
@@ -279,7 +287,7 @@ class InfiniteTree extends events.EventEmitter {
           type: 'drop',
           draggableTarget: this.draggableTarget,
           droppableTarget: this.droppableTarget,
-          node: node
+          node,
         });
       }
 
@@ -287,13 +295,13 @@ class InfiniteTree extends events.EventEmitter {
         drop.call(this, event, {
           draggableTarget: this.draggableTarget,
           droppableTarget: this.droppableTarget,
-          node: node
+          node,
         });
       }
 
       elementClass(this.droppableTarget).remove(hoverClass);
       this.droppableTarget = null;
-    }
+    },
   };
 
   // Creates new InfiniteTree object.
@@ -309,7 +317,7 @@ class InfiniteTree extends events.EventEmitter {
     // Assign options
     this.options = {
       ...this.options,
-      ...options
+      ...options,
     };
 
     this.create();
@@ -319,6 +327,7 @@ class InfiniteTree extends events.EventEmitter {
       this.loadData(this.options.data);
     }
   }
+
   create() {
     if (this.options.el) {
       let tag = null;
@@ -350,12 +359,12 @@ class InfiniteTree extends events.EventEmitter {
       this.options.el.appendChild(this.scrollElement);
 
       this.clusterize = new Clusterize({
-        tag: tag,
+        tag,
         rows: [],
         scrollElement: this.scrollElement,
         contentElement: this.contentElement,
         emptyText: this.options.noDataText,
-        emptyClass: this.options.noDataClass
+        emptyClass: this.options.noDataClass,
       });
 
       this.clusterize.on('clusterWillChange', () => {
@@ -380,6 +389,7 @@ class InfiniteTree extends events.EventEmitter {
       }
     }
   }
+
   destroy() {
     this.clear();
 
@@ -420,6 +430,7 @@ class InfiniteTree extends events.EventEmitter {
       this.scrollElement = null;
     }
   }
+
   // Adds an array of new child nodes to a parent node at the specified index.
   // * If the parent is null or undefined, inserts new childs at the specified index in the top-level.
   // * If the parent has children, the method adds the new child to it at the specified index.
@@ -457,6 +468,7 @@ class InfiniteTree extends events.EventEmitter {
     });
 
     // Insert new child node at the specified index
+    // eslint-disable-next-line
     parentNode.children.splice.apply(parentNode.children, [index, 0].concat(newNodes));
 
     // Get the index of the first new node within the array of child nodes
@@ -480,7 +492,9 @@ class InfiniteTree extends events.EventEmitter {
       if (parentOffset >= 0) {
         if (parentNode.state.open === true) {
           // Update nodes & rows
+          // eslint-disable-next-line
           this.nodes.splice.apply(this.nodes, [parentOffset + 1, deleteCount].concat(nodes));
+          // eslint-disable-next-line
           this.rows.splice.apply(this.rows, [parentOffset + 1, deleteCount].concat(rows));
         }
 
@@ -503,6 +517,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return true;
   }
+
   // Adds a new child node to the end of the list of children of a specified parent node.
   // * If the parent is null or undefined, inserts the child at the specified index in the top-level.
   // * If the parent has children, the method adds the child as the last child.
@@ -522,6 +537,7 @@ class InfiniteTree extends events.EventEmitter {
     const newNodes = [].concat(newNode || []); // Ensure array
     return this.addChildNodes(newNodes, index, parentNode);
   }
+
   // Checks or unchecks a node.
   // @param {Node} node The Node object.
   // @param {boolean} [checked] Whether to check or uncheck the node. If not specified, it will toggle between checked and unchecked state.
@@ -545,7 +561,7 @@ class InfiniteTree extends events.EventEmitter {
     }
 
     let isSingleSelection = false;
-    let isRadio = !this.options.isMultiSelect;
+    const isRadio = !this.options.isMultiSelect;
     if (!this.options.canCheckChildsByParent) {
       isSingleSelection = true;
     } else if (this.options.isLeafCheckable) {
@@ -638,6 +654,7 @@ class InfiniteTree extends events.EventEmitter {
 
         const len = parentNode.children ? parentNode.children.length : 0;
         for (let i = 0; i < len; ++i) {
+          // eslint-disable-next-line
           const childNode = parentNode.children[i];
           indeterminate = indeterminate || !!childNode.state.indeterminate;
           if (childNode.state.checked) {
@@ -677,6 +694,7 @@ class InfiniteTree extends events.EventEmitter {
     this.lastCheckedNode = checked && node;
     return true;
   }
+
   // Clears the tree.
   clear() {
     if (this.clusterize) {
@@ -689,6 +707,7 @@ class InfiniteTree extends events.EventEmitter {
     this.state.rootNode = createRootNode(this.state.rootNode);
     this.state.selectedNode = null;
   }
+
   // Closes a node to hide its children.
   // @param {Node} node The Node object.
   // @param {object} [options] The options object.
@@ -742,6 +761,7 @@ class InfiniteTree extends events.EventEmitter {
 
       node.state.open = false; // Set the open state to false
       node.isExpanded = false;
+      // eslint-disable-next-line
       const openNodes = this.state.openNodes.filter(node => node.state.open);
       this.state.openNodes = openNodes;
 
@@ -781,6 +801,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return true;
   }
+
   // Filters nodes. Use a string or a function to test each node of the tree. Otherwise, it will render nothing after filtering (e.g. tree.filter(), tree.filter(null), tree.flter(0), tree.filter({}), etc.).
   // @param {string|function} predicate A keyword string, or a function to test each node of the tree. If the predicate is an empty string, all nodes will be filtered. If the predicate is a function, returns true to keep the node, false otherwise.
   // @param {object} [options] The options object.
@@ -818,7 +839,7 @@ class InfiniteTree extends events.EventEmitter {
       filterPath: 'name',
       includeAncestors: true,
       includeDescendants: true,
-      ...options
+      ...options,
     };
 
     this.filtered = true;
@@ -867,7 +888,7 @@ class InfiniteTree extends events.EventEmitter {
       for (let i = 0; i < node.children.length; ++i) {
         const childNode = node.children[i];
         if (!childNode) {
-          continue;
+          continue; // eslint-disable-line
         }
         if (traverse(childNode, filterNode)) {
           filtered = true;
@@ -897,6 +918,7 @@ class InfiniteTree extends events.EventEmitter {
 
     this.update();
   }
+
   // Flattens all child nodes of a parent node by performing full tree traversal using child-parent link.
   // No recursion or stack is involved.
   // @param {Node} parentNode The Node object that defines the parent node.
@@ -909,7 +931,7 @@ class InfiniteTree extends events.EventEmitter {
       return [];
     }
 
-    let list = [];
+    const list = [];
     let node = parentNode.getFirstChild(); // Ignore parent node
     while (node) {
       list.push(node);
@@ -929,6 +951,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return list;
   }
+
   // Flattens a node by performing full tree traversal using child-parent link.
   // No recursion or stack is involved.
   // @param {Node} node The Node object.
@@ -939,6 +962,7 @@ class InfiniteTree extends events.EventEmitter {
     }
     return [node].concat(this.flattenChildNodes(node));
   }
+
   // Gets a list of child nodes.
   // @param {Node} [parentNode] The Node object that defines the parent node. If null or undefined, returns a list of top level nodes.
   // @return {array} Returns an array of Node objects containing all the child nodes of the parent node.
@@ -950,6 +974,7 @@ class InfiniteTree extends events.EventEmitter {
     }
     return parentNode.children;
   }
+
   // Gets a node by its unique id. This assumes that you have given the nodes in the data a unique id.
   // @param {string|number} id An unique node id. A null value will be returned if the id doesn't match.
   // @return {Node} Returns a node the matches the id, null otherwise.
@@ -957,7 +982,7 @@ class InfiniteTree extends events.EventEmitter {
     let node = this.nodeTable.get(id);
     if (!node) {
       // Find the first node that matches the id
-      node = this.nodes.filter(node => node.id === id)[0];
+      node = this.nodes.filter(node => node.id === id)[0]; // eslint-disable-line
       if (!node) {
         return null;
       }
@@ -965,6 +990,7 @@ class InfiniteTree extends events.EventEmitter {
     }
     return node;
   }
+
   // Returns the node at the specified point. If the specified point is outside the visible bounds or either coordinate is negative, the result is null.
   // @param {number} x A horizontal position within the current viewport.
   // @param {number} y A vertical position within the current viewport.
@@ -982,27 +1008,32 @@ class InfiniteTree extends events.EventEmitter {
 
     return node;
   }
+
   // Gets an array of open nodes.
   // @return {array} Returns an array of Node objects containing open nodes.
   getOpenNodes() {
     // returns a shallow copy of an array into a new array object.
     return this.state.openNodes.slice();
   }
+
   // Gets the root node.
   // @return {Node} Returns the root node, or null if empty.
   getRootNode() {
     return this.state.rootNode;
   }
+
   // Gets the selected node.
   // @return {Node} Returns the selected node, or null if not selected.
   getSelectedNode() {
     return this.state.selectedNode;
   }
+
   // Gets the index of the selected node.
   // @return {number} Returns the index of the selected node, or -1 if not selected.
   getSelectedIndex() {
     return this.nodes.indexOf(this.state.selectedNode);
   }
+
   // Inserts the specified node after the reference node.
   // @param {object} newNode The new sibling node.
   // @param {Node} referenceNode The Node object that defines the reference node.
@@ -1018,6 +1049,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return this.addChildNodes(newNodes, index, parentNode);
   }
+
   // Inserts the specified node before the reference node.
   // @param {object} newNode The new sibling node.
   // @param {Node} referenceNode The Node object that defines the reference node.
@@ -1036,8 +1068,7 @@ class InfiniteTree extends events.EventEmitter {
 
   findCheckedAndOpenNodes(nodes, openNodes, checkedNodes, selectedNodes) {
     (nodes || []).forEach(node => {
-      if (node.state.open)
-        openNodes.push(node);
+      if (node.state.open) openNodes.push(node);
 
       if (node.isSelected) {
         if (checkedNodes.indexOf(node) < 0) {
@@ -1045,8 +1076,7 @@ class InfiniteTree extends events.EventEmitter {
         }
       }
 
-      if (node.state.selected)
-        selectedNodes.push(node);
+      if (node.state.selected) selectedNodes.push(node);
 
       if (node.children && node.children.length > 0) {
         this.findCheckedAndOpenNodes(node.children, openNodes, checkedNodes, selectedNodes);
@@ -1066,11 +1096,11 @@ class InfiniteTree extends events.EventEmitter {
     // this.state.openNodes = this.nodes.filter(node => node.state.open);
     // let selectedNodes = this.nodes.filter(node => node.state.selected);
 
-    let selectedNodes = [];
+    const selectedNodes = [];
     this.state.openNodes = [];
     this.state.checkedNodes = [];
     this.findCheckedAndOpenNodes(this.nodes, this.state.openNodes, this.state.checkedNodes, selectedNodes);
-    this.state.selectedNode =  selectedNodes.length > 0 ? selectedNodes[0] : null;
+    this.state.selectedNode = selectedNodes.length > 0 ? selectedNodes[0] : null;
 
     const rootNode = ((node = null) => {
       // Finding the root node
@@ -1105,6 +1135,7 @@ class InfiniteTree extends events.EventEmitter {
     // Update list
     this.update();
   }
+
   // Moves a node from its current position to the new position.
   // @param {Node} node The Node object.
   // @param {Node} parentNode The Node object that defines the parent node.
@@ -1124,6 +1155,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return this.removeNode(node) && this.addChildNodes(node, index, parentNode);
   }
+
   // Opens a node to display its children.
   // @param {Node} node The Node object.
   // @param {object} [options] The options object.
@@ -1164,7 +1196,7 @@ class InfiniteTree extends events.EventEmitter {
 
       // Add all child nodes to the lookup table if the first child does not exist in the lookup table
       if (nodes.length > 0 && !this.nodeTable.get(nodes[0])) {
-        nodes.forEach(node => {
+        nodes.forEach(node => { // eslint-disable-line
           if (node.id !== undefined) {
             this.nodeTable.set(node.id, node);
           }
@@ -1179,12 +1211,14 @@ class InfiniteTree extends events.EventEmitter {
         // Update rows
         rows.length = nodes.length;
         for (let i = 0; i < nodes.length; ++i) {
-          const node = nodes[i];
+          const node = nodes[i]; // eslint-disable-line
           rows[i] = this.options.rowRenderer(node, this.options);
         }
 
         // Update nodes & rows
+        // eslint-disable-next-line
         this.nodes.splice.apply(this.nodes, [nodeIndex + 1, 0].concat(nodes));
+        // eslint-disable-next-line
         this.rows.splice.apply(this.rows, [nodeIndex + 1, 0].concat(rows));
 
         // Update the row corresponding to the node
@@ -1285,7 +1319,7 @@ class InfiniteTree extends events.EventEmitter {
                 if (typeof done === 'function') {
                   done();
                 }
-              }
+              },
             });
           } else {
             // Toggle the loading state
@@ -1321,6 +1355,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return true;
   }
+
   // Removes all child nodes from a parent node.
   // @param {Node} parentNode The Node object that defines the parent node.
   // @param {object} [options] The options object.
@@ -1386,22 +1421,21 @@ class InfiniteTree extends events.EventEmitter {
       this.rows[parentNodeIndex] = this.options.rowRenderer(parentNode, this.options);
     }
 
-    {
-      // Update open nodes and lookup table
-      this.state.openNodes = this.state.openNodes.filter(node => {
-        return removedNodes.indexOf(node) < 0 && node.state.open;
-      });
+    // Update open nodes and lookup table
+    this.state.openNodes = this.state.openNodes.filter(node => {
+      return removedNodes.indexOf(node) < 0 && node.state.open;
+    });
 
-      removedNodes.forEach(node => {
-        this.nodeTable.unset(node.id);
-      });
-    }
+    removedNodes.forEach(node => {
+      this.nodeTable.unset(node.id);
+    });
 
     // Update list
     this.update();
 
     return true;
   }
+
   // Removes a node and all of its child nodes.
   // @param {Node} node The Node object.
   // @param {object} [options] The options object.
@@ -1474,22 +1508,22 @@ class InfiniteTree extends events.EventEmitter {
       this.rows[parentNodeIndex] = this.options.rowRenderer(parentNode, this.options);
     }
 
-    {
-      // Update open nodes and lookup table
-      this.state.openNodes = this.state.openNodes.filter(node => {
-        return removedNodes.indexOf(node) < 0 && node.state.open;
-      });
 
-      removedNodes.forEach(node => {
-        this.nodeTable.unset(node.id);
-      });
-    }
+    // Update open nodes and lookup table
+    this.state.openNodes = this.state.openNodes.filter(node => { // eslint-disable-line
+      return removedNodes.indexOf(node) < 0 && node.state.open;
+    });
+
+    removedNodes.forEach(node => { // eslint-disable-line
+      this.nodeTable.unset(node.id);
+    });
 
     // Update list
     this.update();
 
     return true;
   }
+
   // Sets the current scroll position to this node.
   // @param {Node} node The Node object.
   // @return {boolean} Returns true on success, false otherwise.
@@ -1531,6 +1565,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return true;
   }
+
   // Gets (or sets) the current vertical position of the scroll bar.
   // @param {number} [value] If the value is specified, indicates the new position to set the scroll bar to.
   // @return {number} Returns the vertical scroll position.
@@ -1543,6 +1578,7 @@ class InfiniteTree extends events.EventEmitter {
     }
     return this.scrollElement.scrollTop;
   }
+
   // Selects a node.
   // @param {Node} node The Node object. If null or undefined, deselects the current node.
   // @param {object} [options] The options object.
@@ -1655,6 +1691,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return true;
   }
+
   // Swaps two nodes.
   // @param {Node} node1 The Node object.
   // @param {Node} node2 The Node object.
@@ -1688,6 +1725,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return this.moveNodeTo(node1, parentNode2, nodeIndex2) && this.moveNodeTo(node2, parentNode1, nodeIndex1);
   }
+
   // Toggles a node to display or hide its children.
   // @param {Node} node The Node object.
   // @param {object} [options] The options object.
@@ -1701,44 +1739,44 @@ class InfiniteTree extends events.EventEmitter {
     if (this.state.openNodes.indexOf(node) >= 0) {
       // Close node
       return this.closeNode(node, options);
-    } else {
-      // Open node
-      return this.openNode(node, options);
     }
+    // Open node
+    return this.openNode(node, options);
   }
+
   // Serializes the current state of a node to a JSON string.
   // @param {Node} node The Node object. If null, returns the whole tree.
   // @return {string} Returns a JSON string represented the tree.
   toString(node = null) {
-    const traverse = node => {
+    const traverse = node => { // eslint-disable-line
       let s = '[';
       if (node && node.children) {
         for (let i = 0; i < node.children.length; ++i) {
-          let list = [];
-          s = s + '{';
+          const list = [];
+          s = `${s}{`;
           Object.keys(node).forEach(key => {
-            let value = node[key];
+            const value = node[key];
             if (key === 'parent') {
               // ignore parent
               return;
             }
             if (key === 'children') {
               // traverse child nodes
-              list.push('"' + key + '":' + traverse(node.children[i]));
+              list.push(`"${key}":${traverse(node.children[i])}`);
               return;
             }
             if (typeof value === 'string' || typeof value === 'object') {
-              list.push('"' + key + '":' + JSON.stringify(value));
+              list.push(`"${key}":${JSON.stringify(value)}`);
             } else {
               // primitive types
-              list.push('"' + key + '":' + value);
+              list.push(`"${key}":${value}`);
             }
           });
           s = s + list.join(',');
-          s = s + '}' + (i === node.children.length - 1 ? '' : ',');
+          s = `${s}}${i === node.children.length - 1 ? '' : ','}`;
         }
       }
-      s = s + ']';
+      s = `${s}]`;
       return s;
     };
 
@@ -1748,6 +1786,7 @@ class InfiniteTree extends events.EventEmitter {
 
     return traverse(node);
   }
+
   // Unfilters nodes.
   unfilter() {
     this.filtered = false;
@@ -1765,7 +1804,7 @@ class InfiniteTree extends events.EventEmitter {
       for (let i = 0; i < node.children.length; ++i) {
         const childNode = node.children[i];
         if (!childNode) {
-          continue;
+          continue; // eslint-disable-line
         }
         traverse(childNode);
       }
@@ -1782,6 +1821,7 @@ class InfiniteTree extends events.EventEmitter {
 
     this.update();
   }
+
   // Updates the tree.
   update() {
     // Emit a "contentWillUpdate" event
@@ -1798,14 +1838,14 @@ class InfiniteTree extends events.EventEmitter {
   }
 
   setCheckedNodes(node) {
-    let index = this.state.checkedNodes.indexOf(node);
+    const index = this.state.checkedNodes.indexOf(node);
     if (index < 0) {
       if (node.isSelected) {
         this.state.checkedNodes = [node].concat(this.state.checkedNodes);
       }
-    } else {
-      if (!node.isSelected) {
-        this.state.checkedNodes.length > 0 && this.state.checkedNodes.splice(index, 1);
+    } else if (!node.isSelected) {
+      if (this.state.checkedNodes.length > 0) {
+        this.state.checkedNodes.splice(index, 1);
       }
     }
   }

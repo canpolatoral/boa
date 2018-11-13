@@ -11,12 +11,12 @@ import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
 
 const clearIcon = {
   dynamicIcon: 'Clear',
-  iconProperties: { color: 'primary' }
+  iconProperties: { color: 'primary' },
 };
 
 const hiddenIcon = {
   dynamicIcon: 'CropFree',
-  iconProperties: { color: 'gray' }
+  iconProperties: { color: 'gray' },
 };
 
 const sampleData = {
@@ -33,18 +33,18 @@ const sampleData = {
       isExpanded: true,
       children: [
         { id: 3, name: 'app.js', isCheckable: false, icon: <Apps style={{ color: 'yellow' }} /> },
-        { id: 4, name: 'data.js', isSelected: true, icon: <DoneAll style={{ color: 'deepskyblue' }} /> },
+        { id: 4, name: 'data.js', isSelected: true, icon: <DoneAll style={{ color: 'deepskyblue' }} /> }, // eslint-disable-line
         { id: 5, name: 'index.js', icon: clearIcon },
         { id: 6, name: 'styles.js', icon: <CloudOff style={{ color: 'coral' }} /> },
-        { id: 7, name: 'webpack.config.js', icon: <FlashOn style={{ color: 'plum' }} /> }
-      ]
+        { id: 7, name: 'webpack.config.js', icon: <FlashOn style={{ color: 'plum' }} /> },
+      ],
     },
     {
       id: 8,
       name: 'node_modules',
       loading: true,
       icon: <Fingerprint style={{ color: 'darkorchid' }} />,
-      children: []
+      children: [],
     },
     {
       id: 9,
@@ -55,23 +55,23 @@ const sampleData = {
           id: 10,
           name: 'Example',
           icon: <Nfc style={{ color: 'coral' }} />,
-          children: [{ id: 11, name: 'decorators.js' }, { id: 12, name: 'treeview.js' }]
+          children: [{ id: 11, name: 'decorators.js' }, { id: 12, name: 'treeview.js' }],
         },
-        { id: 13, name: 'index.js', icon: <FilterVintage style={{ color: 'green' }} /> }
-      ]
+        { id: 13, name: 'index.js', icon: <FilterVintage style={{ color: 'green' }} /> },
+      ],
     },
     {
       id: 14,
       name: 'themes',
       children: [
-        { id: 15, name: 'animations.js', icon: <PlaylistAddCheck style={{ color: 'deepskyblue' }} /> },
-        { id: 16, name: 'default.js' }
-      ]
+        { id: 15, name: 'animations.js', icon: <PlaylistAddCheck style={{ color: 'deepskyblue' }} /> }, // eslint-disable-line
+        { id: 16, name: 'default.js' },
+      ],
     },
     { id: 17, name: 'Gulpfile.js', icon: <Nfc style={{ color: 'coral' }} /> },
     { id: 18, name: 'index.js', icon: <PlaylistAddCheck style={{ color: 'deepskyblue' }} /> },
-    { id: 19, name: 'package.json', icon : hiddenIcon, isHidden : false }
-  ]
+    { id: 19, name: 'package.json', icon: hiddenIcon, isHidden: false },
+  ],
 };
 
 export default sampleData;

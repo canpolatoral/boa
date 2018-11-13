@@ -5,21 +5,17 @@ import shallowEqual from 'shallowequal';
 
 class NodeHeader extends React.Component {
   static propTypes = {
-    style: PropTypes.object.isRequired,
-    decorators: PropTypes.object.isRequired,
     animations: PropTypes.oneOfType([
       PropTypes.object,
-      PropTypes.bool
+      PropTypes.bool,
     ]).isRequired,
+    decorators: PropTypes.object.isRequired,
+    isRightToLeft: PropTypes.bool,
     node: PropTypes.object.isRequired,
-    onClick: PropTypes.func,
     onChange: PropTypes.func,
-    isRightToLeft: PropTypes.bool
+    onClick: PropTypes.func,
+    style: PropTypes.object.isRequired,
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   shouldComponentUpdate(nextProps) {
     const props = this.props;
@@ -27,26 +23,26 @@ class NodeHeader extends React.Component {
     for (let i = 0; i < nextPropKeys.length; i++) {
       const key = nextPropKeys[i];
       if (key === 'animations') {
-        continue;
+        continue; // eslint-disable-line
       }
       const isEqual = shallowEqual(props[key], nextProps[key]);
       if (!isEqual) {
         return true;
       }
     }
-    return !deepEqual(props.animations, nextProps.animations, {strict: true});
+    return !deepEqual(props.animations, nextProps.animations, { strict: true });
   }
 
   render() {
-    const {style, decorators} = this.props;
+    const { style, decorators, context } = this.props; // eslint-disable-line
     const terminal = !this.props.node.children;
     const active = this.props.node.active;
-    const container = [style.link, (active & !this.props.node.children)? style.activeLink : null];
-    const headerStyles = Object.assign({container}, this.props.style);
+    const container = [style.link, (active && !this.props.node.children) ? style.activeLink : null];
+    const headerStyles = Object.assign({ container }, this.props.style);
 
     return (
       <decorators.Container
-        context={this.props.context}
+        context={context}
         style={headerStyles}
         decorators={decorators}
         terminal={terminal}

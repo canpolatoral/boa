@@ -1,4 +1,4 @@
-/* eslint no-console: 0 */
+/* eslint-disable */
 import extend from './extend';
 import Node from './node';
 

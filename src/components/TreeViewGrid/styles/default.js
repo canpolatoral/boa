@@ -1,116 +1,114 @@
-'use strict';
-
 export default {
-  tree:{ 
+  tree: {
     base: {
       listStyle: 'none',
       backgroundColor: '#fff',
-      fontWeight: 'bold', 
-      margin: 0, 
-      padding: 0, 
-      width:'100%' 
+      fontWeight: 'bold',
+      margin: 0,
+      padding: 0,
+      width: '100%',
     },
     node: {
-      base: {  
+      base: {
         position: 'relative',
-        width:'100%' 
+        width: '100%',
       },
       link: {
         cursor: 'pointer',
         position: 'relative',
        // padding: '2px 0px',
-        display: 'block' 
+        display: 'block',
       },
       activeLink: {
         background: '#EBF5FB',
         color: '#737373',
-        borderRadius: '2px'
-      }, 
+        borderRadius: '2px',
+      },
       toggle: {
         base: {
           position: 'relative',
           display: 'inline-block',
           verticalAlign: 'middle',
-          marginTop:'10px',
-          marginLeft: '-5px', 
+          marginTop: '10px',
+          marginLeft: '-5px',
           height: '18px',
-          width: '24px', 
+          width: '24px',
         },
         baseRight: {
           position: 'relative',
           display: 'inline-block',
           verticalAlign: 'middle',
-          marginTop:'10px',
+          marginTop: '10px',
           marginRight: '-5px',
           height: '18px',
-          width: '24px', 
+          width: '24px',
         },
         wrapper: {
           position: 'absolute',
           top: '40%',
           left: '50%',
           margin: '-7px 0 0 -5px',
-          height: '10px'
+          height: '10px',
         },
         wrapperRight: {
           position: 'absolute',
           top: '40%',
           right: '50%',
           margin: '-7px 0 0 0',
-          height: '10px'
+          height: '10px',
         },
         height: 10,
         width: 10,
         arrow: {
           fill: '#666666',
-          strokeWidth: 0
-        }
+          strokeWidth: 0,
+        },
       },
       header: {
-        base: {  
+        base: {
           // marginTop:'-2px',
           // marginBottom: '-3px',
-          display: 'inline-block', 
+          display: 'inline-block',
           verticalAlign: 'top',
-          fontWeight: 'bold', 
-          width:'calc(100% - 21px)' 
+          fontWeight: 'bold',
+          width: 'calc(100% - 21px)',
         },
         connector: {
           width: '2px',
           height: '12px',
           top: '0px',
-          left: '-21px'
+          left: '-21px',
         },
         connectorRight: {
           width: '2px',
-          height: '12px', 
+          height: '12px',
           top: '0px',
-          right: '-21px'
+          right: '-21px',
         },
-        title: { 
+        title: {
           borderStyle: 'solid',
           borderWidth: '1.5px',
-          fontWeight: 'bold', 
-          padding:'0px',
+          fontWeight: 'bold',
+          padding: '0px',
           lineHeight: '18px',
-          verticalAlign: 'middle' 
-        }
+          verticalAlign: 'middle',
+        },
       },
-      subtree: {    
+      subtree: {
         listStyle: 'none',
         paddingLeft: '30px',
         fontWeight: 'normal',
-        display: 'inline-block'  
+        display: 'inline-block',
       },
       subtreeRight: {
         listStyle: 'none',
         paddingRight: '30px',
         fontWeight: 'normal',
-        display: 'inline-block' 
+        display: 'inline-block',
       },
       loading: {
-        color: '#E2C089' 
-      }
+        color: '#E2C089',
+      },
     },
   },
   searchWrap: {
@@ -119,17 +117,17 @@ export default {
     },
     searchInput: {
       display: 'inline-block',
-      width:'calc(100% - 29px)',
+      width: 'calc(100% - 29px)',
     },
     searchIcon: {
       display: 'inline-block',
       marginBottom: '-8px',
-      marginRight: '5px'
+      marginRight: '5px',
     },
     searchIconRight: {
       display: 'inline-block',
       marginBottom: '-8px',
-      marginLeft: '5px'
-    }
-  }
+      marginLeft: '5px',
+    },
+  },
 };

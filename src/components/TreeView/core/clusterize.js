@@ -5,6 +5,17 @@ import { getElementStyle, addEventListener, removeEventListener } from './dom';
 
 const ie = getIEVersion();
 
+const getChildNodes = (tag) => {
+  const childNodes = tag.children;
+  const nodes = [];
+  const length = childNodes.length;
+
+  for (let i = 0; i < length; i++) {
+    nodes.push(childNodes[i]);
+  }
+  return nodes;
+};
+
 class Clusterize extends EventEmitter {
   options = {
     rowsInBlock: 50,
@@ -12,19 +23,22 @@ class Clusterize extends EventEmitter {
     tag: null,
     emptyClass: '',
     emptyText: '',
-    keepParity: true
+    keepParity: true,
   };
 
   state = {
     lastClusterIndex: -1,
     itemHeight: 0,
     blockHeight: 0,
-    clusterHeight: 0
+    clusterHeight: 0,
   };
 
   scrollElement = null;
+
   contentElement = null;
+
   rows = [];
+
   cache = {};
 
   scrollEventListener = (() => {
@@ -177,30 +191,30 @@ class Clusterize extends EventEmitter {
       return {
         clusterHeight: 0,
         blockHeight: this.state.blockHeight,
-        itemHeight: this.state.itemHeight
-      };
-    } else {
-      const nodes = this.contentElement.children;
-      const node = nodes[Math.floor(nodes.length / 2)];
-
-      let itemHeight = node.offsetHeight;
-
-      if (this.options.tag === 'tr' && getElementStyle(this.contentElement, 'borderCollapse') !== 'collapse') {
-        itemHeight += parseInt(getElementStyle(this.contentElement, 'borderSpacing'), 10) || 0;
-      }
-
-      if (this.options.tag !== 'tr') {
-        const marginTop = parseInt(getElementStyle(node, 'marginTop'), 10) || 0;
-        const marginBottom = parseInt(getElementStyle(node, 'marginBottom'), 10) || 0;
-        itemHeight += Math.max(marginTop, marginBottom);
-      }
-
-      return {
-        blockHeight: this.state.itemHeight * this.options.rowsInBlock,
-        clusterHeight: this.state.blockHeight * this.options.blocksInCluster,
-        itemHeight
+        itemHeight: this.state.itemHeight,
       };
     }
+    const nodes = this.contentElement.children;
+    const node = nodes[Math.floor(nodes.length / 2)];
+
+    let itemHeight = node.offsetHeight;
+
+    if (this.options.tag === 'tr' &&
+      getElementStyle(this.contentElement, 'borderCollapse') !== 'collapse') {
+      itemHeight += parseInt(getElementStyle(this.contentElement, 'borderSpacing'), 10) || 0;
+    }
+
+    if (this.options.tag !== 'tr') {
+      const marginTop = parseInt(getElementStyle(node, 'marginTop'), 10) || 0;
+      const marginBottom = parseInt(getElementStyle(node, 'marginBottom'), 10) || 0;
+      itemHeight += Math.max(marginTop, marginBottom);
+    }
+
+    return {
+      blockHeight: this.state.itemHeight * this.options.rowsInBlock,
+      clusterHeight: this.state.blockHeight * this.options.blocksInCluster,
+      itemHeight,
+    };
   }
 
   getCurrentClusterIndex() {
@@ -237,10 +251,10 @@ class Clusterize extends EventEmitter {
     const tag = document.createElement(this.options.tag);
     const prefix = 'infinite-tree-';
 
-    tag.className = [prefix + 'extra-row', prefix + className].join(' ');
+    tag.className = [`${prefix}extra-row`, prefix + className].join(' ');
 
     if (height) {
-      tag.style.height = height + 'px';
+      tag.style.height = `${height}px`;
     }
 
     return tag.outerHTML;
@@ -277,8 +291,6 @@ class Clusterize extends EventEmitter {
 
       topOffset = Math.max(visibleStart * this.state.itemHeight, 0);
       bottomOffset = Math.max((this.rows.length - visibleEnd) * this.state.itemHeight, 0);
-
-      // Returns a shallow copy of the rows selected from `visibleStart` to `visibleEnd` (`visibleEnd` not included).
       rows = this.rows.slice(visibleStart, visibleEnd);
     }
 
@@ -309,7 +321,7 @@ class Clusterize extends EventEmitter {
 
       this.emit('clusterDidChange');
     } else if (bottomOffsetChanged) {
-      this.contentElement.lastChild.style.height = bottomOffset + 'px';
+      this.contentElement.lastChild.style.height = `${bottomOffset}px`;
     }
   }
 
@@ -325,7 +337,7 @@ class Clusterize extends EventEmitter {
         lastChild = this.contentElement.lastChild;
       }
 
-      const rowsNodes = this.getChildNodes(div.firstChild.firstChild);
+      const rowsNodes = getChildNodes(div.firstChild.firstChild);
       while (rowsNodes.length) {
         this.contentElement.appendChild(rowsNodes.shift());
       }
@@ -334,18 +346,6 @@ class Clusterize extends EventEmitter {
     }
   }
 
-  getChildNodes(tag) {
-    const childNodes = tag.children;
-    const nodes = [];
-    const length = childNodes.length;
-
-    for (let i = 0; i < length; i++) {
-      nodes.push(childNodes[i]);
-    }
-
-    return nodes;
-  }
-  
   checkChanges(type, value) {
     const changed = value !== this.cache[type];
     this.cache[type] = value;

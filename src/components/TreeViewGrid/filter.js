@@ -17,13 +17,13 @@ export const filterTree = (node, filter, matcher = defaultMatcher) => {
   const filtered = node.children
     .filter(child => findNode(child, filter, matcher))
     .map(child => filterTree(child, filter, matcher));
-  return Object.assign({}, node, {children: filtered});
+  return Object.assign({}, node, { children: filtered });
 };
 
 export const expandFilteredNodes = (node, filter, matcher = defaultMatcher) => {
   let children = node.children;
   if (!children || children.length === 0) {
-    return Object.assign({}, node, {toggled: false});
+    return Object.assign({}, node, { toggled: false });
   }
   const childrenWithMatches = node.children.filter(child => findNode(child, filter, matcher));
   const shouldExpand = childrenWithMatches.length > 0;
@@ -33,7 +33,7 @@ export const expandFilteredNodes = (node, filter, matcher = defaultMatcher) => {
     });
   }
   return Object.assign({}, node, {
-    children: children,
-    toggled: shouldExpand
+    children,
+    toggled: shouldExpand,
   });
 };

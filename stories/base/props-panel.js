@@ -187,9 +187,9 @@ export default class Playground extends ComponentBase {
           </FormControl>
         </div>);
     }
-    if (property.type.toLowerCase().includes('shape')) {
-      return this.getShape(property, value);
-    }
+    // if (property.type.toLowerCase().includes('shape')) {
+    //   return this.getShape(property, value);
+    // }
     if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
     } if (property.type.toLowerCase().includes('string')) {

@@ -41,24 +41,24 @@ const createStoryFile = (folderName, fileName, story) => {
 
 const generateSingleStory = (component) => {
   return `
-  /* eslint-disable max-len */
-  import React from 'react';
-  import { storiesOf } from '@storybook/react';
-  import { ${component} } from '../../src/components/${component}';
-  import Header from '../base/header';
-  import Props from '../base/props-table';
-  import Preview from '../base/preview';
-  import doc from './doc.json';
+/* eslint-disable max-len */
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { ${component} } from '../../src/components/${component}';
+import Header from '../base/header';
+import Props from '../base/props-table';
+import Preview from '../base/preview';
+import doc from './doc.json';
 
-  const stories = storiesOf('${component}', module);
+const stories = storiesOf('${component}', module);
 
-  stories.add('${component}', ({ props }) => {
-    return (
-      <div style={{ padding: 20, background: 'white' }}>
-        <Header {...props} component={${component}} doc={doc} />
-        <Preview {...props} component={${component}} doc={doc} />
-        <Props {...props} component={${component}} doc={doc} />
-      </div>);
+stories.add('${component}', ({ props }) => {
+  return (
+    <div style={{ padding: 20, background: 'white' }}>
+      <Header {...props} component={${component}} doc={doc} />
+      <Preview {...props} component={${component}} doc={doc} />
+      <Props {...props} component={${component}} doc={doc} />
+    </div>);
   });`;
 };
 

@@ -1,25 +1,12 @@
-## BComponent
-BComponent BOA Component
+[![CircleCI](https://circleci.com/gh/kuveytturk/boa-components.svg?style=shield&circle-token=17c2c9d64b57ee4fa97b2dbf59a59ddf26ac60dd)](https://circleci.com/gh/kuveytturk/boa-components)
 
-### Props
-`Sizes`   **object**   **not required**
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet aliquet turpis, sed fringilla sapien. Curabitur congue dapibus mi sit amet aliquam. Vestibulum vestibulum eleifend enim, nec ultrices risus blandit a. Vestibulum eget arcu turpis. Nam mi augue, aliquam in velit in, commodo viverra felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi id vestibulum enim, vitae semper metus. Etiam maximus dui dui, gravida accumsan tellus sollicitudin a. Aenean justo magna, ultrices ac leo ut, blandit eleifend urna. Fusce ac luctus nisl. Nullam nec hendrerit dolor. Nam eleifend facilisis mauris, et interdum dui feugiat tempus. Nulla condimentum vehicula quam in aliquet. Fusce vulputate tristique neque quis posuere.
 
-dpi ratio enumeration base on the platform and orientation
+Aenean rhoncus eget ipsum ut fermentum. Nulla commodo mauris a nibh consequat, vel facilisis quam tincidunt. Morbi eget vestibulum nunc. Donec et urna ut libero accumsan pretium convallis quis neque. Praesent blandit elementum urna quis ullamcorper. Mauris blandit egestas ex. Donec laoreet gravida fermentum.
 
-`Platforms`   **object**   **not required**
+Nulla sem metus, blandit vel nisl ut, euismod cursus purus. Morbi quis magna est. Fusce vel commodo sem. Ut volutpat at sapien sed suscipit. Duis et arcu semper, ullamcorper turpis sed, euismod nisl. Aliquam feugiat nisi vitae est mollis volutpat. Etiam eu massa justo.
 
-device platform enumeration base on mobile, tablet and desktop
+Mauris rhoncus ullamcorper sem, non hendrerit ipsum convallis at. Ut dui ex, ornare et lectus ac, feugiat dapibus risus. Nunc facilisis ipsum eget sapien finibus, in iaculis ligula venenatis. Donec et porta arcu, vel vulputate urna. In mollis dui dui. In convallis ligula sed tempus faucibus. Donec libero nisi, mattis efficitur urna id, efficitur commodo dolor. Mauris risus dolor, lacinia pretium pulvinar at, dignissim nec purus. Fusce blandit, neque ac tincidunt bibendum, risus erat ultricies urna, imperdiet pretium arcu odio eu leo. Mauris eu pretium magna. Etiam scelerisque tellus in massa laoreet, vel pellentesque nibh consectetur. Fusce et fringilla enim. Ut eu ipsum rutrum sapien porttitor pulvinar. Suspendisse non accumsan ante, ut dignissim quam. Donec ornare odio nec risus ultrices vehicula. Pellentesque varius leo non purus imperdiet interdum.
 
-### Objects
-`BThemeProvider`   **Component**
+Nam tincidunt convallis tempor. Nulla ultrices volutpat leo sit amet porttitor. Etiam faucibus tellus in orci ultricies tempus. Quisque gravida nisi nibh, sed pulvinar enim placerat a. Nulla augue metus, rhoncus interdum tristique nec, iaculis ut lacus. Donec vel metus augue. Maecenas ac justo dignissim, malesuada libero ac, hendrerit nulla. Quisque at felis nec nulla porttitor feugiat. Pellentesque dignissim, augue vel egestas sollicitudin, ligula tortor vehicula mi, non auctor arcu dui sit amet urna. Cras scelerisque suscipit velit, in vehicula nulla malesuada nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac urna sodales ligula congue sollicitudin. Donec lacinia enim velit, quis rhoncus quam laoreet at. Donec nec vulputate arcu, vel blandit dolor. Praesent viverra euismod nibh, eget consequat est dictum et.
 
-carry child context
-
-`BComponent`   **Component**
-
-base component for shallow state and prop updates
-
-### Utils
-`getIcon(props)`   **func**
-
-get provided svg or font icon

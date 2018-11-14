@@ -1,0 +1,77 @@
+{
+	"description": "",
+	"displayName": "LinearPanel",
+	"methods": [
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	],
+	"props": {
+		"children": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "Child elements that will be in Linear Panel."
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "disable or not for child elements.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"orientation": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "vertical",
+						"computed": false
+					},
+					{
+						"value": "horizontal",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "Number of px for the padding/spacing between items.",
+			"defaultValue": {
+				"value": "vertical",
+				"computed": false
+			}
+		},
+		"padding": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "Orientation of child elements in panel.",
+			"defaultValue": {
+				"value": 4,
+				"computed": false
+			}
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Override the inline-styles of the root element."
+		}
+	}
+}

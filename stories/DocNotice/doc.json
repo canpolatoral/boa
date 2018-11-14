@@ -1,0 +1,84 @@
+{
+	"description": "Notice component for BOA markdown documents.",
+	"displayName": "DocNotice",
+	"methods": [
+		{
+			"name": "getStyle",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getIcon",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"content": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Notice text",
+			"defaultValue": {
+				"value": "This is a tip message.",
+				"computed": false
+			}
+		},
+		"fitMode": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "Determines the paddings in interior design. Default false, wide paddings like material.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"header": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Header of the notice.",
+			"defaultValue": {
+				"value": "Tip Message",
+				"computed": false
+			}
+		},
+		"type": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "info",
+						"computed": false
+					},
+					{
+						"value": "tip",
+						"computed": false
+					},
+					{
+						"value": "warning",
+						"computed": false
+					},
+					{
+						"value": "error",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "Determines type of the notice.",
+			"defaultValue": {
+				"value": "tip",
+				"computed": false
+			}
+		}
+	}
+}

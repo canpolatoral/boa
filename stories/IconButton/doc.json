@@ -1,0 +1,238 @@
+{
+	"description": "BOA Icon Button Component",
+	"displayName": "IconButton",
+	"methods": [
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onClick",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onTouchTap",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onBlur",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleTooltipClose",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "handleTooltipOpen",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"color": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "default",
+						"computed": false
+					},
+					{
+						"value": "inherit",
+						"computed": false
+					},
+					{
+						"value": "primary",
+						"computed": false
+					},
+					{
+						"value": "secondary",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "The color of the component.\nIt supports those theme colors that make sense for this component.",
+			"defaultValue": {
+				"value": "default",
+				"computed": false
+			}
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the button will be disabled.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"disableRipple": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the ripple will be disabled.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"dynamicIcon": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Icon name from BOA icon library.",
+			"defaultValue": {
+				"value": "Home",
+				"computed": false
+			}
+		},
+		"focusRipple": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the base button will have a keyboard focus ripple.\ndisableRipple` must also be `false`.",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"fontIcon": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Font icon name from font icon's library."
+		},
+		"onClick": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "@ignore"
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Override the style of element"
+		},
+		"svgIcon": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "SVG Icon name from material svg icon library."
+		},
+		"tooltip": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Tooltip"
+		},
+		"tooltipPosition": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "bottom-end",
+						"computed": false
+					},
+					{
+						"value": "bottom-start",
+						"computed": false
+					},
+					{
+						"value": "bottom",
+						"computed": false
+					},
+					{
+						"value": "left-end",
+						"computed": false
+					},
+					{
+						"value": "left-start",
+						"computed": false
+					},
+					{
+						"value": "left",
+						"computed": false
+					},
+					{
+						"value": "right-end",
+						"computed": false
+					},
+					{
+						"value": "right-start",
+						"computed": false
+					},
+					{
+						"value": "right",
+						"computed": false
+					},
+					{
+						"value": "top-end",
+						"computed": false
+					},
+					{
+						"value": "top-start",
+						"computed": false
+					},
+					{
+						"value": "top",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "Tooltip position"
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

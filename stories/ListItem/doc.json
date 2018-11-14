@@ -1,0 +1,152 @@
+{
+	"description": "ListItem BOA Component",
+	"displayName": "ListItem",
+	"methods": [],
+	"props": {
+		"button": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the list item will be a button (using `ButtonBase`).",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"children": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "The content of the component."
+		},
+		"classes": {
+			"type": {
+				"name": "object"
+			},
+			"required": true,
+			"description": "Useful to extend the style applied to components."
+		},
+		"className": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "@ignore"
+		},
+		"component": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "func"
+					}
+				]
+			},
+			"required": false,
+			"description": "The component used for the root node.\nEither a string to use a DOM element or a component.\nBy default, it's a `li` when `button` is `false` and a `div` when `button` is `true`."
+		},
+		"ContainerComponent": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "func"
+					}
+				]
+			},
+			"required": false,
+			"description": "The container component. Useful when a `ListItemSecondaryAction` is rendered.",
+			"defaultValue": {
+				"value": "li",
+				"computed": false
+			}
+		},
+		"ContainerProps": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Properties applied to the container element when the component\nis used to display a `ListItemSecondaryAction`."
+		},
+		"dense": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, compact vertical padding designed for keyboard and mouse input will be used.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "@ignore",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"disableGutters": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the left and right padding is removed.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"divider": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, a 1px light border is added to the bottom of the list item.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"primaryText": {
+			"type": {
+				"name": "string"
+			},
+			"required": true,
+			"description": ""
+		},
+		"secondaryText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"selected": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

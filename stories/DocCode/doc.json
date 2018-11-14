@@ -1,0 +1,103 @@
+{
+	"description": "Code documentation component",
+	"displayName": "DocCode",
+	"methods": [
+		{
+			"name": "getMarkup",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getHighlightCSS",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"content": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Code that will be highlighted.",
+			"defaultValue": {
+				"value": "console.log(\\'Hello world\\');",
+				"computed": false
+			}
+		},
+		"editorType": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "androidStudio",
+						"computed": false
+					},
+					{
+						"value": "atomOneDark",
+						"computed": false
+					},
+					{
+						"value": "atomOneLight",
+						"computed": false
+					},
+					{
+						"value": "github",
+						"computed": false
+					},
+					{
+						"value": "monokaiSublime",
+						"computed": false
+					},
+					{
+						"value": "raiinbow",
+						"computed": false
+					},
+					{
+						"value": "vs",
+						"computed": false
+					},
+					{
+						"value": "xcode",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "Editor type that will be colored",
+			"defaultValue": {
+				"value": "github",
+				"computed": false
+			}
+		},
+		"highlight": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the code will be highlighted.",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"lang": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Code language.",
+			"defaultValue": {
+				"value": "js",
+				"computed": false
+			}
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

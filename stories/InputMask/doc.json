@@ -1,0 +1,341 @@
+{
+	"description": "",
+	"displayName": "InputMask",
+	"methods": [
+		{
+			"name": "setMaskProp",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "props",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "setProps",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "props",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "runRender",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "isCorrectFormatText",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "mask",
+					"type": null
+				},
+				{
+					"name": "text",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "detectCopyPaste",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "keyCode",
+					"type": null
+				},
+				{
+					"name": "event",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onKeyDown",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getSnapshot",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setSnapshot",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "snapshot",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onFocus",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onBlur",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "validateConstraint",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setCounter",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "generateHelperText",
+			"docblock": "generateHelperText\n@param {*} text",
+			"modifiers": [],
+			"params": [
+				{
+					"name": "text",
+					"description": null,
+					"type": {
+						"name": "mixed"
+					}
+				}
+			],
+			"returns": null,
+			"description": "generateHelperText"
+		}
+	],
+	"props": {
+		"bottomRightInfo": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"bottomRightInfoEnable": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": ""
+		},
+		"counterLabelShow": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"errorText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"mask": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "aa nnn",
+				"computed": false
+			}
+		},
+		"onBlur": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onChange": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onFocus": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"type": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "CreditCard",
+						"computed": false
+					},
+					{
+						"value": "IBAN",
+						"computed": false
+					},
+					{
+						"value": "MobilePhoneNumber",
+						"computed": false
+					},
+					{
+						"value": "Custom",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "Custom",
+				"computed": false
+			}
+		},
+		"value": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"fullWidth": {
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			},
+			"required": false
+		},
+		"helperText": {
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			},
+			"required": false
+		},
+		"maxLength": {
+			"defaultValue": {
+				"value": -1,
+				"computed": false
+			},
+			"required": false
+		},
+		"noWrap": {
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			},
+			"required": false
+		}
+	},
+	"composes": [
+		"@boa/base",
+		"@boa/components/Input"
+	]
+}

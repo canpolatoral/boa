@@ -1,0 +1,170 @@
+{
+	"description": "",
+	"displayName": "Resizable",
+	"methods": [
+		{
+			"name": "onDragStart",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "data",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onDrag",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "data",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onDragStop",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "data",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onResizeStart",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "dir",
+					"type": null
+				},
+				{
+					"name": "refToResizableElement",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onResize",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "direction",
+					"type": null
+				},
+				{
+					"name": "refToResizableElement",
+					"type": null
+				},
+				{
+					"name": "delta",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onResizeStop",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "direction",
+					"type": null
+				},
+				{
+					"name": "refToResizableElement",
+					"type": null
+				},
+				{
+					"name": "delta",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "updateSize",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "size",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "updatePosition",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "position",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "updateZIndex",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "z",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "setEnabled",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "enable",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	]
+}

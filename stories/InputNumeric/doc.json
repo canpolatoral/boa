@@ -1,0 +1,252 @@
+{
+	"description": "",
+	"displayName": "InputNumeric",
+	"methods": [
+		{
+			"name": "onKeyDown",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getSnapshot",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setSnapshot",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "snapshot",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "checkNumberFormatIsValid",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getParsedValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getFormattedValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				},
+				{
+					"name": "format",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onFocus",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onBlur",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "focus",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "validateConstraint",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"format": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "D",
+				"computed": false
+			}
+		},
+		"maxValue": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "Number.MAX_VALUE",
+				"computed": true
+			}
+		},
+		"minValue": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "Number.NEGATIVE_INFINITY",
+				"computed": true
+			}
+		},
+		"step": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": 1,
+				"computed": false
+			}
+		},
+		"onFocus": {
+			"defaultValue": {
+				"value": null,
+				"computed": false
+			},
+			"required": false
+		},
+		"onBlur": {
+			"defaultValue": {
+				"value": null,
+				"computed": false
+			},
+			"required": false
+		},
+		"onChange": {
+			"defaultValue": {
+				"value": null,
+				"computed": false
+			},
+			"required": false
+		},
+		"hintText": {
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			},
+			"required": false
+		},
+		"floatingLabelText": {
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			},
+			"required": false
+		},
+		"disabled": {
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			},
+			"required": false
+		},
+		"maxLength": {
+			"defaultValue": {
+				"value": null,
+				"computed": false
+			},
+			"required": false
+		}
+	},
+	"composes": [
+		"@boa/base",
+		"@boa/components/Input"
+	]
+}

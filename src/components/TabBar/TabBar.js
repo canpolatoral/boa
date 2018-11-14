@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase, ComponentComposer } from '@boa/base';
@@ -6,12 +7,11 @@ import { Button } from '@boa/components/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { ListItem } from '@boa/components/ListItem';
 import { IconMenu } from '@boa/components/IconMenu';
-
 import Tabs from './Tabs';
 import Tab from './Tab';
-
-var DoubleChevronRight = require('@boa/components/Icon').Actions.DoubleChevronRight;
-var DoubleChevronLeft = require('@boa/components/Icon').Actions.DoubleChevronLeft;
+// eslint-disable-line
+const DoubleChevronRight = require('@boa/components/Icon').Actions.DoubleChevronRight;
+const DoubleChevronLeft = require('@boa/components/Icon').Actions.DoubleChevronLeft;
 
 const styles = theme => ({
   primary: {
@@ -42,51 +42,50 @@ const styles = theme => ({
   // wrapper: {},
   labelContainer: {
     width: '100%',
-    padding: 0
+    padding: 0,
   },
   // label: {},
   // labelWrapped: {},
-  iconRoot: { fontSize: '20px' }
+  iconRoot: { fontSize: '20px' },
 });
 
 @ComponentComposer
 @withStyles(styles)
 class TabBar extends ComponentBase {
-
   static propTypes = {
     ...ComponentBase.propTypes,
-    mode: PropTypes.oneOf(['primary', 'secondary']),
-    className: PropTypes.string,
-    onChange: PropTypes.func,
-    onRightIconClick: PropTypes.func,
-    style: PropTypes.object,
-    value: PropTypes.any,
-    /**
-     * @ignore
-     */
-    tabItems: PropTypes.array,
     centered: PropTypes.bool,
     children: PropTypes.node,
+    classes: PropTypes.object.isRequired,
+    className: PropTypes.string,
+    containerType: PropTypes.oneOf(['default', 'page', 'card']),
+    fullWidth: PropTypes.bool,
     /**
      * @ignore
      */
-    classes: PropTypes.object.isRequired,
-    fullWidth: PropTypes.bool,
     indicatorClassName: PropTypes.string,
     indicatorColor: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.oneOf(['secondary', 'primary']),
     ]),
+    isContentDisabled: PropTypes.bool,
+    /**
+     * @ignore
+     */
+    leftIcon: PropTypes.string,
+    leftIconButtonVisibility: PropTypes.bool,
+    mode: PropTypes.oneOf(['primary', 'secondary']),
+    onChange: PropTypes.func,
+    onRightIconClick: PropTypes.func,
+    rightIconButtonVisibility: PropTypes.bool,
     scrollable: PropTypes.bool,
     scrollButtons: PropTypes.oneOf(['auto', 'on', 'off']),
-    containerType: PropTypes.oneOf(['default', 'page', 'card']),
+    style: PropTypes.object,
+    tabItems: PropTypes.array,
     TabScrollButton: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    textColor: PropTypes.oneOf(['secondary', 'primary', 'inherit']),
-    isContentDisabled: PropTypes.bool,
     tabTemplateStyle: PropTypes.object,
-    leftIconButtonVisibility: PropTypes.bool,
-    rightIconButtonVisibility: PropTypes.bool,
-    leftIcon: PropTypes.string
+    textColor: PropTypes.oneOf(['secondary', 'primary', 'inherit']),
+    value: PropTypes.any,
   };
 
   static defaultProps = {
@@ -98,7 +97,7 @@ class TabBar extends ComponentBase {
     leftIconButtonVisibility: false,
     rightIconButtonVisibility: false,
     disableIcons: false,
-    tabItems: []
+    tabItems: [],
   }
 
   state = {
@@ -127,16 +126,15 @@ class TabBar extends ComponentBase {
   scrollStateUpdate() {
     if (this.tabs) {
       if (this.tabs._reactInternalFiber.child.memoizedState.tabsMeta) {
-        let clientWidth = this.tabs._reactInternalFiber.child.memoizedState.tabsMeta.clientWidth;
-        let scrollWidth = this.tabs._reactInternalFiber.child.memoizedState.tabsMeta.scrollWidth;
+        const clientWidth = this.tabs._reactInternalFiber.child.memoizedState.tabsMeta.clientWidth;
+        const scrollWidth = this.tabs._reactInternalFiber.child.memoizedState.tabsMeta.scrollWidth;
         const scrollLeft = this.tabs._reactInternalFiber.child.memoizedState.tabsMeta.scrollLeft;
 
         const showRightScroll =
           this.props.context.theme.direction === 'rtl' ? scrollLeft > 0 : scrollWidth > clientWidth;
 
         this.setState({ isScroll: showRightScroll });
-      }
-      else if (this.tabs._reactInternalFiber.child.memoizedState.showLeftScroll && this.tabs._reactInternalFiber.child.memoizedState.showRightScroll) {
+      } else if (this.tabs._reactInternalFiber.child.memoizedState.showLeftScroll && this.tabs._reactInternalFiber.child.memoizedState.showRightScroll) {
         this.setState({ isScroll: this.tabs._reactInternalFiber.child.memoizedState.showRightScroll });
       }
     }
@@ -152,7 +150,7 @@ class TabBar extends ComponentBase {
   }
 
   updateBTabBarDynamic(tabItems, value) {
-    this.setState({ tabItems: tabItems, value: value });
+    this.setState({ tabItems, value });
     this.forceUpdate();
   }
 
@@ -208,11 +206,10 @@ class TabBar extends ComponentBase {
   }
 
   getLeftIconButton(isLeftIconButtonVisibile, item) {
-
     let leftIconButton;
-    let iconColor = this.props.mode == 'primary' ? this.props.context.theme.boaPalette.comp500 : this.props.context.theme.boaPalette.pri500;
+    const iconColor = this.props.mode == 'primary' ? this.props.context.theme.boaPalette.comp500 : this.props.context.theme.boaPalette.pri500;
 
-    let style = {
+    const style = {
       paddingLeft: isLeftIconButtonVisibile == 'visible' ? '12px' : '0px',
       paddingRight: isLeftIconButtonVisibile == 'visible' ? '8px' : '0px',
       float: 'left',
@@ -222,7 +219,8 @@ class TabBar extends ComponentBase {
 
     if (this.props.leftIcon && typeof (this.props.leftIcon) === 'string') {
       leftIconButton = (
-        <Button context={this.props.context}
+        <Button
+          context={this.props.context}
           type="icon"
           style={style}
           dynamicIcon={item.leftIcon}
@@ -233,7 +231,8 @@ class TabBar extends ComponentBase {
       leftIconButton = this.props.leftIcon;
     } else {
       leftIconButton = (
-        <Button context={this.props.context}
+        <Button
+          context={this.props.context}
           type="icon"
           style={style}
           dynamicIcon={'Home'}
@@ -248,10 +247,11 @@ class TabBar extends ComponentBase {
   getRightIconButton(isRightIconButtonVisibile, item) {
     const { classes } = this.props;
     let rightIconButton;
-    let iconColor = this.props.mode == 'primary' ? this.props.context.theme.boaPalette.comp500 : this.props.context.theme.boaPalette.pri500;
+    const iconColor = this.props.mode == 'primary' ? this.props.context.theme.boaPalette.comp500 : this.props.context.theme.boaPalette.pri500;
 
     rightIconButton = this.props.rightIconButton ? this.props.rightIconButton : (
-      <Button context={this.props.context}
+      <Button
+        context={this.props.context}
         type="icon"
         style={{ float: 'right', width: '24px', height: '24px', marginTop: '12px', verticalAlign: 'middle', visibility: isRightIconButtonVisibile }}
         dynamicIcon={'Close'}
@@ -263,9 +263,9 @@ class TabBar extends ComponentBase {
   }
 
   getTabLabel(item) {
-
-    let tabIndex = this.props.tabItems.findIndex((currentValue) => currentValue.value == item.value);
-    let isRightIconButtonVisibile = 'hidden', isLeftIconButtonVisibile = 'hidden';
+    const tabIndex = this.props.tabItems.findIndex((currentValue) => currentValue.value == item.value);
+    let isRightIconButtonVisibile = 'hidden'; let
+      isLeftIconButtonVisibile = 'hidden';
     if (tabIndex > 0) {
       isRightIconButtonVisibile = this.props.rightIconButtonVisibility && (this.props.value == item.value) || (this.state.mouseOverItem == item.value) ? 'visible' : 'hidden';
       // isRightIconButtonVisibile && this.setState({ selected: item.value });
@@ -274,12 +274,13 @@ class TabBar extends ComponentBase {
       isLeftIconButtonVisibile = 'visible';
     }
 
-    let width = isLeftIconButtonVisibile == 'visible' ? 'calc(100% - 68px)' : 'calc(100% - 48px)';
-    let title = Localization.stringUpperCase(item.text);
-    let titleStyle = { margin: '0 auto !important', width: width, height: '48px', display: 'table-cell', verticalAlign: 'middle' };
+    const width = isLeftIconButtonVisibile == 'visible' ? 'calc(100% - 68px)' : 'calc(100% - 48px)';
+    const title = Localization.stringUpperCase(item.text);
+    const titleStyle = { margin: '0 auto !important', width, height: '48px', display: 'table-cell', verticalAlign: 'middle' };
 
 
-    let leftIconButton, rightIconButton;
+    let leftIconButton; let
+      rightIconButton;
     leftIconButton = this.getLeftIconButton(isLeftIconButtonVisibile, item);
     rightIconButton = this.getRightIconButton(isRightIconButtonVisibile, item);
 
@@ -290,7 +291,7 @@ class TabBar extends ComponentBase {
           style={{
             textAlign: 'center',
             height: '48px',
-            direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr'
+            direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr',
           }}>
           {leftIconButton}
           {rightIconButton}
@@ -302,27 +303,28 @@ class TabBar extends ComponentBase {
   }
 
   renderTabScrollButton() {
-    if (this.props.TabScrollButton)
-      return this.props.TabScrollButton();
+    if (this.props.TabScrollButton) return this.props.TabScrollButton();
 
     const showAllTabIcon = !this.props.context.localization.isRightToLeft ? <DoubleChevronRight context={this.props.context} style={{ nativeColor: this.props.context.theme.boaPalette.comp500 }} /> : <DoubleChevronLeft context={this.props.context} style={{ nativeColor: this.props.context.theme.boaPalette.comp500 }} />;
-    let popoverTabs =
+    const popoverTabs =
       this.props.tabItems.map((item, i) =>
-        <ListItem key={i} context={this.props.context}
+        <ListItem
+          key={i}
+          context={this.props.context}
           primaryText={item.text}
           onClick={this.handleTabItemChange.bind(this, item.value)}
         />);
 
-    let iconContainerStyle = this.props.containerType == 'page' ? { paddingTop: '12px' } : {};
+    const iconContainerStyle = this.props.containerType == 'page' ? { paddingTop: '12px' } : {};
     let iconStyle;
-    let iconColor = this.props.mode == 'secondary' ? this.props.context.theme.boaPalette.pri500 : this.props.context.theme.boaPalette.comp500;
+    const iconColor = this.props.mode == 'secondary' ? this.props.context.theme.boaPalette.pri500 : this.props.context.theme.boaPalette.comp500;
     iconStyle = Object.assign({}, iconStyle, { color: iconColor });
     return (
       <div style={iconContainerStyle}>
         <IconMenu
           ref={(r) => { this.showAllTaButton = r; }}
           context={this.props.context}
-          iconType='custom'
+          iconType="custom"
           menuStyle={{ minWidth: '240px', maxWidth: '320px' }}
           customIcon={showAllTabIcon}
           menuItems={popoverTabs}
@@ -338,7 +340,7 @@ class TabBar extends ComponentBase {
     let tabStyle = this.props.containerType == 'page' ? { paddingTop: '12px', height: '60px' } : null;
     tabStyle = this.props.mode == 'secondary' ? Object.assign({}, tabStyle, this.props.style) : this.props.style;
 
-    let tabItems = this.state.tabItems.map((item, i) => {
+    const tabItems = this.state.tabItems.map((item, i) => {
       return (
         <Tab
           className={this.props.className}
@@ -349,7 +351,7 @@ class TabBar extends ComponentBase {
           label={this.getTabLabel(item)}
           classes={{
             root: this.props.mode == 'secondary' ? classes.secondary : classes.primary,
-            labelContainer: classes.labelContainer
+            labelContainer: classes.labelContainer,
           }}
           style={tabStyle}
         />
@@ -369,8 +371,8 @@ class TabBar extends ComponentBase {
   }
 
   getTabContents() {
-    let tabContents = this.props.tabItems.map((item, i) => {
-      var style = {};
+    const tabContents = this.props.tabItems.map((item, i) => {
+      let style = {};
       if (this.state.value !== item.value) {
         style = { height: 0, overflow: 'hidden' };
       }
@@ -381,7 +383,7 @@ class TabBar extends ComponentBase {
   }
 
   render() {
-    let type = this.props.containerType ? this.props.containerType : 'default';
+    const type = this.props.containerType ? this.props.containerType : 'default';
     switch (type) {
       case 'default':
         return this.renderDefault();
@@ -408,18 +410,19 @@ class TabBar extends ComponentBase {
 
   renderDefault() {
     const { classes } = this.props;
-    let tabItems = this.getTabItems();
+    const tabItems = this.getTabItems();
 
-    let tabContents = this.getTabContents();
+    const tabContents = this.getTabContents();
 
-    var indicatorColor = this.props.indicatorColor;
+    let indicatorColor = this.props.indicatorColor;
     if (this.props.mode == 'secondary') {
       indicatorColor = this.props.context.theme.boaPalette.pri500;
     }
 
     return (
-      <div ref={(el) => { this.tabsDiv = el; }} >
-        <Tabs className={'b-tab-bar'}
+      <div ref={(el) => { this.tabsDiv = el; }}>
+        <Tabs
+          className={'b-tab-bar'}
           action={(actions) => this.actions = actions}
           ref={(t) => { this.tabs = t; }}
           onChange={this.handleChange}
@@ -431,7 +434,7 @@ class TabBar extends ComponentBase {
           scrollButtons={this.props.scrollButtons}
           TabScrollButton={this.renderTabScrollButton.bind(this)}
           classes={{
-            root: this.props.mode == 'primary' ? classes.primary : classes.secondary
+            root: this.props.mode == 'primary' ? classes.primary : classes.secondary,
           }}
           isRightScrollActive={this.state.isScroll}>
           {tabItems}
@@ -443,32 +446,33 @@ class TabBar extends ComponentBase {
 
   renderPage() {
     const { classes } = this.props;
-    let tabItems = this.getTabItems();
+    const tabItems = this.getTabItems();
 
-    let tabContents = this.getTabContents();
+    const tabContents = this.getTabContents();
 
-    var indicatorColor = this.props.indicatorColor;
+    let indicatorColor = this.props.indicatorColor;
     if (this.props.mode == 'secondary') {
       indicatorColor = this.props.context.theme.boaPalette.pri500;
     }
-    let tabsStyle = Object.assign({}, this.props.style, { height: '60px' });
+    const tabsStyle = Object.assign({}, this.props.style, { height: '60px' });
 
     return (
-      <div ref={(el) => { this.tabsDiv = el; }} >
-        <Tabs className={'b-tab-bar'}
+      <div ref={(el) => { this.tabsDiv = el; }}>
+        <Tabs
+          className={'b-tab-bar'}
           ref={(t) => { this.tabs = t; }}
           onChange={this.handleChange}
           style={tabsStyle}
           value={this.state.value}
           indicatorColor={indicatorColor}
-          scrollable={true}
+          scrollable
           scrollButtons={this.props.scrollButtons}
           // TabScrollButton={this.renderTabScrollButton.bind(this)}
           classes={{
-            root: this.props.mode == 'primary' ? classes.primary : classes.secondary
+            root: this.props.mode == 'primary' ? classes.primary : classes.secondary,
           }}
-          isRightScrollActive={true}
-          isLeftScrollActive={true}>
+          isRightScrollActive
+          isLeftScrollActive>
           {tabItems}
         </Tabs>
         {!this.props.isContentDisabled && tabContents}
@@ -478,31 +482,32 @@ class TabBar extends ComponentBase {
 
   renderCard() {
     const { classes } = this.props;
-    let tabItems = this.getTabItems();
+    const tabItems = this.getTabItems();
 
-    let tabContents = this.getTabContents();
+    const tabContents = this.getTabContents();
 
-    var indicatorColor = this.props.indicatorColor;
+    let indicatorColor = this.props.indicatorColor;
     if (this.props.mode == 'secondary') {
       indicatorColor = this.props.context.theme.boaPalette.pri500;
     }
 
     return (
-      <div ref={(el) => { this.tabsDiv = el; }} >
-        <Tabs className={'b-tab-bar'}
+      <div ref={(el) => { this.tabsDiv = el; }}>
+        <Tabs
+          className={'b-tab-bar'}
           ref={(t) => { this.tabs = t; }}
           onChange={this.handleChange}
           style={this.props.style}
           value={this.state.value}
           centered={this.props.centered}
           indicatorColor={indicatorColor}
-          scrollable={true}
+          scrollable
           scrollButtons={'auto'}
           classes={{
-            root: this.props.mode == 'primary' ? classes.primary : classes.secondary
+            root: this.props.mode == 'primary' ? classes.primary : classes.secondary,
           }}
-          isRightScrollActive={true}
-          isLeftScrollActive={true}>
+          isRightScrollActive
+          isLeftScrollActive>
           {tabItems}
         </Tabs>
         {!this.props.isContentDisabled && tabContents}
@@ -513,10 +518,11 @@ class TabBar extends ComponentBase {
   getRightIconButtonForAppBar(isRightIconButtonVisibile, value) {
     const { classes } = this.props;
     let rightIconButton;
-    let iconColor = this.props.mode == 'primary' ? this.props.context.theme.boaPalette.comp500 : this.props.context.theme.boaPalette.pri500;
+    const iconColor = this.props.mode == 'primary' ? this.props.context.theme.boaPalette.comp500 : this.props.context.theme.boaPalette.pri500;
 
     rightIconButton = this.props.rightIconButton ? this.props.rightIconButton : (
-      <Button context={this.props.context}
+      <Button
+        context={this.props.context}
         type="icon"
         style={{ float: 'right', width: '24px', height: '24px', marginTop: '12px', verticalAlign: 'middle', visibility: isRightIconButtonVisibile }}
         dynamicIcon={'Close'}
@@ -528,8 +534,9 @@ class TabBar extends ComponentBase {
   }
 
   getTabLabelForAppBar(item) {
-    let tabIndex = this.props.tabItems.findIndex((currentValue) => currentValue.value == item.value);
-    let isRightIconButtonVisibile = 'hidden', isLeftIconButtonVisibile = 'hidden';
+    const tabIndex = this.props.tabItems.findIndex((currentValue) => currentValue.value == item.value);
+    let isRightIconButtonVisibile = 'hidden'; let
+      isLeftIconButtonVisibile = 'hidden';
     if (tabIndex > 0) {
       isRightIconButtonVisibile = this.props.rightIconButtonVisibility && (this.props.value == item.value) || (this.state.mouseOverItem == item.value) ? 'visible' : 'hidden';
       // isRightIconButtonVisibile && this.setState({ selected: item.value });
@@ -538,12 +545,13 @@ class TabBar extends ComponentBase {
       isLeftIconButtonVisibile = 'visible';
     }
 
-    let width = isLeftIconButtonVisibile == 'visible' ? 'calc(100% - 68px)' : 'calc(100% - 48px)';
-    let title = Localization.stringUpperCase(item.text);
-    let titleStyle = { margin: '0 auto !important', width: width, height: '48px', display: 'table-cell', verticalAlign: 'middle' };
+    const width = isLeftIconButtonVisibile == 'visible' ? 'calc(100% - 68px)' : 'calc(100% - 48px)';
+    const title = Localization.stringUpperCase(item.text);
+    const titleStyle = { margin: '0 auto !important', width, height: '48px', display: 'table-cell', verticalAlign: 'middle' };
 
 
-    let leftIconButton, rightIconButton;
+    let leftIconButton; let
+      rightIconButton;
     leftIconButton = this.getLeftIconButton(isLeftIconButtonVisibile, item);
     rightIconButton = this.getRightIconButtonForAppBar(isRightIconButtonVisibile, item.value);
 
@@ -552,7 +560,7 @@ class TabBar extends ComponentBase {
         style={{
           textAlign: 'center',
           height: '48px',
-          direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr'
+          direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr',
         }}>
         {leftIconButton}
         {rightIconButton}
@@ -565,9 +573,9 @@ class TabBar extends ComponentBase {
   renderAppBar() {
     const { classes } = this.props;
 
-    let tabStyle = this.props.containerType == 'page' ? { paddingTop: '12px', height: '60px' } : null;
+    const tabStyle = this.props.containerType == 'page' ? { paddingTop: '12px', height: '60px' } : null;
 
-    let tabItems = this.props.tabItems.map((item, i) => {
+    const tabItems = this.props.tabItems.map((item, i) => {
       return (
         <Tab
           className={this.props.className}
@@ -578,7 +586,7 @@ class TabBar extends ComponentBase {
           label={this.getTabLabelForAppBar(item)}
           classes={{
             root: this.props.mode == 'secondary' ? classes.secondary : classes.primary,
-            labelContainer: classes.labelContainer
+            labelContainer: classes.labelContainer,
           }}
           style={tabStyle}
           onMouseOut={() => this.mouseOut()}
@@ -586,8 +594,8 @@ class TabBar extends ComponentBase {
       );
     });
 
-    let tabContents = this.props.tabItems.map((item, i) => {
-      var style = {};
+    const tabContents = this.props.tabItems.map((item, i) => {
+      let style = {};
       if (this.props.value !== item.value) {
         style = { height: 0, overflow: 'hidden' };
       }
@@ -595,13 +603,13 @@ class TabBar extends ComponentBase {
       return <div key={i} style={style}>{item.content}</div>;
     });
 
-    var indicatorColor = this.props.indicatorColor;
+    let indicatorColor = this.props.indicatorColor;
     if (this.props.mode == 'secondary') {
       indicatorColor = this.props.context.theme.boaPalette.pri500;
     }
 
     return (
-      <div ref={(el) => { this.tabsDiv = el; }} >
+      <div ref={(el) => { this.tabsDiv = el; }}>
         <Tabs
           action={(actions) => this.actions = actions}
           ref={(t) => { this.tabs = t; }}
@@ -614,15 +622,14 @@ class TabBar extends ComponentBase {
           scrollButtons={this.props.scrollButtons}
           TabScrollButton={this.renderTabScrollButton.bind(this)}
           classes={{
-            root: this.props.mode == 'primary' ? classes.primary : classes.secondary
+            root: this.props.mode == 'primary' ? classes.primary : classes.secondary,
           }}
-          isRightScrollActive={true}>
+          isRightScrollActive>
           {tabItems}
         </Tabs>
         {!this.props.isContentDisabled && tabContents}
       </div>);
   }
-
 }
 
 export default TabBar;

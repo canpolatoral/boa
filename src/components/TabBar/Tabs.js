@@ -6,7 +6,7 @@ import EventListener from 'react-event-listener';
 import debounce from 'lodash/debounce';
 import { getNormalizedScrollLeft, detectScrollType } from 'normalize-scroll-left';
 import scroll from 'scroll';
-import ScrollbarSize from '@boa/components/ScrollbarSize';
+import { ScrollbarSize } from '@boa/components/ScrollbarSize';
 import { withStyles } from '@material-ui/core/styles';
 import TabIndicator from './TabIndicator';
 import TabScrollButton from './TabScrollButton';
@@ -55,6 +55,15 @@ class Tabs extends React.Component {
     mounted: false,
   };
 
+  handleResize = debounce(() => {
+    this.updateIndicatorState(this.props);
+    this.updateScrollButtonState();
+  }, 166);
+
+  handleTabsScroll = debounce(() => {
+    this.updateScrollButtonState();
+  }, 166);
+
   componentDidMount() {
     // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({ mounted: true });
@@ -84,6 +93,7 @@ class Tabs extends React.Component {
     this.handleResize.cancel();
     this.handleTabsScroll.cancel();
   }
+
 
   getConditionalElements = () => {
     const {
@@ -163,11 +173,6 @@ class Tabs extends React.Component {
     return { tabsMeta, tabMeta };
   };
 
-  handleResize = debounce(() => {
-    this.updateIndicatorState(this.props);
-    this.updateScrollButtonState();
-  }, 166);
-
   handleLeftScrollClick = () => {
     if (this.tabs) {
       this.moveTabsScroll(-this.tabs.clientWidth);
@@ -188,10 +193,6 @@ class Tabs extends React.Component {
     });
   };
 
-  handleTabsScroll = debounce(() => {
-    this.updateScrollButtonState();
-  }, 166);
-
   moveTabsScroll = delta => {
     const { theme } = this.props;
 
@@ -203,36 +204,6 @@ class Tabs extends React.Component {
       scroll.left(this.tabs, invert * nextScrollLeft);
     }
   };
-
-  updateIndicatorState(props) {
-    const { theme, value } = props;
-
-    const { tabsMeta, tabMeta } = this.getTabsMeta(value, theme.direction);
-    let left = 0;
-
-    if (tabMeta && tabsMeta) {
-      const correction =
-        theme.direction === 'rtl'
-          ? tabsMeta.scrollLeftNormalized + tabsMeta.clientWidth - tabsMeta.scrollWidth
-          : tabsMeta.scrollLeft;
-      left = tabMeta.left - tabsMeta.left + correction;
-    }
-
-    const indicatorStyle = {
-      left,
-      // May be wrong until the font is loaded.
-      width: tabMeta ? tabMeta.width : 0,
-    };
-
-    if (
-      (indicatorStyle.left !== this.state.indicatorStyle.left ||
-        indicatorStyle.width !== this.state.indicatorStyle.width) &&
-      !Number.isNaN(indicatorStyle.left) &&
-      !Number.isNaN(indicatorStyle.width)
-    ) {
-      this.setState({ indicatorStyle, tabsMeta, tabMeta });
-    }
-  }
 
   scrollSelectedIntoView = () => {
     const { theme, value } = this.props;
@@ -274,6 +245,36 @@ class Tabs extends React.Component {
       }
     }
   };
+
+  updateIndicatorState(props) {
+    const { theme, value } = props;
+
+    const { tabsMeta, tabMeta } = this.getTabsMeta(value, theme.direction);
+    let left = 0;
+
+    if (tabMeta && tabsMeta) {
+      const correction =
+        theme.direction === 'rtl'
+          ? tabsMeta.scrollLeftNormalized + tabsMeta.clientWidth - tabsMeta.scrollWidth
+          : tabsMeta.scrollLeft;
+      left = tabMeta.left - tabsMeta.left + correction;
+    }
+
+    const indicatorStyle = {
+      left,
+      // May be wrong until the font is loaded.
+      width: tabMeta ? tabMeta.width : 0,
+    };
+
+    if (
+      (indicatorStyle.left !== this.state.indicatorStyle.left ||
+        indicatorStyle.width !== this.state.indicatorStyle.width) &&
+      !Number.isNaN(indicatorStyle.left) &&
+      !Number.isNaN(indicatorStyle.width)
+    ) {
+      this.setState({ indicatorStyle });
+    }
+  }
 
   render() {
     const {

@@ -91,6 +91,11 @@ class Tab extends React.Component {
     wrappedText: false,
   };
 
+  constructor(props, context) {
+    super(props, context);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   componentDidMount() {
     this.checkTextWrap();
   }
@@ -106,7 +111,16 @@ class Tab extends React.Component {
     }
   }
 
-  handleChange = (event) => {
+  checkTextWrap() {
+    if (this.label) {
+      const wrappedText = this.label.getClientRects().length > 1;
+      if (this.state.wrappedText !== wrappedText) {
+        this.setState({ wrappedText });
+      }
+    }
+  }
+
+  handleChange(event) {
     const { onChange, value, onClick } = this.props;
 
     if (onChange) {
@@ -116,18 +130,7 @@ class Tab extends React.Component {
     if (onClick) {
       onClick(event);
     }
-  };
-
-  label = undefined;
-
-  checkTextWrap = () => {
-    if (this.label) {
-      const wrappedText = this.label.getClientRects().length > 1;
-      if (this.state.wrappedText !== wrappedText) {
-        this.setState({ wrappedText });
-      }
-    }
-  };
+  }
 
   render() {
     const {

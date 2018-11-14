@@ -1,5 +1,7 @@
-[![CircleCI](https://circleci.com/gh/kuveytturk/boa-components.svg?style=shield&circle-token=17c2c9d64b57ee4fa97b2dbf59a59ddf26ac60dd)](https://circleci.com/gh/kuveytturk/boa-components)
+[![CircleCI](https://circleci.com/gh/kuveytturk/boa-components.svg?style=shield&circle-token=17c2c9d64b57ee4fa97b2dbf59a59ddf26ac60dd)](https://circleci.com/gh/kuveytturk/boa-components) [![codecov](https://codecov.io/gh/kuveytturk/boa-components/branch/master/graph/badge.svg?token=OVabLixPmT)](https://codecov.io/gh/kuveytturk/boa-components) ![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
 
+
+## boa-components
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet aliquet turpis, sed fringilla sapien. Curabitur congue dapibus mi sit amet aliquam. Vestibulum vestibulum eleifend enim, nec ultrices risus blandit a. Vestibulum eget arcu turpis. Nam mi augue, aliquam in velit in, commodo viverra felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi id vestibulum enim, vitae semper metus. Etiam maximus dui dui, gravida accumsan tellus sollicitudin a. Aenean justo magna, ultrices ac leo ut, blandit eleifend urna. Fusce ac luctus nisl. Nullam nec hendrerit dolor. Nam eleifend facilisis mauris, et interdum dui feugiat tempus. Nulla condimentum vehicula quam in aliquet. Fusce vulputate tristique neque quis posuere.
 
 Aenean rhoncus eget ipsum ut fermentum. Nulla commodo mauris a nibh consequat, vel facilisis quam tincidunt. Morbi eget vestibulum nunc. Donec et urna ut libero accumsan pretium convallis quis neque. Praesent blandit elementum urna quis ullamcorper. Mauris blandit egestas ex. Donec laoreet gravida fermentum.

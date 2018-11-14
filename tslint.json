@@ -11,6 +11,7 @@
       true,
       "always",
       "ignore-bound-class-methods"
-    ]
+    ],
+    "strict-export-declare-modifiers": false
   }
 }

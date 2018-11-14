@@ -1,4 +1,5 @@
-import React from 'react'; import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import PredefinedMask from './constants';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Input } from '@boa/components/Input';
@@ -34,7 +35,7 @@ class InputMask extends ComponentBase {
     value: '',
     type: 'Custom',
     mask: 'aa nnn',
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -108,8 +109,11 @@ class InputMask extends ComponentBase {
     const result = this.isCorrectFormatText(this.currentMask, value);
 
     const compareValue = this.snapshotValue || result.value;
-    if (this.isCorrectFormat === true &&
-      compareValue !== undefined && compareValue.length !== this.currentMask.length) {
+    if (
+      this.isCorrectFormat === true &&
+      compareValue !== undefined &&
+      compareValue.length !== this.currentMask.length
+    ) {
       this.isCorrectFormat = false;
     }
 
@@ -247,7 +251,6 @@ class InputMask extends ComponentBase {
     return this.setState({ value: this.props.defaultValue });
   }
 
-
   // getSnapshot for session management.
   getSnapshot() {
     // return this.getValue();
@@ -275,7 +278,7 @@ class InputMask extends ComponentBase {
   // onBlur
   onBlur(e) {
     this.setState({ focussed: false });
-    if (this.props.type === 'IBAN' && (this.state.value === 'TR')) {
+    if (this.props.type === 'IBAN' && this.state.value === 'TR') {
       this.setState({ value: '' });
     }
     if (this.props.onBlur) {
@@ -316,7 +319,7 @@ class InputMask extends ComponentBase {
     }
     if (this.currentMask !== '') {
       text = this.currentMask;
-      PredefinedMask.MaskCharacter.forEach((element) => {
+      PredefinedMask.MaskCharacter.forEach(element => {
         text = text.split(element);
         text = text.join('#');
       });
@@ -324,31 +327,26 @@ class InputMask extends ComponentBase {
     return text;
   }
 
-
   // render
   render() {
-    const {
-      context,
-      inputStyle,
-      type,
-      ...other
-    } = this.props;
+    const { context, inputStyle, type, ...other } = this.props;
 
     let inputValue = this.snapshotValue || this.state.value;
     const result = this.isCorrectFormatText(this.currentMask, inputValue);
     inputValue = result.value || inputValue;
     const compareValue = this.snapshotValue || result.value;
-    if (this.isCorrectFormat === true &&
+    if (
+      this.isCorrectFormat === true &&
       compareValue !== undefined &&
-      compareValue.length !== this.currentMask.length) {
+      compareValue.length !== this.currentMask.length
+    ) {
       this.isCorrectFormat = false;
     }
 
     const errorTextResult =
-      (this.isCorrectFormat === false
-        && this.state.value !== ''
-        && this.state.focussed === false
-      ) ? this.errorText : '';
+      this.isCorrectFormat === false && this.state.value !== '' && this.state.focussed === false
+        ? this.errorText
+        : '';
 
     let inputStyle2 = Object.assign({}, inputStyle);
     if (type === 'IBAN' && this.state.value !== '' && this.isCorrectFormat === true) {
@@ -357,7 +355,7 @@ class InputMask extends ComponentBase {
     }
 
     // iban ve kredi kartı için bilgi metni olmayacak.
-    if (type === 'IBAN' || type === 'CreditCard' && this.props.helperText === '') {
+    if (type === 'IBAN' || (type === 'CreditCard' && this.props.helperText === '')) {
       this.helperText = '';
     }
 
@@ -374,7 +372,7 @@ class InputMask extends ComponentBase {
       <Input
         type="text"
         context={context}
-        ref={r => this.binput = r}
+        ref={r => (this.binput = r)}
         {...other}
         disabled={this.state.disabled}
         errorText={this.props.errorText || errorTextResult}

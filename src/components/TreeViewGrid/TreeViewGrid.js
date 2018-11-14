@@ -80,14 +80,12 @@ class TreeViewGrid extends ComponentBase {
     return helpers.findNode(data, valuePath, value);
   }
 
-
   /**
    * Use the findNode method to get a node from the tree view control at the specified value path.
    * @param valuePath
    * @param value
    *  @param data
    */
-
 
   /**
    * The expandAll method provides a convenient way to open every node in the tree.
@@ -96,7 +94,7 @@ class TreeViewGrid extends ComponentBase {
     const data = this.state.data;
     helpers.expandAll(data);
     this.setState({ data: Object.assign({}, data) });
-  }
+  };
 
   /**
    * The collapseAll method provides a convenient way to close every node in the tree.
@@ -105,7 +103,7 @@ class TreeViewGrid extends ComponentBase {
     const data = this.state.data;
     helpers.collapseAll(data);
     this.setState({ data: Object.assign({}, data) });
-  }
+  };
 
   /**
    * Get the node that is currently selected
@@ -183,20 +181,23 @@ class TreeViewGrid extends ComponentBase {
     const { context } = this.props;
     return (
       <div>
-        <div style={{
-          paddingBottom: 12,
-          paddingLeft: 12,
-          paddingRight: 12,
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
+        <div
+          style={{
+            paddingBottom: 12,
+            paddingLeft: 12,
+            paddingRight: 12,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
           <div
             style={{
               fontSize: 16,
               color: context.theme.boaPalette.base400,
-            }}>
+            }}
+          >
             {this.props.title}
           </div>
           <LinearPanel orientation="horizontal">
@@ -204,29 +205,33 @@ class TreeViewGrid extends ComponentBase {
               context={context}
               text={this.getMessage('Loans', 'ExpandAll')}
               colorType="primary"
-              onClick={this.expandAll} />
+              onClick={this.expandAll}
+            />
             <Button
               context={context}
               text={this.getMessage('Loans', 'CollapseAll')}
               colorType="primary"
-              onClick={this.collapseAll} />
+              onClick={this.collapseAll}
+            />
             <IconButton
               style={{ width: 34, height: 34 }}
               context={context}
               iconProperties={{ nativeColor: this.props.context.theme.boaPalette.pri500 }}
               dynamicIcon="MoreVert"
-              onClick={this.props.onOptionClick} />
+              onClick={this.props.onOptionClick}
+            />
           </LinearPanel>
         </div>
         <div style={{ borderBottom: `1px solid ${this.props.context.theme.boaPalette.base200}` }}>
           <TreeView
             context={context}
-            ref={r => this.treeView = r}
+            ref={r => (this.treeView = r)}
             data={this.state.data}
             onToggle={this.handleOnToggle}
             onChange={this.onChange}
             isRightToLeft={this.props.context.localization.isRightToLeft}
-            decorators={decorators} />
+            decorators={decorators}
+          />
         </div>
       </div>
     );

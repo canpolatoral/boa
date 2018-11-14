@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface DateTimePickerProps extends ComponentBaseProps {
   minDate?: any; // TODO: propType handle edilemedi.
@@ -28,7 +24,7 @@ export interface DateTimePickerProps extends ComponentBaseProps {
   disabled?: boolean;
   errorTextDate?: string;
   errorTextTime?: string;
-  pageType?: "browse" | "transactional";
+  pageType?: 'browse' | 'transactional';
   valueConstraint?: any;
 }
 
@@ -37,4 +33,7 @@ export interface DateTimePickerProps extends ComponentBaseProps {
 // export interface DateTimePickerInstance extends ComponentBaseInstance {
 // }
 
-export default class DateTimePicker extends ComponentBase<DateTimePickerProps, ComponentBaseInstance> { }
+export default class DateTimePicker extends ComponentBase<
+  DateTimePickerProps,
+  ComponentBaseInstance
+> {}

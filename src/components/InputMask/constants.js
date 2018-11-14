@@ -11,14 +11,10 @@ const PredefinedMask = {
     a: /^.+$/,
   },
 
-  MaskCharacter: [
-    'n',
-    'l',
-    'a',
-  ],
+  MaskCharacter: ['n', 'l', 'a'],
 
   AllowSpecialKeys: [' ', '(', ')', '-'],
-  AllowKeys: [8, 13, 16, 17, 18, 32, 33, 34, 35, 36, 37, 38, 39, 40, 46]
+  AllowKeys: [8, 13, 16, 17, 18, 32, 33, 34, 35, 36, 37, 38, 39, 40, 46],
   // 8  => backspace
   // 16 => shift
   // 17 => ctrl
@@ -32,7 +28,5 @@ const PredefinedMask = {
   // 39 => arrow right
   // 40 => arrow down
   // 46 => delete
-  ,
-
 };
 export default PredefinedMask;

@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('Toggle', ({ props }) => {
       <Header {...props} component={Toggle} doc={doc} />
       <Preview {...props} component={Toggle} doc={doc} />
       <Props {...props} component={Toggle} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

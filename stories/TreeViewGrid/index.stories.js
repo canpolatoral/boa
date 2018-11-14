@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('TreeViewGrid', ({ props }) => {
       <Header {...props} component={TreeViewGrid} doc={doc} />
       <Preview {...props} component={TreeViewGrid} doc={doc} />
       <Props {...props} component={TreeViewGrid} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

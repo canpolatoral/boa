@@ -187,9 +187,9 @@ class Tab extends React.Component {
     style =
       Object.keys(style).length > 0
         ? {
-          ...style,
-          ...styleProp,
-        }
+            ...style,
+            ...styleProp,
+          }
         : styleProp;
 
     return (

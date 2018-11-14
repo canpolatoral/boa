@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface DialogProps extends ComponentBaseProps {
   actions?: React.ReactNode;
@@ -33,4 +29,4 @@ export interface DialogProps extends ComponentBaseProps {
 // export interface DialogInstance extends ComponentBaseInstance {
 // }
 
-export default class Dialog extends ComponentBase<DialogProps, ComponentBaseInstance> { }
+export default class Dialog extends ComponentBase<DialogProps, ComponentBaseInstance> {}

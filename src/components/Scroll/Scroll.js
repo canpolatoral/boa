@@ -1,4 +1,5 @@
-import React from 'react'; import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import merge from 'lodash/merge';
 import { ComponentBase, ComponentComposer, Utils, Platforms } from '@boa/base';
@@ -40,7 +41,7 @@ class Scroll extends ComponentBase {
 
   static defaultProps = {
     divStyle: { overflow: 'auto' },
-  }
+  };
 
   state = {
     disabled: this.props.disabled,
@@ -60,7 +61,7 @@ class Scroll extends ComponentBase {
       const innerStyleScroll = { minScrollbarLength: 16 };
       this.ps = new PerfectScrollbar(this.container, merge(innerStyleScroll, this.props.option));
       // hook up events
-      Object.keys(handlerNameByEvent).forEach((key) => {
+      Object.keys(handlerNameByEvent).forEach(key => {
         const callback = this.props[handlerNameByEvent[key]];
         if (callback) {
           const handler = () => callback(this.container);
@@ -100,7 +101,8 @@ class Scroll extends ComponentBase {
     let parentHeight;
     if (mbcontainerDomNode.parentNode.clientHeight !== 0) {
       parentHeight = mbcontainerDomNode.parentNode.clientHeight;
-    } else { // workaround olarak tab için konuldu. burası kökten düzeltilmeli (coral)
+    } else {
+      // workaround olarak tab için konuldu. burası kökten düzeltilmeli (coral)
       const oldHeight = mbcontainerDomNode.parentNode.parentNode.style.height;
       mbcontainerDomNode.parentNode.parentNode.style.height = '';
       parentHeight = mbcontainerDomNode.parentNode.clientHeight;
@@ -156,10 +158,13 @@ class Scroll extends ComponentBase {
         });
       }
       return (
-        <div style={divStyle} ref={(ref) => { this.mbContainer = ref; }}>
-          <div style={innerStyle}>
-            {childs}
-          </div>
+        <div
+          style={divStyle}
+          ref={ref => {
+            this.mbContainer = ref;
+          }}
+        >
+          <div style={innerStyle}>{childs}</div>
         </div>
       );
     }
@@ -170,10 +175,11 @@ class Scroll extends ComponentBase {
       <div
         className="scrollbar-container"
         style={divStyle}
-        ref={(ref) => { this.container = ref; }}>
-        <div style={innerStyle}>
-          {childs}
-        </div>
+        ref={ref => {
+          this.container = ref;
+        }}
+      >
+        <div style={innerStyle}>{childs}</div>
       </div>
     );
   }

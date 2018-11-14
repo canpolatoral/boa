@@ -7,10 +7,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
 import { Popover } from '@boa/components/Popover';
-import {
-  ComponentBase,
-  ComponentComposer,
-} from '@boa/base'; //
+import { ComponentBase, ComponentComposer } from '@boa/base'; //
 import { MenuItem } from '@boa/components/MenuItem';
 import { Icon } from '@boa/components/Icon';
 
@@ -36,7 +33,7 @@ class IconMenu extends ComponentBase {
 
     /*
      * to set origin from outside
-    */
+     */
     animated: PropTypes.bool,
 
     /**
@@ -196,7 +193,7 @@ class IconMenu extends ComponentBase {
     let menuItems = [];
 
     if (this.props.menuItems) {
-      menuItems = this.props.menuItems.map((item) => {
+      menuItems = this.props.menuItems.map(item => {
         return React.cloneElement(item, {
           onTouchTap: () => {
             if (!item.props.menuItems) this.handleClose();
@@ -204,7 +201,7 @@ class IconMenu extends ComponentBase {
         });
       });
     } else if (this.props.items) {
-      menuItems = (this.props.items.map((item) => {
+      menuItems = this.props.items.map(item => {
         let rightIcon;
         if (item.items && item.items.length) {
           rightIcon = <RightArrow />;
@@ -227,9 +224,10 @@ class IconMenu extends ComponentBase {
             items={item.items}
             rightIcon={rightIcon}
             leftIcon={leftIcon}
-            itemSelected={this.onChange} />
+            itemSelected={this.onChange}
+          />
         );
-      }));
+      });
     }
 
     let icon = <MoreVertIcon />;

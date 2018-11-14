@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('Divider', ({ props }) => {
       <Header {...props} component={Divider} doc={doc} />
       <Preview {...props} component={Divider} doc={doc} />
       <Props {...props} component={Divider} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

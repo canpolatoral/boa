@@ -16,7 +16,6 @@ function loadTheme(colors) {
         dark: colors.pri500, // todo dark pri700
 
         300: colors.pri500, // dx-react-grid-material-ui
-
       },
       secondary: {
         light: colors.sec300,
@@ -42,35 +41,47 @@ function loadTheme(colors) {
 }
 
 export default function getTheme(opt) {
-  const options = merge({
-    themeName: 'winter',
-    kendoThemePath: 'assets/themes',
-    externalTheme: {},
-  }, opt);
+  const options = merge(
+    {
+      themeName: 'winter',
+      kendoThemePath: 'assets/themes',
+      externalTheme: {},
+    },
+    opt,
+  );
 
   let theme = {};
   switch (options.themeName) {
     case 'summer':
-      theme = loadTheme(require('./themes/summer/colors')); break;
+      theme = loadTheme(require('./themes/summer/colors'));
+      break;
     case 'violet':
-      theme = loadTheme(require('./themes/violet/colors')); break;
+      theme = loadTheme(require('./themes/violet/colors'));
+      break;
     case 'night':
-      theme = loadTheme(require('./themes/night/colors')); break;
+      theme = loadTheme(require('./themes/night/colors'));
+      break;
     case 'kt-green':
-      theme = loadTheme(require('./themes/kt-green/colors')); break;
+      theme = loadTheme(require('./themes/kt-green/colors'));
+      break;
     case 'spring':
     default:
-      theme = loadTheme(require('./themes/winter/colors')); break;
+      theme = loadTheme(require('./themes/winter/colors'));
+      break;
   }
 
-  const targetTheme = merge({
-    centeredLayout: false,
-    themeName: options.themeName,
-    kendoThemePath: options.kendoThemePath,
-    typography: {
-      useNextVariants: true,
+  const targetTheme = merge(
+    {
+      centeredLayout: false,
+      themeName: options.themeName,
+      kendoThemePath: options.kendoThemePath,
+      typography: {
+        useNextVariants: true,
+      },
     },
-  }, theme, options.externalTheme);
+    theme,
+    options.externalTheme,
+  );
 
   return createMuiTheme(targetTheme);
 }

@@ -4,7 +4,9 @@ export interface ErrorBoundaryProps {
   children: Node;
 }
 
-export interface ErrorBoundaryInstance extends React.Component<any, any> {
-}
+export interface ErrorBoundaryInstance extends React.Component<any, any> {}
 
-export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryInstance> { }
+export default class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryInstance
+> {}

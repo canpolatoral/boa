@@ -103,9 +103,11 @@ class TreeView extends ComponentBase {
   state = {
     filterText: '',
     footerText: this.getMessage('BOA', 'TreeviewItemNotSelected'),
-    selectedNode: this.props.selectedNodeId ? {
-      id: this.props.selectedNodeId,
-    } : this.props.selectedNode,
+    selectedNode: this.props.selectedNodeId
+      ? {
+          id: this.props.selectedNodeId,
+        }
+      : this.props.selectedNode,
   };
 
   constructor(props, context) {
@@ -377,8 +379,7 @@ class TreeView extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  update() {
-  }
+  update() {}
 
   // Updates the data of a node.
   // @param {Node} node The Node object.
@@ -413,7 +414,11 @@ class TreeView extends ComponentBase {
   isLeafSelected() {
     const selectedNode = this.getSelectedNode();
     if (selectedNode) {
-      if (selectedNode.children && Array.isArray(selectedNode.children) && selectedNode.children.length > 0) {
+      if (
+        selectedNode.children &&
+        Array.isArray(selectedNode.children) &&
+        selectedNode.children.length > 0
+      ) {
         return false;
       }
     }
@@ -547,13 +552,19 @@ class TreeView extends ComponentBase {
     const mainDiv = {
       outline: 'none',
       background: 'white',
-      boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
+      boxShadow:
+        '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
       ...this.props.style,
     };
 
     const width = typeof this.props.width === 'string' ? this.props.width : `${this.props.width}px`;
 
-    const startAdornmentStyle = { paddingLeft: '24px', marginLeft: '0', paddingBottom: '12px', marginTop: '6px' };
+    const startAdornmentStyle = {
+      paddingLeft: '24px',
+      marginLeft: '0',
+      paddingBottom: '12px',
+      marginTop: '6px',
+    };
     if (this.props.context.localization.isRightToLeft) {
       startAdornmentStyle.paddingLeft = '0px';
       startAdornmentStyle.paddingRight = '24px';
@@ -647,15 +658,14 @@ class TreeView extends ComponentBase {
           filterText={this.state.filterText}
         />
 
-        {this.props.isCheckable &&
-          this.props.showFooter && (
-            <div>
-              <Divider style={{ margin: 0 }} />
-              <Footer style={this.props.footerStyle} context={this.props.context}>
-                {this.getFooterText()}
-              </Footer>
-            </div>
-          )}
+        {this.props.isCheckable && this.props.showFooter && (
+          <div>
+            <Divider style={{ margin: 0 }} />
+            <Footer style={this.props.footerStyle} context={this.props.context}>
+              {this.getFooterText()}
+            </Footer>
+          </div>
+        )}
       </div>
     );
   }

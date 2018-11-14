@@ -14,7 +14,8 @@ export default class ComponentBase extends Component {
       ComponentSize.SMALL,
       ComponentSize['1'],
       ComponentSize['2'],
-      ComponentSize['3']]),
+      ComponentSize['3'],
+    ]),
     context: PropTypes.object,
     disabled: PropTypes.bool,
     id: PropTypes.string,
@@ -25,18 +26,18 @@ export default class ComponentBase extends Component {
     snapshot: PropTypes.object,
     style: PropTypes.object,
     valueConstraint: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     disabled: false,
     componentSize: ComponentSize.LARGE,
     newLine: false,
     isVisible: true,
-  }
+  };
 
   static contextTypes = {
     [CHANNEL]: PropTypes.object,
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -102,10 +103,11 @@ export default class ComponentBase extends Component {
   getChildId(childName) {
     let id = this.props.id;
     if (!id) {
-      // eslint-disable-next-line no-useless-escape
-      id = `bcmp_ ${Math.random().toString().replace(/[\.,]/g, '')}`;
+      id = `bcmp_ ${Math.random()
+        .toString()
+        .replace(/[\.,]/g, '')}`; // eslint-disable-line no-useless-escape
     }
-    return `${id}_${(childName || 'child')}`;
+    return `${id}_${childName || 'child'}`;
   }
 
   getSnapshot() {
@@ -120,7 +122,7 @@ export default class ComponentBase extends Component {
   resultErrorListToString(resultList) {
     let message = ' ';
     if (resultList && resultList.length > 0) {
-      resultList.forEach((item) => {
+      resultList.forEach(item => {
         message += item.errorMessage;
       }, this);
     }

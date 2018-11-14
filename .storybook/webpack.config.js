@@ -3,24 +3,19 @@ const { resolve } = require('path');
 
 module.exports = {
   resolve: {
-    modules: [
-      resolve(__dirname, 'src'),
-      'node_modules'
-    ]
+    modules: [resolve(__dirname, 'src'), 'node_modules'],
   },
   module: {
     rules: [
       {
         test: /\.js?$/,
         exclude: /(node_modules|bower_components|perfect-scrollbar)/,
-        use:
-          {
-            loader: 'babel-loader',
-            options:
-              {
-                plugins: [require('react-hot-loader/babel')]
-              }
-          }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [require('react-hot-loader/babel')],
+          },
+        },
       },
       {
         test: /\.css$/,
@@ -28,18 +23,22 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [{
-          loader: 'style-loader' // creates style nodes from JS strings
-        }, {
-          loader: 'css-loader' // translates CSS into CommonJS
-        }, {
-          loader: 'sass-loader' // compiles Sass to CSS
-        }]
+        use: [
+          {
+            loader: 'style-loader', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+          },
+          {
+            loader: 'sass-loader', // compiles Sass to CSS
+          },
+        ],
       },
       {
         test: /\.(eot|svg|jpe?g|png|gif|ttf|woff2?)$/,
-        use: 'url-loader'
-      }
-    ]
-  }
+        use: 'url-loader',
+      },
+    ],
+  },
 };

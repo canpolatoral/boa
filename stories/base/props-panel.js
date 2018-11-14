@@ -110,12 +110,11 @@ export default class Playground extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => {
-          }}
-          onEdit={(src) => {
+          onAdd={() => {}}
+          onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
-          onDelete={(src) => {
+          onDelete={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
         />
@@ -173,33 +172,37 @@ export default class Playground extends ComponentBase {
           <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
             <InputLabel htmlFor="theme">{property.name}</InputLabel>
             <NativeSelect
-              onChange={
-                (event) => {
-                  self.onPropertyChanged(property.name, event.target.value);
-                }
-              }>
-              {
-                property.values.map((item) => {
-                  return <option value={item}>{item}</option>;
-                })
-              }
+              onChange={event => {
+                self.onPropertyChanged(property.name, event.target.value);
+              }}
+            >
+              {property.values.map(item => {
+                return <option value={item}>{item}</option>;
+              })}
             </NativeSelect>
           </FormControl>
-        </div>);
+        </div>
+      );
     }
     // if (property.type.toLowerCase().includes('shape')) {
     //   return this.getShape(property, value);
     // }
     if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
-    } if (property.type.toLowerCase().includes('string')) {
+    }
+    if (property.type.toLowerCase().includes('string')) {
       return this.getBInput(property, value);
-    } if (property.type.toLowerCase().includes('number')) {
+    }
+    if (property.type.toLowerCase().includes('number')) {
       return this.getBInputNumeric(property, value);
-    } if (property.type.toLowerCase().includes('bool')) {
+    }
+    if (property.type.toLowerCase().includes('bool')) {
       return this.getBToggle(property, value);
-    } if (property.type.toLowerCase().includes('object') ||
-      property.type.toLowerCase().includes('array')) {
+    }
+    if (
+      property.type.toLowerCase().includes('object') ||
+      property.type.toLowerCase().includes('array')
+    ) {
       return this.getJsonViewer(property, generateDefaultValue(property.type));
     }
     return null;
@@ -221,64 +224,56 @@ export default class Playground extends ComponentBase {
               context={this.props.context}
               option={{ suppressScrollX: true }}
               style={style.scrollStyle}
-              divStyle={style.scrollStyle}>
+              divStyle={style.scrollStyle}
+            >
               <div>
                 <FormControl style={{ maxWidth: 300, width: '100%' }}>
                   <InputLabel htmlFor="theme">Theme</InputLabel>
                   <Select
                     value={this.state.selectedTheme}
-                    onChange={
-                      (event) => {
-                        self.setState({
-                          selectedTheme: event.target.value,
-                        });
-                        if (self.props.onThemeChange) {
-                          self.props.onThemeChange(event.target.value);
-                        }
+                    onChange={event => {
+                      self.setState({
+                        selectedTheme: event.target.value,
+                      });
+                      if (self.props.onThemeChange) {
+                        self.props.onThemeChange(event.target.value);
                       }
-                    }>
-                    {
-                      themeItems.map((item) => {
-                        return <MenuItem value={item.value}>{item.title}</MenuItem>;
-                      })
-                    }
+                    }}
+                  >
+                    {themeItems.map(item => {
+                      return <MenuItem value={item.value}>{item.title}</MenuItem>;
+                    })}
                   </Select>
                 </FormControl>
                 <FormControl
-                  style={
-                    {
-                      maxWidth: 300,
-                      width: '100%',
-                      marginTop: 15,
-                      marginBottom: 15,
-                    }}>
+                  style={{
+                    maxWidth: 300,
+                    width: '100%',
+                    marginTop: 15,
+                    marginBottom: 15,
+                  }}
+                >
                   <InputLabel htmlFor="lang">Language</InputLabel>
                   <Select
                     value={this.state.selectedLanguage}
-                    onChange={
-                      (event) => {
-                        self.setState({
-                          selectedLanguage: event.target.value,
-                        });
-                        if (self.props.onThemeChange) {
-                          self.props.onLanguageChange(event.target.value);
-                        }
+                    onChange={event => {
+                      self.setState({
+                        selectedLanguage: event.target.value,
+                      });
+                      if (self.props.onThemeChange) {
+                        self.props.onLanguageChange(event.target.value);
                       }
-                    }>
-                    {
-                      languageItems.map((item) => {
-                        return <MenuItem value={item.value}>{item.title}</MenuItem>;
-                      })
-                    }
+                    }}
+                  >
+                    {languageItems.map(item => {
+                      return <MenuItem value={item.value}>{item.title}</MenuItem>;
+                    })}
                   </Select>
                 </FormControl>
                 {availableProperties.map((property, i) => {
                   /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {
-                    return (
-                      <div key={i}>
-                        {this.getComponent(property, property.default)}
-                      </div>);
+                    return <div key={i}>{this.getComponent(property, property.default)}</div>;
                   }
                   return undefined;
                 })}

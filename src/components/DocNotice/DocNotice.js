@@ -5,7 +5,7 @@ import { Icon } from '@boa/components/Icon';
 
 /**
  * Notice component for BOA markdown documents.
-*/
+ */
 class DocNotice extends ComponentBase {
   static propTypes = {
     /**
@@ -37,26 +37,29 @@ class DocNotice extends ComponentBase {
     const style = this.getStyle();
     return (
       <div style={style}>
-        <div style={{
-          float: 'left',
-          marginLeft: -36,
-          marginTop: -2,
-          height: 24,
-        }}>
-          <AppProvider theme={this.props.context.theme}>
-            {this.getIcon()}
-          </AppProvider>
+        <div
+          style={{
+            float: 'left',
+            marginLeft: -36,
+            marginTop: -2,
+            height: 24,
+          }}
+        >
+          <AppProvider theme={this.props.context.theme}>{this.getIcon()}</AppProvider>
         </div>
-        <b>{this.props.header}{this.props.header && this.props.content ? ' : ' : ''}</b>
+        <b>
+          {this.props.header}
+          {this.props.header && this.props.content ? ' : ' : ''}
+        </b>
         {this.props.content}
       </div>
     );
   }
 
   getStyle() {
-    const style = this.props.fitMode ?
-      { padding: '12px 12px 12px 48px', margin: '16px 0px', width: '100%' } :
-      { padding: '12px 24px 12px 60px', margin: '16px 0px', width: '100%' };
+    const style = this.props.fitMode
+      ? { padding: '12px 12px 12px 48px', margin: '16px 0px', width: '100%' }
+      : { padding: '12px 24px 12px 60px', margin: '16px 0px', width: '100%' };
 
     switch (this.props.type) {
       case 'info': {
@@ -87,7 +90,8 @@ class DocNotice extends ComponentBase {
         });
         break;
       }
-      default: return null;
+      default:
+        return null;
     }
     return style;
   }
@@ -134,7 +138,8 @@ class DocNotice extends ComponentBase {
         };
         return Icon.getIcon(icon);
       }
-      default: return null;
+      default:
+        return null;
     }
   }
 }

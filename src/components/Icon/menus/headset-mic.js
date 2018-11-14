@@ -3,7 +3,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const HeadsetMic = (props) => {
+const HeadsetMic = props => {
   return (
     <SvgIcon {...props}>
       <path d="M0 0h24v24H0z" fill="none" opacity=".1" />

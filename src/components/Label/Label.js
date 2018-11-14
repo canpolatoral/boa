@@ -5,7 +5,7 @@ import parseFontSize from './utils';
 
 /**
  * Label component
-*/
+ */
 @ComponentComposer
 class Label extends ComponentBase {
   constructor(props, context) {
@@ -60,7 +60,7 @@ class Label extends ComponentBase {
       const minFontSize = parseFontSize(props.minFontSize);
       const maxFontSize = parseFontSize(props.maxFontSize);
 
-      let newFontSize = currentFontSize * props.maxWidth / this.label.offsetWidth;
+      let newFontSize = (currentFontSize * props.maxWidth) / this.label.offsetWidth;
       newFontSize = Math.max(Math.min(newFontSize, maxFontSize), minFontSize);
       this.setState({ fontSize: `${newFontSize}px` });
     }
@@ -68,9 +68,13 @@ class Label extends ComponentBase {
 
   render() {
     let styleDiv;
-    const style = Object.assign({
-      fontSize: this.state.fontSize,
-    }, this.props.context.theme.label, this.props.style);
+    const style = Object.assign(
+      {
+        fontSize: this.state.fontSize,
+      },
+      this.props.context.theme.label,
+      this.props.style,
+    );
     if (!this.props.context.localization.isRightToLeft) {
       if (this.props.maxWidth) {
         styleDiv = { textAlign: 'left', width: `${this.props.maxWidth}px` };
@@ -89,7 +93,13 @@ class Label extends ComponentBase {
 
     return (
       <div style={Object.assign(styleDiv, style)}>
-        <label ref={(r) => { (this.label = r); }}>{this.props.text}</label>
+        <label
+          ref={r => {
+            this.label = r;
+          }}
+        >
+          {this.props.text}
+        </label>
       </div>
     );
   }

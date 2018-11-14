@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase } from '@boa/base';
 
-const getMinLevel = (content) => {
+const getMinLevel = content => {
   let level = 0;
   if (content.length > 0) level = content[0].level;
-  content.forEach((item) => {
+  content.forEach(item => {
     if (item.level < level) level = item.level;
   });
   return level;
@@ -13,7 +13,7 @@ const getMinLevel = (content) => {
 
 /**
  * Table of Content component for BOA markdown documents.
-*/
+ */
 class DocToc extends ComponentBase {
   static propTypes = {
     /**
@@ -54,19 +54,18 @@ class DocToc extends ComponentBase {
   }
 
   render() {
-    const mainStyle = Object.assign({
-      borderLeftColor: this.props.context.theme.boaPalette.pri500,
-      borderLeftWidth: 3,
-      borderLeftStyle: 'solid',
-    }, this.props.style);
+    const mainStyle = Object.assign(
+      {
+        borderLeftColor: this.props.context.theme.boaPalette.pri500,
+        borderLeftWidth: 3,
+        borderLeftStyle: 'solid',
+      },
+      this.props.style,
+    );
     this.minLevel = getMinLevel(this.props.content);
     const content = this.populateContent(this.props.content);
 
-    return (
-      <div style={mainStyle}>
-        {content}
-      </div>
-    );
+    return <div style={mainStyle}>{content}</div>;
   }
 
   onClick(id) {
@@ -112,13 +111,13 @@ class DocToc extends ComponentBase {
         // eslint-disable-next-line react/no-array-index-key
         <li key={index} style={this.getListItemStyle(child.level, index)}>
           {child && (
-            <label
-              style={this.getLinkStyle(child.id)}
-              onClick={this.onClick.bind(this, child.id)}>
+            <label style={this.getLinkStyle(child.id)} onClick={this.onClick.bind(this, child.id)}>
               {child.content}
-            </label>)}
+            </label>
+          )}
           {child.children ? this.populateContent(child.children, level + 1) : null}
-        </li>);
+        </li>
+      );
     });
     const listStyle = {
       listStyleType: 'none',
@@ -128,18 +127,19 @@ class DocToc extends ComponentBase {
     };
     return (
       <ul style={listStyle}>
-        {
-          level === 0 ? (
-            <li style={this.getListItemStyle(0, -1)}>
-              <label
-                style={this.getLinkStyle(headerId, true)}
-                onClick={this.onClick.bind(this, headerId)}>
-                {this.props.header}
-              </label>
-            </li>) : null
-        }
+        {level === 0 ? (
+          <li style={this.getListItemStyle(0, -1)}>
+            <label
+              style={this.getLinkStyle(headerId, true)}
+              onClick={this.onClick.bind(this, headerId)}
+            >
+              {this.props.header}
+            </label>
+          </li>
+        ) : null}
         {items}
-      </ul>);
+      </ul>
+    );
   }
 }
 

@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface TreeViewGridProps extends ComponentBaseProps {
   style?: object;
@@ -12,4 +8,4 @@ export interface TreeViewGridProps extends ComponentBaseProps {
   onItemChanged: (selectedNode: any) => void;
 }
 
-export default class TreeViewGrid extends ComponentBase<TreeViewGridProps, ComponentBaseInstance> { }
+export default class TreeViewGrid extends ComponentBase<TreeViewGridProps, ComponentBaseInstance> {}

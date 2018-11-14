@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
-import React from 'react'; import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
 import { ComponentBase } from '@boa/base';
 import marked from './marked';
@@ -13,11 +14,12 @@ const editorTypes = [
   'monokaiSublime',
   'raiinbow',
   'vs',
-  'xcode'];
+  'xcode',
+];
 
 /**
  * Markdown doc viewer
-*/
+ */
 class DocViewer extends ComponentBase {
   static propTypes = {
     /**
@@ -47,7 +49,11 @@ class DocViewer extends ComponentBase {
         tokens.push({
           level: cap[1].length,
           content: cap[2],
-          id: cap[2].toString().toLowerCase().trim().replace(/&/g, '-and-')
+          id: cap[2]
+            .toString()
+            .toLowerCase()
+            .trim()
+            .replace(/&/g, '-and-')
             .replace(/[\s\W-]+/g, '-'),
         });
       } else {
@@ -59,7 +65,7 @@ class DocViewer extends ComponentBase {
 
   state = {
     editorType: this.props.editorType,
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -97,7 +103,8 @@ class DocViewer extends ComponentBase {
       <div
         style={{ width: '100%' }}
         dangerouslySetInnerHTML={{ __html: rawMarkup }}
-        onInput={this.changeEditorType} />
+        onInput={this.changeEditorType}
+      />
     );
   }
 

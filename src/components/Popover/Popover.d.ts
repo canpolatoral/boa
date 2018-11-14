@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps,
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface PopoverProps extends ComponentBaseProps {
   anchorEl?: any;
@@ -28,4 +24,4 @@ export interface PopoverProps extends ComponentBaseProps {
 // export interface PopoverInstance extends ComponentBaseInstance {
 // }
 
-export default class Popover extends ComponentBase<PopoverProps, ComponentBaseInstance> { }
+export default class Popover extends ComponentBase<PopoverProps, ComponentBaseInstance> {}

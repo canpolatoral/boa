@@ -122,8 +122,7 @@ class Toggle extends ComponentBase {
       this.setState({ disabled: nextProps.disabled });
     }
 
-    if ((this.props.toggled !== nextProps.toggled) &&
-      (nextProps.toggled !== this.state.toggled)) {
+    if (this.props.toggled !== nextProps.toggled && nextProps.toggled !== this.state.toggled) {
       this.setState({ toggled: nextProps.toggled });
     }
   }
@@ -210,11 +209,7 @@ class Toggle extends ComponentBase {
             label={this.props.label}
           />
           {this.props.errorText ? (
-            <Label
-              style={errorStyle}
-              context={this.props.context}
-              text={this.props.errorText}
-            />
+            <Label style={errorStyle} context={this.props.context} text={this.props.errorText} />
           ) : null}
           {this.props.informationText ? (
             <Label

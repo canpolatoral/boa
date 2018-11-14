@@ -24,7 +24,10 @@ export class ComponentBaseInstance extends React.Component<any, any> {
   getSelectedRowIndexes?: () => any;
 }
 
-export default class ComponentBase<TProps = any, TInstance = any> extends React.Component<TProps, any> {
+export default class ComponentBase<TProps = any, TInstance = any> extends React.Component<
+  TProps,
+  any
+> {
   state: any;
   constructor(props: any, state?: any);
 

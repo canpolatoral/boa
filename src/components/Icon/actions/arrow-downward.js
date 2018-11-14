@@ -2,7 +2,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const ArrowDownward = (props) => {
+const ArrowDownward = props => {
   return (
     <SvgIcon {...props}>
       <path d="M0 0h24v24H0V0z" fill="none" />

@@ -22,10 +22,7 @@ class DatePickerDialog extends ComponentBase {
     dateFormat: PropTypes.string,
     DateTimeFormat: PropTypes.func,
     datetimeOption: PropTypes.object,
-    dateUpdate: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-    ]),
+    dateUpdate: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
     dialogContentStyle: PropTypes.object,
     dialogNewSelectDate: PropTypes.instanceOf(Date),
     disableYearSelection: PropTypes.bool,
@@ -133,8 +130,7 @@ class DatePickerDialog extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  handleClickToolBar() {
-  }
+  handleClickToolBar() {}
 
   dateUpdate(oldDate, newDate, changeType) {
     if (this.props.dateUpdate) {
@@ -161,8 +157,7 @@ class DatePickerDialog extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  handleWindowKeyUp() {
-  }
+  handleWindowKeyUp() {}
 
   render() {
     const {
@@ -206,7 +201,6 @@ class DatePickerDialog extends ComponentBase {
     const { open } = this.state;
     const isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
     const popoverOrigin = { horizontal: 'left', vertical: 'top' };
-
 
     const calendar = (
       <Calendar
@@ -274,7 +268,7 @@ class DatePickerDialog extends ComponentBase {
         autoCloseWhenOffScreen={false}
         style={{
           marginTop: -57,
-          marginLeft: (this.props.pageType !== 'browse') ? -10 : -12,
+          marginLeft: this.props.pageType !== 'browse' ? -10 : -12,
           paddingTop: 0,
           maxWidth: '100%',
           width: 'calc(100% - 16px)',
@@ -291,23 +285,22 @@ class DatePickerDialog extends ComponentBase {
         zDepth={1}
         bodyStyle={containerStyle}
         contentStyle={dialogContentStyle}
-        ref={r => this.popover = r}
+        ref={r => (this.popover = r)}
         onRequestClose={this.handleRequestClose}
         scrollableContainer
         disableRestoreFocus
       >
-        <EventListener
-          target="window"
-          onKeyUp={this.handleWindowKeyUp}
-        />
+        <EventListener target="window" onKeyUp={this.handleWindowKeyUp} />
         {calendar}
       </Popover>
     );
     return (
       <div ref={ref => (this.root = ref)}>
-        {this.props.noDialog ?
-          <div> {calendar}</div> : <div> {isMobileOrTablet ? content : popoverContent}  </div>
-        }
+        {this.props.noDialog ? (
+          <div> {calendar}</div>
+        ) : (
+          <div> {isMobileOrTablet ? content : popoverContent} </div>
+        )}
       </div>
     );
   }

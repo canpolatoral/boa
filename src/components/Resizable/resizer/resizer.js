@@ -76,10 +76,16 @@ export default class Resizer extends Component {
     onResizeStart: PropTypes.func,
     replaceStyles: PropTypes.object,
     type: PropTypes.oneOf([
-      'top', 'right', 'bottom', 'left',
-      'topRight', 'bottomRight', 'bottomLeft', 'topLeft',
+      'top',
+      'right',
+      'bottom',
+      'left',
+      'topRight',
+      'bottomRight',
+      'bottomLeft',
+      'topLeft',
     ]).isRequired,
-  }
+  };
 
   constructor(props, context) {
     super(props, context);

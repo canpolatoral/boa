@@ -289,7 +289,9 @@ class DayButton extends Component {
           }).format(date)}
         </span>
       </ButtonBase>
-    ) : (<span style={styles.root} />);
+    ) : (
+      <span style={styles.root} />
+    );
   }
 }
 

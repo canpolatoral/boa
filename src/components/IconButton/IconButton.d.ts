@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface IconButtonProps extends ComponentBaseProps {
   tooltip?: string;
@@ -21,4 +17,4 @@ export interface IconButtonProps extends ComponentBaseProps {
 // export interface IconButtonInstance extends ComponentBaseInstance {
 // }
 
-export default class IconButton extends ComponentBase<IconButtonProps, ComponentBaseInstance> { }
+export default class IconButton extends ComponentBase<IconButtonProps, ComponentBaseInstance> {}

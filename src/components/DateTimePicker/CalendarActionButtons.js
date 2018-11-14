@@ -30,7 +30,7 @@ class CalendarActionButton extends ComponentBase {
     const disabled = this.refs.calendar && this.refs.calendar.isSelectedDateDisabled();
     return (
       <div>
-        {!this.props.autoOk &&
+        {!this.props.autoOk && (
           <Button
             context={this.props.context}
             type="flat"
@@ -39,7 +39,7 @@ class CalendarActionButton extends ComponentBase {
             onClick={this.props.onTouchTapOk}
             disabled={disabled}
           />
-        }
+        )}
       </div>
     );
   }
@@ -69,19 +69,10 @@ class CalendarActionButton extends ComponentBase {
 
     return (
       <div style={styles.root}>
-        {
-          isRtl && this.renderOkButton()
-        }
-        {
-          isRtl && this.renderCancelButton()
-        }
-        {
-          !isRtl && this.renderCancelButton()
-        }
-        {
-          !isRtl && this.renderOkButton()
-        }
-
+        {isRtl && this.renderOkButton()}
+        {isRtl && this.renderCancelButton()}
+        {!isRtl && this.renderCancelButton()}
+        {!isRtl && this.renderOkButton()}
       </div>
     );
   }

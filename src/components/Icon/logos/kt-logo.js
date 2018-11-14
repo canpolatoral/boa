@@ -2,7 +2,7 @@
 import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-const KTLogo = (props) => {
+const KTLogo = props => {
   // eslint-disable-next-line no-unused-vars
   const { context, ...otherProps } = props;
   return (

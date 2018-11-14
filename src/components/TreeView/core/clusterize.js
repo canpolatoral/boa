@@ -5,7 +5,7 @@ import { getElementStyle, addEventListener, removeEventListener } from './dom';
 
 const ie = getIEVersion();
 
-const getChildNodes = (tag) => {
+const getChildNodes = tag => {
   const childNodes = tag.children;
   const nodes = [];
   const length = childNodes.length;
@@ -199,8 +199,10 @@ class Clusterize extends EventEmitter {
 
     let itemHeight = node.offsetHeight;
 
-    if (this.options.tag === 'tr' &&
-      getElementStyle(this.contentElement, 'borderCollapse') !== 'collapse') {
+    if (
+      this.options.tag === 'tr' &&
+      getElementStyle(this.contentElement, 'borderCollapse') !== 'collapse'
+    ) {
       itemHeight += parseInt(getElementStyle(this.contentElement, 'borderSpacing'), 10) || 0;
     }
 

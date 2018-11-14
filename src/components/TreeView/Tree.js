@@ -97,18 +97,18 @@ class Tree extends ComponentBase {
           }}
         />
       ) : (
-          <Radiobox
-            context={props.context}
-            node={node}
-            rowHeight={props.rowHeight}
-            onChange={(event, isInputChecked) => {
-              tree.checkNode(node, isInputChecked);
-              if (props.onCheckNode) {
-                props.onCheckNode(node, isInputChecked);
-              }
-            }}
-          />
-        ));
+        <Radiobox
+          context={props.context}
+          node={node}
+          rowHeight={props.rowHeight}
+          onChange={(event, isInputChecked) => {
+            tree.checkNode(node, isInputChecked);
+            if (props.onCheckNode) {
+              props.onCheckNode(node, isInputChecked);
+            }
+          }}
+        />
+      ));
 
     return (
       <TreeNode
@@ -140,7 +140,8 @@ class Tree extends ComponentBase {
             state={toggleState}
             context={props.context}
             icon={node.icon}
-            rowHeight={props.rowHeight} />
+            rowHeight={props.rowHeight}
+          />
         )}
         <Text
           onClick={() => {
@@ -153,22 +154,23 @@ class Tree extends ComponentBase {
             <span style={{ lineHeight: '15px', display: 'inline-block', verticalAlign: 'middle' }}>
               {this.highlightSearchTerm(node)}
               <br />
-              <span style={{
-                color: props.context.theme.boaPalette.base400,
-                fontWeight: '400',
-                fontSize: '12px',
-              }}>
+              <span
+                style={{
+                  color: props.context.theme.boaPalette.base400,
+                  fontWeight: '400',
+                  fontSize: '12px',
+                }}
+              >
                 {node.detail}
               </span>
             </span>
           ) : (
-              this.highlightSearchTerm(node)
-            )}
+            this.highlightSearchTerm(node)
+          )}
         </Text>
       </TreeNode>
     );
   }
-
 
   highlightSearchTerm(node) {
     if (this.props.filterText && node.name) {

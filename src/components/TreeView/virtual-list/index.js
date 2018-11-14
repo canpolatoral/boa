@@ -48,8 +48,10 @@ export default class VirtualList extends PureComponent {
   });
 
   state = {
-    offset: this.props.scrollOffset ||
-      (this.props.scrollToIndex != null && this.getOffsetForIndex(this.props.scrollToIndex)) || 0,
+    offset:
+      this.props.scrollOffset ||
+      (this.props.scrollToIndex != null && this.getOffsetForIndex(this.props.scrollToIndex)) ||
+      0,
     scrollChangeReason: SCROLL_CHANGE_REQUESTED,
   };
 
@@ -68,16 +70,19 @@ export default class VirtualList extends PureComponent {
   componentWillReceiveProps(nextProps) {
     const {
       estimatedItemSize,
-      itemCount, itemSize,
+      itemCount,
+      itemSize,
       scrollOffset,
       scrollToAlignment,
       scrollToIndex,
     } = this.props;
 
-    const scrollPropsHaveChanged = nextProps.scrollToIndex !== scrollToIndex ||
+    const scrollPropsHaveChanged =
+      nextProps.scrollToIndex !== scrollToIndex ||
       nextProps.scrollToAlignment !== scrollToAlignment;
 
-    const itemPropsHaveChanged = nextProps.itemCount !== itemCount ||
+    const itemPropsHaveChanged =
+      nextProps.itemCount !== itemCount ||
       nextProps.itemSize !== itemSize ||
       nextProps.estimatedItemSize !== estimatedItemSize;
 
@@ -99,7 +104,11 @@ export default class VirtualList extends PureComponent {
       });
     } else if (scrollPropsHaveChanged || (nextProps.scrollToIndex && itemPropsHaveChanged)) {
       this.setState({
-        offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount), // eslint-disable-line
+        offset: this.getOffsetForIndex(
+          nextProps.scrollToIndex,
+          nextProps.scrollToAlignment,
+          nextProps.itemCount,
+        ), // eslint-disable-line
         scrollChangeReason: SCROLL_CHANGE_REQUESTED,
       });
     }
@@ -114,7 +123,11 @@ export default class VirtualList extends PureComponent {
   }
 
   // eslint-disable-next-line max-len
-  getOffsetForIndex(index, scrollToAlignment = this.props.scrollToAlignment, itemCount = this.props.itemCount) {
+  getOffsetForIndex(
+    index,
+    scrollToAlignment = this.props.scrollToAlignment,
+    itemCount = this.props.itemCount,
+  ) {
     const { scrollDirection } = this.props;
 
     if (index < 0 || index >= itemCount) {
@@ -166,7 +179,6 @@ export default class VirtualList extends PureComponent {
   getRef = node => {
     this.rootNode = node;
   };
-
 
   handleScroll = e => {
     const { onScroll } = this.props;
@@ -236,9 +248,14 @@ export default class VirtualList extends PureComponent {
         ref={this.getRef}
         {...props}
         onScroll={this.handleScroll}
-        style={{ ...STYLE_WRAPPER, ...style, height, width }}>
+        style={{ ...STYLE_WRAPPER, ...style, height, width }}
+      >
         <div
-          style={{ ...STYLE_INNER, [sizeProp[scrollDirection]]: this.sizeAndPositionManager.getTotalSize() }}>
+          style={{
+            ...STYLE_INNER,
+            [sizeProp[scrollDirection]]: this.sizeAndPositionManager.getTotalSize(),
+          }}
+        >
           {items}
         </div>
       </div>

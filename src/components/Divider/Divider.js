@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MuiDivider from '@material-ui/core/Divider';
-import {
-  ComponentBase,
-  ComponentComposer,
-} from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@boa/base';
 
 @ComponentComposer
 class Divider extends ComponentBase {
@@ -32,7 +29,7 @@ class Divider extends ComponentBase {
      * If `true`, the divider will have a lighter color.
      */
     light: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     ...ComponentBase.defaultProps,
@@ -40,7 +37,7 @@ class Divider extends ComponentBase {
     component: 'hr',
     inset: false,
     light: false,
-  }
+  };
 
   render() {
     let innerStyle = {
@@ -54,12 +51,7 @@ class Divider extends ComponentBase {
     const { style, ...props } = this.props;
     innerStyle = Object.assign(innerStyle, style);
 
-    return (
-      <MuiDivider
-        style={innerStyle}
-        {...props}
-      />
-    );
+    return <MuiDivider style={innerStyle} {...props} />;
   }
 }
 

@@ -17,20 +17,20 @@ const Radiobox = styled(({ node, ...props }) => (
     style={
       node.state.indeterminate
         ? {
-          color: props.context.theme.boaPalette.base400,
-          width: '24px',
-          marginRight: !props.context.localization.isRightToLeft && '12px',
-          marginLeft: props.context.localization.isRightToLeft && '12px',
-          marginTop: '0px',
-          height: props.rowHeight,
-        }
+            color: props.context.theme.boaPalette.base400,
+            width: '24px',
+            marginRight: !props.context.localization.isRightToLeft && '12px',
+            marginLeft: props.context.localization.isRightToLeft && '12px',
+            marginTop: '0px',
+            height: props.rowHeight,
+          }
         : {
-          width: '24px',
-          marginRight: !props.context.localization.isRightToLeft && '12px',
-          marginLeft: props.context.localization.isRightToLeft && '12px',
-          marginTop: '0px',
-          height: props.rowHeight,
-        }
+            width: '24px',
+            marginRight: !props.context.localization.isRightToLeft && '12px',
+            marginLeft: props.context.localization.isRightToLeft && '12px',
+            marginTop: '0px',
+            height: props.rowHeight,
+          }
     }
   />
 ))`

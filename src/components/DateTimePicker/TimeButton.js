@@ -36,7 +36,6 @@ function getStyles(props, context, state) {
       fontWeight: 400,
       position: 'relative',
       top: -1,
-
     },
   };
 }
@@ -101,9 +100,7 @@ class TimeButton extends ComponentBase {
         onClick={this.handleTouchTap}
         style={styles.root}
       >
-        <span style={styles.label}>
-          {children}
-        </span>
+        <span style={styles.label}>{children}</span>
       </ButtonBase>
     );
   }

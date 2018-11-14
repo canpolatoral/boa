@@ -10,11 +10,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default class ErrorBoundary extends Component {
   static propTypes = {
     children: PropTypes.node,
-  }
+  };
 
   state = {
     hasError: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -38,12 +38,11 @@ export default class ErrorBoundary extends Component {
         open={this.state.open}
         // onClose={this.handleClose}
         aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description">
+        aria-describedby="alert-dialog-description"
+      >
         <DialogTitle id="alert-dialog-title">{error.message}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            {error.stack}
-          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">{error.stack}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary" autoFocus>

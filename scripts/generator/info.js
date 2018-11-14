@@ -15,18 +15,18 @@ const options = yargs.option('component', {
   type: 'string',
 }).argv;
 
-const directories = fs.readdirSync(COMPONENTS_DIRECTORY).filter((file) => {
+const directories = fs.readdirSync(COMPONENTS_DIRECTORY).filter(file => {
   return fs.statSync(path.join(COMPONENTS_DIRECTORY, file)).isDirectory();
 });
 
-const repair = (obj) => {
+const repair = obj => {
   for (const property in obj) {
     if (obj.hasOwnProperty(property)) {
       if (typeof obj[property] === 'object') {
         repair(obj[property]);
       } else {
         let str = obj[property];
-        if (typeof str === 'string' && str[0] === '\'' && str[str.length - 1] === '\'') {
+        if (typeof str === 'string' && str[0] === "'" && str[str.length - 1] === "'") {
           obj[property] = str.slice(1, str.length - 1);
         } else if (typeof str === 'string' && str.startsWith('new Date(')) {
           str = str.slice(9, str.length - 1).replace(' ', '');
@@ -35,8 +35,8 @@ const repair = (obj) => {
         } else {
           try {
             obj[property] = JSON.parse(str);
-          } catch (err) { // eslint-disable
-
+          } catch (err) {
+            // eslint-disable
           }
         }
       }
@@ -44,11 +44,13 @@ const repair = (obj) => {
   }
 };
 
-const generateDocument = (component) => {
+const generateDocument = component => {
   if (component === 'Scroll' || component === 'Icon') return;
 
-  const fileContent = fs.readFileSync(path.join(COMPONENTS_DIRECTORY, component, `${component}.js`),
-    { encoding: 'utf8' });
+  const fileContent = fs.readFileSync(
+    path.join(COMPONENTS_DIRECTORY, component, `${component}.js`),
+    { encoding: 'utf8' },
+  );
 
   const componentInfo = parse(fileContent);
   repair(componentInfo);
@@ -57,12 +59,15 @@ const generateDocument = (component) => {
     fs.mkdirSync(path.join(STORIES_DIRECTORY, component));
   }
 
-  fs.writeFileSync(path.join(STORIES_DIRECTORY, component, 'doc.json'),
-    JSON.stringify(componentInfo, null, '\t'), { flag: 'w', encoding: 'utf8' });
+  fs.writeFileSync(
+    path.join(STORIES_DIRECTORY, component, 'doc.json'),
+    JSON.stringify(componentInfo, null, '\t'),
+    { flag: 'w', encoding: 'utf8' },
+  );
 };
 
 const generate = () => {
-  directories.forEach((dir) => {
+  directories.forEach(dir => {
     if (options.component === 'all' || dir === options.component) generateDocument(dir);
   });
 };

@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('Popover', ({ props }) => {
       <Header {...props} component={Popover} doc={doc} />
       <Preview {...props} component={Popover} doc={doc} />
       <Props {...props} component={Popover} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

@@ -2,7 +2,7 @@
 import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-const BOALogo = (props) => {
+const BOALogo = props => {
   /* eslint-disable no-unused-vars */
   const { context, ...otherProps } = props;
   /* eslint-enable no-unused-vars */

@@ -4,11 +4,11 @@ import ComponentBase from './ComponentBase';
 export default class EditorBase extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
-  }
+  };
 
   static defaultProps = {
     ...ComponentBase.defaultProps,
-  }
+  };
 
   validateConstraint() {
     const { valueConstraint } = this.props;
@@ -44,8 +44,10 @@ export default class EditorBase extends ComponentBase {
 
     result = newValidationResult.length <= 0;
 
-    if (!this.validationResult ||
-      !isEqual(this.validationResult.sort(), newValidationResult.sort())) {
+    if (
+      !this.validationResult ||
+      !isEqual(this.validationResult.sort(), newValidationResult.sort())
+    ) {
       this.validationResult = newValidationResult;
       this.forceUpdate();
     }
@@ -68,8 +70,8 @@ export default class EditorBase extends ComponentBase {
       return null;
     }
 
-    const min = (options.min && options.min >= 0) ? options.min : 0;
-    const max = (options.max && options.max >= 0) ? options.max : 0;
+    const min = options.min && options.min >= 0 ? options.min : 0;
+    const max = options.max && options.max >= 0 ? options.max : 0;
     const len = value.length || 0;
 
     if (len < min) {

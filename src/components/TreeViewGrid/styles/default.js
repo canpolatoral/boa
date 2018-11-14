@@ -16,7 +16,7 @@ export default {
       link: {
         cursor: 'pointer',
         position: 'relative',
-       // padding: '2px 0px',
+        // padding: '2px 0px',
         display: 'block',
       },
       activeLink: {
@@ -112,9 +112,7 @@ export default {
     },
   },
   searchWrap: {
-    div: {
-
-    },
+    div: {},
     searchInput: {
       display: 'inline-block',
       width: 'calc(100% - 29px)',

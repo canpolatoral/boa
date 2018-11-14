@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface DocNoticeProps extends ComponentBaseProps {
   content: string;
@@ -16,4 +12,4 @@ export interface DocNoticeProps extends ComponentBaseProps {
 // export interface DocNoticeInstance extends ComponentBaseInstance {
 // }
 
-export default class DocNotice extends ComponentBase<DocNoticeProps, ComponentBaseInstance> { }
+export default class DocNotice extends ComponentBase<DocNoticeProps, ComponentBaseInstance> {}

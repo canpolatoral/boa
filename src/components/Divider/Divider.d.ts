@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface DividerProps extends ComponentBaseProps {
   inset?: boolean;
@@ -14,4 +10,4 @@ export interface DividerProps extends ComponentBaseProps {
 // export interface DividerInstance extends ComponentBaseInstance {
 // }
 
-export default class Divider extends ComponentBase<DividerProps, ComponentBaseInstance> { }
+export default class Divider extends ComponentBase<DividerProps, ComponentBaseInstance> {}

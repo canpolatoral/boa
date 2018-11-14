@@ -3,9 +3,12 @@ export const defaultMatcher = (filterText, node) => {
 };
 
 export const findNode = (node, filter, matcher) => {
-  return matcher(filter, node) ||
+  return (
+    matcher(filter, node) ||
     (node.children &&
-    node.children.length && !!node.children.find(child => findNode(child, filter, matcher)));
+      node.children.length &&
+      !!node.children.find(child => findNode(child, filter, matcher)))
+  );
 };
 
 export const filterTree = (node, filter, matcher = defaultMatcher) => {

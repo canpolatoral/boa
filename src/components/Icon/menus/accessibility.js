@@ -3,7 +3,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const Accessibility = (props) => {
+const Accessibility = props => {
   return (
     <SvgIcon {...props}>
       <path d="M0 0h24v24H0z" fill="none" />

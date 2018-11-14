@@ -59,7 +59,6 @@ const styles = theme => ({
   inputError: Object.assign(baseStyles(theme).input, {}),
 
   inputUnderline: {
-
     '&:after': {
       borderBottom: `2px solid ${theme.boaPalette.pri500}`,
     },
@@ -74,7 +73,6 @@ const styles = theme => ({
   },
 
   inputUnderlineRequired: {
-
     '&:after': {
       borderBottom: `2px solid ${theme.boaPalette.pri500}`,
     },
@@ -96,7 +94,6 @@ const styles = theme => ({
     paddingTop: '2px !important',
     marginTop: '0px !important',
     color: theme.boaPalette.pri500,
-
   }),
 
   inputLabelRoot: Object.assign(baseStyles(theme).inputLabeRootBase, {}),
@@ -148,7 +145,7 @@ class Input extends EditorBase {
      * onchange setState bitmeden tetikleniyor.
      * SetState callbacinde fırlatılan bir evente ihtiyacımız oldu.
      * Kullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi.
-    */
+     */
     onChangeSync: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -386,10 +383,7 @@ class Input extends EditorBase {
       underlineShow,
     } = this.props;
 
-    let {
-      errorText,
-      hintText,
-    } = this.props;
+    let { errorText, hintText } = this.props;
 
     const bottomTextSize = 11;
     const disabledLabelColor = context.theme.boaPalette.base250;
@@ -467,8 +461,8 @@ class Input extends EditorBase {
         bottomRightInfoSpace = (
           <span style={bottomRightInfoStyle}>
             {/* masked editörde maxLength ile değil maskedMaskLength görülecek  */}
-            <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>
-            /{this.props.maskedMaxLength ? this.props.maskedMaxLength : maxLength}
+            <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>/
+            {this.props.maskedMaxLength ? this.props.maskedMaxLength : maxLength}
           </span>
         );
       }
@@ -481,7 +475,6 @@ class Input extends EditorBase {
       marginBottom: 10,
       textAlign: isRtl ? 'right' : 'left',
     };
-
 
     const bottomInfoStyle = {
       marginTop: 2,
@@ -522,7 +515,6 @@ class Input extends EditorBase {
       paddingTop: 10,
       marginTop: 0,
       // this.props.inlineGridMode ? (this.props.multiLine ? 10 : hideshowMarginTop ? 0 : 12) : 0
-
     };
     const rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
     const { focussed, value } = this.state;
@@ -545,10 +537,13 @@ class Input extends EditorBase {
 
     // zorunlu alanlar eğer veri grilmemiş ise underline rengi farklı olacak.
     let underlineClass = classes.inputUnderline;
-    if (this.props.valueConstraint
-      && this.props.valueConstraint.required
-      && (this.getValue() == null || this.getValue() === undefined || this.getValue() === '')
-    ) underlineClass = classes.inputUnderlineRequired;
+    if (
+      this.props.valueConstraint &&
+      this.props.valueConstraint.required &&
+      (this.getValue() == null || this.getValue() === undefined || this.getValue() === '')
+    ) {
+      underlineClass = classes.inputUnderlineRequired;
+    }
 
     const { inputLabelRootDisabled, inputLabelRoot } = classes;
     return (
@@ -556,24 +551,24 @@ class Input extends EditorBase {
         <MuiFormControl
           disabled={this.state.disabled}
           fullWidth={this.props.fullWidth}
-          style={this.props.formControlStyle}>
-          {floatingLabelText &&
-            !this.props.inlineGridMode && (
-              <MuiInputLabel
-                classes={{
-                  shrink: classes.inputLabelShink,
-                  root: this.state.disabled ? inputLabelRootDisabled : inputLabelRoot,
-                }}
-                margin={'dense'}
-                htmlFor={id}
-                // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
-                style={floatingLabelRootStyle}
-                disabled={this.state.disabled}
-                shrink={shink}
-              >
-                {this.props.floatingLabelText}
-              </MuiInputLabel>
-            )}
+          style={this.props.formControlStyle}
+        >
+          {floatingLabelText && !this.props.inlineGridMode && (
+            <MuiInputLabel
+              classes={{
+                shrink: classes.inputLabelShink,
+                root: this.state.disabled ? inputLabelRootDisabled : inputLabelRoot,
+              }}
+              margin={'dense'}
+              htmlFor={id}
+              // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+              style={floatingLabelRootStyle}
+              disabled={this.state.disabled}
+              shrink={shink}
+            >
+              {this.props.floatingLabelText}
+            </MuiInputLabel>
+          )}
           <MuiInput
             classes={{
               input: classes.input,
@@ -590,7 +585,7 @@ class Input extends EditorBase {
             inputRef={this.props.inputRef}
             fullWidth={fullWidth}
             type={type}
-             // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+            // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
             style={this.props.inputStyle}
             value={this.state.value}
             disabled={this.state.disabled}
@@ -636,7 +631,8 @@ class Input extends EditorBase {
           {!this.props.inlineGridMode && (
             <MuiFormHelperText // margin={'dense'}
               style={{ marginTop: 0 }}
-              disabled={this.state.disabled}>
+              disabled={this.state.disabled}
+            >
               {error && <div style={errorStyle}>{errorText}</div>}
               {bottomLeftInfoSpace || bottomRightInfoSpace ? (
                 <div style={bottomInfoStyle}>

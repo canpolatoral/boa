@@ -4,10 +4,7 @@ import merge from 'lodash/merge';
 import { withStyles } from '@material-ui/core/styles';
 import MuiButton from '@material-ui/core/Button';
 import MuiIconButton from '@material-ui/core/IconButton';
-import {
-  ComponentBase,
-  ComponentComposer,
-} from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Localization } from '@boa/utils'; //
 import { Icon } from '@boa/components/Icon'; //
 
@@ -22,14 +19,14 @@ const styles = () => ({
 
 /**
  * Button Component is wrapped from `@material-ui/core/Button`.
-*/
+ */
 @ComponentComposer
 @withStyles(styles)
 class Button extends ComponentBase {
   static propTypes = {
     /**
-    * Base properties from ComponentBase
-    */
+     * Base properties from ComponentBase
+     */
     ...ComponentBase.propTypes,
     /**
      * If `false` , content of the button wil be upper case

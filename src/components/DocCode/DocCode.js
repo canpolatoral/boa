@@ -1,12 +1,13 @@
 /* eslint-disable react/no-danger */
-import React from 'react'; import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
 import { ComponentBase } from '@boa/base';
 import styles from './styles';
 
 /**
  * Code documentation component
-*/
+ */
 class DocCode extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
@@ -25,7 +26,8 @@ class DocCode extends ComponentBase {
       'monokaiSublime',
       'raiinbow',
       'vs',
-      'xcode']),
+      'xcode',
+    ]),
     /**
      * If `true`, the code will be highlighted.
      */
@@ -37,16 +39,14 @@ class DocCode extends ComponentBase {
   };
 
   static defaultProps = {
-    content: 'console.log(\'Hello world\');',
+    content: "console.log('Hello world');",
     lang: 'js',
     highlight: true,
     editorType: 'github',
   };
 
   render() {
-    return (
-      <div dangerouslySetInnerHTML={{ __html: this.getMarkup() }} />
-    );
+    return <div dangerouslySetInnerHTML={{ __html: this.getMarkup() }} />;
   }
 
   getMarkup() {

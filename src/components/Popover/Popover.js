@@ -32,7 +32,8 @@ class Popover extends ComponentBase {
       ]),
       vertical: PropTypes.oneOfType([
         PropTypes.number,
-        PropTypes.oneOf(['top', 'center', 'bottom'])]),
+        PropTypes.oneOf(['top', 'center', 'bottom']),
+      ]),
     }),
     /**
      * This is the position that may be used
@@ -143,11 +144,12 @@ class Popover extends ComponentBase {
       ]),
       vertical: PropTypes.oneOfType([
         PropTypes.number,
-        PropTypes.oneOf(['top', 'center', 'bottom'])]),
+        PropTypes.oneOf(['top', 'center', 'bottom']),
+      ]),
     }),
     /**
-      * Transition component.
-      */
+     * Transition component.
+     */
     transition: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 
     /**
@@ -158,7 +160,7 @@ class Popover extends ComponentBase {
       PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
       PropTypes.oneOf(['auto']),
     ]),
-  }
+  };
 
   static defaultProps = {
     ...ComponentBase.defaultProps,
@@ -176,7 +178,7 @@ class Popover extends ComponentBase {
     // transition: Grow,
     transitionDuration: 'auto',
     disableRestoreFocus: false,
-  }
+  };
 
   state = {
     open: this.props.open,
@@ -200,7 +202,9 @@ class Popover extends ComponentBase {
   }
 
   openPopover() {
-    this.setState((prevState) => { return { open: !prevState.open }; });
+    this.setState(prevState => {
+      return { open: !prevState.open };
+    });
   }
 
   manualOpen(openElement, width) {
@@ -244,23 +248,25 @@ class Popover extends ComponentBase {
   render() {
     let children;
     if (this.props.isResizable) {
-      children =
+      children = (
         <Resizable
           context={this.props.context}
-          ref={r => this.resizable = r}
+          ref={r => (this.resizable = r)}
           bounds="parent"
           minWidth={200}
           minHeight={100}
           default={{ x: 0, y: 0, width: '100%', height: '100%' }}
-          onResize={this.onResize}>
+          onResize={this.onResize}
+        >
           {this.props.children}
-        </Resizable>;
+        </Resizable>
+      );
     } else {
       children = this.props.children;
     }
     return (
       <MuiPopover
-        ref={r => this.popover = r}
+        ref={r => (this.popover = r)}
         anchorEl={this.state.anchorEl}
         anchorReference={this.props.anchorReference}
         anchorPosition={this.props.anchorPosition}
@@ -276,7 +282,8 @@ class Popover extends ComponentBase {
         transitionDuration={this.props.transitionDuration}
         disableRestoreFocus={this.props.disableRestoreFocus}
         PaperProps={this.props.PaperProps}
-        marginThreshold={this.props.marginThreshold}>
+        marginThreshold={this.props.marginThreshold}
+      >
         {children}
       </MuiPopover>
     );

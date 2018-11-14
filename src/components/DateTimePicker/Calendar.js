@@ -48,10 +48,7 @@ class Calendar extends ComponentBase {
     dateFormat: PropTypes.string,
     DateTimeFormat: PropTypes.func.isRequired,
     datetimeOption: PropTypes.object,
-    dateUpdate: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-    ]),
+    dateUpdate: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
     dialogNewSelectDate: PropTypes.instanceOf(Date),
     disableYearSelection: PropTypes.bool,
     firstDayOfWeek: PropTypes.number,
@@ -211,17 +208,17 @@ class Calendar extends ComponentBase {
   getSpecialDays() {
     return (
       <div>
-        {this.props.isBusiness && this.SpecialDays.length > 0 &&
+        {this.props.isBusiness && this.SpecialDays.length > 0 && (
           <SpecialDay
             context={this.props.context}
             DateTimeFormat={this.props.DateTimeFormat}
             specialDayType={1}
-            key={`db${(4)}`}
+            key={`db${4}`}
             selectedDate={this.state.displayDate}
             calendarInfo={this.SpecialDays}
             format={this.props.dateFormat}
           />
-        }
+        )}
       </div>
     );
   }
@@ -274,9 +271,11 @@ class Calendar extends ComponentBase {
       const calendarInfo = this.props.calendarInfo;
       const date = this.state.displayDate;
       if (date !== undefined) {
-        if (this.CalendarInfoSelectedDate === undefined ||
+        if (
+          this.CalendarInfoSelectedDate === undefined ||
           this.CalendarInfoSelectedDate.getMonth() !== date.getMonth() ||
-          this.CalendarInfoSelectedDate.getFullYear() !== date.getFullYear()) {
+          this.CalendarInfoSelectedDate.getFullYear() !== date.getFullYear()
+        ) {
           this.CalendarInfoSelectedDate = date;
           this.SpecialDays = [];
           for (let i = 0; i < calendarInfo.length; i++) {
@@ -479,7 +478,8 @@ class Calendar extends ComponentBase {
             }
           }
           break;
-        default: break;
+        default:
+          break;
       }
     }
   }
@@ -493,11 +493,13 @@ class Calendar extends ComponentBase {
       if (event && event.wheelDelta !== 0 && event.wheelDelta / 120 > 0) {
         selectionStart = event.target.selectionStart;
         selectionEnd = event.target.selectionEnd;
-        newValue = calendarMouseWheelAction(event.target.selectionStart,
+        newValue = calendarMouseWheelAction(
+          event.target.selectionStart,
           this.props.dateFormat,
           value,
           1,
-          this.state.selectedDate);
+          this.state.selectedDate,
+        );
         this.setState({
           initialDate: newValue,
           displayDate: getFirstDayOfMonth(newValue),
@@ -510,11 +512,13 @@ class Calendar extends ComponentBase {
         selectionStart = event.target.selectionStart;
         selectionEnd = event.target.selectionEnd;
 
-        newValue = calendarMouseWheelAction(event.target.selectionStart,
+        newValue = calendarMouseWheelAction(
+          event.target.selectionStart,
           this.props.dateFormat,
           value,
           -1,
-          this.state.selectedDate);
+          this.state.selectedDate,
+        );
         this.setState({
           initialDate: newValue,
           displayDate: getFirstDayOfMonth(newValue),
@@ -536,11 +540,9 @@ class Calendar extends ComponentBase {
       this.props.onFocus(e);
     }
     this.inputFocus = true;
-    this.setState(
-      {
-        focus: true,
-      },
-    );
+    this.setState({
+      focus: true,
+    });
   }
 
   handleBlurInput(e) {
@@ -548,11 +550,9 @@ class Calendar extends ComponentBase {
       this.props.onBlur(e);
     }
     this.inputFocus = true;
-    this.setState(
-      {
-        focus: false,
-      },
-    );
+    this.setState({
+      focus: false,
+    });
   }
 
   onTouchTapOk() {
@@ -573,11 +573,16 @@ class Calendar extends ComponentBase {
             if (dateValue.isValid()) {
               // eslint-disable-next-line
               const newDate = dateValue._d;
-              this.setState({
-                initialDate: newDate,
-                displayDate: getFirstDayOfMonth(newDate),
-                selectedDate: newDate,
-              }, () => { this.handleTouchTapDay(e, newDate); });
+              this.setState(
+                {
+                  initialDate: newDate,
+                  displayDate: getFirstDayOfMonth(newDate),
+                  selectedDate: newDate,
+                },
+                () => {
+                  this.handleTouchTapDay(e, newDate);
+                },
+              );
               // if (this.props.dateUpdate) {
               //   this.props.dateUpdate(cloneDate(this.state.selectedDate), cloneDate(newDate), 5);
               // }
@@ -586,7 +591,8 @@ class Calendar extends ComponentBase {
         }
         break;
       }
-      default: break;
+      default:
+        break;
     }
   }
 
@@ -629,37 +635,20 @@ class Calendar extends ComponentBase {
           timeType={5}
           format={this.props.dateFormat}
         />
-
       );
     }
     return null;
   }
 
   renderYearAndMounthSelector() {
-    const {
-      style,
-      yearTitle,
-      monthTitle,
-    } = this.props;
+    const { style, yearTitle, monthTitle } = this.props;
     const isRtl = this.props.context.localization.isRightToLeft;
     return (
       <div style={style.datetimeContainer}>
-        {
-          !isRtl &&
-          this.renderSelection(style, monthTitle, true)
-        }
-        {
-          !isRtl &&
-          this.renderSelection(style, yearTitle, false)
-        }
-        {
-          isRtl &&
-          this.renderSelection(style, yearTitle, false)
-        }
-        {
-          isRtl &&
-          this.renderSelection(style, monthTitle, true)
-        }
+        {!isRtl && this.renderSelection(style, monthTitle, true)}
+        {!isRtl && this.renderSelection(style, yearTitle, false)}
+        {isRtl && this.renderSelection(style, yearTitle, false)}
+        {isRtl && this.renderSelection(style, monthTitle, true)}
       </div>
     );
   }
@@ -671,14 +660,8 @@ class Calendar extends ComponentBase {
           <span style={style.datetimeItemSpan}>{title}</span>
         </div>
         <div style={style.datetimeListContainer}>
-          {
-            yearOrMounth &&
-            this.mounthSelector()
-          }
-          {
-            !yearOrMounth &&
-            this.yearSelector()
-          }
+          {yearOrMounth && this.mounthSelector()}
+          {!yearOrMounth && this.yearSelector()}
         </div>
       </div>
     );
@@ -773,10 +756,7 @@ class Calendar extends ComponentBase {
       dayAndInput: {
         padding: '7px 12px 0px 12px',
       },
-      inputStyle: {
-
-      },
-
+      inputStyle: {},
     };
 
     const weekTitleDayStyle = styles.weekTitleDay;
@@ -839,7 +819,6 @@ class Calendar extends ComponentBase {
         context={this.props.context}
         dynamicIcon="AddCircleOutline"
         style={{
-
           width: 16,
           height: 16,
           marginTop: 7,
@@ -848,7 +827,6 @@ class Calendar extends ComponentBase {
         disabled={this.state.disabled}
       />
     );
-
 
     const prefix = (
       <IconButton
@@ -866,7 +844,6 @@ class Calendar extends ComponentBase {
     );
     return (
       <div style={styles.root}>
-
         <div style={styles.dayAndInput}>
           <EventListener
             target="window"
@@ -877,7 +854,7 @@ class Calendar extends ComponentBase {
           <div style={styles.inputStyle}>
             <div style={style.inputContainer}>
               <div style={style.inputDateItem}>
-                {!this.props.noDialog &&
+                {!this.props.noDialog && (
                   <InputMask
                     // {...other}
                     onKeyDown={this.onKeyDownInputDate}
@@ -886,7 +863,7 @@ class Calendar extends ComponentBase {
                     onFocus={this.handleFocusInput}
                     onBlur={this.handleBlurInput}
                     value={dateInputValue}
-                    ref={r => this.bactioninput = r}
+                    ref={r => (this.bactioninput = r)}
                     prefixText={prefix}
                     suffixText={suffix}
                     floatingLabelStyle={this.state.floatingLabelStyle}
@@ -899,7 +876,7 @@ class Calendar extends ComponentBase {
                     bottomLeftInfoEnable={false}
                     fullWidth={false}
                   />
-                }
+                )}
               </div>
             </div>
             <Divider
@@ -910,9 +887,10 @@ class Calendar extends ComponentBase {
                 marginLeft: -12,
                 marginRight: -12,
                 marginTop: 0,
-              }} />
+              }}
+            />
             <div style={{ marginTop: 15 }}>
-              {this.state.displayMonthDay &&
+              {this.state.displayMonthDay && (
                 <CalendarToolbar
                   context={this.props.context}
                   DateTimeFormat={DateTimeFormat}
@@ -923,14 +901,13 @@ class Calendar extends ComponentBase {
                   handleClickToolBar={this.handleClickToolBar}
                   format={this.props.dateFormat}
                 />
-              }
+              )}
             </div>
           </div>
           <div style={styles.calendar}>
-            {this.state.displayMonthDay &&
+            {this.state.displayMonthDay && (
               <div>
                 <div style={styles.calendarContainer}>
-
                   <div style={styles.weekTitle}>
                     {daysArray.map((event, i) => (
                       // eslint-disable-next-line
@@ -940,28 +917,23 @@ class Calendar extends ComponentBase {
                     ))}
                   </div>
                   <div style={Object.assign({}, style.transitionSlide, { minHeight })}>
-                    { // TODO :SLIDE
-                      this.getCalendarMonth(DateTimeFormat, minDate, maxDate)
-                    }
+                    {// TODO :SLIDE
+                    this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
                   </div>
 
                   {/* </Slide> */}
-                  <div>
-                    {this.getSpecialDays()}
-                  </div>
+                  <div>{this.getSpecialDays()}</div>
                 </div>
               </div>
-            }
+            )}
           </div>
         </div>
         <div>
-          {!this.state.displayMonthDay &&
-            this.renderYearAndMounthSelector(style)
-          }
-          {this.state.displayMonthDay &&
+          {!this.state.displayMonthDay && this.renderYearAndMounthSelector(style)}
+          {this.state.displayMonthDay && (
             <div style={{ height: 48 }}>
-              {(this.props.isBusiness === false) ?
-                (<Divider
+              {this.props.isBusiness === false ? (
+                <Divider
                   context={this.props.context}
                   style={{
                     width: 'calc(100%)',
@@ -969,13 +941,14 @@ class Calendar extends ComponentBase {
                     marginLeft: 0,
                     marginRight: 0,
                     marginTop: 12,
-                  }} />
-                ) :
-                (<div />)
-              }
+                  }}
+                />
+              ) : (
+                <div />
+              )}
 
-              {(this.props.noDialog === false) ?
-                (<Button
+              {this.props.noDialog === false ? (
+                <Button
                   context={this.props.context}
                   type="flat"
                   text={todayLabel}
@@ -985,13 +958,13 @@ class Calendar extends ComponentBase {
                   style={buttonStyle}
                   textStyle={buttonTextStyle}
                 />
-                ) :
-                (<div />)
-              }
+              ) : (
+                <div />
+              )}
             </div>
-          }
+          )}
         </div>
-        {!this.state.displayMonthDay && okLabel &&
+        {!this.state.displayMonthDay && okLabel && (
           <CalendarActionButtons
             context={this.props.context}
             autoOk={this.props.autoOk}
@@ -1000,7 +973,7 @@ class Calendar extends ComponentBase {
             onTouchTapCancel={onTouchTapCancel}
             onTouchTapOk={this.onTouchTapOk}
           />
-        }
+        )}
       </div>
     );
   }

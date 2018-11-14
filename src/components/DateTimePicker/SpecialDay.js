@@ -33,7 +33,6 @@ function getStyles(props, type) {
       borderBottom: `1px solid ${dateTextColor}`,
       paddingTop: 12,
       paddingBottom: 12,
-
     },
     child: {
       display: 'flex',
@@ -148,7 +147,9 @@ class SpecialDay extends ComponentBase {
       <div style={style.item}>
         <div style={style.Box} />
         <div style={style.child}>
-          <div style={monthStyle}>{beginDay} {MonthName}</div>
+          <div style={monthStyle}>
+            {beginDay} {MonthName}
+          </div>
           <div style={Object.assign({}, style.itemDate, { marginLeft: 0 })}>:</div>
           <div style={style.itemDescription}>{HolidayName}</div>
         </div>
@@ -164,7 +165,7 @@ class SpecialDay extends ComponentBase {
 
     return (
       <div>
-        {specialDays.length === 0 &&
+        {specialDays.length === 0 && (
           <Divider
             context={this.props.context}
             style={{
@@ -173,9 +174,10 @@ class SpecialDay extends ComponentBase {
               marginLeft: 0,
               marginRight: 0,
               marginTop: 12,
-            }} />
-        }
-        {specialDays.length > 0 &&
+            }}
+          />
+        )}
+        {specialDays.length > 0 && (
           <div>
             <Divider
               context={this.props.context}
@@ -185,7 +187,8 @@ class SpecialDay extends ComponentBase {
                 marginLeft: -12,
                 marginRight: -12,
                 marginTop: 14,
-              }} />
+              }}
+            />
             {specialDays}
             <Divider
               context={this.props.context}
@@ -195,9 +198,10 @@ class SpecialDay extends ComponentBase {
                 marginLeft: -12,
                 marginRight: -12,
                 marginTop: 12,
-              }} />
+              }}
+            />
           </div>
-        }
+        )}
       </div>
     );
   }

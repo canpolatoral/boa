@@ -1,5 +1,5 @@
 export default {
-  toggle: (props) => {
+  toggle: props => {
     return {
       animation: { rotateZ: props.node.toggled ? -90 : 0 },
       duration: 300,

@@ -1,4 +1,3 @@
-
 import { getTheme } from '@boa/base';
 
 const context = {};

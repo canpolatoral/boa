@@ -6,7 +6,7 @@ export default function ComponentComposer(WrappedComponent) {
   return class IIBComponent extends WrappedComponent {
     static propTypes = {
       ...WrappedComponent.propTypes,
-    }
+    };
 
     static displayName = `ComponentComposer(${Utils.getDisplayName(WrappedComponent)})`;
 
@@ -24,9 +24,11 @@ export default function ComponentComposer(WrappedComponent) {
 
     render() {
       if (this.props.isVisible || this.props.isVisible === undefined) {
-        // eslint-disable-next-line no-proto
-        if (IIBComponent.prototype.__proto__.constructor.name.includes('WithStyles') ||
-          IIBComponent.displayName.includes('WithStyles')) {
+        if (
+          // eslint-disable-next-line no-proto
+          IIBComponent.prototype.__proto__.constructor.name.includes('WithStyles') ||
+          IIBComponent.displayName.includes('WithStyles')
+        ) {
           const innerComp = super.render();
           const newProps = {
             ref: r => {
@@ -38,11 +40,7 @@ export default function ComponentComposer(WrappedComponent) {
           this.innerRef = null;
           this.comp = super.render();
         }
-        return (
-          <ErrorBoundary>
-            {this.comp}
-          </ErrorBoundary>
-        );
+        return <ErrorBoundary>{this.comp}</ErrorBoundary>;
       }
       return null;
     }

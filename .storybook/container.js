@@ -6,10 +6,9 @@ import { Localization } from '@boa/utils';
 import getContext from '../stories/base/context';
 
 export default class Container extends ComponentBase {
-
   state = {
-    context: getContext()
-  }
+    context: getContext(),
+  };
 
   constructor(props) {
     super(props);
@@ -22,7 +21,7 @@ export default class Container extends ComponentBase {
       versionPath: 'MessagingVersions.json',
       fileNameFormat: 'BOA.Messaging.{0}.json',
       timeout: 3000,
-      languageId: 1
+      languageId: 1,
     });
   }
 
@@ -34,9 +33,15 @@ export default class Container extends ComponentBase {
   }
 
   onLanguageChange(value) {
-    const localization = { isRightToLeft: value === 5 ? true : false }
+    const localization = { isRightToLeft: value === 5 ? true : false };
     Localization.changeLocalizationLanguage(value);
-    this.setState({ context: Object.assign({}, this.state.context, { language: value, localization: localization, messagingContext: {} }) });
+    this.setState({
+      context: Object.assign({}, this.state.context, {
+        language: value,
+        localization: localization,
+        messagingContext: {},
+      }),
+    });
   }
 
   render() {
@@ -45,11 +50,6 @@ export default class Container extends ComponentBase {
     context.props.onThemeChange = this.onThemeChange;
     context.props.onLanguageChange = this.onLanguageChange;
 
-    return (
-      <AppProvider theme={this.state.context.theme}>
-        {story(context)}
-      </AppProvider>
-    );
+    return <AppProvider theme={this.state.context.theme}>{story(context)}</AppProvider>;
   }
 }
-

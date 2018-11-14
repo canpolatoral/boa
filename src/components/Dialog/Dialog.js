@@ -258,7 +258,8 @@ class Dialog extends ComponentBase {
         };
         return Icon.getIcon(icon);
       }
-      default: return null;
+      default:
+        return null;
     }
   }
 
@@ -345,25 +346,26 @@ class Dialog extends ComponentBase {
 
           content.subcontents.forEach(item => {
             subObj.push(
-              (
-                <div
-                  style={{
-                    marginTop: '24px',
-                    fontSize: '11px',
-                    color: context.theme.boaPalette.base400,
-                  }}>{item.header}
-                </div>
-              ),
+              <div
+                style={{
+                  marginTop: '24px',
+                  fontSize: '11px',
+                  color: context.theme.boaPalette.base400,
+                }}
+              >
+                {item.header}
+              </div>,
             );
             item.contents.forEach(i => {
               subObj.push(
-                (
-                  <div style={{
+                <div
+                  style={{
                     fontSize: '13px',
                     color: context.theme.boaPalette.base450,
-                  }}>{i}
-                  </div>
-                ),
+                  }}
+                >
+                  {i}
+                </div>,
               );
             });
           });
@@ -424,7 +426,12 @@ class Dialog extends ComponentBase {
         };
 
         // eslint-disable-next-line max-len
-        if (style && style.height && typeof style.height === 'string' && style.height.includes('%')) {
+        if (
+          style &&
+          style.height &&
+          typeof style.height === 'string' &&
+          style.height.includes('%')
+        ) {
           style.height = style.height.replace('%', 'vh');
         }
 
@@ -497,10 +504,10 @@ class Dialog extends ComponentBase {
         : React.cloneElement(dialog.dialogContent, dialog.contentProps)
       : {};
 
-    const titleBackgroundColor = this.props.titleBackgroundColor ||
-      Object.keys(DialogHelper.dialogRefs).length >= 1 ?
-      context.theme.boaPalette.base300 :
-      context.theme.boaPalette.pri500;
+    const titleBackgroundColor =
+      this.props.titleBackgroundColor || Object.keys(DialogHelper.dialogRefs).length >= 1
+        ? context.theme.boaPalette.base300
+        : context.theme.boaPalette.pri500;
 
     const objLine = {
       height: '1px',
@@ -517,23 +524,22 @@ class Dialog extends ComponentBase {
         : { marginLeft: '96px', marginRight: '24px' },
     );
 
-    Object.assign(objLine,
-      context.deviceSize <= Sizes.SMALL ?
-        { marginRight: '24px', marginLeft: '24px' } :
-        {},
+    Object.assign(
+      objLine,
+      context.deviceSize <= Sizes.SMALL ? { marginRight: '24px', marginLeft: '24px' } : {},
     );
 
     const closeButtonStyle = { top: 0, right: 0 };
 
-    Object.assign(closeButtonStyle, context.localization.isRightToLeft ?
-      { paddingLeft: '12px' } :
-      { paddingRight: '12px' },
+    Object.assign(
+      closeButtonStyle,
+      context.localization.isRightToLeft ? { paddingLeft: '12px' } : { paddingRight: '12px' },
     );
 
     if (context.deviceSize <= Sizes.SMALL) {
-      Object.assign(closeButtonStyle, context.localization.isRightToLeft ?
-        { paddingLeft: '4px' } :
-        { paddingRight: '4px' },
+      Object.assign(
+        closeButtonStyle,
+        context.localization.isRightToLeft ? { paddingLeft: '4px' } : { paddingRight: '4px' },
       );
     }
 
@@ -546,9 +552,9 @@ class Dialog extends ComponentBase {
           : !leftTitleButton && { paddingLeft: '44px' },
       );
     } else {
-      Object.assign(titleStyle, context.localization.isRightToLeft ?
-        { paddingRight: '60px' } :
-        { paddingLeft: '60px' },
+      Object.assign(
+        titleStyle,
+        context.localization.isRightToLeft ? { paddingRight: '60px' } : { paddingLeft: '60px' },
       );
     }
     const dialogFormStyle = {
@@ -582,51 +588,52 @@ class Dialog extends ComponentBase {
 
     const dialogBoxContent = this.props.style ? (
       <MuiDialogContent style={this.props.style}>{dialog.dialogContent}</MuiDialogContent>
-    ) :
-      (
-        <MuiDialogContent style={{ padding: '0px', overflow: 'hidden' }}>
-          <div>
+    ) : (
+      <MuiDialogContent style={{ padding: '0px', overflow: 'hidden' }}>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              // alignItems: 'center',
+              padding: '0px',
+              minHeight: '96px',
+              fontSize: '16px',
+              direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
+            }}
+          >
+            {context.deviceSize > Sizes.SMALL && (
+              <div
+                style={
+                  context.localization.isRightToLeft
+                    ? { paddingTop: '24px', paddingRight: '24px' }
+                    : { paddingTop: '24px', paddingLeft: '24px' }
+                }
+              >
+                {dialog.icon}
+              </div>
+            )}
             <div
               style={{
-                display: 'flex',
-                // alignItems: 'center',
-                padding: '0px',
-                minHeight: '96px',
-                fontSize: '16px',
-                direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
-              }}
-            >
-              {context.deviceSize > Sizes.SMALL && (
-                <div
-                  style={
-                    context.localization.isRightToLeft
-                      ? { paddingTop: '24px', paddingRight: '24px' }
-                      : { paddingTop: '24px', paddingLeft: '24px' }
-                  }
-                >
-                  {dialog.icon}
-                </div>
-              )}
-              <div style={{
                 padding: this.props.dialogBoxContentPadding,
                 display: 'flex',
                 alignItems: 'center',
-              }}>
-                {this.props.content instanceof Array ||
-                  (typeof this.props.content === 'string' &&
-                    typeof dialog.dialogContent === 'string' &&
-                      dialog.dialogContent.includes('<br />')) ? (
-                    <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
-                  ) : (
-                    dialog.dialogContent
-                  )}
-              </div>
+              }}
+            >
+              {this.props.content instanceof Array ||
+              (typeof this.props.content === 'string' &&
+                typeof dialog.dialogContent === 'string' &&
+                dialog.dialogContent.includes('<br />')) ? (
+                <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
+              ) : (
+                dialog.dialogContent
+              )}
             </div>
-            <div style={objLine} />
-            {dialog.subContent}
           </div>
-        </MuiDialogContent>
-      );
+          <div style={objLine} />
+          {dialog.subContent}
+        </div>
+      </MuiDialogContent>
+    );
 
     return (
       <MuiDialog
@@ -642,8 +649,9 @@ class Dialog extends ComponentBase {
       >
         {dialog.titleWithCloseButtonEnabled && dialogForm}
         {dialog.titleWithCloseButtonEnabled ? dialog.dialogContent : dialogBoxContent}
-        {(!dialog.titleWithCloseButtonEnabled && this.props.actions)
-          && <MuiDialogActions>{this.props.actions}</MuiDialogActions>}
+        {!dialog.titleWithCloseButtonEnabled && this.props.actions && (
+          <MuiDialogActions>{this.props.actions}</MuiDialogActions>
+        )}
       </MuiDialog>
     );
   }

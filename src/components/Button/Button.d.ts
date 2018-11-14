@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface ButtonProps extends ComponentBaseProps {
   type: string;
@@ -30,4 +26,4 @@ export interface ButtonProps extends ComponentBaseProps {
 // export interface ButtonInstance extends ComponentBaseInstance {
 // }
 
-export default class Button extends ComponentBase<ButtonProps, ComponentBaseInstance> { }
+export default class Button extends ComponentBase<ButtonProps, ComponentBaseInstance> {}

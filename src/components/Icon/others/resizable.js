@@ -2,7 +2,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const Resizable = (props) => {
+const Resizable = props => {
   return (
     <SvgIcon {...props}>
       <rect x="4" width="2" height="2" />

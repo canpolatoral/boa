@@ -19,11 +19,9 @@ const noop = () => { };
 
 const error = (format, ...args) => {
   let argIndex = 0;
-  const message =
-    `Error: ${
-    format.replace(/%s/g, () => {
-      return args[argIndex++];
-    })}`;
+  const message = `Error: ${format.replace(/%s/g, () => {
+    return args[argIndex++];
+  })}`;
   try {
     // This error was thrown as a convenience so that you can use this stack
     // to find the callsite that caused this error to fire.
@@ -871,7 +869,9 @@ class InfiniteTree extends events.EventEmitter {
           filterText = Localization.stringLowerCase(filterText);
           keyword = Localization.stringLowerCase(keyword);
         }
-        node.state.filtered = options.exactMatch ? filterText === keyword : filterText.indexOf(keyword) >= 0;
+        node.state.filtered = options.exactMatch
+          ? filterText === keyword
+          : filterText.indexOf(keyword) >= 0;
       } else if (typeof predicate === 'function') {
         // function
         const callback = predicate;
@@ -1099,7 +1099,12 @@ class InfiniteTree extends events.EventEmitter {
     const selectedNodes = [];
     this.state.openNodes = [];
     this.state.checkedNodes = [];
-    this.findCheckedAndOpenNodes(this.nodes, this.state.openNodes, this.state.checkedNodes, selectedNodes);
+    this.findCheckedAndOpenNodes(
+      this.nodes,
+      this.state.openNodes,
+      this.state.checkedNodes,
+      selectedNodes,
+    );
     this.state.selectedNode = selectedNodes.length > 0 ? selectedNodes[0] : null;
 
     const rootNode = ((node = null) => {
@@ -1148,7 +1153,11 @@ class InfiniteTree extends events.EventEmitter {
 
     for (let p = parentNode; p !== null; p = p.parent) {
       if (p === node) {
-        error(`Cannot move an ancestor node (id=${node.id}) to the specified parent node (id=${parentNode.id}).`);
+        error(
+          `Cannot move an ancestor node (id=${node.id}) to the specified parent node (id=${
+          parentNode.id
+          }).`,
+        );
         return false;
       }
     }
@@ -1508,7 +1517,6 @@ class InfiniteTree extends events.EventEmitter {
       this.rows[parentNodeIndex] = this.options.rowRenderer(parentNode, this.options);
     }
 
-
     // Update open nodes and lookup table
     this.state.openNodes = this.state.openNodes.filter(node => { // eslint-disable-line
       return removedNodes.indexOf(node) < 0 && node.state.open;
@@ -1672,7 +1680,10 @@ class InfiniteTree extends events.EventEmitter {
           }
 
           // Scroll Down
-          if (offsetTop + offsetHeight >= this.scrollElement.scrollTop + this.scrollElement.clientHeight) {
+          if (
+            offsetTop + offsetHeight >=
+            this.scrollElement.scrollTop + this.scrollElement.clientHeight
+          ) {
             this.scrollElement.scrollTop += offsetHeight;
           }
         }
@@ -1723,7 +1734,10 @@ class InfiniteTree extends events.EventEmitter {
     const nodeIndex1 = parentNode1.children.indexOf(node1);
     const nodeIndex2 = parentNode2.children.indexOf(node2);
 
-    return this.moveNodeTo(node1, parentNode2, nodeIndex2) && this.moveNodeTo(node2, parentNode1, nodeIndex1);
+    return (
+      this.moveNodeTo(node1, parentNode2, nodeIndex2) &&
+      this.moveNodeTo(node2, parentNode1, nodeIndex1)
+    );
   }
 
   // Toggles a node to display or hide its children.
@@ -1749,6 +1763,7 @@ class InfiniteTree extends events.EventEmitter {
   // @return {string} Returns a JSON string represented the tree.
   toString(node = null) {
     const traverse = node => { // eslint-disable-line
+      // eslint-disable-line
       let s = '[';
       if (node && node.children) {
         for (let i = 0; i < node.children.length; ++i) {

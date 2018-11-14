@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface CheckBoxProps extends ComponentBaseProps {
   label?: string;
@@ -24,4 +20,4 @@ export interface CheckBoxProps extends ComponentBaseProps {
 // export interface CheckBoxInstance extends ComponentBaseInstance {
 // }
 
-export default class CheckBox extends ComponentBase<CheckBoxProps, ComponentBaseInstance> { }
+export default class CheckBox extends ComponentBase<CheckBoxProps, ComponentBaseInstance> {}

@@ -68,7 +68,7 @@ class LinearPanel extends ComponentBase {
     const mergedRootStyles = Object.assign(styles.root, this.props.style);
 
     const childs = Utils.getFormChildren(this.props.children, this.state.disabled);
-    const wrappedChildren = React.Children.map(childs, (currentChild) => {
+    const wrappedChildren = React.Children.map(childs, currentChild => {
       if (React.isValidElement(currentChild) && currentChild.type.muiName === 'Subheader') {
         return currentChild;
       }
@@ -81,11 +81,7 @@ class LinearPanel extends ComponentBase {
       return <div style={itemStyle}>{currentChild}</div>;
     });
 
-    return (
-      <div style={mergedRootStyles}>
-        {wrappedChildren}
-      </div>
-    );
+    return <div style={mergedRootStyles}>{wrappedChildren}</div>;
   }
 }
 

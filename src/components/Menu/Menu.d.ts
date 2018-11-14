@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps,
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface MenuProps extends ComponentBaseProps {
   button?: boolean;
@@ -26,4 +22,4 @@ export interface MenuProps extends ComponentBaseProps {
 // export interface MenuInstance extends ComponentBaseInstance {
 // }
 
-export default class Menu extends ComponentBase<MenuProps, ComponentBaseInstance> { }
+export default class Menu extends ComponentBase<MenuProps, ComponentBaseInstance> {}

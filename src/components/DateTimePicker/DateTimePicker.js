@@ -19,8 +19,12 @@ import {
   clearJustTimeZone,
 } from './dateUtils';
 
-let maxHour; let maxMinute; let maxSecond; let minHour; let minMinute; let
-  minSecond;
+let maxHour;
+let maxMinute;
+let maxSecond;
+let minHour;
+let minMinute;
+let minSecond;
 
 /**
  * DateTimePicker with Material UI Components.
@@ -54,10 +58,7 @@ class DateTimePicker extends ComponentBase {
      * Default selected value for uncontrolled usage.
      * Prop could be a Date object or UTC formatted string.
      */
-    defaultValue: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /**
      * ignore
      */
@@ -101,17 +102,11 @@ class DateTimePicker extends ComponentBase {
     /**
      * Selectable max date. Prop could be a Date object or UTC formatted string.
      */
-    maxDate: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    maxDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /**
      * Selectable minimum date. Prop could be a Date object or UTC formatted string.
      */
-    minDate: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    minDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /**
      * Calendar dialog type.
      */
@@ -133,10 +128,7 @@ class DateTimePicker extends ComponentBase {
     /**
      * Selected date. Prop could be a Date object or UTC formatted string.
      */
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
   };
 
   static defaultProps = {
@@ -167,13 +159,19 @@ class DateTimePicker extends ComponentBase {
     formats: this.formats,
     dateFormat: this.formats.dateFormat,
     timeFormat: this.formats.timeFormat,
-    value: getDateToString(this.props.value || getDefaultDate(this.props), getDefaultDate(this.props)), // eslint-disable-line max-len
+    value: getDateToString(
+      this.props.value || getDefaultDate(this.props),
+      getDefaultDate(this.props),
+    ), // eslint-disable-line max-len
     autoOk: false,
     disableYearSelection: false,
     datetimeOption: {
       isHour: this.formats.timeFormat !== undefined,
       isMinute: this.formats.timeFormat !== undefined,
-      isSecond: !((this.formats.timeFormat === undefined || this.formats.timeFormat === momentFormat.hourAndMinute)), // eslint-disable-line max-len
+      isSecond: !(
+        this.formats.timeFormat === undefined ||
+        this.formats.timeFormat === momentFormat.hourAndMinute
+      ), // eslint-disable-line max-len
     },
     mode: this.props.mode,
     container: 'inline',
@@ -339,15 +337,16 @@ class DateTimePicker extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ((nextProps.format !== this.props.format) ||
-      (nextProps.canSelectOldDates !== this.props.canSelectOldDates) ||
-      (nextProps.canSelectWeekendDays !== this.props.canSelectWeekendDays) ||
-      (nextProps.canSelectSpecialDays !== this.props.canSelectSpecialDays) ||
-      (nextProps.disabled !== this.props.disabled) ||
+    if (
+      nextProps.format !== this.props.format ||
+      nextProps.canSelectOldDates !== this.props.canSelectOldDates ||
+      nextProps.canSelectWeekendDays !== this.props.canSelectWeekendDays ||
+      nextProps.canSelectSpecialDays !== this.props.canSelectSpecialDays ||
+      nextProps.disabled !== this.props.disabled ||
       !isEqualDateTime(nextProps.value, this.props.value) ||
       !isEqualDateTime(this.props.minDate, nextProps.minDate) ||
       !isEqualDateTime(this.props.maxDate, nextProps.maxDate) ||
-      (nextProps.mode !== this.props.mode)
+      nextProps.mode !== this.props.mode
     ) {
       const date = getDateToString(nextProps.value, new Date());
       const minDate = getDateToString(nextProps.minDate, this.props.minDate);
@@ -356,7 +355,9 @@ class DateTimePicker extends ComponentBase {
       const datetimeOption = {
         isHour: formats.timeFormat !== undefined,
         isMinute: formats.timeFormat !== undefined,
-        isSecond: !((formats.timeFormat === undefined || formats.timeFormat === momentFormat.hourAndMinute)), // eslint-disable-line max-len
+        isSecond: !(
+          formats.timeFormat === undefined || formats.timeFormat === momentFormat.hourAndMinute
+        ), // eslint-disable-line max-len
       };
 
       this.setState({
@@ -451,7 +452,6 @@ class DateTimePicker extends ComponentBase {
         borderLeftWidth: isRtl ? 1 : 0,
 
         borderBottom: `1px solid ${this.props.context.theme.boaPalette.base200}`,
-
       },
       datetimeItemSpan: {
         marginTop: 'auto',
@@ -499,7 +499,6 @@ class DateTimePicker extends ComponentBase {
       baseContainerIconStyle,
 
       inputAlign: this.props.pageType === 'browse' ? 'center' : null,
-
     };
 
     const iconStyle = {
@@ -514,7 +513,6 @@ class DateTimePicker extends ComponentBase {
         context={this.props.context}
         dynamicIcon="AddCircleOutline"
         style={{
-
           width: 16,
           height: 16,
           marginTop: 7,
@@ -523,7 +521,6 @@ class DateTimePicker extends ComponentBase {
         disabled={this.state.disabled}
       />
     );
-
 
     let prefix = (
       <IconButton
@@ -554,7 +551,6 @@ class DateTimePicker extends ComponentBase {
           context={this.props.context}
           dynamicIcon="ArrowDropDown"
           style={{
-
             width: 24,
             height: 24,
             marginTop: 7,
@@ -571,7 +567,7 @@ class DateTimePicker extends ComponentBase {
     return (
       <div>
         <DatePicker
-          ref={r => this.picker = r}
+          ref={r => (this.picker = r)}
           suffixText={suffix}
           prefixText={prefix}
           context={this.props.context}

@@ -24,12 +24,12 @@ export function getPropType(prop) {
       propType = prop.type.name;
     } else if (prop.type.name === 'enum') {
       propType = `${prop.type.name} &#124;`;
-      prop.type.value.forEach((item) => {
+      prop.type.value.forEach(item => {
         propType += ` \`${item.value}\`, `;
       });
     } else if (prop.type.name === 'union') {
       propType = `${prop.type.name} &#124;`;
-      prop.type.value.forEach((item) => {
+      prop.type.value.forEach(item => {
         propType += ` \`${item.name}${item.value || ''}\`, `;
       });
     } else if (typeof prop.type.value === 'object') {
@@ -41,15 +41,14 @@ export function getPropType(prop) {
 }
 
 export function getDefaultValueForMarkdown(prop) {
-  return (prop.defaultValue &&
-    prop.defaultValue.value &&
-    prop.defaultValue.value.split) ? prop.defaultValue.value.split('\n').join('<br>') : '';
+  return prop.defaultValue && prop.defaultValue.value && prop.defaultValue.value.split
+    ? prop.defaultValue.value.split('\n').join('<br>')
+    : '';
 }
 
 export function getPropDescription(prop) {
   return prop.description ? prop.description.split('\n').join('<br>') : '';
 }
-
 
 export function generateDefaultValue(type) {
   switch (type) {
@@ -80,8 +79,9 @@ export function getAavailableValues(prop) {
   if (prop && prop.type) {
     if (prop.type.value) {
       if (Array.isArray(prop.type.value)) {
-        if (prop.type.value[0].value) { // oneOf
-          return prop.type.value.map((item) => {
+        if (prop.type.value[0].value) {
+          // oneOf
+          return prop.type.value.map(item => {
             return item.value;
           });
         }

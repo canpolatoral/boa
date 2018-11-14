@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface InputProps extends ComponentBaseProps {
   snapshot?: any;
@@ -54,4 +50,4 @@ export interface InputInstance extends ComponentBaseInstance {
   focus?: () => void;
 }
 
-export default class Input extends ComponentBase<InputProps, InputInstance> { }
+export default class Input extends ComponentBase<InputProps, InputInstance> {}

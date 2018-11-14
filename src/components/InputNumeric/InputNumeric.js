@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-globals, max-len */
-import React from 'react'; import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Input } from '@boa/components/Input';
 import { Localization } from '@boa/utils';
@@ -32,7 +33,6 @@ class InputNumeric extends ComponentBase {
     step: 1,
   };
 
-
   state = {
     formattedValue: null,
     caretPosition: null,
@@ -54,8 +54,10 @@ class InputNumeric extends ComponentBase {
     // undefined ise value geçilmemiştir, değişmemeli.
     // diğer durumlarda prop yada state'ten farklı gelmişse değişmeli.
     const { format, value, disabled } = nextProps;
-    if (value === null ||
-      (value !== undefined && (value !== this.props.value || value !== this.getValue()))) {
+    if (
+      value === null ||
+      (value !== undefined && (value !== this.props.value || value !== this.getValue()))
+    ) {
       this.setState({ formattedValue: this.getFormattedValue(value, format) });
     }
     if (disabled !== this.props.disabled) {
@@ -80,15 +82,16 @@ class InputNumeric extends ComponentBase {
     const isTextCursorMoveKey = [35, 36, 37, 39].includes(keyCode);
     const isModifierKey = e.shiftKey || e.altKey || e.ctrlKey;
     // Ctrl-A, Ctrl-V, Ctrl-C
-    const isModifierUsedForClipboard = ([65, 67, 86] && (e.ctrlKey === true || e.metaKey === true));
+    const isModifierUsedForClipboard = [65, 67, 86] && (e.ctrlKey === true || e.metaKey === true);
     // shift-home, shift-end, shift-left, shift-right
-    const isModifierUsedForSelection = (e.shiftKey && isTextCursorMoveKey);
+    const isModifierUsedForSelection = e.shiftKey && isTextCursorMoveKey;
     // Numbers and numeric keypad
-    const isNumberKey = keyCode >= 48 && keyCode <= 57 || keyCode >= 96 && keyCode <= 105;
+    const isNumberKey = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
     const isTextModifyKey = keyCode === 8 || keyCode === 46; // Backspace And del
     const islostFocusKey = keyCode === 9; // Tab
     const isNotAffectingValidKey = keyCode === 45; // Ins
-    const isSeperatorKey = ((keyCode === 188 || keyCode === 110) && delimiters.decimal === ',') ||
+    const isSeperatorKey =
+      ((keyCode === 188 || keyCode === 110) && delimiters.decimal === ',') ||
       (keyCode === 190 && delimiters.decimal === '.'); // comma and point;
     const isSignChangeKey = keyCode === 189 || keyCode === 109; // dash and subtract
     const isIncreaseDecreaseKey = e.keyCode === 38 || e.keyCode === 40; // upper / lower
@@ -104,10 +107,19 @@ class InputNumeric extends ComponentBase {
         returnValue = false;
       }
     } else if (isNumberKey) {
-      const addedNumber = String.fromCharCode((keyCode >= 96 && keyCode <= 105) ? keyCode - 48 : keyCode); // eslint-disable-line
+      const addedNumber = String.fromCharCode(
+        keyCode >= 96 && keyCode <= 105 ? keyCode - 48 : keyCode,
+      ); // eslint-disable-line
       const oldValue = this.state.formattedValue ? this.state.formattedValue : '';
-      const newFormattedValue = oldValue.substring(0, e.target.selectionStart) + addedNumber + oldValue.substring(e.target.selectionEnd); // eslint-disable-line
-      if (this.getFormattedValue(this.state.formattedValue) !== this.getFormattedValue(newFormattedValue)) { // eslint-disable-line
+      const newFormattedValue =
+        oldValue.substring(0, e.target.selectionStart) +
+        addedNumber +
+        oldValue.substring(e.target.selectionEnd); // eslint-disable-line
+      if (
+        this.getFormattedValue(this.state.formattedValue) !==
+        this.getFormattedValue(newFormattedValue)
+      ) {
+        // eslint-disable-line
         numericNewValue = this.getParsedValue(newFormattedValue);
         if (numericNewValue >= this.props.minValue && numericNewValue <= this.props.maxValue) {
           returnValue = true;
@@ -119,7 +131,8 @@ class InputNumeric extends ComponentBase {
       tempValue = this.binput.getInstance().getValue();
       if (e.target.selectionStart === e.target.selectionEnd) {
         caretPosition = e.target.selectionStart;
-        if (keyCode === 8) { // if key is Backspace
+        if (keyCode === 8) {
+          // if key is Backspace
           if (caretPosition === 0) {
             // if cursor is at the first character, then do nothing
             returnValue = false;
@@ -141,7 +154,8 @@ class InputNumeric extends ComponentBase {
         // seperator cannot be first character and cannot be more than one
         returnValue = false;
       } else returnValue = true;
-    } else if (isSignChangeKey) { // if sign key pressed add it
+    } else if (isSignChangeKey) {
+      // if sign key pressed add it
       tempValue = null;
       if (this.state.formattedValue.indexOf('-') !== -1) {
         tempValue = this.state.formattedValue.replace('-', '');
@@ -158,7 +172,7 @@ class InputNumeric extends ComponentBase {
     } else if (isIncreaseDecreaseKey) {
       if (this.state.formattedValue !== null && this.props.step) {
         let numericValue = this.getParsedValue(this.state.formattedValue);
-        numericValue += (e.keyCode === 38 ? this.props.step : -1 * this.props.step);
+        numericValue += e.keyCode === 38 ? this.props.step : -1 * this.props.step;
         if (numericValue >= this.props.minValue && numericValue <= this.props.maxValue) {
           this.setState({ formattedValue: this.getFormattedValue(numericValue) });
         }
@@ -199,7 +213,9 @@ class InputNumeric extends ComponentBase {
     const val = e.target.value;
     const caretPosition = e.target.selectionStart;
     const delimiters = Localization.getDelimiters();
-    const delimitersCount = (val.substring(0, caretPosition).match(new RegExp(`[${delimiters.thousands}]`, 'g')) || []).length; // eslint-disable-line
+    const delimitersCount = (
+      val.substring(0, caretPosition).match(new RegExp(`[${delimiters.thousands}]`, 'g')) || []
+    ).length; // eslint-disable-line
     let formattedValue = null;
 
     if (this.checkNumberFormatIsValid(val)) {
@@ -210,7 +226,11 @@ class InputNumeric extends ComponentBase {
 
     if (formattedValue) {
       // eslint-disable-next-line
-      const delimitersCountAfterFormat = (formattedValue.substring(0, caretPosition).match(new RegExp(`[${delimiters.thousands}]`, 'g')) || []).length;
+      const delimitersCountAfterFormat = (
+        formattedValue
+          .substring(0, caretPosition)
+          .match(new RegExp(`[${delimiters.thousands}]`, 'g')) || []
+      ).length;
       const newCaretPosition = caretPosition + delimitersCountAfterFormat - delimitersCount;
       this.setState({ caretPosition: newCaretPosition });
     } else {
@@ -232,8 +252,11 @@ class InputNumeric extends ComponentBase {
       const tempValue = value.replace(new RegExp(`[${delimiters.thousands}]`, 'g'), '');
       if (this.props.format !== 'D' && tempValue.indexOf(delimiters.decimal) !== -1) {
         const splittedValues = tempValue.split(delimiters.decimal);
-        if (splittedValues.length === 2 && !isNaN(Number(splittedValues[0]))
-          && (splittedValues[1] === '' || !isNaN(Number(splittedValues[1])))) {
+        if (
+          splittedValues.length === 2 &&
+          !isNaN(Number(splittedValues[0])) &&
+          (splittedValues[1] === '' || !isNaN(Number(splittedValues[1])))
+        ) {
           return true;
         }
         return false;
@@ -247,8 +270,14 @@ class InputNumeric extends ComponentBase {
   getParsedValue(value) {
     if (value) {
       const delimiters = Localization.getDelimiters();
-      const tempValue = typeof value === 'number' ? value : value.replace(new RegExp(`[${delimiters.thousands}]`, 'g'), '');
-      const numberValue = this.props.format === 'D' ? Localization.getIntegerValue(tempValue) : Localization.getFloatValue(tempValue);
+      const tempValue =
+        typeof value === 'number'
+          ? value
+          : value.replace(new RegExp(`[${delimiters.thousands}]`, 'g'), '');
+      const numberValue =
+        this.props.format === 'D'
+          ? Localization.getIntegerValue(tempValue)
+          : Localization.getFloatValue(tempValue);
       if (!isNaN(numberValue)) return numberValue;
     }
     return null;
@@ -276,12 +305,19 @@ class InputNumeric extends ComponentBase {
           const splittedValues = tempValue.split(delimiters.decimal);
           const formatted = Localization.formatCurrency(splittedValues[0], nextFormat);
           const splittedAfterFormat = formatted.split(delimiters.decimal);
-          return splittedAfterFormat[0] + delimiters.decimal +
-            (splittedAfterFormat[1].length > splittedValues[1].length ? splittedValues[1] : splittedValues[1].substring(0, splittedAfterFormat[1].length));
+          return (
+            splittedAfterFormat[0] +
+            delimiters.decimal +
+            (splittedAfterFormat[1].length > splittedValues[1].length
+              ? splittedValues[1]
+              : splittedValues[1].substring(0, splittedAfterFormat[1].length))
+          );
         }
 
         tempValue = Localization.formatCurrency(tempValue, nextFormat);
-        if (tempValue.indexOf(delimiters.decimal) !== -1) return tempValue.substring(0, tempValue.indexOf(delimiters.decimal));
+        if (tempValue.indexOf(delimiters.decimal) !== -1) {
+          return tempValue.substring(0, tempValue.indexOf(delimiters.decimal));
+        }
         return tempValue;
       }
 
@@ -308,14 +344,16 @@ class InputNumeric extends ComponentBase {
   }
 
   validateConstraint() {
-    return this.binput && this.binput.getInstance() ? this.binput.getInstance().validateConstraint() : true;
+    return this.binput && this.binput.getInstance()
+      ? this.binput.getInstance().validateConstraint()
+      : true;
   }
 
   render() {
     const { context, ...others } = this.props;
     return (
       <Input
-        ref={r => this.binput = r}
+        ref={r => (this.binput = r)}
         context={context}
         {...others}
         type="text"

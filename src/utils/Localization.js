@@ -178,7 +178,6 @@ export class Localization {
     return Numeral(number).format(this.numberFormats.D);
   }
 
-
   /**
    *
    * @param {*} value
@@ -188,7 +187,7 @@ export class Localization {
 
     const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
     const matches = v.match(/\d{4,16}/g);
-    const match = matches && matches[0] || '';
+    const match = (matches && matches[0]) || '';
     const parts = [];
     let i = 0;
     for (i = 0; i < match.length; i += 4) {
@@ -224,7 +223,9 @@ export class Localization {
   static stringUpperCase(value) {
     if (this.languageId === 1) {
       const letters = { i: 'İ', ş: 'Ş', ğ: 'Ğ', ü: 'Ü', ö: 'Ö', ç: 'Ç', ı: 'I' };
-      value = value.replace(/(([iışğüçö]))/g, (letter) => { return letters[letter]; });
+      value = value.replace(/(([iışğüçö]))/g, letter => {
+        return letters[letter];
+      });
     }
     return value.toUpperCase();
   }
@@ -232,7 +233,9 @@ export class Localization {
   static stringLowerCase(value) {
     if (this.languageId === 1) {
       const letters = { İ: 'i', I: 'ı', Ş: 'ş', Ğ: 'ğ', Ü: 'ü', Ö: 'ö', Ç: 'ç' };
-      value = value.replace(/(([İIŞĞÜÇÖ]))/g, (letter) => { return letters[letter]; });
+      value = value.replace(/(([İIŞĞÜÇÖ]))/g, letter => {
+        return letters[letter];
+      });
     }
     return value.toLowerCase();
   }

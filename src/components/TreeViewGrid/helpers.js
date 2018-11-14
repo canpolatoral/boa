@@ -51,7 +51,6 @@ export const sumNodeHeader = (data, firstNode) => {
   };
 };
 
-
 export const findNode = (data, valuePath, value) => {
   if (data[valuePath] === value) {
     return data;
@@ -67,8 +66,7 @@ export const findNode = (data, valuePath, value) => {
   return null;
 };
 
-
-export const collapseAll = (data) => {
+export const collapseAll = data => {
   if (data.toggled === true) {
     data.toggled = false;
   }
@@ -83,7 +81,7 @@ export const collapseAll = (data) => {
   return null;
 };
 
-export const expandAll = (data) => {
+export const expandAll = data => {
   data.toggled = true;
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {
@@ -114,7 +112,7 @@ export const handleOnToggleItems = (node, toggled) => {
   }
 };
 
-export const unSelectAll = (data) => {
+export const unSelectAll = data => {
   data.active = false;
   if (data.children && data.children.length > 0) {
     for (let i = 0; i < data.children.length; i++) {

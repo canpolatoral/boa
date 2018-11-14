@@ -2,10 +2,7 @@
 import webpack from 'webpack';
 import yargs from 'yargs';
 
-export const options = yargs
-  .alias('p', 'optimize-minimize')
-  .alias('d', 'debug')
-  .argv;
+export const options = yargs.alias('p', 'optimize-minimize').alias('d', 'debug').argv;
 
 const baseConfig = {
   entry: undefined,
@@ -20,7 +17,6 @@ const baseConfig = {
           {
             loader: 'babel-loader',
           },
-
         ],
       },
       {
@@ -29,13 +25,17 @@ const baseConfig = {
       },
       {
         test: /\.scss$/,
-        use: [{
-          loader: 'style-loader', // creates style nodes from JS strings
-        }, {
-          loader: 'css-loader', // translates CSS into CommonJS
-        }, {
-          loader: 'sass-loader', // compiles Sass to CSS
-        }],
+        use: [
+          {
+            loader: 'style-loader', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+          },
+          {
+            loader: 'sass-loader', // compiles Sass to CSS
+          },
+        ],
       },
       {
         test: /\.(eot|svg|jpe?g|png|gif|ttf|woff2?)$/,

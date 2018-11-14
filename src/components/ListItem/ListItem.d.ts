@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps,
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface ListItemProps extends ComponentBaseProps {
   button?: boolean;
@@ -26,4 +22,4 @@ export interface ListItemProps extends ComponentBaseProps {
 // export interface ListItemInstance extends ComponentBaseInstance {
 // }
 
-export default class ListItem extends ComponentBase<ListItemProps, ComponentBaseInstance> { }
+export default class ListItem extends ComponentBase<ListItemProps, ComponentBaseInstance> {}

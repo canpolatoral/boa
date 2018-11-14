@@ -3,7 +3,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const SupervisorAccount = (props) => {
+const SupervisorAccount = props => {
   return (
     <SvgIcon {...props}>
       <defs>

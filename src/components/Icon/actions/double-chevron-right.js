@@ -2,7 +2,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const DoubleChevronRight = (props) => {
+const DoubleChevronRight = props => {
   return (
     <SvgIcon {...props}>
       <path d="M7.78,7.5l4.5,4.5-4.5,4.5L6.72,15.45,10.17,12,6.72,8.55Z" />

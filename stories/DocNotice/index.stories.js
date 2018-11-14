@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('DocNotice', ({ props }) => {
       <Header {...props} component={DocNotice} doc={doc} />
       <Preview {...props} component={DocNotice} doc={doc} />
       <Props {...props} component={DocNotice} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

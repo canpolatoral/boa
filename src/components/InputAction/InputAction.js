@@ -1,4 +1,5 @@
-import React from 'react'; import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { IconButton } from '@boa/components/IconButton';
@@ -117,10 +118,12 @@ class InputAction extends ComponentBase {
     }
 
     // Zaten yeniden bizim inputa focus edilmisse
-    if (this.binput &&
+    if (
+      this.binput &&
       this.binput.getInstance() &&
       this.binput.getInstance().textField &&
-      this.binput.getInstance().textField === e.relatedTarget) {
+      this.binput.getInstance().textField === e.relatedTarget
+    ) {
       return;
     }
 
@@ -150,21 +153,26 @@ class InputAction extends ComponentBase {
 
     const isRtl = this.props.context.localization.isRightToLeft;
     const value = usePropValue ? this.props.value : this.getValue();
-    const paddingLeft = value ? 0 : leftIconList &&
-      (leftIconList.length * this.iconSize + leftIconList.length * this.iconMargin);
+    const paddingLeft = value
+      ? 0
+      : leftIconList && leftIconList.length * this.iconSize + leftIconList.length * this.iconMargin;
 
-    return Object.assign(isRtl ? {
-      paddingRight: paddingLeft,
-      paddingLeft: paddingRight,
-    } : {
-        paddingLeft,
-        paddingRight,
-      },
-      this.props.floatingLabelStyle);
+    return Object.assign(
+      isRtl
+        ? {
+            paddingRight: paddingLeft,
+            paddingLeft: paddingRight,
+          }
+        : {
+            paddingLeft,
+            paddingRight,
+          },
+      this.props.floatingLabelStyle,
+    );
   }
 
   passwordClicked() {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return { showPassword: !prevState.showPassword };
     });
   }
@@ -196,19 +204,17 @@ class InputAction extends ComponentBase {
   render() {
     this.refs = { buttons: [] };
 
-    const baseIconStyle =
-      {
-        width: this.iconContainerSize,
-        height: this.iconContainerSize,
-        padding: 0,
-        // transform: 'scale(0.83)' // icon boyutları 20 px olması için diğer türlü olmuyor.
-      };
-    const baseIconContainerStyle =
-      {
-        width: this.iconContainerSize,
-        height: this.iconContainerSize,
-        display: 'inline-block',
-      };
+    const baseIconStyle = {
+      width: this.iconContainerSize,
+      height: this.iconContainerSize,
+      padding: 0,
+      // transform: 'scale(0.83)' // icon boyutları 20 px olması için diğer türlü olmuyor.
+    };
+    const baseIconContainerStyle = {
+      width: this.iconContainerSize,
+      height: this.iconContainerSize,
+      display: 'inline-block',
+    };
 
     /* iconProperties={{width: '20px', height:'20px'}} */
     let rightIcons = [];
@@ -243,7 +249,8 @@ class InputAction extends ComponentBase {
               }}
               onClick={this.passwordClicked}
               onBlur={this.onBlur}
-              tabIndex="-1" />
+              tabIndex="-1"
+            />
           </div>,
         );
       }
@@ -251,9 +258,14 @@ class InputAction extends ComponentBase {
       rightIcons = this.props.rightIconList.map((icon, index) => {
         return (
           <div
-            style={Object.assign(baseIconContainerStyle, {
-              marginLeft: this.iconMargin,
-            }, icon.iconContainerStyle)}>
+            style={Object.assign(
+              baseIconContainerStyle,
+              {
+                marginLeft: this.iconMargin,
+              },
+              icon.iconContainerStyle,
+            )}
+          >
             <IconButton
               {...icon}
               style={baseIconStyle}
@@ -275,9 +287,14 @@ class InputAction extends ComponentBase {
       leftIcons = this.props.leftIconList.map((icon, index) => {
         return (
           <div
-            style={Object.assign(baseIconContainerStyle, {
-              marginRight: this.iconMargin,
-            }, icon.iconContainerStyle)}>
+            style={Object.assign(
+              baseIconContainerStyle,
+              {
+                marginRight: this.iconMargin,
+              },
+              icon.iconContainerStyle,
+            )}
+          >
             <IconButton
               {...icon}
               style={baseIconStyle}
@@ -294,53 +311,56 @@ class InputAction extends ComponentBase {
       });
     }
 
-    const bInput = (this.props.type === 'numeric') ?
-      this.renderBInputNumeric(type, leftIcons, rightIcons) :
-      this.renderBInput(type, leftIcons, rightIcons);
+    const bInput =
+      this.props.type === 'numeric'
+        ? this.renderBInputNumeric(type, leftIcons, rightIcons)
+        : this.renderBInput(type, leftIcons, rightIcons);
 
     return (
       <div style={{ width: '100%', position: 'relative' }}>
-        <div>
-          {bInput}
-        </div>
+        <div>{bInput}</div>
       </div>
     );
   }
 
   renderBInput(type, leftIcons, rightIcons) {
     const { context, ...others } = this.props;
-    return <Input
-      ref={r => this.binput = r}
-      context={context}
-      {...others}
-      disabled={this.state.inputDisabled}
-      type={type}
-      value={this.state.value}
-      onChange={this.onChange}
-      onFocus={this.onFocus}
-      onBlur={this.onBlur}
-      onKeyDown={this.onKeyDown}
-      prefixText={leftIcons.length ? leftIcons : null}
-      suffixText={rightIcons.length ? rightIcons : null}
-    />;
+    return (
+      <Input
+        ref={r => (this.binput = r)}
+        context={context}
+        {...others}
+        disabled={this.state.inputDisabled}
+        type={type}
+        value={this.state.value}
+        onChange={this.onChange}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
+        prefixText={leftIcons.length ? leftIcons : null}
+        suffixText={rightIcons.length ? rightIcons : null}
+      />
+    );
   }
 
   renderBInputNumeric(type, leftIcons, rightIcons) {
     const { context, ...others } = this.props;
-    return <InputNumeric
-      ref={r => this.binput = r}
-      context={context}
-      {...others}
-      disabled={this.state.inputDisabled}
-      type={type}
-      value={this.state.value}
-      onChange={this.onChange}
-      onFocus={this.onFocus}
-      onBlur={this.onBlur}
-      onKeyDown={this.onKeyDown}
-      prefixText={leftIcons.length ? leftIcons : null}
-      suffixText={rightIcons.length ? rightIcons : null}
-    />;
+    return (
+      <InputNumeric
+        ref={r => (this.binput = r)}
+        context={context}
+        {...others}
+        disabled={this.state.inputDisabled}
+        type={type}
+        value={this.state.value}
+        onChange={this.onChange}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
+        prefixText={leftIcons.length ? leftIcons : null}
+        suffixText={rightIcons.length ? rightIcons : null}
+      />
+    );
   }
 }
 

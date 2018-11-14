@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface InputMaskProps extends ComponentBaseProps {
   defaultValue?: string;
@@ -18,7 +14,6 @@ export interface InputMaskProps extends ComponentBaseProps {
   valueConstraint?: any;
   maxLength?: number;
   disabled?: boolean;
-
 }
 
 export interface InputMaskInstance extends ComponentBaseInstance {
@@ -27,4 +22,4 @@ export interface InputMaskInstance extends ComponentBaseInstance {
   focus?: () => void;
 }
 
-export default class InputMask extends ComponentBase<InputMaskProps, InputMaskInstance> { }
+export default class InputMask extends ComponentBase<InputMaskProps, InputMaskInstance> {}

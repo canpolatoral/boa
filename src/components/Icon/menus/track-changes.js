@@ -3,7 +3,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const TrackChanges = (props) => {
+const TrackChanges = props => {
   return (
     <SvgIcon {...props}>
       <path d="M0 0h24v24H0V0z" fill="none" />

@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('Button', ({ props }) => {
       <Header {...props} component={Button} doc={doc} />
       <Preview {...props} component={Button} doc={doc} />
       <Props {...props} component={Button} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

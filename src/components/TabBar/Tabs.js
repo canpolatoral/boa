@@ -11,7 +11,6 @@ import { withStyles } from '@material-ui/core/styles';
 import TabIndicator from './TabIndicator';
 import TabScrollButton from './TabScrollButton';
 
-
 export const styles = theme => ({
   root: {
     overflow: 'hidden',
@@ -93,7 +92,6 @@ class Tabs extends React.Component {
     this.handleResize.cancel();
     this.handleTabsScroll.cancel();
   }
-
 
   getConditionalElements = () => {
     const {

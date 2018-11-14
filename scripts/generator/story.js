@@ -6,16 +6,23 @@ import yargs from 'yargs';
 
 const COMPONENTS = '../../src/components/';
 const COMPONENTS_DIRECTORY = path.join(__dirname, COMPONENTS);
-const storyNotRequired =
-  ['Scroll', 'Icon', 'Resizable', 'Dialog', 'LinearPanel', 'ListItem', 'MenuItem'];
+const storyNotRequired = [
+  'Scroll',
+  'Icon',
+  'Resizable',
+  'Dialog',
+  'LinearPanel',
+  'ListItem',
+  'MenuItem',
+];
 
 const options = yargs.option('component', {
   default: 'all',
   type: 'string',
 }).argv;
 
-const getDirectories = (srcpath) => {
-  return fs.readdirSync(srcpath).filter((file) => {
+const getDirectories = srcpath => {
+  return fs.readdirSync(srcpath).filter(file => {
     return fs.statSync(path.join(srcpath, file)).isDirectory();
   });
 };
@@ -32,14 +39,14 @@ const createStoryFile = (folderName, fileName, story) => {
   }
 
   console.log(`WRITING: ${path.join(__dirname, '..', '..', 'stories', folderName, fileName)}`);
-  fs.writeFile(path.join(__dirname, '..', '..', 'stories', folderName, fileName), story, (err) => {
+  fs.writeFile(path.join(__dirname, '..', '..', 'stories', folderName, fileName), story, err => {
     if (err) {
       console.log(err);
     }
   });
 };
 
-const generateSingleStory = (component) => {
+const generateSingleStory = component => {
   return `
 /* eslint-disable max-len */
 import React from 'react';
@@ -65,7 +72,7 @@ stories.add('${component}', ({ props }) => {
 const generate = () => {
   const dirs = getDirectories(COMPONENTS_DIRECTORY);
 
-  dirs.forEach((dir) => {
+  dirs.forEach(dir => {
     if (!storyNotRequired.find(x => x === dir)) {
       if (options.component === 'all' || dir === options.component) {
         const story = generateSingleStory(dir);

@@ -1,11 +1,7 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface IconMenuProps extends ComponentBaseProps {
-  iconType: "vertical" | "horizontal" | "custom";
+  iconType: 'vertical' | 'horizontal' | 'custom';
   customIcon?: any;
   items: any[]; // TODO: any yerine, yukarıda type tanımlanıp o verilebilir.
   anchorOrigin?: any;
@@ -27,4 +23,4 @@ export interface IconMenuProps extends ComponentBaseProps {
 // export interface IconMenuInstance extends ComponentBaseInstance {
 // }
 
-export default class IconMenu extends ComponentBase<IconMenuProps, ComponentBaseInstance> { }
+export default class IconMenu extends ComponentBase<IconMenuProps, ComponentBaseInstance> {}

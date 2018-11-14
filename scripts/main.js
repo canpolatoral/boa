@@ -13,8 +13,9 @@ async function copyFile(file) {
 }
 
 async function createPackageFile() {
-  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'),
-    { encoding: 'utf8' });
+  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'), {
+    encoding: 'utf8',
+  });
 
   const { nyc, scripts, devDependencies, workspaces, ...packageDataOther } = JSON.parse(
     packageData,
@@ -35,8 +36,9 @@ async function createPackageFile() {
 }
 
 function getIgnoredFiles() {
-  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'),
-    { encoding: 'utf8' });
+  const packageData = fse.readFileSync(path.join(__dirname, '../package.json'), {
+    encoding: 'utf8',
+  });
   const { dependencies } = JSON.parse(packageData);
   return dependencies ? Object.keys(dependencies) : '';
 }

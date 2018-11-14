@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Add from '@material-ui/icons/Add';
 import Remove from '@material-ui/icons/Remove';
 
-
 const Toggler = styled(({ state, ...props }) => (
   <a {...props}>
     {state === 'closed' && <Add style={{ color: props.context.theme.boaPalette.base400 }} />}

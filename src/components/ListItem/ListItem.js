@@ -41,15 +41,15 @@ const styles = theme => ({
 
 /**
  * ListItem BOA Component
-*/
+ */
 @ComponentComposer
 @withStyles(styles)
 class ListItem extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
     /**
-   * If `true`, the list item will be a button (using `ButtonBase`).
-   */
+     * If `true`, the list item will be a button (using `ButtonBase`).
+     */
     button: PropTypes.bool,
     /**
      * The content of the component.
@@ -98,7 +98,7 @@ class ListItem extends ComponentBase {
     primaryText: PropTypes.string.isRequired,
     secondaryText: PropTypes.string,
     selected: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     ContainerComponent: 'li',
@@ -108,17 +108,15 @@ class ListItem extends ComponentBase {
     divider: false,
     button: true,
     selected: false,
-  }
+  };
 
   render() {
     const { classes, selected, primaryText, secondaryText, ...other } = this.props;
     const { isRightToLeft } = this.props.context.localization;
-    const className = classNames(
-      classes.root,
-      {
-        [classes.isRTL]: isRightToLeft,
-        [classes.selected]: selected,
-      });
+    const className = classNames(classes.root, {
+      [classes.isRTL]: isRightToLeft,
+      [classes.selected]: selected,
+    });
 
     return (
       <MuiListItem
@@ -126,7 +124,8 @@ class ListItem extends ComponentBase {
         classes={{
           root: className,
           gutters: classes.gutters, // MuiListItemGutters11
-        }}>
+        }}
+      >
         <MuiListItemText
           classes={{
             root: classes.itemTextRoot,
@@ -134,7 +133,8 @@ class ListItem extends ComponentBase {
             secondary: classes.itemTextSecondary,
           }}
           primary={primaryText}
-          secondary={secondaryText} />
+          secondary={secondaryText}
+        />
       </MuiListItem>
     );
   }

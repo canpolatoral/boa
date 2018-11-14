@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface InputNumericProps extends ComponentBaseProps {
   defaultValue?: number;
@@ -27,7 +23,6 @@ export interface InputNumericProps extends ComponentBaseProps {
   fullWidth?: boolean;
   outerStyle?: any;
   inputStyle?: any;
-
 }
 
 export interface InputNumericInstance extends ComponentBaseInstance {
@@ -36,4 +31,4 @@ export interface InputNumericInstance extends ComponentBaseInstance {
   focus?: () => void;
 }
 
-export default class InputNumeric extends ComponentBase<InputNumericProps, InputNumericInstance> { }
+export default class InputNumeric extends ComponentBase<InputNumericProps, InputNumericInstance> {}

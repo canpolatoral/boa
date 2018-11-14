@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('InputNumeric', ({ props }) => {
       <Header {...props} component={InputNumeric} doc={doc} />
       <Preview {...props} component={InputNumeric} doc={doc} />
       <Props {...props} component={InputNumeric} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

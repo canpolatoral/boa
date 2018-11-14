@@ -9,10 +9,7 @@ import defaultAnimationsAr from './styles/animations-ar';
 class TreeView extends React.Component {
   static propTypes = {
     context: PropTypes.any,
-    data: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.array,
-    ]).isRequired,
+    data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
     decorators: PropTypes.object,
     isRightToLeft: PropTypes.bool,
     onChange: PropTypes.func,
@@ -50,20 +47,19 @@ class TreeView extends React.Component {
 
     return (
       <ul style={baseTreeStyle} ref="treeBase">
-        {
-          data.map((node, index) =>
-            <TreeNode
-              context={this.props.context}
-              key={node.id || index}
-              node={node}
-              onToggle={this.props.onToggle}
-              onChange={this.props.onChange}
-              animations={this.animations}
-              decorators={this.props.decorators}
-              style={this.props.style.tree.node}
-              isRightToLeft={this.props.isRightToLeft}
-            />,
-        )}
+        {data.map((node, index) => (
+          <TreeNode
+            context={this.props.context}
+            key={node.id || index}
+            node={node}
+            onToggle={this.props.onToggle}
+            onChange={this.props.onChange}
+            animations={this.animations}
+            decorators={this.props.decorators}
+            style={this.props.style.tree.node}
+            isRightToLeft={this.props.isRightToLeft}
+          />
+        ))}
       </ul>
     );
   }

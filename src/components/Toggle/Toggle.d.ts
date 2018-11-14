@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps,
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface ToggleProps extends ComponentBaseProps {
   defaultToggled?: boolean;
@@ -11,7 +7,7 @@ export interface ToggleProps extends ComponentBaseProps {
   iconStyle?: any;
   inputStyle?: any;
   label?: React.ReactNode;
-  labelPosition?: "left" | "right";
+  labelPosition?: 'left' | 'right';
   labelStyle?: any;
   onToggle?: (event: object, value: boolean) => void;
   rippleStyle?: any;
@@ -29,4 +25,4 @@ export interface ToggleProps extends ComponentBaseProps {
 // export interface ToggleInstance extends ComponentBaseInstance {
 // }
 
-export default class Toggle extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> { }
+export default class Toggle extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> {}

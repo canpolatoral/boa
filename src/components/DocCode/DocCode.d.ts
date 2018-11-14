@@ -1,19 +1,16 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface DocCodeProps extends ComponentBaseProps {
   content: string;
-  editorType?: 'androidStudio' |
-  'atomOneDark' |
-  'atomOneLight' |
-  'github' |
-  'monokaiSublime' |
-  'raiinbow' |
-  'vs' |
-  'xcode';
+  editorType?:
+    | 'androidStudio'
+    | 'atomOneDark'
+    | 'atomOneLight'
+    | 'github'
+    | 'monokaiSublime'
+    | 'raiinbow'
+    | 'vs'
+    | 'xcode';
   highlight: boolean;
   lang: string;
 }
@@ -23,4 +20,4 @@ export interface DocCodeProps extends ComponentBaseProps {
 // export interface DocCodeInstance extends ComponentBaseInstance {
 // }
 
-export default class DocCode extends ComponentBase<DocCodeProps, ComponentBaseInstance> { }
+export default class DocCode extends ComponentBase<DocCodeProps, ComponentBaseInstance> {}

@@ -5,11 +5,37 @@ import { Localization } from '@boa/utils';
 
 const dayAbbreviation = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const monthLongList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const monthList = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+const monthLongList = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 const seperator = '.';
 
-String.prototype.replaceAll = function (target, replacement) {
+String.prototype.replaceAll = function(target, replacement) {
   return this.split(target).join(replacement);
 };
 
@@ -27,7 +53,7 @@ export const momentFormat = {
 };
 /** Convert date to ISO 8601 (YYYY-MM-DD) date string, accounting for current timezone */
 export function formatIso(date) {
-  return (new Date(`${date.toDateString()} 12:00:00 +0000`)).toISOString().substring(0, 10);
+  return new Date(`${date.toDateString()} 12:00:00 +0000`).toISOString().substring(0, 10);
 }
 export function getLocalizedDate(value, dateformat) {
   if (Localization && dateformat && value) {
@@ -42,29 +68,39 @@ export function getLocalizedTime(value, datetimeOption, timeformat) {
   return '';
 }
 export function dateTimeFormat(options) {
-  this.format = function (date) {
+  this.format = function(date) {
     if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
       return `${dayList[date.getDay()]}, ${monthList[date.getMonth()]} ${date.getDate()}`;
-    } if (options.year === 'numeric' && options.month === 'numeric' && options.day === 'numeric') {
+    }
+    if (options.year === 'numeric' && options.month === 'numeric' && options.day === 'numeric') {
       return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-    } if (options.year === 'numeric' && options.month === 'long') {
+    }
+    if (options.year === 'numeric' && options.month === 'long') {
       return `${monthLongList[date.getMonth()]} ${date.getFullYear()}`;
-    } if (options.item === 'monthYearName') {
+    }
+    if (options.item === 'monthYearName') {
       `${getMonthsLong(date, options.format)[date.getMonth()]}`;
       return `${getMonthsLong(date, options.format)[date.getMonth()]} ${date.getFullYear()}`;
-    } if (options.weekday === 'narrow') {
+    }
+    if (options.weekday === 'narrow') {
       return dayAbbreviation[date.getDay()];
-    } if (options.localizationWeekday === 'narrow') {
+    }
+    if (options.localizationWeekday === 'narrow') {
       return getWeekDaysMin(options.date, options.format)[date.getDay()];
-    } if (options.year === 'numeric') {
+    }
+    if (options.year === 'numeric') {
       return date.getFullYear().toString();
-    } if (options.month === 'numeric') {
+    }
+    if (options.month === 'numeric') {
       return `${monthLongList[date.getMonth()]}`;
-    } if (options.month === 'monthListName') {
+    }
+    if (options.month === 'monthListName') {
       return `${getMonthsLong(date, options.format)[date.getMonth()]}`;
-    } if (options.day === 'numeric') {
+    }
+    if (options.day === 'numeric') {
       return date.getDate();
-    } if (options.time === 'hour') {
+    }
+    if (options.time === 'hour') {
       return date.getHours();
     } else if (options.time === 'minute') {
       return date.getMinutes();
@@ -174,8 +210,13 @@ export function getFormatDecomposition(format) {
       timeFormat: undefined,
     };
   }
-  formats.dateFormatHint = Localization.stringLowerCase(Localization.getDateTimeFormat(formats.dateFormat));
-  if (formats.timeFormat) formats.timeFormatHint = Localization.stringLowerCase(Localization.getDateTimeFormat(formats.timeFormat));
+  formats.dateFormatHint = Localization.stringLowerCase(
+    Localization.getDateTimeFormat(formats.dateFormat),
+  );
+  if (formats.timeFormat)
+    formats.timeFormatHint = Localization.stringLowerCase(
+      Localization.getDateTimeFormat(formats.timeFormat),
+    );
 
   let dateMask = formats.dateFormatHint;
   let timeMask = formats.timeFormatHint;
@@ -187,7 +228,6 @@ export function getFormatDecomposition(format) {
     timeMask = timeMask.replaceAll('h', 'n');
     timeMask = timeMask.replaceAll('m', 'n');
   }
-
 
   formats.dateMask = dateMask;
   formats.timeMask = timeMask;
@@ -215,7 +255,7 @@ export function getWeekArray(d, firstDayOfWeek) {
     dayArray.push(new Date(d.getFullYear(), d.getMonth(), i));
   }
 
-  const addWeek = (week) => {
+  const addWeek = week => {
     const emptyDays = 7 - week.length;
     for (let i = 0; i < emptyDays; ++i) {
       week[weekArray.length ? 'push' : 'unshift'](null);
@@ -241,7 +281,7 @@ export function getWeekArray(d, firstDayOfWeek) {
     weekArray.push(week);
   };
 
-  dayArray.forEach((day) => {
+  dayArray.forEach(day => {
     if (week.length > 0 && day.getDay() === firstDayOfWeek) {
       addWeek(week);
       week = [];
@@ -270,10 +310,15 @@ export function isEqualDate(d1, d2) {
   if (isString(d2)) {
     d2 = new Date(d2);
   }
-  return d1 && d2 && d1 instanceof Date && d2 instanceof Date &&
-    (d1.getFullYear() === d2.getFullYear()) &&
-    (d1.getMonth() === d2.getMonth()) &&
-    (d1.getDate() === d2.getDate());
+  return (
+    d1 &&
+    d2 &&
+    d1 instanceof Date &&
+    d2 instanceof Date &&
+    d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate()
+  );
 }
 export function isEqualDateTime(d1, d2) {
   if (d1 === undefined && d2 === undefined) {
@@ -285,13 +330,18 @@ export function isEqualDateTime(d1, d2) {
   if (isString(d2)) {
     d2 = new Date(d2);
   }
-  return d1 && d2 && d1 instanceof Date && d2 instanceof Date &&
-    (d1.getFullYear() === d2.getFullYear()) &&
-    (d1.getMonth() === d2.getMonth()) &&
-    (d1.getDate() === d2.getDate()) &&
-    (d1.getHours() === d2.getHours()) &&
-    (d1.getMinutes() === d2.getMinutes()) &&
-    (d1.getSeconds() === d2.getSeconds());
+  return (
+    d1 &&
+    d2 &&
+    d1 instanceof Date &&
+    d2 instanceof Date &&
+    d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate() &&
+    d1.getHours() === d2.getHours() &&
+    d1.getMinutes() === d2.getMinutes() &&
+    d1.getSeconds() === d2.getSeconds()
+  );
 }
 export function substructDay(d1, d2) {
   if (isEqualDate(d1, d2)) {
@@ -304,17 +354,16 @@ export function isBeforeDate(d1, d2) {
   const date1 = cloneAsDate(d1);
   const date2 = cloneAsDate(d2);
 
-  return (date1.getTime() < date2.getTime());
+  return date1.getTime() < date2.getTime();
 }
 export function isAfterDate(d1, d2) {
   const date1 = cloneAsDate(d1);
   const date2 = cloneAsDate(d2);
 
-  return (date1.getTime() > date2.getTime());
+  return date1.getTime() > date2.getTime();
 }
 export function isBetweenDates(dateToCheck, startDate, endDate) {
-  return (!(isBeforeDate(dateToCheck, startDate)) &&
-    !(isAfterDate(dateToCheck, endDate)));
+  return !isBeforeDate(dateToCheck, startDate) && !isAfterDate(dateToCheck, endDate);
 }
 export function monthDiff(d1, d2) {
   let m;
@@ -335,14 +384,16 @@ export function getFocusDateTimeItem1(startIndex, format) {
       let item = '';
       if (patern.length - 1 !== startIndex) {
         for (let i = startIndex; i <= 0; i++) {
-          if (patern[i] === 'M' ||
+          if (
+            patern[i] === 'M' ||
             patern[i] === 'Y' ||
             patern[i] === 'D' ||
             patern[i] === 'd' ||
             patern[i] === 'h' ||
             patern[i] === 'm' ||
             patern[i] === 's' ||
-            patern[i] === 'a') {
+            patern[i] === 'a'
+          ) {
             item += patern[i];
           } else {
             break;
@@ -351,14 +402,16 @@ export function getFocusDateTimeItem1(startIndex, format) {
       }
       if (startIndex !== 0) {
         for (let i = startIndex - 1; i < patern.length; i--) {
-          if (patern[i] === 'M' ||
+          if (
+            patern[i] === 'M' ||
             patern[i] === 'Y' ||
             patern[i] === 'D' ||
             patern[i] === 'd' ||
             patern[i] === 'h' ||
             patern[i] === 'm' ||
             patern[i] === 's' ||
-            patern[i] === 'a') {
+            patern[i] === 'a'
+          ) {
             item += patern[i];
           } else {
             break;
@@ -460,39 +513,29 @@ export function calendarMouseWheelAction1(startIndex, format, date, type) {
   let dateTimeItem = getFocusDateTimeItem(startIndex, format);
   if (dateTimeItem) {
     if (dateTimeItem === 'DD') {
-      if (type === 1)
-        return addDays(date, 1);
-      else
-        return addDays(date, -1);
+      if (type === 1) return addDays(date, 1);
+      else return addDays(date, -1);
     }
     if (dateTimeItem === 'YYYY') {
-      if (type === 1)
-        return addYears(date, 1);
+      if (type === 1) return addYears(date, 1);
       return addYears(date, -1);
     }
     if (dateTimeItem === 'MM') {
-      if (type === 1)
-        return addMonths(date, 1);
+      if (type === 1) return addMonths(date, 1);
       return addMonths(date, -1);
     }
     if (dateTimeItem === 'h') {
-      if (type === 1)
-        return addHours(date, 1);
+      if (type === 1) return addHours(date, 1);
       return addHours(date, -1);
     }
     if (dateTimeItem === 'mm') {
-      if (type === 1)
-        return addMinutes(date, 1);
+      if (type === 1) return addMinutes(date, 1);
       return addMinutes(date, -1);
-    }
-    else if (dateTimeItem === 'ss') {
-      if (type === 1)
-        return addSeconds(date, 1);
+    } else if (dateTimeItem === 'ss') {
+      if (type === 1) return addSeconds(date, 1);
       return addSeconds(date, -1);
-    }
-    else if (dateTimeItem === 'a') {
-      if (type === 1)
-        return addHours(date, 12);
+    } else if (dateTimeItem === 'a') {
+      if (type === 1) return addHours(date, 12);
       return addSeconds(date, -12);
     }
   }
@@ -507,7 +550,7 @@ export function calendarMouseWheel(value, selectionStart, selectionEnd, deltaMod
         if (item.length >= selectionStart) {
           selectionValue = item;
           index = i;
-        } else selectionStart -= (item.length + 1);
+        } else selectionStart -= item.length + 1;
       }
     }, this);
 
@@ -527,7 +570,7 @@ export function calendarMouseWheel(value, selectionStart, selectionEnd, deltaMod
 export function arrayToString(array, seperator) {
   let returnString = '';
   for (let i = 0; i < array.length; i++) {
-    returnString += (array.length - 1 === i ? (array[i]) : (array[i] + seperator));
+    returnString += array.length - 1 === i ? array[i] : array[i] + seperator;
   }
   return returnString;
 }
@@ -631,13 +674,12 @@ export function clearTime(returnDate) {
 }
 
 export function clearTimeZone(returnDate) {
-  return new Date((returnDate).getTime() - ((returnDate).getTimezoneOffset() * 60000));
+  return new Date(returnDate.getTime() - returnDate.getTimezoneOffset() * 60000);
 }
 
 export function clearJustTimeZone(returnDate) {
-  return new Date((returnDate).getTime());
+  return new Date(returnDate.getTime());
 }
-
 
 export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount) {
   // let monthFirstDate = cloneDate(getFirstDayOfMonth(selectedDate));
@@ -666,7 +708,6 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
       itemspecialDayString.push(calendarInfo[i]);
       const negativeBetweenDaylength = i - betweenDayCount;
 
-
       for (let j = i - 1; j > negativeBetweenDaylength; j--) {
         if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
           break;
@@ -674,7 +715,6 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
           itemspecialDayString.push(calendarInfo[j]);
         }
       }
-
 
       const positiveBetweenDaylength = i + betweenDayCount;
       for (let j = i + 1; j < positiveBetweenDaylength; j++) {

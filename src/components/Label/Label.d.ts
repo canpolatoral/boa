@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface LabelProps extends ComponentBaseProps {
   text?: string;
@@ -15,4 +11,4 @@ export interface LabelProps extends ComponentBaseProps {
 // export interface LabelInstance extends ComponentBaseInstance {
 // }
 
-export default class Label extends ComponentBase<LabelProps, ComponentBaseInstance> { }
+export default class Label extends ComponentBase<LabelProps, ComponentBaseInstance> {}

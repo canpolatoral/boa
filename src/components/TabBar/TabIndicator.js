@@ -38,9 +38,9 @@ function TabIndicator(props) {
   const style = colorPredefined
     ? styleProp
     : {
-      ...styleProp,
-      backgroundColor: color,
-    };
+        ...styleProp,
+        backgroundColor: color,
+      };
 
   return <span className={className} style={style} />;
 }

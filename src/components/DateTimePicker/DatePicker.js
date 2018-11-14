@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase, Sizes } from '@boa/base';
 import { Input } from '@boa/components/Input';
-import {
-  isEqualDateTime,
-  getLocalizedDate,
-  getLocalizedTime,
-} from './dateUtils';
+import { isEqualDateTime, getLocalizedDate, getLocalizedTime } from './dateUtils';
 import DatePickerDialog from './DatePickerDialog';
 import TimePickerDialog from './TimePickerDialog';
 
@@ -25,10 +21,7 @@ class DatePicker extends ComponentBase {
     dateOnChange: PropTypes.func,
     DateTimeFormat: PropTypes.func,
     datetimeOption: PropTypes.object,
-    dateUpdate: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-    ]),
+    dateUpdate: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
     defaultDate: PropTypes.object,
     dialogContentStyle: PropTypes.object,
     dialogNewSelectDate: PropTypes.instanceOf(Date),
@@ -51,17 +44,11 @@ class DatePicker extends ComponentBase {
     inputStyle: PropTypes.object,
     isBusiness: PropTypes.bool,
     leftIconList: PropTypes.array,
-    maxDate: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    maxDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     maxHour: PropTypes.number,
     maxMinute: PropTypes.number,
     maxSecond: PropTypes.number,
-    minDate: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    minDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     minHour: PropTypes.number,
     minMinute: PropTypes.number,
     minSecond: PropTypes.number,
@@ -86,11 +73,7 @@ class DatePicker extends ComponentBase {
     todayLabel: PropTypes.node,
     underlineFocusStyle: PropTypes.object,
     underlineStyle: PropTypes.object,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.instanceOf(Date),
-    ]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.instanceOf(Date)]),
     yearTitle: PropTypes.node,
   };
 
@@ -143,40 +126,54 @@ class DatePicker extends ComponentBase {
   openDateDialog(event) {
     const element = event.currentTarget;
     if (this.getDate() !== undefined) {
-      this.setState({
-        dialogDate: this.getDate(),
-        anchorElDate: element,
-      }, this.refs.dateDialogWindow.show);
+      this.setState(
+        {
+          dialogDate: this.getDate(),
+          anchorElDate: element,
+        },
+        this.refs.dateDialogWindow.show,
+      );
     } else {
-      this.setState({
-        dialogDate: null,
-        anchorElDate: element,
-      }, this.refs.dateDialogWindow.show);
+      this.setState(
+        {
+          dialogDate: null,
+          anchorElDate: element,
+        },
+        this.refs.dateDialogWindow.show,
+      );
     }
   }
 
   openTimeDialog(event) {
     if (this.getDate() !== undefined) {
-      this.setState({
-        dialogDate: this.getDate(),
-        anchorElTime: event.currentTarget,
-      }, this.refs.timeDialogWindow.show);
+      this.setState(
+        {
+          dialogDate: this.getDate(),
+          anchorElTime: event.currentTarget,
+        },
+        this.refs.timeDialogWindow.show,
+      );
     } else {
-      this.setState({
-        dialogDate: null,
-        anchorElTime: event.currentTarget,
-      }, this.refs.timeDialogWindow.show);
+      this.setState(
+        {
+          dialogDate: null,
+          anchorElTime: event.currentTarget,
+        },
+        this.refs.timeDialogWindow.show,
+      );
     }
   }
 
   handleDateAccept(date) {
     if (date && this.state.date) {
-      const newDate = new Date(date.getFullYear(),
+      const newDate = new Date(
+        date.getFullYear(),
         date.getMonth(),
         date.getDate(),
         this.props.timeFormat ? this.state.date.getHours() : 0,
         this.props.timeFormat ? this.state.date.getMinutes() : 0,
-        this.props.timeFormat ? this.state.date.getSeconds() : 0);
+        this.props.timeFormat ? this.state.date.getSeconds() : 0,
+      );
       date = newDate;
     }
 
@@ -187,12 +184,14 @@ class DatePicker extends ComponentBase {
 
   handleTimeAccept(date) {
     if (date && this.state.date) {
-      const newDate = new Date(this.state.date.getFullYear(),
+      const newDate = new Date(
+        this.state.date.getFullYear(),
         this.state.date.getMonth(),
         this.state.date.getDate(),
         date.getHours(),
         date.getMinutes(),
-        date.getSeconds());
+        date.getSeconds(),
+      );
       date = newDate;
     }
     // this.setTimeValue(date);
@@ -241,11 +240,11 @@ class DatePicker extends ComponentBase {
     const instanceDate = this.bActionInputDate.getInstance();
     const instanceTime = this.bActionInputTime.getInstance();
 
-    const dateResult = (dateFormat && instanceDate) ? instanceDate.validateConstraint() : true;
+    const dateResult = dateFormat && instanceDate ? instanceDate.validateConstraint() : true;
     if (!dateResult) {
       return dateResult;
     }
-    const timeResult = (timeFormat && instanceTime) ? instanceTime.validateConstraint() : true;
+    const timeResult = timeFormat && instanceTime ? instanceTime.validateConstraint() : true;
     return dateResult && timeResult;
   }
 
@@ -294,9 +293,9 @@ class DatePicker extends ComponentBase {
     let cloneSuffixText = this.props.suffixText;
 
     if (this.props.pageType !== 'browse' && this.props.suffixText) {
-      cloneSuffixText = React.cloneElement(
-        this.props.suffixText, { onClick: this.handleFocusDateInput.bind(this) },
-      );
+      cloneSuffixText = React.cloneElement(this.props.suffixText, {
+        onClick: this.handleFocusDateInput.bind(this),
+      });
     }
 
     const inputLocalizedDate = getLocalizedDate(this.state.date, dateFormat);
@@ -308,9 +307,9 @@ class DatePicker extends ComponentBase {
           style={{
             width: timeFormat ? '65%' : '100%',
           }}
-          ref={r => this.rootDate = r}
+          ref={r => (this.rootDate = r)}
         >
-          {!this.props.noDialog &&
+          {!this.props.noDialog && (
             <Input
               context={this.props.context}
               valueConstraint={valueConstraint}
@@ -322,13 +321,13 @@ class DatePicker extends ComponentBase {
               prefixText={this.props.prefixText}
               suffixText={cloneSuffixText}
               inputAlign={this.props.style.inputAlign}
-              ref={r => this.bActionInputDate = r}
+              ref={r => (this.bActionInputDate = r)}
               disabled={disabled}
               errorText={errorTextDate}
               inputStyle={{ cursor: 'pointer' }}
               inlineGridMode={this.props.inlineGridMode}
             />
-          }
+          )}
           <DatePickerDialog
             // {...this.props} todo: geride kalanlar olmuş olabilir bu kullanım hatalı
             DateTimeFormat={DateTimeFormat}
@@ -375,9 +374,7 @@ class DatePicker extends ComponentBase {
       );
     }
 
-    return (
-      <div />
-    );
+    return <div />;
   }
 
   renderTime() {
@@ -418,12 +415,13 @@ class DatePicker extends ComponentBase {
     const isMobile = this.isMobile();
     if (timeFormat) {
       return (
-        <div style={{
-          width: '35%',
-          paddingLeft: 24,
-        }}>
-
-          {!this.props.noDialog &&
+        <div
+          style={{
+            width: '35%',
+            paddingLeft: 24,
+          }}
+        >
+          {!this.props.noDialog && (
             <Input
               context={this.props.context}
               valueConstraint={valueConstraint}
@@ -431,7 +429,7 @@ class DatePicker extends ComponentBase {
               floatingLabelText={this.props.floatingLabelTextTime}
               onFocus={this.handleFocusTimeInput}
               value={inputLocalizedTime}
-              ref={r => this.bActionInputTime = r}
+              ref={r => (this.bActionInputTime = r)}
               inputStyle={inputStyle}
               floatingLabelStyle={floatingLabelStyle}
               leftIconList={null}
@@ -441,7 +439,7 @@ class DatePicker extends ComponentBase {
               prefixText={null}
               suffixText={null}
             />
-          }
+          )}
           <TimePickerDialog
             DateTimeFormat={DateTimeFormat}
             context={this.props.context}
@@ -474,57 +472,43 @@ class DatePicker extends ComponentBase {
             minuteTitle={minuteTitle}
             secondTitle={secondTitle}
           />
-        </div>);
+        </div>
+      );
     }
 
-    return (
-      <div />
-    );
+    return <div />;
   }
 
   render() {
-    const {
-      timeFormat,
-      dateFormat,
-
-    } = this.props;
+    const { timeFormat, dateFormat } = this.props;
     const isRtl = this.props.context.localization.isRightToLeft;
 
     return (
-      <div>{
-        !isRtl &&
-        <div style={{
-          display: 'flex',
+      <div>
+        {!isRtl && (
+          <div
+            style={{
+              display: 'flex',
 
-          // height:60
-        }}>
-          {
-            dateFormat &&
-            this.renderDate()
-          }
-          {
-            timeFormat &&
-            this.renderTime()
-          }
-        </div>
-      }
-        {
-          isRtl &&
-          <div style={{
-            display: 'flex',
-            // height:60,
-            alignItems: 'baseline',
-          }}>
-            {
-              timeFormat &&
-              this.renderTime()
-            }
-            {
-              dateFormat &&
-              this.renderDate()
-            }
+              // height:60
+            }}
+          >
+            {dateFormat && this.renderDate()}
+            {timeFormat && this.renderTime()}
           </div>
-        }
+        )}
+        {isRtl && (
+          <div
+            style={{
+              display: 'flex',
+              // height:60,
+              alignItems: 'baseline',
+            }}
+          >
+            {timeFormat && this.renderTime()}
+            {dateFormat && this.renderDate()}
+          </div>
+        )}
       </div>
     );
   }

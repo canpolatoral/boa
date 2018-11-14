@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('InputMask', ({ props }) => {
       <Header {...props} component={InputMask} doc={doc} />
       <Preview {...props} component={InputMask} doc={doc} />
       <Props {...props} component={InputMask} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

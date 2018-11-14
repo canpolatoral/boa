@@ -13,24 +13,24 @@ const Checkbox = styled(({ node, ...props }) => (
     style={
       node.state.indeterminate
         ? {
-          display: 'flex',
-          color: props.context.theme.boaPalette.base400,
-          width: '24px',
-          marginRight: !props.context.localization.isRightToLeft && '12px',
-          marginLeft: props.context.localization.isRightToLeft && '12px',
-          marginTop: '0px',
-          height: props.rowHeight,
-          lineHeight: `${props.rowHeight}px`,
-        }
+            display: 'flex',
+            color: props.context.theme.boaPalette.base400,
+            width: '24px',
+            marginRight: !props.context.localization.isRightToLeft && '12px',
+            marginLeft: props.context.localization.isRightToLeft && '12px',
+            marginTop: '0px',
+            height: props.rowHeight,
+            lineHeight: `${props.rowHeight}px`,
+          }
         : {
-          display: 'flex',
-          width: '24px',
-          marginRight: !props.context.localization.isRightToLeft && '12px',
-          marginLeft: props.context.localization.isRightToLeft && '12px',
-          marginTop: '0px',
-          height: props.rowHeight,
-          lineHeight: `${props.rowHeight}px`,
-        }
+            display: 'flex',
+            width: '24px',
+            marginRight: !props.context.localization.isRightToLeft && '12px',
+            marginLeft: props.context.localization.isRightToLeft && '12px',
+            marginTop: '0px',
+            height: props.rowHeight,
+            lineHeight: `${props.rowHeight}px`,
+          }
     }
   />
 ))`

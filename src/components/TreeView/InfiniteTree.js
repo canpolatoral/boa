@@ -201,13 +201,9 @@ export default class extends Component {
       virtualListProps.onScroll = this.onScroll;
     }
 
-    /* eslint-disable jsx-a11y/no-static-element-interactions,max-len */
+    /* eslint-disable jsx-a11y/no-static-element-interactions, max-len */
     return (
-      <div
-        style={{ ...style }}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        tabIndex={tabIndex}>
+      <div style={{ ...style }} onKeyDown={onKeyDown} onKeyUp={onKeyUp} tabIndex={tabIndex}>
         <VirtualList
           ref={node => {
             this.virtualList = node;
@@ -248,8 +244,12 @@ export default class extends Component {
             .b-treeview { -ms-overflow-style: block!important; font-weight: 400;}
             .b-treeview::-webkit-scrollbar { display: block!important; }
             .b-treeview > div { overflow:initial!important }
-            .b-treeview-search-input div:before { border-bottom-color: ${this.props.context.theme.boaPalette.base200}!important; }
-            .b-treeview span.highlighted { color: ${this.props.context.theme.boaPalette.pri500}; background-color: #b618ce29; }
+            .b-treeview-search-input div:before { border-bottom-color: ${
+              this.props.context.theme.boaPalette.base200
+            }!important; }
+            .b-treeview span.highlighted { color: ${
+              this.props.context.theme.boaPalette.pri500
+            }; background-color: #b618ce29; }
           `}
         </style>
       </div>

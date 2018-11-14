@@ -33,7 +33,12 @@ const sampleData = {
       isExpanded: true,
       children: [
         { id: 3, name: 'app.js', isCheckable: false, icon: <Apps style={{ color: 'yellow' }} /> },
-        { id: 4, name: 'data.js', isSelected: true, icon: <DoneAll style={{ color: 'deepskyblue' }} /> }, // eslint-disable-line
+        {
+          id: 4,
+          name: 'data.js',
+          isSelected: true,
+          icon: <DoneAll style={{ color: 'deepskyblue' }} />,
+        }, // eslint-disable-line
         { id: 5, name: 'index.js', icon: clearIcon },
         { id: 6, name: 'styles.js', icon: <CloudOff style={{ color: 'coral' }} /> },
         { id: 7, name: 'webpack.config.js', icon: <FlashOn style={{ color: 'plum' }} /> },
@@ -64,7 +69,11 @@ const sampleData = {
       id: 14,
       name: 'themes',
       children: [
-        { id: 15, name: 'animations.js', icon: <PlaylistAddCheck style={{ color: 'deepskyblue' }} /> }, // eslint-disable-line
+        {
+          id: 15,
+          name: 'animations.js',
+          icon: <PlaylistAddCheck style={{ color: 'deepskyblue' }} />,
+        }, // eslint-disable-line
         { id: 16, name: 'default.js' },
       ],
     },

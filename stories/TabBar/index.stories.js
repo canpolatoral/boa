@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('TabBar', ({ props }) => {
       <Header {...props} component={TabBar} doc={doc} />
       <Preview {...props} component={TabBar} doc={doc} />
       <Props {...props} component={TabBar} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

@@ -39,11 +39,7 @@ class TimeBase extends ComponentBase {
   }
 
   getTimes() {
-    const {
-      DateTimeFormat,
-      selectedDate,
-      timeType,
-    } = this.props;
+    const { DateTimeFormat, selectedDate, timeType } = this.props;
 
     const times = [];
     const maxTime = this.props.maxValue;
@@ -87,12 +83,10 @@ class TimeBase extends ComponentBase {
         }).format(dateCheck);
       }
 
-
       const selected = selectedTime === time;
       if (selected) {
         selectedProps.ref = 'selectedTimeButton';
       }
-
 
       const timeButton = (
         <TimeButton
@@ -123,7 +117,7 @@ class TimeBase extends ComponentBase {
 
     const containerHeight = container.clientHeight;
     const timeButtonNodeHeight = timeButtonNode.clientHeight || 32;
-    const scrollYOffset = (timeButtonNode.offsetTop + timeButtonNodeHeight / 2) - containerHeight / 2; // eslint-disable-line max-len
+    const scrollYOffset = timeButtonNode.offsetTop + timeButtonNodeHeight / 2 - containerHeight / 2; // eslint-disable-line max-len
     container.scrollTop = scrollYOffset;
   }
 
@@ -154,11 +148,7 @@ class TimeBase extends ComponentBase {
     };
     return (
       <div style={{ float: 'left', ...styles.root }}>
-        <div style={styles.child}>
-          {
-            this.getTimes()
-          }
-        </div>
+        <div style={styles.child}>{this.getTimes()}</div>
       </div>
     );
   }

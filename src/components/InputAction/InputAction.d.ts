@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface InputActionProps extends ComponentBaseProps {
   type?: string;
@@ -24,7 +20,6 @@ export interface InputActionProps extends ComponentBaseProps {
   onTimerFinished?: () => void;
   valueConstraint?: any;
   inputDisabled?: boolean;
-
 }
 
 export interface InputActionInstance extends ComponentBaseInstance {
@@ -33,4 +28,4 @@ export interface InputActionInstance extends ComponentBaseInstance {
   focus?: () => void;
 }
 
-export default class InputAction extends ComponentBase<InputActionProps, InputActionInstance> { }
+export default class InputAction extends ComponentBase<InputActionProps, InputActionInstance> {}

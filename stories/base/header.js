@@ -5,7 +5,7 @@ import { DocViewer } from '@boa/components/DocViewer';
 export default class ComponentInfo extends React.Component {
   static propTypes = {
     doc: PropTypes.any,
-  }
+  };
 
   prepareData() {
     let doc = `# ${this.props.doc.displayName}`;
@@ -16,8 +16,6 @@ export default class ComponentInfo extends React.Component {
 
   render() {
     const data = this.prepareData();
-    return (
-      <DocViewer content={data} editorType="github" />
-    );
+    return <DocViewer content={data} editorType="github" />;
   }
 }

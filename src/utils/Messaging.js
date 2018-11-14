@@ -80,12 +80,23 @@ function loadMessagesByGroup(groupName, languageId) {
   let baseUrl = messagingOptions.path;
 
   switch (languageId) {
-    case 1: baseUrl += 'tr/'; break;
-    case 2: baseUrl += 'en/'; break;
-    case 3: baseUrl += 'de/'; break;
-    case 4: baseUrl += 'ru/'; break;
-    case 5: baseUrl += 'ar/'; break;
-    default: baseUrl += 'en/';
+    case 1:
+      baseUrl += 'tr/';
+      break;
+    case 2:
+      baseUrl += 'en/';
+      break;
+    case 3:
+      baseUrl += 'de/';
+      break;
+    case 4:
+      baseUrl += 'ru/';
+      break;
+    case 5:
+      baseUrl += 'ar/';
+      break;
+    default:
+      baseUrl += 'en/';
   }
 
   const request = {
@@ -132,12 +143,11 @@ export function setMessagingOptions(options) {
   }
 }
 
-
 export function getMessage(groupName, propertyName, languageId) {
   const versionCheckRequired = isVersionCheckRequired();
   let messagesRefreshRequired = false;
-  let clientVersion; let
-    serverVersion;
+  let clientVersion;
+  let serverVersion;
 
   if (versionCheckRequired) {
     const responseVersion = getMessagesVersion();
@@ -157,7 +167,7 @@ export function getMessage(groupName, propertyName, languageId) {
   const messages = store.messages;
   const messageGroup = messages[groupName];
   const messagesNotExists = !messages || !messageGroup;
-  const languageNotExists = (messages && messageGroup && messageGroup.languageId !== languageId);
+  const languageNotExists = messages && messageGroup && messageGroup.languageId !== languageId;
 
   if (messagesNotExists || languageNotExists || messagesRefreshRequired) {
     loadMessagesByGroup(groupName, languageId || messagingOptions.languageId);

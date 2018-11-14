@@ -4,10 +4,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { withStyles } from '@material-ui/core/styles';
 import { Icon } from '@boa/components/Icon';
-import {
-  ComponentBase,
-  ComponentComposer,
-} from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@boa/base';
 
 const styles = theme => ({
   root: {
@@ -56,14 +53,14 @@ const styles = theme => ({
 
 /**
  * BOA Icon Button Component
-*/
+ */
 @ComponentComposer
 @withStyles(styles)
 class IconButton extends ComponentBase {
   static propTypes = {
     /**
-    * Base properties from ComponentBase
-    */
+     * Base properties from ComponentBase
+     */
     ...ComponentBase.propTypes,
     /**
      * The color of the component.
@@ -88,7 +85,7 @@ class IconButton extends ComponentBase {
      */
     focusRipple: PropTypes.bool,
     /**
-      * Font icon name from font icon's library.
+     * Font icon name from font icon's library.
      */
     fontIcon: PropTypes.string,
     /**
@@ -97,7 +94,7 @@ class IconButton extends ComponentBase {
     onClick: PropTypes.func,
     /**
      * Override the style of element
-      */
+     */
     style: PropTypes.object,
     /**
      * SVG Icon name from material svg icon library.
@@ -122,7 +119,8 @@ class IconButton extends ComponentBase {
       'right',
       'top-end',
       'top-start',
-      'top']),
+      'top',
+    ]),
   };
 
   static defaultProps = {
@@ -183,7 +181,6 @@ class IconButton extends ComponentBase {
     const tooltipTitle = this.props.tooltip;
     const tooltipPosition = this.props.tooltipPosition;
 
-
     const iconButton = (
       <ButtonBase
         classes={{
@@ -200,11 +197,12 @@ class IconButton extends ComponentBase {
       </ButtonBase>
     );
 
-    return (
-      tooltipTitle ?
-        (<Tooltip title={tooltipTitle} placement={tooltipPosition}>{iconButton}</Tooltip>)
-        :
-        iconButton
+    return tooltipTitle ? (
+      <Tooltip title={tooltipTitle} placement={tooltipPosition}>
+        {iconButton}
+      </Tooltip>
+    ) : (
+      iconButton
     );
   }
 }

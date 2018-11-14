@@ -20,9 +20,9 @@ module.exports = {
   },
   plugins: ['babel', 'import', 'jsx-a11y', 'mocha'],
   settings: {
-    "import/resolver": {
-      "babel-module": {}
-    }
+    'import/resolver': {
+      'babel-module': {},
+    },
   },
   rules: {
     'linebreak-style': 'off', // Don't play nicely with Windows
@@ -35,8 +35,7 @@ module.exports = {
     'space-before-function-paren': 'off', // Incompatible with prettier
     'no-confusing-arrow': 'off', // Incompatible with prettier
     'no-mixed-operators': 'off', // Incompatible with prettier
-    'consistent-this': ['error', 'self'
-    ],
+    'consistent-this': ['error', 'self'],
     'max-len': [
       'error',
       100,
@@ -53,18 +52,16 @@ module.exports = {
     'operator-linebreak': 'off', // airbnb use error
     // It would be better to enable this rule, but it might slow us down.
     'import/no-extraneous-dependencies': 'off',
-    'import/namespace': ['error',
+    'import/namespace': [
+      'error',
       {
-        allowComputed: true
-      }
+        allowComputed: true,
+      },
     ],
     'import/order': [
       'error',
       {
-        groups: [
-          ['index', 'sibling', 'parent', 'internal', 'external', 'builtin'
-          ]
-        ],
+        groups: [['index', 'sibling', 'parent', 'internal', 'external', 'builtin']],
         'newlines-between': 'never',
       },
     ],
@@ -79,11 +76,11 @@ module.exports = {
     'react/forbid-foreign-prop-types': 'off', // airbnb use error
     'react/require-default-props': 'off', // airbnb use error, it's buggy
     'react/destructuring-assignment': 'off', // airbnb use error
-    'react/jsx-filename-extension': ['error',
+    'react/jsx-filename-extension': [
+      'error',
       {
-        extensions: ['.js'
-        ]
-      }
+        extensions: ['.js'],
+      },
     ], // airbnb is using .jsx
     'react/no-danger': 'error', // airbnb is using warn
     'react/no-direct-mutation-state': 'error', // airbnb is using off
@@ -101,6 +98,6 @@ module.exports = {
 
     'no-plusplus': 'off',
     'no-return-assign': 'off',
-    "react/no-string-refs": 'off'
+    'react/no-string-refs': 'off',
   },
 };

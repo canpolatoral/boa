@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps,
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 // export interface ResizableProps extends ComponentBaseProps {
 // }
@@ -12,4 +8,4 @@ import ComponentBase,
 // export interface ResizableInstance extends ComponentBaseInstance {
 // }
 
-export default class Resizable extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> { }
+export default class Resizable extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> {}

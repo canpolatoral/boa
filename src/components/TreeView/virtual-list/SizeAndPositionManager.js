@@ -3,11 +3,7 @@
 import { ALIGN_START, ALIGN_END, ALIGN_CENTER } from './constants';
 
 export default class SizeAndPositionManager {
-  constructor({
-    itemCount,
-    itemSizeGetter,
-    estimatedItemSize,
-  }) {
+  constructor({ itemCount, itemSizeGetter, estimatedItemSize }) {
     this.itemSizeGetter = itemSizeGetter;
     this.itemCount = itemCount;
     this.estimatedItemSize = estimatedItemSize;
@@ -19,10 +15,7 @@ export default class SizeAndPositionManager {
     this.lastMeasuredIndex = -1;
   }
 
-  updateConfig({
-    itemCount,
-    estimatedItemSize,
-  }) {
+  updateConfig({ itemCount, estimatedItemSize }) {
     this.itemCount = itemCount;
     this.estimatedItemSize = estimatedItemSize;
   }
@@ -42,8 +35,7 @@ export default class SizeAndPositionManager {
 
     if (index > this.lastMeasuredIndex) {
       const lastMeasuredSizeAndPosition = this.getSizeAndPositionOfLastMeasuredItem();
-      let offset = lastMeasuredSizeAndPosition.offset +
-        lastMeasuredSizeAndPosition.size;
+      let offset = lastMeasuredSizeAndPosition.offset + lastMeasuredSizeAndPosition.size;
 
       for (let i = this.lastMeasuredIndex + 1; i <= index; i++) {
         const size = this.itemSizeGetter({ index: i });
@@ -73,15 +65,17 @@ export default class SizeAndPositionManager {
   }
 
   /**
-  * Total size of all items being measured.
-  * This value will be completedly estimated initially.
-  * As items as measured the estimate will be updated.
-  */
+   * Total size of all items being measured.
+   * This value will be completedly estimated initially.
+   * As items as measured the estimate will be updated.
+   */
   getTotalSize() {
     const lastMeasuredSizeAndPosition = this.getSizeAndPositionOfLastMeasuredItem();
-    return lastMeasuredSizeAndPosition.offset +
+    return (
+      lastMeasuredSizeAndPosition.offset +
       lastMeasuredSizeAndPosition.size +
-      (this.itemCount - this.lastMeasuredIndex - 1) * this.estimatedItemSize;
+      (this.itemCount - this.lastMeasuredIndex - 1) * this.estimatedItemSize
+    );
   }
 
   /**
@@ -91,11 +85,7 @@ export default class SizeAndPositionManager {
    * @param containerSize Size (width or height) of the container viewport
    * @return Offset to use to ensure the specified item is visible
    */
-  getUpdatedOffsetForIndex({
-    align = ALIGN_START,
-    containerSize,
-    targetIndex,
-  }) {
+  getUpdatedOffsetForIndex({ align = ALIGN_START, containerSize, targetIndex }) {
     if (containerSize <= 0) {
       return 0;
     }
@@ -126,7 +116,9 @@ export default class SizeAndPositionManager {
   getVisibleRange({ containerSize, offset, overscanCount }) {
     const totalSize = this.getTotalSize();
 
-    if (totalSize === 0) { return {}; }
+    if (totalSize === 0) {
+      return {};
+    }
 
     const maxOffset = offset + containerSize;
     let start = this.findNearestItem(offset);
@@ -171,7 +163,8 @@ export default class SizeAndPositionManager {
 
       if (currentOffset === offset) {
         return middle;
-      } if (currentOffset < offset) {
+      }
+      if (currentOffset < offset) {
         low = middle + 1;
       } else if (currentOffset > offset) {
         high = middle - 1;
@@ -187,10 +180,7 @@ export default class SizeAndPositionManager {
   _exponentialSearch({ index, offset }) {
     let interval = 1;
 
-    while (
-      index < this.itemCount &&
-      this.getSizeAndPositionForIndex(index).offset < offset
-    ) {
+    while (index < this.itemCount && this.getSizeAndPositionForIndex(index).offset < offset) {
       index += interval;
       interval *= 2;
     }
@@ -230,11 +220,11 @@ export default class SizeAndPositionManager {
     }
 
     /**
-      * If we haven't yet measured this high,
-      * fallback to an exponential search with an inner binary search.
-      * The exponential search avoids pre-computing sizes for
-      * the full set of items as a binary search would.
-      * The overall complexity for this approach is O(log n).
+     * If we haven't yet measured this high,
+     * fallback to an exponential search with an inner binary search.
+     * The exponential search avoids pre-computing sizes for
+     * the full set of items as a binary search would.
+     * The overall complexity for this approach is O(log n).
      */
     return this.exponentialSearch({
       index: lastMeasuredIndex,

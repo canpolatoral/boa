@@ -13,8 +13,6 @@ const styles = {
     position: 'relative',
     textAlign: 'center',
     MozPaddingStart: 0,
-
-
   },
   week: {
     display: 'flex',
@@ -98,16 +96,19 @@ class CalendarMonth extends Component {
       canSelectWeekendDays,
       canSelectSpecialDays,
       displayDate,
-
     } = this.props;
 
     return week.map((day, j) => {
       const isSameDate = isEqualDate(selectedDate, day);
 
-
       const dayInfo = this.getDayType(day, calendarInfo);
       const options = {
-        day, displayDate, dayInfo, canSelectOldDates, canSelectWeekendDays, canSelectSpecialDays,
+        day,
+        displayDate,
+        dayInfo,
+        canSelectOldDates,
+        canSelectWeekendDays,
+        canSelectSpecialDays,
       };
       const disabled = this.shouldDisableDate(options);
 
@@ -119,14 +120,13 @@ class CalendarMonth extends Component {
         this.selectedDateDisabled = disabled;
       }
 
-
       return (
         <DayButton
           DateTimeFormat={DateTimeFormat}
           context={this.props.context}
           date={day}
           disabled={disabled}
-          key={`db${(i + j)}`}
+          key={`db${i + j}`}
           onTouchTap={this.handleTouchTapDay}
           selected={selected}
           dayInfo={dayInfo}
@@ -147,13 +147,7 @@ class CalendarMonth extends Component {
   }
 
   shouldDisableDate(options) {
-    const {
-      day,
-      dayInfo,
-      canSelectOldDates,
-      canSelectWeekendDays,
-      canSelectSpecialDays,
-    } = options;
+    const { day, dayInfo, canSelectOldDates, canSelectWeekendDays, canSelectSpecialDays } = options;
 
     if (day === null) return false;
     let disabled = !isBetweenDates(day, this.props.minDate, this.props.maxDate);
@@ -168,12 +162,12 @@ class CalendarMonth extends Component {
       if (!canSelectWeekendDays && dayInfo.dayType === dayType.WeekendDay) {
         disabled = true;
       }
-      if (!canSelectSpecialDays &&
-        (
-          dayInfo.dayType === dayType.Eve ||
+      if (
+        !canSelectSpecialDays &&
+        (dayInfo.dayType === dayType.Eve ||
           dayInfo.dayType === dayType.ReliHoliday ||
-          dayInfo.dayType === dayType.Holiday
-        )) {
+          dayInfo.dayType === dayType.Holiday)
+      ) {
         disabled = true;
       }
     }
@@ -184,9 +178,7 @@ class CalendarMonth extends Component {
   render() {
     return (
       <div>
-        <div style={styles.root}>
-          {this.getWeekElements()}
-        </div>
+        <div style={styles.root}>{this.getWeekElements()}</div>
       </div>
     );
   }

@@ -5,10 +5,7 @@ import shallowEqual from 'shallowequal';
 
 class NodeHeader extends React.Component {
   static propTypes = {
-    animations: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.bool,
-    ]).isRequired,
+    animations: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
     decorators: PropTypes.object.isRequired,
     isRightToLeft: PropTypes.bool,
     node: PropTypes.object.isRequired,
@@ -37,7 +34,7 @@ class NodeHeader extends React.Component {
     const { style, decorators, context } = this.props; // eslint-disable-line
     const terminal = !this.props.node.children;
     const active = this.props.node.active;
-    const container = [style.link, (active && !this.props.node.children) ? style.activeLink : null];
+    const container = [style.link, active && !this.props.node.children ? style.activeLink : null];
     const headerStyles = Object.assign({ container }, this.props.style);
 
     return (

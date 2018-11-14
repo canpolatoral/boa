@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface LinearPanelProps extends ComponentBaseProps {
   children?: React.ReactNode;
@@ -16,4 +12,4 @@ export interface LinearPanelProps extends ComponentBaseProps {
 // export interface LinearPanelInstance extends ComponentBaseInstance {
 // }
 
-export default class LinearPanel extends ComponentBase<LinearPanelProps, ComponentBaseInstance> { }
+export default class LinearPanel extends ComponentBase<LinearPanelProps, ComponentBaseInstance> {}

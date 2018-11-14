@@ -5,10 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import { Label } from '@boa/components/Label';
-import {
-  ComponentBase,
-  ComponentComposer,
-} from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@boa/base';
 
 const styles = theme => ({
   root: {
@@ -41,7 +38,7 @@ const styles = theme => ({
 
 /**
  * CheckBox Component is wrapped from `@material-ui/core/CheckBox`.
-*/
+ */
 @ComponentComposer
 @withStyles(styles)
 class CheckBox extends ComponentBase {
@@ -135,14 +132,16 @@ class CheckBox extends ComponentBase {
 
   /* eslint-disable max-len */
   state = {
-    isChecked: this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
+    isChecked:
+      this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
   };
 
   constructor(props, context) {
     super(props, context);
     this.onCheck = this.onCheck.bind(this);
     this.state = {
-      isChecked: this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
+      isChecked:
+        this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
       disabled: this.props.disabled,
     };
   }
@@ -227,7 +226,9 @@ class CheckBox extends ComponentBase {
           <Label style={errorStyle} context={this.props.context} text={this.props.errorText} />
         ) : null}
       </div>
-    ) : (checkBox);
+    ) : (
+      checkBox
+    );
   }
 }
 

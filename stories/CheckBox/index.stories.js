@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('CheckBox', ({ props }) => {
       <Header {...props} component={CheckBox} doc={doc} />
       <Preview {...props} component={CheckBox} doc={doc} />
       <Props {...props} component={CheckBox} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

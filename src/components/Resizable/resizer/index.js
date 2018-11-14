@@ -8,7 +8,14 @@ import isEqual from 'lodash/isEqual';
 const clamp = (n, min, max) => Math.max(Math.min(n, max), min);
 const snap = (n, size) => Math.round(n / size) * size;
 const directions = [
-  'top', 'right', 'bottom', 'left', 'topRight', 'bottomRight', 'bottomLeft', 'topLeft',
+  'top',
+  'right',
+  'bottom',
+  'left',
+  'topRight',
+  'bottomRight',
+  'bottomLeft',
+  'topLeft',
 ];
 
 export default class Resizable extends Component {
@@ -38,10 +45,7 @@ export default class Resizable extends Component {
       topLeft: PropTypes.object,
       topRight: PropTypes.object,
     }),
-    height: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     isResizable: PropTypes.shape({
       bottom: PropTypes.bool,
       bottomLeft: PropTypes.bool,
@@ -64,10 +68,7 @@ export default class Resizable extends Component {
     onResizeStart: PropTypes.func,
     onResizeStop: PropTypes.func,
     onTouchStart: PropTypes.func,
-    width: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   };
 
   static defaultProps = {
@@ -88,7 +89,7 @@ export default class Resizable extends Component {
     handleStyle: {},
     handleClass: {},
     grid: [1, 1],
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -150,29 +151,29 @@ export default class Resizable extends Component {
     let newHeight = original.height;
     if (/right/i.test(direction)) {
       newWidth = original.width + clientX - original.x;
-      const min = (minWidth < 0 || typeof minWidth === 'undefined') ? 0 : minWidth;
-      const max = (maxWidth < 0 || typeof maxWidth === 'undefined') ? newWidth : maxWidth;
+      const min = minWidth < 0 || typeof minWidth === 'undefined' ? 0 : minWidth;
+      const max = maxWidth < 0 || typeof maxWidth === 'undefined' ? newWidth : maxWidth;
       newWidth = clamp(newWidth, min, max);
       newWidth = snap(newWidth, this.props.grid[0]);
     }
     if (/left/i.test(direction)) {
       newWidth = original.width - clientX + original.x;
-      const min = (minWidth < 0 || typeof minWidth === 'undefined') ? 0 : minWidth;
-      const max = (maxWidth < 0 || typeof maxWidth === 'undefined') ? newWidth : maxWidth;
+      const min = minWidth < 0 || typeof minWidth === 'undefined' ? 0 : minWidth;
+      const max = maxWidth < 0 || typeof maxWidth === 'undefined' ? newWidth : maxWidth;
       newWidth = clamp(newWidth, min, max);
       newWidth = snap(newWidth, this.props.grid[0]);
     }
     if (/bottom/i.test(direction)) {
       newHeight = original.height + clientY - original.y;
-      const min = (minHeight < 0 || typeof minHeight === 'undefined') ? 0 : minHeight;
-      const max = (maxHeight < 0 || typeof maxHeight === 'undefined') ? newHeight : maxHeight;
+      const min = minHeight < 0 || typeof minHeight === 'undefined' ? 0 : minHeight;
+      const max = maxHeight < 0 || typeof maxHeight === 'undefined' ? newHeight : maxHeight;
       newHeight = clamp(newHeight, min, max);
       newHeight = snap(newHeight, this.props.grid[1]);
     }
     if (/top/i.test(direction)) {
       newHeight = original.height - clientY + original.y;
-      const min = (minHeight < 0 || typeof minHeight === 'undefined') ? 0 : minHeight;
-      const max = (maxHeight < 0 || typeof maxHeight === 'undefined') ? newHeight : maxHeight;
+      const min = minHeight < 0 || typeof minHeight === 'undefined' ? 0 : minHeight;
+      const max = maxHeight < 0 || typeof maxHeight === 'undefined' ? newHeight : maxHeight;
       newHeight = clamp(newHeight, min, max);
       newHeight = snap(newHeight, this.props.grid[1]);
     }
@@ -299,23 +300,29 @@ export default class Resizable extends Component {
   render() {
     const userSelect = this.state.isActive
       ? {
-        userSelect: 'none',
-        MozUserSelect: 'none',
-        WebkitUserSelect: 'none',
-        MsUserSelect: 'none',
-      }
+          userSelect: 'none',
+          MozUserSelect: 'none',
+          WebkitUserSelect: 'none',
+          MsUserSelect: 'none',
+        }
       : {
-        userSelect: 'auto',
-        MozUserSelect: 'auto',
-        WebkitUserSelect: 'auto',
-        MsUserSelect: 'auto',
-      };
+          userSelect: 'auto',
+          MozUserSelect: 'auto',
+          WebkitUserSelect: 'auto',
+          MsUserSelect: 'auto',
+        };
     const style = this.getBoxStyle();
-    const { onClick, customStyle, customClass,
-      onMouseDown, onDoubleClick, onTouchStart } = this.props;
+    const {
+      onClick,
+      customStyle,
+      customClass,
+      onMouseDown,
+      onDoubleClick,
+      onTouchStart,
+    } = this.props;
     return (
       <div
-        ref={r => this.resizable = r}
+        ref={r => (this.resizable = r)}
         style={{
           position: 'relative',
           ...userSelect,

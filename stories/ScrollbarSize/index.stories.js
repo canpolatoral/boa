@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -16,5 +15,6 @@ stories.add('ScrollbarSize', ({ props }) => {
       <Header {...props} component={ScrollbarSize} doc={doc} />
       <Preview {...props} component={ScrollbarSize} doc={doc} />
       <Props {...props} component={ScrollbarSize} doc={doc} />
-    </div>);
-  });
+    </div>
+  );
+});

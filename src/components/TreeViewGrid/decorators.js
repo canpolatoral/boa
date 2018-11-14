@@ -13,12 +13,8 @@ import { ComponentBase } from '@boa/base';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
-const Loading = (props) => {
-  return (
-    <div style={props.style}>
-      loading...
-    </div>
-  );
+const Loading = props => {
+  return <div style={props.style}>loading...</div>;
 };
 
 const toggleStyle = {
@@ -31,7 +27,7 @@ Loading.propTypes = {
   style: PropTypes.object,
 };
 
-const Toggle = (props) => {
+const Toggle = props => {
   const style = props.style;
   const height = style.height;
   const width = style.width;
@@ -48,10 +44,7 @@ const Toggle = (props) => {
     <div style={styleBase}>
       <div style={styleWrapper}>
         <svg height={height} width={width}>
-          <polygon
-            points={points}
-            style={style.arrow}
-          />
+          <polygon points={points} style={style.arrow} />
         </svg>
       </div>
     </div>
@@ -64,16 +57,14 @@ Toggle.propTypes = {
 };
 
 const styles = () => ({
-  container: {
-  },
+  container: {},
   textField: {
     textAlign: 'center',
     fontSize: '14px',
     height: 21,
     minWidth: '1px',
   },
-  menu: {
-  },
+  menu: {},
   numberPadding: { paddingLeft: 16 },
 });
 
@@ -93,7 +84,7 @@ class Header extends ComponentBase {
 
   static defaultProps = {
     ...ComponentBase.defaultProps,
-  }
+  };
 
   onTextChanged() {
     this.props.onChange(this);
@@ -149,13 +140,11 @@ class Header extends ComponentBase {
     const style = this.props.style;
     const styleFontable = this.props.node.children ? nodeDarkStyle : nodeStyle;
     const styleFrame = this.props.node.children ? headerInputFrameStyle : inputFrameStyle;
-    const inputClass = classNames(
-      this.props.classes.textField,
-      {
-        [this.props.classes.numberPadding]: this.props.node.type === 'number',
-      });
+    const inputClass = classNames(this.props.classes.textField, {
+      [this.props.classes.numberPadding]: this.props.node.type === 'number',
+    });
 
-    const treeNode =
+    const treeNode = (
       <div style={styleFontable}>
         <div
           ref="clickable"
@@ -167,7 +156,8 @@ class Header extends ComponentBase {
             fontSize: '14px',
             paddingLeft: '10px',
             paddingRight: '10px',
-          }}>
+          }}
+        >
           {this.props.node.name}
         </div>
 
@@ -178,7 +168,7 @@ class Header extends ComponentBase {
             disabled={!this.props.node.editableColumn1}
             maxLenght={this.props.node.columnsMaxLenght}
             type={this.props.node.type ? this.props.node.type : 'text'}
-            onChange={(value) => {
+            onChange={value => {
               if (!this.props.node.children) {
                 if (this.props.node.type === 'number') {
                   this.props.node.column1 = value.target.valueAsNumber;
@@ -208,7 +198,7 @@ class Header extends ComponentBase {
             type={this.props.node.type ? this.props.node.type : 'text'}
             disabled={!this.props.node.editableColumn2}
             maxLenght={this.props.node.columnsMaxLenght}
-            onChange={(value) => {
+            onChange={value => {
               if (!this.props.node.children) {
                 if (this.props.node.type === 'number') {
                   this.props.node.column2 = value.target.valueAsNumber;
@@ -226,8 +216,7 @@ class Header extends ComponentBase {
                 input: inputClass,
               },
               tabIndex: '2',
-            }
-            }
+            }}
           />
         </div>
 
@@ -238,7 +227,7 @@ class Header extends ComponentBase {
             type={this.props.node.type ? this.props.node.type : 'text'}
             disabled={!this.props.node.editableColumn3}
             maxLenght={this.props.node.columnsMaxLenght}
-            onChange={(value) => {
+            onChange={value => {
               if (!this.props.node.children) {
                 if (this.props.node.type === 'number') {
                   this.props.node.column3 = value.target.valueAsNumber;
@@ -260,7 +249,6 @@ class Header extends ComponentBase {
           />
         </div>
 
-
         <div style={styleFrame}>
           <TextField
             tabIndex="4"
@@ -269,7 +257,7 @@ class Header extends ComponentBase {
             disabled={!this.props.node.editableColumn4}
             value={this.props.node.column4}
             maxLenght={this.props.node.columnsMaxLenght}
-            onChange={(value) => {
+            onChange={value => {
               if (!this.props.node.children) {
                 if (this.props.node.type === 'number') {
                   this.props.node.column4 = value.target.valueAsNumber;
@@ -288,27 +276,18 @@ class Header extends ComponentBase {
               },
               tabIndex: '4',
             }}
-
           />
         </div>
-
-
-      </div>;
-    return (
-      <div style={style.base}>
-        {treeNode}
       </div>
     );
+    return <div style={style.base}>{treeNode}</div>;
   }
 }
 
 @Radium
 class Container extends ComponentBase {
   static propTypes = {
-    animations: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.bool,
-    ]).isRequired,
+    animations: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
     decorators: PropTypes.object.isRequired,
     isRightToLeft: PropTypes.bool,
     node: PropTypes.object.isRequired,
@@ -332,16 +311,17 @@ class Container extends ComponentBase {
     };
 
     const { style, terminal, onClick, node, context } = this.props;
-    const content =
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        borderBottom: !terminal && node.toggled ? `1px solid ${theme.boaPalette.base200}` : null,
-      }}>
+    const content = (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: !terminal && node.toggled ? `1px solid ${theme.boaPalette.base200}` : null,
+        }}
+      >
         {!terminal && (
-          <div
-            onClick={this.props.onClick}
-            style={iconStyle}>{this.renderToggle(node.toggled)}
+          <div onClick={this.props.onClick} style={iconStyle}>
+            {this.renderToggle(node.toggled)}
           </div>
         )}
         <Header
@@ -352,14 +332,10 @@ class Container extends ComponentBase {
           isRightToLeft={this.props.isRightToLeft}
           onChange={this.props.onChange}
         />
-      </div>;
-
-    return (
-      <div
-        style={style.container}>
-        {content}
       </div>
     );
+
+    return <div style={style.container}>{content}</div>;
   }
 
   // eslint-disable-next-line

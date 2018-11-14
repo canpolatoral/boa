@@ -70,8 +70,8 @@ export default class DialogHelper {
       content &&
       (typeof content === 'string' ||
         content instanceof Array ||
-        ((content instanceof Object && content.mainContent !== undefined)
-          || dialogResponseStyle != null))
+        ((content instanceof Object && content.mainContent !== undefined) ||
+          dialogResponseStyle != null))
     ) {
       if (dialogResponseStyle === ComponentBase.DialogResponseStyle.OK) {
         actions.push(createAction(context, 'Ok', ComponentBase.DialogResponse.OK, true));
@@ -89,9 +89,9 @@ export default class DialogHelper {
     }
 
     const titleBackgroundColor =
-      Object.keys(DialogHelper.dialogRefs).length >= 1 ?
-        context.theme.boaPalette.base300 :
-        context.theme.boaPalette.pri500;
+      Object.keys(DialogHelper.dialogRefs).length >= 1
+        ? context.theme.boaPalette.base300
+        : context.theme.boaPalette.pri500;
 
     const dialogElement = (
       <AppProvider theme={context.theme}>
@@ -110,7 +110,8 @@ export default class DialogHelper {
           title={title}
           titleBackgroundColor={titleBackgroundColor}
           actions={actions}
-          showHeader={showHeader} />
+          showHeader={showHeader}
+        />
       </AppProvider>
     );
 
@@ -156,8 +157,15 @@ export default class DialogHelper {
   }
 
   static showPage(context, content, title, onClose, style) {
-    this.show(context, content, DialogType.INFO,
-      ComponentBase.DialogResponseStyle.OK, title, onClose, style);
+    this.show(
+      context,
+      content,
+      DialogType.INFO,
+      ComponentBase.DialogResponseStyle.OK,
+      title,
+      onClose,
+      style,
+    );
   }
 
   static close(component, dialogResponse = ComponentBase.DialogResponse.NONE, returnValue) {

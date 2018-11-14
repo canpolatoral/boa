@@ -17,13 +17,9 @@ import {
   getDatePickerStyle,
 } from './dateUtils';
 
-
 class TimePickerDialog extends ComponentBase {
   static propTypes = {
-    anchorEl: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.node,
-    ]),
+    anchorEl: PropTypes.oneOfType([PropTypes.object, PropTypes.node]),
     animation: PropTypes.func,
     autoOk: PropTypes.bool,
     cancelLabel: PropTypes.node,
@@ -104,9 +100,11 @@ class TimePickerDialog extends ComponentBase {
     this.BActionInputFocused = false;
     this.setState({
       date: this.props.initialDate || new Date(),
-      localizedTime: getLocalizedTime(this.props.initialDate || new Date(),
+      localizedTime: getLocalizedTime(
+        this.props.initialDate || new Date(),
         this.props.datetimeOption,
-        this.props.timeFormat),
+        this.props.timeFormat,
+      ),
       floatingLabelStyle: this.props.floatingLabelStyle,
       inputStyle: this.props.inputStyle,
     });
@@ -166,7 +164,7 @@ class TimePickerDialog extends ComponentBase {
       });
     } else {
       this.setState({
-        date: new Date((new Date()).setHours(hour)),
+        date: new Date(new Date().setHours(hour)),
       });
     }
 
@@ -184,7 +182,7 @@ class TimePickerDialog extends ComponentBase {
       });
     } else {
       this.setState({
-        date: new Date((new Date()).setMinutes(minute)),
+        date: new Date(new Date().setMinutes(minute)),
       });
     }
     if (this.props.handleTouchTapMinute) {
@@ -201,7 +199,7 @@ class TimePickerDialog extends ComponentBase {
       });
     } else {
       this.setState({
-        date: new Date((new Date()).setMinutes(second)),
+        date: new Date(new Date().setMinutes(second)),
       });
     }
     if (this.props.handleTouchTapSecond) {
@@ -218,30 +216,36 @@ class TimePickerDialog extends ComponentBase {
   }
 
   handleWindowOnWheel(event) {
-    const value = getLocalizedTime(this.state.date || new Date(),
+    const value = getLocalizedTime(
+      this.state.date || new Date(),
       this.props.datetimeOption,
-      this.props.timeFormat);
+      this.props.timeFormat,
+    );
     let selectionStart;
     let selectionEnd;
     let newValue;
     if (event && this.BActionInputFocused && event.target) {
       if (event && event.wheelDelta !== 0 && event.wheelDelta / 120 > 0) {
-        newValue = calendarMouseWheelAction(event.target.selectionStart,
+        newValue = calendarMouseWheelAction(
+          event.target.selectionStart,
           this.props.timeFormat,
           value,
           1,
-          this.state.date);
+          this.state.date,
+        );
         selectionStart = event.target.selectionStart;
         selectionEnd = event.target.selectionEnd;
         this.setState({
           date: newValue,
         });
       } else {
-        newValue = calendarMouseWheelAction(event.target.selectionStart,
+        newValue = calendarMouseWheelAction(
+          event.target.selectionStart,
           this.props.timeFormat,
           value,
           -1,
-          this.state.date);
+          this.state.date,
+        );
         selectionStart = event.target.selectionStart;
         selectionEnd = event.target.selectionEnd;
         this.setState({
@@ -267,7 +271,8 @@ class TimePickerDialog extends ComponentBase {
         }
         break;
       }
-      default: break;
+      default:
+        break;
     }
   }
 
@@ -319,7 +324,6 @@ class TimePickerDialog extends ComponentBase {
     );
   }
 
-
   renderRTLTimeSelections() {
     const {
       style, // eslint-disable-line no-unused-vars
@@ -327,30 +331,12 @@ class TimePickerDialog extends ComponentBase {
     const isRtl = this.props.context.localization.isRightToLeft;
     return (
       <div style={style.datetimeContainer}>
-        {
-          !isRtl &&
-          this.renderHours()
-        }
-        {
-          !isRtl &&
-          this.renderMinutes()
-        }
-        {
-          !isRtl &&
-          this.renderSeconds()
-        }
-        {
-          isRtl &&
-          this.renderSeconds()
-        }
-        {
-          isRtl &&
-          this.renderMinutes()
-        }
-        {
-          isRtl &&
-          this.renderHours()
-        }
+        {!isRtl && this.renderHours()}
+        {!isRtl && this.renderMinutes()}
+        {!isRtl && this.renderSeconds()}
+        {isRtl && this.renderSeconds()}
+        {isRtl && this.renderMinutes()}
+        {isRtl && this.renderHours()}
       </div>
     );
   }
@@ -527,37 +513,34 @@ class TimePickerDialog extends ComponentBase {
       },
     };
     const dateInputValue = getLocalizedDate(initialDate || new Date(), dateFormat);
-    const timeInputValue = getLocalizedTime(this.state.date || new Date(),
+    const timeInputValue = getLocalizedTime(
+      this.state.date || new Date(),
       datetimeOption,
-      timeFormat);
-
+      timeFormat,
+    );
 
     const popoverOrigin = { horizontal: 'left', vertical: 'top' };
 
     const content = (
-
       <div style={styles.root}>
-        <EventListener
-          target="window"
-          onWheel={this.handleWindowOnWheel}
-        />
+        <EventListener target="window" onWheel={this.handleWindowOnWheel} />
         <div style={style.inputContainer}>
-          {dateFormat && isMobile &&
+          {dateFormat && isMobile && (
             <div style={style.inputDateItem}>
-
-              <div style={{
-                marginLeft: 12,
-                marginRight: 12,
-                marginTop: 12,
-
-              }}>
+              <div
+                style={{
+                  marginLeft: 12,
+                  marginRight: 12,
+                  marginTop: 12,
+                }}
+              >
                 <InputAction
                   context={this.props.context}
                   hintText={this.props.hintText}
                   onFocus={this.handleFocusInput}
                   onBlur={this.handleBlurInput}
                   value={dateInputValue}
-                  ref={r => this.bInputActionDialogDate = r}
+                  ref={r => (this.bInputActionDialogDate = r)}
                   leftIconList={null}
                   rightIconList={null}
                   floatingLabelStyle={this.state.floatingLabelStyle}
@@ -565,22 +548,23 @@ class TimePickerDialog extends ComponentBase {
                   disabled
                 />
               </div>
-
             </div>
-          }
+          )}
           <div style={style.inputTimeItem}>
-            <div style={{
-              marginLeft: 12,
-              marginRight: 12,
-              marginTop: 12,
-            }}>
+            <div
+              style={{
+                marginLeft: 12,
+                marginRight: 12,
+                marginTop: 12,
+              }}
+            >
               <InputAction
                 // {...other}
                 context={context}
                 hintText={hintText}
                 floatingLabelText={floatingLabelText}
                 value={timeInputValue}
-                ref={r => this.bInputActionDialogTime = r}
+                ref={r => (this.bInputActionDialogTime = r)}
                 floatingLabelStyle={this.state.floatingLabelStyle}
                 onKeyDown={this.onKeyDownInputTime}
                 inputStyle={this.state.inputStyle}
@@ -591,13 +575,10 @@ class TimePickerDialog extends ComponentBase {
               />
             </div>
           </div>
-
         </div>
         <div style={styles.calendar}>
-          {
-            this.renderRTLTimeSelections()
-          }
-          {okLabel &&
+          {this.renderRTLTimeSelections()}
+          {okLabel && (
             <CalendarActionButtons
               context={context}
               autoOk={autoOk}
@@ -606,8 +587,7 @@ class TimePickerDialog extends ComponentBase {
               onTouchTapCancel={this.handleTouchTapCancel}
               onTouchTapOk={this.handleTouchTapOk}
             />
-          }
-
+          )}
         </div>
       </div>
     );
@@ -637,14 +617,12 @@ class TimePickerDialog extends ComponentBase {
         zDepth={1}
         bodyStyle={containerStyle}
         contentStyle={dialogContentStyle}
-        ref={r => this.popover = r}
+        ref={r => (this.popover = r)}
         onRequestClose={this.handleRequestClose}
         disableRestoreFocus
         anchorEl={this.props.anchorEl}
       >
-
         {content}
-
       </Popover>
     );
 
@@ -654,20 +632,14 @@ class TimePickerDialog extends ComponentBase {
         modal={false}
         open={open}
         onRequestClose={this.handleRequestClose}
-        disableRestoreFocus>
+        disableRestoreFocus
+      >
         {content}
       </Dialog>
     );
 
-
     const isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
-    return (
-      <div
-        ref="root">
-        {isMobileOrTablet ? dialogContent : popoverContent}
-
-      </div>
-    );
+    return <div ref="root">{isMobileOrTablet ? dialogContent : popoverContent}</div>;
   }
 }
 

@@ -2,10 +2,8 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const None = (props) => {
-  return (
-    <SvgIcon {...props} />
-  );
+const None = props => {
+  return <SvgIcon {...props} />;
 };
 
 None.defaultProps = {

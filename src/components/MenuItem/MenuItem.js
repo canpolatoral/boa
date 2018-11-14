@@ -92,7 +92,7 @@ class MenuItem extends ComponentBase {
     value: PropTypes.any,
   };
 
-  state = { anchorEl: null }
+  state = { anchorEl: null };
 
   constructor(props, context) {
     super(props, context);
@@ -131,15 +131,17 @@ class MenuItem extends ComponentBase {
     const isRightToLeft = context.localization.isRightToLeft;
     const popoverStyle = {
       anchorOrigin: {
-        horizontal: !isRightToLeft ? 'left' : 'right', vertical: 'Bottom',
+        horizontal: !isRightToLeft ? 'left' : 'right',
+        vertical: 'Bottom',
       },
       transformOrigin: {
-        horizontal: !isRightToLeft ? 'right' : 'left', vertical: 'top',
+        horizontal: !isRightToLeft ? 'right' : 'left',
+        vertical: 'top',
       },
     };
 
-    const menuItems = (this.props.menuItems && !this.props.isAddedDrawer) ?
-      (
+    const menuItems =
+      this.props.menuItems && !this.props.isAddedDrawer ? (
         <div>
           <Popover
             context={this.props.context}
@@ -147,7 +149,8 @@ class MenuItem extends ComponentBase {
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
             anchorOrigin={popoverStyle.anchorOrigin}
-            transformOrigin={popoverStyle.transformOrigin}>
+            transformOrigin={popoverStyle.transformOrigin}
+          >
             {this.props.menuItems}
           </Popover>
         </div>
@@ -161,35 +164,37 @@ class MenuItem extends ComponentBase {
         disabled={this.props.disabled}
         onClick={this.onTouchTap}
         style={this.props.style}
-        value={this.props.value}>
+        value={this.props.value}
+      >
         {leftIcon ? (
           <MuiListItemIcon
             style={this.props.leftIconStyle ? this.props.leftIconStyle : leftIcon.props.style}
-            className={this.props.classes.leftIconClass}>
+            className={this.props.classes.leftIconClass}
+          >
             {leftIcon}
           </MuiListItemIcon>
         ) : null}
-        {
-          this.props.primaryText &&
-          (
-            <div
-              style={{
-                flexGrow: '1',
-                width: 'calc(100% - 137px)',
-                padding: this.props.primaryTextPadding,
-                color: this.props.context.theme.boaPalette.base400,
-                textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left',
-                primary: this.props.classes.primary,
-              }}>
-              {this.props.primaryText}
-            </div>)
-        }
+        {this.props.primaryText && (
+          <div
+            style={{
+              flexGrow: '1',
+              width: 'calc(100% - 137px)',
+              padding: this.props.primaryTextPadding,
+              color: this.props.context.theme.boaPalette.base400,
+              textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left',
+              primary: this.props.classes.primary,
+            }}
+          >
+            {this.props.primaryText}
+          </div>
+        )}
         {this.props.editor}
         {menuItems}
         {rightIcon ? (
           <MuiListItemIcon
             style={this.props.rightIconStyle ? this.props.rightIconStyle : rightIcon.props.style}
-            className={this.props.classes.rightIconClass}>
+            className={this.props.classes.rightIconClass}
+          >
             {rightIcon}
           </MuiListItemIcon>
         ) : null}

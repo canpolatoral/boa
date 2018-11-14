@@ -5,10 +5,7 @@ import NodeHeader from './header';
 
 class TreeNode extends React.Component {
   static propTypes = {
-    animations: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.bool,
-    ]).isRequired,
+    animations: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
     column1: PropTypes.string,
     column2: PropTypes.string,
     column3: PropTypes.string,
@@ -88,10 +85,10 @@ class TreeNode extends React.Component {
         node={Object.assign({}, this.props.node)}
         onClick={this.onClick}
         onChange={this.props.onChange}
-        isRightToLeft={this.props.isRightToLeft} />
+        isRightToLeft={this.props.isRightToLeft}
+      />
     );
   }
-
 
   renderChildren(decorators) {
     if (this.props.node.loading) {
@@ -108,7 +105,7 @@ class TreeNode extends React.Component {
 
     return (
       <ul style={subTreeStyle} ref="subtree">
-        {children.map((child, index) =>
+        {children.map((child, index) => (
           <TreeNode
             context={this.props.context}
             {...this.eventBubbles()}
@@ -119,8 +116,9 @@ class TreeNode extends React.Component {
             style={this.props.style}
             index={index}
             onChange={this.props.onChange}
-            isRightToLeft={this.props.isRightToLeft} />,
-        )}
+            isRightToLeft={this.props.isRightToLeft}
+          />
+        ))}
       </ul>
     );
   }
@@ -145,12 +143,16 @@ class TreeNode extends React.Component {
     const theme = this.props.context.theme;
     return (
       <li
-        style={Object.assign({
-          borderTop: this.props.index === 0 ? '0 px' : `1px solid ${theme.boaPalette.base200}`,
-          borderLeft: this.props.isRightToLeft ? null : `1px solid ${theme.boaPalette.base200}`,
-          borderRight: this.props.isRightToLeft ? `1px solid ${theme.boaPalette.base200}` : null,
-        }, this.props.style.base)}
-        ref="topLevel">
+        style={Object.assign(
+          {
+            borderTop: this.props.index === 0 ? '0 px' : `1px solid ${theme.boaPalette.base200}`,
+            borderLeft: this.props.isRightToLeft ? null : `1px solid ${theme.boaPalette.base200}`,
+            borderRight: this.props.isRightToLeft ? `1px solid ${theme.boaPalette.base200}` : null,
+          },
+          this.props.style.base,
+        )}
+        ref="topLevel"
+      >
         {this.renderHeader(decorators, animations)}
         {this.renderDrawer(decorators, animations)}
       </li>

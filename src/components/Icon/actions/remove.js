@@ -2,7 +2,7 @@ import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import IconComposer from '../IconComposer';
 
-const Remove = (props) => {
+const Remove = props => {
   return (
     <SvgIcon {...props}>
       <path d="M19 13H5v-2h14v2z" />

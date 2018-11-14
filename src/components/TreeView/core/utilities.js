@@ -32,7 +32,7 @@ export const get = (function() {
       }
       key = trim(key, '\'"');
 
-      if ((object === undefined) || (object === null) || typeof object !== 'object') {
+      if (object === undefined || object === null || typeof object !== 'object') {
         break;
       }
 
@@ -43,6 +43,6 @@ export const get = (function() {
       }
     }
 
-    return (object !== undefined) ? object : defaultValue;
+    return object !== undefined ? object : defaultValue;
   };
-}());
+})();

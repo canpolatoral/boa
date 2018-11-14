@@ -1,8 +1,4 @@
-import ComponentBase,
-{
-  ComponentBaseInstance,
-  ComponentBaseProps
-} from '../../base/ComponentBase';
+import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface TreeViewProps extends ComponentBaseProps {
   data: any;
@@ -84,4 +80,4 @@ export interface TreeViewInstance extends ComponentBaseInstance {
   resetValue(): void;
 }
 
-export default class TreeView extends ComponentBase<TreeViewProps, TreeViewInstance> { }
+export default class TreeView extends ComponentBase<TreeViewProps, TreeViewInstance> {}

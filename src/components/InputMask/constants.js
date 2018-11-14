@@ -1,20 +1,20 @@
-var PredefinedMask = {
+const PredefinedMask = {
   Type: {
     CreditCard: 'nnnn nnnn nnnn nnnn',
     IBAN: 'TRnn nnnn nnnn nnnn nnnn nnnn nn',
     MobilePhoneNumber: '(5nn) nnn nn nn',
-    PhoneNumber: '(nnn) nnn nn nn'
+    PhoneNumber: '(nnn) nnn nn nn',
   },
   Regex: {
     n: /^\d+$/,
     l: /^[a-zA-ZğĞüÜİıçÇöÖşŞ]+$/,
-    a: /^.+$/
+    a: /^.+$/,
   },
 
   MaskCharacter: [
     'n',
     'l',
-    'a'
+    'a',
   ],
 
   AllowSpecialKeys: [' ', '(', ')', '-'],

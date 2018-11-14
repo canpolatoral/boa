@@ -1,6 +1,5 @@
 import React from 'react'; import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { IconButton } from '@boa/components/IconButton';
 import { Input } from '@boa/components/Input';
@@ -8,16 +7,15 @@ import { InputNumeric } from '@boa/components/InputNumeric';
 
 @ComponentComposer
 class InputAction extends ComponentBase {
-
   static propTypes = {
     ...ComponentBase.propTypes,
     ...Input.propTypes,
+    hideLeftIcons: PropTypes.bool,
+    hideRightIcons: PropTypes.bool,
     inputDisabled: PropTypes.bool,
     leftIconList: PropTypes.array,
     rightIconList: PropTypes.array,
     type: PropTypes.oneOf(['password', 'text', 'numeric']),
-    hideLeftIcons: PropTypes.bool,
-    hideRightIcons: PropTypes.bool
   };
 
   static defaultProps = {
@@ -28,12 +26,8 @@ class InputAction extends ComponentBase {
     fullWidth: true,
     type: 'text',
     hideLeftIcons: false,
-    hideRightIcons: false
+    hideRightIcons: false,
   };
-
-  _iconSize = 20;
-  _iconContainerSize = 24;
-  _iconMargin = 4;
 
   state = {
     floatingLabelStyle: this.getFloatingLabelStyle(true),
@@ -42,7 +36,7 @@ class InputAction extends ComponentBase {
     disabled: this.props.disabled,
     inputDisabled: this.props.disabled ? this.props.disabled : this.props.inputDisabled,
     hideLeftIcons: this.props.hideLeftIcons,
-    hideRightIcons: this.props.hideRightIcons
+    hideRightIcons: this.props.hideRightIcons,
   };
 
   constructor(props, context) {
@@ -54,6 +48,10 @@ class InputAction extends ComponentBase {
     this.onBlur = this.onBlur.bind(this);
     this.setFloatingLabelStyle = this.setFloatingLabelStyle.bind(this);
     this.getFloatingLabelStyle = this.getFloatingLabelStyle.bind(this);
+    this.passwordClicked = this.passwordClicked.bind(this);
+    this.iconSize = 20;
+    this.iconContainerSize = 24;
+    this.iconMargin = 4;
   }
 
   // If floatinglabel are not provided, padding will be given to leftIconList.
@@ -73,38 +71,42 @@ class InputAction extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { disabled, inputDisabled, value } = nextProps;
     if (this.props.leftIconList && this.props.leftIconList.length > 0) {
       this.setFloatingLabelStyle();
     }
-    if (nextProps.value != null) {
-      this.setState({ value: nextProps.value });
+    if (value != null) {
+      this.setState({ value });
     }
-    if (nextProps.disabled !== this.props.disabled || nextProps.inputDisabled !== this.props.inputDisabled) {
-      let inputDisabled = nextProps.disabled ? nextProps.disabled : nextProps.inputDisabled;
-      this.setState({ disabled: nextProps.disabled, inputDisabled: inputDisabled });
+    if (disabled !== this.props.disabled || inputDisabled !== this.props.inputDisabled) {
+      this.setState({ disabled, inputDisabled: disabled || inputDisabled });
     }
   }
 
   onChange(e, v) {
     this.setState({
-      value: v
+      value: v,
     });
-    this.props.onChange && this.props.onChange(e, v);
+    if (this.props.onChange) {
+      this.props.onChange(e, v);
+    }
   }
 
   onKeyDown(e) {
-    this.props.onKeyDown && this.props.onKeyDown(e);
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(e);
+    }
   }
 
   onFocus(e) {
-    this.props.onFocus && this.props.onFocus(e);
+    if (this.props.onFocus) {
+      this.props.onFocus(e);
+    }
   }
 
   onBlur(e) {
-
-
-    if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-      console.log('safari');
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+      // console.log('safari');
     } else {
       this.setFloatingLabelStyle();
     }
@@ -115,13 +117,16 @@ class InputAction extends ComponentBase {
     }
 
     // Zaten yeniden bizim inputa focus edilmisse
-    if (this.binput && this.binput.getInstance() && this.binput.getInstance().textField && e.relatedTarget == this.binput.getInstance().textField) {
+    if (this.binput &&
+      this.binput.getInstance() &&
+      this.binput.getInstance().textField &&
+      this.binput.getInstance().textField === e.relatedTarget) {
       return;
     }
 
-    let focusedButton = this.refs.buttons.filter(item => {
-      let buttonDom = ReactDOM.findDOMNode(item);
-      return e.relatedTarget == buttonDom;
+    const focusedButton = this.refs.buttons.filter(item => {
+      const buttonDom = ReactDOM.findDOMNode(item);
+      return e.relatedTarget == buttonDom; // eslint-disable-line
     });
     // Bizim butonlardan birine mi focus edilmis
     if (focusedButton && focusedButton.length > 0 && focusedButton[0]) {
@@ -136,18 +141,26 @@ class InputAction extends ComponentBase {
   }
 
   getFloatingLabelStyle(usePropValue) {
-
-    var hideRightIcons = usePropValue ? this.props.hideRightIcons : this.state.hideRightIcons;
+    const { rightIconList, leftIconList } = this.props;
+    const hideRightIcons = usePropValue ? this.props.hideRightIcons : this.state.hideRightIcons;
     let paddingRight = 0;
-    if (this.props.rightIconList && !hideRightIcons) {
-      paddingRight = this.props.rightIconList.length * this._iconSize + this.props.rightIconList.length * this._iconMargin;
+    if (rightIconList && !hideRightIcons) {
+      paddingRight = rightIconList.length * this.iconSize + rightIconList.length * this.iconMargin;
     }
 
     const isRtl = this.props.context.localization.isRightToLeft;
-    var value = usePropValue ? this.props.value : this.getValue();
-    const paddingLeft = value ? 0 : this.props.leftIconList && (this.props.leftIconList.length * this._iconSize + this.props.leftIconList.length * this._iconMargin);
+    const value = usePropValue ? this.props.value : this.getValue();
+    const paddingLeft = value ? 0 : leftIconList &&
+      (leftIconList.length * this.iconSize + leftIconList.length * this.iconMargin);
 
-    return Object.assign(isRtl ? { paddingRight: paddingLeft, paddingLeft: paddingRight } : { paddingLeft: paddingLeft, paddingRight: paddingRight }, this.props.floatingLabelStyle);
+    return Object.assign(isRtl ? {
+      paddingRight: paddingLeft,
+      paddingLeft: paddingRight,
+    } : {
+        paddingLeft,
+        paddingRight,
+      },
+      this.props.floatingLabelStyle);
   }
 
   passwordClicked() {
@@ -183,27 +196,27 @@ class InputAction extends ComponentBase {
   render() {
     this.refs = { buttons: [] };
 
-    var baseIconStyle =
+    const baseIconStyle =
       {
-        width: this._iconContainerSize,
-        height: this._iconContainerSize,
+        width: this.iconContainerSize,
+        height: this.iconContainerSize,
         padding: 0,
         // transform: 'scale(0.83)' // icon boyutları 20 px olması için diğer türlü olmuyor.
       };
-    var baseIconContainerStyle =
+    const baseIconContainerStyle =
       {
-        width: this._iconContainerSize,
-        height: this._iconContainerSize,
-        display: 'inline-block'
+        width: this.iconContainerSize,
+        height: this.iconContainerSize,
+        display: 'inline-block',
       };
 
     /* iconProperties={{width: '20px', height:'20px'}} */
     let rightIcons = [];
 
-    var { type } = this.props;
+    let { type } = this.props;
 
-    if (this.props.type == 'password') {
-      var showPasswordColor;
+    if (this.props.type === 'password') {
+      let showPasswordColor;
       if (this.state.showPassword) {
         showPasswordColor = this.props.context.theme.boaPalette.pri500;
         type = 'text';
@@ -211,35 +224,46 @@ class InputAction extends ComponentBase {
         showPasswordColor = this.props.context.theme.boaPalette.base400;
         type = 'password';
       }
-      !this.state.hideRightIcons && rightIcons.push(
-        <div style={baseIconContainerStyle}>
-          <IconButton
-            style={baseIconStyle}
-            ref={r => this.refs.buttons.push(r)}
-            context={this.props.context}
-            disabled={this.state.disabled}
-            key={'right0'}
-            dynamicIcon='RemoveRedEye'
-            iconProperties={{ style: { color: showPasswordColor, width: this._iconSize, height:  this._iconSize  } }}
-            onClick={this.passwordClicked.bind(this)}
-            onBlur={this.onBlur}
-            tabIndex='-1' />
-        </div>
-      );
+      if (!this.state.hideRightIcons) {
+        rightIcons.push(
+          <div style={baseIconContainerStyle}>
+            <IconButton
+              style={baseIconStyle}
+              ref={r => this.refs.buttons.push(r)}
+              context={this.props.context}
+              disabled={this.state.disabled}
+              key={'right0'}
+              dynamicIcon="RemoveRedEye"
+              iconProperties={{
+                style: {
+                  color: showPasswordColor,
+                  width: this.iconSize,
+                  height: this.iconSize,
+                },
+              }}
+              onClick={this.passwordClicked}
+              onBlur={this.onBlur}
+              tabIndex="-1" />
+          </div>,
+        );
+      }
     } else if (this.props.rightIconList && !this.state.hideRightIcons) {
       rightIcons = this.props.rightIconList.map((icon, index) => {
         return (
-          <div style={Object.assign(baseIconContainerStyle, { marginLeft: this._iconMargin }, icon.iconContainerStyle)}>
+          <div
+            style={Object.assign(baseIconContainerStyle, {
+              marginLeft: this.iconMargin,
+            }, icon.iconContainerStyle)}>
             <IconButton
               {...icon}
               style={baseIconStyle}
               ref={r => this.refs.buttons.push(r)}
               context={this.props.context}
-              // iconProperties={{ style: {  width: this._iconSize, height:  this._iconSize  } }}
+              // iconProperties={{ style: {  width: this.iconSize, height:  this.iconSize  } }}
               disabled={this.state.disabled}
-              key={'right' + index}
+              key={`right${index}`} // eslint-disable-line
               onBlur={this.onBlur}
-              tabIndex='-1'
+              tabIndex="-1"
             />
           </div>
         );
@@ -250,24 +274,29 @@ class InputAction extends ComponentBase {
     if (this.props.leftIconList && !this.state.hideLeftIcons) {
       leftIcons = this.props.leftIconList.map((icon, index) => {
         return (
-          <div style={Object.assign(baseIconContainerStyle, { marginRight: this._iconMargin }, icon.iconContainerStyle)}>
+          <div
+            style={Object.assign(baseIconContainerStyle, {
+              marginRight: this.iconMargin,
+            }, icon.iconContainerStyle)}>
             <IconButton
               {...icon}
               style={baseIconStyle}
               ref={r => this.refs.buttons.push(r)}
               context={this.props.context}
               disabled={this.state.disabled}
-              // iconProperties={{ style: {  width: this._iconSize, height:  this._iconSize  } }}
-              key={'left' + index}
+              // iconProperties={{ style: {  width: this.iconSize, height:  this.iconSize  } }}
+              key={`left${index}`} // eslint-disable-line
               onBlur={this.onBlur}
-              tabIndex='-1'
+              tabIndex="-1"
             />
           </div>
         );
       });
     }
 
-    var bInput = (this.props.type == 'numeric') ? this.renderBInputNumeric(type, leftIcons, rightIcons) : this.renderBInput(type, leftIcons, rightIcons);
+    const bInput = (this.props.type === 'numeric') ?
+      this.renderBInputNumeric(type, leftIcons, rightIcons) :
+      this.renderBInput(type, leftIcons, rightIcons);
 
     return (
       <div style={{ width: '100%', position: 'relative' }}>

@@ -7,9 +7,9 @@ import MuiInputLabel from '@material-ui/core/InputLabel';
 import MuiInputAdornment from '@material-ui/core/InputAdornment';
 import MuiFormControl from '@material-ui/core/FormControl';
 import MuiFormHelperText from '@material-ui/core/FormHelperText';
-
 import { withStyles } from '@material-ui/core/styles';
-import { ComponentComposer, Utils, EditorBase } from '@boa/base';
+import { ComponentComposer, EditorBase } from '@boa/base';
+import { getTimeInfo, hasValue } from './utils';
 
 function baseStyles(theme) {
   return {
@@ -19,11 +19,11 @@ function baseStyles(theme) {
       caretColor: theme.boaPalette.pri500,
       padding: 0,
       marginBottom: 3,
-      minHeight: 19
+      minHeight: 19,
     },
     inputLabel: {
       fontSize: 14,
-      width: '100%'
+      width: '100%',
     },
 
     inputLabeRootBase: {
@@ -31,21 +31,21 @@ function baseStyles(theme) {
       width: '100%',
       marginTop: -4,
       paddingTop: 2,
-      transformOrigin: `top ${theme.direction == 'ltr' ? 'left' : 'right'}`,
+      transformOrigin: `top ${theme.direction === 'ltr' ? 'left' : 'right'}`,
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
-      overflow: 'hidden'
-    }
+      overflow: 'hidden',
+    },
   };
 }
 
 const styles = theme => ({
   input: Object.assign(baseStyles(theme).input, {
-    marginRight: theme.direction == 'rtl' ? 0 : null,
-    marginLeft: theme.direction == 'ltr' ? 0 : null
+    marginRight: theme.direction === 'rtl' ? 0 : null,
+    marginLeft: theme.direction === 'ltr' ? 0 : null,
   }),
   multiline: Object.assign(baseStyles(theme).input, {
-    padding: '3px 0 3px'
+    padding: '3px 0 3px',
   }),
 
   inputDisabled: {
@@ -61,35 +61,35 @@ const styles = theme => ({
   inputUnderline: {
 
     '&:after': {
-      borderBottom: `2px solid ${theme.boaPalette.pri500}`
+      borderBottom: `2px solid ${theme.boaPalette.pri500}`,
     },
 
     '&:before': {
-      borderBottom: `1px solid ${theme.boaPalette.base250}`
+      borderBottom: `1px solid ${theme.boaPalette.base250}`,
     },
 
     '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-      borderBottom: `2px solid ${theme.boaPalette.base250}`
+      borderBottom: `2px solid ${theme.boaPalette.base250}`,
     },
   },
 
   inputUnderlineRequired: {
 
     '&:after': {
-      borderBottom: `2px solid ${theme.boaPalette.pri500}`
+      borderBottom: `2px solid ${theme.boaPalette.pri500}`,
     },
 
     '&:before': {
-      borderBottom: `1px solid ${theme.boaPalette.obli300}`
+      borderBottom: `1px solid ${theme.boaPalette.obli300}`,
     },
 
     '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-      borderBottom: `2px solid ${theme.boaPalette.obli300}`
+      borderBottom: `2px solid ${theme.boaPalette.obli300}`,
     },
   },
 
   inputType: {
-    height: 'auto' // pasword fix
+    height: 'auto', // pasword fix
   },
 
   inputLabelShink: Object.assign(baseStyles(theme).inputLabel, {
@@ -102,11 +102,11 @@ const styles = theme => ({
   inputLabelRoot: Object.assign(baseStyles(theme).inputLabeRootBase, {}),
 
   inputLabelRootTransparent: Object.assign(baseStyles(theme).inputLabeRootBase, {
-    color: 'transparent'
+    color: 'transparent',
   }),
   inputLabelRootDisabled: Object.assign(baseStyles(theme).inputLabeRootBase, {
-    color: theme.boaPalette.base250
-  })
+    color: theme.boaPalette.base250,
+  }),
 });
 
 @ComponentComposer
@@ -114,7 +114,12 @@ const styles = theme => ({
 class Input extends EditorBase {
   static propTypes = {
     ...EditorBase.propTypes,
-    inputProps: PropTypes.object,
+    bottomLeftInfo: PropTypes.string,
+    bottomLeftInfoEnable: PropTypes.bool,
+    bottomRightInfo: PropTypes.string,
+    bottomRightInfoEnable: PropTypes.bool,
+    defaultValue: PropTypes.any,
+    disabledCounterCharacter: PropTypes.string,
     errorStyle: PropTypes.object,
     errorText: PropTypes.string,
     floatingLabelFixed: PropTypes.bool,
@@ -122,48 +127,45 @@ class Input extends EditorBase {
     floatingLabelShrinkStyle: PropTypes.object,
     floatingLabelStyle: PropTypes.object,
     floatingLabelText: PropTypes.string,
+    formControlStyle: PropTypes.object,
+    fullWidth: PropTypes.bool,
     helperText: PropTypes.string,
     hintStyle: PropTypes.object,
     hintText: PropTypes.string,
     id: PropTypes.string,
+    inlineGridMode: PropTypes.bool,
     inputAlign: PropTypes.oneOf(['left', 'right', 'center']),
+    inputProps: PropTypes.object,
     inputStyle: PropTypes.object,
-    outerStyle: PropTypes.object,
+    maskedMaxLength: PropTypes.number,
     maxLength: PropTypes.number,
     multiLine: PropTypes.bool,
-    fullWidth: PropTypes.bool,
     name: PropTypes.string,
     noWrap: PropTypes.bool,
-    rows: PropTypes.number,
-    rowsMax: PropTypes.number,
-    style: PropTypes.object,
-    textareaStyle: PropTypes.object,
-    formControlStyle: PropTypes.object,
-    type: PropTypes.oneOf(['password', 'text']),
-    value: PropTypes.any,
-    defaultValue: PropTypes.any,
-    bottomLeftInfoEnable: PropTypes.bool,
-    bottomLeftInfo: PropTypes.string,
-    bottomRightInfoEnable: PropTypes.bool,
-    bottomRightInfo: PropTypes.string,
-    onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
+    /**
+     * onchange setState bitmeden tetikleniyor.
+     * SetState callbacinde fırlatılan bir evente ihtiyacımız oldu.
+     * Kullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi.
+    */
+    onChangeSync: PropTypes.func,
+    onFocus: PropTypes.func,
     onKeyDown: PropTypes.func,
     onKeyUp: PropTypes.func,
-    timerDuration: PropTypes.number,
     onTimerFinished: PropTypes.func,
+    outerStyle: PropTypes.object,
     prefixText: PropTypes.any,
-    suffixText: PropTypes.any,
-    validationMessageStyleActive: PropTypes.bool,
-    disabledCounterCharacter: PropTypes.string,
-    maskedMaxLength: PropTypes.number,
+    rows: PropTypes.number,
+    rowsMax: PropTypes.number,
     showCounter: PropTypes.bool,
-    inlineGridMode: PropTypes.bool,
-    /* onchange setState bitmeden tetikleniyor. SetState callbacinde fırlatılan bir evente ihtiyacımız oldu.
-    Kullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi.
-     */
-    onChangeSync: PropTypes.func
+    style: PropTypes.object,
+    suffixText: PropTypes.any,
+    textareaStyle: PropTypes.object,
+    timerDuration: PropTypes.number,
+    type: PropTypes.oneOf(['password', 'text']),
+    validationMessageStyleActive: PropTypes.bool,
+    value: PropTypes.any,
   };
 
   static defaultProps = {
@@ -180,12 +182,12 @@ class Input extends EditorBase {
     disabledCounterCharacter: '',
     showCounter: false,
     inlineGridMode: false,
-    underlineShow: true
+    underlineShow: true,
   };
 
   state = {
     value: this.props.defaultValue ? this.props.defaultValue : this.props.value,
-    disabled: this.props.disabled
+    disabled: this.props.disabled,
   };
 
   constructor(props, context) {
@@ -198,41 +200,44 @@ class Input extends EditorBase {
     this.setTimer = this.setTimer.bind(this);
 
     // todo will be removed
-    if (props.type == 'number') {
-      throw 'If you want b-input as numeric, you have to use b-input-numeric component';
-    } else if (props.type == 'password') {
-      this.debugLog('If you want b-input as password, you have to use b-input-action component');
+    if (props.type === 'number') {
+      throw 'If you want b-input as numeric, you have to use b-input-numeric component'; // eslint-disable-line
+    } else if (props.type === 'password') {
+      throw 'If you want b-input as password, you have to use b-input-action component'; // eslint-disable-line
+      // this.debugLog('If you want b-input as password, you have to use b-input-action component');
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    const { value, disabled } = nextProps;
+
     this.counterUpdate(nextProps);
     // null ise kasıtlı siliniyordur, silmeli.
     // undefined ise value geçilmemiştir, değişmemeli.
     // diğer durumlarda prop yada state'ten farklı gelmişse değişmeli.
     if (
-      nextProps.value === null ||
-      (nextProps.value !== undefined && (nextProps.value !== this.props.value || nextProps.value !== this.state.value))
+      value === null ||
+      (value !== undefined && (value !== this.props.value || value !== this.state.value))
     ) {
-      this.setState({ value: nextProps.value === null ? '' : nextProps.value });
+      this.setState({ value: value === null ? '' : value });
     }
-    if (nextProps.disabled !== this.props.disabled) {
-      this.setState({ disabled: nextProps.disabled });
+    if (disabled !== this.props.disabled) {
+      this.setState({ disabled });
     }
   }
 
   counterUpdate(props, value) {
-    var bottomRightInfoSpan = findDOMNode(this.bottomRightInfoSpan);
+    const bottomRightInfoSpan = findDOMNode(this.bottomRightInfoSpan);
     if (bottomRightInfoSpan && props.maxLength && !props.bottomRightInfo && !props.timerDuration) {
-      var counterText = 0;
-      var text = '';
+      let counterText = 0;
+      let text = '';
       if (value) {
         text = value;
       } else if (props.value) {
         text = props.value.toString();
       }
-      if (text != '') {
-        if (this.props.disabledCounterCharacter != '') {
+      if (text !== '') {
+        if (this.props.disabledCounterCharacter !== '') {
           // bazı karakterleri sayaca eklememesi için
           text = text.split(this.props.disabledCounterCharacter);
           text = text.join('');
@@ -245,7 +250,7 @@ class Input extends EditorBase {
   }
 
   componentDidUpdate() {
-    let textSelection = this.state.textSelection;
+    const textSelection = this.state.textSelection;
     if (textSelection) {
       if (this.textField) {
         this.textField.setSelectionRange(textSelection.start, textSelection.end);
@@ -271,7 +276,7 @@ class Input extends EditorBase {
   }
 
   setValue(value) {
-    this.setState({ value: value });
+    this.setState({ value });
   }
 
   resetValue() {
@@ -284,7 +289,8 @@ class Input extends EditorBase {
 
   onBlur(e) {
     this.setState({ focussed: false });
-    // this.validateConstraint(); // her blur oluşunda value constraint mesajlarının temizlenmesi için.
+    // this.validateConstraint();
+    // her blur oluşunda value constraint mesajlarının temizlenmesi için.
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
@@ -294,12 +300,16 @@ class Input extends EditorBase {
     v = e.target.value;
     this.counterUpdate(this.props, v);
     this.setState({ value: v }, () => {
-      this.props.onChangeSync && this.props.onChangeSync(e, v);
+      if (this.props.onChangeSync) {
+        this.props.onChangeSync(e, v);
+      }
     });
     if (this.props.onChange) {
       this.props.onChange(e, v);
     }
-    this.props.onDynamicChange && this.props.onDynamicChange(e);
+    if (this.props.onDynamicChange) {
+      this.props.onDynamicChange(e);
+    }
   }
 
   onFocus(e) {
@@ -322,39 +332,29 @@ class Input extends EditorBase {
   }
 
   setTimer(duration) {
-    var timer = duration;
-    var that = this;
+    let timer = duration;
+    const self = this;
 
     if (this.intervalId) {
-      clearInterval(that.intervalId);
+      clearInterval(self.intervalId);
     }
 
-    this.intervalId = setInterval(function () {
-      let bottomSpan = findDOMNode(that.bottomRightInfoSpan);
+    this.intervalId = setInterval(() => {
+      const bottomSpan = findDOMNode(self.bottomRightInfoSpan);
       if (bottomSpan) {
-        bottomSpan.innerText = that.setTimeInfo(timer);
+        bottomSpan.innerText = getTimeInfo(timer);
         if (--timer < 0) {
-          clearInterval(that.intervalId);
-          that.props.onTimerFinished && that.props.onTimerFinished();
+          clearInterval(self.intervalId);
+          if (self.props.onTimerFinished) {
+            self.props.onTimerFinished();
+          }
         }
       }
     }, 1000);
   }
 
-  setTimeInfo(duration) {
-    var minutes = Utils.stringPadLeft(parseInt(duration / 60, 10), 2, '0');
-    var seconds = Utils.stringPadLeft(parseInt(duration % 60, 10), 2, '0');
-
-    return minutes + ':' + seconds;
-  }
-
   focus() {
     this.textField.focus();
-  }
-
-  hasValue(value) {
-    if (value) return true;
-    else if (value == '' || value == undefined || value == null) return false;
   }
 
   validationToString() {
@@ -363,7 +363,7 @@ class Input extends EditorBase {
   }
 
   render() {
-    var {
+    const {
       name,
       context,
       timerDuration,
@@ -371,10 +371,8 @@ class Input extends EditorBase {
       bottomLeftInfoEnable,
       bottomRightInfo,
       bottomRightInfoEnable,
-      errorText,
       floatingLabelText,
       helperText,
-      hintText,
       inputAlign,
       maxLength,
       fullWidth,
@@ -385,7 +383,12 @@ class Input extends EditorBase {
       suffixText,
       showCounter,
       inputProps,
-      underlineShow
+      underlineShow,
+    } = this.props;
+
+    let {
+      errorText,
+      hintText,
     } = this.props;
 
     const bottomTextSize = 11;
@@ -399,9 +402,9 @@ class Input extends EditorBase {
 
     const isRtl = this.props.context.localization.isRightToLeft;
 
-    let textAlignStyle = inputAlign ? inputAlign : isRtl ? 'right' : 'left';
-    var inputStyleProp = this.props.inputStyle ? Object.assign({}, this.props.inputStyle) : {};
-    let inputStyle = Object.assign(inputStyleProp, { textAlign: textAlignStyle });
+    const textAlignStyle = inputAlign || (isRtl ? 'right' : 'left');
+    const inputStyleProp = this.props.inputStyle ? Object.assign({}, this.props.inputStyle) : {};
+    const inputStyle = Object.assign(inputStyleProp, { textAlign: textAlignStyle });
 
     // hint değeri atanmamış ise floating atanıyor.
     if (hintText == null) {
@@ -409,14 +412,14 @@ class Input extends EditorBase {
     }
 
     // bottomInfo section
-    var bottomLeftInfoSpace;
+    let bottomLeftInfoSpace;
     const lastBottomLeftInfo = bottomLeftInfo || helperText;
-    if (bottomLeftInfoEnable && lastBottomLeftInfo && this.state.disabled == false) {
-      var bottomLeftInfoStyle = {
+    if (bottomLeftInfoEnable && lastBottomLeftInfo && this.state.disabled === false) {
+      const bottomLeftInfoStyle = {
         fontSize: bottomTextSize,
         color: this.state.disabled ? disabledLabelColor : infoTextColor,
         display: errorText ? 'none' : '', // error var ise helper görünmeyecek
-        marginTop: 1
+        marginTop: 1,
       };
       if (!isRtl) {
         bottomLeftInfoStyle.left = 0;
@@ -432,12 +435,12 @@ class Input extends EditorBase {
       );
     }
 
-    var bottomRightInfoSpace;
-    if (bottomRightInfoEnable && this.state.disabled == false) {
-      var bottomRightInfoStyle = {
+    let bottomRightInfoSpace;
+    if (bottomRightInfoEnable && this.state.disabled === false) {
+      const bottomRightInfoStyle = {
         fontSize: bottomTextSize,
         color: this.state.disabled ? disabledLabelColor : infoTextColor,
-        marginTop: errorText ? -9 : 3
+        marginTop: errorText ? -9 : 3,
       };
       if (!isRtl) {
         bottomRightInfoStyle.right = 0;
@@ -455,20 +458,23 @@ class Input extends EditorBase {
       } else if (timerDuration) {
         bottomRightInfoSpace = (
           <span style={bottomRightInfoStyle}>
-            <span ref={r => (this.bottomRightInfoSpan = r)}>{this.setTimeInfo(this.props.timerDuration)}</span>
+            <span ref={r => (this.bottomRightInfoSpan = r)}>
+              {getTimeInfo(this.props.timerDuration)}
+            </span>
           </span>
         );
       } else if (showCounter && maxLength) {
         bottomRightInfoSpace = (
           <span style={bottomRightInfoStyle}>
             {/* masked editörde maxLength ile değil maskedMaskLength görülecek  */}
-            <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>/{this.props.maskedMaxLength ? this.props.maskedMaxLength : maxLength}
+            <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>
+            /{this.props.maskedMaxLength ? this.props.maskedMaxLength : maxLength}
           </span>
         );
       }
     }
 
-    let errorStyle = {
+    const errorStyle = {
       color: errorTextColor,
       fontSize: bottomTextSize,
       marginTop: 6,
@@ -477,8 +483,8 @@ class Input extends EditorBase {
     };
 
 
-    var bottomInfoStyle = {
-      marginTop: 2
+    const bottomInfoStyle = {
+      marginTop: 2,
     };
 
     // inline grid style
@@ -490,18 +496,18 @@ class Input extends EditorBase {
     // }
 
     // inputProps.style && delete inputProps.style; // todo geçici
-    let inputPropsMerged = Object.assign(
+    const inputPropsMerged = Object.assign(
       {},
       {
         ref: r => {
           this.textField = r;
         },
-        maxLength: maxLength,
-        style: inputStyle
+        maxLength,
+        style: inputStyle,
       },
-      inputProps
+      inputProps,
     );
-    let id = uniqueId();
+    const id = uniqueId();
 
     // error validation
     let error = false;
@@ -514,23 +520,25 @@ class Input extends EditorBase {
       display: 'inline-block',
       position: 'relative',
       paddingTop: 10,
-      marginTop: 0 // this.props.inlineGridMode ? (this.props.multiLine ? 10 : hideshowMarginTop ? 0 : 12) : 0
+      marginTop: 0,
+      // this.props.inlineGridMode ? (this.props.multiLine ? 10 : hideshowMarginTop ? 0 : 12) : 0
 
     };
-    var rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
+    const rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
+    const { focussed, value } = this.state;
 
     let shink = false;
-    if (this.state.focussed) {
+    if (focussed) {
       shink = true;
-    } else if (this.state.value != null && this.state.value != undefined && this.state.value != '') {
+    } else if (value != null && value !== undefined && value !== '') {
       shink = true;
     }
 
-    let floatingLabelRootStyle = Object.assign(
+    const floatingLabelRootStyle = Object.assign(
       {},
       this.props.floatingLabelStyle ? this.props.floatingLabelStyle : {},
-      this.hasValue(this.state.value) == false ? { textAlign: textAlignStyle } : {},
-      isRtl ? { transformOrigin: 'top right' } : { transformOrigin: 'top left' }
+      hasValue(value) === false ? { textAlign: textAlignStyle } : {},
+      isRtl ? { transformOrigin: 'top right' } : { transformOrigin: 'top left' },
     );
 
     const { classes } = this.props;
@@ -539,34 +547,27 @@ class Input extends EditorBase {
     let underlineClass = classes.inputUnderline;
     if (this.props.valueConstraint
       && this.props.valueConstraint.required
-      && (this.getValue() == null || this.getValue() == undefined || this.getValue() == '')
-    )
-      underlineClass = classes.inputUnderlineRequired;
+      && (this.getValue() == null || this.getValue() === undefined || this.getValue() === '')
+    ) underlineClass = classes.inputUnderlineRequired;
 
-    // (this.props.valueConstraint  &&  this.props.valueConstraint.required) ? classes.inputUnderlineRequired: classes.inputUnderline,
-
+    const { inputLabelRootDisabled, inputLabelRoot } = classes;
     return (
       <div style={rootStyle}>
         <MuiFormControl
           disabled={this.state.disabled}
           fullWidth={this.props.fullWidth}
-          // margin={'dense'}
           style={this.props.formControlStyle}>
           {floatingLabelText &&
-            // this.state.value && this.state.value!='' &&
-
             !this.props.inlineGridMode && (
               <MuiInputLabel
                 classes={{
-                  // root:  (this.state.value && this.state.value!='' ) ? classes.inputLabelRoot: classes.inputLabelRootTransparent,
-                  // classes.inputLabelRoot,
                   shrink: classes.inputLabelShink,
-                  root: this.state.disabled ? classes.inputLabelRootDisabled : classes.inputLabelRoot
-
+                  root: this.state.disabled ? inputLabelRootDisabled : inputLabelRoot,
                 }}
                 margin={'dense'}
                 htmlFor={id}
-                style={floatingLabelRootStyle} // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+                // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+                style={floatingLabelRootStyle}
                 disabled={this.state.disabled}
                 shrink={shink}
               >
@@ -579,7 +580,7 @@ class Input extends EditorBase {
               underline: underlineClass,
               multiline: classes.multiline,
               inputType: classes.inputType,
-              disabled: classes.inputDisabled
+              disabled: classes.inputDisabled,
             }}
             name={name}
             id={id}
@@ -589,7 +590,8 @@ class Input extends EditorBase {
             inputRef={this.props.inputRef}
             fullWidth={fullWidth}
             type={type}
-            style={this.props.inputStyle} // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+             // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+            style={this.props.inputStyle}
             value={this.state.value}
             disabled={this.state.disabled}
             disableUnderline={!underlineShow}
@@ -608,7 +610,7 @@ class Input extends EditorBase {
                   style={{
                     marginTop: -11,
                     marginRight: this.props.context.localization.isRightToLeft ? -4 : 0,
-                    ...this.props.startAdornmentStyle
+                    ...this.props.startAdornmentStyle,
                   }}
                   position="start"
                 >
@@ -622,7 +624,7 @@ class Input extends EditorBase {
                   style={{
                     marginTop: -11,
                     marginLeft: this.props.context.localization.isRightToLeft ? -4 : 0,
-                    ...this.props.endAdornmentStyle
+                    ...this.props.endAdornmentStyle,
                   }}
                   position="end"
                 >
@@ -632,7 +634,7 @@ class Input extends EditorBase {
             }
           />
           {!this.props.inlineGridMode && (
-            <MuiFormHelperText  // margin={'dense'}
+            <MuiFormHelperText // margin={'dense'}
               style={{ marginTop: 0 }}
               disabled={this.state.disabled}>
               {error && <div style={errorStyle}>{errorText}</div>}
@@ -647,7 +649,6 @@ class Input extends EditorBase {
         </MuiFormControl>
       </div>
     );
-
   }
 }
 

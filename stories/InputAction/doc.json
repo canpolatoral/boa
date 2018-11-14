@@ -1,0 +1,284 @@
+{
+	"description": "",
+	"displayName": "InputAction",
+	"methods": [
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "v",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onKeyDown",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onFocus",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onBlur",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "setFloatingLabelStyle",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getFloatingLabelStyle",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "usePropValue",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "passwordClicked",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "focus",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "hideLeftIcons",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "hideRightIcons",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "showLeftIcons",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "showRightIcons",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "validateConstraint",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "renderBInput",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "type",
+					"type": null
+				},
+				{
+					"name": "leftIcons",
+					"type": null
+				},
+				{
+					"name": "rightIcons",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "renderBInputNumeric",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "type",
+					"type": null
+				},
+				{
+					"name": "leftIcons",
+					"type": null
+				},
+				{
+					"name": "rightIcons",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	],
+	"props": {
+		"inputDisabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"leftIconList": {
+			"type": {
+				"name": "array"
+			},
+			"required": false,
+			"description": ""
+		},
+		"rightIconList": {
+			"type": {
+				"name": "array"
+			},
+			"required": false,
+			"description": ""
+		},
+		"type": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "password",
+						"computed": false
+					},
+					{
+						"value": "text",
+						"computed": false
+					},
+					{
+						"value": "numeric",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "text",
+				"computed": false
+			}
+		},
+		"hideLeftIcons": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"hideRightIcons": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"floatingLabelFixed": {
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			},
+			"required": false
+		},
+		"fullWidth": {
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			},
+			"required": false
+		}
+	},
+	"composes": [
+		"@boa/base",
+		"@boa/components/Input"
+	]
+}

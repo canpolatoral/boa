@@ -1,0 +1,236 @@
+{
+	"description": "CheckBox Component is wrapped from `@material-ui/core/CheckBox`.",
+	"displayName": "CheckBox",
+	"methods": [
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onCheck",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				},
+				{
+					"name": "isInputChecked",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	],
+	"props": {
+		"checked": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "bool"
+					},
+					{
+						"name": "string"
+					}
+				]
+			},
+			"required": false,
+			"description": "If `true`, the component is checked."
+		},
+		"checkedIcon": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "The icon to display when the component is checked."
+		},
+		"classes": {
+			"type": {
+				"name": "object"
+			},
+			"required": true,
+			"description": "Useful to extend the style applied to components. @ignore"
+		},
+		"color": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "default",
+						"computed": false
+					},
+					{
+						"value": "inherit",
+						"computed": false
+					},
+					{
+						"value": "primary",
+						"computed": false
+					},
+					{
+						"value": "secondary",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "The color of the component. It supports those theme colors that make sense for this component.",
+			"defaultValue": {
+				"value": "primary",
+				"computed": false
+			}
+		},
+		"defaultChecked": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "The default value of component."
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the switch will be disabled."
+		},
+		"disableRipple": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the ripple effect will be disabled."
+		},
+		"icon": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "The icon to display when the component is unchecked."
+		},
+		"indeterminate": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, the component appears indeterminate.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"indeterminateIcon": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "The icon to display when the component is indeterminate."
+		},
+		"inputProps": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Properties applied to the `input` element."
+		},
+		"inputRef": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Use that property to pass a ref callback to the native input component."
+		},
+		"name": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "@ignore"
+		},
+		"onChange": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the state is changed.\n\n@param {object} event The event source of the callback\n@param {boolean} checked The `checked` value of the switch"
+		},
+		"type": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "The input component property `type`."
+		},
+		"value": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "The value of the component."
+		},
+		"errorText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Error message that inside the component."
+		},
+		"errorTextVisible": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, and component has label and errorText the errorText will be visible",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"label": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "If exists, checkbox will be render with <Label> component"
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

@@ -1,0 +1,158 @@
+{
+	"description": "",
+	"displayName": "MenuItem",
+	"methods": [
+		{
+			"name": "handleClose",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "onTouchTap",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	],
+	"props": {
+		"allProperties": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"checked": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If true, a left check mark will be rendered.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"disabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If true, the menu item will be disabled.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"leftIcon": {
+			"type": {
+				"name": "element"
+			},
+			"required": false,
+			"description": "The `SvgIcon` or `FontIcon` to be displayed on the left side."
+		},
+		"onTouchTap": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback function fired when the menu item is touch-tapped.\n\n@param {object} event TouchTap event targeting the menu item."
+		},
+		"itemSelected": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"primaryText": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "Can be used to render primary text within the menu item."
+		},
+		"rightIcon": {
+			"type": {
+				"name": "element"
+			},
+			"required": false,
+			"description": "The `SvgIcon` or `FontIcon` to be displayed on the right side."
+		},
+		"secondaryText": {
+			"type": {
+				"name": "node"
+			},
+			"required": false,
+			"description": "Can be used to render secondary text within the menu item."
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Override the inline-styles of the root element."
+		},
+		"leftIconStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"rightIconStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"value": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": "The value of the menu item."
+		},
+		"primaryTextPadding": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "0px 24px 0px 24px",
+				"computed": false
+			}
+		},
+		"classes": {
+			"type": {
+				"name": "object"
+			},
+			"required": true,
+			"description": ""
+		},
+		"isAddedDrawer": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

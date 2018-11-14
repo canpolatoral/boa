@@ -1,0 +1,407 @@
+{
+	"description": "Dialog Component is wrapped from `@material-ui/core/Dialog`. Also `DialogHelper` provides a static method called `show`\nThis method allows create window from outside the render method.",
+	"displayName": "Dialog",
+	"methods": [
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "setTitle",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "title",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "setLeftTitleButton",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onCloseClicked",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "open",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "open",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "fireClosable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "getIcon",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "type",
+					"type": null
+				},
+				{
+					"name": "context",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "prepareDialog",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "onEnter",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"children": {
+			"type": {
+				"name": "node"
+			},
+			"required": true,
+			"description": "Dialog children, usually the included sub-components."
+		},
+		"classes": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Useful to extend the style applied to components."
+		},
+		"className": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "@ignore"
+		},
+		"disableBackdropClick": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, clicking the backdrop will not fire the `onClose` callback.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"disableEscapeKeyDown": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, hitting escape will not fire the `onClose` callback.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"fullScreen": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `true`, it will be full-screen",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"fullWidth": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If specified, stretches dialog to max width.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"maxWidth": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "xs",
+						"computed": false
+					},
+					{
+						"value": "sm",
+						"computed": false
+					},
+					{
+						"value": "md",
+						"computed": false
+					},
+					{
+						"value": false,
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "Determine the max width of the dialog.\nThe dialog width grows with the size of the screen, this property is useful\non the desktop where you might need some coherent different width size across your\napplication. Set to `false` to disable `maxWidth`."
+		},
+		"onBackdropClick": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the backdrop is clicked."
+		},
+		"onClose": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the component requests to be closed.\n\n@param {object} event The event source of the callback"
+		},
+		"onEnter": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired before the dialog enters."
+		},
+		"onEntered": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the dialog has entered."
+		},
+		"onEntering": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the dialog is entering."
+		},
+		"onEscapeKeyDown": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the escape key is pressed,\n`disableKeyboard` is false and the modal is in focus."
+		},
+		"onExit": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired before the dialog exits."
+		},
+		"onExited": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the dialog has exited."
+		},
+		"onExiting": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback fired when the dialog is exiting."
+		},
+		"open": {
+			"type": {
+				"name": "bool"
+			},
+			"required": true,
+			"description": "If `true`, the Dialog is open."
+		},
+		"PaperProps": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Properties applied to the `Paper` element."
+		},
+		"transition": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "func"
+					}
+				]
+			},
+			"required": false,
+			"description": "Transition component."
+		},
+		"transitionDuration": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "number"
+					},
+					{
+						"name": "shape",
+						"value": {
+							"enter": {
+								"name": "number",
+								"required": false
+							},
+							"exit": {
+								"name": "number",
+								"required": false
+							}
+						}
+					}
+				]
+			},
+			"required": false,
+			"description": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object."
+		},
+		"titleWithCloseButtonEnabled": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"autoDetectWindowHeight": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"repositionOnUpdate": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"content": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": ""
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"titleBackgroundColor": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"disableRestoreFocus": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If true, the modal will not restore focus to previously focused element once modal is hidden. (input bileşeninin focusunda açıyorsanız can kurtarır!)"
+		},
+		"showHeader": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"dialogBoxContentPadding": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "24px",
+				"computed": false
+			}
+		},
+		"modal": {
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			},
+			"required": false
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

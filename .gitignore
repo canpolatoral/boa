@@ -7,7 +7,6 @@
 /.next
 /.nyc_output
 /coverage
-/stories/**/doc.json
 /test/regressions/screenshots
 /test/selenium-output
 /tmp

@@ -1,0 +1,587 @@
+{
+	"description": "",
+	"displayName": "Input",
+	"methods": [
+		{
+			"name": "counterUpdate",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "props",
+					"type": null
+				},
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onBlur",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				},
+				{
+					"name": "v",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onFocus",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onKeyDown",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onKeyUp",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "setTimer",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "duration",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "setTimeInfo",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "duration",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "focus",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "hasValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "validationToString",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"inputProps": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"errorStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"errorText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"floatingLabelFixed": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"floatingLabelFocusStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"floatingLabelShrinkStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"floatingLabelStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"floatingLabelText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"helperText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"hintStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"hintText": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"id": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"inputAlign": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "left",
+						"computed": false
+					},
+					{
+						"value": "right",
+						"computed": false
+					},
+					{
+						"value": "center",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": ""
+		},
+		"inputStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"outerStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"maxLength": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"multiLine": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"fullWidth": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"name": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"noWrap": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": ""
+		},
+		"rows": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": 1,
+				"computed": false
+			}
+		},
+		"rowsMax": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"textareaStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"formControlStyle": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
+		"type": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "password",
+						"computed": false
+					},
+					{
+						"value": "text",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "text",
+				"computed": false
+			}
+		},
+		"value": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": ""
+		},
+		"defaultValue": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"bottomLeftInfoEnable": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"bottomLeftInfo": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"bottomRightInfoEnable": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"bottomRightInfo": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onFocus": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onBlur": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onChange": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onKeyDown": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onKeyUp": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"timerDuration": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"onTimerFinished": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"prefixText": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": ""
+		},
+		"suffixText": {
+			"type": {
+				"name": "any"
+			},
+			"required": false,
+			"description": ""
+		},
+		"validationMessageStyleActive": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"disabledCounterCharacter": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"maskedMaxLength": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"showCounter": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"inlineGridMode": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"onChangeSync": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": ""
+		},
+		"underlineShow": {
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			},
+			"required": false
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

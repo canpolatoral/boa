@@ -1,0 +1,37 @@
+{
+	"description": "",
+	"displayName": "ScrollbarSize",
+	"methods": [
+		{
+			"name": "setMeasurements",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"onLoad": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": null,
+				"computed": false
+			}
+		},
+		"onChange": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": null,
+				"computed": false
+			}
+		}
+	}
+}

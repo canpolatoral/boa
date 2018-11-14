@@ -1,0 +1,82 @@
+{
+	"description": "Label component",
+	"displayName": "Label",
+	"methods": [
+		{
+			"name": "parseFontSize",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "fontSize",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "checkLabelFontSize",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "props",
+					"type": null
+				}
+			],
+			"returns": null
+		}
+	],
+	"props": {
+		"text": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Label text"
+		},
+		"style": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Override style of element."
+		},
+		"maxWidth": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": ""
+		},
+		"minFontSize": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "Number.NEGATIVE_INFINITY",
+				"computed": true
+			}
+		},
+		"maxFontSize": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "Number.POSITIVE_INFINITY",
+				"computed": true
+			}
+		},
+		"textAlign": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		}
+	}
+}

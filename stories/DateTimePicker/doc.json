@@ -1,0 +1,552 @@
+{
+	"description": "DateTimePicker with Material UI Components.",
+	"displayName": "DateTimePicker",
+	"methods": [
+		{
+			"name": "isString",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "obj",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getDefaultDate",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "props",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getDateToString",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "propDate",
+					"type": null
+				},
+				{
+					"name": "defaultDate",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				},
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "dateOnChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				},
+				{
+					"name": "value",
+					"type": null
+				},
+				{
+					"name": "addTimezoneOffset",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "timeOnChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "event",
+					"type": null
+				},
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleRemoveDate",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleAddDate",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "dateUpdate",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "oldDate",
+					"type": null
+				},
+				{
+					"name": "newDate",
+					"type": null
+				},
+				{
+					"name": "changeType",
+					"type": null
+				},
+				{
+					"name": "isSetState",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "clearTime",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "returnDate",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "clearTimeZone",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "returnDate",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "clearJustTimeZone",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "returnDate",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "resetValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setDisable",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getSnapshot",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setSnapshot",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "snapshot",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "getFormat",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "validateConstraint",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		}
+	],
+	"props": {
+		"minDate": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "instanceOf",
+						"value": "Date"
+					}
+				]
+			},
+			"required": false,
+			"description": "Selectable minimum date. Prop could be a Date object or UTC formatted string.",
+			"defaultValue": {
+				"value": "1949-12-31T23:03:05.000Z",
+				"computed": false
+			}
+		},
+		"maxDate": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "instanceOf",
+						"value": "Date"
+					}
+				]
+			},
+			"required": false,
+			"description": "Selectable max date. Prop could be a Date object or UTC formatted string.",
+			"defaultValue": {
+				"value": "2099-12-30T17:03:14.000Z",
+				"computed": false
+			}
+		},
+		"value": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "instanceOf",
+						"value": "Date"
+					}
+				]
+			},
+			"required": false,
+			"description": "Selected date. Prop could be a Date object or UTC formatted string."
+		},
+		"defaultValue": {
+			"type": {
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "instanceOf",
+						"value": "Date"
+					}
+				]
+			},
+			"required": false,
+			"description": "Default selected value for uncontrolled usage. Prop could be a Date object or UTC formatted string.",
+			"defaultValue": {
+				"value": null,
+				"computed": false
+			}
+		},
+		"onChange": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "@ignore"
+		},
+		"dateOnChange": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "@ignore"
+		},
+		"timeOnChange": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "ignore"
+		},
+		"hintTextDate": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Hint text for date input.",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"hintTextTime": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Hint text for text input.",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"floatingLabelTextDate": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Floating label text for date input.",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"floatingLabelTextTime": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Floating label text for text input.",
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			}
+		},
+		"firstDayOfWeek": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "First day of week.",
+			"defaultValue": {
+				"value": 1,
+				"computed": false
+			}
+		},
+		"mode": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "portrait",
+						"computed": false
+					},
+					{
+						"value": "landscape",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "Calendar dialog type.",
+			"defaultValue": {
+				"value": "portrait",
+				"computed": false
+			}
+		},
+		"cancelLabel": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Cancel label."
+		},
+		"okLabel": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "OK"
+		},
+		"isBusiness": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "@ignore",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"format": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "Picker format",
+			"defaultValue": {
+				"value": "DDMMYYYY hmmss",
+				"computed": false
+			}
+		},
+		"canSelectOldDates": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"canSelectWeekendDays": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"canSelectSpecialDays": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"errorTextDate": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"errorTextTime": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": ""
+		},
+		"pageType": {
+			"type": {
+				"name": "enum",
+				"value": [
+					{
+						"value": "browse",
+						"computed": false
+					},
+					{
+						"value": "transactional",
+						"computed": false
+					}
+				]
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": "browse",
+				"computed": false
+			}
+		},
+		"inlineGridMode": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"noDialog": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
+		"fullWidth": {
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			},
+			"required": false
+		}
+	},
+	"composes": [
+		"@boa/base"
+	]
+}

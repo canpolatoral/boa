@@ -2,7 +2,8 @@
 import webpack from 'webpack';
 import yargs from 'yargs';
 
-export const options = yargs.alias('p', 'optimize-minimize').alias('d', 'debug').argv;
+export const options = yargs.alias('p', 'optimizeMinimize').alias('d', 'debug').argv;
+
 
 const baseConfig = {
   entry: undefined,
@@ -42,6 +43,9 @@ const baseConfig = {
         use: 'url-loader',
       },
     ],
+  },
+  optimization: {
+    minimize: options.optimizeMinimize === true,
   },
   plugins: [
     new webpack.DefinePlugin({

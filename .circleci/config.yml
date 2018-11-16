@@ -91,6 +91,37 @@ jobs:
       - run:
           name: Coverage
           command: bash <(curl -s https://codecov.io/bash)
+  test_build:
+    <<: *defaults
+    # This isn't user facing code.
+    # Let's take advantage of the most up to date node version.
+    docker:
+      - image: circleci/node:9.10
+    steps:
+      - checkout
+      - *restore_npm_cache
+      - *install_js
+      - run:
+          name: Can we build components?
+          command: npm run build
+      - run:
+          name: Is the size acceptable?
+          command: npm run size
+  test_browser:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_npm_cache
+      - *install_js
+      - run:
+          name: Install dependencies for Chrome Headless
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+      - run:
+          name: Tests real browsers
+          command: npm run test-karma
+
 workflows:
   version: 2
   pipeline:
@@ -101,4 +132,10 @@ workflows:
             - checkout
       - test_unit:
           requires:
-            - lint
+            - checkout
+      - test_build:
+          requires:
+            - checkout
+      - test_browser:
+          requires:
+            - checkout

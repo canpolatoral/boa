@@ -20,6 +20,7 @@
     "size": "size-limit",
     "size-why": "size-limit --why build/index.js",
     "test": "npm run lint && npm run typescript && npm run test-coverage",
+    "test-integration": "cross-env NODE_ENV=test mocha  ./test/integration/*.test.js",
     "test-unit": "cross-env NODE_ENV=test mocha  ./src/**/**/**/*.test.js",
     "test-watch": "cross-env NODE_ENV=test mocha  ./src/**/**/**/*.test.js --watch",
     "test-karma": "cross-env NODE_ENV=test karma start test/karma.conf.js --single-run",

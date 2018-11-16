@@ -26,7 +26,7 @@ class Dialog extends ComponentBase {
     /**
      * Dialog children, usually the included sub-components.
      */
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     /**
      * @ignore
      */
@@ -644,7 +644,6 @@ class Dialog extends ComponentBase {
         PaperProps={{ style: dialog.customContentStyle }}
         onEntered={this.onEnter}
         onExiting={this.props.onClosing ? this.fireClosable : undefined}
-        contentProps={dialog.contentProps}
         disableRestoreFocus={this.props.disableRestoreFocus}
       >
         {dialog.titleWithCloseButtonEnabled && dialogForm}

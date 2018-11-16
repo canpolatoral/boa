@@ -144,6 +144,9 @@ export function setMessagingOptions(options) {
 }
 
 export function getMessage(groupName, propertyName, languageId) {
+  if (process.env.NODE_ENV === 'test') {
+    return groupName + propertyName;
+  }
   const versionCheckRequired = isVersionCheckRequired();
   let messagesRefreshRequired = false;
   let clientVersion;

@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { getMessage } from '@boa/utils';
-import { ComponentBase, AppProvider, DialogType } from '@boa/base';
+import { AppProvider, DialogType, DialogResponse, DialogResponseStyle } from '@boa/base';
 import { Button } from '@boa/components/Button';
 import Dialog from './Dialog';
 
@@ -35,7 +35,7 @@ export default class DialogHelper {
     context,
     content,
     dialogType = DialogType.INFO,
-    dialogResponseStyle = ComponentBase.DialogResponseStyle.OK,
+    dialogResponseStyle = DialogResponseStyle.OK,
     title,
     onClose,
     style,
@@ -73,19 +73,19 @@ export default class DialogHelper {
         ((content instanceof Object && content.mainContent !== undefined) ||
           dialogResponseStyle != null))
     ) {
-      if (dialogResponseStyle === ComponentBase.DialogResponseStyle.OK) {
-        actions.push(createAction(context, 'Ok', ComponentBase.DialogResponse.OK, true));
-      } else if (dialogResponseStyle === ComponentBase.DialogResponseStyle.YESCANCEL) {
-        actions.push(createAction(context, 'Yes', ComponentBase.DialogResponse.YES, true));
-        actions.push(createAction(context, 'Cancel', ComponentBase.DialogResponse.CANCEL, false));
-      } else if (dialogResponseStyle === ComponentBase.DialogResponseStyle.YESNO) {
-        actions.push(createAction(context, 'Yes', ComponentBase.DialogResponse.YES, true));
-        actions.push(createAction(context, 'No', ComponentBase.DialogResponse.NO, false));
-      } else if (dialogResponseStyle === ComponentBase.DialogResponseStyle.YESNOCANCEL) {
-        actions.push(createAction(context, 'Yes', ComponentBase.DialogResponse.YES, true));
-        actions.push(createAction(context, 'No', ComponentBase.DialogResponse.NO, false));
-        actions.push(createAction(context, 'Cancel', ComponentBase.DialogResponse.CANCEL, false));
-      } else actions.push(createAction(context, 'Ok', ComponentBase.DialogResponse.OK, true));
+      if (dialogResponseStyle === DialogResponseStyle.OK) {
+        actions.push(createAction(context, 'Ok', DialogResponse.OK, true));
+      } else if (dialogResponseStyle === DialogResponseStyle.YESCANCEL) {
+        actions.push(createAction(context, 'Yes', DialogResponse.YES, true));
+        actions.push(createAction(context, 'Cancel', DialogResponse.CANCEL, false));
+      } else if (dialogResponseStyle === DialogResponseStyle.YESNO) {
+        actions.push(createAction(context, 'Yes', DialogResponse.YES, true));
+        actions.push(createAction(context, 'No', DialogResponse.NO, false));
+      } else if (dialogResponseStyle === DialogResponseStyle.YESNOCANCEL) {
+        actions.push(createAction(context, 'Yes', DialogResponse.YES, true));
+        actions.push(createAction(context, 'No', DialogResponse.NO, false));
+        actions.push(createAction(context, 'Cancel', DialogResponse.CANCEL, false));
+      } else actions.push(createAction(context, 'Ok', DialogResponse.OK, true));
     }
 
     const titleBackgroundColor =
@@ -131,7 +131,7 @@ export default class DialogHelper {
     message,
     results,
     dialogType = DialogType.INFO, // eslint-disable-line no-unused-vars
-    dialogResponseStyle = ComponentBase.DialogResponseStyle.OK, // eslint-disable-line no-unused-vars, max-len
+    dialogResponseStyle = DialogResponseStyle.OK, // eslint-disable-line no-unused-vars, max-len
     title,
     onClose,
     style,
@@ -148,7 +148,7 @@ export default class DialogHelper {
         context,
         errorMessage,
         (dialogType = DialogType.INFO),
-        (dialogResponseStyle = ComponentBase.DialogResponseStyle.OK),
+        (dialogResponseStyle = DialogResponseStyle.OK),
         title,
         onClose,
         style,
@@ -161,14 +161,14 @@ export default class DialogHelper {
       context,
       content,
       DialogType.INFO,
-      ComponentBase.DialogResponseStyle.OK,
+      DialogResponseStyle.OK,
       title,
       onClose,
       style,
     );
   }
 
-  static close(component, dialogResponse = ComponentBase.DialogResponse.NONE, returnValue) {
+  static close(component, dialogResponse = DialogResponse.NONE, returnValue) {
     let dialogKey;
     if (component && component.props && component.props.dialogKey) {
       dialogKey = component.props.dialogKey;

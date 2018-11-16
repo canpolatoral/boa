@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="" rel="noopener" target="_blank"><img src="http://www.architecht.com/img/boa.png" alt="BOA logo"></a></p>
-</p>
-
-<h1 align="center">BOA-Components</h1>
+<h1 align="center">boa-components</h1>
 
 <div align="center">
 

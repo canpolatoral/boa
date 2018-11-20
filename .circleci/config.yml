@@ -121,7 +121,20 @@ jobs:
       - run:
           name: Tests real browsers
           command: npm run test-karma
-
+  test_regressions:
+    <<: *defaults
+    docker:
+      - image: circleci/node:9.10
+      - image: selenium/standalone-chrome:3.11.0
+    steps:
+      - checkout
+      - *restore_npm_cache
+      - *install_js
+      - run:
+          name: Visual regression tests
+          command: |
+            DOCKER_TEST_URL=http://$(ip addr show lo | grep "inet\b" | awk '{print $2}' | cut -d/ -f1):3090 npm run test-regressions
+            npm run argos
 workflows:
   version: 2
   pipeline:
@@ -139,3 +152,8 @@ workflows:
       - test_browser:
           requires:
             - checkout
+      - test_regressions:
+          requires:
+            - test_unit
+            - test_build
+            - test_browser

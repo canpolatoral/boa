@@ -48,7 +48,7 @@ class Divider extends ComponentBase {
       marginTop: 12,
     };
 
-    const { style, ...props } = this.props;
+    const { style, componentSize, newLine, isVisible, ...props } = this.props;
     innerStyle = Object.assign(innerStyle, style);
 
     return <MuiDivider style={innerStyle} {...props} />;

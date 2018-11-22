@@ -1,12 +1,23 @@
-const DEFAULT_LANGUAGE_ID = 1;
-const DEFAULT_TIMEOUT = 300000;
-const DEFAULT_URL = '';
-const DEFAULT_PATH = '/messaging/';
-const DEFAULT_VERSION_PATH = 'MessagingVersions.json';
-const DEFAULT_FILE_NAME_FORMAT = 'BOA.Messaging.{0}.json';
+import moment from 'moment';
+
+export const DEFAULT_LANGUAGE_ID = 1;
+export const DEFAULT_TIMEOUT = 300000;
+export const DEFAULT_URL = '';
+export const DEFAULT_PATH = '/messaging/';
+export const DEFAULT_VERSION_PATH = 'MessagingVersions.json';
+export const DEFAULT_FILE_NAME_FORMAT = 'BOA.Messaging.{0}.json';
+export const DEFAULT_THRESOLD = 1; // minutes
 
 const store = { versions: [], messages: {} };
-let messagingOptions = {};
+let messagingOptions = {
+  url: DEFAULT_URL,
+  path: DEFAULT_PATH,
+  versionPath: DEFAULT_VERSION_PATH,
+  fileNameFormat: DEFAULT_FILE_NAME_FORMAT,
+  timeout: DEFAULT_TIMEOUT,
+  languageId: DEFAULT_LANGUAGE_ID,
+  refreshThresold: DEFAULT_THRESOLD,
+};
 
 function isCrossDomain() {
   return messagingOptions.url !== DEFAULT_URL;
@@ -16,18 +27,18 @@ function getUrl(path) {
   return isCrossDomain() ? messagingOptions.url + path : path;
 }
 
-function serviceCallSync(request) {
+export function serviceCallSync(request) {
   const result = { data: null, isSuccess: false, error: null };
   const path = request.baseUrl + request.servicePath;
   const requestString = JSON.stringify(request.data);
   const requestObj = {
     url: getUrl(path),
     data: requestString,
-    type: request.method || 'GET',
+    type: request.method,
     timeout: messagingOptions.timeout,
     async: false,
     crossDomain: isCrossDomain(),
-    cache: request.cache || false,
+    cache: request.cache,
     processData: false,
     dataType: request.dataType || 'json',
     contentType: 'application/json; charset=utf-8',
@@ -83,18 +94,23 @@ function loadMessagesByGroup(groupName, languageId) {
     case 1:
       baseUrl += 'tr/';
       break;
+    /* istanbul ignore next */
     case 2:
       baseUrl += 'en/';
       break;
+    /* istanbul ignore next */
     case 3:
       baseUrl += 'de/';
       break;
+    /* istanbul ignore next */
     case 4:
       baseUrl += 'ru/';
       break;
+    /* istanbul ignore next */
     case 5:
       baseUrl += 'ar/';
       break;
+    /* istanbul ignore next */
     default:
       baseUrl += 'en/';
   }
@@ -117,9 +133,8 @@ function loadMessagesByGroup(groupName, languageId) {
 
 function isVersionCheckRequired() {
   if (!store.versions || store.versions.length === 0) return true;
-
   let lastReadDate = store.lastReadDate;
-  lastReadDate = lastReadDate.setMinutes(lastReadDate.getMinutes() + 1);
+  lastReadDate = moment(lastReadDate).add(messagingOptions.refreshThresold, 'm').toDate();
   return lastReadDate < new Date();
 }
 
@@ -131,6 +146,7 @@ export function setMessagingOptions(options) {
     messagingOptions.fileNameFormat = options.fileNameFormat || DEFAULT_FILE_NAME_FORMAT;
     messagingOptions.timeout = options.timeout || DEFAULT_TIMEOUT;
     messagingOptions.languageId = options.languageId || DEFAULT_LANGUAGE_ID;
+    messagingOptions.refreshThresold = options.refreshThresold || DEFAULT_THRESOLD;
   } else {
     messagingOptions = {
       url: DEFAULT_URL,
@@ -139,14 +155,12 @@ export function setMessagingOptions(options) {
       fileNameFormat: DEFAULT_FILE_NAME_FORMAT,
       timeout: DEFAULT_TIMEOUT,
       languageId: DEFAULT_LANGUAGE_ID,
+      refreshThresold: DEFAULT_THRESOLD,
     };
   }
 }
 
 export function getMessage(groupName, propertyName, languageId) {
-  if (process.env.NODE_ENV === 'test') {
-    return groupName + propertyName;
-  }
   const versionCheckRequired = isVersionCheckRequired();
   let messagesRefreshRequired = false;
   let clientVersion;
@@ -158,27 +172,35 @@ export function getMessage(groupName, propertyName, languageId) {
       return { Description: `${groupName}.${propertyName}`, Code: propertyName };
     }
 
+    const responseGroup = responseVersion.data.find(x => x.ClassName === groupName);
     clientVersion = getVersionOfMessagingGroup(messagingOptions.store, groupName);
-    serverVersion = responseVersion.data.find(x => x.ClassName === groupName).Version;
-
+    serverVersion = (responseGroup && responseGroup.Version) ? responseGroup.Version : -1;
     messagesRefreshRequired = clientVersion !== serverVersion;
-    if (messagesRefreshRequired) {
+    if (messagesRefreshRequired && responseVersion.data && responseVersion.data.length > 0) {
       store.versions = responseVersion.data;
     }
   }
 
   const messages = store.messages;
-  const messageGroup = messages[groupName];
+  let messageGroup = messages && messages[groupName] ? messages[groupName] : null;
   const messagesNotExists = !messages || !messageGroup;
   const languageNotExists = messages && messageGroup && messageGroup.languageId !== languageId;
 
   if (messagesNotExists || languageNotExists || messagesRefreshRequired) {
     loadMessagesByGroup(groupName, languageId || messagingOptions.languageId);
+    messageGroup = messages && messages[groupName] ? messages[groupName] : null;
   }
 
   if (messages && messageGroup && messageGroup.find(x => x.PropertyName === propertyName)) {
-    return messageGroup.find(x => x.PropertyName === propertyName);
+    const message = messageGroup.find(x => x.PropertyName === propertyName);
+    if (message.LanguageId === (languageId || messagingOptions.languageId)) {
+      return message;
+    }
   }
 
   return { Description: `${groupName}.${propertyName}` };
+}
+
+export function getMessagingOptions() {
+  return messagingOptions;
 }

@@ -12,8 +12,8 @@ function createDOM() {
   global.document = dom.window.document;
   // Not yet supported: https://github.com/jsdom/jsdom/issues/317
   global.document.createRange = () => ({
-    setStart: () => {},
-    setEnd: () => {},
+    setStart: () => { },
+    setEnd: () => { },
     commonAncestorContainer: {
       nodeName: 'BODY',
       ownerDocument: document,
@@ -31,6 +31,12 @@ function createDOM() {
         global[key] = dom.window[key];
       }
     });
+
+  global.$ = {
+  };
+  global.$.ajax = function (request) {
+    request.success([]);
+  }
 }
 
 module.exports = createDOM;

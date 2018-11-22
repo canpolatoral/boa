@@ -23,7 +23,7 @@ export class Localization {
     F: '0,0',
   };
 
-  static staticConstructor(_languageId) {
+  static staticConstructor(langId) {
     const locales = {
       ar: {
         delimiters: {
@@ -45,8 +45,9 @@ export class Localization {
       },
     };
 
-    this.languageId = _languageId;
+    this.languageId = langId;
     if (this.languageId === 1) this.language = 'tr';
+    else if (this.languageId === 2) this.language = 'en';
     else if (this.languageId === 3) this.language = 'de';
     else if (this.languageId === 4) this.language = 'ru';
     else if (this.languageId === 5) this.language = 'ar-ly';
@@ -58,12 +59,12 @@ export class Localization {
     Numeral.locale(this.language);
   }
 
-  static createLocalizationContext(_languageId) {
+  static createLocalizationContext(langId) {
     const localization = {
       isRightToLeft: false,
     };
 
-    this.languageId = _languageId;
+    this.languageId = langId;
 
     // Arapçca(language=5) olan dilde ekranlar sağdan sola render edilecek
     if (this.languageId === 5) {
@@ -73,8 +74,8 @@ export class Localization {
     return localization;
   }
 
-  static changeLocalizationLanguage(_languageId) {
-    this.languageId = _languageId;
+  static changeLocalizationLanguage(langId) {
+    this.languageId = langId;
     this.language = 'en';
     if (this.languageId === 1) this.language = 'tr';
     else if (this.languageId === 3) this.language = 'de';

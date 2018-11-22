@@ -58,7 +58,7 @@ export default class DialogHelper {
             fontSize: '13px',
           }}
           type="flat"
-          text={getMessage('BOA', text, context.language)}
+          text={getMessage('BOA', text, context.language).Description}
           keyboardFocused={focus}
           tag={type}
           onClick={this.onClose.bind(this, type)}

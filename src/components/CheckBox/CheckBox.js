@@ -14,21 +14,21 @@ const styles = theme => ({
   },
   checked: {
     margin: 0,
-    color: theme.boaPalette.pri500,
+    color: theme.boaPalette ? theme.boaPalette.pri500 : theme.palette.primary.main,
   },
   disabled: {
     margin: 0,
-    color: theme.boaPalette.base250,
+    color: theme.boaPalette ? theme.boaPalette.base250 : theme.palette.action.disabled,
   },
   labelLTR: {
-    color: theme.boaPalette.base450,
+    color: theme.boaPalette ? theme.boaPalette.base450 : theme.palette.primary.main,
     fontSize: 14,
     marginLeft: 12,
     marginRight: 0,
     marginTop: -3,
   },
   labelRTL: {
-    color: theme.boaPalette.base450,
+    color: theme.boaPalette ? theme.boaPalette.base450 : theme.palette.primary.main,
     fontSize: 14,
     marginLeft: 0,
     marginRight: 12,
@@ -55,7 +55,7 @@ class CheckBox extends ComponentBase {
     /**
      * Useful to extend the style applied to components. @ignore
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * The color of the component.
      * It supports those theme colors that make sense for this component.

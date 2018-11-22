@@ -8,46 +8,30 @@ import * as SvgIcons from '@material-ui/icons';
 
 describe('<Button /> tests', () => {
   it('should render a <MuiButton> element', () => {
-    const wrapper = shallow(<Button label="click" />)
-      .first()
-      .shallow()
-      .first()
-      .shallow();
-    assert.strictEqual(wrapper.type(), MuiButton);
+    const wrapper = shallow(<Button label="click" />).dive();
+    assert.strictEqual(wrapper.shallow().type(), MuiButton);
   });
 
   it('should render a button with type="contained" by default', () => {
-    const wrapper = shallow(<Button label="click" />)
-      .first()
-      .shallow();
+    const wrapper = shallow(<Button label="click" />).dive();
     assert.strictEqual(wrapper.name(), 'Button');
     assert.strictEqual(wrapper.props().type, 'contained');
   });
 
   it('should change type to flat', () => {
-    const wrapper = shallow(<Button type="flat" label="click" />)
-      .first()
-      .shallow();
+    const wrapper = shallow(<Button type="flat" label="click" />).dive();
     assert.strictEqual(wrapper.name(), 'Button');
     assert.strictEqual(wrapper.props().type, 'flat');
   });
 
   it('should change type to icon', () => {
-    const wrapper = shallow(<Button type="icon" dynamicIcon="Home" label="click" />)
-      .first()
-      .shallow()
-      .first()
-      .shallow();
-    assert.strictEqual(wrapper.childAt(0).type(), SvgIcons.Home);
+    const wrapper = shallow(<Button type="icon" dynamicIcon="Home" label="click" />).dive();
+    assert.strictEqual(wrapper.shallow().childAt(0).type(), SvgIcons.Home);
   });
 
   it('should render a dynamicIcon', () => {
-    const wrapper = shallow(<Button label="click" dynamicIcon="Home" />)
-      .first()
-      .shallow()
-      .first()
-      .shallow();
-    assert.strictEqual(wrapper.childAt(0).type(), SvgIcons.Home);
+    const wrapper = shallow(<Button label="click" dynamicIcon="Home" />).dive();
+    assert.strictEqual(wrapper.shallow().childAt(0).type(), SvgIcons.Home);
   });
 
   it('should mount', () => {

@@ -1,4 +1,4 @@
-import { assert, expect } from 'chai';
+import { assert } from 'chai';
 import sinon from 'sinon';
 import * as Messaging from './Messaging';
 

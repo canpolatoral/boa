@@ -34,9 +34,10 @@ function createDOM() {
 
   global.$ = {
   };
+  // eslint-disable-next-line
   global.$.ajax = function (request) {
     request.success([]);
-  }
+  };
 }
 
 module.exports = createDOM;

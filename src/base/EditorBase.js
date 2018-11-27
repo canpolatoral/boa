@@ -13,16 +13,17 @@ export default class EditorBase extends ComponentBase {
   validateConstraint() {
     const { valueConstraint } = this.props;
     let result = true;
-
     if (!valueConstraint || !this.props.isVisible) {
       return result;
     }
+
 
     const value = this.getValue ? this.getValue() : null;
     const newValidationResult = [];
 
     if (valueConstraint.required) {
       const message = this.isNullOrEmpty(value);
+      /* istanbul ignore next */
       if (message) {
         newValidationResult.push({ key: 'required', message });
       }
@@ -30,6 +31,7 @@ export default class EditorBase extends ComponentBase {
 
     if (valueConstraint.minLength) {
       const message = this.checkLength(value, { min: valueConstraint.minLength });
+      /* istanbul ignore next */
       if (message) {
         newValidationResult.push({ key: 'minLength', message });
       }
@@ -37,6 +39,7 @@ export default class EditorBase extends ComponentBase {
 
     if (valueConstraint.maxLength) {
       const message = this.checkLength(value, { max: valueConstraint.maxLength });
+        /* istanbul ignore next */
       if (message) {
         newValidationResult.push({ key: 'maxLength', message });
       }
@@ -78,7 +81,7 @@ export default class EditorBase extends ComponentBase {
       return this.getMessage('BOA', 'MinLength').replace('{0}', min);
     }
     if (max && len > max) {
-      return this.getChildId('BOA', 'MaxLength').replace('{0}', max);
+      return this.getMessage('BOA', 'MaxLength').replace('{0}', max);
     }
     return null;
   }

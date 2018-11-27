@@ -41,7 +41,6 @@ export default class ComponentBase extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.unMounted = false;
     this.state = this.props.persistState;
 
     if (this.props.context && context && context[CHANNEL]) {
@@ -50,13 +49,17 @@ export default class ComponentBase extends Component {
   }
 
   componentWillMount() {
-    if (this.props.snapshot) this.setSnapshot(this.props.snapshot);
+    if (this.props.snapshot) {
+      this.setSnapshot(this.props.snapshot);
+    }
   }
 
   componentDidMount() { }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.snapshot) this.setSnapshot(nextProps.snapshot);
+    if (nextProps.snapshot) {
+      this.setSnapshot(nextProps.snapshot);
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -69,20 +72,7 @@ export default class ComponentBase extends Component {
   // eslint-disable-next-line no-unused-vars
   componentDidUpdate(prevProps, prevState) { }
 
-  componentWillUnmount() {
-    this.unMounted = true;
-    // eslint-disable-next-line no-underscore-dangle
-    const disposeMethod = this.__dispose || this._dispose;
-    if (disposeMethod) {
-      try {
-        disposeMethod.bind(this)();
-      } catch (e) {
-        /* eslint-disable no-console */
-        console.error(`An error occured while component disposing: ${JSON.stringify(e)}`);
-        /* eslint-enable no-console */
-      }
-    }
-  }
+  componentWillUnmount() { }
 
   getInstance() {
     return this;
@@ -115,18 +105,7 @@ export default class ComponentBase extends Component {
   }
 
   setSnapshot(snapshot) {
-    // eslint-disable-next-line react/no-direct-mutation-state
-    this.state = Object.assign({}, this.state, snapshot);
-  }
-
-  resultErrorListToString(resultList) {
-    let message = ' ';
-    if (resultList && resultList.length > 0) {
-      resultList.forEach(item => {
-        message += item.errorMessage;
-      }, this);
-    }
-    return message;
+    this.setState({ ...snapshot });
   }
 
   // eslint-disable-next-line class-methods-use-this

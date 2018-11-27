@@ -10,14 +10,6 @@ export default function ComponentComposer(WrappedComponent) {
 
     static displayName = `ComponentComposer(${Utils.getDisplayName(WrappedComponent)})`;
 
-    getComponentPropTypes() {
-      return this.innerRef ? this.comp.type.propTypes : WrappedComponent.propTypes;
-    }
-
-    getComponentDefaultProps() {
-      return this.innerRef ? this.comp.type.defaultProps : WrappedComponent.defaultProps;
-    }
-
     getInstance() {
       return this.innerRef || this;
     }

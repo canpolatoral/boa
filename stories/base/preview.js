@@ -147,7 +147,7 @@ export default class Preview extends ComponentBase {
   getComponentString() {
     const RenderedComponent = this.props.component;
     const RenderedComponentString = reactElementToJSXString(
-      <RenderedComponent {...this.props} {...this.state.currentProperties} />,
+      <RenderedComponent {...this.state.currentProperties} />,
       {
         displayName: this.getName.bind(this),
         filterProps: ['context', 'maxFontSize', 'minFontSize', 'doc'],

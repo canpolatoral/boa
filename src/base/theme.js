@@ -52,18 +52,23 @@ export default function getTheme(opt) {
 
   let theme = {};
   switch (options.themeName) {
+    /* istanbul ignore next */
     case 'summer':
       theme = loadTheme(require('./themes/summer/colors'));
       break;
     case 'violet':
       theme = loadTheme(require('./themes/violet/colors'));
       break;
+    /* istanbul ignore next */
     case 'night':
       theme = loadTheme(require('./themes/night/colors'));
       break;
+    /* istanbul ignore next */
     case 'kt-green':
+      /* istanbul ignore next */
       theme = loadTheme(require('./themes/kt-green/colors'));
       break;
+    /* istanbul ignore next */
     case 'spring':
     default:
       theme = loadTheme(require('./themes/winter/colors'));

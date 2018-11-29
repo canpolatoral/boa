@@ -121,7 +121,7 @@ class Button extends ComponentBase {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.disabled !== this.props.disabled) {
-      this.setState({ disabled: nextProps.disabled });
+      this.setDisable(nextProps.disabled);
     }
   }
 

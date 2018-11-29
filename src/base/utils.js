@@ -1,6 +1,8 @@
+/* eslint-disable */
+/* istanbul ignore file */
+
 import React from 'react';
 import indigo from '@material-ui/core/colors/indigo';
-/* eslint-disable */
 import { Sizes, ComponentSize, FormHeaderTransactionTypes } from './types';
 
 Array.prototype.findIndex =

@@ -1,17 +1,24 @@
 import React from 'react';
+import { mount } from 'enzyme';
 import { expect } from 'chai';
-import { shallow, mount } from 'enzyme';
 import DocCode from './DocCode';
 
-const DocCodeFixture = <DocCode content="console.log('Hello world');" lang="js" />;
-
 describe('<DocCode /> tests', () => {
-  it('should render a <DocCode> element', () => {
-    const wrapper = shallow(DocCodeFixture);
-    expect(wrapper.html()).contains('<code class="hljs">');
+  it('should mount', () => {
+    const wrapper = mount(<DocCode content="console.log('Hello world');" />);
+    const className = wrapper.getDOMNode().querySelector('code').className;
+    expect(className).to.equals('hljs');
   });
 
-  it('should mount', () => {
-    mount(DocCodeFixture);
+  it('should mount with lang', () => {
+    mount(<DocCode content="console.log('Hello world');" lang="js" />);
+  });
+
+  it('should mount with highlight', () => {
+    mount(<DocCode content="console.log('Hello world');" highlight />);
+  });
+
+  it('should mount without highlight', () => {
+    mount(<DocCode content="console.log('Hello world');" highlight={false} />);
   });
 });

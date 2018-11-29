@@ -102,7 +102,7 @@ class DocNotice extends ComponentBase {
         const icon = {
           dynamicIcon: 'Info',
           iconProperties: {
-            color: 'rgba(2,136,209,1)',
+            nativeColor: 'rgba(2,136,209,1)',
           },
         };
         return Icon.getIcon(icon);
@@ -111,7 +111,7 @@ class DocNotice extends ComponentBase {
         const icon = {
           dynamicIcon: 'Star',
           iconProperties: {
-            color: 'rgba(2,136,209,1)',
+            nativeColor: 'rgba(2,136,209,1)',
           },
         };
         return Icon.getIcon(icon);
@@ -120,9 +120,9 @@ class DocNotice extends ComponentBase {
         const icon = {
           dynamicIcon: 'Warning',
           iconProperties: {
-            color: 'rgba(255,145,0, 1)',
+            nativeColor: 'rgba(255,145,0, 1)',
             float: 'left',
-            marginLeft: -36,
+            // marginLeft: -36,
           },
         };
         return Icon.getIcon(icon);
@@ -131,9 +131,9 @@ class DocNotice extends ComponentBase {
         const icon = {
           dynamicIcon: 'Error',
           iconProperties: {
-            color: 'rgba(255,82,82, 1)',
+            nativeColor: 'rgba(255,82,82, 1)',
             float: 'left',
-            marginLeft: -36,
+            // marginLeft: -36,
           },
         };
         return Icon.getIcon(icon);

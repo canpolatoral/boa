@@ -276,7 +276,7 @@ class DayButton extends Component {
     return date ? (
       <ButtonBase
         disabled={disabled}
-        onKeyboardFocus={this.handleKeyboardFocus}
+        onFocusVisible={this.handleKeyboardFocus}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onClick={this.handleTouchTap}

@@ -35,7 +35,7 @@ function TestViewer(props) {
 
 TestViewer.propTypes = {
   children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object,
 };
 
 export default withStyles(styles)(TestViewer);

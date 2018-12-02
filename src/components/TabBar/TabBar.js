@@ -17,15 +17,15 @@ const styles = theme => ({
   primary: {
     fontSize: '13px',
     textAlign: 'center',
-    color: theme.boaPalette.comp500,
-    background: theme.boaPalette.pri500,
+    color: theme.boaPalette ? theme.boaPalette.comp500 : '',
+    background: theme.boaPalette ? theme.boaPalette.pri500: '',
     minWidth: '64px',
   },
   secondary: {
     fontSize: '13px',
     textAlign: 'center',
-    color: theme.boaPalette.pri500,
-    background: theme.boaPalette.comp500,
+    color: theme.boaPalette ? theme.boaPalette.pri500 : '',
+    background: theme.boaPalette ? theme.boaPalette.comp500 : '',
     minWidth: '64px',
   },
   // labelIcon: {},
@@ -56,7 +56,7 @@ class TabBar extends ComponentBase {
     ...ComponentBase.propTypes,
     centered: PropTypes.bool,
     children: PropTypes.node,
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     className: PropTypes.string,
     containerType: PropTypes.oneOf(['default', 'page', 'card']),
     fullWidth: PropTypes.bool,
@@ -265,22 +265,22 @@ class TabBar extends ComponentBase {
     rightIconButton = this.props.rightIconButton ? (
       this.props.rightIconButton
     ) : (
-      <Button
-        context={this.props.context}
-        type="icon"
-        style={{
-          float: 'right',
-          width: '24px',
-          height: '24px',
-          marginTop: '12px',
-          verticalAlign: 'middle',
-          visibility: isRightIconButtonVisibile,
-        }}
-        dynamicIcon={'Close'}
-        iconProperties={{ nativeColor: iconColor, classes: { root: classes.iconRoot } }}
-        onClick={this.handleRightIconClick.bind(this, item.value)}
-      />
-    );
+        <Button
+          context={this.props.context}
+          type="icon"
+          style={{
+            float: 'right',
+            width: '24px',
+            height: '24px',
+            marginTop: '12px',
+            verticalAlign: 'middle',
+            visibility: isRightIconButtonVisibile,
+          }}
+          dynamicIcon={'Close'}
+          iconProperties={{ nativeColor: iconColor, classes: { root: classes.iconRoot } }}
+          onClick={this.handleRightIconClick.bind(this, item.value)}
+        />
+      );
 
     return rightIconButton;
   }
@@ -294,7 +294,7 @@ class TabBar extends ComponentBase {
     if (tabIndex > 0) {
       isRightIconButtonVisibile =
         (this.props.rightIconButtonVisibility && this.props.value == item.value) ||
-        this.state.mouseOverItem == item.value
+          this.state.mouseOverItem == item.value
           ? 'visible'
           : 'hidden';
       // isRightIconButtonVisibile && this.setState({ selected: item.value });
@@ -321,30 +321,30 @@ class TabBar extends ComponentBase {
     return this.props.disableIcons ? (
       <div style={this.props.tabLabelStyle}>{title}</div>
     ) : (
-      <div
-        style={{
-          textAlign: 'center',
-          height: '48px',
-          direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr',
-        }}
-      >
-        {leftIconButton}
-        {rightIconButton}
-        <div style={titleStyle}>
-          <div
-            style={{
-              display: '-webkit-box',
-              webkitLineClamp: '2',
-              webkitBoxOrient: 'vertical',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            {title}
+        <div
+          style={{
+            textAlign: 'center',
+            height: '48px',
+            direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr',
+          }}
+        >
+          {leftIconButton}
+          {rightIconButton}
+          <div style={titleStyle}>
+            <div
+              style={{
+                display: '-webkit-box',
+                webkitLineClamp: '2',
+                webkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {title}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
 
   renderTabScrollButton() {
@@ -356,11 +356,11 @@ class TabBar extends ComponentBase {
         style={{ nativeColor: this.props.context.theme.boaPalette.comp500 }}
       />
     ) : (
-      <DoubleChevronLeft
-        context={this.props.context}
-        style={{ nativeColor: this.props.context.theme.boaPalette.comp500 }}
-      />
-    );
+        <DoubleChevronLeft
+          context={this.props.context}
+          style={{ nativeColor: this.props.context.theme.boaPalette.comp500 }}
+        />
+      );
     const popoverTabs = this.props.tabItems.map((item, i) => (
       <ListItem
         key={i}
@@ -620,22 +620,22 @@ class TabBar extends ComponentBase {
     rightIconButton = this.props.rightIconButton ? (
       this.props.rightIconButton
     ) : (
-      <Button
-        context={this.props.context}
-        type="icon"
-        style={{
-          float: 'right',
-          width: '24px',
-          height: '24px',
-          marginTop: '12px',
-          verticalAlign: 'middle',
-          visibility: isRightIconButtonVisibile,
-        }}
-        dynamicIcon={'Close'}
-        iconProperties={{ nativeColor: iconColor, classes: { root: classes.iconRoot } }}
-        onClick={this.handleRightIconClick.bind(this, value)}
-      />
-    );
+        <Button
+          context={this.props.context}
+          type="icon"
+          style={{
+            float: 'right',
+            width: '24px',
+            height: '24px',
+            marginTop: '12px',
+            verticalAlign: 'middle',
+            visibility: isRightIconButtonVisibile,
+          }}
+          dynamicIcon={'Close'}
+          iconProperties={{ nativeColor: iconColor, classes: { root: classes.iconRoot } }}
+          onClick={this.handleRightIconClick.bind(this, value)}
+        />
+      );
 
     return rightIconButton;
   }
@@ -649,7 +649,7 @@ class TabBar extends ComponentBase {
     if (tabIndex > 0) {
       isRightIconButtonVisibile =
         (this.props.rightIconButtonVisibility && this.props.value == item.value) ||
-        this.state.mouseOverItem == item.value
+          this.state.mouseOverItem == item.value
           ? 'visible'
           : 'hidden';
       // isRightIconButtonVisibile && this.setState({ selected: item.value });

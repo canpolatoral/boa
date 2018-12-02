@@ -18,10 +18,10 @@ describe('<Button /> tests', () => {
     assert.strictEqual(wrapper.props().type, 'contained');
   });
 
-  it('should change type to flat', () => {
-    const wrapper = shallow(<Button type="flat" label="click" />).dive();
+  it('should change type to text', () => {
+    const wrapper = shallow(<Button type="text" label="click" />).dive();
     assert.strictEqual(wrapper.name(), 'Button');
-    assert.strictEqual(wrapper.props().type, 'flat');
+    assert.strictEqual(wrapper.props().type, 'text');
   });
 
   it('should change type to icon', () => {

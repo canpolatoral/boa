@@ -217,7 +217,7 @@ Tab.propTypes = {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object,
   /**
    * @ignore
    */

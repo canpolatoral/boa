@@ -17,7 +17,7 @@ class CalendarActionButton extends ComponentBase {
     return (
       <Button
         context={this.props.context}
-        type="flat"
+        type="text"
         text={cancelLabel}
         colorType="primary"
         onClick={this.props.onTouchTapCancel}
@@ -33,7 +33,7 @@ class CalendarActionButton extends ComponentBase {
         {!this.props.autoOk && (
           <Button
             context={this.props.context}
-            type="flat"
+            type="text"
             text={okLabel}
             colorType="primary"
             onClick={this.props.onTouchTapOk}

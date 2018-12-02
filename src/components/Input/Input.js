@@ -12,11 +12,12 @@ import { ComponentComposer, EditorBase } from '@boa/base';
 import { getTimeInfo, hasValue } from './utils';
 
 function baseStyles(theme) {
+  const { boaPalette, palette } = theme;
   return {
     input: {
-      color: theme.boaPalette.base450,
+      color: boaPalette ? boaPalette.base450 : palette.primary.main,
       fontSize: 14,
-      caretColor: theme.boaPalette.pri500,
+      caretColor: boaPalette ? boaPalette.pri500 : palette.primary.main,
       padding: 0,
       marginBottom: 3,
       minHeight: 19,
@@ -39,72 +40,75 @@ function baseStyles(theme) {
   };
 }
 
-const styles = theme => ({
-  input: Object.assign(baseStyles(theme).input, {
-    marginRight: theme.direction === 'rtl' ? 0 : null,
-    marginLeft: theme.direction === 'ltr' ? 0 : null,
-  }),
-  multiline: Object.assign(baseStyles(theme).input, {
-    padding: '3px 0 3px',
-  }),
+const styles = (theme) => {
+  const { boaPalette, palette } = theme;
+  return ({
+    input: Object.assign(baseStyles(theme).input, {
+      marginRight: theme.direction === 'rtl' ? 0 : null,
+      marginLeft: theme.direction === 'ltr' ? 0 : null,
+    }),
+    multiline: Object.assign(baseStyles(theme).input, {
+      padding: '3px 0 3px',
+    }),
 
-  inputDisabled: {
-    // underline da kullandığı için içi boş olsa da gerekli
-  },
-
-  inputfocused: {
-    // underline da kullandığı için içi boş olsa da gerekli
-  },
-
-  inputError: Object.assign(baseStyles(theme).input, {}),
-
-  inputUnderline: {
-    '&:after': {
-      borderBottom: `2px solid ${theme.boaPalette.pri500}`,
+    inputDisabled: {
+      // underline da kullandığı için içi boş olsa da gerekli
     },
 
-    '&:before': {
-      borderBottom: `1px solid ${theme.boaPalette.base250}`,
+    inputfocused: {
+      // underline da kullandığı için içi boş olsa da gerekli
     },
 
-    '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-      borderBottom: `2px solid ${theme.boaPalette.base250}`,
+    inputError: Object.assign(baseStyles(theme).input, {}),
+
+    inputUnderline: {
+      '&:after': {
+        borderBottom: `2px solid ${boaPalette ? boaPalette.pri500 : palette.primary.main}`,
+      },
+
+      '&:before': {
+        borderBottom: `1px solid ${boaPalette ? boaPalette.base250 : palette.primary.main}`,
+      },
+
+      '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
+        borderBottom: `2px solid ${boaPalette ? boaPalette.base250 : palette.primary.main}`,
+      },
     },
-  },
 
-  inputUnderlineRequired: {
-    '&:after': {
-      borderBottom: `2px solid ${theme.boaPalette.pri500}`,
+    inputUnderlineRequired: {
+      '&:after': {
+        borderBottom: `2px solid ${boaPalette ? boaPalette.pri500 : palette.primary.main}`,
+      },
+
+      '&:before': {
+        borderBottom: `1px solid ${boaPalette ? boaPalette.obli300 : palette.primary.main}`,
+      },
+
+      '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
+        borderBottom: `2px solid ${boaPalette ? boaPalette.obli300 : palette.primary.main}`,
+      },
     },
 
-    '&:before': {
-      borderBottom: `1px solid ${theme.boaPalette.obli300}`,
+    inputType: {
+      height: 'auto', // pasword fix
     },
 
-    '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-      borderBottom: `2px solid ${theme.boaPalette.obli300}`,
-    },
-  },
+    inputLabelShink: Object.assign(baseStyles(theme).inputLabel, {
+      paddingTop: '2px !important',
+      marginTop: '0px !important',
+      color: boaPalette ? boaPalette.pri500 : palette.primary.main,
+    }),
 
-  inputType: {
-    height: 'auto', // pasword fix
-  },
+    inputLabelRoot: Object.assign(baseStyles(theme).inputLabeRootBase, {}),
 
-  inputLabelShink: Object.assign(baseStyles(theme).inputLabel, {
-    paddingTop: '2px !important',
-    marginTop: '0px !important',
-    color: theme.boaPalette.pri500,
-  }),
-
-  inputLabelRoot: Object.assign(baseStyles(theme).inputLabeRootBase, {}),
-
-  inputLabelRootTransparent: Object.assign(baseStyles(theme).inputLabeRootBase, {
-    color: 'transparent',
-  }),
-  inputLabelRootDisabled: Object.assign(baseStyles(theme).inputLabeRootBase, {
-    color: theme.boaPalette.base250,
-  }),
-});
+    inputLabelRootTransparent: Object.assign(baseStyles(theme).inputLabeRootBase, {
+      color: 'transparent',
+    }),
+    inputLabelRootDisabled: Object.assign(baseStyles(theme).inputLabeRootBase, {
+      color: boaPalette ? boaPalette.base250 : palette.primary.main,
+    }),
+  });
+};
 
 @ComponentComposer
 @withStyles(styles)
@@ -160,7 +164,6 @@ class Input extends EditorBase {
     suffixText: PropTypes.any,
     textareaStyle: PropTypes.object,
     timerDuration: PropTypes.number,
-    type: PropTypes.oneOf(['password', 'text']),
     validationMessageStyleActive: PropTypes.bool,
     value: PropTypes.any,
   };
@@ -171,7 +174,6 @@ class Input extends EditorBase {
     fullWidth: true,
     multiLine: false,
     rows: 1,
-    type: 'text',
     defaultValue: '',
     bottomLeftInfoEnable: true,
     bottomRightInfoEnable: true,
@@ -195,14 +197,6 @@ class Input extends EditorBase {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.setTimer = this.setTimer.bind(this);
-
-    // todo will be removed
-    if (props.type === 'number') {
-      throw 'If you want b-input as numeric, you have to use b-input-numeric component'; // eslint-disable-line
-    } else if (props.type === 'password') {
-      throw 'If you want b-input as password, you have to use b-input-action component'; // eslint-disable-line
-      // this.debugLog('If you want b-input as password, you have to use b-input-action component');
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -375,7 +369,6 @@ class Input extends EditorBase {
       fullWidth,
       rows,
       rowsMax,
-      type,
       prefixText,
       suffixText,
       showCounter,
@@ -584,7 +577,7 @@ class Input extends EditorBase {
             inputProps={inputPropsMerged}
             inputRef={this.props.inputRef}
             fullWidth={fullWidth}
-            type={type}
+            type="text"
             // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
             style={this.props.inputStyle}
             value={this.state.value}

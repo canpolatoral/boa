@@ -57,7 +57,7 @@ export default class DialogHelper {
             fontWeight: 'bold',
             fontSize: '13px',
           }}
-          type="flat"
+          type="text"
           text={getMessage('BOA', text, context.language).Description}
           keyboardFocused={focus}
           tag={type}

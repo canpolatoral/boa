@@ -281,7 +281,7 @@ class DatePickerDialog extends ComponentBase {
         context={this.props.context}
         anchorEl={this.root}
         anchorOrigin={popoverOrigin}
-        targetOrigin={popoverOrigin}
+        transformOrigin={popoverOrigin}
         zDepth={1}
         bodyStyle={containerStyle}
         contentStyle={dialogContentStyle}

@@ -22,7 +22,7 @@ class TimeBase extends ComponentBase {
   };
 
   static contextTypes = {
-    muiTheme: PropTypes.object.isRequired,
+    muiTheme: PropTypes.object,
   };
 
   constructor(props, context) {

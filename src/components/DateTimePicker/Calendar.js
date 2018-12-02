@@ -950,7 +950,7 @@ class Calendar extends ComponentBase {
               {this.props.noDialog === false ? (
                 <Button
                   context={this.props.context}
-                  type="flat"
+                  type="text"
                   text={todayLabel}
                   colorType="primary"
                   fullWidth

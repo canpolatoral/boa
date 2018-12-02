@@ -13,7 +13,7 @@ import { LinearPanel } from '@boa/components/LinearPanel';
 class TreeViewGrid extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
-    data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+    data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     disabled: PropTypes.bool,
     onItemChanged: PropTypes.func,
     onOptionClick: PropTypes.func,

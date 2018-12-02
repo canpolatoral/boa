@@ -72,7 +72,7 @@ class TimePickerDialog extends ComponentBase {
   };
 
   static contextTypes = {
-    muiTheme: PropTypes.object.isRequired,
+    muiTheme: PropTypes.object,
   };
 
   state = {
@@ -596,7 +596,6 @@ class TimePickerDialog extends ComponentBase {
       <Popover
         canAutoPosition
         isOriginSetted
-        useLayerForClickAway={false}
         repositionOnUpdate
         autoCloseWhenOffScreen={false}
         style={{
@@ -613,7 +612,7 @@ class TimePickerDialog extends ComponentBase {
         open={open}
         context={this.props.context}
         anchorOrigin={popoverOrigin}
-        targetOrigin={popoverOrigin}
+        transformOrigin={popoverOrigin}
         zDepth={1}
         bodyStyle={containerStyle}
         contentStyle={dialogContentStyle}

@@ -98,9 +98,9 @@ class Button extends ComponentBase {
      */
     tooltip: PropTypes.string,
     /**
-     * Button type should be `contained`, `flat`, `fab` or `icon`.
+     * Button type should be `contained`, `text`, `fab` or `icon`.
      */
-    type: PropTypes.oneOf(['contained', 'flat', 'fab', 'icon']).isRequired,
+    type: PropTypes.oneOf(['contained', 'text', 'fab', 'icon']).isRequired,
   };
 
   static defaultProps = {
@@ -170,7 +170,6 @@ class Button extends ComponentBase {
         color={this.props.colorType}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        disableFocusRipple={this.state.disabled}
         onClick={this.onClick}
         variant={variant}
         size={this.props.buttonSize}

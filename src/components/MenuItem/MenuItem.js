@@ -9,7 +9,7 @@ import { Popover } from '@boa/components/Popover';
 const styles = theme => ({
   menuItem: {
     '&:hover': {
-      backgroundColor: theme.boaPalette.base150,
+      backgroundColor: theme.boaPalette ? theme.boaPalette.base150 : '',
     },
     paddingLeft: '0px',
     paddingRight: '0px',
@@ -41,7 +41,7 @@ class MenuItem extends ComponentBase {
     /**
      * If true, the menu item will be disabled.
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * If true, the menu item will be disabled.
      */
@@ -127,7 +127,7 @@ class MenuItem extends ComponentBase {
 
   render() {
     const { anchorEl } = this.state;
-    const { leftIcon, rightIcon, innerDivStyle, context } = this.props;
+    const { leftIcon, rightIcon, context } = this.props;
     const isRightToLeft = context.localization.isRightToLeft;
     const popoverStyle = {
       anchorOrigin: {
@@ -159,7 +159,6 @@ class MenuItem extends ComponentBase {
     return (
       <MuiMenuItem
         className={this.props.classes.menuItem}
-        innerDivStyle={innerDivStyle}
         selected={this.props.checked}
         disabled={this.props.disabled}
         onClick={this.onTouchTap}

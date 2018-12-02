@@ -134,47 +134,18 @@ class IconButton extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
-
-    this.onClick = this.onClick.bind(this);
-    this.onTouchTap = this.onTouchTap.bind(this);
     this.state = { disabled: props.disabled };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.disabled !== this.props.disabled) {
-      this.setState({ disabled: nextProps.disabled });
+      this.setDisable(nextProps.disabled);
     }
   }
 
   setDisable(value) {
     this.setState({ disabled: value });
   }
-
-  onClick(e) {
-    if (this.props.onClick) {
-      this.props.onClick(e);
-    }
-  }
-
-  onTouchTap(e) {
-    if (this.props.onTouchTap) {
-      this.props.onTouchTap(e);
-    }
-  }
-
-  onBlur(e) {
-    if (this.props.onBlur) {
-      this.props.onBlur(e);
-    }
-  }
-
-  handleTooltipClose = () => {
-    this.setState({ open: false });
-  };
-
-  handleTooltipOpen = () => {
-    this.setState({ open: true });
-  };
 
   render() {
     const { classes } = this.props;
@@ -186,11 +157,10 @@ class IconButton extends ComponentBase {
         classes={{
           root: classes.root,
         }}
-        onClick={this.onClick}
+        onClick={this.props.onClick}
         style={this.props.style}
         disabled={this.state.disabled}
         focusRipple={this.props.focusRipple}
-        disableFocusRipple={this.props.disableRipple}
         disableRipple={this.props.disableRipple}
       >
         {Icon.getIcon(this.props)}
@@ -202,8 +172,8 @@ class IconButton extends ComponentBase {
         {iconButton}
       </Tooltip>
     ) : (
-      iconButton
-    );
+        iconButton
+      );
   }
 }
 

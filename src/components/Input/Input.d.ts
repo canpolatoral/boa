@@ -1,3 +1,4 @@
+import * as React from 'react';
 import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface InputProps extends ComponentBaseProps {
@@ -50,4 +51,4 @@ export interface InputInstance extends ComponentBaseInstance {
   focus?: () => void;
 }
 
-export default class Input extends ComponentBase<InputProps, InputInstance> {}
+export default class Input extends ComponentBase<InputProps, InputInstance> { }

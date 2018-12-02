@@ -171,6 +171,7 @@ class Popover extends ComponentBase {
     },
     elevation: 8,
     marginThreshold: 16,
+    open: false,
     transformOrigin: {
       vertical: 'top',
       horizontal: 'left',
@@ -275,9 +276,7 @@ class Popover extends ComponentBase {
         onClose={this.props.onRequestClose}
         open={this.state.open}
         style={this.state.style}
-        targetOrigin={this.targetOrigin}
-        useLayerForClickAway={this.props.useLayerForClickAway}
-        transitionComponent={this.props.transition}
+        TransitionComponent={this.props.transition}
         transformOrigin={this.props.transformOrigin}
         transitionDuration={this.props.transitionDuration}
         disableRestoreFocus={this.props.disableRestoreFocus}

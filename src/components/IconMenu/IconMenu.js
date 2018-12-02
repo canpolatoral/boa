@@ -39,7 +39,7 @@ class IconMenu extends ComponentBase {
     /**
      * Custom icon for 'IconButton' to render.
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
 
     /**
      * Item list
@@ -55,7 +55,7 @@ class IconMenu extends ComponentBase {
 
     /**
      * This is the point on the icon where the menu
-     * `targetOrigin` will attach.
+     * `transformOrigin` will attach.
      * Options:
      * vertical: [top, middle, bottom]
      * horizontal: [left, center, right].
@@ -115,26 +115,13 @@ class IconMenu extends ComponentBase {
      * will be disabled.
      */
     style: PropTypes.object,
-
-    /**
-     * If true, the popover will render on top of an invisible
-     * layer, which will prevent clicks to the underlying elements.
-     */
-    targetOrigin: PropTypes.shape({
-      horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
-      vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
-    }),
-
     /* Callback function fired when the menu item is selected */
     touchTapCloseDelay: PropTypes.number,
-
     /* Callback function fired when the IconButton element is clicked */
     transformOrigin: PropTypes.shape({
       horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
       vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
     }),
-
-    useLayerForClickAway: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -147,16 +134,11 @@ class IconMenu extends ComponentBase {
     animated: true,
     multiple: false,
     open: null,
-    targetOrigin: {
-      vertical: 'top',
-      horizontal: 'left',
-    },
     transformOrigin: {
       vertical: 'top',
       horizontal: 'left',
     },
     touchTapCloseDelay: 200,
-    useLayerForClickAway: false,
     menuStyle: { minWidth: '240px' },
   };
 
@@ -168,6 +150,8 @@ class IconMenu extends ComponentBase {
   constructor(props, context) {
     super(props, context);
     this.onChange = this.onChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   onChange(parameters) {
@@ -180,13 +164,13 @@ class IconMenu extends ComponentBase {
     }
   }
 
-  handleClick = event => {
+  handleClick(event) {
     this.setState({ anchorEl: event.currentTarget });
-  };
+  }
 
-  handleClose = () => {
+  handleClose() {
     this.setState({ anchorEl: null });
-  };
+  }
 
   render() {
     const { anchorEl } = this.state;
@@ -196,20 +180,23 @@ class IconMenu extends ComponentBase {
       menuItems = this.props.menuItems.map(item => {
         return React.cloneElement(item, {
           onTouchTap: () => {
-            if (!item.props.menuItems) this.handleClose();
+            if (!item.props.menuItems) {
+              this.handleClose();
+            }
           },
         });
       });
     } else if (this.props.items) {
       menuItems = this.props.items.map(item => {
         let rightIcon;
+        let leftIcon;
+
         if (item.items && item.items.length) {
           rightIcon = <RightArrow />;
         } else if (item.rightIcon && (item.rightIcon.fontIcon || item.rightIcon.svgIcon)) {
           Icon.getIcon(item.rightIcon);
         }
 
-        let leftIcon;
         if (item.leftIcon && (item.leftIcon.fontIcon || item.leftIcon.svgIcon)) {
           leftIcon = Icon.getIcon(item.leftIcon);
         }

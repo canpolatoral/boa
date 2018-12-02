@@ -492,7 +492,7 @@ class DateTimePicker extends ComponentBase {
         horizontal: 'middle',
         vertical: 'bottom',
       },
-      targetOrigin: {
+      transformOrigin: {
         horizontal: 'middle',
         vertical: 'top',
       },

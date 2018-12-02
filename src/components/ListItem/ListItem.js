@@ -11,13 +11,13 @@ const styles = theme => ({
     minHeight: 36,
     paddingTop: 12,
     paddingBottom: 12,
-    color: theme.boaPalette.base400,
+    color: theme.boaPalette ? theme.boaPalette.base400 : theme.palette.primary.main,
     '&:hover': {
-      background: theme.boaPalette.pri300,
+      background: theme.boaPalette ? theme.boaPalette.pri300 : theme.palette.primary.main,
     },
   },
   selected: {
-    backgroundColor: theme.boaPalette.pri250,
+    backgroundColor: theme.boaPalette ? theme.boaPalette.pri250 : theme.palette.primary.main,
   },
   isRTL: {
     textAlign: 'right',
@@ -31,11 +31,13 @@ const styles = theme => ({
   },
   itemTextPrimary: {
     fontSize: 14,
-    color: theme.boaPalette.base400,
+    color: theme.boaPalette ? theme.boaPalette.base400 : theme.palette.primary.main,
+
   },
   itemTextSecondary: {
     fontSize: 12,
-    color: theme.boaPalette.base350,
+    color: theme.boaPalette ? theme.boaPalette.base350 : theme.palette.primary.main,
+
   },
 });
 
@@ -58,7 +60,7 @@ class ListItem extends ComponentBase {
     /**
      * Useful to extend the style applied to components.
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * @ignore
      */
@@ -102,6 +104,7 @@ class ListItem extends ComponentBase {
 
   static defaultProps = {
     ContainerComponent: 'li',
+    primaryText: '',
     dense: false,
     disabled: false,
     disableGutters: false,
@@ -111,7 +114,15 @@ class ListItem extends ComponentBase {
   };
 
   render() {
-    const { classes, selected, primaryText, secondaryText, ...other } = this.props;
+    const {
+      classes,
+      selected,
+      primaryText,
+      secondaryText,
+      componentSize,
+      newLine,
+      isVisible,
+      ...other } = this.props;
     const { isRightToLeft } = this.props.context.localization;
     const className = classNames(classes.root, {
       [classes.isRTL]: isRightToLeft,

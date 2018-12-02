@@ -72,7 +72,7 @@ const styles = () => ({
 class Header extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     column1: PropTypes.string,
     column2: PropTypes.string,
     column3: PropTypes.string,

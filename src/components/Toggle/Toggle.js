@@ -19,7 +19,7 @@ const styles = theme => ({
     direction: 'ltr',
   },
   label: {
-    color: theme.boaPalette.base400,
+    color: theme.boaPalette ? theme.boaPalette.base400 : '',
   },
   isRTL: {
     flexDirection: 'row',

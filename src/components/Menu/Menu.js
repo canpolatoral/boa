@@ -28,10 +28,6 @@ const styles = theme => ({
 class Menu extends ComponentBase {
   static defaultProps = {
     ...ComponentBase.defaultProps,
-    autoWidth: true,
-    disableAutoFocus: false,
-    initiallyKeyboardFocused: false,
-    maxHeight: null,
     multiple: false,
     isMenuItemList: false,
     primaryTextPadding: '0px 24px 0px 24px',
@@ -41,24 +37,9 @@ class Menu extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
     /**
-     * If true, the width of the menu will be set automatically
-     * according to the widths of its children,
-     * using proper keyline increments (64px for desktop,
-     * 56px otherwise).
-     */
-    autoWidth: PropTypes.bool,
-    /**
      * @ignore
      */
-    classes: PropTypes.object.isRequired,
-    /**
-     * If true, the menu will not be auto-focused.
-     */
-    disableAutoFocus: PropTypes.bool,
-    /**
-     * If true, the menu will be keyboard-focused initially.
-     */
-    initiallyKeyboardFocused: PropTypes.bool,
+    classes: PropTypes.object,
     /**
      *
      */
@@ -67,17 +48,6 @@ class Menu extends ComponentBase {
      * Item list
      */
     items: PropTypes.array.isRequired,
-    /**
-     * If true, `value` must be an array and the menu will support
-     * multiple selections.
-     */
-    listStyle: PropTypes.object,
-    /**
-     * The maximum height of the menu in pixels. If specified,
-     * the menu will be scrollable if it is taller than the provided
-     * height.
-     */
-    maxHeight: PropTypes.number,
     /**
      * If true, `value` must be an array and the menu will support
      * multiple selections.
@@ -94,22 +64,6 @@ class Menu extends ComponentBase {
      * Otherwise, the `value` of the menu item.
      */
     onChange: PropTypes.func,
-    /**
-     * Callback function fired when the menu is focused and the *Esc* key
-     * is pressed.
-     *
-     * @param {object} event `keydown` event targeting the menu.
-     */
-    onEscKeyDown: PropTypes.func,
-    /**
-    /**
-     * Callback function fired when a menu item is touch-tapped.
-     *
-     * @param {object} event TouchTap event targeting the menu item.
-     * @param {object} menuItem The menu item.
-     * @param {number} index The index of the menu item.
-     */
-    onItemTouchTap: PropTypes.func,
     /**
      * ItemList Parents Info
      */
@@ -234,10 +188,10 @@ class Menu extends ComponentBase {
         const rightIcon =
           item.items && item.items.length
             ? this.getIcon({
-                dynamicIcon: !this.props.context.localization.isRightToLeft
-                  ? 'ChevronRight'
-                  : 'ChevronLeft',
-              })
+              dynamicIcon: !this.props.context.localization.isRightToLeft
+                ? 'ChevronRight'
+                : 'ChevronLeft',
+            })
             : this.getIcon(item.rightIcon);
         const leftIcon = this.getIcon(item.leftIcon);
         let itemStyle = merge(
@@ -288,23 +242,15 @@ class Menu extends ComponentBase {
             allProperties={item.allProperties}
           />
         ) : (
-          <MuiDivider style={{ marginBottom: '12px', marginTop: '12px' }} key={Math.random()} />
-        );
+            <MuiDivider style={{ marginBottom: '12px', marginTop: '12px' }} key={Math.random()} />
+          );
       });
     }
 
     return (
       <MuiMenuList
-        autoWidth={this.props.autoWidth}
-        disableAutoFocus={this.props.disableAutoFocus}
-        initiallyKeyboardFocused={this.props.initiallyKeyboardFocused}
-        style={this.props.style}
-        listStyle={this.props.listStyle}
-        maxHeight={this.props.maxHeight}
         multiple={this.props.multiple}
         onChange={this.props.onChange}
-        onEscKeyDown={this.props.onEscKeyDown}
-        onItemTouchTap={this.props.onItemTouchTap}
         value={this.state.value}
         width={this.props.width}
       >

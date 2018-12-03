@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase } from '@boa/base';
 import { Divider } from '@boa/components/Divider';
+import sortBy from 'lodash/sortBy';
 import {
   cloneDate,
   getFirstDayOfMonth,
@@ -89,9 +90,10 @@ class SpecialDay extends ComponentBase {
     const betweenDayCount = 5;
     const returnObject = [];
     // let EveList = this.getDayList(calendarInfo, selectedDate, dayType.Eve, betweenDayCount);
-    // eslint-disable-next-line max-len
-    const ReliHolidayList = getDayList(calendarInfo, selectedDate, dayType.ReliHoliday, betweenDayCount);
-    const HolidayList = getDayList(calendarInfo, selectedDate, dayType.Holiday, betweenDayCount);
+    let newList = [];
+    newList = sortBy(calendarInfo, 'day');
+    const ReliHolidayList = getDayList(newList, selectedDate, dayType.ReliHoliday, betweenDayCount);
+    const HolidayList = getDayList(newList, selectedDate, dayType.Holiday, betweenDayCount);
     // let Eve = this.getHoliday(EveList, styleEve);
     const ReliHoliday = this.getHoliday(ReliHolidayList, styleReliHoliday);
     const Holiday = this.getHoliday(HolidayList, styleHoliday);

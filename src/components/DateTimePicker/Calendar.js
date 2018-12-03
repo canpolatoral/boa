@@ -879,16 +879,16 @@ class Calendar extends ComponentBase {
                 )}
               </div>
             </div>
-            <Divider
-              context={this.props.context}
-              style={{
-                width: 'calc(100% + 24px)',
-                marginBottom: 0,
-                marginLeft: -12,
-                marginRight: -12,
-                marginTop: 0,
-              }}
-            />
+            {!this.props.noDialog &&
+              <Divider
+                context={this.props.context}
+                style={{
+                  width: 'calc(100% + 24px)',
+                  marginBottom: 0,
+                  marginLeft: -12,
+                  marginRight: -12,
+                  marginTop: 0,
+                }} />}
             <div style={{ marginTop: 15 }}>
               {this.state.displayMonthDay && (
                 <CalendarToolbar

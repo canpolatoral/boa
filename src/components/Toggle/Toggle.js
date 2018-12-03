@@ -70,6 +70,7 @@ class Toggle extends ComponentBase {
      * The label of toggle component.
      */
     label: PropTypes.node,
+    labelPosition: PropTypes.oneOf('left', 'right'),
     /**
      * Indicates the style of label.
      */
@@ -183,7 +184,10 @@ class Toggle extends ComponentBase {
     const toggleIcon = Icon.getIcon(props);
 
     const rootClass = classNames(classes.root, {
-      [classes.isRTL]: isRightToLeft,
+      // eslint-disable-next-line
+      [classes.isRTL]: isRightToLeft ?
+        (this.props.labelPosition === 'right' ? 0 : 1) :
+        (this.props.labelPosition === 'right' ? 1 : 0),
     });
 
     return (

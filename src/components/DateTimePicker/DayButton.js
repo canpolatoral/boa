@@ -4,7 +4,7 @@ import { isEqualDate, getDatePickerStyle } from './dateUtils';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 function getStyles(props, context, state) {
-  const { date, selected, dayInfo, isBusiness } = props;
+  const { date, selected, dayInfo, isBusiness, displayDate } = props;
   const { hover } = state;
   const datePicker = getDatePickerStyle(context);
 
@@ -53,7 +53,11 @@ function getStyles(props, context, state) {
         // hoverSelectedAndTodayPadding = 2;
         backgroundClip = 'content-box';
       } else if (hover || selected) {
-        labelColor = datePicker.dayButtonColor;
+        if (date.getMonth() === displayDate.getMonth()) {
+          labelColor = datePicker.dayButtonColor;
+        } else {
+          labelColor = datePicker.otherMonthTextColor;
+        }
         backgroundColor = datePicker.calWorkDay;
         buttonStateOpacity = selected ? 1 : 0.6;
         buttonStateTransform = 'scale(1)';
@@ -290,8 +294,8 @@ class DayButton extends Component {
         </span>
       </ButtonBase>
     ) : (
-      <span style={styles.root} />
-    );
+        <span style={styles.root} />
+      );
   }
 }
 

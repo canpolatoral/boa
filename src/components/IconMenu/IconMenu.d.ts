@@ -16,7 +16,7 @@ export interface IconMenuProps extends ComponentBaseProps {
   targetOrigin?: any;
   touchTapCloseDelay?: number;
   useLayerForClickAway?: boolean;
-  onChange?: (parameters?:any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
+  onChange?: (parameters?: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
 }
 
 // Commented-Tslint: An interface declaring no members is equivalent to its supertype.
@@ -24,4 +24,4 @@ export interface IconMenuProps extends ComponentBaseProps {
 // export interface IconMenuInstance extends ComponentBaseInstance {
 // }
 
-export default class IconMenu extends ComponentBase<IconMenuProps, ComponentBaseInstance> {}
+export default class IconMenu extends ComponentBase<IconMenuProps, ComponentBaseInstance> { }

@@ -634,6 +634,7 @@ export function getDatePickerStyle(context) {
     equalWidthItemFlex: '1 1',
     dateTimeItemFlex: '2 1',
     dialogMarginTop: 30,
+    otherMonthTextColor: boaPalette.base300
   };
 
   return datePicker;
@@ -712,16 +713,17 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
       }
       else {
         if ((calendarInfo[i].day.getMonth() === selectedMonth - 1) || (calendarInfo[i].day.getMonth() === 11 && selectedMonth === 0)) {
-          if (selectedDate.getDay() > calendarInfo[i].day.getDay() &&
-            ((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) < (selectedDate.getDay() - 1))
+          if ((selectedDate.getDay() > calendarInfo[i].day.getDay() || selectedDate.getDay() === 0) &&
+            (((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) < (selectedDate.getDay() - 1)) ||
+              ((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) < 6 && selectedDate.getDay() === 0))
           ) {
             isContinue = true;
           }
         }
         else {
-          if (calendarInfo[i].day.getDay() > 1 &&
+          if (calendarInfo[i].day.getDay() != 1 &&
             ((calendarInfo[i].day.getMonth() === selectedMonth + 1) || (calendarInfo[i].day.getMonth() === 0 && selectedMonth === 11)) &&
-            calendarInfo[i].day.getDay() > calendarInfo[i].day.getDate()) {
+            (calendarInfo[i].day.getDay() > calendarInfo[i].day.getDate() || (calendarInfo[i].day.getDay() === 0 && calendarInfo[i].day.getDate() < 7))) {
             isContinue = true;
           }
         }
@@ -732,6 +734,9 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
         const negativeBetweenDaylength = i - betweenDayCount;
 
         for (let j = i - 1; j > negativeBetweenDaylength; j--) {
+          if (j < 0) {
+            break;
+          }
           if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
             break;
           } else {

@@ -131,6 +131,7 @@ class CalendarMonth extends Component {
           selected={selected}
           dayInfo={dayInfo}
           isBusiness={isBusiness}
+          displayDate={this.props.displayDate}
         />
       );
     }, this);

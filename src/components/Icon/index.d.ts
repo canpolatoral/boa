@@ -1,3 +1,4 @@
+import * as React from 'react';
 import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface BIconProp extends ComponentBaseProps {
@@ -90,3 +91,8 @@ export class Criterias extends IconBase {}
 export class Lock extends IconBase {}
 export class Resizable extends IconBase {}
 export class User extends IconBase {}
+export class AcrobatLogo extends IconBase { }
+export class ImageLogo extends IconBase { }
+export class MailLogo extends IconBase { }
+export class OtherLogo extends IconBase { }
+export class ExcelLogo extends IconBase { }

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface IconMenuProps extends ComponentBaseProps {
@@ -15,7 +16,7 @@ export interface IconMenuProps extends ComponentBaseProps {
   targetOrigin?: any;
   touchTapCloseDelay?: number;
   useLayerForClickAway?: boolean;
-  onChange?: () => void;
+  onChange?: (parameters?:any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
 }
 
 // Commented-Tslint: An interface declaring no members is equivalent to its supertype.

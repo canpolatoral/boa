@@ -11,6 +11,10 @@ import ExcelLogo from './logos/excel-logo';
 import PowerPointLogo from './logos/power-point-logo';
 import WordLogo from './logos/word-logo';
 import KTLogoWhite from './logos/kt-logo-white';
+import AcrobatLogo from './logos/acrobat-logo';
+import ImageLogo from './logos/image-logo';
+import MailLogo from './logos/mail-logo';
+import OtherLogo from './logos/other-logo';
 
 /* Actions */
 import Add from './actions/add';
@@ -61,6 +65,7 @@ import Undo from './actions/undo';
 import Accessibility from './menus/accessibility';
 import AccountBalance from './menus/account-balance';
 import AccountCircle from './menus/account-circle';
+import Apps from './menus/apps';
 import Banknote from './menus/banknote';
 import BusinessCenter from './menus/business-center';
 import Customer360 from './menus/customer360';
@@ -112,6 +117,10 @@ const logos = {
   PowerPointLogo,
   WordLogo,
   KTLogoWhite,
+  AcrobatLogo,
+  ImageLogo,
+  MailLogo,
+  OtherLogo,
 };
 export { logos as Logos };
 
@@ -166,6 +175,7 @@ const menus = {
   Accessibility,
   AccountBalance,
   AccountCircle,
+  Apps,
   Banknote,
   BusinessCenter,
   Customer360,

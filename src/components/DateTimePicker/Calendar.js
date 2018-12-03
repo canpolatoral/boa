@@ -918,7 +918,7 @@ class Calendar extends ComponentBase {
                   </div>
                   <div style={Object.assign({}, style.transitionSlide, { minHeight })}>
                     {// TODO :SLIDE
-                    this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
+                      this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
                   </div>
 
                   {/* </Slide> */}
@@ -932,7 +932,7 @@ class Calendar extends ComponentBase {
           {!this.state.displayMonthDay && this.renderYearAndMounthSelector(style)}
           {this.state.displayMonthDay && (
             <div style={{ height: 48 }}>
-              {this.props.isBusiness === false ? (
+              {(this.props.noDialog === true || this.props.isBusiness === false) ? (
                 <Divider
                   context={this.props.context}
                   style={{
@@ -944,8 +944,8 @@ class Calendar extends ComponentBase {
                   }}
                 />
               ) : (
-                <div />
-              )}
+                  <div />
+                )}
 
               {this.props.noDialog === false ? (
                 <Button
@@ -959,8 +959,21 @@ class Calendar extends ComponentBase {
                   textStyle={buttonTextStyle}
                 />
               ) : (
-                <div />
-              )}
+                  <div />
+                )}
+              {(this.props.noDialog === true) ?
+                (<Button
+                  context={this.props.context}
+                  type="flat"
+                  text="BOA TAKVİMİ AÇ"
+                  colorType="primary"
+                  fullWidth
+                  style={buttonStyle}
+                  textStyle={buttonTextStyle}
+                />
+                ) :
+                (<div />)
+              }
             </div>
           )}
         </div>

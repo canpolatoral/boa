@@ -1,3 +1,4 @@
+import * as React from 'react';
 import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface InputNumericProps extends ComponentBaseProps {
@@ -22,7 +23,7 @@ export interface InputNumericProps extends ComponentBaseProps {
   valueConstraint?: any;
   fullWidth?: boolean;
   outerStyle?: any;
-  inputStyle?: any;
+  inputStyle?: React.CSSProperties;
 }
 
 export interface InputNumericInstance extends ComponentBaseInstance {

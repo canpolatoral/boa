@@ -493,7 +493,7 @@ class Input extends EditorBase {
       },
       inputProps,
     );
-    const id = uniqueId();
+    const id = this.props.id || uniqueId();
 
     // error validation
     let error = false;

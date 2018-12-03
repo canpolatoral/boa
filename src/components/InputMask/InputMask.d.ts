@@ -1,3 +1,4 @@
+import * as React from 'react';
 import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
 
 export interface InputMaskProps extends ComponentBaseProps {
@@ -14,6 +15,8 @@ export interface InputMaskProps extends ComponentBaseProps {
   valueConstraint?: any;
   maxLength?: number;
   disabled?: boolean;
+  style?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
 }
 
 export interface InputMaskInstance extends ComponentBaseInstance {

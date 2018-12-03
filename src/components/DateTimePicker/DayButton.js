@@ -20,8 +20,8 @@ function getStyles(props, context, state) {
     WorkDay: 0,
     WeekendDay: 1,
     Holiday: 2,
-    Eve: 3,
-    ReliHoliday: 4,
+    ReliHoliday: 3,
+    Eve: 4,
   };
 
   if (dayInfo.dayType === daysType.EmptyDay) {

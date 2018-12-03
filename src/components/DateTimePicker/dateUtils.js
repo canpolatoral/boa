@@ -35,7 +35,7 @@ const monthLongList = [
 ];
 const seperator = '.';
 
-String.prototype.replaceAll = function(target, replacement) {
+String.prototype.replaceAll = function (target, replacement) {
   return this.split(target).join(replacement);
 };
 
@@ -68,7 +68,7 @@ export function getLocalizedTime(value, datetimeOption, timeformat) {
   return '';
 }
 export function dateTimeFormat(options) {
-  this.format = function(date) {
+  this.format = function (date) {
     if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
       return `${dayList[date.getDay()]}, ${monthList[date.getMonth()]} ${date.getDate()}`;
     }
@@ -703,28 +703,58 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
       }
       if (sameValue) continue;
     }
-    if (dayType === calendarInfo[i].dayType && calendarInfo[i].day.getMonth() === selectedMonth) {
-      const itemspecialDayString = [];
-      itemspecialDayString.push(calendarInfo[i]);
-      const negativeBetweenDaylength = i - betweenDayCount;
-
-      for (let j = i - 1; j > negativeBetweenDaylength; j--) {
-        if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
-          break;
-        } else {
-          itemspecialDayString.push(calendarInfo[j]);
+    if (dayType === calendarInfo[i].dayType
+      // && calendarInfo[i].day.getMonth() === selectedMonth
+    ) {
+      let isContinue = false;
+      if (calendarInfo[i].day.getMonth() === selectedMonth) {
+        isContinue = true;
+      }
+      else {
+        if ((calendarInfo[i].day.getMonth() === selectedMonth - 1) || (calendarInfo[i].day.getMonth() === 11 && selectedMonth === 0)) {
+          if (selectedDate.getDay() > calendarInfo[i].day.getDay() &&
+            ((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) < (selectedDate.getDay() - 1))
+          ) {
+            isContinue = true;
+          }
+        }
+        else {
+          if (calendarInfo[i].day.getDay() > 1 &&
+            ((calendarInfo[i].day.getMonth() === selectedMonth + 1) || (calendarInfo[i].day.getMonth() === 0 && selectedMonth === 11)) &&
+            calendarInfo[i].day.getDay() > calendarInfo[i].day.getDate()) {
+            isContinue = true;
+          }
         }
       }
+      if (isContinue == true) {
+        const itemspecialDayString = [];
+        itemspecialDayString.push(calendarInfo[i]);
+        const negativeBetweenDaylength = i - betweenDayCount;
 
-      const positiveBetweenDaylength = i + betweenDayCount;
-      for (let j = i + 1; j < positiveBetweenDaylength; j++) {
-        if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
-          break;
-        } else {
-          itemspecialDayString.push(calendarInfo[j]);
+        for (let j = i - 1; j > negativeBetweenDaylength; j--) {
+          if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
+            break;
+          } else {
+            itemspecialDayString.push(calendarInfo[j]);
+          }
         }
+
+        let positiveBetweenDaylength = i + betweenDayCount;
+        if (calendarInfo.length < positiveBetweenDaylength) {
+          positiveBetweenDaylength = calendarInfo.length;
+        }
+        for (let j = i + 1; j < positiveBetweenDaylength; j++) {
+          if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
+            break;
+          }
+          else if (calendarInfo[j].day.getDay() === 1 && calendarInfo[j].day.getMonth() !== selectedMonth) {
+            break;
+          } else {
+            itemspecialDayString.push(calendarInfo[j]);
+          }
+        }
+        specialDayStringArray.push(itemspecialDayString);
       }
-      specialDayStringArray.push(itemspecialDayString);
     }
   }
   return specialDayStringArray;

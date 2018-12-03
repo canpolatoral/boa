@@ -15,14 +15,15 @@ const dayType = {
   WorkDay: 0,
   WeekendDay: 1,
   Holiday: 2,
-  Eve: 3,
-  ReliHoliday: 4,
+  ReliHoliday: 3,
+  Eve: 4,
 };
 
 function getStyles(props, type) {
   const datePicker = getDatePickerStyle(props.context);
   const dateTextColor = datePicker.DateTextColor;
-  const EveHolidayBoxColor = datePicker.calEve;
+  // let EveHolidayBoxColor = datePicker.calEve;
+  const ReliHolidayBoxColor = datePicker.calReliHoliday;
   const HolidayBoxColor = datePicker.calHoliday;
   return {
     root: {
@@ -61,7 +62,7 @@ function getStyles(props, type) {
     Box: {
       width: 10,
       height: 10,
-      background: type === dayType.Eve ? EveHolidayBoxColor : HolidayBoxColor,
+      background: type === dayType.ReliHoliday ? ReliHolidayBoxColor : HolidayBoxColor,
     },
   };
 }
@@ -82,15 +83,20 @@ class SpecialDay extends ComponentBase {
   };
 
   getSpecialDayList(calendarInfo, selectedDate) {
-    const styleEve = getStyles(this.props, dayType.Eve);
+    // const styleEve = getStyles(this.props, dayType.Eve);
     const styleHoliday = getStyles(this.props, dayType.Holiday);
+    const styleReliHoliday = getStyles(this.props, dayType.ReliHoliday);
     const betweenDayCount = 5;
     const returnObject = [];
-    const EveList = getDayList(calendarInfo, selectedDate, dayType.Eve, betweenDayCount);
+    // let EveList = this.getDayList(calendarInfo, selectedDate, dayType.Eve, betweenDayCount);
+    // eslint-disable-next-line max-len
+    const ReliHolidayList = getDayList(calendarInfo, selectedDate, dayType.ReliHoliday, betweenDayCount);
     const HolidayList = getDayList(calendarInfo, selectedDate, dayType.Holiday, betweenDayCount);
-    const Eve = this.getHoliday(EveList, styleEve);
+    // let Eve = this.getHoliday(EveList, styleEve);
+    const ReliHoliday = this.getHoliday(ReliHolidayList, styleReliHoliday);
     const Holiday = this.getHoliday(HolidayList, styleHoliday);
-    if (Eve && Eve.length > 0) returnObject.push(Eve);
+    // if (Eve && Eve.length > 0) returnObject.push(Eve);
+    if (ReliHoliday && ReliHoliday.length > 0) returnObject.push(ReliHoliday);
     if (Holiday && Holiday.length > 0) returnObject.push(Holiday);
     return returnObject;
   }

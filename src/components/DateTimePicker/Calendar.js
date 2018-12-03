@@ -932,7 +932,7 @@ class Calendar extends ComponentBase {
           {!this.state.displayMonthDay && this.renderYearAndMounthSelector(style)}
           {this.state.displayMonthDay && (
             <div style={{ height: 48 }}>
-              {(this.props.noDialog === true || this.props.isBusiness === false) ? (
+              {this.props.isBusiness === false ? (
                 <Divider
                   context={this.props.context}
                   style={{

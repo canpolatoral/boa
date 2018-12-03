@@ -15,6 +15,13 @@ import AcrobatLogo from './logos/acrobat-logo';
 import ImageLogo from './logos/image-logo';
 import MailLogo from './logos/mail-logo';
 import OtherLogo from './logos/other-logo';
+import KatilimEmeklilik from './logos/katilim-emeklilik';
+import KTGayriMenkul from './logos/kt-gayri-menkul';
+import Neova from './logos/neova';
+import OzelBankacilik from './logos/ozel-bankacilik';
+import SaglamKart from './logos/saglam-kart';
+import SeninBankan from './logos/senin-bankan';
+
 
 /* Actions */
 import Add from './actions/add';
@@ -121,6 +128,12 @@ const logos = {
   ImageLogo,
   MailLogo,
   OtherLogo,
+  KatilimEmeklilik,
+  KTGayriMenkul,
+  Neova,
+  OzelBankacilik,
+  SaglamKart,
+  SeninBankan,
 };
 export { logos as Logos };
 

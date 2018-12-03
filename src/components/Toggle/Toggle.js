@@ -70,7 +70,7 @@ class Toggle extends ComponentBase {
      * The label of toggle component.
      */
     label: PropTypes.node,
-    labelPosition: PropTypes.oneOf('left', 'right'),
+    labelPosition: PropTypes.oneOf(['left', 'right', 'primary', 'secondary']),
     /**
      * Indicates the style of label.
      */

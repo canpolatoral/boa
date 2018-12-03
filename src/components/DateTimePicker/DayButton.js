@@ -25,7 +25,6 @@ function getStyles(props, context, state) {
   };
 
   if (dayInfo.dayType === daysType.EmptyDay) {
-
     if (isEqualDate(date, new Date())) {
       labelColor = datePicker.selectTextColor;
       backgroundColor = datePicker.todayButtonBackgroundColor;

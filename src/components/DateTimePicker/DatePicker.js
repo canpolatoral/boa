@@ -61,6 +61,7 @@ class DatePicker extends ComponentBase {
     onFocus: PropTypes.func,
     onShow: PropTypes.func,
     onTouchTap: PropTypes.func,
+    openBoaCalendar: PropTypes.bool,
     prefixText: PropTypes.any,
     rightIconList: PropTypes.array,
     secondTitle: PropTypes.node,
@@ -369,6 +370,7 @@ class DatePicker extends ComponentBase {
             dateUpdate={this.dateUpdate}
             dialogNewSelectDate={dialogNewSelectDate}
             pageType={this.props.pageType}
+            openBoaCalendar={this.props.openBoaCalendar}
           />
         </div>
       );

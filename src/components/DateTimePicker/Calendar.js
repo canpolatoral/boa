@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import keycode from 'keycode';
-import { ComponentBase } from '@boa/base';
+import { ComponentBase, Utils } from '@boa/base';
 import { Localization } from '@boa/utils';
 import { Button } from '@boa/components/Button';
 import { Divider } from '@boa/components/Divider';
@@ -76,6 +76,7 @@ class Calendar extends ComponentBase {
     onTouchTapDay: PropTypes.func,
     onTouchTapOk: PropTypes.func,
     open: PropTypes.bool,
+    openBoaCalendar: PropTypes.bool,
     secondTitle: PropTypes.node,
     shouldDisableDate: PropTypes.func,
     style: PropTypes.object,
@@ -95,6 +96,7 @@ class Calendar extends ComponentBase {
     maxDate: addYears(new Date(), 33),
     maxMonth: 11,
     minMonth: 0,
+    openBoaCalendar: false,
   };
 
   static contextTypes = {
@@ -668,6 +670,8 @@ class Calendar extends ComponentBase {
   }
 
   render() {
+    const isMobile = Utils.isMobile(this.props);
+    const openBoaCalendar = (!isMobile && this.props.openBoaCalendar);
     this.setSpecialDays();
     const toolbarInteractions = this.getToolbarInteractions();
     const isLandscape = this.props.mode === 'landscape';
@@ -890,7 +894,7 @@ class Calendar extends ComponentBase {
                   marginTop: 0,
                 }} />}
             <div style={{ marginTop: 15 }}>
-              {this.state.displayMonthDay && (
+              {this.state.displayMonthDay && !this.props.noDialog && (
                 <CalendarToolbar
                   context={this.props.context}
                   DateTimeFormat={DateTimeFormat}
@@ -900,6 +904,20 @@ class Calendar extends ComponentBase {
                   nextMonth={toolbarInteractions.nextMonth}
                   handleClickToolBar={this.handleClickToolBar}
                   format={this.props.dateFormat}
+                />
+              )}
+
+              {this.state.displayMonthDay && this.props.noDialog && (
+                <CalendarToolbar
+                  context={this.props.context}
+                  DateTimeFormat={DateTimeFormat}
+                  displayDate={this.state.displayDate}
+                  onMonthChange={this.handleMonthChange}
+                  prevMonth={toolbarInteractions.prevMonth}
+                  nextMonth={toolbarInteractions.nextMonth}
+                  format={this.props.dateFormat}
+                  localization={this.props.localization}
+                  noDialog={this.props.noDialog}
                 />
               )}
             </div>
@@ -931,49 +949,54 @@ class Calendar extends ComponentBase {
         <div>
           {!this.state.displayMonthDay && this.renderYearAndMounthSelector(style)}
           {this.state.displayMonthDay && (
-            <div style={{ height: 48 }}>
-              {this.props.isBusiness === false ? (
-                <Divider
-                  context={this.props.context}
-                  style={{
-                    width: 'calc(100%)',
-                    marginBottom: 0,
-                    marginLeft: 0,
-                    marginRight: 0,
-                    marginTop: 12,
-                  }}
-                />
-              ) : (
-                  <div />
-                )}
-
-              {this.props.noDialog === false ? (
-                <Button
-                  context={this.props.context}
-                  type="text"
-                  text={todayLabel}
-                  colorType="primary"
-                  fullWidth
-                  onClick={this.todayButtonOnClick}
-                  style={buttonStyle}
-                  textStyle={buttonTextStyle}
-                />
-              ) : (
-                  <div />
-                )}
-              {(this.props.noDialog === true) ?
-                (<Button
-                  context={this.props.context}
-                  type="flat"
-                  text="BOA TAKVİMİ AÇ"
-                  colorType="primary"
-                  fullWidth
-                  style={buttonStyle}
-                  textStyle={buttonTextStyle}
-                />
-                ) :
-                (<div />)
+            <div>
+              {(this.props.isBusiness === false) &&
+                (
+                  <div style={{ height: 48 }}>
+                    <Divider
+                      context={this.props.context}
+                      style={{
+                        width: 'calc(100% )',
+                        marginBottom: 0,
+                        marginLeft: 0,
+                        marginRight: 0,
+                        marginTop: 12,
+                      }} />
+                  </div>
+                )
               }
+
+              {(this.props.noDialog === false) &&
+                (
+                  <div style={{ height: 48 }}>
+                    <Button
+                      context={this.props.context}
+                      type="text"
+                      text={todayLabel}
+                      colorType="primary"
+                      fullWidth
+                      onClick={this.todayButtonOnClick}
+                      style={buttonStyle}
+                      textStyle={buttonTextStyle}
+                    />
+                  </div>
+                )
+              }
+              {(openBoaCalendar) &&
+                (
+                  <div style={{ height: 48 }}>
+                    <Button
+                      context={this.props.context}
+                      type="text"
+                      text="BOA TAKVİMİ AÇ"
+                      colorType="primary"
+                      fullWidth
+                      onClick={this.openBoaCalendar}
+                      style={buttonStyle}
+                      textStyle={buttonTextStyle}
+                    />
+                  </div>
+                )}
             </div>
           )}
         </div>

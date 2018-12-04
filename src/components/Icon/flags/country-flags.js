@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /* eslint-disable max-len, react/style-prop-object */
 import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';

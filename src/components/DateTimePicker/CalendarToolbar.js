@@ -14,6 +14,7 @@ class CalendarToolbar extends ComponentBase {
     format: PropTypes.string,
     handleClickToolBar: PropTypes.func,
     nextMonth: PropTypes.bool,
+    noDialog: PropTypes.bool,
     onMonthChange: PropTypes.func,
     prevMonth: PropTypes.bool,
   };
@@ -21,6 +22,7 @@ class CalendarToolbar extends ComponentBase {
   static defaultProps = {
     nextMonth: true,
     prevMonth: true,
+    noDialog: false,
   };
 
   state = {
@@ -78,6 +80,15 @@ class CalendarToolbar extends ComponentBase {
         marginTop: 8,
         cursor: 'pointer',
       },
+
+      titleDialog: {
+        fontSize: 14,
+        fontWeight: '700',
+        textAlign: 'center',
+        height: 38,
+        width: '100%',
+        marginTop: 8,
+      },
       titleText: {
         height: 'inherit',
         textAlign: 'center',
@@ -109,7 +120,10 @@ class CalendarToolbar extends ComponentBase {
         >
           <MuiChevronLeft />
         </MuiIconButton>
-        <div style={styles.titleDiv} key={dateTimeFormatted} onClick={this.handleClickToolBar}>
+        <div
+          style={this.props.noDialog ? styles.titleDialog : styles.titleDiv}
+          key={dateTimeFormatted}
+          onClick={this.handleClickToolBar.bind(this)}>
           {dateTimeFormatted}
         </div>
         <MuiIconButton

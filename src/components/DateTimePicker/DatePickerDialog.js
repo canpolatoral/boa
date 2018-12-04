@@ -46,6 +46,7 @@ class DatePickerDialog extends ComponentBase {
     onDismiss: PropTypes.func,
     onShow: PropTypes.func,
     open: PropTypes.bool,
+    openBoaCalendar: PropTypes.bool,
     shouldDisableDate: PropTypes.func,
     style: PropTypes.object,
     timeFormat: PropTypes.string,
@@ -130,7 +131,7 @@ class DatePickerDialog extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  handleClickToolBar() {}
+  handleClickToolBar() { }
 
   dateUpdate(oldDate, newDate, changeType) {
     if (this.props.dateUpdate) {
@@ -157,7 +158,7 @@ class DatePickerDialog extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  handleWindowKeyUp() {}
+  handleWindowKeyUp() { }
 
   render() {
     const {
@@ -196,6 +197,7 @@ class DatePickerDialog extends ComponentBase {
       dialogNewSelectDate,
       monthTitle,
       noDialog,
+      openBoaCalendar,
     } = this.props;
 
     const { open } = this.state;
@@ -216,6 +218,7 @@ class DatePickerDialog extends ComponentBase {
         minDate={minDate}
         mode={mode}
         open={open}
+        openBoaCalendar={openBoaCalendar}
         ref="calendar"
         onTouchTapCancel={this.handleTouchTapCancel}
         onTouchTapOk={this.handleTouchTapOk}
@@ -299,8 +302,8 @@ class DatePickerDialog extends ComponentBase {
         {this.props.noDialog ? (
           <div> {calendar}</div>
         ) : (
-          <div> {isMobileOrTablet ? content : popoverContent} </div>
-        )}
+            <div> {isMobileOrTablet ? content : popoverContent} </div>
+          )}
       </div>
     );
   }

@@ -104,6 +104,7 @@ class Button extends ComponentBase {
   };
 
   static defaultProps = {
+    ...ComponentBase.defaultProps,
     type: 'contained',
     text: '',
     allowLabelCase: true,
@@ -177,6 +178,7 @@ class Button extends ComponentBase {
       >
         {icon}
         {this.getLabel()}
+        {this.props.children}
       </MuiButton>
     );
   }
@@ -184,6 +186,7 @@ class Button extends ComponentBase {
   createIconButtonElement() {
     return (
       <MuiIconButton
+        id={this.props.id}
         tooltip={this.props.tooltip}
         style={this.props.style}
         disabled={this.state.disabled}

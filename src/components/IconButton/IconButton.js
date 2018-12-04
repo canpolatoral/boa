@@ -154,6 +154,7 @@ class IconButton extends ComponentBase {
 
     const iconButton = (
       <ButtonBase
+        id={this.props.id}
         classes={{
           root: classes.root,
         }}

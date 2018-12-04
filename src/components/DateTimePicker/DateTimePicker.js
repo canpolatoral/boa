@@ -120,6 +120,7 @@ class DateTimePicker extends ComponentBase {
      * @ignore
      */
     onChange: PropTypes.func,
+    openBoaCalendar: PropTypes.bool,
     pageType: PropTypes.oneOf(['browse', 'transactional']),
     /**
      * @ignore
@@ -623,6 +624,7 @@ class DateTimePicker extends ComponentBase {
           pageType={this.props.pageType}
           inlineGridMode={this.props.inlineGridMode}
           noDialog={this.props.noDialog}
+          openBoaCalendar={this.props.openBoaCalendar}
         />
       </div>
     );

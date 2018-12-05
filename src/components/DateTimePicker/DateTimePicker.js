@@ -15,7 +15,7 @@ import {
   getDefaultDate,
   getDateToString,
   clearTime,
-  clearTimeZone,
+  // clearTimeZone,
   clearJustTimeZone,
 } from './dateUtils';
 
@@ -300,6 +300,7 @@ class DateTimePicker extends ComponentBase {
     if (this.props.dateUpdate) {
       this.props.dateUpdate(oldDate, newDate, changeType);
     }
+    return newDate;
   }
 
   getValue() {
@@ -313,7 +314,8 @@ class DateTimePicker extends ComponentBase {
         clearTime(returnDate);
         return returnDate;
       }
-      return clearTimeZone(returnDate);
+      return returnDate;
+      // return clearTimeZone(returnDate);
     }
     return this.state.value;
   }
@@ -483,7 +485,7 @@ class DateTimePicker extends ComponentBase {
       },
       transitionSlide: {
         minHeight: 252,
-        margin: -7,
+        // margin: -7,
         /* position: 'relative', */
       },
       transitionChildSlide: {

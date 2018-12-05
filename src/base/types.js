@@ -9,6 +9,7 @@ export var Sizes;
 
 export var ComponentSize;
 (function(ComponentSize) {
+  ComponentSize[ComponentSize['XSMALL'] = 0] = 'XSMALL';
   ComponentSize[(ComponentSize['SMALL'] = 1)] = 'SMALL';
   ComponentSize[(ComponentSize['MEDIUM'] = 2)] = 'MEDIUM';
   ComponentSize[(ComponentSize['LARGE'] = 3)] = 'LARGE';

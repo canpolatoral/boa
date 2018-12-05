@@ -231,6 +231,8 @@ class TabBar extends ComponentBase {
           context={this.props.context}
           type="icon"
           style={style}
+          tooltip={item.toolTip}
+          tooltipPosition={'down'}
           dynamicIcon={item.leftIcon}
           iconProperties={{ nativeColor: iconColor }}
           onClick={this.handleLeftIconClick.bind(this, item.value)}
@@ -245,6 +247,8 @@ class TabBar extends ComponentBase {
           type="icon"
           style={style}
           dynamicIcon={'Home'}
+          tooltip={item.toolTip}
+          tooltipPosition={'down'}
           iconProperties={{ nativeColor: iconColor }}
           onClick={this.handleLeftIconClick.bind(this, item.value)}
         />
@@ -276,6 +280,8 @@ class TabBar extends ComponentBase {
             verticalAlign: 'middle',
             visibility: isRightIconButtonVisibile,
           }}
+          tooltip={item.toolTip}
+          tooltipPosition={'down'}
           dynamicIcon={'Close'}
           iconProperties={{ nativeColor: iconColor, classes: { root: classes.iconRoot } }}
           onClick={this.handleRightIconClick.bind(this, item.value)}
@@ -654,7 +660,7 @@ class TabBar extends ComponentBase {
           : 'hidden';
       // isRightIconButtonVisibile && this.setState({ selected: item.value });
     }
-    if (this.props.leftIconButtonVisibility && item.leftIconVisibility) {
+    if (item.leftIconVisibility) {
       isLeftIconButtonVisibile = 'visible';
     }
 

@@ -589,51 +589,51 @@ class Dialog extends ComponentBase {
     const dialogBoxContent = this.props.style ? (
       <MuiDialogContent style={this.props.style}>{dialog.dialogContent}</MuiDialogContent>
     ) : (
-      <MuiDialogContent style={{ padding: '0px', overflow: 'hidden' }}>
-        <div>
-          <div
-            style={{
-              display: 'flex',
-              // alignItems: 'center',
-              padding: '0px',
-              minHeight: '96px',
-              fontSize: '16px',
-              direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
-            }}
-          >
-            {context.deviceSize > Sizes.SMALL && (
-              <div
-                style={
-                  context.localization.isRightToLeft
-                    ? { paddingTop: '24px', paddingRight: '24px' }
-                    : { paddingTop: '24px', paddingLeft: '24px' }
-                }
-              >
-                {dialog.icon}
-              </div>
-            )}
+        <MuiDialogContent style={{ padding: '0px', overflow: 'hidden' }}>
+          <div>
             <div
               style={{
-                padding: this.props.dialogBoxContentPadding,
                 display: 'flex',
-                alignItems: 'center',
+                // alignItems: 'center',
+                padding: '0px',
+                minHeight: '96px',
+                fontSize: '16px',
+                direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
               }}
             >
-              {this.props.content instanceof Array ||
-              (typeof this.props.content === 'string' &&
-                typeof dialog.dialogContent === 'string' &&
-                dialog.dialogContent.includes('<br />')) ? (
-                <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
-              ) : (
-                dialog.dialogContent
+              {context.deviceSize > Sizes.SMALL && (
+                <div
+                  style={
+                    context.localization.isRightToLeft
+                      ? { paddingTop: '24px', paddingRight: '24px' }
+                      : { paddingTop: '24px', paddingLeft: '24px' }
+                  }
+                >
+                  {dialog.icon}
+                </div>
               )}
+              <div
+                style={{
+                  padding: this.props.dialogBoxContentPadding,
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                {this.props.content instanceof Array ||
+                  (typeof this.props.content === 'string' &&
+                    typeof dialog.dialogContent === 'string' &&
+                    dialog.dialogContent.includes('<br />')) ? (
+                    <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
+                  ) : (
+                    dialog.dialogContent
+                  )}
+              </div>
             </div>
+            <div style={objLine} />
+            {dialog.subContent}
           </div>
-          <div style={objLine} />
-          {dialog.subContent}
-        </div>
-      </MuiDialogContent>
-    );
+        </MuiDialogContent>
+      );
 
     return (
       <MuiDialog
@@ -651,6 +651,14 @@ class Dialog extends ComponentBase {
         {!dialog.titleWithCloseButtonEnabled && this.props.actions && (
           <MuiDialogActions>{this.props.actions}</MuiDialogActions>
         )}
+        <div
+          id={`snack-bar-element-instance-${this.props.dialogKey}`}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+          }} />
       </MuiDialog>
     );
   }

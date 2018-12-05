@@ -6,42 +6,14 @@ import { withStyles } from '@material-ui/core/styles';
 import { Icon } from '@boa/components/Icon';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 
-const styles = theme => ({
+const styles = ({
   root: {
     textAlign: 'center',
     flex: '0 0 auto',
-    fontSize: theme.typography.pxToRem(24),
     width: 48,
     height: 48,
     padding: 0,
     borderRadius: '50%',
-    color: theme.palette.action.active,
-    transition: theme.transitions.create('background-color', {
-      duration: theme.transitions.duration.shortest,
-    }),
-    '&:hover': {
-      textDecoration: 'none',
-      // Reset on mouse devices
-      backgroundColor: 'transparent',
-      '@media (hover: none)': {
-        backgroundColor: 'transparent',
-      },
-      '&$disabled': {
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-  colorInherit: {
-    color: 'inherit',
-  },
-  colorPrimary: {
-    color: theme.palette.primary.main,
-  },
-  colorSecondary: {
-    color: theme.palette.secondary.main,
-  },
-  disabled: {
-    color: theme.palette.action.disabled,
   },
   label: {
     width: '100%',

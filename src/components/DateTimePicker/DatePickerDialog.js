@@ -299,11 +299,11 @@ class DatePickerDialog extends ComponentBase {
     );
     return (
       <div ref={ref => (this.root = ref)}>
-        {this.props.noDialog ? (
-          <div> {calendar}</div>
-        ) : (
-            <div> {isMobileOrTablet ? content : popoverContent} </div>
-          )}
+        {
+          this.props.noDialog
+            ? <div style={{ display: 'flex', justifyContent: 'center' }}> {calendar}</div>
+            : <div> {isMobileOrTablet ? content : popoverContent}  </div>
+        }
       </div>
     );
   }

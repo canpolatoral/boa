@@ -26,7 +26,8 @@ describe('<Button /> tests', () => {
 
   it('should change type to icon', () => {
     const wrapper = shallow(<Button type="icon" dynamicIcon="Home" label="click" />).dive();
-    assert.strictEqual(wrapper.shallow().childAt(0).type(), SvgIcons.Home);
+    const iconButton = wrapper.shallow().dive();
+    assert.strictEqual(iconButton.shallow().dive().childAt(0).type(), SvgIcons.Home);
   });
 
   it('should render a dynamicIcon', () => {

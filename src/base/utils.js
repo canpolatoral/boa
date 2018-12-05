@@ -7,7 +7,7 @@ import { Sizes, ComponentSize, FormHeaderTransactionTypes } from './types';
 
 Array.prototype.findIndex =
   Array.prototype.findIndex ||
-  function(callback) {
+  function (callback) {
     if (this === null) {
       throw new TypeError('Array.prototype.findIndex called on null or undefined');
     } else if (typeof callback !== 'function') {
@@ -32,7 +32,7 @@ export class Utils {
     if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
       d += performance.now(); // use high-precision timer if available
     }
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = (d + Math.random() * 16) % 16 | 0;
       d = Math.floor(d / 16);
       return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
@@ -41,7 +41,7 @@ export class Utils {
 
   static stringFormat(value, args) {
     var regex = new RegExp('{-?[0-9]+}', 'g');
-    return value.replace(regex, function(item) {
+    return value.replace(regex, function (item) {
       var intVal = parseInt(item.substring(1, item.length - 1));
       var replace;
       if (intVal >= 0) {
@@ -110,7 +110,7 @@ export class Utils {
     if (textArray && textArray.length > 0) {
       if (textArray.length == 1) messages.push(<div>{textArray[0]}</div>);
       else
-        textArray.forEach(function(item, index) {
+        textArray.forEach(function (item, index) {
           messages.push(
             <div>
               {item}
@@ -200,7 +200,7 @@ export class Utils {
             } else if (React.isValidElement(child)) {
               let newChild = React.cloneElement(child, {
                 key: child.props.key ? child.props.key : this.getUniqueKey(true),
-                componentSize: child.props.componentSize
+                componentSize: child.props.componentSize !== undefined
                   ? child.props.componentSize
                   : ComponentSize.LARGE,
                 newLine: child.props.newLine ? child.props.newLine : false,
@@ -217,7 +217,9 @@ export class Utils {
       } else if (React.isValidElement(parent)) {
         let newChild = React.cloneElement(parent, {
           key: parent.props.key ? parent.props.key : this.getUniqueKey(),
-          size: parent.props.size ? parent.props.size : ComponentSize.LARGE,
+          componentSize: parent.props.componentSize != undefined
+            ? parent.props.componentSize
+            : ComponentSize.LARGE,
           newLine: parent.props.newLine ? parent.props.newLine : false,
           disabled: parent.props && parent.props.disabled ? true : isDisabled,
         });

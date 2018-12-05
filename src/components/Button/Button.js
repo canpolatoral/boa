@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import { withStyles } from '@material-ui/core/styles';
 import MuiButton from '@material-ui/core/Button';
-import MuiIconButton from '@material-ui/core/IconButton';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Localization } from '@boa/utils'; //
 import { Icon } from '@boa/components/Icon'; //
+import { IconButton } from '@boa/components/IconButton'; //
 
 const styles = () => ({
   label: {
@@ -98,6 +98,10 @@ class Button extends ComponentBase {
      */
     tooltip: PropTypes.string,
     /**
+     * tooltipPosition
+     */
+    tooltipPosition: PropTypes.string,
+    /**
      * Button type should be `contained`, `text`, `fab` or `icon`.
      */
     type: PropTypes.oneOf(['contained', 'text', 'fab', 'icon']).isRequired,
@@ -185,17 +189,17 @@ class Button extends ComponentBase {
 
   createIconButtonElement() {
     return (
-      <MuiIconButton
+      <IconButton
         id={this.props.id}
-        tooltip={this.props.tooltip}
         style={this.props.style}
+        context={this.props.context}
+        dynamicIcon={this.props.dynamicIcon}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        onClick={this.onClick}
-      >
-        {Icon.getIcon(this.props)}
-      </MuiIconButton>
-    );
+        tooltip={this.props.tooltip}
+        tooltipPosition={this.props.tooltipPosition}
+        onClick={this.onClick.bind}
+      />);
   }
 
   createButton() {

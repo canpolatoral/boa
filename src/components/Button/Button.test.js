@@ -41,10 +41,10 @@ describe('<Button /> tests', () => {
 
   it('should change disabled prop', () => {
     const wrapper = mount(<Button />);
-    wrapper.setProps({ disabled: true });
-    expect(wrapper.state.disabled, true);
     const mui = wrapper.find(MuiButton);
-    expect(mui.props().disabled, true);
+    wrapper.setProps({ disabled: true });
+    expect(mui.props().disabled, wrapper.state.disabled);
+    expect(wrapper.state.disabled, true);
   });
 
   it('simulates click events', () => {

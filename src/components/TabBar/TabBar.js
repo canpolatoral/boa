@@ -232,7 +232,7 @@ class TabBar extends ComponentBase {
           type="icon"
           style={style}
           tooltip={item.toolTip}
-          tooltipPosition={'down'}
+          tooltipPosition={'bottom-end'}
           dynamicIcon={item.leftIcon}
           iconProperties={{ nativeColor: iconColor }}
           onClick={this.handleLeftIconClick.bind(this, item.value)}
@@ -248,7 +248,7 @@ class TabBar extends ComponentBase {
           style={style}
           dynamicIcon={'Home'}
           tooltip={item.toolTip}
-          tooltipPosition={'down'}
+          tooltipPosition={'bottom-end'}
           iconProperties={{ nativeColor: iconColor }}
           onClick={this.handleLeftIconClick.bind(this, item.value)}
         />
@@ -281,7 +281,7 @@ class TabBar extends ComponentBase {
             visibility: isRightIconButtonVisibile,
           }}
           tooltip={item.toolTip}
-          tooltipPosition={'down'}
+          tooltipPosition={'bottom-end'}
           dynamicIcon={'Close'}
           iconProperties={{ nativeColor: iconColor, classes: { root: classes.iconRoot } }}
           onClick={this.handleRightIconClick.bind(this, item.value)}

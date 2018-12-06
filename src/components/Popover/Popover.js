@@ -194,14 +194,6 @@ class Popover extends ComponentBase {
     this.onResize = this.onResize.bind(this);
   }
 
-  getValue() {
-    return this.state;
-  }
-
-  setValue(value) {
-    this.setState({ ...value });
-  }
-
   openPopover() {
     this.setState(prevState => {
       return { open: !prevState.open };

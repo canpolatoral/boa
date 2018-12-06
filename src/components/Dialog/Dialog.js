@@ -168,14 +168,6 @@ class Dialog extends ComponentBase {
     this.onEnter = this.onEnter.bind(this);
   }
 
-  getValue() {
-    return this.state.value;
-  }
-
-  setValue(value) {
-    this.setState({ ...value });
-  }
-
   componentWillReceiveProps(nextProps) {
     const { open, title } = nextProps;
     this.setState({ open, title });
@@ -222,6 +214,7 @@ class Dialog extends ComponentBase {
         };
         return Icon.getIcon(icon);
       }
+      /* istanbul ignore next */
       case DialogType.QUESTION: {
         const icon = {
           dynamicIcon: 'Help',
@@ -231,6 +224,7 @@ class Dialog extends ComponentBase {
         };
         return Icon.getIcon(icon);
       }
+      /* istanbul ignore next */
       case DialogType.WARNING: {
         const icon = {
           dynamicIcon: 'Error',
@@ -240,6 +234,7 @@ class Dialog extends ComponentBase {
         };
         return Icon.getIcon(icon);
       }
+      /* istanbul ignore next */
       case DialogType.ERROR: {
         const icon = {
           dynamicIcon: 'Error',
@@ -249,6 +244,7 @@ class Dialog extends ComponentBase {
         };
         return Icon.getIcon(icon);
       }
+      /* istanbul ignore next */
       case DialogType.SUCCESS: {
         const icon = {
           dynamicIcon: 'CheckCircle',
@@ -300,7 +296,6 @@ class Dialog extends ComponentBase {
     if (!children) {
       if (!content) {
         dialogContent = '';
-        console.log(`Dialog: ${content}`);
       } else if (
         typeof content === 'string' ||
         content instanceof Array ||

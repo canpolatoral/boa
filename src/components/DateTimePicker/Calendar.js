@@ -113,7 +113,7 @@ class Calendar extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
-    this.SpecialDays = [];
+    this.specialDays = [];
     this.handleTouchTapDay = this.handleTouchTapDay.bind(this);
     this.handleTouchTapMonth = this.handleTouchTapMonth.bind(this);
     this.handleTouchTapYear = this.handleTouchTapYear.bind(this);
@@ -197,7 +197,7 @@ class Calendar extends ComponentBase {
         ref="calendar"
         selectedDate={this.state.selectedDate}
         shouldDisableDate={this.props.shouldDisableDate}
-        calendarInfo={this.SpecialDays}
+        calendarInfo={this.specialDays}
         isBusiness={this.props.isBusiness}
         canSelectOldDates={this.props.canSelectOldDates}
         canSelectWeekendDays={this.props.canSelectWeekendDays}
@@ -210,14 +210,14 @@ class Calendar extends ComponentBase {
   getSpecialDays() {
     return (
       <div>
-        {this.props.isBusiness && this.SpecialDays.length > 0 && (
+        {this.props.isBusiness && this.specialDays.length > 0 && (
           <SpecialDay
             context={this.props.context}
             DateTimeFormat={this.props.DateTimeFormat}
             specialDayType={1}
             key={`db${4}`}
             selectedDate={this.state.displayDate}
-            calendarInfo={this.SpecialDays}
+            calendarInfo={this.specialDays}
             format={this.props.dateFormat}
           />
         )}
@@ -279,7 +279,7 @@ class Calendar extends ComponentBase {
           this.CalendarInfoSelectedDate.getFullYear() !== date.getFullYear()
         ) {
           this.CalendarInfoSelectedDate = date;
-          this.SpecialDays = [];
+          this.specialDays = [];
           for (let i = 0; i < calendarInfo.length; i++) {
             let beginDate = cloneDate(getFirstDayOfMonth(date));
             let endDate = cloneDate(getFirstDayOfMonth(date));
@@ -289,7 +289,7 @@ class Calendar extends ComponentBase {
               const calendarDay = new Date(calendarInfo[i].day);
               if (isBetweenDates(calendarDay, beginDate, endDate)) {
                 calendarInfo[i].day = new Date(calendarInfo[i].day);
-                this.SpecialDays.push(calendarInfo[i]);
+                this.specialDays.push(calendarInfo[i]);
               }
             }
           }

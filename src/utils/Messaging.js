@@ -9,7 +9,8 @@ export const DEFAULT_FILE_NAME_FORMAT = 'BOA.Messaging.{0}.json';
 export const DEFAULT_THRESOLD = 1; // minutes
 
 const store = { versions: [], messages: {} };
-let messagingOptions = {
+
+const messagingOptions = {
   url: DEFAULT_URL,
   path: DEFAULT_PATH,
   versionPath: DEFAULT_VERSION_PATH,
@@ -139,24 +140,17 @@ function isVersionCheckRequired() {
 }
 
 export function setMessagingOptions(options) {
+  /* istanbul ignore next */
   if (options) {
-    messagingOptions.url = options.url || DEFAULT_URL;
-    messagingOptions.path = options.path || DEFAULT_PATH;
-    messagingOptions.versionPath = options.versionPath || DEFAULT_VERSION_PATH;
-    messagingOptions.fileNameFormat = options.fileNameFormat || DEFAULT_FILE_NAME_FORMAT;
-    messagingOptions.timeout = options.timeout || DEFAULT_TIMEOUT;
-    messagingOptions.languageId = options.languageId || DEFAULT_LANGUAGE_ID;
-    messagingOptions.refreshThresold = options.refreshThresold || DEFAULT_THRESOLD;
-  } else {
-    messagingOptions = {
-      url: DEFAULT_URL,
-      path: DEFAULT_PATH,
-      versionPath: DEFAULT_VERSION_PATH,
-      fileNameFormat: DEFAULT_FILE_NAME_FORMAT,
-      timeout: DEFAULT_TIMEOUT,
-      languageId: DEFAULT_LANGUAGE_ID,
-      refreshThresold: DEFAULT_THRESOLD,
-    };
+    const newOptions = Object.assign({}, messagingOptions, options);
+    messagingOptions.url = newOptions.url || DEFAULT_URL;
+    messagingOptions.path = newOptions.path || DEFAULT_PATH;
+    messagingOptions.versionPath = newOptions.versionPath || DEFAULT_VERSION_PATH;
+    messagingOptions.fileNameFormat = newOptions.fileNameFormat || DEFAULT_FILE_NAME_FORMAT;
+    messagingOptions.timeout = newOptions.timeout || DEFAULT_TIMEOUT;
+    messagingOptions.languageId = newOptions.languageId || DEFAULT_LANGUAGE_ID;
+    messagingOptions.refreshThresold = newOptions.refreshThresold || DEFAULT_THRESOLD;
+    messagingOptions.localPath = newOptions.localPath;
   }
 }
 
@@ -165,6 +159,18 @@ export function getMessage(groupName, propertyName, languageId) {
   let messagesRefreshRequired = false;
   let clientVersion;
   let serverVersion;
+
+  if (messagingOptions.localPath) {
+    // eslint-disable-next-line
+    const messageGroup = require(messagingOptions.localPath + '/' + groupName);
+    if (messageGroup) {
+      const message = messageGroup.find(x => x.PropertyName === propertyName);
+      /* istanbul ignore next */
+      if (message && message.LanguageId === (languageId || messagingOptions.languageId)) {
+        return message;
+      }
+    }
+  }
 
   if (versionCheckRequired) {
     const responseVersion = getMessagesVersion();

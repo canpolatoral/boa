@@ -6,7 +6,7 @@ import { Localization } from '@boa/utils';
 describe('setLocalization tests', () => {
   it('should call right functions', () => {
     const staticConstructor = sinon.stub(Localization, 'staticConstructor');
-    setLocalization({ languageId: 2 });
+    setLocalization({ languageId: 1 });
     staticConstructor.restore();
     assert.strictEqual(staticConstructor.callCount, 1, 'should have called the staticConstructor');
   });

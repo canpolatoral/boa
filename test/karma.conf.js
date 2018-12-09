@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const browserStack = {
   username: process.env.BROWSERSTACK_USERNAME,
   accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-  build: `boa-${new Date().toISOString()}`,
+  build: `material-ui-${new Date().toISOString()}`,
 };
 
 process.env.CHROME_BIN = require('puppeteer').executablePath();
@@ -17,7 +17,6 @@ module.exports = function setKarmaConfig(config) {
     browserDisconnectTolerance: 1, // default 0
     browserNoActivityTimeout: 300000, // default 10000
     colors: true,
-    failOnEmptyTestSuite: false,
     frameworks: ['mocha'],
     files: [
       {
@@ -34,19 +33,32 @@ module.exports = function setKarmaConfig(config) {
       'karma-webpack',
       'karma-mocha-reporter',
     ],
+    /**
+     * possible values:
+     * - config.LOG_DISABLE
+     * - config.LOG_ERROR
+     * - config.LOG_WARN
+     * - config.LOG_INFO
+     * - config.LOG_DEBUG
+     */
     logLevel: config.LOG_INFO,
     port: 9876,
     preprocessors: {
       'test/karma.tests.js': ['webpack', 'sourcemap'],
     },
-    reporters: ['progress'],
+    reporters: ['dots'],
     webpack: {
+      mode: 'development',
       devtool: 'inline-source-map',
       plugins: [
         new webpack.DefinePlugin({
           'process.env': {
             NODE_ENV: JSON.stringify('test'),
           },
+        }),
+        new webpack.ProvidePlugin({
+          $: 'jquery',
+          jQuery: 'jquery',
         }),
       ],
       module: {
@@ -55,28 +67,6 @@ module.exports = function setKarmaConfig(config) {
             test: /\.js$/,
             loader: 'babel-loader',
             exclude: /node_modules/,
-          },
-          {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
-          },
-          {
-            test: /\.scss$/,
-            use: [
-              {
-                loader: 'style-loader', // creates style nodes from JS strings
-              },
-              {
-                loader: 'css-loader', // translates CSS into CommonJS
-              },
-              {
-                loader: 'sass-loader', // compiles Sass to CSS
-              },
-            ],
-          },
-          {
-            test: /\.(eot|svg|jpe?g|png|gif|ttf|woff2?)$/,
-            use: 'url-loader',
           },
         ],
       },

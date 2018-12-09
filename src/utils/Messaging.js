@@ -150,7 +150,7 @@ export function setMessagingOptions(options) {
     messagingOptions.timeout = newOptions.timeout || DEFAULT_TIMEOUT;
     messagingOptions.languageId = newOptions.languageId || DEFAULT_LANGUAGE_ID;
     messagingOptions.refreshThresold = newOptions.refreshThresold || DEFAULT_THRESOLD;
-    messagingOptions.localPath = newOptions.localPath;
+    messagingOptions.localMessages = newOptions.localMessages;
   }
 }
 
@@ -160,9 +160,9 @@ export function getMessage(groupName, propertyName, languageId) {
   let clientVersion;
   let serverVersion;
 
-  if (messagingOptions.localPath) {
+  if (messagingOptions.localMessages) {
     // eslint-disable-next-line
-    const messageGroup = require(messagingOptions.localPath + '/' + groupName);
+    const messageGroup = messagingOptions.localMessages[groupName];
     if (messageGroup) {
       const message = messageGroup.find(x => x.PropertyName === propertyName);
       /* istanbul ignore next */

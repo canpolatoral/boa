@@ -14,6 +14,7 @@ class InputMask extends ComponentBase {
     counterLabelShow: PropTypes.bool,
     disabled: PropTypes.bool,
     errorText: PropTypes.string,
+    inputType: PropTypes.string,
     mask: PropTypes.string,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
@@ -35,6 +36,7 @@ class InputMask extends ComponentBase {
     value: '',
     type: 'Custom',
     mask: 'aa nnn',
+    inputType: 'text',
   };
 
   constructor(props, context) {
@@ -370,10 +372,10 @@ class InputMask extends ComponentBase {
 
     return (
       <Input
-        type="text"
         context={context}
         ref={r => (this.binput = r)}
         {...other}
+        type={this.props.inputType}
         disabled={this.state.disabled}
         errorText={this.props.errorText || errorTextResult}
         helperText={this.state.focussed ? this.helperText : ''}

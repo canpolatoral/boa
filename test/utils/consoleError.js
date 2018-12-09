@@ -9,4 +9,4 @@ function consoleError() {
   };
 }
 
-module.exports = consoleError;
+export default consoleError;

@@ -17,7 +17,7 @@ const KTLogoOnlyOriginal = props => {
 };
 
 KTLogoOnlyOriginal.defaultProps = {
-  viewBox: '0 0 28 28',
+  viewBox: '0 0 80 80',
 };
 
 export default KTLogoOnlyOriginal;

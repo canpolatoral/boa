@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
-import path from 'path';
 import * as Messaging from './Messaging';
+import LocalMessages from './messages';
 
 function serviceCallSync(request, versions, messages) {
   if (typeof versions === 'boolean' && versions === false) {
@@ -154,12 +154,13 @@ describe('Messaging tests', () => {
 
   describe('Offline messaging', () => {
     before(() => {
-      Messaging.setMessagingOptions({ localPath: path.join(__dirname, 'test') });
+      Messaging.setMessagingOptions({ localMessages: LocalMessages });
     });
 
     it('should get message from file', () => {
-      const message = Messaging.getMessage('test', 'test', 1);
-      assert.strictEqual(message.Description, 'offline-test');
+      const message = Messaging.getMessage('offline', 'test', 1);
+      // eslint-disable-next-line
+      assert.strictEqual(message.Description, LocalMessages.offline[0].Description);
     });
 
     it('should get message from service when file not contains', () => {

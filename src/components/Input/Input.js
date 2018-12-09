@@ -10,6 +10,7 @@ import MuiFormHelperText from '@material-ui/core/FormHelperText';
 import { withStyles } from '@material-ui/core/styles';
 import { ComponentComposer, EditorBase } from '@boa/base';
 import { getTimeInfo, hasValue } from './utils';
+import { IconButton } from '@boa/components/IconButton';
 
 function baseStyles(theme) {
   const { boaPalette, palette } = theme;
@@ -20,7 +21,7 @@ function baseStyles(theme) {
       caretColor: boaPalette ? boaPalette.pri500 : palette.primary.main,
       padding: 0,
       marginBottom: 3,
-      minHeight: 19,
+      // minHeight: 19,
     },
     inputLabel: {
       fontSize: 14,
@@ -49,6 +50,7 @@ const styles = (theme) => {
     }),
     multiline: Object.assign(baseStyles(theme).input, {
       padding: '3px 0 3px',
+      marginTop: '13px !important',
     }),
 
     inputDisabled: {
@@ -159,6 +161,7 @@ class Input extends EditorBase {
     prefixText: PropTypes.any,
     rows: PropTypes.number,
     rowsMax: PropTypes.number,
+    showClearButton: PropTypes.bool,
     showCounter: PropTypes.bool,
     style: PropTypes.object,
     suffixText: PropTypes.any,
@@ -180,6 +183,7 @@ class Input extends EditorBase {
     validationMessageStyleActive: false,
     disabledCounterCharacter: '',
     showCounter: false,
+    showClearButton: false,
     inlineGridMode: false,
     underlineShow: true,
   };
@@ -370,13 +374,53 @@ class Input extends EditorBase {
       rows,
       rowsMax,
       prefixText,
-      suffixText,
       showCounter,
       inputProps,
       underlineShow,
     } = this.props;
 
-    let { errorText, hintText } = this.props;
+    let { errorText, hintText, suffixText } = this.props;
+
+    if (this.props.showClearButton &&
+      this.state.value !== null &&
+      this.state.value !== undefined &&
+      this.state.value !== '' &&
+      this.state.disabled !== true
+    ) {
+      suffixText = (
+        <div>
+          <IconButton
+            dynamicIcon="Close"
+            iconProperties={{
+              style: { color: this.props.context.theme.boaPalette.base300 },
+            }}
+            onClick={(e) => {
+              const value = '';
+              this.counterUpdate(this.props, value);
+              this.setState({ value }, () => {
+                if (this.props.onChangeSync) {
+                  this.props.onChangeSync(e, value);
+                }
+              });
+              if (this.props.onChange) {
+                this.props.onChange(e, value);
+              }
+              if (this.props.onDynamicChange) {
+                this.props.onDynamicChange(e);
+              }
+            }}
+            style={{
+              width: 24,
+              height: 24,
+            }}
+            context={this.props.context}
+            disabled={this.state.disabled}
+            tabIndex="-1"
+          />
+          {suffixText}
+        </div>
+      );
+    }
 
     const bottomTextSize = 11;
     const disabledLabelColor = context.theme.boaPalette.base250;
@@ -467,6 +511,7 @@ class Input extends EditorBase {
       marginTop: 6,
       marginBottom: 10,
       textAlign: isRtl ? 'right' : 'left',
+      ...this.props.errorStyle,
     };
 
     const bottomInfoStyle = {
@@ -512,6 +557,14 @@ class Input extends EditorBase {
     const rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
     const { focussed, value } = this.state;
 
+    let visibleLabel = true;
+
+    if (!focussed) {
+      visibleLabel = true;
+    } else if (focussed && (value == null || value === undefined || value === '')) {
+      visibleLabel = false;
+    }
+
     let shink = false;
     if (focussed) {
       shink = true;
@@ -520,7 +573,7 @@ class Input extends EditorBase {
     }
 
     const floatingLabelRootStyle = Object.assign(
-      {},
+      { display: visibleLabel === false ? 'none' : undefined },
       this.props.floatingLabelStyle ? this.props.floatingLabelStyle : {},
       hasValue(value) === false ? { textAlign: textAlignStyle } : {},
       isRtl ? { transformOrigin: 'top right' } : { transformOrigin: 'top left' },

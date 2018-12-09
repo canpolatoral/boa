@@ -334,6 +334,7 @@ class InputNumeric extends ComponentBase {
   }
 
   onBlur(e) {
+    this.state.caretPosition = null;
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }

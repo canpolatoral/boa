@@ -18,7 +18,7 @@ const styles = theme => ({
     fontSize: '13px',
     textAlign: 'center',
     color: theme.boaPalette ? theme.boaPalette.comp500 : '',
-    background: theme.boaPalette ? theme.boaPalette.pri500: '',
+    background: theme.boaPalette ? theme.boaPalette.pri500 : '',
     minWidth: '64px',
   },
   secondary: {
@@ -59,6 +59,7 @@ class TabBar extends ComponentBase {
     classes: PropTypes.object,
     className: PropTypes.string,
     containerType: PropTypes.oneOf(['default', 'page', 'card']),
+    defaultValue: PropTypes.any,
     fullWidth: PropTypes.bool,
     /**
      * @ignore
@@ -94,6 +95,7 @@ class TabBar extends ComponentBase {
     fullWidth: true,
     isContentDisabled: false,
     value: 0,
+    defaultValue: 0,
     leftIconButtonVisibility: false,
     rightIconButtonVisibility: false,
     disableIcons: false,
@@ -101,7 +103,7 @@ class TabBar extends ComponentBase {
   };
 
   state = {
-    value: this.props.value,
+    value: this.props.value || this.props.defaultValue,
     tabItems: this.props.tabItems,
     isScroll: true,
   };
@@ -123,6 +125,12 @@ class TabBar extends ComponentBase {
     this.scrollStateUpdate();
   }
 
+  resetValue() {
+    this.setState({
+      value: this.props.defaultValue
+    });
+  }
+
   scrollStateUpdate() {
     if (this.tabs) {
       if (this.tabs._reactInternalFiber.child.memoizedState.tabsMeta) {
@@ -134,14 +142,13 @@ class TabBar extends ComponentBase {
           this.props.context.theme.direction === 'rtl' ? scrollLeft > 0 : scrollWidth > clientWidth;
 
         this.setState({ isScroll: showRightScroll });
-      } else if (
-        this.tabs._reactInternalFiber.child.memoizedState.showLeftScroll &&
-        this.tabs._reactInternalFiber.child.memoizedState.showRightScroll
-      ) {
-        this.setState({
-          isScroll: this.tabs._reactInternalFiber.child.memoizedState.showRightScroll,
-        });
       }
+      this.setState({
+        isScroll: this.tabs._reactInternalFiber.child.memoizedState.showRightScroll && this.tabs._reactInternalFiber.child.memoizedState.showLeftScroll
+      });
+      // else if (this.tabs._reactInternalFiber.child.memoizedState.showLeftScroll && this.tabs._reactInternalFiber.child.memoizedState.showRightScroll) {
+      //   this.setState({ isScroll: this.tabs._reactInternalFiber.child.memoizedState.showRightScroll });
+      // }
     }
   }
 
@@ -232,7 +239,7 @@ class TabBar extends ComponentBase {
           type="icon"
           style={style}
           tooltip={item.toolTip}
-          tooltipPosition={'bottom-end'}
+          tooltipPosition={'down'}
           dynamicIcon={item.leftIcon}
           iconProperties={{ nativeColor: iconColor }}
           onClick={this.handleLeftIconClick.bind(this, item.value)}
@@ -248,7 +255,7 @@ class TabBar extends ComponentBase {
           style={style}
           dynamicIcon={'Home'}
           tooltip={item.toolTip}
-          tooltipPosition={'bottom-end'}
+          tooltipPosition={'down'}
           iconProperties={{ nativeColor: iconColor }}
           onClick={this.handleLeftIconClick.bind(this, item.value)}
         />
@@ -281,7 +288,7 @@ class TabBar extends ComponentBase {
             visibility: isRightIconButtonVisibile,
           }}
           tooltip={item.toolTip}
-          tooltipPosition={'bottom-end'}
+          tooltipPosition={'down'}
           dynamicIcon={'Close'}
           iconProperties={{ nativeColor: iconColor, classes: { root: classes.iconRoot } }}
           onClick={this.handleRightIconClick.bind(this, item.value)}
@@ -330,7 +337,8 @@ class TabBar extends ComponentBase {
         <div
           style={{
             textAlign: 'center',
-            height: '48px',
+            height: 48,
+            marginLeft: 12,
             direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr',
           }}
         >

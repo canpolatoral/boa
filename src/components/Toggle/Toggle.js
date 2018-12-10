@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormControlLabel, Switch } from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { ComponentBase, ComponentComposer } from '@boa/base';

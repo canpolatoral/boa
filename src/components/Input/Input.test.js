@@ -3,7 +3,7 @@ import { expect, assert } from 'chai';
 import { shallow, mount } from 'enzyme';
 import Input from './Input';
 import { EditorBase } from '@boa/base';
-import { spy } from 'sinon';
+import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
 import MuiInput from '@material-ui/core/Input';
 import MuiInputLabel from '@material-ui/core/InputLabel';
 import MuiFormControl from '@material-ui/core/FormControl';
@@ -85,4 +85,35 @@ describe('<Input /> tests', () => {
       assert.strictEqual(handlers[n].callCount, 1, `should have called the ${n} handler`);
     });
   });
+
+  it('should setValue, getValue, resetValue', () => {
+    const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
+    const input = wrapper.shallow();
+    assert.strictEqual(input.instance().getValue(), 'test');
+    input.instance().setValue('test-new');
+    assert.strictEqual(input.instance().getValue(), 'test-new');
+    input.instance().resetValue();
+    assert.strictEqual(input.instance().getValue(), 'test');
+  });
+
+  it('should setDisable', () => {
+    const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
+    const input = wrapper.shallow();
+    input.instance().setDisable(true);
+    assert.strictEqual(input.state().disabled, true);
+  });
+
+  // it('should fire counter', () => {
+  //   const onTimerFinished = spy();
+  //   const clock = useFakeTimers();
+  //   mount((
+  //     <Input onTimerFineshed={onTimerFinished}
+  // context={context} timerDuration={10} showCounter />
+  //   ));
+  //   clock.tick(10);
+  //   assert.strictEqual(onTimerFinished.callCount,
+  // 1, 'should have called the onTimerFineshed handler');
+  //   clock.restore();
+  //   onTimerFinished.restore();
+  // });
 });

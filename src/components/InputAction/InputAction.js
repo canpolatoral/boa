@@ -62,6 +62,10 @@ class InputAction extends ComponentBase {
     return this.binput.getInstance().getValue();
   }
 
+  setValue(value) {
+    return this.binput.getInstance().setValue(value);
+  }
+
   resetValue() {
     this.setState({ value: this.props.defaultValue });
     return this.binput.getInstance().resetValue();
@@ -160,13 +164,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-            paddingRight: paddingLeft,
-            paddingLeft: paddingRight,
-          }
+          paddingRight: paddingLeft,
+          paddingLeft: paddingRight,
+        }
         : {
-            paddingLeft,
-            paddingRight,
-          },
+          paddingLeft,
+          paddingRight,
+        },
       this.props.floatingLabelStyle,
     );
   }

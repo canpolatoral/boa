@@ -238,16 +238,17 @@ class DayButton extends Component {
 
   constructor(props, context) {
     super(props, context);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleKeyboardFocus = this.handleKeyboardFocus.bind(this);
   }
 
-  handleMouseEnter = () => {
+  handleMouseEnter() {
     if (!this.props.disabled) {
       this.setState({ hover: true });
     }
-  };
+  }
 
   handleMouseLeave() {
     if (!this.props.disabled) {
@@ -288,9 +289,11 @@ class DayButton extends Component {
       >
         <div style={styles.buttonState} />
         <span style={styles.label}>
-          {new DateTimeFormat({
-            day: 'numeric',
-          }).format(date)}
+          {
+            new DateTimeFormat({
+              day: 'numeric',
+            }).format(date)
+          }
         </span>
       </ButtonBase>
     ) : (

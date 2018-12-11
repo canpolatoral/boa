@@ -8,15 +8,13 @@ import {
   receiveFormat,
   momentFormat,
   isEqualDateTime,
-  isEqualDate,
-  substructDay,
-  cloneDate,
   getDatePickerStyle,
   getDefaultDate,
   getDateToString,
   clearTime,
   // clearTimeZone,
   clearJustTimeZone,
+  checkDateForBusiness,
 } from './dateUtils';
 
 let maxHour;
@@ -227,12 +225,14 @@ class DateTimePicker extends ComponentBase {
     if (this.getValue()) {
       handleDate = new Date(this.getValue());
       handleDate.setDate(handleDate.getDate() - 1);
+      handleDate = this.dateUpdate(handleDate, handleDate, -1);
       this.dateOnChange(e, handleDate, false);
     } else {
       handleDate = new Date();
       handleDate.setDate(handleDate.getDate() - 1);
       handleDate = clearTime(handleDate);
       handleDate = clearJustTimeZone(handleDate);
+      handleDate = this.dateUpdate(handleDate, handleDate, -1);
       this.dateOnChange(e, handleDate, true);
     }
   }
@@ -242,65 +242,27 @@ class DateTimePicker extends ComponentBase {
     if (this.getValue()) {
       handleDate = new Date(this.getValue());
       handleDate.setDate(handleDate.getDate() + 1);
+      handleDate = this.dateUpdate(handleDate, handleDate, 1);
       this.dateOnChange(e, handleDate, false);
     } else {
       handleDate = new Date();
       handleDate.setDate(handleDate.getDate() + 1);
       handleDate = clearTime(handleDate);
       handleDate = clearJustTimeZone(handleDate);
+      handleDate = this.dateUpdate(handleDate, handleDate, 1);
       this.dateOnChange(e, handleDate, true);
     }
   }
 
   dateUpdate(oldDate, newDate, changeType, isSetState) {
-    isSetState = true;
-    const setNewDate = cloneDate(newDate);
-    const dateNow = new Date();
-    const day = setNewDate.getDate();
-    let addValue = -1;
-    if (changeType === 1) {
-      addValue = 1;
-    } else if (changeType === 2) {
-      addValue = -1;
-    }
-    if (this.props.isBusiness && this.props.calendarInfo && this.props.calendarInfo.length > 0) {
-      const calendarInfo = this.props.calendarInfo;
-
-      for (let i = 0; i < calendarInfo.length; i++) {
-        if (isEqualDate(calendarInfo[i].day, newDate)) {
-          if (!this.props.canSelectWeekendDays && calendarInfo[i].dayType === 1) {
-            setNewDate.setDate(day + addValue);
-            this.dateUpdate(oldDate, setNewDate, changeType, true);
-            isSetState = false;
-          } else if (!this.props.canSelectSpecialDays && calendarInfo[i].dayType === 2) {
-            setNewDate.setDate(day + addValue);
-            this.dateUpdate(oldDate, setNewDate, changeType, true);
-            isSetState = false;
-          } else if (!this.props.canSelectSpecialDays && calendarInfo[i].dayType === 3) {
-            setNewDate.setDate(day + addValue);
-            this.dateUpdate(oldDate, setNewDate, changeType, true);
-            isSetState = false;
-          } else if (!this.props.canSelectSpecialDays && calendarInfo[i].dayType === 4) {
-            setNewDate.setDate(day + addValue);
-            this.dateUpdate(oldDate, setNewDate, changeType, true);
-            isSetState = false;
-          }
-        }
-      }
-    }
-    const subDay = substructDay(dateNow, setNewDate);
-    if (!this.props.canSelectOldDates && subDay < 0) {
-      setNewDate.setDate(day + 1);
-      this.dateUpdate(oldDate, setNewDate, changeType, true);
-      isSetState = false;
-    }
+    const setNewDate = checkDateForBusiness(this.props, oldDate, newDate, changeType, isSetState);
     if (isSetState) {
       this.setState({ dialogNewSelectDate: setNewDate });
     }
     if (this.props.dateUpdate) {
-      this.props.dateUpdate(oldDate, newDate, changeType);
+      this.props.dateUpdate(oldDate, setNewDate, changeType);
     }
-    return newDate;
+    return setNewDate;
   }
 
   getValue() {

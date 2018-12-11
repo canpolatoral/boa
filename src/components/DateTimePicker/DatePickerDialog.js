@@ -78,7 +78,6 @@ class DatePickerDialog extends ComponentBase {
     this.handleTouchTapDay = this.handleTouchTapDay.bind(this);
     this.handleTouchTapCancel = this.handleTouchTapCancel.bind(this);
     this.todayButtonOnClick = this.todayButtonOnClick.bind(this);
-    this.dateUpdate = this.dateUpdate.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.handleTouchTapOk = this.handleTouchTapOk.bind(this);
     this.handleWindowKeyUp = this.handleWindowKeyUp.bind(this);
@@ -132,12 +131,6 @@ class DatePickerDialog extends ComponentBase {
 
   // eslint-disable-next-line
   handleClickToolBar() { }
-
-  dateUpdate(oldDate, newDate, changeType) {
-    if (this.props.dateUpdate) {
-      this.props.dateUpdate(oldDate, newDate, changeType);
-    }
-  }
 
   handleRequestClose() {
     if (this.props.onAccept) {
@@ -242,7 +235,7 @@ class DatePickerDialog extends ComponentBase {
         yearTitle={yearTitle}
         monthTitle={monthTitle}
         todayLabel={todayLabel}
-        dateUpdate={this.dateUpdate}
+        dateUpdate={this.props.dateUpdate}
         dialogNewSelectDate={dialogNewSelectDate}
         noDialog={noDialog}
       />

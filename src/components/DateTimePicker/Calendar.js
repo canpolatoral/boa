@@ -30,6 +30,7 @@ import {
   calendarMouseWheelAction,
   getWeekArray,
   getDatePickerStyle,
+  checkDateForBusiness,
 } from './dateUtils';
 
 const daysArray = [...Array(7)];
@@ -147,7 +148,7 @@ class Calendar extends ComponentBase {
   componentWillReceiveProps(nextProps) {
     const { dialogNewSelectDate, initialDate } = nextProps;
     if (dialogNewSelectDate !== undefined) {
-      if (isEqualDate(dialogNewSelectDate, this.props.dialogNewSelectDate)) {
+      if (!isEqualDate(dialogNewSelectDate, this.props.dialogNewSelectDate)) {
         this.setState({
           displayDate: getFirstDayOfMonth(dialogNewSelectDate),
           selectedDate: dialogNewSelectDate,
@@ -168,11 +169,11 @@ class Calendar extends ComponentBase {
   }
 
   addSelectedMonths(months) {
-    addMonths(this.state.selectedDate, months);
+    return addMonths(this.state.selectedDate, months);
   }
 
   addSelectedYears(years) {
-    addYears(this.state.selectedDate, years);
+    return addYears(this.state.selectedDate, years);
   }
 
   isSelectedDateDisabled() {
@@ -366,24 +367,28 @@ class Calendar extends ComponentBase {
   }
 
   handleRemoveDate(e) {
-    let handleDate;
+    let initialDate;
+    let handleDate = new Date();
     if (!this.state.selectedDate) {
-      handleDate = new Date();
+      initialDate = new Date();
     } else {
-      handleDate = new Date(this.getSelectedDate());
+      initialDate = new Date(this.getSelectedDate());
     }
-    handleDate.setDate(handleDate.getDate() - 1);
+    handleDate.setDate(initialDate.getDate() - 1);
+    handleDate = checkDateForBusiness(this.props, initialDate, handleDate, -1);
     this.handleChangeDate(e, handleDate);
   }
 
   handleAddDate(e) {
-    let handleDate;
+    let initialDate;
+    let handleDate = new Date();
     if (!this.state.selectedDate) {
-      handleDate = new Date();
+      initialDate = new Date();
     } else {
-      handleDate = new Date(this.getSelectedDate());
+      initialDate = new Date(this.getSelectedDate());
     }
-    handleDate.setDate(handleDate.getDate() + 1);
+    handleDate.setDate(initialDate.getDate() + 1);
+    handleDate = checkDateForBusiness(this.props, initialDate, handleDate, 1);
     this.handleChangeDate(e, handleDate);
   }
 
@@ -780,7 +785,7 @@ class Calendar extends ComponentBase {
 
     const buttonTextStyle = {
       color: this.props.context.theme.palette.primary1Color,
-      fontWeight: 'bold',
+      fontWeight: 500,
     };
     const {
       dateFormat,

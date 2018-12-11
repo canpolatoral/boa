@@ -304,12 +304,16 @@ export function isEqualDate(d1, d2) {
   if (d1 === undefined && d2 === undefined) {
     return true;
   }
+  if (d1 === undefined || d2 === undefined) {
+    return false;
+  }
   if (isString(d1)) {
     d1 = new Date(d1);
   }
   if (isString(d2)) {
     d2 = new Date(d2);
   }
+
   return (
     d1 &&
     d2 &&
@@ -763,4 +767,41 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
     }
   }
   return specialDayStringArray;
+}
+
+export function checkDateForBusiness(props, oldDate, newDate, changeType) {
+  let setNewDate = cloneDate(newDate);
+  let dateNow = new Date();
+  let day = setNewDate.getDate();
+
+  if (props.isBusiness && props.calendarInfo && props.calendarInfo.length > 0) {
+    let calendarInfo = props.calendarInfo;
+
+    for (let i = 0; i < calendarInfo.length; i++) {
+      if (isEqualDate(calendarInfo[i].day, newDate)) {
+        if (!props.canSelectWeekendDays && calendarInfo[i].dayType === 1) {
+          setNewDate.setDate(day + changeType);
+          return checkDateForBusiness(props, oldDate, setNewDate, changeType);
+        }
+        else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 2) {
+          setNewDate.setDate(day + changeType);
+          return  checkDateForBusiness(props, oldDate, setNewDate, changeType);
+        }
+        else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 3) {
+          setNewDate.setDate(day + changeType);
+          return checkDateForBusiness(props, oldDate, setNewDate, changeType);
+        }
+        else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 4) {
+          setNewDate.setDate(day + changeType);
+          return checkDateForBusiness(props, oldDate, setNewDate, changeType);
+        }
+      }
+    }
+  }
+  let subDay = substructDay(dateNow, setNewDate);
+  if (!props.canSelectOldDates && subDay < 0) {
+    setNewDate.setDate(day + 1);
+    return checkDateForBusiness(props, oldDate, setNewDate, changeType);
+  }
+  return newDate;
 }

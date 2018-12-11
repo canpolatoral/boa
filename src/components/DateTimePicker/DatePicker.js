@@ -94,7 +94,6 @@ class DatePicker extends ComponentBase {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleFocusDateInput = this.handleFocusDateInput.bind(this);
     this.handleFocusTimeInput = this.handleFocusTimeInput.bind(this);
-    this.dateUpdate = this.dateUpdate.bind(this);
   }
 
   componentWillMount() {
@@ -230,12 +229,6 @@ class DatePicker extends ComponentBase {
     event.preventDefault();
   }
 
-  dateUpdate(oldDate, newDate, changeType) {
-    if (this.props.dateUpdate) {
-      this.props.dateUpdate(oldDate, newDate, changeType);
-    }
-  }
-
   validateConstraint() {
     const { dateFormat, timeFormat } = this.props;
     const instanceDate = this.bActionInputDate.getInstance();
@@ -367,7 +360,7 @@ class DatePicker extends ComponentBase {
             yearTitle={yearTitle}
             todayLabel={todayLabel}
             monthTitle={monthTitle}
-            dateUpdate={this.dateUpdate}
+            dateUpdate={this.props.dateUpdate}
             dialogNewSelectDate={dialogNewSelectDate}
             pageType={this.props.pageType}
             openBoaCalendar={this.props.openBoaCalendar}

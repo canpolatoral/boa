@@ -56,9 +56,6 @@ export default class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      // eslint-disable-next-line no-console
-      console.log('Error Occured: ', this.state.error);
-      // eslint-enable-next-line no-console
       return this.showErrorDialog(this.state.error);
       // return <h1>Something went wrong. {this.state.error}</h1>;
     }

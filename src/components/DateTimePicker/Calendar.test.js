@@ -1,12 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { spy } from 'sinon';
 import { assert, expect } from 'chai';
 import EventListener from 'react-event-listener';
 import Calendar from './Calendar';
 import context from '../../../test/utils/context';
+import { createShallow } from '../../../test/utils';
 
 describe('<Calendar /> tests', () => {
+  let shallow;
+
+  before(() => {
+    shallow = createShallow();
+  });
+
   it('should component will receive props', () => {
     const wrapper = shallow(<Calendar context={context} style={{}} />);
     const date = new Date();

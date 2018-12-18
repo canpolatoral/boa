@@ -1,9 +1,15 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import AppProvider from './AppProvider';
 import getTheme from './theme';
+import { createMount } from '../../test/utils';
 
 describe('<AppProvider /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
   it('should mount without theme', () => {
     mount(<AppProvider>Test</AppProvider>);
   });

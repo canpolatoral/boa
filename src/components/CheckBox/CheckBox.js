@@ -14,21 +14,21 @@ const styles = theme => ({
   },
   checked: {
     margin: 0,
-    color: theme.boaPalette ? theme.boaPalette.pri500 : theme.palette.primary.main,
+    color: theme.boaPalette.pri500,
   },
   disabled: {
     margin: 0,
-    color: theme.boaPalette ? theme.boaPalette.base250 : theme.palette.action.disabled,
+    color: theme.boaPalette.base250,
   },
   labelLTR: {
-    color: theme.boaPalette ? theme.boaPalette.base450 : theme.palette.primary.main,
+    color: theme.boaPalette.base450,
     fontSize: 14,
     marginLeft: 12,
     marginRight: 0,
     marginTop: -3,
   },
   labelRTL: {
-    color: theme.boaPalette ? theme.boaPalette.base450 : theme.palette.primary.main,
+    color: theme.boaPalette.base450,
     fontSize: 14,
     marginLeft: 0,
     marginRight: 12,
@@ -130,7 +130,6 @@ class CheckBox extends ComponentBase {
     errorTextVisible: true,
   };
 
-  /* eslint-disable max-len */
   state = {
     isChecked:
       this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
@@ -145,7 +144,6 @@ class CheckBox extends ComponentBase {
       disabled: this.props.disabled,
     };
   }
-  /* eslint-enable max-len */
 
   componentWillReceiveProps(nextProps) {
     const { checked, defaultChecked, disabled } = nextProps;
@@ -227,8 +225,8 @@ class CheckBox extends ComponentBase {
         ) : null}
       </div>
     ) : (
-      checkBox
-    );
+        checkBox
+      );
   }
 }
 

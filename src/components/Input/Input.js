@@ -204,9 +204,12 @@ class Input extends EditorBase {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { value, disabled } = nextProps;
+    const { value, disabled, timerDuration } = nextProps;
 
     this.counterUpdate(nextProps);
+    if (timerDuration !== this.props.timerDuration) {
+      this.setTimer(timerDuration);
+    }
     // null ise kasıtlı siliniyordur, silmeli.
     // undefined ise value geçilmemiştir, değişmemeli.
     // diğer durumlarda prop yada state'ten farklı gelmişse değişmeli.

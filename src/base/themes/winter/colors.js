@@ -45,6 +45,9 @@ export const sec350 = '#FFEC9E';
 export const sec300 = '#FFF2BD';
 export const sec250 = '#FFF9E0';
 
+// Connection Colors
+export const connect500 = '#39B54A';
+
 // Obligation Colors
 export const obli500 = '#C75050';
 export const obli450 = '#CE6767';

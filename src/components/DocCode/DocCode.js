@@ -40,7 +40,6 @@ class DocCode extends ComponentBase {
 
   static defaultProps = {
     content: "console.log('Hello world');",
-    lang: 'js',
     highlight: true,
     editorType: 'github',
   };
@@ -72,7 +71,7 @@ class DocCode extends ComponentBase {
   }
 
   getHighlightCSS() {
-    const codeStyle = styles[this.props.editorType] || styles.xcode;
+    const codeStyle = styles[this.props.editorType];
     return `
       <style>
         ${codeStyle}

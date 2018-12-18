@@ -90,16 +90,6 @@ export default class ComponentBase extends Component {
     return this.props.snapKey ? `${this.props.snapKey}_${childSnapKey}` : childSnapKey;
   }
 
-  getChildId(childName) {
-    let id = this.props.id;
-    if (!id) {
-      id = `bcmp_ ${Math.random()
-        .toString()
-        .replace(/[\.,]/g, '')}`; // eslint-disable-line no-useless-escape
-    }
-    return `${id}_${childName || 'child'}`;
-  }
-
   getSnapshot() {
     return this.state;
   }

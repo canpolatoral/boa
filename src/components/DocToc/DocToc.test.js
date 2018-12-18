@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
-import sinon from 'sinon';
+import { spy } from 'sinon';
 import DocToc from './DocToc';
 import Context from '../../../test/utils/context';
 
@@ -75,7 +75,7 @@ describe('<DocToc /> tests', () => {
         ],
       },
     ];
-    const linkOnClick = sinon.spy();
+    const linkOnClick = spy();
     const wrapper = mount((
       <DocToc context={Context} header="header" content={content} linkOnClick={linkOnClick} />
     ));
@@ -83,5 +83,39 @@ describe('<DocToc /> tests', () => {
       .simulate('click');
     expect(linkOnClick).to.have.property('callCount', 1);
     expect(linkOnClick.args[0][0], 'argument id is first child').equals(1);
+  });
+
+  it('should update activeItem with componentWillReceiveProps', () => {
+    const content = [
+      {
+        id: 1,
+        level: 1,
+        content: 'first item',
+        children: [
+          {
+            id: 2,
+            level: 2,
+            content: 'first child',
+          },
+        ],
+      },
+      {
+        id: 3,
+        level: 1,
+        content: 'second item',
+        children: [
+          {
+            id: 4,
+            level: 2,
+            content: 'second child',
+          },
+        ],
+      },
+    ];
+    const wrapper = shallow((
+      <DocToc context={Context} header="header" content={content} />
+    ));
+    wrapper.setProps({ activeItem: '2' });
+    expect(wrapper.state().activeItem).to.equals('2');
   });
 });

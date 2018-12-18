@@ -103,16 +103,19 @@ describe('<Input /> tests', () => {
     assert.strictEqual(input.state().disabled, true);
   });
 
-  // it('should fire counter', () => {
+  // it('should fire counter event', () => {
   //   const onTimerFinished = spy();
   //   const clock = useFakeTimers();
   //   mount((
-  //     <Input onTimerFineshed={onTimerFinished}
-  // context={context} timerDuration={10} showCounter />
+  //     <Input
+  //       onTimerFinished={onTimerFinished}
+  //       context={context}
+  //       timerDuration={10}
+  //       showCounter />
   //   ));
   //   clock.tick(10);
   //   assert.strictEqual(onTimerFinished.callCount,
-  // 1, 'should have called the onTimerFineshed handler');
+  //     1, 'should have called the onTimerFineshed handler');
   //   clock.restore();
   //   onTimerFinished.restore();
   // });

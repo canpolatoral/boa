@@ -1,17 +1,32 @@
 import React from 'react';
-import { assert, expect } from 'chai';
-import { shallow, mount } from 'enzyme';
-import CheckBox from './CheckBox';
-import MuiCheckbox from '@material-ui/core/Checkbox';
-import { Label } from '@boa/components/Label';
-import context from '../../../test/utils/context';
 import sinon from 'sinon';
-
+import { assert, expect } from 'chai';
+import MuiCheckbox from '@material-ui/core/Checkbox';
+import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import { Label } from '@boa/components/Label';
+import CheckBox from './CheckBox';
+import context from '../../../test/utils/context';
+import { createShallow, createMount } from '../../../test/utils';
 
 describe('<CheckBox /> tests', () => {
+  let shallow;
+  let mount;
+
+  before(() => {
+    shallow = createShallow({ dive: true });
+    mount = createMount();
+  });
+
   it('should render a <MuiCheckbox> element', () => {
-    const wrapper = shallow(<CheckBox context={context} checked />).dive();
+    const wrapper = shallow(<CheckBox context={context} checked />);
     assert.strictEqual(wrapper.shallow().type(), MuiCheckbox);
+  });
+
+  it('should render a <MuiFormControlLabel> element when props contains label', () => {
+    const wrapper = shallow(<CheckBox context={context} checked label="label" />);
+    const formControl = wrapper.shallow().find(MuiFormControlLabel);
+    assert.strictEqual(formControl.props().control.type, MuiCheckbox);
   });
 
   it('should mount', () => {
@@ -77,18 +92,19 @@ describe('<CheckBox /> tests', () => {
     const wrapper = mount((
       <CheckBox
         context={context}
-        errorText="ErrorText"
+        errorText="TestErrorText"
         errorTextVisible
         label="test" />
     ));
     const label = wrapper.find(Label);
-    expect(label.text()).contains('ErrorText');
+    expect(label.text()).contains('TestErrorText');
   });
 
   it('should handle componentWillReceiveProps', () => {
     const wrapper = mount((
       <CheckBox
         context={context}
+        defaultChecked={false}
         errorText="ErrorText"
         errorTextVisible
         label="test" />
@@ -99,11 +115,54 @@ describe('<CheckBox /> tests', () => {
     wrapper.setProps({ disabled: true });
     mui = wrapper.find(MuiCheckbox);
     expect(mui.props().disabled).to.equals(true);
-    wrapper.setProps({ defaultChecked: false });
+    wrapper.setProps({ defaultChecked: true });
     mui = wrapper.find(MuiCheckbox);
-    expect(mui.props().checked).to.equals(false);
-    wrapper.setProps({ disabled: false });
+    expect(mui.props().checked).to.equals(true);
+    wrapper.setProps({ disabled: true });
     mui = wrapper.find(MuiCheckbox);
-    expect(mui.props().disabled).to.equals(false);
+    expect(mui.props().disabled).to.equals(true);
+  });
+
+  it('should handle outer style', () => {
+    const wrapper = mount((
+      <CheckBox
+        context={context}
+        defaultChecked={false}
+        style={{ marginLeft: 10 }} />
+    ));
+    const mui = wrapper.find(MuiCheckbox);
+    assert.strictEqual(mui.props().style.marginLeft, 10);
+  });
+
+  it('should handle rtl', () => {
+    context.languageId = 5;
+    context.localization.isRightToLeft = true;
+
+    const wrapper = mount((
+      <CheckBox
+        context={context}
+        defaultChecked={false}
+        errorText="TestErrorText"
+        errorTextVisible
+        label="test" />
+    ));
+    const label = wrapper.find(Label);
+    assert.strictEqual(label.props().style.textAlign, 'right');
+    context.languageId = 1;
+    context.localization.isRightToLeft = false;
+  });
+
+  it('should render custom checkedIcon', () => {
+    const checkedIcon = <CheckBoxIcon fontSize="small" />;
+    const wrapper = mount((
+      <CheckBox
+        context={context}
+        defaultChecked={false}
+        checkedIcon={checkedIcon}
+        errorTextVisible
+        label="test" />
+    ));
+    const mui = wrapper.find(MuiCheckbox);
+    assert.strictEqual(mui.props().checkedIcon, checkedIcon);
   });
 });

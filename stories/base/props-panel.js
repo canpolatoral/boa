@@ -37,7 +37,7 @@ const languageItems = [
   { title: 'العربية', value: 5 },
 ];
 
-export default class Playground extends ComponentBase {
+export default class PropsPanel extends ComponentBase {
   constructor(props, context) {
     super(props, context);
     this.componentPropertySource = [];
@@ -64,7 +64,7 @@ export default class Playground extends ComponentBase {
       <Input
         context={this.props.context}
         type="text"
-        value={value}
+        value={value === null ? undefined : value}
         floatingLabelText={property.name}
         hintText={property.name}
         multiLine
@@ -110,7 +110,7 @@ export default class Playground extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => {}}
+          onAdd={() => { }}
           onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
@@ -176,8 +176,14 @@ export default class Playground extends ComponentBase {
                 self.onPropertyChanged(property.name, event.target.value);
               }}
             >
-              {property.values.map(item => {
-                return <option value={item}>{item}</option>;
+              {property.values.map((item, index) => {
+                return (
+                  <option
+                    key={`property${index}`} // eslint-disable-line
+                    value={item}>
+                    {item}
+                  </option>
+                );
               })}
             </NativeSelect>
           </FormControl>
@@ -240,8 +246,14 @@ export default class Playground extends ComponentBase {
                       }
                     }}
                   >
-                    {themeItems.map(item => {
-                      return <MenuItem value={item.value}>{item.title}</MenuItem>;
+                    {themeItems.map((item, index) => {
+                      return (
+                        <MenuItem
+                          key={`themeItems${index}`} // eslint-disable-line
+                          value={item.value}>
+                          {item.title}
+                        </MenuItem>
+                      );
                     })}
                   </Select>
                 </FormControl>
@@ -265,8 +277,14 @@ export default class Playground extends ComponentBase {
                       }
                     }}
                   >
-                    {languageItems.map(item => {
-                      return <MenuItem value={item.value}>{item.title}</MenuItem>;
+                    {languageItems.map((item, index) => {
+                      return (
+                        <MenuItem
+                          key={`languageItems${index}`} // eslint-disable-line
+                          value={item.value}>
+                          {item.title}
+                        </MenuItem>
+                      );
                     })}
                   </Select>
                 </FormControl>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { expect, assert } from 'chai';
 import ComponentComposer from './ComponentComposer';
+import { createMount } from '../../test/utils';
 
 /* eslint-disable-next-line */
 class EmptyComponent extends React.Component {
@@ -15,6 +15,12 @@ class EmptyComponent extends React.Component {
 }
 
 describe('<ComponentComposer /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
   it('should mount with WrappedComponent', () => {
     const Compose = ComponentComposer(EmptyComponent);
     const wrapper = mount(<Compose />);

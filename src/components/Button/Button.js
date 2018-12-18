@@ -121,7 +121,6 @@ class Button extends ComponentBase {
     this.state = {
       disabled: props.disabled,
     };
-    this.onClick = this.onClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -134,12 +133,6 @@ class Button extends ComponentBase {
     this.setState({ disabled: value });
   }
 
-  onClick(e) {
-    if (this.props.onClick) {
-      this.props.onClick(e);
-    }
-  }
-
   getLabel() {
     const { allowLabelCase, text, textStyle } = this.props;
     const label = allowLabelCase ? text : Localization.stringUpperCase(!text ? '' : text);
@@ -149,16 +142,18 @@ class Button extends ComponentBase {
   createButtonElement(variant) {
     let props = this.props;
     const { textPosition, allowLabelCase, style } = this.props;
+
+    /* istanbul ignore else  */
     if (variant !== 'fab') {
       props = Object.assign({}, props);
       const iconStyle = !this.getLabel() ? null : { marginRight: 8 };
-      const iconProp = props.iconProperties;
-      if (iconProp) {
-        iconProp.style = merge(iconStyle, iconProp.style);
+      if (props.iconProperties && props.iconProperties.style) {
+        props.iconProperties.style = merge(iconStyle, props.iconProperties.style);
       } else {
         props.iconProperties = { style: iconStyle };
       }
     }
+
     const icon = Icon.getIcon(props);
     const buttonStyle = {
       justifyContent: textPosition === 'right' ? 'flex-end' : textPosition,
@@ -175,7 +170,7 @@ class Button extends ComponentBase {
         color={this.props.colorType}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        onClick={this.onClick}
+        onClick={this.props.onClick}
         variant={variant}
         size={this.props.buttonSize}
         mini={this.props.mini}
@@ -198,7 +193,7 @@ class Button extends ComponentBase {
         disableRipple={this.state.disabled}
         tooltip={this.props.tooltip}
         tooltipPosition={this.props.tooltipPosition}
-        onClick={this.onClick.bind}
+        onClick={this.props.onClick}
       />);
   }
 

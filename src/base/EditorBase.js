@@ -39,7 +39,7 @@ export default class EditorBase extends ComponentBase {
 
     if (valueConstraint.maxLength) {
       const message = this.checkLength(value, { max: valueConstraint.maxLength });
-        /* istanbul ignore next */
+      /* istanbul ignore next */
       if (message) {
         newValidationResult.push({ key: 'maxLength', message });
       }
@@ -59,7 +59,7 @@ export default class EditorBase extends ComponentBase {
   }
 
   isNullOrEmpty(value) {
-    if (value == null || value === undefined) {
+    if (value === null || value === undefined) {
       return this.getMessage('BOA', 'Nullable');
     }
     if (typeof value === 'string' && value.trim() === '') {
@@ -75,7 +75,7 @@ export default class EditorBase extends ComponentBase {
 
     const min = options.min && options.min >= 0 ? options.min : 0;
     const max = options.max && options.max >= 0 ? options.max : 0;
-    const len = value.length || 0;
+    const len = value.length;
 
     if (len < min) {
       return this.getMessage('BOA', 'MinLength').replace('{0}', min);

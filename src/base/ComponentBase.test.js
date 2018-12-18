@@ -1,9 +1,9 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
 import ComponentBase from './ComponentBase';
 import Context from '../../test/utils/context';
+import { createShallow, createMount } from '../../test/utils';
 
 function serviceCallSync(request, versions, messages) {
   if (typeof versions === 'boolean' && versions === false) {
@@ -31,6 +31,14 @@ class EmptyComponent extends ComponentBase {
 }
 
 describe('<ComponentBase /> tests', () => {
+  let shallow;
+  let mount;
+
+  before(() => {
+    shallow = createShallow();
+    mount = createMount();
+  });
+
   it('should render', () => {
     const wrapper = shallow(<EmptyComponent />);
     expect(wrapper.text()).contains('EmptyComponent');
@@ -87,5 +95,12 @@ describe('<ComponentBase /> tests', () => {
     assert.strictEqual(wrapper.instance().getMessage('test', 'test'), 'test');
     assert.strictEqual(wrapper.instance().getMessageCode('test', 'test'), 'code');
     stub.restore();
+  });
+
+  it('should validateConstraint', () => {
+    const wrapper = mount((
+      <EmptyComponent context={Context} />
+    ));
+    assert.strictEqual(wrapper.instance().validateConstraint(), true);
   });
 });

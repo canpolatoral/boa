@@ -90,6 +90,7 @@ class DocNotice extends ComponentBase {
         });
         break;
       }
+      /* istanbul ignore next */
       default:
         return null;
     }
@@ -138,6 +139,7 @@ class DocNotice extends ComponentBase {
         };
         return Icon.getIcon(icon);
       }
+      /* istanbul ignore next */
       default:
         return null;
     }

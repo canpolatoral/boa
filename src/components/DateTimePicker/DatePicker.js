@@ -43,6 +43,7 @@ class DatePicker extends ComponentBase {
     inlineGridMode: PropTypes.bool,
     inputStyle: PropTypes.object,
     isBusiness: PropTypes.bool,
+    isFlexMode: PropTypes.bool,
     leftIconList: PropTypes.array,
     maxDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     maxHour: PropTypes.number,
@@ -85,6 +86,7 @@ class DatePicker extends ComponentBase {
     firstDayOfWeek: 1,
     style: {},
     inlineGridMode: false,
+    isFlexMode: false,
   };
 
   constructor(props, context) {
@@ -364,6 +366,7 @@ class DatePicker extends ComponentBase {
             dialogNewSelectDate={dialogNewSelectDate}
             pageType={this.props.pageType}
             openBoaCalendar={this.props.openBoaCalendar}
+            isFlexMode={this.props.isFlexMode}
           />
         </div>
       );

@@ -4,7 +4,7 @@ import { isEqualDate, getDatePickerStyle } from './dateUtils';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 function getStyles(props, context, state) {
-  const { date, selected, dayInfo, isBusiness, displayDate } = props;
+  const { date, selected, dayInfo, isBusiness, displayDate, isFlexMode } = props;
   const { hover } = state;
   const datePicker = getDatePickerStyle(context);
 
@@ -184,8 +184,10 @@ function getStyles(props, context, state) {
       padding: '2px 0px',
       position: 'relative',
       WebkitTapHighlightColor: 'rgba(0,0,0,0)', // Remove mobile color flashing (deprecated)
-      width: 40,
+      width: isFlexMode ? '100%' : 40,
       height: 40,
+      marginLeft: isFlexMode ? 2 : undefined,
+      marginRight: isFlexMode ? 2 : undefined,
     },
     label: {
       color: labelColor,
@@ -201,13 +203,13 @@ function getStyles(props, context, state) {
       padding: hoverSelectedAndTodayPadding,
       backgroundClip,
       height: 36,
-      left: 2,
+      left: isFlexMode ? 0 : 2,
       opacity: buttonStateOpacity,
       position: 'absolute',
       top: 0,
       transform: buttonStateTransform,
       // transition: 'cubic-bezier(0.23, 1, 0.32, 1)', // Transition.easeOut(),
-      width: 36,
+      width: isFlexMode ? '100%' : 36,
     },
   };
 }
@@ -218,6 +220,7 @@ class DayButton extends Component {
     date: PropTypes.object,
     DateTimeFormat: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
+    isFlexMode: PropTypes.bool, // eslint-disable-line
     onKeyboardFocus: PropTypes.func,
     onTouchTap: PropTypes.func,
     selected: PropTypes.bool,

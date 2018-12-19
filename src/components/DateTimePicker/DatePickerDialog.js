@@ -36,6 +36,7 @@ class DatePickerDialog extends ComponentBase {
     ]),
     inputStyle: PropTypes.object,
     isBusiness: PropTypes.bool,
+    isFlexMode: PropTypes.bool,
     isMobile: PropTypes.bool,
     maxDate: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
@@ -191,6 +192,7 @@ class DatePickerDialog extends ComponentBase {
       monthTitle,
       noDialog,
       openBoaCalendar,
+      isFlexMode,
     } = this.props;
 
     const { open } = this.state;
@@ -238,6 +240,7 @@ class DatePickerDialog extends ComponentBase {
         dateUpdate={this.props.dateUpdate}
         dialogNewSelectDate={dialogNewSelectDate}
         noDialog={noDialog}
+        isFlexMode={isFlexMode}
       />
     );
 

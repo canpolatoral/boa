@@ -52,7 +52,6 @@ import LockOpen from './actions/lock-open';
 import MailOutline from './actions/mail-outline';
 import Map from './actions/map';
 import MoreHoriz from './actions/more-horiz';
-import None from './actions/none';
 import PauseCircleFilled from './actions/pause-circle-filled';
 import Pin from './actions/pin';
 import PlayCircleFilled from './actions/play-circle-filled';
@@ -166,7 +165,6 @@ const actions = {
   MailOutline,
   Map,
   MoreHoriz,
-  None,
   PauseCircleFilled,
   Pin,
   PlayCircleFilled,

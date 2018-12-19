@@ -44,10 +44,11 @@ function getStyles(props, type) {
       marginTop: -2,
     },
     item: {
-      height: 24,
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
+      paddingTop: 12,
+      paddingBottom: 12,
     },
     itemDate: {
       fontSize: 11,
@@ -191,23 +192,13 @@ class SpecialDay extends ComponentBase {
               context={this.props.context}
               style={{
                 width: 'calc(100% + 24px)',
-                marginBottom: 12,
+                marginBottom: 0,
                 marginLeft: -12,
                 marginRight: -12,
                 marginTop: 14,
               }}
             />
             {specialDays}
-            <Divider
-              context={this.props.context}
-              style={{
-                width: 'calc(100% + 24px)',
-                marginBottom: 0,
-                marginLeft: -12,
-                marginRight: -12,
-                marginTop: 12,
-              }}
-            />
           </div>
         )}
       </div>

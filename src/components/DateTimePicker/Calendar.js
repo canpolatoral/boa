@@ -203,6 +203,7 @@ class Calendar extends ComponentBase {
         canSelectOldDates={this.props.canSelectOldDates}
         canSelectWeekendDays={this.props.canSelectWeekendDays}
         canSelectSpecialDays={this.props.canSelectSpecialDays}
+        isFlexMode={this.props.isFlexMode}
       />
     );
     return calendarMonth;
@@ -677,6 +678,7 @@ class Calendar extends ComponentBase {
   render() {
     const isMobile = Utils.isMobile(this.props);
     const openBoaCalendar = (!isMobile && this.props.openBoaCalendar);
+    const { isFlexMode } = this.props;
     this.setSpecialDays();
     const toolbarInteractions = this.getToolbarInteractions();
     const isLandscape = this.props.mode === 'landscape';
@@ -691,7 +693,7 @@ class Calendar extends ComponentBase {
       root: {
         color: calendarTextColor,
         userSelect: 'none',
-        width: isLandscape ? 479 : 300,
+        width: isFlexMode ? '100%' : (isLandscape ? 479 : 300), // eslint-disable-line
       },
       calendar: {
         display: 'flex',
@@ -737,7 +739,7 @@ class Calendar extends ComponentBase {
         alignItems: 'center',
       },
       weekTitleDay: {
-        width: 40,
+        width: isFlexMode ? '100%' : 40,
       },
 
       yearsTitle: {
@@ -763,7 +765,7 @@ class Calendar extends ComponentBase {
         flex: equalWidthItemFlex,
       },
       dayAndInput: {
-        padding: '7px 12px 0px 12px',
+        padding: isFlexMode ? 0 : '7px 12px 0px 12px',
       },
       inputStyle: {},
     };
@@ -835,6 +837,20 @@ class Calendar extends ComponentBase {
         onClick={this.handleAddDate.bind}
         disabled={this.state.disabled}
       />
+    );
+
+    const divider = (
+      <div>
+        <Divider
+          context={this.props.context}
+          style={{
+            width: 'calc(100% )',
+            marginBottom: 0,
+            marginLeft: 0,
+            marginRight: 0,
+            marginTop: 0,
+          }} />
+      </div>
     );
 
     const prefix = (
@@ -955,51 +971,41 @@ class Calendar extends ComponentBase {
           {!this.state.displayMonthDay && this.renderYearAndMounthSelector(style)}
           {this.state.displayMonthDay && (
             <div style={{ height: 48 }}>
-              {(this.props.isBusiness === false) &&
-                (
-                  <div>
-                    <Divider
-                      context={this.props.context}
-                      style={{
-                        width: 'calc(100% )',
-                        marginBottom: 0,
-                        marginLeft: 0,
-                        marginRight: 0,
-                        marginTop: 12,
-                      }} />
-                  </div>
-                )
-              }
-
               {(this.props.noDialog === false) &&
                 (
-                  <div style={{ height: 48 }}>
-                    <Button
-                      context={this.props.context}
-                      type="text"
-                      text={todayLabel}
-                      colorType="primary"
-                      fullWidth
-                      onClick={this.todayButtonOnClick}
-                      style={buttonStyle}
-                      textStyle={buttonTextStyle}
-                    />
+                  <div>
+                    {divider}
+                    <div style={{ height: 48 }}>
+                      <Button
+                        context={this.props.context}
+                        type="text"
+                        text={todayLabel}
+                        colorType="primary"
+                        fullWidth
+                        onClick={this.todayButtonOnClick}
+                        style={buttonStyle}
+                        textStyle={buttonTextStyle}
+                      />
+                    </div>
                   </div>
                 )
               }
               {(openBoaCalendar) &&
                 (
-                  <div style={{ height: 48 }}>
-                    <Button
-                      context={this.props.context}
-                      type="text"
-                      text="BOA TAKVİMİ AÇ"
-                      colorType="primary"
-                      fullWidth
-                      onClick={this.openBoaCalendar}
-                      style={buttonStyle}
-                      textStyle={buttonTextStyle}
-                    />
+                  <div>
+                    {divider}
+                    <div style={{ height: 48 }}>
+                      <Button
+                        context={this.props.context}
+                        type="text"
+                        text="BOA TAKVİMİ AÇ"
+                        colorType="primary"
+                        fullWidth
+                        onClick={this.openBoaCalendar}
+                        style={buttonStyle}
+                        textStyle={buttonTextStyle}
+                      />
+                    </div>
                   </div>
                 )}
             </div>

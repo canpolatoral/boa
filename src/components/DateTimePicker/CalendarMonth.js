@@ -42,6 +42,7 @@ class CalendarMonth extends Component {
     displayDate: PropTypes.object.isRequired,
     firstDayOfWeek: PropTypes.number,
     isBusiness: PropTypes.bool,
+    isFlexMode: PropTypes.bool,
     maxDate: PropTypes.object,
     minDate: PropTypes.object,
     onTouchTapDay: PropTypes.func,
@@ -76,10 +77,16 @@ class CalendarMonth extends Component {
   getWeekElements() {
     const weekArray = getWeekArray(this.props.displayDate, this.props.firstDayOfWeek);
 
+    const weekStyle = Object.assign({}, styles.week);
+    if (this.props.isFlexMode) {
+      weekStyle.marginLeft = -2;
+      weekStyle.marginRight = -2;
+    }
+
     return weekArray.map((week, i) => {
       return (
         // eslint-disable-next-line
-        <div key={i} style={styles.week}>
+        <div key={i} style={weekStyle}>
           {this.getDayElements(week, i)}
         </div>
       );
@@ -96,6 +103,7 @@ class CalendarMonth extends Component {
       canSelectWeekendDays,
       canSelectSpecialDays,
       displayDate,
+      isFlexMode,
     } = this.props;
 
     return week.map((day, j) => {
@@ -132,6 +140,7 @@ class CalendarMonth extends Component {
           dayInfo={dayInfo}
           isBusiness={isBusiness}
           displayDate={this.props.displayDate}
+          isFlexMode={isFlexMode}
         />
       );
     }, this);

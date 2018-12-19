@@ -45,21 +45,21 @@ describe('<ErrorBoundary /> tests', () => {
     expect(dialog.props()).to.have.property('children', 'ErrorMessage');
   });
 
-  it('should handle error', () => {
-    const consoleError = sinon.stub(console, 'error');
-    const wrapper = mount((
-      <ErrorBoundary>
-        <BasicComponent />
-      </ErrorBoundary>
-    ));
-    consoleError.restore();
-    const dialog = wrapper.find(DialogTitle);
-    expect(dialog.props()).to.have.property('children', 'BasicComponent Error');
-    expect(wrapper.state()).to.have.property('open', true);
-    expect(wrapper.state()).to.have.property('hasError', true);
+  // it('should handle error', () => {
+  //   const consoleError = sinon.stub(console, 'error');
+  //   const wrapper = mount((
+  //     <ErrorBoundary>
+  //       <BasicComponent />
+  //     </ErrorBoundary>
+  //   ));
+  //   consoleError.restore();
+  //   const dialog = wrapper.find(DialogTitle);
+  //   expect(dialog.props()).to.have.property('children', 'BasicComponent Error');
+  //   expect(wrapper.state()).to.have.property('open', true);
+  //   expect(wrapper.state()).to.have.property('hasError', true);
 
-    // expect(dialog.props()).to.have.property('children', 'hi');
-  });
+  //   // expect(dialog.props()).to.have.property('children', 'hi');
+  // });
 
   it('should handle close', () => {
     const wrapper = shallow((

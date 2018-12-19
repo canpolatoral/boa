@@ -38,7 +38,7 @@ class IconButton extends ComponentBase {
      * The color of the component.
      * It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
+    color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary', 'disabled']),
     /**
      * If `true`, the button will be disabled.
      */
@@ -60,6 +60,10 @@ class IconButton extends ComponentBase {
      * Font icon name from font icon's library.
      */
     fontIcon: PropTypes.string,
+    /**
+     * Icon props
+     */
+    iconProperties: PropTypes.object,
     /**
      * @ignore
      */
@@ -111,6 +115,10 @@ class IconButton extends ComponentBase {
     const { classes } = this.props;
     const tooltipTitle = this.props.tooltip;
     const tooltipPosition = this.props.tooltipPosition;
+    const iconProperties = this.props.iconProperties;
+    if (iconProperties) {
+      iconProperties.color = this.state.disabled ? 'disabled' : iconProperties.color;
+    }
 
     const iconButton = (
       <ButtonBase
@@ -124,7 +132,7 @@ class IconButton extends ComponentBase {
         focusRipple={this.props.focusRipple}
         disableRipple={this.props.disableRipple}
       >
-        {Icon.getIcon(this.props)}
+        {Icon.getIcon({ ...this.props, iconProperties })}
       </ButtonBase>
     );
 

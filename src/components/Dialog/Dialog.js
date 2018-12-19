@@ -164,7 +164,6 @@ class Dialog extends ComponentBase {
     super(props, context);
     this.fireClosable = this.fireClosable.bind(this);
     this.open = this.open.bind(this);
-    this.onCloseClicked = this.onCloseClicked.bind(this);
     this.onEnter = this.onEnter.bind(this);
   }
 
@@ -185,13 +184,11 @@ class Dialog extends ComponentBase {
     this.setState({ leftTitleButton: value });
   }
 
-  onCloseClicked() {
-    if (this.props.onRequestClose) this.props.onRequestClose();
-  }
-
   open(open) {
     this.setState({ open }, () => {
-      if (open === false && this.props.dialogKey) DialogHelper.clearRefs(this.props.dialogKey);
+      if (open === false && this.props.dialogKey) {
+        DialogHelper.clearRefs(this.props.dialogKey);
+      }
     });
   }
 
@@ -491,18 +488,16 @@ class Dialog extends ComponentBase {
     const { leftTitleButton, title } = this.state;
     const context = this.props.context;
     const dialog = this.prepareDialog();
+    const closeButtonStyle = { top: 0, right: 0 };
+    const titleStyle = { flex: 1, paddingTop: '9px' };
 
-    // eslint-disable-next-line
-    dialog.titleWithCloseButtonEnabled
-      ? !dialog.contentProps
-        ? dialog.dialogContent
-        : React.cloneElement(dialog.dialogContent, dialog.contentProps)
-      : {};
+    let titleBackgroundColor = this.props.titleBackgroundColor;
 
-    const titleBackgroundColor =
-      this.props.titleBackgroundColor || Object.keys(DialogHelper.dialogRefs).length >= 1
-        ? context.theme.boaPalette.base300
-        : context.theme.boaPalette.pri500;
+    if (Object.keys(DialogHelper.dialogRefs).length >= 1) {
+      titleBackgroundColor = context.theme.boaPalette.base300;
+    } else {
+      titleBackgroundColor = context.theme.boaPalette.pri500;
+    }
 
     const objLine = {
       height: '1px',
@@ -510,6 +505,18 @@ class Dialog extends ComponentBase {
       borderBottomStyle: 'solid',
       borderBottomWidth: '1px',
       marginBottom: '-1px',
+    };
+
+    const dialogFormStyle = {
+      boxSizing: 'border-box',
+      width: '100%',
+      fontSize: '16px',
+      textAlign: 'center',
+      color: context.theme.boaPalette.comp500,
+      background: titleBackgroundColor,
+      padding: '0px',
+      display: 'flex',
+      direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
     };
 
     Object.assign(
@@ -524,8 +531,6 @@ class Dialog extends ComponentBase {
       context.deviceSize <= Sizes.SMALL ? { marginRight: '24px', marginLeft: '24px' } : {},
     );
 
-    const closeButtonStyle = { top: 0, right: 0 };
-
     Object.assign(
       closeButtonStyle,
       context.localization.isRightToLeft ? { paddingLeft: '12px' } : { paddingRight: '12px' },
@@ -538,7 +543,6 @@ class Dialog extends ComponentBase {
       );
     }
 
-    const titleStyle = { flex: 1, paddingTop: '9px' };
     if (context.deviceSize <= Sizes.SMALL) {
       Object.assign(
         titleStyle,
@@ -552,17 +556,6 @@ class Dialog extends ComponentBase {
         context.localization.isRightToLeft ? { paddingRight: '60px' } : { paddingLeft: '60px' },
       );
     }
-    const dialogFormStyle = {
-      boxSizing: 'border-box',
-      width: '100%',
-      fontSize: '16px',
-      textAlign: 'center',
-      color: context.theme.boaPalette.comp500,
-      background: titleBackgroundColor,
-      padding: '0px',
-      display: 'flex',
-      direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
-    };
 
     const dialogForm = this.props.showHeader ? (
       <MuiDialogTitle disableTypography style={dialogFormStyle}>
@@ -575,7 +568,7 @@ class Dialog extends ComponentBase {
             style={{ width: '40px', height: '40px' }}
             dynamicIcon={'Close'}
             iconProperties={{ nativeColor: context.theme.boaPalette.comp500 }}
-            onClick={this.onCloseClicked}
+            onClick={this.props.onRequestClose}
           />
         </div>
       </MuiDialogTitle>
@@ -638,7 +631,7 @@ class Dialog extends ComponentBase {
         onClose={this.props.onRequestClose}
         PaperProps={{ style: dialog.customContentStyle }}
         onEntered={this.onEnter}
-        onExiting={this.props.onClosing ? this.fireClosable : undefined}
+        onExiting={this.fireClosable}
         disableRestoreFocus={this.props.disableRestoreFocus}
       >
         {dialog.titleWithCloseButtonEnabled && dialogForm}

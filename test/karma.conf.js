@@ -17,7 +17,7 @@ module.exports = function setKarmaConfig(config) {
     browserDisconnectTolerance: 1, // default 0
     browserNoActivityTimeout: 300000, // default 10000
     colors: true,
-    frameworks: ['mocha'],
+    frameworks: ['chai', 'mocha', 'sinon'],
     files: [
       {
         pattern: 'test/karma.tests.js',
@@ -32,6 +32,8 @@ module.exports = function setKarmaConfig(config) {
       'karma-sourcemap-loader',
       'karma-webpack',
       'karma-mocha-reporter',
+      'karma-sinon',
+      'karma-chai',
     ],
     /**
      * possible values:

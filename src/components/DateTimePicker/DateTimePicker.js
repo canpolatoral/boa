@@ -98,6 +98,10 @@ class DateTimePicker extends ComponentBase {
      */
     isBusiness: PropTypes.bool,
     /**
+     * isFlexMode
+     */
+    isFlexMode: PropTypes.bool,
+    /**
      * Selectable max date. Prop could be a Date object or UTC formatted string.
      */
     maxDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
@@ -150,6 +154,7 @@ class DateTimePicker extends ComponentBase {
     noDialog: false,
     minDate: new Date(1950, 0, 1, 1, 3, 5),
     maxDate: new Date(2099, 11, 30, 20, 3, 14),
+    isFlexMode: false,
   };
 
   formats = getFormatDecomposition(this.props.format);
@@ -589,6 +594,7 @@ class DateTimePicker extends ComponentBase {
           inlineGridMode={this.props.inlineGridMode}
           noDialog={this.props.noDialog}
           openBoaCalendar={this.props.openBoaCalendar}
+          isFlexMode={this.props.isFlexMode}
         />
       </div>
     );

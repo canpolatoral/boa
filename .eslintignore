@@ -1,5 +1,8 @@
-/.git
-/coverage
-/tmp
+.git
+coverage
+tmp
 build
 node_modules
+.cache
+storybook-static
+tmp

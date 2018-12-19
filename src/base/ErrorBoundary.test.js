@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { expect } from 'chai';
-import sinon from 'sinon';
+// import sinon from 'sinon';
 import ErrorBoundary from './ErrorBoundary';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';

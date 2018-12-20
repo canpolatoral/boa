@@ -299,8 +299,6 @@ class Dialog extends ComponentBase {
         (content instanceof Object && content.mainContent !== undefined)
       ) {
         if (content instanceof Array) {
-          // autoScrollBodyContent = true;
-
           dialogContent = '';
           content.forEach(item => {
             dialogContent += `${item}<br />`;
@@ -308,10 +306,9 @@ class Dialog extends ComponentBase {
           dialogContent = dialogContent.replace('\n', '<br />');
         } else if (content instanceof Object) {
           isObject = true;
-          // autoScrollBodyContent = true;
           dialogContent = [];
           dialogContent.push(
-            <div id="dialogHeader" style={headerStyle}>
+            <div key="dialogContent" id="dialogHeader" style={headerStyle}>
               {content.mainContent}
             </div>,
           );
@@ -336,9 +333,10 @@ class Dialog extends ComponentBase {
             context.deviceSize <= Sizes.SMALL ? { paddingLeft: '24px', paddingRight: '24px' } : {},
           );
 
-          content.subcontents.forEach(item => {
+          content.subcontents.forEach((item, index) => {
             subObj.push(
               <div
+                key={index} // eslint-disable-line
                 style={{
                   marginTop: '24px',
                   fontSize: '11px',
@@ -348,22 +346,24 @@ class Dialog extends ComponentBase {
                 {item.header}
               </div>,
             );
-            item.contents.forEach(i => {
+            item.contents.forEach((i, j) => {
               subObj.push(
                 <div
+                  key={`${index.toString() + j.toString()}`} // eslint-disable-line
                   style={{
                     fontSize: '13px',
                     color: context.theme.boaPalette.base450,
                   }}
                 >
                   {i}
-                </div>,
+                </div >,
               );
             });
           });
 
           dialogSubContent.push(
             <div
+              key="scrollDiv"
               id="scrollDiv"
               onScroll={event => {
                 const scrollDivStyle = document.getElementById('scrollDiv').style;
@@ -395,13 +395,14 @@ class Dialog extends ComponentBase {
         } else {
           dialogContent = Utils.getShowStatusMessageReplacedText(content);
         }
-        // console.log('Dialog: ' + dialogContent);
       } else {
         contentProps = {
           inDialog: true,
           dialogKey,
           ref: r => {
-            if (dialogRefs[dialogKey]) dialogRefs[dialogKey].contentRef = r;
+            if (dialogRefs[dialogKey]) {
+              dialogRefs[dialogKey].contentRef = r;
+            }
           },
         };
         // console.log('Dialog: ' + typeof content);

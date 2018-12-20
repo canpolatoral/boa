@@ -108,16 +108,19 @@ export class Utils {
     let textArray = text.split('#00100#');
     let messages = [];
     if (textArray && textArray.length > 0) {
-      if (textArray.length == 1) messages.push(<div>{textArray[0]}</div>);
-      else
+      if (textArray.length == 1) {
+        messages.push(<div key={0}>{textArray[0]}</div>);
+      }
+      else {
         textArray.forEach(function (item, index) {
           messages.push(
-            <div>
+            <div key={index}>
               {item}
               {index != textArray.length ? <br /> : ''}
             </div>,
           );
         }, this);
+      }
     }
     return messages;
   }

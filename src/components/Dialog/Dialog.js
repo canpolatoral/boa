@@ -356,7 +356,7 @@ class Dialog extends ComponentBase {
                   }}
                 >
                   {i}
-                </div >,
+                </div>,
               );
             });
           });

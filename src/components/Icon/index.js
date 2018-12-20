@@ -6,6 +6,9 @@ import * as BIcons from './icons';
 
 export class Icon {
   static getIcon(cmpProps) {
+    if (!cmpProps) {
+      return null;
+    }
     if (cmpProps.svgIcon) {
       const result = (
         <MuiSvgIcon {...cmpProps.iconProperties}>

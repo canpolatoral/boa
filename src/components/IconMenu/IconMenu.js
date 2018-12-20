@@ -188,17 +188,12 @@ class IconMenu extends ComponentBase {
       });
     } else if (this.props.items) {
       menuItems = this.props.items.map(item => {
-        let rightIcon;
-        let leftIcon;
+        let rightIcon = Icon.getIcon(item.rightIcon);
+        const leftIcon = Icon.getIcon(item.leftIcon);
 
-        if (item.items && item.items.length) {
+        /* istanbul ignore else */
+        if (item.items && item.items.length && item.items.length > 0) {
           rightIcon = <RightArrow />;
-        } else if (item.rightIcon && (item.rightIcon.fontIcon || item.rightIcon.svgIcon)) {
-          Icon.getIcon(item.rightIcon);
-        }
-
-        if (item.leftIcon && (item.leftIcon.fontIcon || item.leftIcon.svgIcon)) {
-          leftIcon = Icon.getIcon(item.leftIcon);
         }
 
         return (
@@ -215,6 +210,8 @@ class IconMenu extends ComponentBase {
           />
         );
       });
+    } else {
+      menuItems = [];
     }
 
     let icon = <MoreVertIcon />;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { assert } from 'chai';
-import { DialogType, DialogResponse, DialogResponseStyle } from '@boa/base';
+import { DialogType, DialogResponseStyle } from '@boa/base';
 import { spy, useFakeTimers, stub } from 'sinon'; // eslint-disable-line
 import DialogHelper from './DialogHelper';
 import context from '../../../test/utils/context';

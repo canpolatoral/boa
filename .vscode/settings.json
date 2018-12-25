@@ -24,5 +24,6 @@
         "**/loaders": true,
         "**/*.d.ts": true
     },
-    "vsicons.presets.angular": false
-  }
+    "vsicons.presets.angular": false,
+    "typescript.tsdk": "node_modules/typescript/lib"
+}

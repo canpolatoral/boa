@@ -1,10 +1,20 @@
+import { assert } from 'chai';
 import MuiSvgIcon from '@material-ui/core/SvgIcon';
 import * as SvgIcons from '@material-ui/icons';
-import { assert } from 'chai';
-import { mount } from 'enzyme';
 import { Icon } from './index';
+import { createMount } from '../../../test/utils';
 
 describe('Icon tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should get dynamicIcon', () => {
     const Home = Icon.getIcon({ dynamicIcon: 'Home' });
     const wrapper = mount(Home);

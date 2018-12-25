@@ -1,11 +1,22 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
 import { spy } from 'sinon';
 import { assert, expect } from 'chai';
 import Toggle from './Toggle';
-import context from '../../../test/utils/context';
+import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<Toggle /> tests', () => {
+  let mount;
+  let shallow;
+
+  before(() => {
+    mount = createMount();
+    shallow = createShallow();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount(<Toggle context={context} />);
   });

@@ -20,11 +20,14 @@ export default class DialogHelper {
 
   /** internal methods * */
   static clearRefs(key) {
-    const idleDialogDiv = this.dialogDivs[key];
-    delete this.dialogRefs[key];
-    delete this.dialogDivs[key];
-    ReactDOM.unmountComponentAtNode(idleDialogDiv);
-    document.body.removeChild(idleDialogDiv);
+    /* istanbul ignore else */
+    if (this.dialogDivs[key]) {
+      const idleDialogDiv = this.dialogDivs[key];
+      delete this.dialogRefs[key];
+      delete this.dialogDivs[key];
+      ReactDOM.unmountComponentAtNode(idleDialogDiv);
+      document.body.removeChild(idleDialogDiv);
+    }
   }
 
   static staticConstructor() {

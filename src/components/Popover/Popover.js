@@ -259,6 +259,7 @@ class Popover extends ComponentBase {
     }
     return (
       <MuiPopover
+        id={this.props.id}
         ref={r => (this.popover = r)}
         anchorEl={this.state.anchorEl}
         anchorReference={this.props.anchorReference}

@@ -1,9 +1,18 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import MenuItem from './MenuItem';
-import context from '../../../test/utils/context';
+import { context, createMount } from '../../../test/utils';
 
 describe('<MenuItem /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount(<MenuItem context={context} />);
   });

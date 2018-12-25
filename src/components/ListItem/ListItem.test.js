@@ -1,9 +1,18 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import ListItem from './ListItem';
-import context from '../../../test/utils/context';
+import { context, createMount } from '../../../test/utils';
 
 describe('<ListItem /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount(<ListItem context={context} />);
   });

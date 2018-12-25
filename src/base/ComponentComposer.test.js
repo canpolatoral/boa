@@ -18,7 +18,11 @@ describe('<ComponentComposer /> tests', () => {
   let mount;
 
   before(() => {
-    mount = createMount();
+    mount = createMount({ includeBOAcontext: false });
+  });
+
+  after(() => {
+    mount.cleanUp();
   });
 
   it('should mount with WrappedComponent', () => {
@@ -33,7 +37,7 @@ describe('<ComponentComposer /> tests', () => {
     assert.isTrue(wrapper.isEmptyRender());
   });
 
-  it('should getInstance equals own instance when component did not compose withStyles', () => {
+  it('should getInstance equals own instance', () => {
     const Compose = ComponentComposer(EmptyComponent);
     const wrapper = mount(<Compose />);
     assert.strictEqual(wrapper.instance().getInstance(), wrapper.instance());

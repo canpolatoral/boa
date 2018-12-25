@@ -2,8 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { Button } from '@boa/components/Button';
 import CalendarActionButtons from './CalendarActionButtons';
-import context from '../../../test/utils/context';
-import { createShallow, createMount } from '../../../test/utils';
+import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<CalendarActionButtons /> tests', () => {
   let shallow;
@@ -12,6 +11,10 @@ describe('<CalendarActionButtons /> tests', () => {
   before(() => {
     shallow = createShallow();
     mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
   });
 
   it('should mount', () => {

@@ -2,18 +2,7 @@ import React from 'react';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
 import ComponentBase from './ComponentBase';
-import Context from '../../test/utils/context';
-import { createShallow, createMount } from '../../test/utils';
-
-function serviceCallSync(request, versions, messages) {
-  if (typeof versions === 'boolean' && versions === false) {
-    request.error();
-  } else if (request.url.includes('Version')) {
-    request.success(versions);
-  } else {
-    request.success(messages);
-  }
-}
+import { context, createShallow, createMount, serviceCallSync } from '../../test/utils';
 
 /* eslint-disable-next-line */
 class EmptyComponent extends ComponentBase {
@@ -39,6 +28,10 @@ describe('<ComponentBase /> tests', () => {
     mount = createMount();
   });
 
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should render', () => {
     const wrapper = shallow(<EmptyComponent />);
     expect(wrapper.text()).contains('EmptyComponent');
@@ -60,24 +53,17 @@ describe('<ComponentBase /> tests', () => {
   });
 
   it('should getSnapkey', () => {
-    const wrapper = mount((
-      <EmptyComponent snapKey="snapKey" />
-    ));
+    const wrapper = mount((<EmptyComponent snapKey="snapKey" />));
     assert.strictEqual(wrapper.instance().getSnapKey('child'), 'snapKey_child');
   });
 
   it('should getInstance', () => {
-    const wrapper = mount((
-      <EmptyComponent />
-    ));
+    const wrapper = mount((<EmptyComponent context={context} />));
     assert.strictEqual(wrapper.instance(), wrapper.instance().getInstance());
   });
 
   it('should getMessage', () => {
-    const wrapper = mount((
-      <EmptyComponent context={Context} />
-    ));
-
+    const wrapper = mount((<EmptyComponent context={context} />));
     const versions = [{ id: 1, name: 'test', ClassName: 'test', Version: 1 }];
     const messages = [
       {
@@ -98,9 +84,7 @@ describe('<ComponentBase /> tests', () => {
   });
 
   it('should validateConstraint', () => {
-    const wrapper = mount((
-      <EmptyComponent context={Context} />
-    ));
+    const wrapper = mount((<EmptyComponent context={context} />));
     assert.strictEqual(wrapper.instance().validateConstraint(), true);
   });
 });

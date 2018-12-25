@@ -6,8 +6,7 @@ import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import { Label } from '@boa/components/Label';
 import CheckBox from './CheckBox';
-import context from '../../../test/utils/context';
-import { createShallow, createMount } from '../../../test/utils';
+import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<CheckBox /> tests', () => {
   let shallow;
@@ -16,6 +15,10 @@ describe('<CheckBox /> tests', () => {
   before(() => {
     shallow = createShallow({ dive: true });
     mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
   });
 
   it('should render a <MuiCheckbox> element', () => {
@@ -38,28 +41,30 @@ describe('<CheckBox /> tests', () => {
   });
 
   it('should getValue returns checked status', () => {
-    const wrapper = mount(<CheckBox context={context} label="test" />);
-    expect(wrapper.instance().innerRef.getValue(), false);
+    const wrapper = shallow(<CheckBox context={context} label="test" />);
+    assert.strictEqual(wrapper.shallow().instance().getValue(), false);
   });
 
   it('should setValue change the checked status', () => {
-    const wrapper = mount(<CheckBox context={context} label="test" />);
-    wrapper.instance().innerRef.setValue(true);
-    const mui = wrapper.find(MuiCheckbox);
-    expect(mui.props().checked, true);
-    expect(wrapper.instance().innerRef.getValue(), true);
+    const wrapper = shallow(<CheckBox context={context} label="test" />);
+    const checkBox = wrapper.shallow();
+    checkBox.instance().setValue(true);
+    assert.strictEqual(checkBox.instance().getValue(), true);
   });
 
-  it('should change disabled prop', () => {
-    const wrapper = mount(<CheckBox context={context} label="test" />);
-    wrapper.instance().innerRef.setDisable(true);
-    const mui = wrapper.find(MuiCheckbox);
-    expect(mui.props().disabled, true);
+  it('should resetValue change the checked status to default ', () => {
+    const wrapper = shallow(<CheckBox defaultChecked={false} context={context} label="test" />);
+    const checkBox = wrapper.shallow();
+    checkBox.instance().setValue(true);
+    checkBox.instance().resetValue();
+    assert.strictEqual(checkBox.instance().getValue(), false);
   });
 
-  it('should reset value', () => {
-    const wrapper = mount(<CheckBox defaultChecked={false} context={context} label="test" />);
-    wrapper.instance().innerRef.resetValue();
+  it('should setDisable change the disabled status', () => {
+    const wrapper = shallow(<CheckBox context={context} label="test" />);
+    const checkBox = wrapper.shallow();
+    checkBox.instance().setDisable(true);
+    assert.strictEqual(checkBox.state().disabled, true);
   });
 
   it('simulates click events (onCheck)', () => {
@@ -134,7 +139,7 @@ describe('<CheckBox /> tests', () => {
     assert.strictEqual(mui.props().style.marginLeft, 10);
   });
 
-  it('should handle rtl', () => {
+  it('should handle RTL', () => {
     context.languageId = 5;
     context.localization.isRightToLeft = true;
 

@@ -1,9 +1,18 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import LinearPanel from './LinearPanel';
-import context from '../../../test/utils/context';
+import { context, createMount } from '../../../test/utils';
 
 describe('<LinearPanel /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount(<LinearPanel context={context} />);
   });

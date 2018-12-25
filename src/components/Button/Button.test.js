@@ -15,6 +15,10 @@ describe('<Button /> tests', () => {
     mount = createMount();
   });
 
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should render a <MuiButton> element', () => {
     const wrapper = shallow(<Button text="click" />);
     assert.strictEqual(wrapper.shallow().type(), MuiButton);
@@ -27,13 +31,13 @@ describe('<Button /> tests', () => {
     assert.strictEqual(wrapper.shallow().props().variant, 'contained');
   });
 
-  it('should render a icon button when type is icon', () => {
+  it('should render a icon button with type="icon"', () => {
     const wrapper = shallow(<Button type="icon" dynamicIcon="Home" text="click" />);
     assert.strictEqual(wrapper.shallow().props().dynamicIcon, 'Home');
     expect(wrapper.shallow().name()).contains('IconButton');
   });
 
-  it('should render a dynamicIcon', () => {
+  it('should render a dynamicIcon dynamicIcon="Home"', () => {
     const wrapper = shallow(<Button text="click" dynamicIcon="Home" />);
     assert.strictEqual(wrapper.shallow().childAt(0).type(), SvgIcons.Home);
   });
@@ -43,11 +47,9 @@ describe('<Button /> tests', () => {
   });
 
   it('should change disabled prop', () => {
-    const wrapper = mount(<Button />);
-    const mui = wrapper.find(MuiButton);
+    const wrapper = shallow(<Button text="click" />).shallow();
     wrapper.setProps({ disabled: true });
-    expect(mui.props().disabled, wrapper.state.disabled);
-    expect(wrapper.state.disabled, true);
+    assert.strictEqual(wrapper.state().disabled, true);
   });
 
   it('simulates click events', () => {
@@ -57,12 +59,12 @@ describe('<Button /> tests', () => {
     expect(onButtonClick).to.have.property('callCount', 1);
   });
 
-  it('should label formatted uppercase when allowLabelCase is false', () => {
+  it('should label be UpperCase format with allowLabelCase=false', () => {
     const wrapper = shallow(<Button text="aaa" allowLabelCase={false} />);
     assert.strictEqual(wrapper.shallow().instance().getLabel(), 'AAA');
   });
 
-  it('should label be empty when allowLabelCase is false and text is null', () => {
+  it('should label be empty with allowLabelCase=false and text is null', () => {
     const wrapper = shallow(<Button text={null} allowLabelCase={false} />);
     assert.strictEqual(wrapper.shallow().instance().getLabel(), '');
   });

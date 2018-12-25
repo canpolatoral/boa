@@ -3,8 +3,7 @@ import { spy } from 'sinon';
 import { assert, expect } from 'chai';
 import EventListener from 'react-event-listener';
 import Calendar from './Calendar';
-import context from '../../../test/utils/context';
-import { createShallow } from '../../../test/utils';
+import { context, createShallow } from '../../../test/utils';
 
 describe('<Calendar /> tests', () => {
   let shallow;
@@ -232,6 +231,7 @@ describe('<Calendar /> tests', () => {
       assert.strictEqual(dateUpdate.args[0][1].getTime(), newDate.getTime());
     });
   });
+
   // it('should setValue, getValue, resetValue', () => {
   //   const wrapper = shallow(<Calendar context={context} />).dive();
   //   const input = wrapper.shallow();

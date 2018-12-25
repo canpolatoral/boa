@@ -138,6 +138,7 @@ class CheckBox extends ComponentBase {
   constructor(props, context) {
     super(props, context);
     this.onCheck = this.onCheck.bind(this);
+
     this.state = {
       isChecked:
         this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,

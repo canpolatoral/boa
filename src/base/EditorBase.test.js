@@ -1,8 +1,7 @@
 import React from 'react';
 import { assert, expect } from 'chai';
 import EditorBase from './EditorBase';
-import Context from '../../test/utils/context';
-import { createMount } from '../../test/utils';
+import { context, createMount } from '../../test/utils';
 
 /* eslint-disable-next-line */
 class EmptyComponent extends EditorBase {
@@ -38,11 +37,15 @@ describe('<EditorBase /> tests', () => {
     mount = createMount();
   });
 
+  after(() => {
+    mount.cleanUp();
+  });
+
   describe('with getValue tests', () => {
     let wrapper;
 
     before(() => {
-      wrapper = mount(<EmptyComponentWithValue context={Context} />);
+      wrapper = mount(<EmptyComponentWithValue context={context} />);
     });
 
     it('should valid when empty props', () => {
@@ -140,7 +143,7 @@ describe('<EditorBase /> tests', () => {
     let wrapper;
 
     before(() => {
-      wrapper = mount(<EmptyComponent context={Context} />);
+      wrapper = mount(<EmptyComponent context={context} />);
     });
 
     it('should valid when empty props', () => {

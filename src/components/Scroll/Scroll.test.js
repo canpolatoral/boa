@@ -1,9 +1,18 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import Scroll from './Scroll';
-import context from '../../../test/utils/context';
+import { context, createMount } from '../../../test/utils';
 
 describe('<Scroll /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount((
       <Scroll

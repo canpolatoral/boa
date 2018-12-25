@@ -1,9 +1,18 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import InputMask from './InputMask';
-import context from '../../../test/utils/context';
+import { context, createMount } from '../../../test/utils';
 
 describe('<InputMask /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount(<InputMask context={context} />);
   });

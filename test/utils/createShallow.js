@@ -4,7 +4,7 @@ import appContext from './context';
 
 // Generate an enhanced shallow function.
 export default function createShallow(options1 = {}) {
-  const { shallow = enzymeShallow, dive = false, ...other1 } = options1;
+  const { shallow = enzymeShallow, includeBOAcontext = true, dive = false, ...other1 } = options1;
 
   const shallowWithContext = function shallowWithContext(node, options2 = {}) {
     const options = {
@@ -13,19 +13,18 @@ export default function createShallow(options1 = {}) {
       context: {
         ...other1.context,
         ...options2.context,
-        [CHANNEL]: {
-          getState: () => {
-            return appContext.theme;
-          },
-          subscribe: () => {
-
-          },
-          unsubscribe: () => {
-
-          },
-        },
       },
     };
+
+    if (includeBOAcontext) {
+      options.context[CHANNEL] = {
+        getState: () => {
+          return appContext.theme;
+        },
+        subscribe: () => { },
+        unsubscribe: () => { },
+      };
+    }
 
     const wrapper = shallow(node, options);
 

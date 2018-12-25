@@ -160,7 +160,7 @@
 				"name": "array"
 			},
 			"required": false,
-			"description": "@ignore"
+			"description": "items"
 		},
 		"menuItems": {
 			"type": {

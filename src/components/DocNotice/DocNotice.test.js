@@ -1,17 +1,28 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import { AppProvider } from '@boa/base';
 import * as SvgIcons from '@material-ui/icons';
 import DocNotice from './DocNotice';
-import context from '../../../test/utils/context';
+import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<DocNotice /> tests', () => {
+  let mount;
+  let shallow;
+
+  before(() => {
+    mount = createMount();
+    shallow = createShallow();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should render info', () => {
     const wrapper = shallow((
       <DocNotice context={context} content="info" header="info" type="info" />
     ));
-    expect(wrapper.find(AppProvider).childAt(0).type(), SvgIcons.Info);
+    expect(wrapper.find(AppProvider).childAt(0).type()).to.equals(SvgIcons.Info);
     expect(wrapper.text()).contains('info : info');
   });
 
@@ -19,7 +30,7 @@ describe('<DocNotice /> tests', () => {
     const wrapper = shallow((
       <DocNotice context={context} content="warning" header="warning" type="warning" />
     ));
-    expect(wrapper.find(AppProvider).childAt(0).type(), SvgIcons.Warning);
+    expect(wrapper.find(AppProvider).childAt(0).type()).to.equals(SvgIcons.Warning);
     expect(wrapper.text()).contains('warning : warning');
   });
 
@@ -27,7 +38,7 @@ describe('<DocNotice /> tests', () => {
     const wrapper = shallow((
       <DocNotice context={context} content="error" header="error" type="error" />
     ));
-    expect(wrapper.find(AppProvider).childAt(0).type(), SvgIcons.Error);
+    expect(wrapper.find(AppProvider).childAt(0).type()).to.equals(SvgIcons.Error);
     expect(wrapper.text()).contains('error : error');
   });
 
@@ -35,7 +46,7 @@ describe('<DocNotice /> tests', () => {
     const wrapper = shallow((
       <DocNotice context={context} content="tip" header="tip" type="tip" />
     ));
-    expect(wrapper.find(AppProvider).childAt(0).type(), SvgIcons.Star);
+    expect(wrapper.find(AppProvider).childAt(0).type()).to.equals(SvgIcons.Star);
     expect(wrapper.text()).contains('tip : tip');
   });
 

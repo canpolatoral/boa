@@ -1,5 +1,6 @@
 import React from 'react';
 import { assert } from 'chai';
+import { spy } from 'sinon';
 import IconButton from '@material-ui/core/IconButton';
 import { Popover } from '@boa/components/Popover';
 import { Icon } from '@boa/components/Icon';
@@ -8,8 +9,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import * as SvgIcons from '@material-ui/icons';
 import IconMenu from './IconMenu';
-import Context from '../../../test/utils/context';
-import { createShallow, createMount } from '../../../test/utils/index';
+import { context, createShallow, createMount } from '../../../test/utils/index';
 
 describe('<IconMenu /> tests', () => {
   const items = [
@@ -46,14 +46,17 @@ describe('<IconMenu /> tests', () => {
     mount = createMount();
   });
 
-  it('should render', () => {
-    const wrapper = shallow(<IconMenu context={Context} items={items} />);
-    const menuList = wrapper.shallow().childAt(1).childAt(0);
+  after(() => {
+    mount.cleanUp();
+  });
 
+
+  it('should render', () => {
+    const wrapper = shallow(<IconMenu context={context} items={items} />);
+    const menuList = wrapper.shallow().childAt(1).childAt(0);
     assert.strictEqual(wrapper.shallow().childAt(0).type(), IconButton);
     assert.strictEqual(wrapper.shallow().childAt(1).type(), Popover);
     assert.strictEqual(menuList.type(), MenuList);
-
     menuList.children().forEach((child, index) => {
       const item = items[index];
       assert.strictEqual(item.value, child.props().value);
@@ -78,19 +81,68 @@ describe('<IconMenu /> tests', () => {
     });
   });
 
-  it('should mount', () => {
-    mount(<IconMenu context={Context} />);
+  it('should mount and render right divs', () => {
+    const wrapper = mount((
+      <IconMenu
+        id="icon-menu-test"
+        context={context}
+        items={items} />
+    ));
+    wrapper.find('button').simulate('click');
+    const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
+    assert.strictEqual(paper.tagName.toLocaleLowerCase(), 'div');
+    const list = paper.getElementsByTagName('ul')[0];
+    assert.strictEqual(list.attributes.role.value, 'menu');
+    const listItem = list.getElementsByTagName('li')[0];
+    assert.strictEqual(listItem.value, 1);
+  });
+
+  it('should mount and handle menuItem clicks', () => {
+    const onChange = spy();
+    const wrapper = mount((
+      <IconMenu
+        id="icon-menu-test"
+        context={context}
+        items={items}
+        onChange={onChange} />
+    ));
+    wrapper.find('button').simulate('click');
+    const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
+    const list = paper.getElementsByTagName('ul')[0];
+    const listItem = list.getElementsByTagName('li')[0];
+    const div = listItem.getElementsByTagName('div')[0];
+    div.click();
+    assert.strictEqual(onChange.callCount, 1);
+  });
+
+
+  describe('prop: menuItems', () => {
+    it('should mount with menuItems', () => {
+      const wrapper = mount((
+        <IconMenu
+          id="icon-menu-test"
+          context={context}
+          items={items} />
+      ));
+      wrapper.find('button').simulate('click');
+      const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
+      assert.strictEqual(paper.tagName.toLocaleLowerCase(), 'div');
+      const list = paper.getElementsByTagName('ul')[0];
+      assert.strictEqual(list.attributes.role.value, 'menu');
+      const listItem = list.getElementsByTagName('li')[0];
+      assert.strictEqual(listItem.value, 1);
+    });
   });
 
   describe('prop: iconType', () => {
     it('should render MoreVertIcon default', () => {
-      const wrapper = shallow(<IconMenu context={Context} items={items} />);
+      const wrapper = shallow(<IconMenu context={context} items={items} />);
       const iconButton = wrapper.shallow().childAt(0);
       assert.strictEqual(iconButton.childAt(0).type(), MoreVertIcon);
     });
 
     it('should render MoreHorizIcon', () => {
-      const wrapper = shallow(<IconMenu context={Context} items={items} iconType="horizontal" />);
+      const wrapper = shallow(<IconMenu context={context} items={items} iconType="horizontal" />);
       const iconButton = wrapper.shallow().childAt(0);
       assert.strictEqual(iconButton.childAt(0).type(), MoreHorizIcon);
     });
@@ -99,7 +151,7 @@ describe('<IconMenu /> tests', () => {
       const Home = Icon.getIcon({ dynamicIcon: 'Home' });
       const wrapper = shallow((
         <IconMenu
-          context={Context}
+          context={context}
           items={items}
           iconType="custom"
           customIcon={Home} />

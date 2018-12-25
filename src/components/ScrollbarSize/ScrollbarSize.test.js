@@ -1,14 +1,15 @@
-import { assert } from 'chai';
-import { mount, shallow } from 'enzyme';
-import EventListener from 'react-event-listener';
 import React from 'react';
+import { assert } from 'chai';
 import { spy } from 'sinon';
+import { shallow, mount } from 'enzyme';
+import EventListener from 'react-event-listener';
 import ScrollbarSize from './ScrollbarSize';
 
 describe('<ScrollbarSize />', () => {
   describe('prop: onLoad', () => {
     let wrapper;
     const onLoad = spy();
+
     afterEach(() => {
       wrapper.unmount();
     });

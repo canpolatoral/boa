@@ -1,11 +1,22 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
 import { assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
 import InputAction from './InputAction';
-import context from '../../../test/utils/context';
+import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<InputAction /> tests', () => {
+  let mount;
+  let shallow;
+
+  before(() => {
+    mount = createMount();
+    shallow = createShallow();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount(<InputAction context={context} />);
   });

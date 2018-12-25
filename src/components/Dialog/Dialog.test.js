@@ -4,8 +4,7 @@ import MuiDialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { Button } from '@boa/components/Button';
 import Dialog from './Dialog';
-import context from '../../../test/utils/context';
-import { createShallow } from '../../../test/utils';
+import { context, createShallow } from '../../../test/utils';
 
 describe('<Dialog /> tests', () => {
   let shallow;

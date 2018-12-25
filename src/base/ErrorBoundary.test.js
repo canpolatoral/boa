@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { expect } from 'chai';
-// import sinon from 'sinon';
-import ErrorBoundary from './ErrorBoundary';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import ErrorBoundary from './ErrorBoundary';
 import { createShallow, createMount } from '../../test/utils';
 
 /* eslint-disable-next-line */
@@ -12,13 +11,18 @@ class BasicComponent extends Component {
     throw new Error('BasicComponent Error');
   }
 }
+
 describe('<ErrorBoundary /> tests', () => {
   let shallow;
   let mount;
 
   before(() => {
-    shallow = createShallow();
-    mount = createMount();
+    shallow = createShallow({ includeBOAcontext: false });
+    mount = createMount({ includeBOAcontext: false });
+  });
+
+  after(() => {
+    mount.cleanUp();
   });
 
   it('should render child when no error', () => {
@@ -44,22 +48,6 @@ describe('<ErrorBoundary /> tests', () => {
     const dialog = wrapper.find(DialogTitle).shallow();
     expect(dialog.props()).to.have.property('children', 'ErrorMessage');
   });
-
-  // it('should handle error', () => {
-  //   const consoleError = sinon.stub(console, 'error');
-  //   const wrapper = mount((
-  //     <ErrorBoundary>
-  //       <BasicComponent />
-  //     </ErrorBoundary>
-  //   ));
-  //   consoleError.restore();
-  //   const dialog = wrapper.find(DialogTitle);
-  //   expect(dialog.props()).to.have.property('children', 'BasicComponent Error');
-  //   expect(wrapper.state()).to.have.property('open', true);
-  //   expect(wrapper.state()).to.have.property('hasError', true);
-
-  //   // expect(dialog.props()).to.have.property('children', 'hi');
-  // });
 
   it('should handle close', () => {
     const wrapper = shallow((

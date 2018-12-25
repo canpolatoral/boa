@@ -1,11 +1,22 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import { spy } from 'sinon';
 import DocToc from './DocToc';
-import Context from '../../../test/utils/context';
+import { context, createShallow, createMount } from '../../../test/utils'
 
 describe('<DocToc /> tests', () => {
+  let mount;
+  let shallow;
+
+  before(() => {
+    mount = createMount();
+    shallow = createShallow();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should render table of content', () => {
     const content = [
       {
@@ -34,7 +45,7 @@ describe('<DocToc /> tests', () => {
       },
     ];
     const wrapper = shallow((
-      <DocToc context={Context} header="header" content={content} />
+      <DocToc context={context} header="header" content={content} />
     ));
     const ul = wrapper.childAt(0);
     expect(ul.type()).equals('ul');
@@ -77,7 +88,7 @@ describe('<DocToc /> tests', () => {
     ];
     const linkOnClick = spy();
     const wrapper = mount((
-      <DocToc context={Context} header="header" content={content} linkOnClick={linkOnClick} />
+      <DocToc context={context} header="header" content={content} linkOnClick={linkOnClick} />
     ));
     wrapper.findWhere(x => x.type() === 'label' && x.text().includes('first item'))
       .simulate('click');
@@ -113,7 +124,7 @@ describe('<DocToc /> tests', () => {
       },
     ];
     const wrapper = shallow((
-      <DocToc context={Context} header="header" content={content} />
+      <DocToc context={context} header="header" content={content} />
     ));
     wrapper.setProps({ activeItem: '2' });
     expect(wrapper.state().activeItem).to.equals('2');

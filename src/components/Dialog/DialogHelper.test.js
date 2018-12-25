@@ -4,7 +4,7 @@ import { assert } from 'chai';
 import { DialogType, DialogResponseStyle } from '@boa/base';
 import { spy, useFakeTimers, stub } from 'sinon'; // eslint-disable-line
 import DialogHelper from './DialogHelper';
-import context from '../../../test/utils/context';
+import { context } from '../../../test/utils';
 
 describe('DialogHelper tests', () => {
   describe('show dialog tests', () => {
@@ -21,6 +21,10 @@ describe('DialogHelper tests', () => {
       const ref = ReactDOM.findDOMNode(dialogRef.dialog);
       assert.strictEqual(dialog, dialogRef.dialog);
       assert.isNotNull(ref);
+      const paper = ref.querySelectorAll('[class*=MuiPaper-root]')[0];
+      const dialogContent = paper.querySelectorAll('[class*=MuiDialogContent-root]')[0];
+      const content = dialogContent.getElementsByTagName('div')[3];
+      assert.strictEqual(content.innerHTML, 'test');
       DialogHelper.clearRefs(dialogKey);
     });
 

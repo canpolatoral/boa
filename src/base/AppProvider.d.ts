@@ -5,6 +5,6 @@ export interface ThemeProviderProps {
   children?: any;
 }
 
-export default class AppProvider extends React.Component<ThemeProviderProps, {}> {
+export default class AppProvider extends React.Component<ThemeProviderProps> {
   constructor(...args: any[]);
 }

@@ -1,16 +1,27 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
 import { assert } from 'chai';
 import Label from './Label';
-import Context from '../../../test/utils/context';
+import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<Label /> tests', () => {
+  let mount;
+  let shallow;
+
+  before(() => {
+    mount = createMount();
+    shallow = createShallow();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should render', () => {
-    const wrapper = shallow(<Label context={Context} text="Test" />).dive().shallow();
+    const wrapper = shallow(<Label context={context} text="Test" />).dive().shallow();
     assert.strictEqual(wrapper.text(), 'Test');
   });
 
   it('should mount', () => {
-    mount(<Label context={Context} text="Test" />);
+    mount(<Label context={context} text="Test" />);
   });
 });

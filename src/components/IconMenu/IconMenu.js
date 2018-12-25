@@ -68,10 +68,6 @@ class IconMenu extends ComponentBase {
      * it gets added to the DOM.
      */
     isOriginSetted: PropTypes.bool,
-
-    /**
-     * @ignore
-     */
     items: PropTypes.array,
 
     /**
@@ -155,8 +151,10 @@ class IconMenu extends ComponentBase {
   }
 
   onChange(parameters) {
+    /* istanbul ignore else */
     if (parameters) {
       this.setState({ value: parameters.value });
+      /* istanbul ignore else */
       if (this.props.onChange) {
         this.props.onChange(parameters);
       }
@@ -174,8 +172,10 @@ class IconMenu extends ComponentBase {
 
   render() {
     const { anchorEl } = this.state;
+
     let menuItems = [];
 
+    /* istanbul ignore next */
     if (this.props.menuItems) {
       menuItems = this.props.menuItems.map(item => {
         return React.cloneElement(item, {
@@ -239,6 +239,7 @@ class IconMenu extends ComponentBase {
           {icon}
         </IconButton>
         <Popover
+          id={this.props.id}
           open={Boolean(anchorEl)}
           anchorEl={this.state.anchorEl}
           anchorOrigin={this.props.anchorOrigin} // For Popover

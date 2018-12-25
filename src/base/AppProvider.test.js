@@ -7,7 +7,11 @@ describe('<AppProvider /> tests', () => {
   let mount;
 
   before(() => {
-    mount = createMount();
+    mount = createMount({ includeBOAcontext: false });
+  });
+
+  after(() => {
+    mount.cleanUp();
   });
 
   it('should mount without theme', () => {

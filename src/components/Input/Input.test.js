@@ -1,15 +1,26 @@
 import React from 'react';
 import { expect, assert } from 'chai';
-import { shallow, mount } from 'enzyme';
-import Input from './Input';
-import { EditorBase } from '@boa/base';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
+import { EditorBase } from '@boa/base';
 import MuiInput from '@material-ui/core/Input';
 import MuiInputLabel from '@material-ui/core/InputLabel';
 import MuiFormControl from '@material-ui/core/FormControl';
-import context from '../../../test/utils/context';
+import Input from './Input';
+import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<Input /> tests', () => {
+  let mount;
+  let shallow;
+
+  before(() => {
+    mount = createMount();
+    shallow = createShallow();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should extends EditorBase', () => {
     const wrapper = shallow(<Input context={context} />).dive();
     wrapper.is(EditorBase);

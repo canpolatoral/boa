@@ -1,11 +1,20 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { expect, assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
 import InputNumeric from './InputNumeric';
-import context from '../../../test/utils/context';
+import { context, createMount } from '../../../test/utils';
 
 describe('<InputNumeric /> tests', () => {
+  let mount;
+
+  before(() => {
+    mount = createMount();
+  });
+
+  after(() => {
+    mount.cleanUp();
+  });
+
   it('should mount', () => {
     mount(<InputNumeric context={context} />);
   });

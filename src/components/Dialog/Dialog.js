@@ -186,13 +186,15 @@ class Dialog extends ComponentBase {
 
   open(open) {
     this.setState({ open }, () => {
-      if (open === false && this.props.dialogKey) {
+      /* istanbul ignore else */
+      if (open === false) {
         DialogHelper.clearRefs(this.props.dialogKey);
       }
     });
   }
 
   fireClosable() {
+    /* istanbul ignore else */
     if (this.props.onClosing) {
       this.props.onClosing(this, DialogHelper.getContentRef(this.props.dialogKey));
     }

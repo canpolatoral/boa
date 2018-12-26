@@ -2,6 +2,7 @@ import React from 'react';
 import { expect, assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
 import { EditorBase } from '@boa/base';
+import { IconButton } from '@boa/components/IconButton';
 import MuiInput from '@material-ui/core/Input';
 import MuiInputLabel from '@material-ui/core/InputLabel';
 import MuiFormControl from '@material-ui/core/FormControl';
@@ -28,18 +29,18 @@ describe('<Input /> tests', () => {
 
   it('shuld render a div', () => {
     const wrapper = shallow(<Input context={context} />).dive();
-    assert.strictEqual(wrapper.shallow().name(), 'div');
+    assert.strictEqual(wrapper.dive().name(), 'div');
   });
 
   it('shuld render a MuiFormControl inside the div', () => {
     const wrapper = shallow(<Input context={context} />).dive();
-    const control = wrapper.shallow().find(MuiFormControl);
+    const control = wrapper.dive().find(MuiFormControl);
     assert.strictEqual(control.shallow().name(), 'FormControl');
   });
 
   it('shuld render a MuiInputLabel inside the FormControl', () => {
     const wrapper = shallow(<Input floatingLabelText="test" context={context} />).dive();
-    const control = wrapper.shallow().find(MuiFormControl);
+    const control = wrapper.dive().find(MuiFormControl);
     const input = control.shallow().find(MuiInputLabel);
     assert.strictEqual(input.shallow().name(), 'InputLabel');
     assert.strictEqual(input.shallow().props().children, 'test');
@@ -47,38 +48,39 @@ describe('<Input /> tests', () => {
 
   it('shuld render a MuiInput inside the FormControl', () => {
     const wrapper = shallow(<Input defaultValue="test" context={context} />).dive();
-    const control = wrapper.shallow().find(MuiFormControl);
+    const control = wrapper.dive().find(MuiFormControl);
     const input = control.shallow().find(MuiInput);
     assert.strictEqual(input.shallow().name(), 'Input');
     assert.strictEqual(input.shallow().props().value, 'test');
   });
 
-  it('should render with defaultValue', () => {
+  it('should mount with defaultValue', () => {
     const wrapper = mount(<Input context={context} defaultValue="testDefaultValue" />);
     expect(wrapper.find('input').props().value).equals('testDefaultValue');
   });
 
-  it('should render with value', () => {
+  it('should mount with value', () => {
     const wrapper = mount(<Input context={context} value="testValue" />);
     expect(wrapper.find('input').props().value).equals('testValue');
   });
 
   it('should render a disabled <input />', () => {
     const wrapper = shallow(<Input context={context} disabled />).dive();
-    const control = wrapper.shallow().find(MuiFormControl);
+    const control = wrapper.dive().find(MuiFormControl);
     const input = control.shallow().find(MuiInput);
     assert.strictEqual(input.shallow().name(), 'Input');
     assert.strictEqual(input.shallow().props().disabled, true);
   });
 
-  it('should mount', () => {
-    mount(<Input context={context} />);
-  });
-
   it('should mount RTL', () => {
-    context.languageId = 5;
-    context.localization.isRightToLeft = true;
-    mount(<Input context={context} />);
+    const newContext = Object.assign({}, context,
+      {
+        languageId: 5,
+        localization: {
+          isRightToLeft: true,
+        },
+      });
+    mount(<Input context={newContext} />);
   });
 
   it('should fire event callbacks', () => {
@@ -99,7 +101,7 @@ describe('<Input /> tests', () => {
 
   it('should setValue, getValue, resetValue', () => {
     const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
-    const input = wrapper.shallow();
+    const input = wrapper.dive();
     assert.strictEqual(input.instance().getValue(), 'test');
     input.instance().setValue('test-new');
     assert.strictEqual(input.instance().getValue(), 'test-new');
@@ -109,25 +111,81 @@ describe('<Input /> tests', () => {
 
   it('should setDisable', () => {
     const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
-    const input = wrapper.shallow();
+    const input = wrapper.dive();
     input.instance().setDisable(true);
     assert.strictEqual(input.state().disabled, true);
   });
 
-  // it('should fire counter event', () => {
-  //   const onTimerFinished = spy();
-  //   const clock = useFakeTimers();
-  //   mount((
-  //     <Input
-  //       onTimerFinished={onTimerFinished}
-  //       context={context}
-  //       timerDuration={10}
-  //       showCounter />
-  //   ));
-  //   clock.tick(10);
-  //   assert.strictEqual(onTimerFinished.callCount,
-  //     1, 'should have called the onTimerFineshed handler');
-  //   clock.restore();
-  //   onTimerFinished.restore();
-  // });
+  it('should fire counter event', () => {
+    const onTimerFinished = spy();
+    const clock = useFakeTimers(new Date());
+    mount((
+      <Input
+        onTimerFinished={onTimerFinished}
+        context={context}
+        timerDuration={5}
+        showCounter />
+    ));
+    clock.tick(6000);
+    assert.strictEqual(onTimerFinished.callCount,
+      1, 'should have called the onTimerFineshed handler');
+    clock.restore();
+  });
+
+  describe('prop changes', () => {
+    it('should change timerDuration', () => {
+      const onTimerFinished = spy();
+      const wrapper = mount((
+        <Input
+          onTimerFinished={onTimerFinished}
+          context={context}
+          timerDuration={3}
+          showCounter />
+      ));
+      const clock = useFakeTimers(new Date());
+      wrapper.setProps({ timerDuration: 10 });
+      clock.tick(11000);
+      assert.strictEqual(onTimerFinished.callCount,
+        1, 'should have called the onTimerFineshed handler');
+      clock.restore();
+    });
+
+    it('should change disabled', () => {
+      const wrapper = mount(<Input context={context} />);
+      wrapper.setProps({ disabled: true });
+      const input = wrapper.find(MuiInput);
+      assert.strictEqual(input.props().disabled, true);
+    });
+
+    it('should change textSelection', () => {
+      const wrapper = mount(<Input value="hello" context={context} />);
+      wrapper.setProps({ textSelection: { start: 1, end: 2 } });
+      const input = wrapper.find('input');
+      assert.strictEqual(input.getDOMNode().selectionStart, 1);
+      assert.strictEqual(input.getDOMNode().selectionEnd, 2);
+    });
+  });
+
+  describe('prop:clearButton', () => {
+    it('should render clear buton', () => {
+      const wrapper = mount(<Input context={context} value="test" showClearButton />);
+      const button = wrapper.find(IconButton);
+      assert.strictEqual(button.props().dynamicIcon, 'Close');
+    });
+
+    it('should onClick clear buton', () => {
+      const onChange = spy();
+      const wrapper = mount(
+        <Input
+          context={context}
+          onChange={onChange}
+          value="test"
+          showClearButton />);
+
+      const button = wrapper.find(IconButton);
+      button.simulate('click');
+      assert.strictEqual(onChange.callCount, 1);
+      assert.strictEqual(wrapper.instance().getInstance().getValue(), '');
+    });
+  });
 });

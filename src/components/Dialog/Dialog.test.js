@@ -1,9 +1,11 @@
 import React from 'react';
 import { assert } from 'chai';
+import { stub } from 'sinon';
 import MuiDialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { Button } from '@boa/components/Button';
 import Dialog from './Dialog';
+import DialogHelper from './DialogHelper';
 import { context, createShallow } from '../../../test/utils';
 
 describe('<Dialog /> tests', () => {
@@ -18,11 +20,12 @@ describe('<Dialog /> tests', () => {
     assert.strictEqual(wrapper.dive().type(), MuiDialog);
   });
 
-  it('should component will receive props', () => {
+  it('should handle prop changes', () => {
     const wrapper = shallow(<Dialog context={context} open />);
     wrapper.setProps({ open: false, title: 'test' });
     assert.strictEqual(wrapper.state().open, false);
     assert.strictEqual(wrapper.state().title, 'test');
+    assert.strictEqual(wrapper.dive().shallow().props().open, false);
   });
 
   it('should show and change header', () => {
@@ -69,8 +72,11 @@ describe('<Dialog /> tests', () => {
   });
 
   it('should change status with open method', () => {
-    const wrapper = shallow(<Dialog context={context} open />);
+    const wrapper = shallow(<Dialog context={context} open dialogKey="dialogKey" />);
+    const clearRefs = stub(DialogHelper, 'clearRefs');
     wrapper.instance().open(false);
     assert.strictEqual(wrapper.state().open, false);
+    assert.strictEqual(clearRefs.callCount, 1);
+    clearRefs.restore();
   });
 });

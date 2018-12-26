@@ -96,28 +96,15 @@ class IconButton extends ComponentBase {
     focusRipple: true,
   };
 
-  constructor(props, context) {
-    super(props, context);
-    this.state = { disabled: props.disabled };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.disabled !== this.props.disabled) {
-      this.setDisable(nextProps.disabled);
-    }
-  }
-
-  setDisable(value) {
-    this.setState({ disabled: value });
-  }
-
   render() {
     const { classes } = this.props;
     const tooltipTitle = this.props.tooltip;
     const tooltipPosition = this.props.tooltipPosition;
     const iconProperties = this.props.iconProperties;
+
+    /* istanbul ignore if */
     if (iconProperties) {
-      iconProperties.color = this.state.disabled ? 'disabled' : iconProperties.color;
+      iconProperties.color = this.props.disabled ? 'disabled' : iconProperties.color;
     }
 
     const iconButton = (
@@ -128,7 +115,7 @@ class IconButton extends ComponentBase {
         }}
         onClick={this.props.onClick}
         style={this.props.style}
-        disabled={this.state.disabled}
+        disabled={this.props.disabled}
         focusRipple={this.props.focusRipple}
         disableRipple={this.props.disableRipple}
       >

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PredefinedMask from './constants';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Input } from '@boa/components/Input';
+import detectCopyPaste from './detectCopyPaste';
 
 @ComponentComposer
 class InputMask extends ComponentBase {
@@ -15,7 +16,7 @@ class InputMask extends ComponentBase {
     disabled: PropTypes.bool,
     errorText: PropTypes.string,
     inputType: PropTypes.string,
-    mask: PropTypes.string,
+    mask: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
@@ -41,7 +42,6 @@ class InputMask extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
-
     this.setProps(props);
     this.onChange = this.onChange.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
@@ -107,15 +107,13 @@ class InputMask extends ComponentBase {
 
   // onchange event
   onChange(e) {
+    const { currentMask, isCorrectFormat } = this;
     const value = e.target.value;
     const result = this.isCorrectFormatText(this.currentMask, value);
 
     const compareValue = this.snapshotValue || result.value;
-    if (
-      this.isCorrectFormat === true &&
-      compareValue !== undefined &&
-      compareValue.length !== this.currentMask.length
-    ) {
+
+    if (isCorrectFormat === true && compareValue && compareValue.length !== currentMask.length) {
       this.isCorrectFormat = false;
     }
 
@@ -173,39 +171,13 @@ class InputMask extends ComponentBase {
     return { value: newText, saltValue: saltText };
   }
 
-  // To understand special key pressed.
-  // eslint-disable-next-line
-  detectCopyPaste(keyCode, event) {
-    let result = false;
-    const charCode = String.fromCharCode(keyCode).toLowerCase();
-
-    if (event.ctrlKey && charCode === 'c') {
-      // this.debugLog('Ctrl + C pressed');
-      result = true;
-    } else if (event.ctrlKey && charCode === 'v') {
-      // this.debugLog('Ctrl + V pressed');
-      result = true;
-    } else if (event.ctrlKey && charCode === 'a') {
-      // this.debugLog('Ctrl + A pressed');
-      result = true;
-    } else if (event.metaKey && charCode === 'c') {
-      // this.debugLog('Cmd + C pressed');
-      result = true;
-    } else if (event.metaKey && charCode === 'v') {
-      // this.debugLog('Cmd + V pressed');
-      result = true;
-    }
-
-    return result;
-  }
-
   // onKeyDown Event.
   onKeyDown(e) {
     const key = e.key;
     const keyCode = e.keyCode || e.which;
     this.specialKey = PredefinedMask.AllowKeys.indexOf(keyCode) !== -1;
 
-    const pressShortcut = this.detectCopyPaste(keyCode, e);
+    const pressShortcut = detectCopyPaste(keyCode, e);
 
     if (pressShortcut === true) {
       return;
@@ -216,9 +188,9 @@ class InputMask extends ComponentBase {
 
     if (this.currentMask.length === currentValueLength && this.specialKey === false) {
       e.preventDefault();
-      // onKeyDown > reached max number of key count.
       return;
     }
+
     let typeOfMask = this.currentMask[currentValueLength];
     for (let i = currentValueLength; i < this.currentMask.length; i++) {
       typeOfMask = this.currentMask[i];
@@ -332,25 +304,26 @@ class InputMask extends ComponentBase {
   // render
   render() {
     const { context, inputStyle, type, ...other } = this.props;
+    const { value, focussed } = this.state;
 
     let inputValue = this.snapshotValue || this.state.value;
+    let errorTextResult;
+
     const result = this.isCorrectFormatText(this.currentMask, inputValue);
-    inputValue = result.value || inputValue;
     const compareValue = this.snapshotValue || result.value;
-    if (
-      this.isCorrectFormat === true &&
-      compareValue !== undefined &&
-      compareValue.length !== this.currentMask.length
-    ) {
+
+    inputValue = result.value || inputValue;
+
+    if (this.isCorrectFormat && compareValue && compareValue.length !== this.currentMask.length) {
       this.isCorrectFormat = false;
     }
 
-    const errorTextResult =
-      this.isCorrectFormat === false && this.state.value !== '' && this.state.focussed === false
-        ? this.errorText
-        : '';
+    if (this.isCorrectFormat === false && value !== '' && focussed === false) {
+      errorTextResult = this.errorText;
+    }
 
     let inputStyle2 = Object.assign({}, inputStyle);
+
     if (type === 'IBAN' && this.state.value !== '' && this.isCorrectFormat === true) {
       const filledTextSize = 13;
       inputStyle2 = Object.assign({ fontSize: filledTextSize }, inputStyle);

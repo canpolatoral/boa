@@ -21,25 +21,35 @@ describe('<Button /> tests', () => {
 
   it('should render a <MuiButton> element', () => {
     const wrapper = shallow(<Button text="click" />);
-    assert.strictEqual(wrapper.shallow().type(), MuiButton);
+    assert.strictEqual(wrapper.dive().type(), MuiButton);
   });
 
   it('should render a button with type="contained" by default', () => {
     const wrapper = shallow(<Button text="click" />);
     assert.strictEqual(wrapper.name(), 'Button');
     assert.strictEqual(wrapper.props().type, 'contained');
-    assert.strictEqual(wrapper.shallow().props().variant, 'contained');
+    assert.strictEqual(wrapper.dive().props().variant, 'contained');
   });
 
   it('should render a icon button with type="icon"', () => {
-    const wrapper = shallow(<Button type="icon" dynamicIcon="Home" text="click" />);
-    assert.strictEqual(wrapper.shallow().props().dynamicIcon, 'Home');
-    expect(wrapper.shallow().name()).contains('IconButton');
+    const wrapper = shallow(<Button type="icon" text="click" />);
+    expect(wrapper.dive().name()).contains('IconButton');
   });
 
-  it('should render a dynamicIcon dynamicIcon="Home"', () => {
+  it('should render a SVG Icon with dynamicIcon="Home"', () => {
     const wrapper = shallow(<Button text="click" dynamicIcon="Home" />);
-    assert.strictEqual(wrapper.shallow().childAt(0).type(), SvgIcons.Home);
+    assert.strictEqual(wrapper.dive().childAt(0).type(), SvgIcons.Home);
+  });
+
+  it('should assign outer style to default style', () => {
+    const wrapper = mount((
+      <Button
+        text="style"
+        dynamicIcon="Home"
+        iconProperties={{ style: { marginLeft: 8 } }} />
+    ));
+    assert.strictEqual(wrapper.props().iconProperties.style.marginRight, 8);
+    assert.strictEqual(wrapper.find(SvgIcons.Home).props().style.marginLeft, 8);
   });
 
   it('should mount', () => {
@@ -50,6 +60,7 @@ describe('<Button /> tests', () => {
     const wrapper = shallow(<Button text="click" />).shallow();
     wrapper.setProps({ disabled: true });
     assert.strictEqual(wrapper.state().disabled, true);
+    assert.strictEqual(wrapper.dive().props().disabled, true);
   });
 
   it('simulates click events', () => {
@@ -59,30 +70,20 @@ describe('<Button /> tests', () => {
     expect(onButtonClick).to.have.property('callCount', 1);
   });
 
-  it('should label be UpperCase format with allowLabelCase=false', () => {
+  it('should label be "UpperCase" format with allowLabelCase=false', () => {
     const wrapper = shallow(<Button text="aaa" allowLabelCase={false} />);
-    assert.strictEqual(wrapper.shallow().instance().getLabel(), 'AAA');
+    assert.strictEqual(wrapper.dive().instance().getLabel(), 'AAA');
   });
 
   it('should label be empty with allowLabelCase=false and text is null', () => {
     const wrapper = shallow(<Button text={null} allowLabelCase={false} />);
-    assert.strictEqual(wrapper.shallow().instance().getLabel(), '');
-  });
-
-  it('should assign icon styles', () => {
-    const wrapper = mount((
-      <Button
-        text="style"
-        dynamicIcon="Home"
-        iconProperties={{ style: { marginLeft: 8 } }} />
-    ));
-    assert.strictEqual(wrapper.props().iconProperties.style.marginRight, 8);
+    assert.strictEqual(wrapper.dive().instance().getLabel(), '');
   });
 
   it('should assign textPosition', () => {
     const wrapper = mount((
       <Button
-        text="style"
+        text="click"
         textPosition="right" />
     ));
     let muiButton = wrapper.find(MuiButton);

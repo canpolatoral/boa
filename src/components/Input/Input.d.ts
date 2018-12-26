@@ -34,6 +34,7 @@ export interface InputProps extends ComponentBaseProps {
   floatingLabelStyle?: any;
   hintStyle?: any;
   name?: string;
+  showClearButton: boolean;
   style?: React.CSSProperties;
   underlineDisabledStyle?: any;
   underlineFocusStyle?: any;

@@ -1,6 +1,9 @@
 import React from 'react';
 import { assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
+// import { IconButton } from '@boa/components/IconButton';
+import { Input } from '@boa/components/Input';
+import { InputNumeric } from '@boa/components/InputNumeric';
 import InputAction from './InputAction';
 import { context, createShallow, createMount } from '../../../test/utils';
 
@@ -17,14 +20,27 @@ describe('<InputAction /> tests', () => {
     mount.cleanUp();
   });
 
-  it('should mount', () => {
-    mount(<InputAction context={context} />);
+  it('should render Input', () => {
+    const wrapper = mount(<InputAction value="test" context={context} />);
+    const input = wrapper.find(Input);
+    assert.strictEqual('test', input.props().value);
+  });
+
+  it('should render InputNumeric', () => {
+    const wrapper = mount(<InputAction type="numeric" value={10} context={context} />);
+    const input = wrapper.find(InputNumeric);
+    assert.strictEqual(10, input.props().value);
   });
 
   it('should mount RTL', () => {
-    context.languageId = 5;
-    context.localization.isRightToLeft = true;
-    mount(<InputAction context={context} />);
+    const newContext = Object.assign({}, context,
+      {
+        languageId: 5,
+        localization: {
+          isRightToLeft: true,
+        },
+      });
+    mount(<InputAction context={newContext} />);
   });
 
   it('should fire event callbacks', () => {
@@ -56,5 +72,95 @@ describe('<InputAction /> tests', () => {
     const wrapper = shallow(<InputAction context={context} defaultValue="test" />);
     wrapper.instance().setDisable(true);
     assert.strictEqual(wrapper.state().disabled, true);
+  });
+
+  describe('prop changes', () => {
+    it('should change disabled', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({ disabled: true });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().disabled, true);
+    });
+
+    it('should change value', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({ value: 'new-value' });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().value, 'new-value');
+    });
+
+    it('should change inputDisabled', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({ inputDisabled: true });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().disabled, true);
+    });
+
+    it('should change leftIconList', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({
+        leftIconList: [
+          { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+          { key: 'clearAction', dynamicIcon: 'Clear' },
+        ],
+      });
+    });
+  });
+
+  describe('actions', () => {
+    describe('left icons', () => {
+      it('should render left icons', () => {
+        mount((
+          <InputAction
+            context={context}
+            rightIconList={[
+              { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+              { key: 'clearAction', dynamicIcon: 'Clear' },
+            ]}
+            defaultValue="test" />
+        ));
+        // const iconButtons = wrapper.find(IconButton);
+      });
+    });
+
+    describe('left icons', () => {
+      it('should render left icons', () => {
+      });
+    });
+  });
+
+  describe('instance methods', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = mount(
+        <InputAction
+          context={context}
+          rightIconList={[
+            { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+            { key: 'clearAction', dynamicIcon: 'Clear' },
+          ]}
+          leftIconList={[
+            { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+            { key: 'clearAction', dynamicIcon: 'Clear' },
+          ]}
+          defaultValue="test" />);
+    });
+
+    it('should hide left icons', () => {
+      wrapper.instance().hideLeftIcons();
+    });
+
+    it('should show left icons', () => {
+      wrapper.instance().showLeftIcons();
+    });
+
+    it('should hide right icons', () => {
+      wrapper.instance().hideRightIcons();
+    });
+
+    it('should show riht icons', () => {
+      wrapper.instance().showRightIcons();
+    });
   });
 });

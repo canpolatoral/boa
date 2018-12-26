@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import MuiSvgIcon from '@material-ui/core/SvgIcon';
+import MuiIcon from '@material-ui/core/Icon';
 import * as SvgIcons from '@material-ui/icons';
 import { Icon } from './index';
 import { createMount } from '../../../test/utils';
@@ -25,6 +26,12 @@ describe('Icon tests', () => {
     const SvgIcon = Icon.getIcon({ svgIcon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' });
     const wrapper = mount(SvgIcon);
     assert.strictEqual(wrapper.type(), MuiSvgIcon);
+  });
+
+  it('should get fontIcon', () => {
+    const FontIcon = Icon.getIcon({ fontIcon: 'home' });
+    const wrapper = mount(FontIcon);
+    assert.strictEqual(wrapper.type(), MuiIcon);
   });
 
   it('should get bIcon', () => {

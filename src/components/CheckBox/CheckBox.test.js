@@ -23,13 +23,25 @@ describe('<CheckBox /> tests', () => {
 
   it('should render a <MuiCheckbox> element', () => {
     const wrapper = shallow(<CheckBox context={context} checked />);
-    assert.strictEqual(wrapper.shallow().type(), MuiCheckbox);
+    assert.strictEqual(wrapper.dive().type(), MuiCheckbox);
   });
 
   it('should render a <MuiFormControlLabel> element when props contains label', () => {
     const wrapper = shallow(<CheckBox context={context} checked label="label" />);
-    const formControl = wrapper.shallow().find(MuiFormControlLabel);
+    const formControl = wrapper.dive().find(MuiFormControlLabel);
     assert.strictEqual(formControl.props().control.type, MuiCheckbox);
+  });
+
+  it('should render errorText', () => {
+    const wrapper = mount((
+      <CheckBox
+        context={context}
+        errorText="TestErrorText"
+        errorTextVisible
+        label="test" />
+    ));
+    const label = wrapper.find(Label);
+    expect(label.text()).contains('TestErrorText');
   });
 
   it('should mount', () => {
@@ -42,19 +54,19 @@ describe('<CheckBox /> tests', () => {
 
   it('should getValue returns checked status', () => {
     const wrapper = shallow(<CheckBox context={context} label="test" />);
-    assert.strictEqual(wrapper.shallow().instance().getValue(), false);
+    assert.strictEqual(wrapper.dive().instance().getValue(), false);
   });
 
   it('should setValue change the checked status', () => {
     const wrapper = shallow(<CheckBox context={context} label="test" />);
-    const checkBox = wrapper.shallow();
+    const checkBox = wrapper.dive();
     checkBox.instance().setValue(true);
     assert.strictEqual(checkBox.instance().getValue(), true);
   });
 
   it('should resetValue change the checked status to default ', () => {
     const wrapper = shallow(<CheckBox defaultChecked={false} context={context} label="test" />);
-    const checkBox = wrapper.shallow();
+    const checkBox = wrapper.dive();
     checkBox.instance().setValue(true);
     checkBox.instance().resetValue();
     assert.strictEqual(checkBox.instance().getValue(), false);
@@ -62,7 +74,7 @@ describe('<CheckBox /> tests', () => {
 
   it('should setDisable change the disabled status', () => {
     const wrapper = shallow(<CheckBox context={context} label="test" />);
-    const checkBox = wrapper.shallow();
+    const checkBox = wrapper.dive();
     checkBox.instance().setDisable(true);
     assert.strictEqual(checkBox.state().disabled, true);
   });
@@ -93,19 +105,7 @@ describe('<CheckBox /> tests', () => {
     expect(onChange).to.have.property('callCount', 1);
   });
 
-  it('should render errorText', () => {
-    const wrapper = mount((
-      <CheckBox
-        context={context}
-        errorText="TestErrorText"
-        errorTextVisible
-        label="test" />
-    ));
-    const label = wrapper.find(Label);
-    expect(label.text()).contains('TestErrorText');
-  });
-
-  it('should handle componentWillReceiveProps', () => {
+  it('should handle checked prop changes', () => {
     const wrapper = mount((
       <CheckBox
         context={context}
@@ -128,7 +128,7 @@ describe('<CheckBox /> tests', () => {
     expect(mui.props().disabled).to.equals(true);
   });
 
-  it('should handle outer style', () => {
+  it('should handle style prop', () => {
     const wrapper = mount((
       <CheckBox
         context={context}

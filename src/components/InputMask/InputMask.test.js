@@ -1,4 +1,6 @@
 import React from 'react';
+import { assert } from 'chai';
+import { Input } from '@boa/components/Input';
 import InputMask from './InputMask';
 import { context, createMount } from '../../../test/utils';
 
@@ -13,13 +15,9 @@ describe('<InputMask /> tests', () => {
     mount.cleanUp();
   });
 
-  it('should mount', () => {
-    mount(<InputMask context={context} />);
-  });
-
-  it('should mount RTL', () => {
-    context.languageId = 5;
-    context.localization.isRightToLeft = true;
-    mount(<InputMask context={context} />);
+  it('should render Input', () => {
+    const wrapper = mount(<InputMask mask="aa nn" value="1234" context={context} />);
+    const input = wrapper.find(Input);
+    assert.strictEqual('1234', input.props().value);
   });
 });

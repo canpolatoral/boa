@@ -32,6 +32,7 @@ export class Icon {
         folder && folder[cmpProps.bIcon] ? folder[cmpProps.bIcon] : BIcons.Actions.None;
       return <BIconType {...cmpProps.iconProperties} />;
     }
+    /* istanbul ignore if */
     if (cmpProps.icon) {
       const icon = React.cloneElement(cmpProps.icon, { ...cmpProps.iconProperties });
       return icon;

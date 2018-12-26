@@ -13,12 +13,12 @@ import { getTimeInfo, hasValue } from './utils';
 import { IconButton } from '@boa/components/IconButton';
 
 function baseStyles(theme) {
-  const { boaPalette, palette } = theme;
+  const { boaPalette } = theme;
   return {
     input: {
-      color: boaPalette ? boaPalette.base450 : palette.primary.main,
+      color: boaPalette.base450,
       fontSize: 14,
-      caretColor: boaPalette ? boaPalette.pri500 : palette.primary.main,
+      caretColor: boaPalette.pri500,
       padding: 0,
       marginBottom: 3,
       // minHeight: 19,
@@ -42,7 +42,7 @@ function baseStyles(theme) {
 }
 
 const styles = (theme) => {
-  const { boaPalette, palette } = theme;
+  const { boaPalette } = theme;
   return ({
     input: Object.assign(baseStyles(theme).input, {
       marginRight: theme.direction === 'rtl' ? 0 : null,
@@ -65,29 +65,29 @@ const styles = (theme) => {
 
     inputUnderline: {
       '&:after': {
-        borderBottom: `2px solid ${boaPalette ? boaPalette.pri500 : palette.primary.main}`,
+        borderBottom: `2px solid ${boaPalette.pri500}`,
       },
 
       '&:before': {
-        borderBottom: `1px solid ${boaPalette ? boaPalette.base250 : palette.primary.main}`,
+        borderBottom: `1px solid ${boaPalette.base250}`,
       },
 
       '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-        borderBottom: `2px solid ${boaPalette ? boaPalette.base250 : palette.primary.main}`,
+        borderBottom: `2px solid ${boaPalette.base250}`,
       },
     },
 
     inputUnderlineRequired: {
       '&:after': {
-        borderBottom: `2px solid ${boaPalette ? boaPalette.pri500 : palette.primary.main}`,
+        borderBottom: `2px solid ${boaPalette.pri500}`,
       },
 
       '&:before': {
-        borderBottom: `1px solid ${boaPalette ? boaPalette.obli300 : palette.primary.main}`,
+        borderBottom: `1px solid ${boaPalette.obli300}`,
       },
 
       '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-        borderBottom: `2px solid ${boaPalette ? boaPalette.obli300 : palette.primary.main}`,
+        borderBottom: `2px solid ${boaPalette.obli300}`,
       },
     },
 
@@ -98,7 +98,7 @@ const styles = (theme) => {
     inputLabelShink: Object.assign(baseStyles(theme).inputLabel, {
       paddingTop: '2px !important',
       marginTop: '0px !important',
-      color: boaPalette ? boaPalette.pri500 : palette.primary.main,
+      color: boaPalette.pri500,
     }),
 
     inputLabelRoot: Object.assign(baseStyles(theme).inputLabeRootBase, {}),
@@ -107,7 +107,7 @@ const styles = (theme) => {
       color: 'transparent',
     }),
     inputLabelRootDisabled: Object.assign(baseStyles(theme).inputLabeRootBase, {
-      color: boaPalette ? boaPalette.base250 : palette.primary.main,
+      color: boaPalette.base250,
     }),
   });
 };
@@ -166,6 +166,7 @@ class Input extends EditorBase {
     style: PropTypes.object,
     suffixText: PropTypes.any,
     textareaStyle: PropTypes.object,
+    textSelection: PropTypes.object,
     timerDuration: PropTypes.number,
     validationMessageStyleActive: PropTypes.bool,
     value: PropTypes.any,
@@ -198,14 +199,11 @@ class Input extends EditorBase {
     this.onBlur = this.onBlur.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
     this.setTimer = this.setTimer.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     const { value, disabled, timerDuration } = nextProps;
-
     this.counterUpdate(nextProps);
     if (timerDuration !== this.props.timerDuration) {
       this.setTimer(timerDuration);
@@ -213,12 +211,12 @@ class Input extends EditorBase {
     // null ise kasıtlı siliniyordur, silmeli.
     // undefined ise value geçilmemiştir, değişmemeli.
     // diğer durumlarda prop yada state'ten farklı gelmişse değişmeli.
-    if (
-      value === null ||
-      (value !== undefined && (value !== this.props.value || value !== this.state.value))
-    ) {
-      this.setState({ value: value === null ? '' : value });
+    if (value === null) {
+      this.setState({ value: '' });
+    } else if (value !== undefined && (value !== this.props.value || value !== this.state.value)) {
+      this.setState({ value });
     }
+
     if (disabled !== this.props.disabled) {
       this.setState({ disabled });
     }
@@ -242,14 +240,14 @@ class Input extends EditorBase {
         }
       }
       counterText = text.length;
-
       findDOMNode(this.bottomRightInfoSpan).innerText = counterText;
     }
   }
 
   componentDidUpdate() {
-    const textSelection = this.state.textSelection;
-    if (textSelection) {
+    const textSelection = this.props.textSelection;
+    if (textSelection && textSelection.start && textSelection.end) {
+      /* istanbul ignore else */
       if (this.textField) {
         this.textField.setSelectionRange(textSelection.start, textSelection.end);
       }
@@ -289,6 +287,7 @@ class Input extends EditorBase {
     this.setState({ focussed: false });
     // this.validateConstraint();
     // her blur oluşunda value constraint mesajlarının temizlenmesi için.
+    /* istanbul ignore else */
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
@@ -298,13 +297,16 @@ class Input extends EditorBase {
     v = e.target.value;
     this.counterUpdate(this.props, v);
     this.setState({ value: v }, () => {
+      /* istanbul ignore if */
       if (this.props.onChangeSync) {
         this.props.onChangeSync(e, v);
       }
     });
+    /* istanbul ignore else */
     if (this.props.onChange) {
       this.props.onChange(e, v);
     }
+    /* istanbul ignore if */
     if (this.props.onDynamicChange) {
       this.props.onDynamicChange(e);
     }
@@ -312,20 +314,9 @@ class Input extends EditorBase {
 
   onFocus(e) {
     this.setState({ focussed: true });
+    /* istanbul ignore else */
     if (this.props.onFocus) {
       this.props.onFocus(e);
-    }
-  }
-
-  onKeyDown(e) {
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(e);
-    }
-  }
-
-  onKeyUp(e) {
-    if (this.props.onKeyUp) {
-      this.props.onKeyUp(e);
     }
   }
 
@@ -356,7 +347,6 @@ class Input extends EditorBase {
   }
 
   validationToString() {
-    // TODO: burada tüm mesajlar mı basılacak ?
     return this.validationResult[0].message;
   }
 
@@ -377,19 +367,16 @@ class Input extends EditorBase {
       rows,
       rowsMax,
       prefixText,
+      showClearButton,
       showCounter,
       inputProps,
       underlineShow,
     } = this.props;
 
     let { errorText, hintText, suffixText } = this.props;
+    const { value, disabled, focussed } = this.state;
 
-    if (this.props.showClearButton &&
-      this.state.value !== null &&
-      this.state.value !== undefined &&
-      this.state.value !== '' &&
-      this.state.disabled !== true
-    ) {
+    if (showClearButton && hasValue(value) && !disabled) {
       suffixText = (
         <div>
           <IconButton
@@ -398,16 +385,19 @@ class Input extends EditorBase {
               style: { color: this.props.context.theme.boaPalette.base300 },
             }}
             onClick={(e) => {
-              const value = '';
-              this.counterUpdate(this.props, value);
-              this.setState({ value }, () => {
+              const v = '';
+              this.counterUpdate(this.props, v);
+              this.setState({ value: v }, () => {
+                /* istanbul ignore if */
                 if (this.props.onChangeSync) {
-                  this.props.onChangeSync(e, value);
+                  this.props.onChangeSync(e, v);
                 }
               });
+              /* istanbul ignore else */
               if (this.props.onChange) {
-                this.props.onChange(e, value);
+                this.props.onChange(e, v);
               }
+              /* istanbul ignore if */
               if (this.props.onDynamicChange) {
                 this.props.onDynamicChange(e);
               }
@@ -558,8 +548,6 @@ class Input extends EditorBase {
       // this.props.inlineGridMode ? (this.props.multiLine ? 10 : hideshowMarginTop ? 0 : 12) : 0
     };
     const rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
-    const { focussed, value } = this.state;
-
     let visibleLabel = true;
 
     if (!focussed) {
@@ -645,8 +633,8 @@ class Input extends EditorBase {
             onBlur={this.onBlur}
             onChange={this.onChange}
             onFocus={this.onFocus}
-            onKeyDown={this.onKeyDown}
-            onKeyUp={this.onKeyUp}
+            onKeyDown={this.props.onKeyDown}
+            onKeyUp={this.props.onKeyUp}
             placeholder={hintText}
             startAdornment={
               prefixText && (
@@ -677,19 +665,24 @@ class Input extends EditorBase {
               )
             }
           />
-          {!this.props.inlineGridMode && (
-            <MuiFormHelperText // margin={'dense'}
-              style={{ marginTop: 0 }}
-              disabled={this.state.disabled}
-            >
-              {error && <div style={errorStyle}>{errorText}</div>}
-              {bottomLeftInfoSpace || bottomRightInfoSpace ? (
-                <div style={bottomInfoStyle}>
-                  {bottomLeftInfoSpace}
-                  {bottomRightInfoSpace}
-                </div>
-              ) : null}
-            </MuiFormHelperText>
+          {!this.props.inlineGridMode && error && (
+            <div style={errorStyle}>
+              <MuiFormHelperText
+                style={{ marginTop: 0 }}
+                disabled={this.state.disabled}>
+                {errorText}
+              </MuiFormHelperText>
+            </div>
+          )}
+          {!this.props.inlineGridMode && (bottomLeftInfoSpace || bottomRightInfoSpace) && (
+            <div style={bottomInfoStyle}>
+              <MuiFormHelperText
+                style={{ marginTop: 0 }}
+                disabled={this.state.disabled}>
+                {bottomLeftInfoSpace}
+                {bottomRightInfoSpace}
+              </MuiFormHelperText>
+            </div>
           )}
         </MuiFormControl>
       </div>

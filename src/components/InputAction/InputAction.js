@@ -44,8 +44,6 @@ class InputAction extends ComponentBase {
     super(props, context);
 
     this.onChange = this.onChange.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.setFloatingLabelStyle = this.setFloatingLabelStyle.bind(this);
     this.getFloatingLabelStyle = this.getFloatingLabelStyle.bind(this);
@@ -76,36 +74,27 @@ class InputAction extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { disabled, inputDisabled, value } = nextProps;
-    if (this.props.leftIconList && this.props.leftIconList.length > 0) {
-      this.setFloatingLabelStyle();
+    const { disabled, inputDisabled, value, rightIconList, leftIconList } = nextProps;
+
+    if (this.props.rightIconList !== rightIconList || this.props.leftIconList !== leftIconList) {
+      this.setFloatingLabelStyle(nextProps.rightIconList, nextProps.leftIconList);
     }
+
     if (value != null) {
       this.setState({ value });
     }
+
     if (disabled !== this.props.disabled || inputDisabled !== this.props.inputDisabled) {
       this.setState({ disabled, inputDisabled: disabled || inputDisabled });
     }
   }
 
   onChange(e, v) {
-    this.setState({
-      value: v,
-    });
+    this.setState({ value: v });
+
+    /* istanbul ignore else */
     if (this.props.onChange) {
       this.props.onChange(e, v);
-    }
-  }
-
-  onKeyDown(e) {
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(e);
-    }
-  }
-
-  onFocus(e) {
-    if (this.props.onFocus) {
-      this.props.onFocus(e);
     }
   }
 
@@ -143,12 +132,21 @@ class InputAction extends ComponentBase {
     this.props.onBlur(e);
   }
 
-  setFloatingLabelStyle() {
-    this.setState({ floatingLabelStyle: this.getFloatingLabelStyle() });
+  setFloatingLabelStyle(rightIconList, leftIconList) {
+    this.setState({
+      floatingLabelStyle: this.getFloatingLabelStyle(false, rightIconList, leftIconList),
+    });
   }
 
-  getFloatingLabelStyle(usePropValue) {
-    const { rightIconList, leftIconList } = this.props;
+  getFloatingLabelStyle(usePropValue, rightIconList, leftIconList) {
+    if (!rightIconList) {
+      rightIconList = this.props.rightIconList;
+    }
+
+    if (!leftIconList) {
+      leftIconList = this.props.leftIconList;
+    }
+
     const hideRightIcons = usePropValue ? this.props.hideRightIcons : this.state.hideRightIcons;
     let paddingRight = 0;
     if (rightIconList && !hideRightIcons) {
@@ -214,6 +212,7 @@ class InputAction extends ComponentBase {
       padding: 0,
       // transform: 'scale(0.83)' // icon boyutları 20 px olması için diğer türlü olmuyor.
     };
+
     const baseIconContainerStyle = {
       width: this.iconContainerSize,
       height: this.iconContainerSize,
@@ -262,6 +261,7 @@ class InputAction extends ComponentBase {
       rightIcons = this.props.rightIconList.map((icon, index) => {
         return (
           <div
+            key={icon.key || `rightIcon${index}`}
             style={Object.assign(
               baseIconContainerStyle,
               {
@@ -291,6 +291,7 @@ class InputAction extends ComponentBase {
       leftIcons = this.props.leftIconList.map((icon, index) => {
         return (
           <div
+            key={icon.key || `leftIcon${index}`}
             style={Object.assign(
               baseIconContainerStyle,
               {
@@ -338,9 +339,9 @@ class InputAction extends ComponentBase {
         type={type}
         value={this.state.value}
         onChange={this.onChange}
-        onFocus={this.onFocus}
         onBlur={this.onBlur}
-        onKeyDown={this.onKeyDown}
+        onFocus={this.props.onFocus}
+        onKeyDown={this.props.onKeyDown}
         prefixText={leftIcons.length ? leftIcons : null}
         suffixText={rightIcons.length ? rightIcons : null}
       />

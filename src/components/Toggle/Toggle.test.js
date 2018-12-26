@@ -36,7 +36,7 @@ describe('<Toggle /> tests', () => {
 
   it('should setValue, getValue, resetValue', () => {
     const wrapper = shallow(<Toggle context={context} />).dive();
-    const input = wrapper.shallow();
+    const input = wrapper.dive();
     assert.strictEqual(input.instance().getValue(), false);
     input.instance().setValue(true);
     assert.strictEqual(input.instance().getValue(), true);

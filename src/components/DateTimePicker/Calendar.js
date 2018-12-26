@@ -148,6 +148,7 @@ class Calendar extends ComponentBase {
   componentWillReceiveProps(nextProps) {
     const { dialogNewSelectDate, initialDate } = nextProps;
     if (dialogNewSelectDate !== undefined) {
+      /* istanbul ignore else */
       if (!isEqualDate(dialogNewSelectDate, this.props.dialogNewSelectDate)) {
         this.setState({
           displayDate: getFirstDayOfMonth(dialogNewSelectDate),

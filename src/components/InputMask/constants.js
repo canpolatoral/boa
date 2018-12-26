@@ -10,9 +10,7 @@ const PredefinedMask = {
     l: /^[a-zA-ZğĞüÜİıçÇöÖşŞ]+$/,
     a: /^.+$/,
   },
-
   MaskCharacter: ['n', 'l', 'a'],
-
   AllowSpecialKeys: [' ', '(', ')', '-'],
   AllowKeys: [8, 13, 16, 17, 18, 32, 33, 34, 35, 36, 37, 38, 39, 40, 46],
   // 8  => backspace

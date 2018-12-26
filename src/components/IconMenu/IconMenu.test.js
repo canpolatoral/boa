@@ -53,9 +53,9 @@ describe('<IconMenu /> tests', () => {
 
   it('should render', () => {
     const wrapper = shallow(<IconMenu context={context} items={items} />);
-    const menuList = wrapper.shallow().childAt(1).childAt(0);
-    assert.strictEqual(wrapper.shallow().childAt(0).type(), IconButton);
-    assert.strictEqual(wrapper.shallow().childAt(1).type(), Popover);
+    const menuList = wrapper.dive().childAt(1).childAt(0);
+    assert.strictEqual(wrapper.dive().childAt(0).type(), IconButton);
+    assert.strictEqual(wrapper.dive().childAt(1).type(), Popover);
     assert.strictEqual(menuList.type(), MenuList);
     menuList.children().forEach((child, index) => {
       const item = items[index];
@@ -115,7 +115,6 @@ describe('<IconMenu /> tests', () => {
     assert.strictEqual(onChange.callCount, 1);
   });
 
-
   describe('prop: menuItems', () => {
     it('should mount with menuItems', () => {
       const wrapper = mount((
@@ -137,13 +136,13 @@ describe('<IconMenu /> tests', () => {
   describe('prop: iconType', () => {
     it('should render MoreVertIcon default', () => {
       const wrapper = shallow(<IconMenu context={context} items={items} />);
-      const iconButton = wrapper.shallow().childAt(0);
+      const iconButton = wrapper.dive().childAt(0);
       assert.strictEqual(iconButton.childAt(0).type(), MoreVertIcon);
     });
 
     it('should render MoreHorizIcon', () => {
       const wrapper = shallow(<IconMenu context={context} items={items} iconType="horizontal" />);
-      const iconButton = wrapper.shallow().childAt(0);
+      const iconButton = wrapper.dive().childAt(0);
       assert.strictEqual(iconButton.childAt(0).type(), MoreHorizIcon);
     });
 
@@ -156,7 +155,7 @@ describe('<IconMenu /> tests', () => {
           iconType="custom"
           customIcon={Home} />
       ));
-      const iconButton = wrapper.shallow().childAt(0);
+      const iconButton = wrapper.dive().childAt(0);
       assert.strictEqual(iconButton.childAt(0).type(), SvgIcons.Home);
     });
   });

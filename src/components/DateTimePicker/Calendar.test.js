@@ -1,6 +1,7 @@
 import React from 'react';
 import { spy } from 'sinon';
-import { assert, expect } from 'chai';
+import chai, { assert, expect } from 'chai';
+import asserttype from 'chai-asserttype';
 import EventListener from 'react-event-listener';
 import Calendar from './Calendar';
 import { context, createShallow } from '../../../test/utils';
@@ -10,16 +11,20 @@ describe('<Calendar /> tests', () => {
 
   before(() => {
     shallow = createShallow();
+    chai.use(asserttype);
   });
 
-  it('should component will receive props', () => {
+  it('should componentWillReceiveProps', () => {
     const wrapper = shallow(<Calendar context={context} style={{}} />);
     const date = new Date();
     date.setMonth(date.getMonth() + 1);
     wrapper.setProps({ dialogNewSelectDate: date, initialDate: date });
     assert.strictEqual(wrapper.state().selectedDate, date);
     assert.strictEqual(wrapper.instance().getSelectedDate(), date);
+    wrapper.setProps({ initialDate: null });
+    expect(wrapper.state().selectedDate).to.be.date();
   });
+
 
   describe('should handle key events', () => {
     let wrapper;
@@ -234,7 +239,7 @@ describe('<Calendar /> tests', () => {
 
   // it('should setValue, getValue, resetValue', () => {
   //   const wrapper = shallow(<Calendar context={context} />).dive();
-  //   const input = wrapper.shallow();
+  //   const input = wrapper.dive();
   //   assert.strictEqual(input.instance().getValue(), false);
   //   input.instance().setValue(true);
   //   assert.strictEqual(input.instance().getValue(), true);

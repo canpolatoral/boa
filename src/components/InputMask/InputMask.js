@@ -20,7 +20,13 @@ class InputMask extends ComponentBase {
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
-    type: PropTypes.oneOf(['CreditCard', 'IBAN', 'MobilePhoneNumber', 'Custom']).isRequired,
+    type: PropTypes.oneOf([
+      'CreditCard',
+      'IBAN',
+      'MobilePhoneNumber',
+      'PhoneNumber',
+      'Custom',
+    ]).isRequired,
     value: PropTypes.string,
   };
 
@@ -101,7 +107,7 @@ class InputMask extends ComponentBase {
       this.setState({ value: nextProps.value });
     }
     if (nextProps.disabled !== this.props.disabled) {
-      this.setState({ disabled: nextProps.disabled });
+      this.setDisable(nextProps.disabled);
     }
   }
 
@@ -212,30 +218,17 @@ class InputMask extends ComponentBase {
     }
   }
 
+  setDisable(value) {
+    this.setState({ disabled: value });
+  }
+
   // To get value
   getValue() {
     return { value: this.state.value, saltValue: this.state.saltValue };
   }
 
-  setDisable(value) {
-    this.setState({ disabled: value });
-  }
-
   resetValue() {
     return this.setState({ value: this.props.defaultValue });
-  }
-
-  // getSnapshot for session management.
-  getSnapshot() {
-    // return this.getValue();
-    return { state: this.state };
-  }
-
-  // setSnapshot for session management.
-  setSnapshot(snapshot) {
-    const { state } = snapshot;
-    this.setState({ ...state });
-    // this.snapshotValue = snapshot;
   }
 
   // onFocus

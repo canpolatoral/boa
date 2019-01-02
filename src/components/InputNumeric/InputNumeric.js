@@ -10,6 +10,7 @@ class InputNumeric extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
     ...Input.propTypes,
+    caretPosition: PropTypes.number,
     format: PropTypes.string,
     maxValue: PropTypes.number,
     minValue: PropTypes.number,
@@ -53,21 +54,32 @@ class InputNumeric extends ComponentBase {
     // null ise kasıtlı siliniyordur, silmeli.
     // undefined ise value geçilmemiştir, değişmemeli.
     // diğer durumlarda prop yada state'ten farklı gelmişse değişmeli.
-    const { format, value, disabled } = nextProps;
-    if (
-      value === null ||
-      (value !== undefined && (value !== this.props.value || value !== this.getValue()))
-    ) {
-      this.setState({ formattedValue: this.getFormattedValue(value, format) });
+    const { format, value, disabled, caretPosition } = nextProps;
+    let shouldValueChange = false;
+
+    if (value === null) {
+      shouldValueChange = true;
+    } else if (value !== undefined && (value !== this.props.value || value !== this.getValue())) {
+      shouldValueChange = true;
     }
+
+    if (shouldValueChange) {
+      this.setValue(value, format);
+    }
+
     if (disabled !== this.props.disabled) {
       this.setState({ disabled });
+    }
+
+    if (this.props.caretPosition !== caretPosition) {
+      this.setState({ caretPosition });
     }
   }
 
   componentDidUpdate() {
     if (this.state.caretPosition !== null) {
       const inputElement = this.binput.getInstance().textField;
+      /* istanbul ignore else */
       if (inputElement) {
         inputElement.setSelectionRange(this.state.caretPosition, this.state.caretPosition);
       }
@@ -80,9 +92,9 @@ class InputNumeric extends ComponentBase {
     const delimiters = Localization.getDelimiters();
     // Home, end, left and right arrows
     const isTextCursorMoveKey = [35, 36, 37, 39].includes(keyCode);
-    const isModifierKey = e.shiftKey || e.altKey || e.ctrlKey;
+    const isModifierKey = e.shiftKey || e.altKey || e.ctrlKey || e.metaKey;
     // Ctrl-A, Ctrl-V, Ctrl-C
-    const isModifierUsedForClipboard = [65, 67, 86] && (e.ctrlKey === true || e.metaKey === true);
+    const isModifierUsedForClipboard = [65, 67, 86].includes(keyCode) && (e.ctrlKey === true || e.metaKey === true);
     // shift-home, shift-end, shift-left, shift-right
     const isModifierUsedForSelection = e.shiftKey && isTextCursorMoveKey;
     // Numbers and numeric keypad
@@ -90,12 +102,15 @@ class InputNumeric extends ComponentBase {
     const isTextModifyKey = keyCode === 8 || keyCode === 46; // Backspace And del
     const islostFocusKey = keyCode === 9; // Tab
     const isNotAffectingValidKey = keyCode === 45; // Ins
-    const isSeperatorKey =
-      ((keyCode === 188 || keyCode === 110) && delimiters.decimal === ',') ||
-      (keyCode === 190 && delimiters.decimal === '.'); // comma and point;
     const isSignChangeKey = keyCode === 189 || keyCode === 109; // dash and subtract
     const isIncreaseDecreaseKey = e.keyCode === 38 || e.keyCode === 40; // upper / lower
 
+    let isSeperatorKey = false;
+    if ((keyCode === 188 || keyCode === 110) && delimiters.decimal === ',') {
+      isSeperatorKey = true;
+    } else if (keyCode === 190 && delimiters.decimal === '.') {
+      isSeperatorKey = true;
+    }
     let returnValue = false;
     let tempValue;
     let numericNewValue;
@@ -107,19 +122,17 @@ class InputNumeric extends ComponentBase {
         returnValue = false;
       }
     } else if (isNumberKey) {
-      const addedNumber = String.fromCharCode(
-        keyCode >= 96 && keyCode <= 105 ? keyCode - 48 : keyCode,
-      ); // eslint-disable-line
-      const oldValue = this.state.formattedValue ? this.state.formattedValue : '';
+      const characterCode = (keyCode >= 96 && keyCode <= 105) ? keyCode - 48 : keyCode;
+      const addedNumber = String.fromCharCode(characterCode);
+      const oldValue = this.state.formattedValue || '';
       const newFormattedValue =
         oldValue.substring(0, e.target.selectionStart) +
         addedNumber +
         oldValue.substring(e.target.selectionEnd); // eslint-disable-line
-      if (
-        this.getFormattedValue(this.state.formattedValue) !==
-        this.getFormattedValue(newFormattedValue)
-      ) {
-        // eslint-disable-line
+
+      const formattedValue = this.getFormattedValue(this.state.formattedValue);
+
+      if (formattedValue !== this.getFormattedValue(newFormattedValue)) {
         numericNewValue = this.getParsedValue(newFormattedValue);
         if (numericNewValue >= this.props.minValue && numericNewValue <= this.props.maxValue) {
           returnValue = true;
@@ -183,12 +196,27 @@ class InputNumeric extends ComponentBase {
       this.props.onKeyDown(e);
     }
 
-    if (!returnValue && e.preventDefault) e.preventDefault();
+    if (process.env.NODE_ENV === 'test') {
+      this.onKeyDownResult = returnValue;
+    }
+
+    /* istanbul ignore else */
+    if (!returnValue && e.preventDefault) {
+      e.preventDefault();
+    }
+
     return returnValue;
   }
 
   getValue() {
     return this.getParsedValue(this.binput.getInstance().getValue());
+  }
+
+  setValue(value, format) {
+    if (!format) {
+      format = this.props.format;
+    }
+    this.setState({ formattedValue: this.getFormattedValue(value, format) });
   }
 
   resetValue() {
@@ -285,9 +313,11 @@ class InputNumeric extends ComponentBase {
 
   getFormattedValue(value, format) {
     const nextFormat = format || this.props.format;
+
     if (value === undefined) {
       return null;
     }
+
     if (value === null || value === '') {
       if (this.binput) {
         this.binput.getInstance().textField.value = ''; // I also dont want to do this :) Bc of paste non numeric string this is done.
@@ -297,7 +327,10 @@ class InputNumeric extends ComponentBase {
     }
 
     if (typeof value === 'string') {
-      if (!value || value === '' || value === '-') return value;
+      if (!value || value === '' || value === '-') {
+        return value;
+      }
+
       const delimiters = Localization.getDelimiters();
       if (nextFormat !== 'D') {
         let tempValue = value.replace(new RegExp(`[${delimiters.thousands}]`, 'g'), '');

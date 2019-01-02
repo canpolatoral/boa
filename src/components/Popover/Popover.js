@@ -117,6 +117,7 @@ class Popover extends ComponentBase {
      */
     onExiting: PropTypes.func,
     onRequestClose: PropTypes.func,
+    onResize: PropTypes.func,
     /**
      * If `true`, the popover is visible.
      */
@@ -125,6 +126,7 @@ class Popover extends ComponentBase {
      * Properties applied to the `Paper` element.
      */
     PaperProps: PropTypes.object,
+    resizable: PropTypes.bool,
     /**
      * @ignore
      */
@@ -229,18 +231,18 @@ class Popover extends ComponentBase {
   }
 
   onResize(e, direction, refToResizableElement) {
-    try {
-      const resizableParent = ReactDOM.findDOMNode(this.resizable).parentNode;
-      resizableParent.style.height = `${refToResizableElement.height}px`;
-      resizableParent.style.width = `${refToResizableElement.width}px`;
-    } catch (ex) {
-      this.debugLog(ex);
+    const resizableParent = ReactDOM.findDOMNode(this.resizable).parentNode;
+    resizableParent.style.height = `${refToResizableElement.height}px`;
+    resizableParent.style.width = `${refToResizableElement.width}px`;
+
+    if (this.props.onResize) {
+      this.props.onResize(e, direction, refToResizableElement);
     }
   }
 
   render() {
     let children;
-    if (this.props.isResizable) {
+    if (this.props.resizable) {
       children = (
         <Resizable
           context={this.props.context}

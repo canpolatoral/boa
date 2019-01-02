@@ -140,12 +140,17 @@ describe('<CheckBox /> tests', () => {
   });
 
   it('should handle RTL', () => {
-    context.languageId = 5;
-    context.localization.isRightToLeft = true;
+    const newContext = Object.assign({}, context,
+      {
+        languageId: 5,
+        localization: {
+          isRightToLeft: true,
+        },
+      });
 
     const wrapper = mount((
       <CheckBox
-        context={context}
+        context={newContext}
         defaultChecked={false}
         errorText="TestErrorText"
         errorTextVisible
@@ -153,8 +158,6 @@ describe('<CheckBox /> tests', () => {
     ));
     const label = wrapper.find(Label);
     assert.strictEqual(label.props().style.textAlign, 'right');
-    context.languageId = 1;
-    context.localization.isRightToLeft = false;
   });
 
   it('should render custom checkedIcon', () => {

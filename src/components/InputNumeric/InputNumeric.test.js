@@ -1,6 +1,7 @@
 import React from 'react';
-import { expect, assert } from 'chai';
+import { assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
+import { Input } from '@boa/components/Input';
 import InputNumeric from './InputNumeric';
 import { context, createMount } from '../../../test/utils';
 
@@ -15,22 +16,73 @@ describe('<InputNumeric /> tests', () => {
     mount.cleanUp();
   });
 
-  it('should mount', () => {
-    mount(<InputNumeric context={context} />);
+  it('should render Input', () => {
+    const wrapper = mount(<InputNumeric value={12} context={context} />);
+    const input = wrapper.find(Input);
+    assert.strictEqual('12', input.props().value);
+  });
+
+  it('should setValue, getValue, resetValue', () => {
+    const wrapper = mount(<InputNumeric context={context} defaultValue={12} />);
+    assert.strictEqual(wrapper.instance().getValue(), 12);
+    wrapper.instance().setValue(1234);
+    assert.strictEqual(wrapper.instance().getValue(), 1234);
+    wrapper.instance().resetValue();
+    assert.strictEqual(wrapper.instance().getValue(), 12);
+  });
+
+  describe('prop changes', () => {
+    it('should change disabled', () => {
+      const wrapper = mount(<InputNumeric value={12} context={context} />);
+      wrapper.setProps({ disabled: true });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().disabled, true);
+    });
+
+    it('should change value to null', () => {
+      const wrapper = mount(<InputNumeric value={12} context={context} />);
+      wrapper.setProps({ value: null });
+      assert.strictEqual(wrapper.instance().getValue(), null);
+    });
+
+    it('should change value ', () => {
+      const wrapper = mount(<InputNumeric value={12} context={context} />);
+      wrapper.setProps({ value: 1234 });
+      assert.strictEqual(wrapper.instance().getValue(), 1234);
+    });
+
+    it('should change caretPosition', () => {
+      const wrapper = mount(<InputNumeric value={12345} context={context} />);
+      wrapper.setProps({ caretPosition: 1 });
+      const input = wrapper.find('input');
+      assert.strictEqual(input.getDOMNode().selectionStart, 1);
+      assert.strictEqual(input.getDOMNode().selectionEnd, 1);
+    });
+  });
+
+  it('should support snapshat', () => {
+    const wrapper = mount(<InputNumeric value={12} context={context} />);
+    const snapshot = wrapper.instance().getSnapshot();
+    wrapper.setProps({ value: null });
+    wrapper.instance().setSnapshot(snapshot);
+    assert.strictEqual(wrapper.instance().getValue(), 12);
+  });
+
+  it('should disable with instance method', () => {
+    const wrapper = mount(<InputNumeric value={12} context={context} />);
+    wrapper.instance().setDisable(true);
+    assert.strictEqual(wrapper.state().disabled, true);
   });
 
   it('should mount RTL', () => {
-    context.languageId = 5;
-    context.localization.isRightToLeft = true;
-    mount(<InputNumeric context={context} />);
-  });
-
-  it('should component will receive props', () => {
-    const wrapper = mount(<InputNumeric context={context} />);
-    wrapper.setProps({ value: 10 });
-    expect(wrapper.instance().getValue()).equals(10);
-    wrapper.setProps({ value: 20 });
-    expect(wrapper.instance().getValue()).equals(20);
+    const newContext = Object.assign({}, context,
+      {
+        languageId: 5,
+        localization: {
+          isRightToLeft: true,
+        },
+      });
+    mount(<InputNumeric context={newContext} />);
   });
 
   it('should fire event callbacks', () => {
@@ -46,6 +98,115 @@ describe('<InputNumeric /> tests', () => {
       const event = n.charAt(2).toLowerCase() + n.slice(3);
       wrapper.find('input').simulate(event);
       assert.strictEqual(handlers[n].callCount, 1, `should have called the ${n} handler`);
+    });
+  });
+
+
+  describe('keyboard events', () => {
+    it('should handle number', () => {
+      const onKeyDown = spy();
+      const wrapper = mount(<InputNumeric context={context} onKeyDown={onKeyDown} />);
+      wrapper.find('input').simulate('keyDown', {
+        keyCode: 49, // keyCode=1
+      });
+      wrapper.find('input').simulate('change', {
+        target: { value: '1' },
+      });
+      assert.strictEqual(onKeyDown.callCount, 1);
+      assert.strictEqual(wrapper.instance().getValue(), 1);
+    });
+
+    it('should handle numpad number', () => {
+      const onKeyDown = spy();
+      const wrapper = mount(<InputNumeric context={context} onKeyDown={onKeyDown} />);
+      wrapper.find('input').simulate('keyDown', {
+        keyCode: 97, // numpad 1
+      });
+      wrapper.find('input').simulate('change', {
+        target: { value: '1' },
+      });
+      assert.strictEqual(onKeyDown.callCount, 1);
+      assert.strictEqual(wrapper.instance().getValue(), 1);
+    });
+
+    it('should reject string', () => {
+      const onKeyDown = spy();
+      const wrapper = mount(<InputNumeric context={context} onKeyDown={onKeyDown} />);
+      wrapper.find('input').simulate('keyDown', {
+        keyCode: 65, // 'a'
+      });
+      wrapper.find('input').simulate('change', {
+        target: { value: 'a' },
+      });
+      assert.strictEqual(onKeyDown.callCount, 1);
+      assert.strictEqual(wrapper.instance().getValue(), null);
+    });
+
+    it('should handle modifier keys', () => {
+      const onKeyDown = spy();
+      const wrapper = mount(<InputNumeric context={context} onKeyDown={onKeyDown} />);
+      const modifierKeyEvents = [{ shiftKey: true }, { ctrlKey: true }, { altKey: true }];
+      modifierKeyEvents.forEach((arg) => {
+        onKeyDown.resetHistory();
+        wrapper.find('input').simulate('keyDown', arg);
+        assert.strictEqual(onKeyDown.callCount, 1);
+        assert.strictEqual(wrapper.instance().getValue(), null);
+        assert.strictEqual(wrapper.instance().onKeyDownResult, false);
+      });
+    });
+
+    it('should handle copy keys', () => {
+      const onKeyDown = spy();
+      const wrapper = mount(<InputNumeric context={context} onKeyDown={onKeyDown} />);
+      const modifierKeyEvents = [
+        { ctrlKey: true, keyCode: 67 },
+        { metaKey: true, keyCode: 67 },
+      ];
+      modifierKeyEvents.forEach((arg) => {
+        onKeyDown.resetHistory();
+        wrapper.find('input').simulate('keyDown', arg);
+        assert.strictEqual(onKeyDown.callCount, 1);
+        assert.strictEqual(wrapper.instance().getValue(), null);
+        assert.strictEqual(wrapper.instance().onKeyDownResult, true);
+      });
+    });
+
+    it('should handle focus keys', () => {
+      const onKeyDown = spy();
+      const wrapper = mount(<InputNumeric context={context} onKeyDown={onKeyDown} />);
+      const modifierKeyEvents = [
+        { keyCode: 9 }, // tab
+        { keyCode: 45 }, // ins
+        { keyCode: 35 }, // move
+        { keyCode: 36 }, // move
+        { keyCode: 37 }, // move
+        { keyCode: 39 }, // move
+      ];
+      modifierKeyEvents.forEach((arg) => {
+        onKeyDown.resetHistory();
+        wrapper.find('input').simulate('keyDown', arg);
+        assert.strictEqual(onKeyDown.callCount, 1);
+        assert.strictEqual(wrapper.instance().getValue(), null);
+        assert.strictEqual(wrapper.instance().onKeyDownResult, true);
+      });
+    });
+
+    it('should handle delete keys', () => {
+      const onKeyDown = spy();
+      const wrapper = mount((
+        <InputNumeric defaultValue={10000} context={context} onKeyDown={onKeyDown} />
+      ));
+      const modifierKeyEvents = [
+        { keyCode: 8, target: { selectionStart: 0, selectionEnd: 0 }, expect: false }, // backspace
+        { keyCode: 8, target: { selectionStart: 0, selectionEnd: 1 }, expect: true }, // backspace
+        { keyCode: 8, target: { selectionStart: 1, selectionEnd: 0 }, expect: true }, // backspace
+      ];
+      modifierKeyEvents.forEach((arg) => {
+        onKeyDown.resetHistory();
+        wrapper.find('input').simulate('keyDown', arg);
+        assert.strictEqual(onKeyDown.callCount, 1);
+        assert.strictEqual(wrapper.instance().onKeyDownResult, arg.expect);
+      });
     });
   });
 });

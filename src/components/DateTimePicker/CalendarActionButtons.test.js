@@ -35,19 +35,22 @@ describe('<CalendarActionButtons /> tests', () => {
   });
 
   it('should swap buttons when RTL', () => {
-    context.languageId = 5;
-    context.localization.isRightToLeft = true;
+    const newContext = Object.assign({}, context,
+      {
+        languageId: 5,
+        localization: {
+          isRightToLeft: true,
+        },
+      });
     const wrapper = shallow((
       <CalendarActionButtons
         cancelLabel="cancel"
         okLabel="ok"
         autoOk={false}
-        context={context} />));
+        context={newContext} />));
     const cancelButton = wrapper.find(Button).at(1);
     const okButton = wrapper.find(Button).at(0);
     expect(cancelButton.props().text).to.equals('cancel');
     expect(okButton.props().text).to.equals('ok');
-    context.languageId = 1;
-    context.localization.isRightToLeft = false;
   });
 });

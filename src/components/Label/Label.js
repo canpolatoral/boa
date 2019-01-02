@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase, ComponentComposer } from '@boa/base';
-import parseFontSize from './utils';
+import parseFontSize from './parseFontSize';
 
 /**
  * Label component
@@ -22,7 +22,7 @@ class Label extends ComponentBase {
     }
 
     this.state = {
-      fontSize: `${fontSize}px`,
+      fontSize,
     };
   }
 
@@ -62,7 +62,7 @@ class Label extends ComponentBase {
 
       let newFontSize = (currentFontSize * props.maxWidth) / this.label.offsetWidth;
       newFontSize = Math.max(Math.min(newFontSize, maxFontSize), minFontSize);
-      this.setState({ fontSize: `${newFontSize}px` });
+      this.setState({ fontSize: newFontSize });
     }
   }
 
@@ -77,12 +77,12 @@ class Label extends ComponentBase {
     );
     if (!this.props.context.localization.isRightToLeft) {
       if (this.props.maxWidth) {
-        styleDiv = { textAlign: 'left', width: `${this.props.maxWidth}px` };
+        styleDiv = { textAlign: 'left', width: this.props.maxWidth };
       } else {
         styleDiv = { textAlign: 'left' };
       }
     } else if (this.props.maxWidth) {
-      styleDiv = { textAlign: 'right', width: `${this.props.maxWidth}px` };
+      styleDiv = { textAlign: 'right', width: this.props.maxWidth };
     } else {
       styleDiv = { textAlign: 'right' };
     }

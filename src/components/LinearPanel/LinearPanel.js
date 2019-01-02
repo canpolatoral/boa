@@ -56,7 +56,7 @@ class LinearPanel extends ComponentBase {
 
   componentWillReceiveProps(nextProps) {
     super.componentWillReceiveProps(nextProps);
-    this.setState({ disabled: nextProps.disabled });
+    this.setDisable(nextProps.disabled);
   }
 
   setDisable(value) {

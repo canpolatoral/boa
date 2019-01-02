@@ -11,13 +11,13 @@ const styles = theme => ({
     minHeight: 36,
     paddingTop: 12,
     paddingBottom: 12,
-    color: theme.boaPalette ? theme.boaPalette.base400 : theme.palette.primary.main,
+    color: theme.boaPalette.base400,
     '&:hover': {
-      background: theme.boaPalette ? theme.boaPalette.pri300 : theme.palette.primary.main,
+      background: theme.boaPalette.pri300,
     },
   },
   selected: {
-    backgroundColor: theme.boaPalette ? theme.boaPalette.pri250 : theme.palette.primary.main,
+    backgroundColor: theme.boaPalette.pri250,
   },
   isRTL: {
     textAlign: 'right',
@@ -31,12 +31,12 @@ const styles = theme => ({
   },
   itemTextPrimary: {
     fontSize: 14,
-    color: theme.boaPalette ? theme.boaPalette.base400 : theme.palette.primary.main,
+    color: theme.boaPalette.base400,
 
   },
   itemTextSecondary: {
     fontSize: 12,
-    color: theme.boaPalette ? theme.boaPalette.base350 : theme.palette.primary.main,
+    color: theme.boaPalette.base350,
 
   },
 });

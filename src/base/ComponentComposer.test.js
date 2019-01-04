@@ -40,6 +40,6 @@ describe('<ComponentComposer /> tests', () => {
   it('should getInstance equals own instance', () => {
     const Compose = ComponentComposer(EmptyComponent);
     const wrapper = mount(<Compose />);
-    assert.strictEqual(wrapper.instance().getInstance(), wrapper.instance());
+    assert.strictEqual(wrapper.instance(), wrapper.instance().getInstance());
   });
 });

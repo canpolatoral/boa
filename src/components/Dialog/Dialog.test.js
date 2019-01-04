@@ -39,7 +39,7 @@ describe('<Dialog /> tests', () => {
     ));
     let title = wrapper.dive().find(MuiDialogTitle);
     assert.strictEqual(title.childAt(0).text(), 'test');
-    wrapper.instance().setTitle('test-title');
+    wrapper.instance().getInstance().setTitle('test-title');
     title = wrapper.find(MuiDialogTitle);
     assert.strictEqual(title.childAt(0).text(), 'test-title');
   });
@@ -63,7 +63,7 @@ describe('<Dialog /> tests', () => {
         iconProperties={{ nativeColor: '#FFF' }} />
     );
 
-    wrapper.instance().setLeftTitleButton(leftButton);
+    wrapper.instance().getInstance().setLeftTitleButton(leftButton);
     const title = wrapper.find(MuiDialogTitle);
     // double dive to child inside of a div
     assert.strictEqual(title.childAt(0).childAt(0).type(), Button);
@@ -74,7 +74,7 @@ describe('<Dialog /> tests', () => {
   it('should change status with open method', () => {
     const wrapper = shallow(<Dialog context={context} open dialogKey="dialogKey" />);
     const clearRefs = stub(DialogHelper, 'clearRefs');
-    wrapper.instance().open(false);
+    wrapper.instance().getInstance().open(false);
     assert.strictEqual(wrapper.state().open, false);
     assert.strictEqual(clearRefs.callCount, 1);
     clearRefs.restore();

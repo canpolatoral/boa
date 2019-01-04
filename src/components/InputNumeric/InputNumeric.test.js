@@ -24,11 +24,11 @@ describe('<InputNumeric /> tests', () => {
 
   it('should setValue, getValue, resetValue', () => {
     const wrapper = mount(<InputNumeric context={context} defaultValue={12} />);
-    assert.strictEqual(wrapper.instance().getValue(), 12);
-    wrapper.instance().setValue(1234);
-    assert.strictEqual(wrapper.instance().getValue(), 1234);
-    wrapper.instance().resetValue();
-    assert.strictEqual(wrapper.instance().getValue(), 12);
+    assert.strictEqual(wrapper.instance().getInstance().getValue(), 12);
+    wrapper.instance().getInstance().setValue(1234);
+    assert.strictEqual(wrapper.instance().getInstance().getValue(), 1234);
+    wrapper.instance().getInstance().resetValue();
+    assert.strictEqual(wrapper.instance().getInstance().getValue(), 12);
   });
 
   describe('prop changes', () => {
@@ -42,13 +42,13 @@ describe('<InputNumeric /> tests', () => {
     it('should change value to null', () => {
       const wrapper = mount(<InputNumeric value={12} context={context} />);
       wrapper.setProps({ value: null });
-      assert.strictEqual(wrapper.instance().getValue(), null);
+      assert.strictEqual(wrapper.instance().getInstance().getValue(), null);
     });
 
     it('should change value ', () => {
       const wrapper = mount(<InputNumeric value={12} context={context} />);
       wrapper.setProps({ value: 1234 });
-      assert.strictEqual(wrapper.instance().getValue(), 1234);
+      assert.strictEqual(wrapper.instance().getInstance().getValue(), 1234);
     });
 
     it('should change caretPosition', () => {
@@ -62,15 +62,15 @@ describe('<InputNumeric /> tests', () => {
 
   it('should support snapshat', () => {
     const wrapper = mount(<InputNumeric value={12} context={context} />);
-    const snapshot = wrapper.instance().getSnapshot();
+    const snapshot = wrapper.instance().getInstance().getSnapshot();
     wrapper.setProps({ value: null });
-    wrapper.instance().setSnapshot(snapshot);
-    assert.strictEqual(wrapper.instance().getValue(), 12);
+    wrapper.instance().getInstance().setSnapshot(snapshot);
+    assert.strictEqual(wrapper.instance().getInstance().getValue(), 12);
   });
 
   it('should disable with instance method', () => {
     const wrapper = mount(<InputNumeric value={12} context={context} />);
-    wrapper.instance().setDisable(true);
+    wrapper.instance().getInstance().setDisable(true);
     assert.strictEqual(wrapper.state().disabled, true);
   });
 
@@ -113,7 +113,7 @@ describe('<InputNumeric /> tests', () => {
         target: { value: '1' },
       });
       assert.strictEqual(onKeyDown.callCount, 1);
-      assert.strictEqual(wrapper.instance().getValue(), 1);
+      assert.strictEqual(wrapper.instance().getInstance().getValue(), 1);
     });
 
     it('should handle numpad number', () => {
@@ -126,7 +126,7 @@ describe('<InputNumeric /> tests', () => {
         target: { value: '1' },
       });
       assert.strictEqual(onKeyDown.callCount, 1);
-      assert.strictEqual(wrapper.instance().getValue(), 1);
+      assert.strictEqual(wrapper.instance().getInstance().getValue(), 1);
     });
 
     it('should reject string', () => {
@@ -139,7 +139,7 @@ describe('<InputNumeric /> tests', () => {
         target: { value: 'a' },
       });
       assert.strictEqual(onKeyDown.callCount, 1);
-      assert.strictEqual(wrapper.instance().getValue(), null);
+      assert.strictEqual(wrapper.instance().getInstance().getValue(), null);
     });
 
     it('should handle modifier keys', () => {
@@ -150,8 +150,8 @@ describe('<InputNumeric /> tests', () => {
         onKeyDown.resetHistory();
         wrapper.find('input').simulate('keyDown', arg);
         assert.strictEqual(onKeyDown.callCount, 1);
-        assert.strictEqual(wrapper.instance().getValue(), null);
-        assert.strictEqual(wrapper.instance().onKeyDownResult, false);
+        assert.strictEqual(wrapper.instance().getInstance().getValue(), null);
+        assert.strictEqual(wrapper.instance().getInstance().onKeyDownResult, false);
       });
     });
 
@@ -166,8 +166,8 @@ describe('<InputNumeric /> tests', () => {
         onKeyDown.resetHistory();
         wrapper.find('input').simulate('keyDown', arg);
         assert.strictEqual(onKeyDown.callCount, 1);
-        assert.strictEqual(wrapper.instance().getValue(), null);
-        assert.strictEqual(wrapper.instance().onKeyDownResult, true);
+        assert.strictEqual(wrapper.instance().getInstance().getValue(), null);
+        assert.strictEqual(wrapper.instance().getInstance().onKeyDownResult, true);
       });
     });
 
@@ -186,8 +186,8 @@ describe('<InputNumeric /> tests', () => {
         onKeyDown.resetHistory();
         wrapper.find('input').simulate('keyDown', arg);
         assert.strictEqual(onKeyDown.callCount, 1);
-        assert.strictEqual(wrapper.instance().getValue(), null);
-        assert.strictEqual(wrapper.instance().onKeyDownResult, true);
+        assert.strictEqual(wrapper.instance().getInstance().getValue(), null);
+        assert.strictEqual(wrapper.instance().getInstance().onKeyDownResult, true);
       });
     });
 
@@ -205,7 +205,7 @@ describe('<InputNumeric /> tests', () => {
         onKeyDown.resetHistory();
         wrapper.find('input').simulate('keyDown', arg);
         assert.strictEqual(onKeyDown.callCount, 1);
-        assert.strictEqual(wrapper.instance().onKeyDownResult, arg.expect);
+        assert.strictEqual(wrapper.instance().getInstance().onKeyDownResult, arg.expect);
       });
     });
   });

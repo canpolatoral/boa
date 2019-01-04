@@ -37,12 +37,12 @@ describe('<InputMask /> tests', () => {
 
   it('should getValue', () => {
     const wrapper = mount(<InputMask context={context} />);
-    wrapper.instance().getValue();
+    wrapper.instance().getInstance().getValue();
   });
 
   it('should resetValue', () => {
     const wrapper = mount(<InputMask context={context} />);
-    wrapper.instance().resetValue();
+    wrapper.instance().getInstance().resetValue();
   });
 
   it('should fire event callbacks', () => {

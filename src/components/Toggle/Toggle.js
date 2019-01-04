@@ -20,7 +20,7 @@ const styles = theme => ({
     direction: 'ltr',
   },
   label: {
-    color: theme.boaPalette ? theme.boaPalette.base400 : '',
+    color: theme.boaPalette.base400,
   },
   isRTL: {
     flexDirection: 'row',
@@ -124,7 +124,7 @@ class Toggle extends ComponentBase {
   componentWillReceiveProps(nextProps) {
     super.componentWillReceiveProps(nextProps);
     if (nextProps.disabled !== this.state.disabled) {
-      this.setState({ disabled: nextProps.disabled });
+      this.setDisable(nextProps.disabled);
     }
 
     if (this.props.toggled !== nextProps.toggled && nextProps.toggled !== this.state.toggled) {
@@ -153,7 +153,8 @@ class Toggle extends ComponentBase {
 
     if (this.props.onChange) {
       this.props.onChange(event, value);
-    } else if (this.props.onToggle) {
+    }
+    if (this.props.onToggle) {
       this.props.onToggle(event, value);
     }
   }
@@ -170,21 +171,16 @@ class Toggle extends ComponentBase {
     const props = Object.assign({}, this.props);
     const { isRightToLeft } = this.props.context.localization;
 
-    if (this.state.disabled) {
-      const iconProperties = {
+    const iconProperties = {
+      style: {
         width: 20,
         height: 20,
-        disabled: 'disabled',
-      };
-      if (isRightToLeft) merge(iconProperties, { style: { marginLeft: 10 } });
-      else merge(iconProperties, { style: { marginRight: 10 } });
-      props.iconProperties = merge(iconProperties, props.iconProperties || {});
-    } else {
-      const iconProperties = { style: { width: 20, height: 20 } };
-      if (isRightToLeft) merge(iconProperties, { style: { marginLeft: 10 } });
-      else merge(iconProperties, { style: { marginRight: 10 } });
-      props.iconProperties = merge(iconProperties, props.iconProperties || {});
-    }
+        marginLeft: isRightToLeft ? 10 : 0,
+        marginRight: isRightToLeft ? 0 : 10,
+        disabled: this.state.disabled,
+      },
+    };
+    props.iconProperties = merge(iconProperties, props.iconProperties || {});
     const toggleIcon = Icon.getIcon(props);
 
     const rootClass = classNames(classes.root, {

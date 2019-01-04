@@ -20,7 +20,7 @@ describe('<Calendar /> tests', () => {
     date.setMonth(date.getMonth() + 1);
     wrapper.setProps({ dialogNewSelectDate: date, initialDate: date });
     assert.strictEqual(wrapper.state().selectedDate, date);
-    assert.strictEqual(wrapper.instance().getSelectedDate(), date);
+    assert.strictEqual(wrapper.instance().getInstance().getSelectedDate(), date);
     wrapper.setProps({ initialDate: null });
     expect(wrapper.state().selectedDate).to.be.date();
   });
@@ -240,10 +240,10 @@ describe('<Calendar /> tests', () => {
   // it('should setValue, getValue, resetValue', () => {
   //   const wrapper = shallow(<Calendar context={context} />).dive();
   //   const input = wrapper.dive();
-  //   assert.strictEqual(input.instance().getValue(), false);
-  //   input.instance().setValue(true);
-  //   assert.strictEqual(input.instance().getValue(), true);
-  //   input.instance().resetValue();
-  //   assert.strictEqual(input.instance().getValue(), false);
+  //   assert.strictEqual(input.instance().getInstance().getValue(), false);
+  //   input.instance().getInstance().setValue(true);
+  //   assert.strictEqual(input.instance().getInstance().getValue(), true);
+  //   input.instance().getInstance().resetValue();
+  //   assert.strictEqual(input.instance().getInstance().getValue(), false);
   // });
 });

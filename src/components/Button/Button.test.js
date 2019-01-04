@@ -72,12 +72,12 @@ describe('<Button /> tests', () => {
 
   it('should label be "UpperCase" format with allowLabelCase=false', () => {
     const wrapper = shallow(<Button text="aaa" allowLabelCase={false} />);
-    assert.strictEqual(wrapper.dive().instance().getLabel(), 'AAA');
+    assert.strictEqual(wrapper.dive().instance().getInstance().getLabel(), 'AAA');
   });
 
   it('should label be empty with allowLabelCase=false and text is null', () => {
     const wrapper = shallow(<Button text={null} allowLabelCase={false} />);
-    assert.strictEqual(wrapper.dive().instance().getLabel(), '');
+    assert.strictEqual(wrapper.dive().instance().getInstance().getLabel(), '');
   });
 
   it('should assign textPosition', () => {

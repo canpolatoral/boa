@@ -39,13 +39,13 @@ describe('<Popover /> tests', () => {
 
   it('should change open status with instance method', () => {
     const wrapper = mount(<Popover context={context} />);
-    wrapper.instance().openPopover();
+    wrapper.instance().getInstance().openPopover();
     assert.strictEqual(wrapper.state().open, true);
-    wrapper.instance().openPopover();
+    wrapper.instance().getInstance().openPopover();
     assert.strictEqual(wrapper.state().open, false);
-    wrapper.instance().manualOpen();
+    wrapper.instance().getInstance().manualOpen();
     assert.strictEqual(wrapper.state().open, true);
-    wrapper.instance().manualClose();
+    wrapper.instance().getInstance().manualClose();
     assert.strictEqual(wrapper.state().open, false);
   });
 });

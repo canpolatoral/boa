@@ -49,12 +49,13 @@ describe('<ComponentBase /> tests', () => {
       <EmptyComponent snapshot={{ snapshotProperty: 'TestSnapshot' }} />
     ));
     wrapper.setProps({ snapshot: { snapshotProperty: 'ChangedSnapshot' } });
-    expect(wrapper.instance().getSnapshot().snapshotProperty).equals('ChangedSnapshot');
+    const snapshotProperty = wrapper.instance().getInstance().getSnapshot().snapshotProperty;
+    expect(snapshotProperty).equals('ChangedSnapshot');
   });
 
   it('should getSnapkey', () => {
     const wrapper = mount((<EmptyComponent snapKey="snapKey" />));
-    assert.strictEqual(wrapper.instance().getSnapKey('child'), 'snapKey_child');
+    assert.strictEqual(wrapper.instance().getInstance().getSnapKey('child'), 'snapKey_child');
   });
 
   it('should getInstance', () => {
@@ -78,13 +79,13 @@ describe('<ComponentBase /> tests', () => {
     const stub = sinon.stub($, 'ajax').callsFake((request) => {
       return serviceCallSync(request, versions, messages);
     });
-    assert.strictEqual(wrapper.instance().getMessage('test', 'test'), 'test');
-    assert.strictEqual(wrapper.instance().getMessageCode('test', 'test'), 'code');
+    assert.strictEqual(wrapper.instance().getInstance().getMessage('test', 'test'), 'test');
+    assert.strictEqual(wrapper.instance().getInstance().getMessageCode('test', 'test'), 'code');
     stub.restore();
   });
 
   it('should validateConstraint', () => {
     const wrapper = mount((<EmptyComponent context={context} />));
-    assert.strictEqual(wrapper.instance().validateConstraint(), true);
+    assert.strictEqual(wrapper.instance().getInstance().validateConstraint(), true);
   });
 });

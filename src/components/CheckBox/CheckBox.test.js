@@ -54,28 +54,28 @@ describe('<CheckBox /> tests', () => {
 
   it('should getValue returns checked status', () => {
     const wrapper = shallow(<CheckBox context={context} label="test" />);
-    assert.strictEqual(wrapper.dive().instance().getValue(), false);
+    assert.strictEqual(wrapper.dive().instance().getInstance().getValue(), false);
   });
 
   it('should setValue change the checked status', () => {
     const wrapper = shallow(<CheckBox context={context} label="test" />);
     const checkBox = wrapper.dive();
-    checkBox.instance().setValue(true);
-    assert.strictEqual(checkBox.instance().getValue(), true);
+    checkBox.instance().getInstance().setValue(true);
+    assert.strictEqual(checkBox.instance().getInstance().getValue(), true);
   });
 
   it('should resetValue change the checked status to default ', () => {
     const wrapper = shallow(<CheckBox defaultChecked={false} context={context} label="test" />);
     const checkBox = wrapper.dive();
-    checkBox.instance().setValue(true);
-    checkBox.instance().resetValue();
-    assert.strictEqual(checkBox.instance().getValue(), false);
+    checkBox.instance().getInstance().setValue(true);
+    checkBox.instance().getInstance().resetValue();
+    assert.strictEqual(checkBox.instance().getInstance().getValue(), false);
   });
 
   it('should setDisable change the disabled status', () => {
     const wrapper = shallow(<CheckBox context={context} label="test" />);
     const checkBox = wrapper.dive();
-    checkBox.instance().setDisable(true);
+    checkBox.instance().getInstance().setDisable(true);
     assert.strictEqual(checkBox.state().disabled, true);
   });
 

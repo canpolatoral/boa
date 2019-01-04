@@ -102,17 +102,17 @@ describe('<Input /> tests', () => {
   it('should setValue, getValue, resetValue', () => {
     const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
     const input = wrapper.dive();
-    assert.strictEqual(input.instance().getValue(), 'test');
-    input.instance().setValue('test-new');
-    assert.strictEqual(input.instance().getValue(), 'test-new');
-    input.instance().resetValue();
-    assert.strictEqual(input.instance().getValue(), 'test');
+    assert.strictEqual(input.instance().getInstance().getValue(), 'test');
+    input.instance().getInstance().setValue('test-new');
+    assert.strictEqual(input.instance().getInstance().getValue(), 'test-new');
+    input.instance().getInstance().resetValue();
+    assert.strictEqual(input.instance().getInstance().getValue(), 'test');
   });
 
   it('should setDisable', () => {
     const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
     const input = wrapper.dive();
-    input.instance().setDisable(true);
+    input.instance().getInstance().setDisable(true);
     assert.strictEqual(input.state().disabled, true);
   });
 

@@ -41,7 +41,7 @@ describe('<Resizable /> tests', () => {
         <div>test</div>
       </Resizable>
     ));
-    wrapper.instance().updateSize({ width: 10, height: 10 });
+    wrapper.instance().getInstance().updateSize({ width: 10, height: 10 });
   });
 
   it('should call dragStart, dragStop', () => {

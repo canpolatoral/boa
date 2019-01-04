@@ -49,13 +49,13 @@ describe('<EditorBase /> tests', () => {
     });
 
     it('should valid when empty props', () => {
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
 
     it('should valid when isVisible equals to false', () => {
       wrapper.setProps({ isVisible: false });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
 
@@ -64,10 +64,11 @@ describe('<EditorBase /> tests', () => {
         valueConstraint: { required: true },
         isVisible: true,
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, false);
-      const message = wrapper.instance().getMessage('BOA', 'Nullable');
-      expect(wrapper.instance().validationResult).to.be.include({ key: 'required', message });
+      const message = wrapper.instance().getInstance().getMessage('BOA', 'Nullable');
+      const validationResult = wrapper.instance().getInstance().validationResult;
+      expect(validationResult).to.be.include({ key: 'required', message });
     });
 
     it('should error when value is undefined and required', () => {
@@ -76,10 +77,11 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: undefined,
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, false);
-      const message = wrapper.instance().getMessage('BOA', 'Nullable');
-      expect(wrapper.instance().validationResult).to.be.include({ key: 'required', message });
+      const message = wrapper.instance().getInstance().getMessage('BOA', 'Nullable');
+      const validationResult = wrapper.instance().getInstance().validationResult;
+      expect(validationResult).to.be.include({ key: 'required', message });
     });
 
     it('should error when value is empty and required', () => {
@@ -88,10 +90,11 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: ' ',
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, false);
-      const message = wrapper.instance().getMessage('BOA', 'Nullable');
-      expect(wrapper.instance().validationResult).to.be.include({ key: 'required', message });
+      const message = wrapper.instance().getInstance().getMessage('BOA', 'Nullable');
+      const validationResult = wrapper.instance().getInstance().validationResult;
+      expect(validationResult).to.be.include({ key: 'required', message });
     });
 
     it('should valid when value is required', () => {
@@ -100,7 +103,7 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: 'test',
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
 
@@ -110,10 +113,14 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: 'test',
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, false);
-      const message = wrapper.instance().getMessage('BOA', 'MinLength').replace('{0}', 100);
-      expect(wrapper.instance().validationResult).to.be.include({ key: 'minLength', message });
+      const message = wrapper.instance()
+        .getInstance()
+        .getMessage('BOA', 'MinLength')
+        .replace('{0}', 100);
+      const validationResult = wrapper.instance().getInstance().validationResult;
+      expect(validationResult).to.be.include({ key: 'minLength', message });
     });
 
     it('should error when maxLength', () => {
@@ -122,10 +129,14 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: 'test',
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, false);
-      const message = wrapper.instance().getMessage('BOA', 'MaxLength').replace('{0}', 1);
-      expect(wrapper.instance().validationResult).to.be.include({ key: 'maxLength', message });
+      const message = wrapper.instance()
+        .getInstance()
+        .getMessage('BOA', 'MaxLength')
+        .replace('{0}', 1);
+      const validationResult = wrapper.instance().getInstance().validationResult;
+      expect(validationResult).to.be.include({ key: 'maxLength', message });
     });
 
     it('should valid when minLength and maxLength', () => {
@@ -134,7 +145,7 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: 'test',
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
   });
@@ -147,13 +158,13 @@ describe('<EditorBase /> tests', () => {
     });
 
     it('should valid when empty props', () => {
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
 
     it('should valid when isVisible equals to false', () => {
       wrapper.setProps({ isVisible: false });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
 
@@ -162,7 +173,7 @@ describe('<EditorBase /> tests', () => {
         valueConstraint: { required: true },
         isVisible: true,
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, false);
     });
 
@@ -172,7 +183,7 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: 'test',
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
 
@@ -182,7 +193,7 @@ describe('<EditorBase /> tests', () => {
         isVisible: true,
         value: 'test',
       });
-      const result = wrapper.instance().validateConstraint();
+      const result = wrapper.instance().getInstance().validateConstraint();
       assert.strictEqual(result, true);
     });
   });

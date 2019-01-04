@@ -61,16 +61,16 @@ describe('<InputAction /> tests', () => {
 
   it('should setValue, getValue, resetValue', () => {
     const wrapper = mount(<InputAction context={context} defaultValue="test" />);
-    assert.strictEqual(wrapper.instance().getValue(), 'test');
-    wrapper.instance().setValue('test-new');
-    assert.strictEqual(wrapper.instance().getValue(), 'test-new');
-    wrapper.instance().resetValue();
-    assert.strictEqual(wrapper.instance().getValue(), 'test');
+    assert.strictEqual(wrapper.instance().getInstance().getValue(), 'test');
+    wrapper.instance().getInstance().setValue('test-new');
+    assert.strictEqual(wrapper.instance().getInstance().getValue(), 'test-new');
+    wrapper.instance().getInstance().resetValue();
+    assert.strictEqual(wrapper.instance().getInstance().getValue(), 'test');
   });
 
   it('should setDisable', () => {
     const wrapper = shallow(<InputAction context={context} defaultValue="test" />);
-    wrapper.instance().setDisable(true);
+    wrapper.instance().getInstance().setDisable(true);
     assert.strictEqual(wrapper.state().disabled, true);
   });
 
@@ -148,19 +148,19 @@ describe('<InputAction /> tests', () => {
     });
 
     it('should hide left icons', () => {
-      wrapper.instance().hideLeftIcons();
+      wrapper.instance().getInstance().hideLeftIcons();
     });
 
     it('should show left icons', () => {
-      wrapper.instance().showLeftIcons();
+      wrapper.instance().getInstance().showLeftIcons();
     });
 
     it('should hide right icons', () => {
-      wrapper.instance().hideRightIcons();
+      wrapper.instance().getInstance().hideRightIcons();
     });
 
     it('should show riht icons', () => {
-      wrapper.instance().showRightIcons();
+      wrapper.instance().getInstance().showRightIcons();
     });
   });
 });

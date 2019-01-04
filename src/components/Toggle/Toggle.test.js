@@ -40,17 +40,6 @@ describe('<Toggle /> tests', () => {
     assert.strictEqual(label.props().text, 'informationText');
   });
 
-  it('should render informationText right of switch', () => {
-    const wrapper = shallow((
-      <Toggle
-        labelPosition="right"
-        informationText="informationText"
-        context={context}
-      />));
-    const formControl = wrapper.dive().find(FormControlLabel);
-    console.log(formControl.props().classes);
-  });
-
   it('should render icon', () => {
     const wrapper = shallow(<Toggle dynamicIcon="Home" context={context} />);
     const icon = wrapper.dive().find(SvgIcons.Home);

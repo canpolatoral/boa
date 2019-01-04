@@ -1,9 +1,19 @@
 // import React from 'react';
-// import { mount } from 'enzyme';
+// import { assert } from 'chai';
+// import { spy } from 'sinon';
+// import { Resizable } from '@boa/components/Resizable';
 // import TabBar from './TabBar';
-// import context from '../../../test/utils/context';
+// import { context, createMount, createShallow } from '../../../test/utils';
 
 // describe('<TabBar /> tests', () => {
+//   let mount;
+//   let shallow;
+
+//   before(() => {
+//     mount = createMount();
+//     shallow = createShallow({ dive: true });
+//   });
+
 //   it('should mount', () => {
 //     const tabItems = [
 //       {
@@ -18,13 +28,13 @@
 //       },
 //     ];
 
-//     mount((
+//     const wrapper = shallow((
 //       <TabBar
 //         context={context}
 //         tabItems={tabItems}
 //         rightIconButtonVisibility
 //         value={0}
 //       />
-//     ));
+//     )).dive();
 //   });
 // });

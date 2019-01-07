@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
 import * as Messaging from './Messaging';
-import LocalMessages from './messages';
+import LocalMessages from './test-messages';
 
 function serviceCallSync(request, versions, messages) {
   if (typeof versions === 'boolean' && versions === false) {

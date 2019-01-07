@@ -163,7 +163,7 @@ class Tabs extends React.Component {
       const children = this.tabs.children[0].children;
 
       if (children.length > 0) {
-        const tab = children[this.valueToIndex[value]];
+        const tab = children[this.valueToIndex.get(value)];
         warning(tab, `Material-UI: the value provided \`${value}\` is invalid`);
         tabMeta = tab ? tab.getBoundingClientRect() : null;
       }
@@ -225,7 +225,7 @@ class Tabs extends React.Component {
   updateScrollButtonState = () => {
     const { scrollable, scrollButtons, theme } = this.props;
 
-    if (this.tabs && scrollable && scrollButtons !== 'off') {
+    if (scrollable && scrollButtons !== 'off') {
       const { scrollWidth, clientWidth } = this.tabs;
       const scrollLeft = getNormalizedScrollLeft(this.tabs, theme.direction);
 
@@ -287,8 +287,6 @@ class Tabs extends React.Component {
       scrollable,
       textColor,
       value,
-      isRightScrollActive,
-      isLeftScrollActive,
       ...other
     } = this.props;
 
@@ -309,7 +307,7 @@ class Tabs extends React.Component {
       />
     );
 
-    this.valueToIndex = {};
+    this.valueToIndex = new Map();
     let childIndex = 0;
     const children = React.Children.map(childrenProp, child => {
       if (!React.isValidElement(child)) {
@@ -317,7 +315,7 @@ class Tabs extends React.Component {
       }
 
       const childValue = child.props.value || childIndex;
-      this.valueToIndex[childValue] = childIndex;
+      this.valueToIndex.set(childValue, childIndex);
       const selected = childValue === value;
 
       childIndex += 1;
@@ -333,12 +331,14 @@ class Tabs extends React.Component {
 
     const conditionalElements = this.getConditionalElements();
 
+    // eslint-disable-next-line
+    const { scrollButtons, TabScrollButton, action, ...divProps } = other;
     return (
-      <div className={className} {...other}>
+      <div className={className} {...divProps}>
         <EventListener target="window" onResize={this.handleResize} />
         {conditionalElements.scrollbarSizeListener}
         <div className={classes.flexContainer}>
-          {isLeftScrollActive && conditionalElements.scrollButtonLeft}
+          {conditionalElements.scrollButtonLeft}
           <div
             className={scrollerClassName}
             style={this.state.scrollerStyle}
@@ -351,7 +351,7 @@ class Tabs extends React.Component {
             <div className={tabItemContainerClassName}>{children}</div>
             {this.state.mounted && indicator}
           </div>
-          {isRightScrollActive && conditionalElements.scrollButtonRight}
+          {conditionalElements.scrollButtonRight}
         </div>
       </div>
     );

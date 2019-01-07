@@ -1,9 +1,16 @@
 // import React from 'react';
-// import { mount } from 'enzyme';
 // import TreeView from './TreeView';
-// import context from '../../../test/utils/context';
+// import { context, createMount } from '../../../test/utils';
 
 // describe('<TreeView /> tests', () => {
+//   let mount;
+//   // let shallow;
+
+//   before(() => {
+//     mount = createMount();
+//     // shallow = createShallow({ dive: true });
+//   });
+
 //   it('should mount', () => {
 //     mount((
 //       <TreeView

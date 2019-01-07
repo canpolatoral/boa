@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const UserSquare = props => {
@@ -16,6 +17,11 @@ const UserSquare = props => {
       <path d="M40.82,35.18A12,12,0,0,1,32,38.86a12,12,0,0,1-8.82-3.68,12,12,0,0,1-3.68-8.82,12.27,12.27,0,0,1,3.68-8.9,12.25,12.25,0,0,1,17.64,0,12.29,12.29,0,0,1,3.68,8.9A12,12,0,0,1,40.82,35.18Z" />
     </SvgIcon>
   );
+};
+
+UserSquare.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 UserSquare.defaultProps = {

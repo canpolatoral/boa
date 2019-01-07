@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const SkypeLogo = props => {
@@ -14,6 +15,11 @@ const SkypeLogo = props => {
       />
     </SvgIcon>
   );
+};
+
+SkypeLogo.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 SkypeLogo.defaultProps = {

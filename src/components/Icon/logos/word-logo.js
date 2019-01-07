@@ -1,5 +1,6 @@
 /* eslint-disable max-len, react/no-unknown-property */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const WordLogo = props => {
@@ -12,6 +13,11 @@ const WordLogo = props => {
       <polygon className="st1" points="13,9 13,3.5 18.5,9 " style={{ fill: '#FFFFFF' }} />
     </SvgIcon>
   );
+};
+
+WordLogo.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 WordLogo.defaultProps = {

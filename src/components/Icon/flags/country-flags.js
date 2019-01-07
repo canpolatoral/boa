@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* eslint-disable max-len, react/style-prop-object */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const CountryFlags = props => {
@@ -1965,9 +1966,15 @@ const CountryFlags = props => {
   return null;
 };
 
+CountryFlags.propTypes = {
+  context: PropTypes.object,
+  flagCode: PropTypes.string,
+  viewBox: PropTypes.string,
+};
+
 CountryFlags.defaultProps = {
+  flagCode: 'TR',
   viewBox: '0 0 24 24',
-  ByFecCode: false,
 };
 
 export default CountryFlags;

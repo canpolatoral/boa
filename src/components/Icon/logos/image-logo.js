@@ -1,5 +1,6 @@
 /* eslint-disable max-len, react/no-unknown-property */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const ImageLogo = (props) => {
@@ -15,6 +16,11 @@ const ImageLogo = (props) => {
     />
     </SvgIcon>
   );
+};
+
+ImageLogo.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 ImageLogo.defaultProps = {

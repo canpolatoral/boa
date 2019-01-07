@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const User = props => {
@@ -21,6 +22,11 @@ const User = props => {
       </g>
     </SvgIcon>
   );
+};
+
+User.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 User.defaultProps = {

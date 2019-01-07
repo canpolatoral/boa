@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const BOALogo = props => {
@@ -15,6 +16,11 @@ const BOALogo = props => {
       <path d="M37.27,4.74h2.82L46.36,22H42.6l-1.16-3.57H34.71L33.61,22H29.84L35.57,5.9a1.68,1.68,0,0,1,1.71-1.16Zm.81,3.47-2.41,7.33h4.82L38.08,8.21Z" />
     </SvgIcon>
   );
+};
+
+BOALogo.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 BOALogo.defaultProps = {

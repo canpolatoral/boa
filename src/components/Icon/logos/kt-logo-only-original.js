@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const KTLogoOnlyOriginal = props => {
@@ -14,6 +15,11 @@ const KTLogoOnlyOriginal = props => {
       />
     </SvgIcon>
   );
+};
+
+KTLogoOnlyOriginal.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 KTLogoOnlyOriginal.defaultProps = {

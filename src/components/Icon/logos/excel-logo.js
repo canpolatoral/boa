@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const ExcelLogo = props => {
@@ -18,6 +19,12 @@ const ExcelLogo = props => {
       <polygon points="13 9 13 3.5 18.5 9 13 9" style={{ fill: '#fff' }} />
     </SvgIcon>
   );
+};
+
+
+ExcelLogo.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 ExcelLogo.defaultProps = {

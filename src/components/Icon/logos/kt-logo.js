@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const KTLogo = props => {
@@ -12,6 +13,11 @@ const KTLogo = props => {
       <path d="M10.08,10.05A11.12,11.12,0,1,0,17.94,6.8a11.08,11.08,0,0,0-7.86,3.26M6,17.92A12,12,0,1,1,9.46,26.4,12,12,0,0,1,6,17.92Z" />
     </SvgIcon>
   );
+};
+
+KTLogo.propTypes = {
+  context: PropTypes.object,
+  viewBox: PropTypes.string,
 };
 
 KTLogo.defaultProps = {

@@ -416,9 +416,9 @@ class Input extends EditorBase {
     const infoTextColor = context.theme.boaPalette.base300;
     const errorTextColor = context.theme.boaPalette.error500;
 
-    // if (this.validationResult && this.validationResult.length > 0) {
-    //   errorText = this.validationToString();
-    // }
+    if (this.validationResult && this.validationResult.length > 0) {
+      errorText = this.validationToString();
+    }
 
     const isRtl = this.props.context.localization.isRightToLeft;
 
@@ -683,6 +683,10 @@ class Input extends EditorBase {
         </MuiFormControl>
       </div>
     );
+  }
+
+  validationToString() {
+    return this.validationResult[0].message;
   }
 }
 

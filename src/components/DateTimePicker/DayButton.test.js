@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import { spy } from 'sinon';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import DayButton from './DayButton';
-import { isEqualDate, getDatePickerStyle, DayType } from './dateUtils';
+import { getDatePickerStyle, DayType } from './dateUtils';
 import { context, createShallow, createMount } from '../../../test/utils';
 
 describe('<DayButton />', () => {

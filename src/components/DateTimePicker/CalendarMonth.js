@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DayButton from './DayButton';
-import { isBetweenDates, isEqualDate, getWeekArray, substructDay } from './dateUtils';
+import {
+  dateTimeFormat,
+  isBetweenDates,
+  isEqualDate,
+  getWeekArray,
+  substructDay,
+  DayType,
+} from './dateUtils';
 
 const styles = {
   root: {
@@ -22,15 +29,6 @@ const styles = {
   },
 };
 
-const dayType = {
-  EmptyDay: -1,
-  WorkDay: 0,
-  WeekendDay: 1,
-  Holiday: 2,
-  Eve: 3,
-  ReliHoliday: 4,
-};
-
 class CalendarMonth extends Component {
   static propTypes = {
     calendarInfo: PropTypes.array,
@@ -38,7 +36,7 @@ class CalendarMonth extends Component {
     canSelectSpecialDays: PropTypes.bool,
     canSelectWeekendDays: PropTypes.bool,
     context: PropTypes.object,
-    DateTimeFormat: PropTypes.func.isRequired,
+    dateTimeFormat: PropTypes.func,
     displayDate: PropTypes.object.isRequired,
     firstDayOfWeek: PropTypes.number,
     isBusiness: PropTypes.bool,
@@ -50,6 +48,11 @@ class CalendarMonth extends Component {
     shouldDisableDate: PropTypes.func,
   };
 
+  static defaultProps = {
+    firstDayOfWeek: 1,
+    dateTimeFormat,
+  };
+
   constructor(props, context) {
     super(props, context);
     this.SpecialDays = [];
@@ -57,9 +60,9 @@ class CalendarMonth extends Component {
   }
 
   getDayType(day, calendarInfo) {
-    if (day === null) return { dayType: dayType.EmptyDay };
+    if (day === null) return { dayType: DayType.EmptyDay };
     if (!isBetweenDates(day, this.props.minDate, this.props.maxDate)) {
-      return { dayType: dayType.EmptyDay };
+      return { dayType: DayType.EmptyDay };
     }
     if (calendarInfo) {
       for (let i = 0; i < calendarInfo.length; i++) {
@@ -71,7 +74,7 @@ class CalendarMonth extends Component {
         }
       }
     }
-    return { dayType: dayType.EmptyDay };
+    return { dayType: DayType.EmptyDay };
   }
 
   getWeekElements() {
@@ -95,7 +98,6 @@ class CalendarMonth extends Component {
 
   getDayElements(week, i) {
     const {
-      DateTimeFormat,
       selectedDate,
       isBusiness,
       calendarInfo,
@@ -106,6 +108,7 @@ class CalendarMonth extends Component {
       isFlexMode,
     } = this.props;
 
+    const DateTimeFormat = this.props.dateTimeFormat;
     return week.map((day, j) => {
       const isSameDate = isEqualDate(selectedDate, day);
 
@@ -120,7 +123,7 @@ class CalendarMonth extends Component {
       };
       const disabled = this.shouldDisableDate(options);
 
-      if (dayInfo.dayType !== dayType.EmptyDay) {
+      if (dayInfo.dayType !== DayType.EmptyDay) {
         this.SpecialDays.push(dayInfo);
       }
       const selected = !disabled && isSameDate;
@@ -130,7 +133,7 @@ class CalendarMonth extends Component {
 
       return (
         <DayButton
-          DateTimeFormat={DateTimeFormat}
+          dateTimeFormat={DateTimeFormat}
           context={this.props.context}
           date={day}
           disabled={disabled}
@@ -168,15 +171,15 @@ class CalendarMonth extends Component {
     if (!canSelectOldDates && subDay < 0) {
       disabled = true;
     }
-    if (dayInfo.dayType !== dayType.EmptyDay) {
-      if (!canSelectWeekendDays && dayInfo.dayType === dayType.WeekendDay) {
+    if (dayInfo.dayType !== DayType.EmptyDay) {
+      if (!canSelectWeekendDays && dayInfo.dayType === DayType.WeekendDay) {
         disabled = true;
       }
       if (
         !canSelectSpecialDays &&
-        (dayInfo.dayType === dayType.Eve ||
-          dayInfo.dayType === dayType.ReliHoliday ||
-          dayInfo.dayType === dayType.Holiday)
+        (dayInfo.dayType === DayType.Eve ||
+          dayInfo.dayType === DayType.ReliHoliday ||
+          dayInfo.dayType === DayType.Holiday)
       ) {
         disabled = true;
       }

@@ -5,7 +5,7 @@ import { Resizable } from '@boa/components/Resizable';
 import Popover from './Popover';
 import { context, createMount, createShallow } from '../../../test/utils';
 
-describe('<Popover /> tests', () => {
+describe('<Popover />', () => {
   let mount;
   let shallow;
 

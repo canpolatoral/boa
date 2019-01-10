@@ -5,7 +5,7 @@ import * as SvgIcons from '@material-ui/icons';
 import { Icon } from './index';
 import { createMount } from '../../../test/utils';
 
-describe('Icon tests', () => {
+describe('Icon', () => {
   let mount;
 
   before(() => {

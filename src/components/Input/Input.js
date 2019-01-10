@@ -346,10 +346,6 @@ class Input extends EditorBase {
     this.textField.focus();
   }
 
-  validationToString() {
-    return this.validationResult[0].message;
-  }
-
   render() {
     const {
       name,
@@ -420,9 +416,9 @@ class Input extends EditorBase {
     const infoTextColor = context.theme.boaPalette.base300;
     const errorTextColor = context.theme.boaPalette.error500;
 
-    if (this.validationResult && this.validationResult.length > 0) {
-      errorText = this.validationToString();
-    }
+    // if (this.validationResult && this.validationResult.length > 0) {
+    //   errorText = this.validationToString();
+    // }
 
     const isRtl = this.props.context.localization.isRightToLeft;
 

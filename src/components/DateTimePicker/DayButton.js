@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isEqualDate, getDatePickerStyle } from './dateUtils';
+import { isEqualDate, getDatePickerStyle, dateTimeFormat, DayType } from './dateUtils';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 function getStyles(props, context, state) {
-  const { date, selected, dayInfo, isBusiness, displayDate, isFlexMode } = props;
+  const { date, selected, dayInfo, business, displayDate, isFlexMode } = props;
   const { hover } = state;
   const datePicker = getDatePickerStyle(context);
 
@@ -15,16 +15,8 @@ function getStyles(props, context, state) {
   let hoverSelectedAndTodayBorder = 'none';
   const hoverSelectedAndTodayPadding = 0;
   let backgroundClip = '';
-  const daysType = {
-    EmptyDay: -1,
-    WorkDay: 0,
-    WeekendDay: 1,
-    Holiday: 2,
-    ReliHoliday: 3,
-    Eve: 4,
-  };
 
-  if (dayInfo.dayType === daysType.EmptyDay) {
+  if (dayInfo.dayType === DayType.EmptyDay) {
     if (isEqualDate(date, new Date())) {
       labelColor = datePicker.selectTextColor;
       backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -42,8 +34,8 @@ function getStyles(props, context, state) {
       // hoverSelectedAndTodayPadding = 2;
       backgroundClip = 'content-box';
     }
-  } else if (isBusiness) {
-    if (dayInfo.dayType === daysType.WorkDay) {
+  } else if (business) {
+    if (dayInfo.dayType === DayType.WorkDay) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -70,7 +62,7 @@ function getStyles(props, context, state) {
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    } else if (dayInfo.dayType === daysType.WeekendDay) {
+    } else if (dayInfo.dayType === DayType.WeekendDay) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -93,7 +85,7 @@ function getStyles(props, context, state) {
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    } else if (dayInfo.dayType === daysType.Holiday) {
+    } else if (dayInfo.dayType === DayType.Holiday) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -116,7 +108,7 @@ function getStyles(props, context, state) {
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    } else if (dayInfo.dayType === daysType.Eve) {
+    } else if (dayInfo.dayType === DayType.Eve) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -139,7 +131,7 @@ function getStyles(props, context, state) {
         buttonStateOpacity = 1;
         buttonStateTransform = 'scale(1)';
       }
-    } else if (dayInfo.dayType === daysType.ReliHoliday) {
+    } else if (dayInfo.dayType === DayType.ReliHoliday) {
       if (isEqualDate(date, new Date())) {
         labelColor = 'white';
         backgroundColor = datePicker.todayButtonBackgroundColor;
@@ -218,16 +210,22 @@ class DayButton extends Component {
   static propTypes = {
     context: PropTypes.object,
     date: PropTypes.object,
-    DateTimeFormat: PropTypes.func.isRequired,
+    dateTimeFormat: PropTypes.func,
+    dayInfo: PropTypes.shape({
+      dayType: PropTypes.number,
+    }),  // eslint-disable-line
     disabled: PropTypes.bool,
     isFlexMode: PropTypes.bool, // eslint-disable-line
+    business: PropTypes.bool, // eslint-disable-line
     onKeyboardFocus: PropTypes.func,
     onTouchTap: PropTypes.func,
     selected: PropTypes.bool,
   };
 
   static defaultProps = {
+    dateTimeFormat,
     selected: false,
+    dayInfo: { dayType: DayType.EmptyDay },
     disabled: false,
   };
 
@@ -273,35 +271,39 @@ class DayButton extends Component {
 
   render() {
     const {
-      DateTimeFormat,
       date,
       disabled,
       onTouchTap, // eslint-disable-line no-unused-vars
       selected, // eslint-disable-line no-unused-vars
     } = this.props;
-    const styles = getStyles(this.props, this.props.context, this.state);
 
-    return date ? (
-      <ButtonBase
-        disabled={disabled}
-        onFocusVisible={this.handleKeyboardFocus}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        onClick={this.handleTouchTap}
-        style={styles.root}
-      >
-        <div style={styles.buttonState} />
-        <span style={styles.label}>
-          {
-            new DateTimeFormat({
-              day: 'numeric',
-            }).format(date)
-          }
-        </span>
-      </ButtonBase>
-    ) : (
-        <span style={styles.root} />
+    const styles = getStyles(this.props, this.props.context, this.state);
+    const DateTimeFormat = this.props.dateTimeFormat;
+
+    if (date) {
+      return (
+        <ButtonBase
+          ref={ref => this.buttonRef = ref}
+          disabled={disabled}
+          onFocusVisible={this.handleKeyboardFocus}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+          onClick={this.handleTouchTap}
+          style={styles.root}
+        >
+          <div style={styles.buttonState} />
+          <span style={styles.label}>
+            {
+              new DateTimeFormat({
+                day: 'numeric',
+              }).format(date)
+            }
+          </span>
+        </ButtonBase>
       );
+    }
+
+    return <span style={styles.root} />;
   }
 }
 

@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import parseFontSize from './parseFontSize';
 
-describe('parseFontSize tests', () => {
+describe('parseFontSize', () => {
   it('should parse number', () => {
     const result = parseFontSize(10);
     assert.strictEqual(result, 10);

@@ -3,7 +3,7 @@ import { AppProvider } from '@boa/base';
 import DateTimePicker from './DateTimePicker';
 import { context, createMount } from '../../../test/utils';
 
-describe('<DateTimePicker /> tests', () => {
+describe('<DateTimePicker />', () => {
   let mount;
 
   before(() => {

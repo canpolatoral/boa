@@ -7,7 +7,7 @@ import { InputNumeric } from '@boa/components/InputNumeric';
 import InputAction from './InputAction';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<InputAction /> tests', () => {
+describe('<InputAction />', () => {
   let mount;
   let shallow;
 

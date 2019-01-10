@@ -6,10 +6,11 @@ import MuiIconButton from '@material-ui/core/IconButton/IconButton';
 import MuiChevronLeft from '@material-ui/icons/ChevronLeft';
 import MuiChevronRight from '@material-ui/icons/ChevronRight';
 import { ComponentBase } from '@boa/base';
+import { dateTimeFormat } from './dateUtils';
 
 class CalendarToolbar extends ComponentBase {
   static propTypes = {
-    DateTimeFormat: PropTypes.func.isRequired,
+    dateTimeFormat: PropTypes.func,
     displayDate: PropTypes.object.isRequired,
     format: PropTypes.string,
     handleClickToolBar: PropTypes.func,
@@ -20,6 +21,7 @@ class CalendarToolbar extends ComponentBase {
   };
 
   static defaultProps = {
+    dateTimeFormat,
     nextMonth: true,
     prevMonth: true,
     noDialog: false,
@@ -46,18 +48,21 @@ class CalendarToolbar extends ComponentBase {
   }
 
   handleTouchTapPrevMonth() {
+    /* istanbul ignore else */
     if (this.props.onMonthChange) {
       this.props.onMonthChange(-1);
     }
   }
 
   handleTouchTapNextMonth() {
+    /* istanbul ignore else */
     if (this.props.onMonthChange) {
       this.props.onMonthChange(1);
     }
   }
 
   handleClickToolBar() {
+    /* istanbul ignore else */
     if (this.props.handleClickToolBar) {
       this.props.handleClickToolBar();
     }
@@ -104,7 +109,8 @@ class CalendarToolbar extends ComponentBase {
         marginRight: this.props.context.localization.isRightToLeft ? 2 : 0,
       },
     };
-    const { DateTimeFormat, displayDate } = this.props;
+    const DateTimeFormat = this.props.dateTimeFormat;
+    const { displayDate } = this.props;
 
     const dateTimeFormatted = new DateTimeFormat({
       item: 'monthYearName',
@@ -123,7 +129,7 @@ class CalendarToolbar extends ComponentBase {
         <div
           style={this.props.noDialog ? styles.titleDialog : styles.titleDiv}
           key={dateTimeFormatted}
-          onClick={this.handleClickToolBar.bind(this)}>
+          onClick={this.handleClickToolBar}>
           {dateTimeFormatted}
         </div>
         <MuiIconButton

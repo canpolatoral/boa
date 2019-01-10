@@ -19,7 +19,7 @@ class EmptyComponent extends ComponentBase {
   }
 }
 
-describe('<ComponentBase /> tests', () => {
+describe('<ComponentBase />', () => {
   let shallow;
   let mount;
 

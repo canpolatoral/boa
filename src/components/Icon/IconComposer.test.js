@@ -3,7 +3,7 @@ import IconComposer from './IconComposer';
 import * as SvgIcons from '@material-ui/icons';
 import { createMount } from '../../../test/utils';
 
-describe('<IconComposer /> tests', () => {
+describe('<IconComposer />', () => {
   let mount;
 
   before(() => {

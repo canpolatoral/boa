@@ -1,7 +1,7 @@
 import Themes from './index';
 import { assert } from 'chai';
 
-describe('Themes tests', () => {
+describe('Themes', () => {
   it('should be same keys', () => {
     let prev;
     Object.keys(Themes).forEach((key) => {

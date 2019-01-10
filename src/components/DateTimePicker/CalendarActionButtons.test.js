@@ -4,7 +4,7 @@ import { Button } from '@boa/components/Button';
 import CalendarActionButtons from './CalendarActionButtons';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<CalendarActionButtons /> tests', () => {
+describe('<CalendarActionButtons />', () => {
   let shallow;
   let mount;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Utils } from './utils';
+import { Utils, isWrappedWithStyles } from './utils';
 import ErrorBoundary from './ErrorBoundary';
 
 export default function ComponentComposer(WrappedComponent) {
@@ -16,11 +16,7 @@ export default function ComponentComposer(WrappedComponent) {
 
     render() {
       if (this.props.isVisible || this.props.isVisible === undefined) {
-        if (
-          // eslint-disable-next-line no-proto
-          IIBComponent.prototype.__proto__.constructor.name.includes('WithStyles') ||
-          IIBComponent.displayName.includes('WithStyles')
-        ) {
+        if (isWrappedWithStyles(WrappedComponent)) {
           const innerComp = super.render();
           const newProps = {
             ref: r => {

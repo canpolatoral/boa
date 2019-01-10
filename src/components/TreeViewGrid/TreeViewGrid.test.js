@@ -3,7 +3,7 @@
 // import TreeViewGrid from './TreeViewGrid';
 // import context from '../../../test/utils/context';
 
-// describe('<TreeViewGrid /> tests', () => {
+// describe('<TreeViewGrid />', () => {
 //   it('should mount', () => {
 //     mount((
 //       <TreeViewGrid

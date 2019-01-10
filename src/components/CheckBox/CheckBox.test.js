@@ -8,7 +8,7 @@ import { Label } from '@boa/components/Label';
 import CheckBox from './CheckBox';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<CheckBox /> tests', () => {
+describe('<CheckBox />', () => {
   let shallow;
   let mount;
 

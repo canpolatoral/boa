@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import detectCopyPaste from './detectCopyPaste';
 
-describe('detectCopyPaste tests', () => {
+describe('detectCopyPaste', () => {
   it('should handle ctrl + c', () => {
     const result = detectCopyPaste(67, { ctrlKey: true }); // '67: c'
     assert.strictEqual(result, true);

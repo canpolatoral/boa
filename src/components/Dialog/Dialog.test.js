@@ -8,7 +8,7 @@ import Dialog from './Dialog';
 import DialogHelper from './DialogHelper';
 import { context, createShallow } from '../../../test/utils';
 
-describe('<Dialog /> tests', () => {
+describe('<Dialog />', () => {
   let shallow;
 
   before(() => {
@@ -20,21 +20,26 @@ describe('<Dialog /> tests', () => {
     assert.strictEqual(wrapper.dive().type(), MuiDialog);
   });
 
-  it('should handle prop changes', () => {
+  it('should change open', () => {
     const wrapper = shallow(<Dialog context={context} open />);
-    wrapper.setProps({ open: false, title: 'test' });
+    wrapper.setProps({ open: false });
     assert.strictEqual(wrapper.state().open, false);
-    assert.strictEqual(wrapper.state().title, 'test');
     assert.strictEqual(wrapper.dive().shallow().props().open, false);
   });
 
-  it('should show and change header', () => {
+  it('should change title', () => {
+    const wrapper = shallow(<Dialog context={context} open />);
+    wrapper.setProps({ title: 'test' });
+    assert.strictEqual(wrapper.state().title, 'test');
+  });
+
+  it('should show header', () => {
     const wrapper = shallow((
       <Dialog
         context={context}
+        open
         title="test"
         titleWithCloseButtonEnabled
-        open
         showHeader />
     ));
     let title = wrapper.dive().find(MuiDialogTitle);

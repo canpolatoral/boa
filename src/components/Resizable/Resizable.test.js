@@ -4,7 +4,7 @@ import { assert } from 'chai';
 import Resizable from './Resizable';
 import { context, createMount } from '../../../test/utils';
 
-describe('<Resizable /> tests', () => {
+describe('<Resizable />', () => {
   let mount;
 
   before(() => {

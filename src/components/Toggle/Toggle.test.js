@@ -8,7 +8,7 @@ import { Label } from '@boa/components/Label';
 import Toggle from './Toggle';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<Toggle /> tests', () => {
+describe('<Toggle />', () => {
   let mount;
   let shallow;
 

@@ -188,7 +188,7 @@ class Calendar extends ComponentBase {
   getCalendarMonth(DateTimeFormat, minDate, maxDate) {
     const calendarMonth = (
       <CalendarMonth
-        DateTimeFormat={DateTimeFormat}
+        dateTimeFormat={DateTimeFormat}
         context={this.props.context}
         displayDate={this.state.displayDate}
         firstDayOfWeek={this.props.firstDayOfWeek}
@@ -636,7 +636,7 @@ class Calendar extends ComponentBase {
         <TimeBase
           key="years"
           context={this.props.context}
-          DateTimeFormat={this.props.DateTimeFormat}
+          dateTimeFormat={this.props.DateTimeFormat}
           onTouchTapTime={this.handleTouchTapYear}
           selectedDate={this.state.selectedYearMonthDate}
           minValue={this.props.minDate.getFullYear()}
@@ -919,7 +919,7 @@ class Calendar extends ComponentBase {
               {this.state.displayMonthDay && !this.props.noDialog && (
                 <CalendarToolbar
                   context={this.props.context}
-                  DateTimeFormat={DateTimeFormat}
+                  dateTimeFormat={DateTimeFormat}
                   displayDate={this.state.displayDate}
                   onMonthChange={this.handleMonthChange}
                   prevMonth={toolbarInteractions.prevMonth}
@@ -932,7 +932,7 @@ class Calendar extends ComponentBase {
               {this.state.displayMonthDay && this.props.noDialog && (
                 <CalendarToolbar
                   context={this.props.context}
-                  DateTimeFormat={DateTimeFormat}
+                  dateTimeFormat={DateTimeFormat}
                   displayDate={this.state.displayDate}
                   onMonthChange={this.handleMonthChange}
                   prevMonth={toolbarInteractions.prevMonth}

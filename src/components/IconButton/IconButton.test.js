@@ -5,7 +5,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<IconButton /> tests', () => {
+describe('<IconButton />', () => {
   let mount;
   let shallow;
 

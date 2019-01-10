@@ -5,7 +5,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Tab from './Tab';
 import { createMount, createShallow, getClasses } from '../../../test/utils';
 
-describe('<Tab /> tests', () => {
+describe('<Tab />', () => {
   let mount;
   let shallow;
   let classes;

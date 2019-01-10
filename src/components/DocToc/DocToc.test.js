@@ -4,7 +4,7 @@ import { spy } from 'sinon';
 import DocToc from './DocToc';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<DocToc /> tests', () => {
+describe('<DocToc />', () => {
   let mount;
   let shallow;
 

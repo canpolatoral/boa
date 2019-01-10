@@ -2,7 +2,6 @@ export default function detectCopyPaste(keyCode, event) {
   let result = false;
   const charCode = String.fromCharCode(keyCode).toLowerCase();
 
-
   if (event.ctrlKey && charCode === 'c') {
     result = true;
   } else if (event.ctrlKey && charCode === 'v') {

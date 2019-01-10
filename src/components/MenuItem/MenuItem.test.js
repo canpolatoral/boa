@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from './MenuItem';
 import { context, createMount } from '../../../test/utils';
 
-describe('<MenuItem /> tests', () => {
+describe('<MenuItem />', () => {
   let mount;
 
   before(() => {

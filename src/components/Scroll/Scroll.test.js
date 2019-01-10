@@ -2,7 +2,7 @@ import React from 'react';
 import Scroll from './Scroll';
 import { context, createMount } from '../../../test/utils';
 
-describe('<Scroll /> tests', () => {
+describe('<Scroll />', () => {
   let mount;
 
   before(() => {

@@ -281,7 +281,7 @@ class TimePickerDialog extends ComponentBase {
       <TimeBase
         key="hours"
         context={this.props.context}
-        DateTimeFormat={DateTimeFormat}
+        dateTimeFormat={DateTimeFormat}
         onTouchTapTime={this.handleTouchTapHour}
         selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minHour}
@@ -297,7 +297,7 @@ class TimePickerDialog extends ComponentBase {
       <TimeBase
         key="minutes"
         context={this.props.context}
-        DateTimeFormat={DateTimeFormat}
+        dateTimeFormat={DateTimeFormat}
         onTouchTapTime={this.handleTouchTapMinute}
         selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minMinute}
@@ -313,7 +313,7 @@ class TimePickerDialog extends ComponentBase {
       <TimeBase
         key="seconds"
         context={this.props.context}
-        DateTimeFormat={DateTimeFormat}
+        dateTimeFormat={DateTimeFormat}
         onTouchTapTime={this.handleTouchTapSecond}
         selectedDate={this.state.date ? this.state.date : new Date()}
         minValue={minSecond}

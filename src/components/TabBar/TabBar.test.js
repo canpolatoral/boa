@@ -4,7 +4,7 @@ import React from 'react';
 import TabBar from './TabBar';
 import { context, createShallow } from '../../../test/utils';
 
-describe('<TabBar /> tests', () => {
+describe('<TabBar />', () => {
   // let mount;
   let shallow;
 

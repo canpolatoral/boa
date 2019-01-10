@@ -4,7 +4,7 @@ import MuiDivider from '@material-ui/core/Divider';
 import Divider from './Divider';
 import { createShallow, createMount } from '../../../test/utils';
 
-describe('<Divider /> tests', () => {
+describe('<Divider />', () => {
   let shallow;
   let mount;
 

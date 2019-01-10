@@ -80,12 +80,14 @@ export default function getTheme(opt) {
       centeredLayout: false,
       themeName: options.themeName,
       kendoThemePath: options.kendoThemePath,
+    },
+    theme,
+    options.externalTheme,
+    {
       typography: {
         useNextVariants: true,
       },
     },
-    theme,
-    options.externalTheme,
   );
 
   return createMuiTheme(targetTheme);

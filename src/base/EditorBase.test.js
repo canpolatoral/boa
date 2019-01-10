@@ -30,7 +30,7 @@ class EmptyComponentWithValue extends EmptyComponent {
   }
 }
 
-describe('<EditorBase /> tests', () => {
+describe('<EditorBase />', () => {
   let mount;
 
   before(() => {
@@ -41,7 +41,7 @@ describe('<EditorBase /> tests', () => {
     mount.cleanUp();
   });
 
-  describe('with getValue tests', () => {
+  describe('with getValue', () => {
     let wrapper;
 
     before(() => {
@@ -59,7 +59,7 @@ describe('<EditorBase /> tests', () => {
       assert.strictEqual(result, true);
     });
 
-    it('should error when value is null and required', () => {
+    it('should not valid when value is null and required', () => {
       wrapper.setProps({
         valueConstraint: { required: true },
         isVisible: true,
@@ -71,7 +71,7 @@ describe('<EditorBase /> tests', () => {
       expect(validationResult).to.be.include({ key: 'required', message });
     });
 
-    it('should error when value is undefined and required', () => {
+    it('should not valid when value is undefined and required', () => {
       wrapper.setProps({
         valueConstraint: { required: true },
         isVisible: true,
@@ -84,7 +84,7 @@ describe('<EditorBase /> tests', () => {
       expect(validationResult).to.be.include({ key: 'required', message });
     });
 
-    it('should error when value is empty and required', () => {
+    it('should not valid when value is empty and required', () => {
       wrapper.setProps({
         valueConstraint: { required: true },
         isVisible: true,
@@ -107,7 +107,7 @@ describe('<EditorBase /> tests', () => {
       assert.strictEqual(result, true);
     });
 
-    it('should error when minLength', () => {
+    it('should not valid when minLength was given', () => {
       wrapper.setProps({
         valueConstraint: { minLength: 100 },
         isVisible: true,
@@ -123,7 +123,7 @@ describe('<EditorBase /> tests', () => {
       expect(validationResult).to.be.include({ key: 'minLength', message });
     });
 
-    it('should error when maxLength', () => {
+    it('should not valid when maxLength was given', () => {
       wrapper.setProps({
         valueConstraint: { maxLength: 1 },
         isVisible: true,
@@ -139,7 +139,7 @@ describe('<EditorBase /> tests', () => {
       expect(validationResult).to.be.include({ key: 'maxLength', message });
     });
 
-    it('should valid when minLength and maxLength', () => {
+    it('should valid when minLength and maxLength were given', () => {
       wrapper.setProps({
         valueConstraint: { minLength: 1, maxLength: 10 },
         isVisible: true,
@@ -150,7 +150,7 @@ describe('<EditorBase /> tests', () => {
     });
   });
 
-  describe('without getValue tests', () => {
+  describe('without getValue', () => {
     let wrapper;
 
     before(() => {
@@ -168,7 +168,7 @@ describe('<EditorBase /> tests', () => {
       assert.strictEqual(result, true);
     });
 
-    it('should error when value is required', () => {
+    it('should not valid when value is required', () => {
       wrapper.setProps({
         valueConstraint: { required: true },
         isVisible: true,
@@ -177,7 +177,7 @@ describe('<EditorBase /> tests', () => {
       assert.strictEqual(result, false);
     });
 
-    it('should valid when minLength', () => {
+    it('should valid when minLength was given', () => {
       wrapper.setProps({
         valueConstraint: { minLength: 100 },
         isVisible: true,
@@ -187,7 +187,7 @@ describe('<EditorBase /> tests', () => {
       assert.strictEqual(result, true);
     });
 
-    it('should valid when maxLength', () => {
+    it('should valid when maxLength was given', () => {
       wrapper.setProps({
         valueConstraint: { maxLength: 1 },
         isVisible: true,

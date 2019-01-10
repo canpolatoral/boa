@@ -13,7 +13,7 @@ function serviceCallSync(request, versions, messages) {
   }
 }
 
-describe('Messaging tests', () => {
+describe('Messaging', () => {
   describe('Configuration', () => {
     it('should contains default values ', () => {
       const options = Messaging.getMessagingOptions();

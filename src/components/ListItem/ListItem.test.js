@@ -2,7 +2,7 @@ import React from 'react';
 import ListItem from './ListItem';
 import { context, createMount } from '../../../test/utils';
 
-describe('<ListItem /> tests', () => {
+describe('<ListItem />', () => {
   let mount;
 
   before(() => {

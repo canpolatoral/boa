@@ -12,7 +12,7 @@ class BasicComponent extends Component {
   }
 }
 
-describe('<ErrorBoundary /> tests', () => {
+describe('<ErrorBoundary />', () => {
   let shallow;
   let mount;
 

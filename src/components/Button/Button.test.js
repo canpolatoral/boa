@@ -6,7 +6,7 @@ import * as SvgIcons from '@material-ui/icons';
 import Button from './Button';
 import { createShallow, createMount } from '../../../test/utils';
 
-describe('<Button /> tests', () => {
+describe('<Button />', () => {
   let shallow;
   let mount;
 
@@ -70,12 +70,12 @@ describe('<Button /> tests', () => {
     expect(onButtonClick).to.have.property('callCount', 1);
   });
 
-  it('should label be "UpperCase" format with allowLabelCase=false', () => {
+  it('should label be "UpperCase" format when allowLabelCase=false', () => {
     const wrapper = shallow(<Button text="aaa" allowLabelCase={false} />);
     assert.strictEqual(wrapper.dive().instance().getInstance().getLabel(), 'AAA');
   });
 
-  it('should label be empty with allowLabelCase=false and text is null', () => {
+  it('should label be empty when allowLabelCase=false and text is null', () => {
     const wrapper = shallow(<Button text={null} allowLabelCase={false} />);
     assert.strictEqual(wrapper.dive().instance().getInstance().getLabel(), '');
   });

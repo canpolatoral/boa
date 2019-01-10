@@ -2,7 +2,7 @@ import React from 'react';
 import * as Icons from './icons';
 import { createMount } from '../../../test/utils';
 
-describe('Icons tests', () => {
+describe('Icons', () => {
   let mount;
 
   before(() => {

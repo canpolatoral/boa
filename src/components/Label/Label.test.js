@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import Label from './Label';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<Label /> tests', () => {
+describe('<Label />', () => {
   let mount;
   let shallow;
 

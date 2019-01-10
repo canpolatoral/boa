@@ -9,7 +9,7 @@ import MuiFormControl from '@material-ui/core/FormControl';
 import Input from './Input';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<Input /> tests', () => {
+describe('<Input />', () => {
   let mount;
   let shallow;
 
@@ -64,23 +64,12 @@ describe('<Input /> tests', () => {
     expect(wrapper.find('input').props().value).equals('testValue');
   });
 
-  it('should render a disabled <input />', () => {
+  it('should render a disabled input', () => {
     const wrapper = shallow(<Input context={context} disabled />).dive();
     const control = wrapper.dive().find(MuiFormControl);
     const input = control.shallow().find(MuiInput);
     assert.strictEqual(input.shallow().name(), 'Input');
     assert.strictEqual(input.shallow().props().disabled, true);
-  });
-
-  it('should mount RTL', () => {
-    const newContext = Object.assign({}, context,
-      {
-        languageId: 5,
-        localization: {
-          isRightToLeft: true,
-        },
-      });
-    mount(<Input context={newContext} />);
   });
 
   it('should fire event callbacks', () => {
@@ -109,7 +98,7 @@ describe('<Input /> tests', () => {
     assert.strictEqual(input.instance().getInstance().getValue(), 'test');
   });
 
-  it('should setDisable', () => {
+  it('should set disable', () => {
     const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
     const input = wrapper.dive();
     input.instance().getInstance().setDisable(true);
@@ -132,7 +121,7 @@ describe('<Input /> tests', () => {
     clock.restore();
   });
 
-  describe('prop changes', () => {
+  describe('props', () => {
     it('should change timerDuration', () => {
       const onTimerFinished = spy();
       const wrapper = mount((
@@ -173,7 +162,7 @@ describe('<Input /> tests', () => {
       assert.strictEqual(button.props().dynamicIcon, 'Close');
     });
 
-    it('should onClick clear buton', () => {
+    it('should clear value with onClick', () => {
       const onChange = spy();
       const wrapper = mount(
         <Input
@@ -187,5 +176,11 @@ describe('<Input /> tests', () => {
       assert.strictEqual(onChange.callCount, 1);
       assert.strictEqual(wrapper.instance().getInstance().getValue(), '');
     });
+  });
+
+  it('should focus', () => {
+    const wrapper = mount(<Input context={context} />);
+    wrapper.instance().getInstance().focus();
+    assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
   });
 });

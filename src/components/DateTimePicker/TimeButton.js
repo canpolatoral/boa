@@ -46,7 +46,7 @@ class TimeButton extends ComponentBase {
     className: PropTypes.string,
     onTouchTap: PropTypes.func,
     selected: PropTypes.bool,
-    time: PropTypes.number.isRequired,
+    time: PropTypes.number,
   };
 
   static defaultProps = {
@@ -77,6 +77,7 @@ class TimeButton extends ComponentBase {
   }
 
   handleTouchTap(event) {
+    /* istanbul ignore else */
     if (this.props.onTouchTap) {
       this.props.onTouchTap(event, this.props.time);
     }

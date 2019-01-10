@@ -6,7 +6,7 @@ import EventListener from 'react-event-listener';
 import Calendar from './Calendar';
 import { context, createShallow } from '../../../test/utils';
 
-describe('<Calendar /> tests', () => {
+describe('<Calendar />', () => {
   let shallow;
 
   before(() => {

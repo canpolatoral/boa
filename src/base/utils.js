@@ -1,28 +1,29 @@
 /* eslint-disable */
 /* istanbul ignore file */
-
 import React from 'react';
 import indigo from '@material-ui/core/colors/indigo';
 import { Sizes, ComponentSize, FormHeaderTransactionTypes } from './types';
 
-Array.prototype.findIndex =
-  Array.prototype.findIndex ||
-  function (callback) {
-    if (this === null) {
-      throw new TypeError('Array.prototype.findIndex called on null or undefined');
-    } else if (typeof callback !== 'function') {
-      throw new TypeError('callback must be a function');
+export function findIndex(callback) {
+  /* istanbul ignore next */
+  if (this === null) {
+    throw new TypeError('Array.prototype.findIndex called on null or undefined');
+  } else if (typeof callback !== 'function') {
+    throw new TypeError('callback must be a function');
+  }
+  var list = Object(this);
+  var length = list.length >>> 0;
+  var thisArg = arguments[1];
+  for (var i = 0; i < length; i++) {
+    if (callback.call(thisArg, list[i], i, list)) {
+      return i;
     }
-    var list = Object(this);
-    var length = list.length >>> 0;
-    var thisArg = arguments[1];
-    for (var i = 0; i < length; i++) {
-      if (callback.call(thisArg, list[i], i, list)) {
-        return i;
-      }
-    }
-    return -1;
-  };
+  }
+  return -1;
+}
+
+/* istanbul ignore next */
+Array.prototype.findIndex = Array.prototype.findIndex || findIndex;
 
 export class Utils {
   static uniqueKey = 0;
@@ -39,13 +40,19 @@ export class Utils {
     });
   }
 
-  static stringFormat(value, args) {
+  static stringFormat(value, ...args) {
+    let params;
+    if (Array.isArray(args) && Array.isArray(args[0])) {
+      params = args[0];
+    } else {
+      params = args;
+    }
     var regex = new RegExp('{-?[0-9]+}', 'g');
     return value.replace(regex, function (item) {
       var intVal = parseInt(item.substring(1, item.length - 1));
       var replace;
       if (intVal >= 0) {
-        replace = args[intVal];
+        replace = params[intVal];
       } else if (intVal === -1) {
         replace = '{';
       } else if (intVal === -2) {
@@ -103,6 +110,7 @@ export class Utils {
     return pad + str;
   }
 
+  /* istanbul ignore next */
   static getShowStatusMessageReplacedText(value) {
     let text = value.replace(/\n/gi, '#00100#');
     let textArray = text.split('#00100#');
@@ -256,17 +264,13 @@ export class Utils {
     return WrappedComponent.displayName || WrappedComponent.name || 'Component';
   }
 
-  static getLogLevel() {
-    return ['debug', 'test', 'preprod', 'production'].findIndex(
-      v => v === (process.env.NODE_ENV || 'debug'),
-    );
-  }
 }
 
 export function shallowEqual(objA, objB) {
   if (objA === objB) {
     return true;
   }
+  /* istanbul ignore if */
   if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
     return false;
   }
@@ -282,4 +286,8 @@ export function shallowEqual(objA, objB) {
     }
   }
   return true;
+}
+
+export function isWrappedWithStyles(WrappedComponent) {
+  return !!WrappedComponent.contextTypes && !!WrappedComponent.contextTypes.muiThemeProviderOptions;
 }

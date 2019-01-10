@@ -11,7 +11,7 @@ const languages = [
   { id: 5, code: 'ar-ly', isRightToLeft: true },
 ];
 
-describe('Localization tests', () => {
+describe('Localization', () => {
   it('should default values set to english ', () => {
     assert.strictEqual(Localization.language, 'en');
     assert.strictEqual(Localization.languageId, 2);

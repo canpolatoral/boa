@@ -71,6 +71,7 @@ class DocViewer extends ComponentBase {
     super(props, context);
     marked.setOptions({
       highlight(str, lang) {
+        /* istanbul ignore else */
         if (lang && hljs.getLanguage(lang)) {
           return hljs.highlight(lang, str).value;
         }
@@ -82,6 +83,7 @@ class DocViewer extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore else */
     if (this.props.editorType !== nextProps.editorType) {
       this.setState({ editorType: nextProps.editorType });
     }

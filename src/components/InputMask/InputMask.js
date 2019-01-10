@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PredefinedMask from './constants';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { EditorBase, ComponentComposer } from '@boa/base';
 import { Input } from '@boa/components/Input';
 import detectCopyPaste from './detectCopyPaste';
 
 @ComponentComposer
-class InputMask extends ComponentBase {
+class InputMask extends EditorBase {
   static propTypes = {
-    ...ComponentBase.propTypes,
+    ...EditorBase.propTypes,
     ...Input.propTypes,
     bottomRightInfo: PropTypes.string,
     bottomRightInfoEnable: PropTypes.bool,
     counterLabelShow: PropTypes.bool,
+    countryCode: PropTypes.string,
     disabled: PropTypes.bool,
     errorText: PropTypes.string,
     inputType: PropTypes.string,
@@ -31,9 +32,10 @@ class InputMask extends ComponentBase {
   };
 
   static defaultProps = {
-    ...ComponentBase.defaultProps,
+    ...EditorBase.defaultProps,
     ...Input.defaultProps,
     counterLabelShow: true,
+    countryCode: 'TR',
     disabled: false,
     fullWidth: true,
     // errorText: '',
@@ -48,7 +50,6 @@ class InputMask extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
-    this.setProps(props);
     this.onChange = this.onChange.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -56,13 +57,12 @@ class InputMask extends ComponentBase {
     this.currentMask = '';
     this.errorText = '';
     this.helperText = '';
-    this.isShowErrorText = false;
     this.maxLength = -1;
     this.maskedMaxLength = -1;
     this.specialKey = false;
     this.isCorrectFormat = false;
     this.disabledCounterCharacter = ' ';
-    this.hintText = '';
+    this.setProps(props);
   }
 
   state = {
@@ -72,37 +72,16 @@ class InputMask extends ComponentBase {
     focussed: false,
   };
 
-  setMaskProp(props) {
-    if (props.type === 'Custom') {
-      this.currentMask = props.mask;
-    } else {
-      this.currentMask = PredefinedMask.Type[props.type];
-    }
-  }
-
   setProps(props) {
-    this.setMaskProp(props);
-
-    if (props.helperText !== '') {
-      this.helperText = props.helperText;
-    } else {
-      this.helperText = this.generateHelperText(this.currentMask);
-    }
-
-    // errorText verilmemiş ise infoText atanıyor.
-    if (props.errorText !== '') {
-      this.errorText = props.errorText;
-    } else {
-      this.errorText = this.helperText;
-    }
+    this.currentMask = props.type === 'Custom' ? props.mask : PredefinedMask.Type[props.type];
+    this.helperText = props.helperText || this.generateHelperText();
+    this.errorText = props.errorText || this.helperText;
   }
 
-  // ComponentWillReceiveProps
   componentWillReceiveProps(nextProps) {
-    if ((nextProps.mask != null || nextProps.type != null) && nextProps !== this.props) {
+    if (nextProps.mask !== this.props.mask || nextProps.type !== this.props.type) {
       this.setProps(nextProps);
     }
-
     if (nextProps.value != null && nextProps.value !== this.props.value) {
       this.setState({ value: nextProps.value });
     }
@@ -111,57 +90,24 @@ class InputMask extends ComponentBase {
     }
   }
 
-  // onchange event
-  onChange(e) {
-    const { currentMask, isCorrectFormat } = this;
-    const value = e.target.value;
-    const result = this.isCorrectFormatText(this.currentMask, value);
-
-    const compareValue = this.snapshotValue || result.value;
-
-    if (isCorrectFormat === true && compareValue && compareValue.length !== currentMask.length) {
-      this.isCorrectFormat = false;
-    }
-
-    this.setState({ value: result.value, saltValue: result.saltValue }, () => this.runRender());
-
-    if (this.props.onChange) {
-      this.props.onChange(e, result.value, result.saltValue, this.isCorrectFormat);
-    }
-    if (this.props.onDynamicChange) {
-      this.props.onDynamicChange(e);
-    }
-  }
-
-  // Render force after added item to the text.
-  runRender() {
-    if (this.specialKey === false) {
-      this.forceUpdate();
-    }
-  }
-
-  // To Check Input Text Matches The Mask
   isCorrectFormatText(mask, text) {
     let newText = '';
     let saltText = '';
     let count = 0;
+
     this.isCorrectFormat = text.length > 0;
 
     for (let i = 0; i < mask.length; i++) {
       const m = mask[i];
       const isExist = PredefinedMask.Regex[m] !== undefined;
-
       const t = text[i - count];
-
       if (isExist === true && t !== undefined) {
         saltText += t;
       }
-
       if (isExist === false) {
         if (t !== undefined && t !== m) {
           newText += m;
           count += 1;
-          // break;
           if (PredefinedMask.AllowSpecialKeys.indexOf(m) >= 0) {
             continue; // eslint-disable-line
           }
@@ -177,7 +123,30 @@ class InputMask extends ComponentBase {
     return { value: newText, saltValue: saltText };
   }
 
-  // onKeyDown Event.
+  onChange(e) {
+    const value = e.target.value;
+    const result = this.isCorrectFormatText(this.currentMask, value);
+    const { currentMask, isCorrectFormat } = this;
+
+    const compareValue = this.snapshotValue || result.value;
+
+    if (isCorrectFormat === true && compareValue && compareValue.length !== currentMask.length) {
+      this.isCorrectFormat = false;
+    }
+
+    this.setState({ value: result.value, saltValue: result.saltValue }, () => this.runRender());
+
+    /* istanbul ignore else */
+    if (this.props.onChange) {
+      this.props.onChange(e, result.value, result.saltValue, this.isCorrectFormat);
+    }
+
+    /* istanbul ignore if */
+    if (this.props.onDynamicChange) {
+      this.props.onDynamicChange(e);
+    }
+  }
+
   onKeyDown(e) {
     const key = e.key;
     const keyCode = e.keyCode || e.which;
@@ -186,6 +155,7 @@ class InputMask extends ComponentBase {
     const pressShortcut = detectCopyPaste(keyCode, e);
 
     if (pressShortcut === true) {
+      this.setTestResult(false);
       return;
     }
 
@@ -194,10 +164,12 @@ class InputMask extends ComponentBase {
 
     if (this.currentMask.length === currentValueLength && this.specialKey === false) {
       e.preventDefault();
+      this.setTestResult(false);
       return;
     }
 
     let typeOfMask = this.currentMask[currentValueLength];
+
     for (let i = currentValueLength; i < this.currentMask.length; i++) {
       typeOfMask = this.currentMask[i];
       const isExist = PredefinedMask.Regex[typeOfMask] !== undefined;
@@ -206,12 +178,22 @@ class InputMask extends ComponentBase {
         break;
       }
     }
+
     const regex = PredefinedMask.Regex[typeOfMask];
 
-    if (regex != null && regex.test(key) === false && this.specialKey === false) {
+    if (!regex) {
       e.preventDefault();
+      this.setTestResult(false);
       return;
     }
+
+    if (regex.test(key) === false && this.specialKey === false) {
+      e.preventDefault();
+      this.setTestResult(false);
+      return;
+    }
+
+    this.setTestResult(true);
 
     if (this.props.onKeyDown) {
       this.props.onKeyDown(e);
@@ -222,7 +204,6 @@ class InputMask extends ComponentBase {
     this.setState({ disabled: value });
   }
 
-  // To get value
   getValue() {
     return { value: this.state.value, saltValue: this.state.saltValue };
   }
@@ -231,30 +212,28 @@ class InputMask extends ComponentBase {
     return this.setState({ value: this.props.defaultValue });
   }
 
-  // onFocus
   onFocus(e) {
     this.setState({ focussed: true });
-    if (this.props.type === 'IBAN' && (this.state.value === '' || this.state.value.length === 0)) {
-      this.setState({ value: 'TR' });
+
+    if (this.props.type === 'IBAN' && (this.state.value === '')) {
+      this.setState({ value: this.props.countryCode });
     }
+
     if (this.props.onFocus) {
       this.props.onFocus(e);
     }
   }
 
-  // onBlur
   onBlur(e) {
     this.setState({ focussed: false });
-    if (this.props.type === 'IBAN' && this.state.value === 'TR') {
+
+    if (this.props.type === 'IBAN' && this.state.value === this.props.countryCode) {
       this.setState({ value: '' });
     }
+
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
-  }
-
-  validateConstraint() {
-    return this.binput ? this.binput.getInstance().validateConstraint() : true;
   }
 
   setCounter() {
@@ -264,11 +243,7 @@ class InputMask extends ComponentBase {
     }
 
     if (this.props.maxLength === -1) {
-      let text = '';
-      if (this.currentMask !== '') {
-        text = this.currentMask.split(this.disabledCounterCharacter);
-        text = text.join('');
-      }
+      const text = this.currentMask.split(this.disabledCounterCharacter).join('');
       this.maxLength = this.currentMask.length;
       this.maskedMaxLength = text.length;
     } else {
@@ -276,25 +251,21 @@ class InputMask extends ComponentBase {
     }
   }
 
-  /**
-   * generateHelperText
-   * @param {*} text
-   */
-  generateHelperText(text) {
-    if (text == null || text.length === 0) {
-      return null;
-    }
-    if (this.currentMask !== '') {
-      text = this.currentMask;
-      PredefinedMask.MaskCharacter.forEach(element => {
-        text = text.split(element);
-        text = text.join('#');
-      });
-    }
+  generateHelperText() {
+    let text = this.currentMask;
+    PredefinedMask.MaskCharacter.forEach(element => {
+      text = text.split(element);
+      text = text.join('#');
+    });
     return text;
   }
 
-  // render
+  runRender() {
+    if (this.specialKey === false) {
+      this.forceUpdate();
+    }
+  }
+
   render() {
     const { context, inputStyle, type, ...other } = this.props;
     const { value, focussed } = this.state;
@@ -327,13 +298,6 @@ class InputMask extends ComponentBase {
       this.helperText = '';
     }
 
-    // hint verilmemiş ise floating label değeri atanıyor.
-    if (this.props.hintText) {
-      this.hintText = this.props.hintText;
-    } else {
-      this.hintText = this.props.floatingLabelText;
-    }
-
     this.setCounter();
 
     return (
@@ -345,7 +309,7 @@ class InputMask extends ComponentBase {
         disabled={this.state.disabled}
         errorText={this.props.errorText || errorTextResult}
         helperText={this.state.focussed ? this.helperText : ''}
-        hintText={this.hintText}
+        hintText={this.props.hintText || this.props.floatingLabelText}
         inputStyle={inputStyle2}
         maxLength={this.maxLength}
         maskedMaxLength={this.maskedMaxLength}
@@ -359,6 +323,13 @@ class InputMask extends ComponentBase {
         showCounter
       />
     );
+  }
+
+  setTestResult(value) {
+    /* istanbul ignore else */
+    if (process.env.NODE_ENV === 'test') {
+      this.testResult = value;
+    }
   }
 }
 

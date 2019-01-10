@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { ComponentBase } from '@boa/base';
 import TimeButton from './TimeButton';
-import { cloneDate } from './dateUtils';
+import { cloneDate, dateTimeFormat, TimeType } from './dateUtils';
 
 class TimeBase extends ComponentBase {
   static propTypes = {
-    DateTimeFormat: PropTypes.func.isRequired,
+    dateTimeFormat: PropTypes.func,
     format: PropTypes.string,
     maxValue: PropTypes.number.isRequired,
     minValue: PropTypes.number.isRequired,
@@ -17,8 +17,13 @@ class TimeBase extends ComponentBase {
       PropTypes.object.isRequired,
       PropTypes.instanceOf(Date).isRequired,
     ]),
-    timeType: PropTypes.number.isRequired,
+    timeType: PropTypes.number,
     wordings: PropTypes.object,
+  };
+
+  static defaultProps = {
+    dateTimeFormat,
+    timeType: TimeType.Hour,
   };
 
   static contextTypes = {
@@ -39,8 +44,9 @@ class TimeBase extends ComponentBase {
   }
 
   getTimes() {
-    const { DateTimeFormat, selectedDate, timeType } = this.props;
+    const { selectedDate, timeType } = this.props;
 
+    const DateTimeFormat = this.props.dateTimeFormat;
     const times = [];
     const maxTime = this.props.maxValue;
     const minTime = this.props.minValue;

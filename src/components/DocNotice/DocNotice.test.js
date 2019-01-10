@@ -5,7 +5,7 @@ import * as SvgIcons from '@material-ui/icons';
 import DocNotice from './DocNotice';
 import { context, createShallow, createMount } from '../../../test/utils';
 
-describe('<DocNotice /> tests', () => {
+describe('<DocNotice />', () => {
   let mount;
   let shallow;
 

@@ -6,8 +6,8 @@ import { spy, useFakeTimers, stub } from 'sinon'; // eslint-disable-line
 import DialogHelper from './DialogHelper';
 import { context } from '../../../test/utils';
 
-describe('DialogHelper tests', () => {
-  describe('show dialog tests', () => {
+describe('DialogHelper', () => {
+  describe('show dialog', () => {
     it('should create a DOM element with string', () => {
       const dialog = DialogHelper.show(
         context,
@@ -139,7 +139,7 @@ describe('DialogHelper tests', () => {
     });
   });
 
-  describe('show error tests', () => {
+  describe('show error', () => {
     it('should create a dom element with out results', () => {
       const dialog = DialogHelper.showError(
         context,
@@ -175,7 +175,7 @@ describe('DialogHelper tests', () => {
     });
   });
 
-  describe('close dialog tests', () => {
+  describe('close dialog', () => {
     let dialog;
     let idleDialogDiv;
     const onClosing = spy();

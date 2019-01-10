@@ -53,8 +53,21 @@ class InputAction extends ComponentBase {
     this.iconMargin = 4;
   }
 
-  // If floatinglabel are not provided, padding will be given to leftIconList.
-  // If value is not null, padding will be removed on onBlur.
+  componentWillReceiveProps(nextProps) {
+    const { disabled, inputDisabled, value, rightIconList, leftIconList } = nextProps;
+
+    if (this.props.rightIconList !== rightIconList || this.props.leftIconList !== leftIconList) {
+      this.setFloatingLabelStyle(nextProps.rightIconList, nextProps.leftIconList);
+    }
+
+    if (value != null) {
+      this.setState({ value });
+    }
+
+    if (disabled !== this.props.disabled || inputDisabled !== this.props.inputDisabled) {
+      this.setState({ disabled, inputDisabled: disabled || inputDisabled });
+    }
+  }
 
   getValue() {
     return this.binput.getInstance().getValue();
@@ -71,22 +84,6 @@ class InputAction extends ComponentBase {
 
   setDisable(value) {
     this.setState({ disabled: value, inputDisabled: value });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { disabled, inputDisabled, value, rightIconList, leftIconList } = nextProps;
-
-    if (this.props.rightIconList !== rightIconList || this.props.leftIconList !== leftIconList) {
-      this.setFloatingLabelStyle(nextProps.rightIconList, nextProps.leftIconList);
-    }
-
-    if (value != null) {
-      this.setState({ value });
-    }
-
-    if (disabled !== this.props.disabled || inputDisabled !== this.props.inputDisabled) {
-      this.setState({ disabled, inputDisabled: disabled || inputDisabled });
-    }
   }
 
   onChange(e, v) {

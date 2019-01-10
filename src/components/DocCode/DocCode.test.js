@@ -3,7 +3,7 @@ import chai from 'chai';
 import DocCode from './DocCode';
 import { createMount } from '../../../test/utils';
 
-describe('<DocCode /> tests', () => {
+describe('<DocCode />', () => {
   let mount;
 
   before(() => {

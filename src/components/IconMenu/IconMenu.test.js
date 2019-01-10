@@ -11,7 +11,7 @@ import * as SvgIcons from '@material-ui/icons';
 import IconMenu from './IconMenu';
 import { context, createShallow, createMount } from '../../../test/utils/index';
 
-describe('<IconMenu /> tests', () => {
+describe('<IconMenu />', () => {
   const items = [
     {
       text: 'test',

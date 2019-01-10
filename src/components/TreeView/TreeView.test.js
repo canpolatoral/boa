@@ -2,7 +2,7 @@
 // import TreeView from './TreeView';
 // import { context, createMount } from '../../../test/utils';
 
-// describe('<TreeView /> tests', () => {
+// describe('<TreeView />', () => {
 //   let mount;
 //   // let shallow;
 

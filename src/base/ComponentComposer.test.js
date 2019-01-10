@@ -14,7 +14,7 @@ class EmptyComponent extends React.Component {
   }
 }
 
-describe('<ComponentComposer /> tests', () => {
+describe('<ComponentComposer />', () => {
   let mount;
 
   before(() => {

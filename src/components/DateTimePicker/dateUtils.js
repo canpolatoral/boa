@@ -643,7 +643,6 @@ export function getDatePickerStyle(context) {
 
   return datePicker;
 }
-
 export function getDefaultDate(props) {
   let defaultDate;
   if (props.defaultValue != undefined) {
@@ -653,7 +652,6 @@ export function getDefaultDate(props) {
   }
   return defaultDate;
 }
-
 export function getDateToString(propDate, defaultDate) {
   let returnDate = defaultDate;
   if (isString(propDate)) {
@@ -669,7 +667,6 @@ export function getDateToString(propDate, defaultDate) {
   }
   return returnDate;
 }
-
 export function clearTime(returnDate) {
   returnDate.setHours(0);
   returnDate.setMinutes(0);
@@ -677,15 +674,12 @@ export function clearTime(returnDate) {
 
   return returnDate;
 }
-
 export function clearTimeZone(returnDate) {
   return new Date(returnDate.getTime() - returnDate.getTimezoneOffset() * 60000);
 }
-
 export function clearJustTimeZone(returnDate) {
   return new Date(returnDate.getTime());
 }
-
 export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount) {
   // let monthFirstDate = cloneDate(getFirstDayOfMonth(selectedDate));
   const specialDayStringArray = [];
@@ -768,7 +762,6 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
   }
   return specialDayStringArray;
 }
-
 export function checkDateForBusiness(props, oldDate, newDate, changeType) {
   let setNewDate = cloneDate(newDate);
   let dateNow = new Date();
@@ -785,7 +778,7 @@ export function checkDateForBusiness(props, oldDate, newDate, changeType) {
         }
         else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 2) {
           setNewDate.setDate(day + changeType);
-          return  checkDateForBusiness(props, oldDate, setNewDate, changeType);
+          return checkDateForBusiness(props, oldDate, setNewDate, changeType);
         }
         else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 3) {
           setNewDate.setDate(day + changeType);
@@ -805,3 +798,18 @@ export function checkDateForBusiness(props, oldDate, newDate, changeType) {
   }
   return newDate;
 }
+export const DayType = {
+  EmptyDay: -1,
+  WorkDay: 0,
+  WeekendDay: 1,
+  Holiday: 2,
+  ReliHoliday: 3,
+  Eve: 4,
+};
+export const TimeType = {
+  Hour: 1,
+  Minute: 2,
+  Second: 3,
+  MonthListName: 4,
+  Numeric: 5,
+};

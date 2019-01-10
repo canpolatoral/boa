@@ -5,7 +5,7 @@ import { Input } from '@boa/components/Input';
 import InputNumeric from './InputNumeric';
 import { context, createMount } from '../../../test/utils';
 
-describe('<InputNumeric /> tests', () => {
+describe('<InputNumeric />', () => {
   let mount;
 
   before(() => {

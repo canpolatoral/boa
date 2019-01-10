@@ -4,7 +4,7 @@ import MuiMenuList from '@material-ui/core/MenuList';
 import Menu from './Menu';
 import { context, createMount, createShallow } from '../../../test/utils';
 
-describe('<Menu /> tests', () => {
+describe('<Menu />', () => {
   // const items = [
   //   {
   //     text: 'test',

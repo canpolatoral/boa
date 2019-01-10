@@ -5,7 +5,7 @@ import { Input } from '@boa/components/Input';
 import LinearPanel from './LinearPanel';
 import { context, createMount } from '../../../test/utils';
 
-describe('<LinearPanel /> tests', () => {
+describe('<LinearPanel />', () => {
   let mount;
 
   before(() => {

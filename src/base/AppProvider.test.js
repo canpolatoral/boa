@@ -3,7 +3,7 @@ import AppProvider from './AppProvider';
 import getTheme from './theme';
 import { createMount } from '../../test/utils';
 
-describe('<AppProvider /> tests', () => {
+describe('<AppProvider />', () => {
   let mount;
 
   before(() => {

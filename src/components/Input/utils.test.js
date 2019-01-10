@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import * as Utils from './utils';
 
-describe('Input utility tests', () => {
+describe('Input utility', () => {
   describe('timeInfo', () => {
     it('should return duration {MM:ss} format', () => {
       const timeInfo = Utils.getTimeInfo(100);

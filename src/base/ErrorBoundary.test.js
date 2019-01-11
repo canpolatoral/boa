@@ -4,7 +4,7 @@ import { stub } from 'sinon';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import ErrorBoundary from './ErrorBoundary';
-import { createShallow, createMount } from '../../test/utils';
+import { createShallow, createMount, getTestRunner } from '../../test/utils';
 
 // eslint-disable-next-line
 class EmptyComponent extends Component {
@@ -75,14 +75,16 @@ describe('<ErrorBoundary />', () => {
     });
 
     it('should handle child component catch', () => {
-      const wrapper = mount((
-        <ErrorBoundary>
-          <EmptyComponent />
-        </ErrorBoundary>
-      ));
-      assert.strictEqual(consoleErrorStub.callCount > 0, true);
-      assert.strictEqual(wrapper.state().hasError, true);
-      assert.strictEqual(wrapper.state().error.message, 'EmptyComponentError');
+      if (getTestRunner() !== 'karma') {
+        const wrapper = mount((
+          <ErrorBoundary>
+            <EmptyComponent />
+          </ErrorBoundary>
+        ));
+        assert.strictEqual(consoleErrorStub.callCount > 0, true);
+        assert.strictEqual(wrapper.state().hasError, true);
+        assert.strictEqual(wrapper.state().error.message, 'EmptyComponentError');
+      }
     });
   });
 });

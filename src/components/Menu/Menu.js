@@ -8,8 +8,7 @@ import { ComponentBase, ComponentComposer } from '@boa/base';
 import { MenuItem } from '@boa/components/MenuItem';
 import { Icon } from '@boa/components/Icon';
 
-/* eslint-disable no-unused-vars */
-const styles = theme => ({
+const styles = () => ({
   menuItem: {
     paddingBottom: '6px',
     paddingTop: '6px',
@@ -22,7 +21,6 @@ const styles = theme => ({
   icon: {},
 });
 
-/* eslint-enable no-unused-vars */
 @ComponentComposer
 @withStyles(styles)
 class Menu extends ComponentBase {

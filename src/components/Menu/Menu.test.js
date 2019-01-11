@@ -5,39 +5,39 @@ import Menu from './Menu';
 import { context, createMount, createShallow } from '../../../test/utils';
 
 describe('<Menu />', () => {
-  // const items = [
-  //   {
-  //     text: 'test',
-  //     value: 1,
-  //     rightIcon: {
-  //       dynamicIcon: 'Home',
-  //     },
-  //   },
-  //   {
-  //     text: 'test2',
-  //     value: 2,
-  //     items: [
-  //       {
-  //         text: 'test3',
-  //         value: 3,
-  //         leftIcon: {
-  //           dynamicIcon: 'Home',
-  //         },
-  //       },
-  //       {
-  //         text: 'test4',
-  //         value: 4,
-  //       },
-  //     ],
-  //   },
-  // ];
+  const items = [
+    {
+      text: 'test',
+      value: 1,
+      rightIcon: {
+        dynamicIcon: 'Home',
+      },
+    },
+    {
+      text: 'test2',
+      value: 2,
+      items: [
+        {
+          text: 'test3',
+          value: 3,
+          leftIcon: {
+            dynamicIcon: 'Home',
+          },
+        },
+        {
+          text: 'test4',
+          value: 4,
+        },
+      ],
+    },
+  ];
 
   let mount;
   let shallow;
 
   before(() => {
     mount = createMount();
-    shallow = createShallow({ dive: true });
+    shallow = createShallow({ untilSelector: 'Menu' });
   });
 
   after(() => {
@@ -46,6 +46,17 @@ describe('<Menu />', () => {
 
   it('should render MuiMenuList', () => {
     const wrapper = shallow(<Menu context={context} />);
-    assert.strictEqual(wrapper.shallow().type(), MuiMenuList);
+    assert.strictEqual(wrapper.type(), MuiMenuList);
+  });
+
+  it('should render items', () => {
+    const wrapper = shallow(<Menu items={items} context={context} />);
+    assert.strictEqual(wrapper.type(), MuiMenuList);
+  });
+
+  it('should change value', () => {
+    const wrapper = shallow(<Menu items={items} context={context} />);
+    wrapper.setProps({ value: 2 });
+    assert.strictEqual(wrapper.state().value, 2);
   });
 });

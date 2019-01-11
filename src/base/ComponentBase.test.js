@@ -1,19 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
 import ComponentBase from './ComponentBase';
 import { context, createShallow, createMount, serviceCallSync } from '../../test/utils';
 
-/* eslint-disable-next-line */
+// eslint-disable-next-line
 class EmptyComponent extends ComponentBase {
   state = {
-    snapshotProperty: 'EmptyComponent',
+    foo: 'EmptyComponent',
   }
 
   render() {
     return (
       <div>
-        {this.state.snapshotProperty}
+        {this.state.foo}
       </div>
     );
   }
@@ -28,8 +29,8 @@ describe('<ComponentBase />', () => {
     mount = createMount();
   });
 
-  after(() => {
-    mount.cleanUp();
+  it('should has visible propType', () => {
+    assert.strictEqual(EmptyComponent.propTypes.visible, PropTypes.bool);
   });
 
   it('should render', () => {
@@ -37,34 +38,31 @@ describe('<ComponentBase />', () => {
     expect(wrapper.text()).contains('EmptyComponent');
   });
 
-  it('should render with snapshot', () => {
-    const wrapper = shallow((
-      <EmptyComponent snapshot={{ snapshotProperty: 'TestSnapshot' }} />
-    ));
-    expect(wrapper.text()).contains('TestSnapshot');
+  it('should render with snapshot prop', () => {
+    const wrapper = shallow(<EmptyComponent snapshot={{ foo: 'bar' }} />);
+    expect(wrapper.text()).contains('bar');
   });
 
-  it('should handle change snapshot prop', () => {
-    const wrapper = mount((
-      <EmptyComponent snapshot={{ snapshotProperty: 'TestSnapshot' }} />
-    ));
-    wrapper.setProps({ snapshot: { snapshotProperty: 'ChangedSnapshot' } });
-    const snapshotProperty = wrapper.instance().getInstance().getSnapshot().snapshotProperty;
-    expect(snapshotProperty).equals('ChangedSnapshot');
+  it('should handle changing snapshot prop ', () => {
+    const wrapper = shallow((<EmptyComponent snapshot={{ foo: 'bar' }} />));
+    wrapper.setProps({ snapshot: { foo: 'baz' } });
+    const foo = wrapper.instance().getInstance().getSnapshot().foo;
+    expect(foo).equals('baz');
+    expect(wrapper.text()).contains('baz');
   });
 
-  it('should getSnapkey', () => {
-    const wrapper = mount((<EmptyComponent snapKey="snapKey" />));
-    assert.strictEqual(wrapper.instance().getInstance().getSnapKey('child'), 'snapKey_child');
+  it('should assign channel theme to props.context', () => {
+    const wrapper = mount(<EmptyComponent context={{ foo: 'bar' }} />);
+    assert.strictEqual(wrapper.props().context.theme, context.theme);
   });
 
-  it('should getInstance', () => {
-    const wrapper = mount((<EmptyComponent context={context} />));
+  it('should get instance', () => {
+    const wrapper = shallow((<EmptyComponent context={context} />));
     assert.strictEqual(wrapper.instance(), wrapper.instance().getInstance());
   });
 
-  it('should getMessage', () => {
-    const wrapper = mount((<EmptyComponent context={context} />));
+  it('should get messages', () => {
+    const wrapper = shallow((<EmptyComponent context={context} />));
     const versions = [{ id: 1, name: 'test', ClassName: 'test', Version: 1 }];
     const messages = [
       {
@@ -75,7 +73,7 @@ describe('<ComponentBase />', () => {
         PropertyName: 'test',
       }];
 
-    // eslint-disable-next-line
+    // eslint-disable-next-line no-undef
     const stub = sinon.stub($, 'ajax').callsFake((request) => {
       return serviceCallSync(request, versions, messages);
     });
@@ -84,8 +82,15 @@ describe('<ComponentBase />', () => {
     stub.restore();
   });
 
-  it('should validateConstraint', () => {
-    const wrapper = mount((<EmptyComponent context={context} />));
+  it('should have validateConstraint method', () => {
+    const wrapper = shallow((<EmptyComponent context={context} />));
     assert.strictEqual(wrapper.instance().getInstance().validateConstraint(), true);
+  });
+
+  it('should get snap key', () => {
+    const wrapper = mount((<EmptyComponent snapKey="snapKey" />));
+    assert.strictEqual(wrapper.instance().getInstance().getSnapKey('child'), 'snapKey_child');
+    wrapper.setProps({ snapKey: '' });
+    assert.strictEqual(wrapper.instance().getInstance().getSnapKey('child'), 'child');
   });
 });

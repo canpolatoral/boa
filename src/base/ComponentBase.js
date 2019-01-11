@@ -19,20 +19,20 @@ export default class ComponentBase extends Component {
     context: PropTypes.object,
     disabled: PropTypes.bool,
     id: PropTypes.string,
-    isVisible: PropTypes.bool,
     newLine: PropTypes.bool,
     persistState: PropTypes.bool,
     snapKey: PropTypes.string,
     snapshot: PropTypes.object,
     style: PropTypes.object,
     valueConstraint: PropTypes.object,
+    visible: PropTypes.bool,
   };
 
   static defaultProps = {
     disabled: false,
     componentSize: ComponentSize.LARGE,
     newLine: false,
-    isVisible: true,
+    visible: true,
   };
 
   static contextTypes = {

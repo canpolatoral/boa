@@ -121,7 +121,7 @@ class ListItem extends ComponentBase {
       secondaryText,
       componentSize,
       newLine,
-      isVisible,
+      visible,
       ...other } = this.props;
     const { isRightToLeft } = this.props.context.localization;
     const className = classNames(classes.root, {

@@ -13,10 +13,9 @@ export default class EditorBase extends ComponentBase {
   validateConstraint() {
     const { valueConstraint } = this.props;
     let result = true;
-    if (!valueConstraint || !this.props.isVisible) {
+    if (!valueConstraint || !this.props.visible) {
       return result;
     }
-
 
     const value = this.getValue ? this.getValue() : null;
     const newValidationResult = [];

@@ -190,7 +190,7 @@ export class Utils {
     const childArray = [];
     if (children) {
       React.Children.map(children, child => {
-        if (child && child.props && child.props.isVisible !== false) {
+        if (child && child.props && child.props.visible !== false) {
           const newChild = this.getCardChildrenRecursive(child, isDisabled);
           newChild && childArray.push(newChild);
         }
@@ -261,6 +261,9 @@ export class Utils {
   }
 
   static getDisplayName(WrappedComponent) {
+    if(WrappedComponent.s) {
+      console.log(WrappedComponent.displayName);
+    }
     return WrappedComponent.displayName || WrappedComponent.name || 'Component';
   }
 

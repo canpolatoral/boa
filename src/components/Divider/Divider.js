@@ -42,10 +42,7 @@ class Divider extends ComponentBase {
   render() {
     let innerStyle = {
       width: 'calc(100% -24)',
-      marginBottom: 12,
-      marginLeft: 12,
-      marginRight: 12,
-      marginTop: 12,
+      margin: 12,
     };
 
     const { style, componentSize, newLine, visible, ...props } = this.props;

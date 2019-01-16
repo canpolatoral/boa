@@ -24,7 +24,7 @@ class DocCode extends ComponentBase {
       'atomOneLight',
       'github',
       'monokaiSublime',
-      'raiinbow',
+      'rainbow',
       'vs',
       'xcode',
     ]),

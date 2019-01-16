@@ -131,19 +131,14 @@ class CheckBox extends ComponentBase {
   };
 
   state = {
-    isChecked:
-      this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
+    isChecked: this.props.checked || this.props.defaultChecked || false,
+    disabled: this.props.disabled,
+
   };
 
   constructor(props, context) {
     super(props, context);
     this.onCheck = this.onCheck.bind(this);
-
-    this.state = {
-      isChecked:
-        this.props.checked !== undefined ? this.props.checked : this.props.defaultChecked || false,
-      disabled: this.props.disabled,
-    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -211,23 +206,27 @@ class CheckBox extends ComponentBase {
       />
     );
 
-    return label ? (
-      <div style={{ display: 'inline-flex' }}>
-        <MuiFormControlLabel
-          control={checkBox}
-          classes={{
-            label: localization.isRightToLeft ? classes.labelRTL : classes.labelLTR,
-            root: classes.root,
-          }}
-          label={label}
-        />
-        {this.props.errorText && this.props.errorTextVisible ? (
-          <Label style={errorStyle} context={this.props.context} text={this.props.errorText} />
-        ) : null}
-      </div>
-    ) : (
-        checkBox
+    if (label) {
+      return (
+        <div style={{ display: 'inline-flex' }}>
+          <MuiFormControlLabel
+            control={checkBox}
+            classes={{
+              label: localization.isRightToLeft ? classes.labelRTL : classes.labelLTR,
+              root: classes.root,
+            }}
+            label={label}
+          />
+          {
+            this.props.errorText && this.props.errorTextVisible ? (
+              <Label style={errorStyle} context={this.props.context} text={this.props.errorText} />
+            ) : null
+          }
+        </div>
       );
+    }
+
+    return checkBox;
   }
 }
 

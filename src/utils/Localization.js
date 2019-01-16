@@ -46,11 +46,16 @@ export class Localization {
     };
 
     this.languageId = langId;
+
     if (this.languageId === 1) this.language = 'tr';
     else if (this.languageId === 2) this.language = 'en';
     else if (this.languageId === 3) this.language = 'de';
     else if (this.languageId === 4) this.language = 'ru';
     else if (this.languageId === 5) this.language = 'ar-ly';
+    else {
+      this.languageId = 2;
+      this.language = 'en';
+    }
 
     if (!Numeral.locales.hasOwnProperty('ar-ly')) {
       Numeral.register('locale', 'ar-ly', locales.ar);
@@ -66,7 +71,6 @@ export class Localization {
 
     this.languageId = langId;
 
-    // Arapçca(language=5) olan dilde ekranlar sağdan sola render edilecek
     if (this.languageId === 5) {
       localization.isRightToLeft = true;
     }
@@ -81,6 +85,10 @@ export class Localization {
     else if (this.languageId === 3) this.language = 'de';
     else if (this.languageId === 4) this.language = 'ru';
     else if (this.languageId === 5) this.language = 'ar-ly';
+    else {
+      this.languageId = 2;
+      this.language = 'en';
+    }
 
     Moment.locale(this.language);
     Numeral.locale(this.language);

@@ -3,7 +3,6 @@ import { assert } from 'chai';
 import { spy, stub } from 'sinon';
 import keycode from 'keycode';
 import { Input } from '@boa/components/Input';
-import { EditorBase } from '@boa/base';
 import InputMask from './InputMask';
 import PredefinedMask from './constants';
 import { context, createMount, createShallow } from '../../../test/utils';
@@ -19,11 +18,6 @@ describe('<InputMask />', () => {
 
   after(() => {
     mount.cleanUp();
-  });
-
-  it('should extends EditorBase', () => {
-    const wrapper = shallow(<InputMask context={context} />);
-    wrapper.is(EditorBase);
   });
 
   it('should render Input', () => {

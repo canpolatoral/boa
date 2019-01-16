@@ -17,9 +17,22 @@ describe('<Divider />', () => {
     mount.cleanUp();
   });
 
-  it('should render a <MuiDivider> element', () => {
+  it('should render a MuiDivider', () => {
     const wrapper = shallow(<Divider />);
     assert.strictEqual(wrapper.type(), MuiDivider);
+  });
+
+  it('should assign default style', () => {
+    const wrapper = shallow(<Divider />);
+    assert.strictEqual(wrapper.props().style.width, 'calc(100% -24)');
+    assert.strictEqual(wrapper.props().style.margin, 12);
+  });
+
+  it('should override style', () => {
+    const wrapper = shallow(<Divider style={{ padding: 10, margin: 5 }} />);
+    assert.strictEqual(wrapper.props().style.width, 'calc(100% -24)');
+    assert.strictEqual(wrapper.props().style.margin, 5);
+    assert.strictEqual(wrapper.props().style.padding, 10);
   });
 
   it('should mount', () => {

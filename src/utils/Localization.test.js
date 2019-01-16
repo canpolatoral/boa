@@ -1,7 +1,8 @@
+import { spy } from 'sinon';
 import { assert, expect } from 'chai';
-import { Localization } from './Localization';
 import moment from 'moment';
 import numeral from 'numeral';
+import { Localization } from './Localization';
 
 const languages = [
   { id: 1, code: 'tr' },
@@ -9,6 +10,7 @@ const languages = [
   { id: 3, code: 'de' },
   { id: 4, code: 'ru' },
   { id: 5, code: 'ar-ly', isRightToLeft: true },
+  { id: 6, code: 'en' }, // for default values
 ];
 
 describe('Localization', () => {
@@ -37,6 +39,17 @@ describe('Localization', () => {
     });
   });
 
+  it('should static constructor set "ar" locales to numeral', () => {
+    delete numeral.locales['ar-ly'];
+    spy(numeral, 'register');
+    Localization.staticConstructor(5);
+    const args = numeral.register.args;
+    numeral.register.restore();
+    assert.strictEqual(args[0][2].delimiters.thousands, ',');
+    assert.strictEqual(args[0][2].delimiters.decimal, '.');
+    assert.strictEqual(args[0][2].ordinal(), ' ');
+  });
+
   it('should create localization context set to RTL', () => {
     languages.forEach((language) => {
       const localizationContext = Localization.createLocalizationContext(language.id);
@@ -49,6 +62,14 @@ describe('Localization', () => {
       Localization.changeLocalizationLanguage(language.id);
       assert.strictEqual(moment.locale(), language.code);
       assert.strictEqual(numeral.locale(), language.code);
+    });
+  });
+
+  it('should return localization language', () => {
+    languages.filter(x => x.id !== 6).forEach((language) => {
+      Localization.changeLocalizationLanguage(language.id);
+      assert.strictEqual(Localization.getLocalizationLanguage().language, language.code);
+      assert.strictEqual(Localization.getLocalizationLanguage().languageId, language.id);
     });
   });
 });

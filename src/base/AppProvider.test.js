@@ -20,17 +20,17 @@ describe('<AppProvider />', () => {
     mount.cleanUp();
   });
 
-  it('it should have an error boundary', () => {
+  it('should have an error boundary', () => {
     const wrapper = shallow(<AppProvider>Test</AppProvider>);
     assert.strictEqual(wrapper.type(), ErrorBoundary);
   });
 
-  it('it should have ThemeProvider child', () => {
+  it('should have ThemeProvider child', () => {
     const wrapper = shallow(<AppProvider>Test</AppProvider>);
     assert.strictEqual(wrapper.childAt(0).type(), MuiThemeProvider);
   });
 
-  it('it should have CssBaseline inside ThemeProvider', () => {
+  it('should have CssBaseline inside ThemeProvider', () => {
     const wrapper = shallow(<AppProvider>Test</AppProvider>);
     assert.strictEqual(wrapper.childAt(0).childAt(0).type(), CssBaseline);
   });

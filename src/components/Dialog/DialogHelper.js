@@ -13,7 +13,7 @@ export default class DialogHelper {
 
   static dialogRefs = {};
 
-  /** internal methods * */
+  /* istanbul ignore next */
   static getContentRef(key) {
     return this.dialogRefs[key] ? this.dialogRefs[key].contentRef : null;
   }

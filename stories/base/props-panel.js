@@ -21,7 +21,7 @@ const style = {
 };
 
 const themeItems = [
-  { title: 'KT-Green', value: 'kt-green', color: '#006754' },
+  { title: 'Kuveyt Turk', value: 'Kuveyt Turk', color: '#006754' },
   { title: 'Violet', value: 'violet', color: '#B618CE' },
   { title: 'Winter', value: 'winter', color: '#1976D2' },
   { title: 'Spring', value: 'spring', color: '#3F51B5' },

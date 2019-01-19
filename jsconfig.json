@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@boa/base": [
+        "packages/boa-base/src"
+      ],
+      "@boa/components": [
+        "packages/boa-components/src"
+      ],
+      "@boa/utils": [
+        "packages/boa-utils/src"
+      ],
+      "@boa/test": [
+        "test"
+      ],
+    }
+  },
+}

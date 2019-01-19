@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  // So parent files don't get applied
   root: true,
   globals: {
     preval: false,
@@ -21,7 +20,9 @@ module.exports = {
   plugins: ['babel', 'import', 'jsx-a11y', 'mocha'],
   settings: {
     'import/resolver': {
-      'babel-module': {},
+      webpack: {
+        config: path.join(__dirname, './scripts/import-resolver.js'),
+      },
     },
   },
   rules: {

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { DateTimePicker } from '../../src/components/DateTimePicker';
+import { DateTimePicker } from '@boa/components/DateTimePicker';
 import Header from '../base/header';
 import Props from '../base/props-table';
 import Preview from '../base/preview';

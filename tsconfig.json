@@ -12,6 +12,23 @@
     "strict": true,
     "noEmit": true,
     "experimentalDecorators": true,
-    "baseUrl": "./"
+    "baseUrl": "./packages",
+    "paths": {
+      "@boa/base": [
+        "./boa-base/src"
+      ],
+      "@boa/components": [
+        "./boa-components/src"
+      ],
+      "@boa/components/*": [
+        "./boa-components/src/*"
+      ],
+      "@boa/utils": [
+        "./boa-utils/src"
+      ],
+      "@boa/test/*": [
+        "./test/*"
+      ]
+    }
   },
 }

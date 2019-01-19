@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TreeViewGrid } from '../../src/components/TreeViewGrid';
+import { TreeViewGrid } from '@boa/components/TreeViewGrid';
 import Header from '../base/header';
 import Props from '../base/props-table';
 import Preview from '../base/preview';

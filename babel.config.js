@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   presets: ['@babel/preset-env', '@babel/preset-react'],
   plugins: [
     ['@babel/plugin-proposal-class-properties', { loose: true }],
@@ -10,15 +10,26 @@ module.exports = {
     ],
     '@babel/plugin-transform-object-assign',
     '@babel/plugin-transform-runtime',
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+  ],
+};
+
+/* istanbul ignore else */
+if (process.env.NODE_ENV !== 'production') {
+  config.plugins.push(
     [
       'babel-plugin-module-resolver',
       {
         root: ['./'],
         alias: {
-          '@boa': './src',
+          '@boa/base': './packages/boa-base/src',
+          '@boa/components': './packages/boa-components/src',
+          '@boa/utils': './packages/boa-utils/src',
+          '@boa/test': './test',
         },
       },
     ],
-    ['@babel/plugin-proposal-decorators', { legacy: true }],
-  ],
-};
+  );
+}
+
+module.exports = config;

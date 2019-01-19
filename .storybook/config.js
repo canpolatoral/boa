@@ -13,6 +13,7 @@ addDecorator((story, context) => {
 });
 
 const req = require.context('../stories', true, /.stories.js$/);
+
 function loadStories() {
   const gettingStarted = './getting-started/index.stories.js';
   req(gettingStarted);
@@ -31,3 +32,5 @@ setOptions({
   url: 'https://github.com/kuveytturk/boa-components',
   sidebarAnimations: true,
 });
+
+

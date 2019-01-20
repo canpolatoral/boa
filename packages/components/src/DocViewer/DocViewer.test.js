@@ -1,5 +1,5 @@
 import React from 'react';
-import { assert } from 'chai';
+import { assert, expect } from 'chai';
 import DocViewer from './DocViewer';
 import content from './test/doc';
 import { createMount } from '@boa/test/utils';
@@ -17,6 +17,22 @@ describe('<DocViewer />', () => {
 
   it('should mount', () => {
     mount(<DocViewer content={content} />);
+  });
+
+  it('should handle code language', () => {
+    const codeContent = `\`\`\` js
+    console.log('hello world');\`\`\`
+    `;
+    const wrapper = mount(<DocViewer content={codeContent} />);
+    expect(wrapper.html()).contains('<code class="hljs"');
+  });
+
+  it('should handle without lang', () => {
+    const codeContent = `\`\`\`
+    console.log('hello world');\`\`\`
+    `;
+    const wrapper = mount(<DocViewer content={codeContent} />);
+    expect(wrapper.html()).not.contains('<code class="hljs"');
   });
 
   it('should change editor type', () => {

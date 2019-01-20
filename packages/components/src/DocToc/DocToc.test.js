@@ -1,5 +1,5 @@
 import React from 'react';
-import { expect } from 'chai';
+import { expect, assert } from 'chai';
 import { spy } from 'sinon';
 import DocToc from './DocToc';
 import { context, createShallow, createMount } from '@boa/test/utils';
@@ -57,6 +57,16 @@ describe('<DocToc />', () => {
     expect(firstChild.text()).contains('first child');
   });
 
+  it('should render empty content', () => {
+    const content = [];
+    const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
+    const ul = wrapper.childAt(0);
+    expect(ul.type()).equals('ul');
+    const header = ul.childAt(0);
+    expect(header.text()).contains('header');
+    assert.strictEqual(wrapper.children().length, 1);
+  });
+
   it('should mount', () => {
     const content = [
       {
@@ -88,14 +98,14 @@ describe('<DocToc />', () => {
     const wrapper = mount(
       <DocToc context={context} header="header" content={content} linkOnClick={linkOnClick} />,
     );
-    wrapper
-      .findWhere(x => x.type() === 'label' && x.text().includes('first item'))
-      .simulate('click');
+    const label = wrapper.findWhere(x => x.type() === 'label' && x.text().includes('first item'));
+    label.simulate('click');
     expect(linkOnClick).to.have.property('callCount', 1);
     expect(linkOnClick.args[0][0], 'argument id is first child').equals(1);
+    label.simulate('click');
   });
 
-  it('should update activeItem with componentWillReceiveProps', () => {
+  it('props:activeItem', () => {
     const content = [
       {
         id: 1,
@@ -125,5 +135,41 @@ describe('<DocToc />', () => {
     const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
     wrapper.setProps({ activeItem: '2' });
     expect(wrapper.state().activeItem).to.equals('2');
+  });
+
+  it('props:content', () => {
+    const content = [
+      {
+        id: 1,
+        level: 1,
+        content: 'first item',
+        children: [
+          {
+            id: 2,
+            level: 2,
+            content: 'first child',
+          },
+        ],
+      },
+      {
+        id: 3,
+        level: 1,
+        content: 'second item',
+        children: [
+          {
+            id: 4,
+            level: 2,
+            content: 'second child',
+          },
+        ],
+      },
+    ];
+    const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
+    wrapper.setProps({ content: [] });
+    const ul = wrapper.childAt(0);
+    expect(ul.type()).equals('ul');
+    const header = ul.childAt(0);
+    expect(header.text()).contains('header');
+    assert.strictEqual(wrapper.children().length, 1);
   });
 });

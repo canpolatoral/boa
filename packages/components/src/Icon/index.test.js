@@ -2,6 +2,7 @@ import { assert } from 'chai';
 import MuiSvgIcon from '@material-ui/core/SvgIcon';
 import MuiIcon from '@material-ui/core/Icon';
 import * as SvgIcons from '@material-ui/icons';
+import * as Icons from './icons';
 import { Icon } from './index';
 import { createMount } from '@boa/test/utils';
 
@@ -37,6 +38,16 @@ describe('Icon', () => {
   it('should get bIcon', () => {
     const SvgIcon = Icon.getIcon({ bIcon: 'BOALogo', iconProperties: { folder: 'Logos' } });
     const wrapper = mount(SvgIcon);
-    assert.strictEqual(wrapper.childAt(0).type(), MuiSvgIcon);
+    assert.strictEqual(wrapper.type(), Icons.Logos.BOALogo);
+  });
+
+  it('should return null when icon not exists', () => {
+    const SvgIcon = Icon.getIcon({ bIcon: 'aaaa', iconProperties: { folder: 'Logos' } });
+    assert.strictEqual(SvgIcon, null);
+  });
+
+  it('should return null when folder not exists', () => {
+    const SvgIcon = Icon.getIcon({ bIcon: 'aaaa', iconProperties: { folder: 'aaaa' } });
+    assert.strictEqual(SvgIcon, null);
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { expect } from 'chai';
+import { assert, expect } from 'chai';
 import { AppProvider } from '@boa/base';
 import * as SvgIcons from '@material-ui/icons';
 import DocNotice from './DocNotice';
@@ -28,7 +28,8 @@ describe('<DocNotice />', () => {
         .childAt(0)
         .type(),
     ).to.equals(SvgIcons.Info);
-    expect(wrapper.text()).contains('info : info');
+    assert.strictEqual(wrapper.childAt(1).text(), 'info: ');
+    assert.strictEqual(wrapper.childAt(2).text(), 'info');
   });
 
   it('should render warning', () => {
@@ -41,7 +42,8 @@ describe('<DocNotice />', () => {
         .childAt(0)
         .type(),
     ).to.equals(SvgIcons.Warning);
-    expect(wrapper.text()).contains('warning : warning');
+    assert.strictEqual(wrapper.childAt(1).text(), 'warning: ');
+    assert.strictEqual(wrapper.childAt(2).text(), 'warning');
   });
 
   it('should render error', () => {
@@ -54,7 +56,8 @@ describe('<DocNotice />', () => {
         .childAt(0)
         .type(),
     ).to.equals(SvgIcons.Error);
-    expect(wrapper.text()).contains('error : error');
+    assert.strictEqual(wrapper.childAt(1).text(), 'error: ');
+    assert.strictEqual(wrapper.childAt(2).text(), 'error');
   });
 
   it('should render tip', () => {
@@ -65,11 +68,24 @@ describe('<DocNotice />', () => {
         .childAt(0)
         .type(),
     ).to.equals(SvgIcons.Star);
-    expect(wrapper.text()).contains('tip : tip');
+    assert.strictEqual(wrapper.childAt(1).text(), 'tip: ');
+    assert.strictEqual(wrapper.childAt(2).text(), 'tip');
   });
 
   it('should mount', () => {
     mount(<DocNotice context={context} />);
+  });
+
+  it('should render without header', () => {
+    const wrapper = shallow(<DocNotice context={context} content="info" type="info" />);
+    expect(
+      wrapper
+        .find(AppProvider)
+        .childAt(0)
+        .type(),
+    ).to.equals(SvgIcons.Info);
+    assert.strictEqual(wrapper.childAt(1).text(), '');
+    assert.strictEqual(wrapper.childAt(2).text(), 'info');
   });
 
   it('should mount when fitMode ', () => {

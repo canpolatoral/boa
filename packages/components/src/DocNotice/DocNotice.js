@@ -29,8 +29,6 @@ class DocNotice extends ComponentBase {
   static defaultProps = {
     type: 'tip',
     fitMode: false,
-    header: 'Tip Message',
-    content: 'This is a tip message.',
   };
 
   render() {
@@ -49,7 +47,7 @@ class DocNotice extends ComponentBase {
         </div>
         <b>
           {this.props.header}
-          {this.props.header && this.props.content ? ' : ' : ''}
+          {this.props.header && this.props.content ? ': ' : undefined}
         </b>
         {this.props.content}
       </div>

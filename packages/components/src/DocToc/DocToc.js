@@ -6,7 +6,10 @@ const getMinLevel = content => {
   let level = 0;
   if (content.length > 0) level = content[0].level;
   content.forEach(item => {
-    if (item.level < level) level = item.level;
+    /* istanbul ignore if */
+    if (item.level < level) {
+      level = item.level;
+    }
   });
   return level;
 };
@@ -72,6 +75,7 @@ class DocToc extends ComponentBase {
     if (this.state.activeItem !== id) {
       this.setState({ activeItem: id });
     }
+    /* istanbul ignore else */
     if (this.props.linkOnClick) {
       this.props.linkOnClick(id);
     }

@@ -20,17 +20,19 @@ export class Icon {
     if (cmpProps.fontIcon) {
       return <MuiIcon {...cmpProps.iconProperties}> {cmpProps.fontIcon} </MuiIcon>;
     }
-    if (cmpProps.dynamicIcon) {
+    if (cmpProps.dynamicIcon && SvgIcons[cmpProps.dynamicIcon]) {
       const DynamicIcon = SvgIcons[cmpProps.dynamicIcon];
-      if (DynamicIcon) {
-        return <DynamicIcon {...cmpProps.iconProperties} />;
-      }
+      return <DynamicIcon {...cmpProps.iconProperties} />;
     }
     if (cmpProps.bIcon && cmpProps.iconProperties) {
       const folder = BIcons[cmpProps.iconProperties.folder];
-      const BIconType =
-        folder && folder[cmpProps.bIcon] ? folder[cmpProps.bIcon] : BIcons.Actions.None;
-      return <BIconType {...cmpProps.iconProperties} />;
+      if (folder) {
+        const BIconType = folder[cmpProps.bIcon];
+        if (BIconType) {
+          return <BIconType {...cmpProps.iconProperties} />;
+        }
+      }
+      return null;
     }
     /* istanbul ignore if */
     if (cmpProps.icon) {

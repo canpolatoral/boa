@@ -23,6 +23,15 @@ Please refer [contribution](/CONTRIBUTING.md) doc.
 
 We'll provide example projects as soon as possible.
 
+## Roadmap
+
+The future plans and high priority features and enhancements can be found in the [ROADMAP.md](roadmap/) file.
+
+## Thanks
+
+Thank you to [Material-UI](https://github.com/mui-org/material-ui) for awesome React components.
+
+
 
 
 

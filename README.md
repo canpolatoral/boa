@@ -1,4 +1,4 @@
-<h1 align="center">boa-components</h1>
+<h1 align="center">@boa packages</h1>
 
 <div align="center">
 

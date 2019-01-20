@@ -133,7 +133,6 @@ class CheckBox extends ComponentBase {
   state = {
     isChecked: this.props.checked || this.props.defaultChecked || false,
     disabled: this.props.disabled,
-
   };
 
   constructor(props, context) {
@@ -217,11 +216,9 @@ class CheckBox extends ComponentBase {
             }}
             label={label}
           />
-          {
-            this.props.errorText && this.props.errorTextVisible ? (
-              <Label style={errorStyle} context={this.props.context} text={this.props.errorText} />
-            ) : null
-          }
+          {this.props.errorText && this.props.errorTextVisible ? (
+            <Label style={errorStyle} context={this.props.context} text={this.props.errorText} />
+          ) : null}
         </div>
       );
     }

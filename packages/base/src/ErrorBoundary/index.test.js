@@ -27,37 +27,31 @@ describe('<ErrorBoundary />', () => {
   });
 
   it('should render child when no error', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <ErrorBoundary>
-        <div>
-          ErrorBoundaryTest
-        </div>
-      </ErrorBoundary>
-    ));
+        <div>ErrorBoundaryTest</div>
+      </ErrorBoundary>,
+    );
     expect(wrapper.text()).contains('ErrorBoundaryTest');
   });
 
   it('should render error', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <ErrorBoundary>
-        <div>
-          ErrorBoundaryTest
-        </div>
-      </ErrorBoundary>
-    ));
+        <div>ErrorBoundaryTest</div>
+      </ErrorBoundary>,
+    );
     wrapper.setState({ hasError: true, open: true, error: { message: 'ErrorMessage' } });
     const dialog = wrapper.find(DialogTitle).shallow();
     expect(dialog.props()).to.have.property('children', 'ErrorMessage');
   });
 
   it('should handle close', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <ErrorBoundary>
-        <div>
-          ErrorBoundaryTest
-        </div>
-      </ErrorBoundary>
-    ));
+        <div>ErrorBoundaryTest</div>
+      </ErrorBoundary>,
+    );
     wrapper.setState({ hasError: true, open: true, error: { message: 'ErrorMessage' } });
     wrapper.find(Button).simulate('click');
     expect(wrapper.state()).to.have.property('open', false);
@@ -76,11 +70,11 @@ describe('<ErrorBoundary />', () => {
 
     it('should handle child component catch', () => {
       if (getTestRunner() !== 'karma') {
-        const wrapper = mount((
+        const wrapper = mount(
           <ErrorBoundary>
             <EmptyComponent />
-          </ErrorBoundary>
-        ));
+          </ErrorBoundary>,
+        );
         assert.strictEqual(consoleErrorStub.callCount > 0, true);
         assert.strictEqual(wrapper.state().hasError, true);
         assert.strictEqual(wrapper.state().error.message, 'EmptyComponentError');

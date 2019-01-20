@@ -27,13 +27,8 @@ describe('<TabBar />', () => {
       },
     ];
 
-    shallow((
-      <TabBar
-        context={context}
-        tabItems={tabItems}
-        rightIconButtonVisibility
-        value={0}
-      />
-    )).dive();
+    shallow(
+      <TabBar context={context} tabItems={tabItems} rightIconButtonVisibility value={0} />,
+    ).dive();
   });
 });

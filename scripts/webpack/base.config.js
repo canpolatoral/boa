@@ -4,7 +4,6 @@ import yargs from 'yargs';
 
 export const options = yargs.alias('p', 'optimizeMinimize').alias('d', 'debug').argv;
 
-
 const baseConfig = {
   entry: undefined,
   output: undefined,

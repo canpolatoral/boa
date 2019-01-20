@@ -110,7 +110,7 @@ export default class PropsPanel extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => { }}
+          onAdd={() => {}}
           onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
@@ -180,7 +180,8 @@ export default class PropsPanel extends ComponentBase {
                 return (
                   <option
                     key={`property${index}`} // eslint-disable-line
-                    value={item}>
+                    value={item}
+                  >
                     {item}
                   </option>
                 );
@@ -250,7 +251,8 @@ export default class PropsPanel extends ComponentBase {
                       return (
                         <MenuItem
                           key={`themeItems${index}`} // eslint-disable-line
-                          value={item.value}>
+                          value={item.value}
+                        >
                           {item.title}
                         </MenuItem>
                       );
@@ -281,7 +283,8 @@ export default class PropsPanel extends ComponentBase {
                       return (
                         <MenuItem
                           key={`languageItems${index}`} // eslint-disable-line
-                          value={item.value}>
+                          value={item.value}
+                        >
                           {item.title}
                         </MenuItem>
                       );

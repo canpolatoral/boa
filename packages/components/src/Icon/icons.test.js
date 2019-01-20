@@ -14,8 +14,8 @@ describe('Icons', () => {
   });
 
   it('should mount all icons', () => {
-    Object.keys(Icons).forEach((key) => {
-      Object.keys(Icons[key]).forEach((subKey) => {
+    Object.keys(Icons).forEach(key => {
+      Object.keys(Icons[key]).forEach(subKey => {
         const RenderedIcon = Icons[key][subKey];
         mount(<RenderedIcon />);
       });

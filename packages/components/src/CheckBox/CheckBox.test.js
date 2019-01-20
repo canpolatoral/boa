@@ -70,29 +70,29 @@ describe('<CheckBox />', () => {
     });
 
     it('should render errorText', () => {
-      const wrapper = shallow((
-        <CheckBox context={context} errorText="TestErrorText" errorTextVisible label="label" />
-      ));
+      const wrapper = shallow(
+        <CheckBox context={context} errorText="TestErrorText" errorTextVisible label="label" />,
+      );
       assert.strictEqual(wrapper.childAt(1).props().text, 'TestErrorText');
     });
 
     it('should render errorText with RTL', () => {
-      const newContext = Object.assign({}, context,
-        {
-          languageId: 5,
-          localization: {
-            isRightToLeft: true,
-          },
-        });
+      const newContext = Object.assign({}, context, {
+        languageId: 5,
+        localization: {
+          isRightToLeft: true,
+        },
+      });
 
-      const wrapper = mount((
+      const wrapper = mount(
         <CheckBox
           context={newContext}
           defaultChecked={false}
           errorText="TestErrorText"
           errorTextVisible
-          label="test" />
-      ));
+          label="test"
+        />,
+      );
       const label = wrapper.find(Label);
       assert.strictEqual(label.props().style.textAlign, 'right');
     });
@@ -100,77 +100,101 @@ describe('<CheckBox />', () => {
 
   it('should render custom checkedIcon', () => {
     const checkedIcon = <CheckBoxIcon fontSize="small" />;
-    const wrapper = mount((
+    const wrapper = mount(
       <CheckBox
         context={context}
         defaultChecked={false}
         checkedIcon={checkedIcon}
         errorTextVisible
-        label="test" />
-    ));
+        label="test"
+      />,
+    );
     const mui = wrapper.find(MuiCheckbox);
     assert.strictEqual(mui.props().checkedIcon, checkedIcon);
   });
 
   it('should have getValue method returns checked status', () => {
     const wrapper = shallow(<CheckBox context={context} />);
-    assert.strictEqual(wrapper.instance().getInstance().getValue(), false);
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getValue(),
+      false,
+    );
   });
 
   it('should have setValue method changes the checked status', () => {
     const wrapper = shallow(<CheckBox context={context} />);
-    wrapper.instance().getInstance().setValue(true);
-    assert.strictEqual(wrapper.instance().getInstance().getValue(), true);
+    wrapper
+      .instance()
+      .getInstance()
+      .setValue(true);
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getValue(),
+      true,
+    );
   });
 
   it('should have resetValue method changes the checked status to default ', () => {
     const wrapper = shallow(<CheckBox defaultChecked={false} context={context} label="test" />);
-    wrapper.instance().getInstance().setValue(true);
-    wrapper.instance().getInstance().resetValue();
-    assert.strictEqual(wrapper.instance().getInstance().getValue(), false);
+    wrapper
+      .instance()
+      .getInstance()
+      .setValue(true);
+    wrapper
+      .instance()
+      .getInstance()
+      .resetValue();
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getValue(),
+      false,
+    );
   });
 
   it('should have setDisable method change the disabled status', () => {
     const wrapper = shallow(<CheckBox context={context} label="test" />);
-    wrapper.instance().getInstance().setDisable(true);
+    wrapper
+      .instance()
+      .getInstance()
+      .setDisable(true);
     assert.strictEqual(wrapper.state().disabled, true);
   });
 
   it('simulates click events (onCheck)', () => {
     const onCheck = sinon.spy();
-    const wrapper = mount((
-      <CheckBox
-        onCheck={onCheck}
-        defaultChecked={false}
-        context={context}
-        label="test" />
-    ));
+    const wrapper = mount(
+      <CheckBox onCheck={onCheck} defaultChecked={false} context={context} label="test" />,
+    );
     wrapper.find('input').simulate('change', { target: { checked: true } });
     expect(onCheck).to.have.property('callCount', 1);
   });
 
   it('simulates click events (onChange)', () => {
     const onChange = sinon.spy();
-    const wrapper = mount((
-      <CheckBox
-        onChange={onChange}
-        defaultChecked={false}
-        context={context}
-        label="test" />
-    ));
+    const wrapper = mount(
+      <CheckBox onChange={onChange} defaultChecked={false} context={context} label="test" />,
+    );
     wrapper.find('input').simulate('change', { target: { checked: true } });
     expect(onChange).to.have.property('callCount', 1);
   });
 
   it('should handle checked prop changes', () => {
-    const wrapper = mount((
+    const wrapper = mount(
       <CheckBox
         context={context}
         defaultChecked={false}
         errorText="ErrorText"
         errorTextVisible
-        label="test" />
-    ));
+        label="test"
+      />,
+    );
     wrapper.setProps({ checked: true });
     let mui = wrapper.find(MuiCheckbox);
     expect(mui.props().checked).to.equals(true);
@@ -186,12 +210,9 @@ describe('<CheckBox />', () => {
   });
 
   it('should override style', () => {
-    const wrapper = mount((
-      <CheckBox
-        context={context}
-        defaultChecked={false}
-        style={{ marginLeft: 10 }} />
-    ));
+    const wrapper = mount(
+      <CheckBox context={context} defaultChecked={false} style={{ marginLeft: 10 }} />,
+    );
     const mui = wrapper.find(MuiCheckbox);
     assert.strictEqual(mui.props().style.marginLeft, 10);
   });

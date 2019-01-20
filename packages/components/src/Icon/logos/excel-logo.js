@@ -21,7 +21,6 @@ const ExcelLogo = props => {
   );
 };
 
-
 ExcelLogo.propTypes = {
   context: PropTypes.object,
   viewBox: PropTypes.string,

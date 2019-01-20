@@ -16,7 +16,7 @@ describe('Input utility', () => {
     });
 
     it('should return false when value one of undefined, null, empty', () => {
-      [undefined, null, ''].forEach((item) => {
+      [undefined, null, ''].forEach(item => {
         const result = Utils.hasValue(item);
         assert.strictEqual(result, false);
       });

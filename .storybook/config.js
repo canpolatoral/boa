@@ -32,5 +32,3 @@ setOptions({
   url: 'https://github.com/kuveytturk/boa-components',
   sidebarAnimations: true,
 });
-
-

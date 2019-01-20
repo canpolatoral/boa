@@ -32,12 +32,10 @@ const styles = theme => ({
   itemTextPrimary: {
     fontSize: 14,
     color: theme.boaPalette.base400,
-
   },
   itemTextSecondary: {
     fontSize: 12,
     color: theme.boaPalette.base350,
-
   },
 });
 
@@ -122,7 +120,8 @@ class ListItem extends ComponentBase {
       componentSize,
       newLine,
       visible,
-      ...other } = this.props;
+      ...other
+    } = this.props;
     const { isRightToLeft } = this.props.context.localization;
     const className = classNames(classes.root, {
       [classes.isRTL]: isRightToLeft,

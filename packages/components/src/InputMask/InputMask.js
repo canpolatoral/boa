@@ -21,13 +21,8 @@ class InputMask extends EditorBase {
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
-    type: PropTypes.oneOf([
-      'CreditCard',
-      'IBAN',
-      'MobilePhoneNumber',
-      'PhoneNumber',
-      'Custom',
-    ]).isRequired,
+    type: PropTypes.oneOf(['CreditCard', 'IBAN', 'MobilePhoneNumber', 'PhoneNumber', 'Custom'])
+      .isRequired,
     value: PropTypes.string,
   };
 
@@ -215,7 +210,7 @@ class InputMask extends EditorBase {
   onFocus(e) {
     this.setState({ focussed: true });
 
-    if (this.props.type === 'IBAN' && (this.state.value === '')) {
+    if (this.props.type === 'IBAN' && this.state.value === '') {
       this.setState({ value: this.props.countryCode });
     }
 

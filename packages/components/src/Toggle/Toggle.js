@@ -184,11 +184,15 @@ class Toggle extends ComponentBase {
     const toggleIcon = Icon.getIcon(props);
 
     const rootClass = classNames(classes.root, {
-      [classes.labelReverse]: (this.props.labelPosition === 'right' ? 1 : 0),
+      [classes.labelReverse]: this.props.labelPosition === 'right' ? 1 : 0,
       // eslint-disable-next-line
-      [classes.isRTL]: isRightToLeft ?
-        (this.props.labelPosition === 'right' ? 0 : 1) :
-        (this.props.labelPosition === 'right' ? 1 : 0),
+      [classes.isRTL]: isRightToLeft
+        ? this.props.labelPosition === 'right'
+          ? 0
+          : 1
+        : this.props.labelPosition === 'right'
+        ? 1
+        : 0,
     });
 
     return (

@@ -9,13 +9,7 @@ import { context } from '@boa/test/utils';
 describe('DialogHelper', () => {
   describe('show dialog', () => {
     it('should create a DOM element with string', () => {
-      const dialog = DialogHelper.show(
-        context,
-        'test',
-        undefined,
-        undefined,
-        'test-title',
-      );
+      const dialog = DialogHelper.show(context, 'test', undefined, undefined, 'test-title');
       const dialogKey = Object.keys(DialogHelper.dialogRefs)[0];
       const dialogRef = DialogHelper.dialogRefs[dialogKey];
       const ref = ReactDOM.findDOMNode(dialogRef.dialog);
@@ -93,16 +87,11 @@ describe('DialogHelper', () => {
         DialogType.INFO,
         DialogType.WARNING,
         DialogType.ERROR,
-        DialogType.QUESTION];
+        DialogType.QUESTION,
+      ];
 
-      dialogTypes.forEach((type) => {
-        const dialog = DialogHelper.show(
-          context,
-          'test',
-          type,
-          undefined,
-          'test-title',
-        );
+      dialogTypes.forEach(type => {
+        const dialog = DialogHelper.show(context, 'test', type, undefined, 'test-title');
         const dialogKey = Object.keys(DialogHelper.dialogRefs)[0];
         const dialogRef = DialogHelper.dialogRefs[dialogKey];
         const ref = ReactDOM.findDOMNode(dialogRef.dialog);
@@ -121,14 +110,8 @@ describe('DialogHelper', () => {
         DialogResponseStyle.OKCANCEL,
       ];
 
-      responseTypes.forEach((type) => {
-        const dialog = DialogHelper.show(
-          context,
-          'test',
-          undefined,
-          type,
-          'test-title',
-        );
+      responseTypes.forEach(type => {
+        const dialog = DialogHelper.show(context, 'test', undefined, type, 'test-title');
         const dialogKey = Object.keys(DialogHelper.dialogRefs)[0];
         const dialogRef = DialogHelper.dialogRefs[dialogKey];
         const ref = ReactDOM.findDOMNode(dialogRef.dialog);
@@ -195,8 +178,8 @@ describe('DialogHelper', () => {
       idleDialogDiv = DialogHelper.dialogDivs[dialog.props.dialogKey];
     });
 
-    it('should close created dialog', (done) => {
-      const unmountComponentAtNode = stub(ReactDOM, 'unmountComponentAtNode').callsFake((node) => {
+    it('should close created dialog', done => {
+      const unmountComponentAtNode = stub(ReactDOM, 'unmountComponentAtNode').callsFake(node => {
         assert.strictEqual(idleDialogDiv, node);
       });
 

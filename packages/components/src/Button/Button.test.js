@@ -37,17 +37,27 @@ describe('<Button />', () => {
 
   it('should render a SVG Icon when have a dynamicIcon prop', () => {
     const wrapper = shallow(<Button dynamicIcon="Home" />);
-    assert.strictEqual(wrapper.dive().childAt(0).type(), Home);
+    assert.strictEqual(
+      wrapper
+        .dive()
+        .childAt(0)
+        .type(),
+      Home,
+    );
   });
 
   it('should change icon style', () => {
-    const wrapper = shallow((
-      <Button
-        dynamicIcon="Home"
-        iconProperties={{ style: { marginLeft: 8 } }} />
-    ));
+    const wrapper = shallow(
+      <Button dynamicIcon="Home" iconProperties={{ style: { marginLeft: 8 } }} />,
+    );
 
-    assert.strictEqual(wrapper.dive().childAt(0).props().style.marginLeft, 8);
+    assert.strictEqual(
+      wrapper
+        .dive()
+        .childAt(0)
+        .props().style.marginLeft,
+      8,
+    );
   });
 
   it('should change disabled prop', () => {
@@ -71,17 +81,29 @@ describe('<Button />', () => {
   describe('prop: allowLabelCase', () => {
     it('should label be "UpperCase" format when allowLabelCase is false', () => {
       const wrapper = shallow(<Button text="aaa" allowLabelCase={false} />);
-      assert.strictEqual(wrapper.instance().getInstance().getLabel(), 'AAA');
+      assert.strictEqual(
+        wrapper
+          .instance()
+          .getInstance()
+          .getLabel(),
+        'AAA',
+      );
     });
 
     it('should label be empty when allowLabelCase=false and text is null', () => {
       const wrapper = shallow(<Button text={null} allowLabelCase={false} />);
-      assert.strictEqual(wrapper.instance().getInstance().getLabel(), '');
+      assert.strictEqual(
+        wrapper
+          .instance()
+          .getInstance()
+          .getLabel(),
+        '',
+      );
     });
   });
 
   it('should assign textPosition', () => {
-    const wrapper = shallow((<Button text="click" textPosition="right" />));
+    const wrapper = shallow(<Button text="click" textPosition="right" />);
     assert.strictEqual(wrapper.dive().props().style.justifyContent, 'flex-end');
     wrapper.setProps({ textPosition: 'left' });
     assert.strictEqual(wrapper.dive().props().style.justifyContent, 'left');

@@ -42,13 +42,14 @@ describe('<DayButton />', () => {
     const datePickerStyle = getDatePickerStyle(context);
     it('should render WorkDay', () => {
       const date = new Date();
-      const wrapper = shallow((
+      const wrapper = shallow(
         <DayButton
           context={context}
           date={date}
           isBusiness
-          dayInfo={{ dayType: DayType.WorkDay }} />
-      ));
+          dayInfo={{ dayType: DayType.WorkDay }}
+        />,
+      );
       const divStyle = wrapper.childAt(0).props().style;
       const spanStyle = wrapper.childAt(1).props().style;
 
@@ -102,12 +103,9 @@ describe('<DayButton />', () => {
         const date = new Date();
         const displayDate = new Date(date.getFullYear(), date.getMonth(), 1);
         const onTouchTap = spy();
-        const wrapper = shallow((
-          <DayButton
-            context={context}
-            onTouchTap={onTouchTap}
-            date={displayDate} />
-        ));
+        const wrapper = shallow(
+          <DayButton context={context} onTouchTap={onTouchTap} date={displayDate} />,
+        );
         wrapper.find(ButtonBase).simulate('click');
         assert.strictEqual(onTouchTap.callCount, 1);
       });
@@ -116,13 +114,9 @@ describe('<DayButton />', () => {
         const date = new Date();
         const displayDate = new Date(date.getFullYear(), date.getMonth(), 1);
         const onTouchTap = spy();
-        const wrapper = shallow((
-          <DayButton
-            context={context}
-            disabled
-            onTouchTap={onTouchTap}
-            date={displayDate} />
-        ));
+        const wrapper = shallow(
+          <DayButton context={context} disabled onTouchTap={onTouchTap} date={displayDate} />,
+        );
         wrapper.find(ButtonBase).simulate('click');
         assert.strictEqual(onTouchTap.callCount, 0);
       });

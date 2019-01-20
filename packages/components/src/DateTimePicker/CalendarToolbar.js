@@ -129,7 +129,8 @@ class CalendarToolbar extends ComponentBase {
         <div
           style={this.props.noDialog ? styles.titleDialog : styles.titleDiv}
           key={dateTimeFormatted}
-          onClick={this.handleClickToolBar}>
+          onClick={this.handleClickToolBar}
+        >
           {dateTimeFormatted}
         </div>
         <MuiIconButton

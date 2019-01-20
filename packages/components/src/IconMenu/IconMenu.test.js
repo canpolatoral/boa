@@ -50,12 +50,26 @@ describe('<IconMenu />', () => {
     mount.cleanUp();
   });
 
-
   it('should render', () => {
     const wrapper = shallow(<IconMenu context={context} items={items} />);
-    const menuList = wrapper.dive().childAt(1).childAt(0);
-    assert.strictEqual(wrapper.dive().childAt(0).type(), IconButton);
-    assert.strictEqual(wrapper.dive().childAt(1).type(), Popover);
+    const menuList = wrapper
+      .dive()
+      .childAt(1)
+      .childAt(0);
+    assert.strictEqual(
+      wrapper
+        .dive()
+        .childAt(0)
+        .type(),
+      IconButton,
+    );
+    assert.strictEqual(
+      wrapper
+        .dive()
+        .childAt(1)
+        .type(),
+      Popover,
+    );
     assert.strictEqual(menuList.type(), MenuList);
     menuList.children().forEach((child, index) => {
       const item = items[index];
@@ -82,12 +96,7 @@ describe('<IconMenu />', () => {
   });
 
   it('should mount and render right divs', () => {
-    const wrapper = mount((
-      <IconMenu
-        id="icon-menu-test"
-        context={context}
-        items={items} />
-    ));
+    const wrapper = mount(<IconMenu id="icon-menu-test" context={context} items={items} />);
     wrapper.find('button').simulate('click');
     const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
     assert.strictEqual(paper.tagName.toLocaleLowerCase(), 'div');
@@ -99,13 +108,9 @@ describe('<IconMenu />', () => {
 
   it('should mount and handle menuItem clicks', () => {
     const onChange = spy();
-    const wrapper = mount((
-      <IconMenu
-        id="icon-menu-test"
-        context={context}
-        items={items}
-        onChange={onChange} />
-    ));
+    const wrapper = mount(
+      <IconMenu id="icon-menu-test" context={context} items={items} onChange={onChange} />,
+    );
     wrapper.find('button').simulate('click');
     const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
     const list = paper.getElementsByTagName('ul')[0];
@@ -117,12 +122,7 @@ describe('<IconMenu />', () => {
 
   describe('prop: menuItems', () => {
     it('should mount with menuItems', () => {
-      const wrapper = mount((
-        <IconMenu
-          id="icon-menu-test"
-          context={context}
-          items={items} />
-      ));
+      const wrapper = mount(<IconMenu id="icon-menu-test" context={context} items={items} />);
       wrapper.find('button').simulate('click');
       const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
       assert.strictEqual(paper.tagName.toLocaleLowerCase(), 'div');
@@ -148,13 +148,9 @@ describe('<IconMenu />', () => {
 
     it('should render custom ', () => {
       const Home = Icon.getIcon({ dynamicIcon: 'Home' });
-      const wrapper = shallow((
-        <IconMenu
-          context={context}
-          items={items}
-          iconType="custom"
-          customIcon={Home} />
-      ));
+      const wrapper = shallow(
+        <IconMenu context={context} items={items} iconType="custom" customIcon={Home} />,
+      );
       const iconButton = wrapper.dive().childAt(0);
       assert.strictEqual(iconButton.childAt(0).type(), SvgIcons.Home);
     });

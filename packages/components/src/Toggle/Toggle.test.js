@@ -21,7 +21,6 @@ describe('<Toggle />', () => {
     mount.cleanUp();
   });
 
-
   it('should render FormControlLabel', () => {
     const wrapper = shallow(<Toggle context={context} />);
     const formControl = wrapper.dive().find(FormControlLabel);
@@ -71,26 +70,18 @@ describe('<Toggle />', () => {
 
   it('simulates click events (onToggle)', () => {
     const onToggle = spy();
-    const wrapper = mount((
-      <Toggle
-        onToggle={onToggle}
-        defaultChecked={false}
-        context={context}
-        label="test" />
-    ));
+    const wrapper = mount(
+      <Toggle onToggle={onToggle} defaultChecked={false} context={context} label="test" />,
+    );
     wrapper.find('input').simulate('change', { target: { checked: true } });
     expect(onToggle).to.have.property('callCount', 1);
   });
 
   it('simulates click events (onChange)', () => {
     const onChange = spy();
-    const wrapper = mount((
-      <Toggle
-        onChange={onChange}
-        defaultChecked={false}
-        context={context}
-        label="test" />
-    ));
+    const wrapper = mount(
+      <Toggle onChange={onChange} defaultChecked={false} context={context} label="test" />,
+    );
     wrapper.find('input').simulate('change', { target: { checked: true } });
     expect(onChange).to.have.property('callCount', 1);
   });
@@ -98,11 +89,35 @@ describe('<Toggle />', () => {
   it('should setValue, getValue, resetValue', () => {
     const wrapper = shallow(<Toggle context={context} />);
     const input = wrapper.dive();
-    assert.strictEqual(input.instance().getInstance().getValue(), false);
-    input.instance().getInstance().setValue(true);
-    assert.strictEqual(input.instance().getInstance().getValue(), true);
-    input.instance().getInstance().resetValue();
-    assert.strictEqual(input.instance().getInstance().getValue(), false);
+    assert.strictEqual(
+      input
+        .instance()
+        .getInstance()
+        .getValue(),
+      false,
+    );
+    input
+      .instance()
+      .getInstance()
+      .setValue(true);
+    assert.strictEqual(
+      input
+        .instance()
+        .getInstance()
+        .getValue(),
+      true,
+    );
+    input
+      .instance()
+      .getInstance()
+      .resetValue();
+    assert.strictEqual(
+      input
+        .instance()
+        .getInstance()
+        .getValue(),
+      false,
+    );
   });
 
   describe('RTL', () => {

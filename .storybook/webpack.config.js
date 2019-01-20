@@ -7,7 +7,8 @@ module.exports = {
       resolve(__dirname, 'packages', 'boa-base', 'src'),
       resolve(__dirname, 'packages', 'boa-components', 'src'),
       resolve(__dirname, 'packages', 'boa-utils', 'src'),
-      'node_modules'],
+      'node_modules',
+    ],
   },
   module: {
     rules: [

@@ -91,51 +91,76 @@ describe('<Input />', () => {
   it('should setValue, getValue, resetValue', () => {
     const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
     const input = wrapper.dive();
-    assert.strictEqual(input.instance().getInstance().getValue(), 'test');
-    input.instance().getInstance().setValue('test-new');
-    assert.strictEqual(input.instance().getInstance().getValue(), 'test-new');
-    input.instance().getInstance().resetValue();
-    assert.strictEqual(input.instance().getInstance().getValue(), 'test');
+    assert.strictEqual(
+      input
+        .instance()
+        .getInstance()
+        .getValue(),
+      'test',
+    );
+    input
+      .instance()
+      .getInstance()
+      .setValue('test-new');
+    assert.strictEqual(
+      input
+        .instance()
+        .getInstance()
+        .getValue(),
+      'test-new',
+    );
+    input
+      .instance()
+      .getInstance()
+      .resetValue();
+    assert.strictEqual(
+      input
+        .instance()
+        .getInstance()
+        .getValue(),
+      'test',
+    );
   });
 
   it('should set disable', () => {
     const wrapper = shallow(<Input context={context} defaultValue="test" />).dive();
     const input = wrapper.dive();
-    input.instance().getInstance().setDisable(true);
+    input
+      .instance()
+      .getInstance()
+      .setDisable(true);
     assert.strictEqual(input.state().disabled, true);
   });
 
   it('should fire counter event', () => {
     const onTimerFinished = spy();
     const clock = useFakeTimers(new Date());
-    mount((
-      <Input
-        onTimerFinished={onTimerFinished}
-        context={context}
-        timerDuration={5}
-        showCounter />
-    ));
+    mount(
+      <Input onTimerFinished={onTimerFinished} context={context} timerDuration={5} showCounter />,
+    );
     clock.tick(6000);
-    assert.strictEqual(onTimerFinished.callCount,
-      1, 'should have called the onTimerFineshed handler');
+    assert.strictEqual(
+      onTimerFinished.callCount,
+      1,
+      'should have called the onTimerFineshed handler',
+    );
     clock.restore();
   });
 
   describe('props', () => {
     it('should change timerDuration', () => {
       const onTimerFinished = spy();
-      const wrapper = mount((
-        <Input
-          onTimerFinished={onTimerFinished}
-          context={context}
-          timerDuration={3}
-          showCounter />
-      ));
+      const wrapper = mount(
+        <Input onTimerFinished={onTimerFinished} context={context} timerDuration={3} showCounter />,
+      );
       const clock = useFakeTimers(new Date());
       wrapper.setProps({ timerDuration: 10 });
       clock.tick(11000);
-      assert.strictEqual(onTimerFinished.callCount,
-        1, 'should have called the onTimerFineshed handler');
+      assert.strictEqual(
+        onTimerFinished.callCount,
+        1,
+        'should have called the onTimerFineshed handler',
+      );
       clock.restore();
     });
 
@@ -165,22 +190,28 @@ describe('<Input />', () => {
     it('should clear value with onClick', () => {
       const onChange = spy();
       const wrapper = mount(
-        <Input
-          context={context}
-          onChange={onChange}
-          value="test"
-          showClearButton />);
+        <Input context={context} onChange={onChange} value="test" showClearButton />,
+      );
 
       const button = wrapper.find(IconButton);
       button.simulate('click');
       assert.strictEqual(onChange.callCount, 1);
-      assert.strictEqual(wrapper.instance().getInstance().getValue(), '');
+      assert.strictEqual(
+        wrapper
+          .instance()
+          .getInstance()
+          .getValue(),
+        '',
+      );
     });
   });
 
   it('should focus', () => {
     const wrapper = mount(<Input context={context} />);
-    wrapper.instance().getInstance().focus();
+    wrapper
+      .instance()
+      .getInstance()
+      .focus();
     assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
   });
 });

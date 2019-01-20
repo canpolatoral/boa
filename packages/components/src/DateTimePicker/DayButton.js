@@ -213,7 +213,7 @@ class DayButton extends Component {
     dateTimeFormat: PropTypes.func,
     dayInfo: PropTypes.shape({
       dayType: PropTypes.number,
-    }),  // eslint-disable-line
+    }), // eslint-disable-line
     disabled: PropTypes.bool,
     isFlexMode: PropTypes.bool, // eslint-disable-line
     business: PropTypes.bool, // eslint-disable-line
@@ -283,7 +283,7 @@ class DayButton extends Component {
     if (date) {
       return (
         <ButtonBase
-          ref={ref => this.buttonRef = ref}
+          ref={ref => (this.buttonRef = ref)}
           disabled={disabled}
           onFocusVisible={this.handleKeyboardFocus}
           onMouseEnter={this.handleMouseEnter}
@@ -293,11 +293,9 @@ class DayButton extends Component {
         >
           <div style={styles.buttonState} />
           <span style={styles.label}>
-            {
-              new DateTimeFormat({
-                day: 'numeric',
-              }).format(date)
-            }
+            {new DateTimeFormat({
+              day: 'numeric',
+            }).format(date)}
           </span>
         </ButtonBase>
       );

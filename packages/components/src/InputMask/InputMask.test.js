@@ -45,7 +45,7 @@ describe('<InputMask />', () => {
 
   it('should set type from PredefinedMask', () => {
     const wrapper = shallow(<InputMask context={context} />);
-    Object.keys(PredefinedMask.Type).forEach((type) => {
+    Object.keys(PredefinedMask.Type).forEach(type => {
       wrapper.setProps({ type });
       assert.strictEqual(wrapper.instance().currentMask, PredefinedMask.Type[type]);
     });
@@ -53,7 +53,7 @@ describe('<InputMask />', () => {
 
   it('should set mask from PredefinedMask', () => {
     const wrapper = shallow(<InputMask context={context} />);
-    Object.keys(PredefinedMask.Type).forEach((type) => {
+    Object.keys(PredefinedMask.Type).forEach(type => {
       wrapper.setProps({ mask: PredefinedMask.Type[type] });
       assert.strictEqual(wrapper.instance().currentMask, PredefinedMask.Type[type]);
     });
@@ -119,7 +119,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: '5',
         which: keycode('5'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, false);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -138,7 +138,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: '5',
         which: keycode('5'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, true);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -157,7 +157,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: 'a',
         which: keycode('a'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, false);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -176,7 +176,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: 'e',
         which: keycode('e'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, true);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -195,7 +195,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: '1',
         which: keycode('1'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, false);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -214,7 +214,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: 'a',
         which: keycode('a'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, true);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -222,7 +222,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: '1',
         which: keycode('1'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, true);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -241,7 +241,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: 'a',
         which: keycode('a'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, false);
       assert.strictEqual(wrapper.instance().specialKey, false);
@@ -261,7 +261,7 @@ describe('<InputMask />', () => {
       input.simulate('keyDown', {
         key: '5',
         which: keycode('5'),
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
       assert.strictEqual(wrapper.instance().testResult, true);
       assert.strictEqual(onKeyDown.callCount, 1);

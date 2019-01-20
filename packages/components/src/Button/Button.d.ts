@@ -22,4 +22,4 @@ export interface ButtonProps extends ComponentBaseProps {
   buttonSize?: string;
 }
 
-export default class Button extends ComponentBase<ButtonProps, ComponentBaseInstance> { }
+export default class Button extends ComponentBase<ButtonProps, ComponentBaseInstance> {}

@@ -59,10 +59,11 @@ describe('Messaging', () => {
           GroupName: 'test',
           LanguageId: 1,
           PropertyName: 'test',
-        }];
+        },
+      ];
 
       // eslint-disable-next-line
-      const stub = sinon.stub($, 'ajax').callsFake((request) => {
+      const stub = sinon.stub($, 'ajax').callsFake(request => {
         return serviceCallSync(request, versions, messages);
       });
       const message = Messaging.getMessage('test', 'test', 1);
@@ -75,7 +76,7 @@ describe('Messaging', () => {
       const messages = [];
 
       // eslint-disable-next-line
-      const stub = sinon.stub($, 'ajax').callsFake((request) => {
+      const stub = sinon.stub($, 'ajax').callsFake(request => {
         return serviceCallSync(request, versions, messages);
       });
       const message = Messaging.getMessage('test', 'test', 1);
@@ -93,10 +94,11 @@ describe('Messaging', () => {
           GroupName: 'test',
           LanguageId: 1,
           PropertyName: 'test',
-        }];
+        },
+      ];
 
       // eslint-disable-next-line
-      const stub = sinon.stub($, 'ajax').callsFake((request) => {
+      const stub = sinon.stub($, 'ajax').callsFake(request => {
         return serviceCallSync(request, versions, messages);
       });
       const message = Messaging.getMessage('test', 'test');
@@ -114,10 +116,11 @@ describe('Messaging', () => {
           GroupName: 'test',
           LanguageId: 1,
           PropertyName: 'test',
-        }];
+        },
+      ];
 
       // eslint-disable-next-line
-      const stub = sinon.stub($, 'ajax').callsFake((request) => {
+      const stub = sinon.stub($, 'ajax').callsFake(request => {
         return serviceCallSync(request, versions, messages);
       });
       const message = Messaging.getMessage('test', 'test', 2);
@@ -131,7 +134,7 @@ describe('Messaging', () => {
       const messages = [];
 
       // eslint-disable-next-line
-      const stub = sinon.stub($, 'ajax').callsFake((request) => {
+      const stub = sinon.stub($, 'ajax').callsFake(request => {
         return serviceCallSync(request, versions, messages);
       });
       const message = Messaging.getMessage('test', 'test', 1);
@@ -143,7 +146,7 @@ describe('Messaging', () => {
       Messaging.setMessagingOptions({ refreshThresold: -1 });
 
       // eslint-disable-next-line
-      const stub = sinon.stub($, 'ajax').callsFake((request) => {
+      const stub = sinon.stub($, 'ajax').callsFake(request => {
         return serviceCallSync(request, false);
       });
       const message = Messaging.getMessage('test', 'test', 1);

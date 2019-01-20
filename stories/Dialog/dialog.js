@@ -20,7 +20,8 @@ class DialogHelperFixture extends ComponentBase {
         context={this.props.context}
         variant="raised"
         text={'Single Line'}
-        onClick={this.onClick} />
+        onClick={this.onClick}
+      />
     );
   }
 }

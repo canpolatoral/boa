@@ -20,11 +20,16 @@ describe('<Calendar />', () => {
     date.setMonth(date.getMonth() + 1);
     wrapper.setProps({ dialogNewSelectDate: date, initialDate: date });
     assert.strictEqual(wrapper.state().selectedDate, date);
-    assert.strictEqual(wrapper.instance().getInstance().getSelectedDate(), date);
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getSelectedDate(),
+      date,
+    );
     wrapper.setProps({ initialDate: null });
     expect(wrapper.state().selectedDate).to.be.date();
   });
-
 
   describe('should handle key events', () => {
     let wrapper;
@@ -32,9 +37,7 @@ describe('<Calendar />', () => {
     const dateUpdate = spy();
 
     before(() => {
-      wrapper = shallow((
-        <Calendar dateUpdate={dateUpdate} open context={context} style={{}} />
-      ));
+      wrapper = shallow(<Calendar dateUpdate={dateUpdate} open context={context} style={{}} />);
       eventListener = wrapper.find(EventListener);
     });
 

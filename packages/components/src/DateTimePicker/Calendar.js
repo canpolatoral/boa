@@ -678,7 +678,7 @@ class Calendar extends ComponentBase {
 
   render() {
     const isMobile = Utils.isMobile(this.props);
-    const openBoaCalendar = (!isMobile && this.props.openBoaCalendar);
+    const openBoaCalendar = !isMobile && this.props.openBoaCalendar;
     const { isFlexMode } = this.props;
     this.setSpecialDays();
     const toolbarInteractions = this.getToolbarInteractions();
@@ -694,7 +694,7 @@ class Calendar extends ComponentBase {
       root: {
         color: calendarTextColor,
         userSelect: 'none',
-        width: isFlexMode ? '100%' : (isLandscape ? 479 : 300), // eslint-disable-line
+        width: isFlexMode ? '100%' : isLandscape ? 479 : 300, // eslint-disable-line
       },
       calendar: {
         display: 'flex',
@@ -850,7 +850,8 @@ class Calendar extends ComponentBase {
             marginLeft: 0,
             marginRight: 0,
             marginTop: 0,
-          }} />
+          }}
+        />
       </div>
     );
 
@@ -905,7 +906,7 @@ class Calendar extends ComponentBase {
                 )}
               </div>
             </div>
-            {!this.props.noDialog &&
+            {!this.props.noDialog && (
               <Divider
                 context={this.props.context}
                 style={{
@@ -914,7 +915,9 @@ class Calendar extends ComponentBase {
                   marginLeft: -12,
                   marginRight: -12,
                   marginTop: 0,
-                }} />}
+                }}
+              />
+            )}
             <div style={{ marginTop: 15 }}>
               {this.state.displayMonthDay && !this.props.noDialog && (
                 <CalendarToolbar
@@ -958,7 +961,7 @@ class Calendar extends ComponentBase {
                   </div>
                   <div style={Object.assign({}, style.transitionSlide, { minHeight })}>
                     {// TODO :SLIDE
-                      this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
+                    this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
                   </div>
 
                   {/* </Slide> */}
@@ -972,43 +975,40 @@ class Calendar extends ComponentBase {
           {!this.state.displayMonthDay && this.renderYearAndMounthSelector(style)}
           {this.state.displayMonthDay && (
             <div style={{ height: 48 }}>
-              {(this.props.noDialog === false) &&
-                (
-                  <div>
-                    {divider}
-                    <div style={{ height: 48 }}>
-                      <Button
-                        context={this.props.context}
-                        type="text"
-                        text={todayLabel}
-                        colorType="primary"
-                        fullWidth
-                        onClick={this.todayButtonOnClick}
-                        style={buttonStyle}
-                        textStyle={buttonTextStyle}
-                      />
-                    </div>
+              {this.props.noDialog === false && (
+                <div>
+                  {divider}
+                  <div style={{ height: 48 }}>
+                    <Button
+                      context={this.props.context}
+                      type="text"
+                      text={todayLabel}
+                      colorType="primary"
+                      fullWidth
+                      onClick={this.todayButtonOnClick}
+                      style={buttonStyle}
+                      textStyle={buttonTextStyle}
+                    />
                   </div>
-                )
-              }
-              {(openBoaCalendar) &&
-                (
-                  <div>
-                    {divider}
-                    <div style={{ height: 48 }}>
-                      <Button
-                        context={this.props.context}
-                        type="text"
-                        text="BOA TAKVİMİ AÇ"
-                        colorType="primary"
-                        fullWidth
-                        onClick={this.openBoaCalendar}
-                        style={buttonStyle}
-                        textStyle={buttonTextStyle}
-                      />
-                    </div>
+                </div>
+              )}
+              {openBoaCalendar && (
+                <div>
+                  {divider}
+                  <div style={{ height: 48 }}>
+                    <Button
+                      context={this.props.context}
+                      type="text"
+                      text="BOA TAKVİMİ AÇ"
+                      colorType="primary"
+                      fullWidth
+                      onClick={this.openBoaCalendar}
+                      style={buttonStyle}
+                      textStyle={buttonTextStyle}
+                    />
                   </div>
-                )}
+                </div>
+              )}
             </div>
           )}
         </div>

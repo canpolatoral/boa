@@ -27,8 +27,20 @@ describe('<CalendarToolbar />', () => {
     const displayDate = new Date(date.getFullYear(), date.getMonth(), 1);
     const wrapper = shallow(<CalendarToolbar context={context} displayDate={displayDate} />);
     assert.strictEqual(wrapper.find(MuiIconButton).length, 2);
-    assert.strictEqual(wrapper.childAt(0).childAt(0).type(), MuiChevronLeft);
-    assert.strictEqual(wrapper.childAt(2).childAt(0).type(), MuiChevronRight);
+    assert.strictEqual(
+      wrapper
+        .childAt(0)
+        .childAt(0)
+        .type(),
+      MuiChevronLeft,
+    );
+    assert.strictEqual(
+      wrapper
+        .childAt(2)
+        .childAt(0)
+        .type(),
+      MuiChevronRight,
+    );
   });
 
   describe('prop:dateTimeFormat', () => {
@@ -49,13 +61,13 @@ describe('<CalendarToolbar />', () => {
       }
       const displayDate = new Date(date.getFullYear(), date.getMonth(), 1);
 
-      const wrapper = shallow((
+      const wrapper = shallow(
         <CalendarToolbar
           context={context}
           displayDate={displayDate}
           dateTimeFormat={customFormatter}
-        />
-      ));
+        />,
+      );
       assert.strictEqual(wrapper.childAt(1).text(), 'test');
     });
   });
@@ -64,20 +76,18 @@ describe('<CalendarToolbar />', () => {
     it('should cursor be pointer', () => {
       const date = new Date();
       const displayDate = new Date(date.getFullYear(), date.getMonth(), 1);
-      const wrapper = shallow(<CalendarToolbar
-        noDialog={false}
-        context={context}
-        displayDate={displayDate} />);
+      const wrapper = shallow(
+        <CalendarToolbar noDialog={false} context={context} displayDate={displayDate} />,
+      );
       assert.strictEqual(wrapper.childAt(1).props().style.cursor, 'pointer');
     });
 
     it('should cursor not be a pointer', () => {
       const date = new Date();
       const displayDate = new Date(date.getFullYear(), date.getMonth(), 1);
-      const wrapper = shallow(<CalendarToolbar
-        noDialog
-        context={context}
-        displayDate={displayDate} />);
+      const wrapper = shallow(
+        <CalendarToolbar noDialog context={context} displayDate={displayDate} />,
+      );
       assert.strictEqual(wrapper.childAt(1).props().style.cursor, undefined);
     });
   });
@@ -108,13 +118,14 @@ describe('<CalendarToolbar />', () => {
     before(() => {
       const date = new Date();
       const displayDate = new Date(date.getFullYear(), date.getMonth(), 2);
-      wrapper = shallow((
+      wrapper = shallow(
         <CalendarToolbar
           context={context}
           displayDate={displayDate}
           onMonthChange={onMonthChange}
-          handleClickToolBar={handleClickToolBar} />
-      ));
+          handleClickToolBar={handleClickToolBar}
+        />,
+      );
     });
 
     beforeEach(() => {
@@ -144,22 +155,17 @@ describe('<CalendarToolbar />', () => {
   });
 
   it('should handle RTL', () => {
-    const newContext = Object.assign({}, context,
-      {
-        languageId: 5,
-        localization: {
-          isRightToLeft: true,
-        },
-      });
+    const newContext = Object.assign({}, context, {
+      languageId: 5,
+      localization: {
+        isRightToLeft: true,
+      },
+    });
 
     const date = new Date();
     const displayDate = new Date(date.getFullYear(), date.getMonth(), 2);
 
-    const wrapper = shallow((
-      <CalendarToolbar
-        context={newContext}
-        displayDate={displayDate} />
-    ));
+    const wrapper = shallow(<CalendarToolbar context={newContext} displayDate={displayDate} />);
     assert.strictEqual(wrapper.childAt(0).props().style.marginLeft, 0);
     assert.strictEqual(wrapper.childAt(0).props().style.marginRight, 2);
   });
@@ -168,12 +174,9 @@ describe('<CalendarToolbar />', () => {
     const date = new Date();
     const displayDate = new Date(date.getFullYear(), date.getMonth(), 2);
 
-    const wrapper = shallow((
-      <CalendarToolbar
-      prevMonth={false}
-        context={context}
-        displayDate={displayDate} />
-    ));
+    const wrapper = shallow(
+      <CalendarToolbar prevMonth={false} context={context} displayDate={displayDate} />,
+    );
 
     assert.strictEqual(wrapper.childAt(0).props().disabled, true);
   });
@@ -182,12 +185,9 @@ describe('<CalendarToolbar />', () => {
     const date = new Date();
     const displayDate = new Date(date.getFullYear(), date.getMonth(), 2);
 
-    const wrapper = shallow((
-      <CalendarToolbar
-        nextMonth={false}
-        context={context}
-        displayDate={displayDate} />
-    ));
+    const wrapper = shallow(
+      <CalendarToolbar nextMonth={false} context={context} displayDate={displayDate} />,
+    );
 
     assert.strictEqual(wrapper.childAt(2).props().disabled, true);
   });

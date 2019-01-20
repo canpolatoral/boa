@@ -1,4 +1,3 @@
-
 let testRunner = 'mocha';
 
 export function setTestRunner(runner) {

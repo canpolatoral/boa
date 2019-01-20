@@ -24,4 +24,4 @@ export interface IconMenuProps extends ComponentBaseProps {
 // export interface IconMenuInstance extends ComponentBaseInstance {
 // }
 
-export default class IconMenu extends ComponentBase<IconMenuProps, ComponentBaseInstance> { }
+export default class IconMenu extends ComponentBase<IconMenuProps, ComponentBaseInstance> {}

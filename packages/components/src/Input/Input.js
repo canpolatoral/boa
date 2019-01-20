@@ -41,9 +41,9 @@ function baseStyles(theme) {
   };
 }
 
-const styles = (theme) => {
+const styles = theme => {
   const { boaPalette } = theme;
-  return ({
+  return {
     input: Object.assign(baseStyles(theme).input, {
       marginRight: theme.direction === 'rtl' ? 0 : null,
       marginLeft: theme.direction === 'ltr' ? 0 : null,
@@ -109,7 +109,7 @@ const styles = (theme) => {
     inputLabelRootDisabled: Object.assign(baseStyles(theme).inputLabeRootBase, {
       color: boaPalette.base250,
     }),
-  });
+  };
 };
 
 @ComponentComposer
@@ -380,7 +380,7 @@ class Input extends EditorBase {
             iconProperties={{
               style: { color: this.props.context.theme.boaPalette.base300 },
             }}
-            onClick={(e) => {
+            onClick={e => {
               const v = '';
               this.counterUpdate(this.props, v);
               this.setState({ value: v }, () => {
@@ -663,18 +663,14 @@ class Input extends EditorBase {
           />
           {!this.props.inlineGridMode && error && (
             <div style={errorStyle}>
-              <MuiFormHelperText
-                style={{ marginTop: 0 }}
-                disabled={this.state.disabled}>
+              <MuiFormHelperText style={{ marginTop: 0 }} disabled={this.state.disabled}>
                 {errorText}
               </MuiFormHelperText>
             </div>
           )}
           {!this.props.inlineGridMode && (bottomLeftInfoSpace || bottomRightInfoSpace) && (
             <div style={bottomInfoStyle}>
-              <MuiFormHelperText
-                style={{ marginTop: 0 }}
-                disabled={this.state.disabled}>
+              <MuiFormHelperText style={{ marginTop: 0 }} disabled={this.state.disabled}>
                 {bottomLeftInfoSpace}
                 {bottomRightInfoSpace}
               </MuiFormHelperText>

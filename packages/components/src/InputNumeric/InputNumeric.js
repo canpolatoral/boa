@@ -94,7 +94,8 @@ class InputNumeric extends ComponentBase {
     const isTextCursorMoveKey = [35, 36, 37, 39].includes(keyCode);
     const isModifierKey = e.shiftKey || e.altKey || e.ctrlKey || e.metaKey;
     // Ctrl-A, Ctrl-V, Ctrl-C
-    const isModifierUsedForClipboard = [65, 67, 86].includes(keyCode) && (e.ctrlKey === true || e.metaKey === true);
+    const isModifierUsedForClipboard =
+      [65, 67, 86].includes(keyCode) && (e.ctrlKey === true || e.metaKey === true);
     // shift-home, shift-end, shift-left, shift-right
     const isModifierUsedForSelection = e.shiftKey && isTextCursorMoveKey;
     // Numbers and numeric keypad
@@ -122,7 +123,7 @@ class InputNumeric extends ComponentBase {
         returnValue = false;
       }
     } else if (isNumberKey) {
-      const characterCode = (keyCode >= 96 && keyCode <= 105) ? keyCode - 48 : keyCode;
+      const characterCode = keyCode >= 96 && keyCode <= 105 ? keyCode - 48 : keyCode;
       const addedNumber = String.fromCharCode(characterCode);
       const oldValue = this.state.formattedValue || '';
       const newFormattedValue =

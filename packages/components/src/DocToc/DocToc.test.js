@@ -44,9 +44,7 @@ describe('<DocToc />', () => {
         ],
       },
     ];
-    const wrapper = shallow((
-      <DocToc context={context} header="header" content={content} />
-    ));
+    const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
     const ul = wrapper.childAt(0);
     expect(ul.type()).equals('ul');
     const header = ul.childAt(0);
@@ -87,10 +85,11 @@ describe('<DocToc />', () => {
       },
     ];
     const linkOnClick = spy();
-    const wrapper = mount((
-      <DocToc context={context} header="header" content={content} linkOnClick={linkOnClick} />
-    ));
-    wrapper.findWhere(x => x.type() === 'label' && x.text().includes('first item'))
+    const wrapper = mount(
+      <DocToc context={context} header="header" content={content} linkOnClick={linkOnClick} />,
+    );
+    wrapper
+      .findWhere(x => x.type() === 'label' && x.text().includes('first item'))
       .simulate('click');
     expect(linkOnClick).to.have.property('callCount', 1);
     expect(linkOnClick.args[0][0], 'argument id is first child').equals(1);
@@ -123,9 +122,7 @@ describe('<DocToc />', () => {
         ],
       },
     ];
-    const wrapper = shallow((
-      <DocToc context={context} header="header" content={content} />
-    ));
+    const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
     wrapper.setProps({ activeItem: '2' });
     expect(wrapper.state().activeItem).to.equals('2');
   });

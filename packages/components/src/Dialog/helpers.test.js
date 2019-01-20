@@ -22,7 +22,7 @@ describe('prepareLineStyle', () => {
 
   it('should handle device size', () => {
     const newContext = Object.assign({}, context);
-    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach((size) => {
+    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
       newContext.deviceSize = size;
       const style = Helper.prepareLineStyle(newContext);
       if (size <= Sizes.SMALL) {
@@ -50,7 +50,7 @@ describe('prepareCloseButtonStyle', () => {
 
   it('should handle device size', () => {
     const newContext = Object.assign({}, context);
-    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach((size) => {
+    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
       newContext.deviceSize = size;
       const style = Helper.prepareCloseButtonStyle(newContext);
       if (size <= Sizes.SMALL) {
@@ -61,7 +61,7 @@ describe('prepareCloseButtonStyle', () => {
 
   it('should handle device size with localization', () => {
     const newContext = Object.assign({}, context, { localization: { isRightToLeft: true } });
-    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach((size) => {
+    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
       newContext.deviceSize = size;
       const style = Helper.prepareCloseButtonStyle(newContext);
       if (size <= Sizes.SMALL) {
@@ -88,7 +88,7 @@ describe('prepareTitleStyle', () => {
 
   it('should handle device size', () => {
     const newContext = Object.assign({}, context);
-    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach((size) => {
+    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
       newContext.deviceSize = size;
       const style = Helper.prepareTitleStyle(newContext);
       if (size <= Sizes.SMALL) {
@@ -99,7 +99,7 @@ describe('prepareTitleStyle', () => {
 
   it('should handle device size with localization', () => {
     const newContext = Object.assign({}, context, { localization: { isRightToLeft: true } });
-    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach((size) => {
+    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
       newContext.deviceSize = size;
       const style = Helper.prepareTitleStyle(newContext);
       if (size <= Sizes.SMALL) {
@@ -139,7 +139,7 @@ describe('prepareDialogFormStyle', () => {
 
   it('should handle device size', () => {
     const newContext = Object.assign({}, context);
-    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach((size) => {
+    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
       newContext.deviceSize = size;
       const style = Helper.prepareTitleStyle(newContext);
       if (size <= Sizes.SMALL) {
@@ -193,10 +193,7 @@ describe('prepareObjectContent', () => {
   it('should create subcontents', () => {
     const content = {
       mainContent: <div>test</div>,
-      subcontents: [
-        <div>sub1</div>,
-        <div>sub2</div>,
-      ],
+      subcontents: [<div>sub1</div>, <div>sub2</div>],
     };
     const objectContent = Helper.prepareObjectContent(content, context);
     assert.strictEqual(objectContent.dialogSubContent[0].type, 'div');
@@ -243,10 +240,7 @@ describe('preparetStringContent', () => {
   it('should create subcontents', () => {
     const content = {
       mainContent: <div>test</div>,
-      subcontents: [
-        <div>sub1</div>,
-        <div>sub2</div>,
-      ],
+      subcontents: [<div>sub1</div>, <div>sub2</div>],
     };
     const objectContent = Helper.prepareObjectContent(content, context);
     assert.strictEqual(objectContent.dialogSubContent[0].type, 'div');

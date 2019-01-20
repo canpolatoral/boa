@@ -17,12 +17,12 @@ describe('<LinearPanel />', () => {
   });
 
   it('should mount', () => {
-    const wrapper = mount((
+    const wrapper = mount(
       <LinearPanel context={context}>
         <Button context={context} />
         <Input context={context} />
-      </LinearPanel>
-    ));
+      </LinearPanel>,
+    );
     const button = wrapper.find(Button);
     const input = wrapper.find(Input);
     assert.strictEqual(button.props().disabled, false);
@@ -30,12 +30,12 @@ describe('<LinearPanel />', () => {
   });
 
   it('should disabled', () => {
-    const wrapper = mount((
+    const wrapper = mount(
       <LinearPanel context={context}>
         <Button context={context} />
         <Input context={context} />
-      </LinearPanel>
-    ));
+      </LinearPanel>,
+    );
     wrapper.setProps({ disabled: true });
     const button = wrapper.find(Button);
     const input = wrapper.find(Input);
@@ -44,23 +44,23 @@ describe('<LinearPanel />', () => {
   });
 
   it('should support vertical orientation by default ', () => {
-    const wrapper = mount((
+    const wrapper = mount(
       <LinearPanel context={context}>
         <Button context={context} />
         <Input context={context} />
-      </LinearPanel>
-    ));
+      </LinearPanel>,
+    );
     const div = wrapper.find('div').first();
     assert.strictEqual(div.props().style.flexDirection, 'column');
   });
 
   it('should support horizontal orientation ', () => {
-    const wrapper = mount((
+    const wrapper = mount(
       <LinearPanel context={context} orientation="horizontal">
         <Button context={context} />
         <Input context={context} />
-      </LinearPanel>
-    ));
+      </LinearPanel>,
+    );
     const div = wrapper.find('div').first();
     assert.strictEqual(div.props().style.flexDirection, 'row');
   });

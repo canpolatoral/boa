@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const IconComposer = (IconType) => {
+const IconComposer = IconType => {
   const IconComposerComponent = props => {
     // eslint-disable-next-line no-unused-vars
     const { context, newLine, ...otherProps } = props;
@@ -15,6 +15,5 @@ const IconComposer = (IconType) => {
 
   return IconComposerComponent;
 };
-
 
 export default IconComposer;

@@ -24,14 +24,11 @@ describe('<Popover />', () => {
 
   it('should resizable', () => {
     const onResize = spy();
-    const wrapper = shallow((
-      <Popover
-        onResize={onResize}
-        resizable
-        context={context}>
+    const wrapper = shallow(
+      <Popover onResize={onResize} resizable context={context}>
         <div>test</div>
-      </Popover>
-    ));
+      </Popover>,
+    );
     const resizable = wrapper.find(Resizable);
     resizable.simulate('mouseUp', { foo: 'foo' });
     // assert.strictEqual(onResize.callCount, 1);
@@ -39,13 +36,25 @@ describe('<Popover />', () => {
 
   it('should change open status with instance method', () => {
     const wrapper = mount(<Popover context={context} />);
-    wrapper.instance().getInstance().openPopover();
+    wrapper
+      .instance()
+      .getInstance()
+      .openPopover();
     assert.strictEqual(wrapper.state().open, true);
-    wrapper.instance().getInstance().openPopover();
+    wrapper
+      .instance()
+      .getInstance()
+      .openPopover();
     assert.strictEqual(wrapper.state().open, false);
-    wrapper.instance().getInstance().manualOpen();
+    wrapper
+      .instance()
+      .getInstance()
+      .manualOpen();
     assert.strictEqual(wrapper.state().open, true);
-    wrapper.instance().getInstance().manualClose();
+    wrapper
+      .instance()
+      .getInstance()
+      .manualClose();
     assert.strictEqual(wrapper.state().open, false);
   });
 });

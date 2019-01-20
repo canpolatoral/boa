@@ -44,13 +44,11 @@ describe('<TimeButton />', () => {
     describe('onTouchTap', () => {
       it('should fire onTouchTap', () => {
         const onTouchTap = spy();
-        const wrapper = shallow((
-          <TimeButton
-            onTouchTap={onTouchTap}
-            context={context}>
+        const wrapper = shallow(
+          <TimeButton onTouchTap={onTouchTap} context={context}>
             test
-          </TimeButton>
-        ));
+          </TimeButton>,
+        );
         wrapper.find(ButtonBase).simulate('click');
         assert.strictEqual(onTouchTap.callCount, 1);
       });
@@ -81,13 +79,11 @@ describe('<TimeButton />', () => {
     });
 
     it('should change color when time is year', () => {
-      const wrapper = mount((
-        <TimeButton
-          time={new Date().getFullYear()}
-          context={context}>
+      const wrapper = mount(
+        <TimeButton time={new Date().getFullYear()} context={context}>
           test
-        </TimeButton>
-      ));
+        </TimeButton>,
+      );
       const root = wrapper.childAt(0).props().style;
       assert.strictEqual(root.color, context.theme.palette.primary1Color);
     });

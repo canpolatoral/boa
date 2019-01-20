@@ -114,7 +114,9 @@ export default class DialogHelper {
           dialogRefs={this.dialogRefs}
           onRequestClose={this.onClose}
           onClosing={onClosing}
-          ref={(r) => { thisRef = r; }}
+          ref={r => {
+            thisRef = r;
+          }}
           open
           title={title}
           titleBackgroundColor={titleBackgroundColor}

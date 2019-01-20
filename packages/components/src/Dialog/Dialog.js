@@ -280,7 +280,8 @@ class Dialog extends ComponentBase {
             width: '100%',
             height: '100%',
             pointerEvents: 'none',
-          }} />
+          }}
+        />
       </MuiDialog>
     );
   }

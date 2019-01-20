@@ -31,17 +31,31 @@ describe('<AppProvider />', () => {
 
   it('should have CssBaseline inside ThemeProvider', () => {
     const wrapper = shallow(<AppProvider>Test</AppProvider>);
-    assert.strictEqual(wrapper.childAt(0).childAt(0).type(), CssBaseline);
+    assert.strictEqual(
+      wrapper
+        .childAt(0)
+        .childAt(0)
+        .type(),
+      CssBaseline,
+    );
   });
 
   it('should mount without theme', () => {
-    const wrapper = mount(<AppProvider><div>test</div></AppProvider>);
+    const wrapper = mount(
+      <AppProvider>
+        <div>test</div>
+      </AppProvider>,
+    );
     assert.strictEqual(wrapper.find('div').text(), 'test');
   });
 
   it('should mount with theme', () => {
     const theme = getTheme({ themeName: 'violet' });
-    const wrapper = mount(<AppProvider theme={theme}><div>test</div></AppProvider>);
+    const wrapper = mount(
+      <AppProvider theme={theme}>
+        <div>test</div>
+      </AppProvider>,
+    );
     assert.strictEqual(wrapper.find('div').text(), 'test');
   });
 });

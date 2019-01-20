@@ -22,7 +22,6 @@ import OzelBankacilik from './logos/ozel-bankacilik';
 import SaglamKart from './logos/saglam-kart';
 import SeninBankan from './logos/senin-bankan';
 
-
 /* Actions */
 import Add from './actions/add';
 import ArrowDownward from './actions/arrow-downward';

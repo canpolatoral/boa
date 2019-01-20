@@ -219,7 +219,8 @@ export default class extends Component {
             if (node && node.state.filtered === false) return 0;
             return node.isHidden ? 0 : rowHeight; // Number or Array
           }}
-          renderItem={({ index, style }) => { // eslint-disable-line
+          renderItem={({ index, style }) => {
+            // eslint-disable-line
             let row = null;
 
             if (typeof render === 'function') {

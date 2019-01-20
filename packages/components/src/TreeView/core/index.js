@@ -15,7 +15,7 @@ import { defaultRowRenderer } from './renderer';
 import { preventDefault, addEventListener, removeEventListener } from './dom';
 import { Localization } from '@boa/utils';
 
-const noop = () => { };
+const noop = () => {};
 
 const error = (format, ...args) => {
   let argIndex = 0;
@@ -1155,7 +1155,7 @@ class InfiniteTree extends events.EventEmitter {
       if (p === node) {
         error(
           `Cannot move an ancestor node (id=${node.id}) to the specified parent node (id=${
-          parentNode.id
+            parentNode.id
           }).`,
         );
         return false;
@@ -1205,7 +1205,8 @@ class InfiniteTree extends events.EventEmitter {
 
       // Add all child nodes to the lookup table if the first child does not exist in the lookup table
       if (nodes.length > 0 && !this.nodeTable.get(nodes[0])) {
-        nodes.forEach(node => { // eslint-disable-line
+        nodes.forEach(node => {
+          // eslint-disable-line
           if (node.id !== undefined) {
             this.nodeTable.set(node.id, node);
           }
@@ -1518,11 +1519,13 @@ class InfiniteTree extends events.EventEmitter {
     }
 
     // Update open nodes and lookup table
-    this.state.openNodes = this.state.openNodes.filter(node => { // eslint-disable-line
+    this.state.openNodes = this.state.openNodes.filter(node => {
+      // eslint-disable-line
       return removedNodes.indexOf(node) < 0 && node.state.open;
     });
 
-    removedNodes.forEach(node => { // eslint-disable-line
+    removedNodes.forEach(node => {
+      // eslint-disable-line
       this.nodeTable.unset(node.id);
     });
 
@@ -1762,7 +1765,8 @@ class InfiniteTree extends events.EventEmitter {
   // @param {Node} node The Node object. If null, returns the whole tree.
   // @return {string} Returns a JSON string represented the tree.
   toString(node = null) {
-    const traverse = node => { // eslint-disable-line
+    const traverse = node => {
+      // eslint-disable-line
       // eslint-disable-line
       let s = '[';
       if (node && node.children) {

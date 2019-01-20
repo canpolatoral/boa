@@ -35,7 +35,7 @@ const monthLongList = [
 ];
 const seperator = '.';
 
-String.prototype.replaceAll = function (target, replacement) {
+String.prototype.replaceAll = function(target, replacement) {
   return this.split(target).join(replacement);
 };
 
@@ -68,7 +68,7 @@ export function getLocalizedTime(value, datetimeOption, timeformat) {
   return '';
 }
 export function dateTimeFormat(options) {
-  this.format = function (date) {
+  this.format = function(date) {
     if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
       return `${dayList[date.getDay()]}, ${monthList[date.getMonth()]} ${date.getDate()}`;
     }
@@ -638,7 +638,7 @@ export function getDatePickerStyle(context) {
     equalWidthItemFlex: '1 1',
     dateTimeItemFlex: '2 1',
     dialogMarginTop: 30,
-    otherMonthTextColor: boaPalette.base300
+    otherMonthTextColor: boaPalette.base300,
   };
 
   return datePicker;
@@ -702,26 +702,36 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
       }
       if (sameValue) continue;
     }
-    if (dayType === calendarInfo[i].dayType
+    if (
+      dayType === calendarInfo[i].dayType
       // && calendarInfo[i].day.getMonth() === selectedMonth
     ) {
       let isContinue = false;
       if (calendarInfo[i].day.getMonth() === selectedMonth) {
         isContinue = true;
-      }
-      else {
-        if ((calendarInfo[i].day.getMonth() === selectedMonth - 1) || (calendarInfo[i].day.getMonth() === 11 && selectedMonth === 0)) {
-          if ((selectedDate.getDay() > calendarInfo[i].day.getDay() || selectedDate.getDay() === 0) &&
-            (((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) < (selectedDate.getDay() - 1)) ||
-              ((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) < 6 && selectedDate.getDay() === 0))
+      } else {
+        if (
+          calendarInfo[i].day.getMonth() === selectedMonth - 1 ||
+          (calendarInfo[i].day.getMonth() === 11 && selectedMonth === 0)
+        ) {
+          if (
+            (selectedDate.getDay() > calendarInfo[i].day.getDay() || selectedDate.getDay() === 0) &&
+            ((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) <
+              selectedDate.getDay() - 1 ||
+              ((selectedDate.getTime() - calendarInfo[i].day.getTime()) / (1000 * 60 * 60 * 24) <
+                6 &&
+                selectedDate.getDay() === 0))
           ) {
             isContinue = true;
           }
-        }
-        else {
-          if (calendarInfo[i].day.getDay() != 1 &&
-            ((calendarInfo[i].day.getMonth() === selectedMonth + 1) || (calendarInfo[i].day.getMonth() === 0 && selectedMonth === 11)) &&
-            (calendarInfo[i].day.getDay() > calendarInfo[i].day.getDate() || (calendarInfo[i].day.getDay() === 0 && calendarInfo[i].day.getDate() < 7))) {
+        } else {
+          if (
+            calendarInfo[i].day.getDay() != 1 &&
+            (calendarInfo[i].day.getMonth() === selectedMonth + 1 ||
+              (calendarInfo[i].day.getMonth() === 0 && selectedMonth === 11)) &&
+            (calendarInfo[i].day.getDay() > calendarInfo[i].day.getDate() ||
+              (calendarInfo[i].day.getDay() === 0 && calendarInfo[i].day.getDate() < 7))
+          ) {
             isContinue = true;
           }
         }
@@ -749,8 +759,10 @@ export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount)
         for (let j = i + 1; j < positiveBetweenDaylength; j++) {
           if (calendarInfo[i].dayType !== calendarInfo[j].dayType) {
             break;
-          }
-          else if (calendarInfo[j].day.getDay() === 1 && calendarInfo[j].day.getMonth() !== selectedMonth) {
+          } else if (
+            calendarInfo[j].day.getDay() === 1 &&
+            calendarInfo[j].day.getMonth() !== selectedMonth
+          ) {
             break;
           } else {
             itemspecialDayString.push(calendarInfo[j]);
@@ -775,16 +787,13 @@ export function checkDateForBusiness(props, oldDate, newDate, changeType) {
         if (!props.canSelectWeekendDays && calendarInfo[i].dayType === 1) {
           setNewDate.setDate(day + changeType);
           return checkDateForBusiness(props, oldDate, setNewDate, changeType);
-        }
-        else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 2) {
+        } else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 2) {
           setNewDate.setDate(day + changeType);
           return checkDateForBusiness(props, oldDate, setNewDate, changeType);
-        }
-        else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 3) {
+        } else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 3) {
           setNewDate.setDate(day + changeType);
           return checkDateForBusiness(props, oldDate, setNewDate, changeType);
-        }
-        else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 4) {
+        } else if (!props.canSelectSpecialDays && calendarInfo[i].dayType === 4) {
           setNewDate.setDate(day + changeType);
           return checkDateForBusiness(props, oldDate, setNewDate, changeType);
         }

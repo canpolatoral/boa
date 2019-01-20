@@ -16,39 +16,44 @@ describe('<Resizable />', () => {
   });
 
   it('should mount', () => {
-    mount((
+    mount(
       <Resizable
         context={context}
         lockAspectRatio
         bounds="parent"
         minWidth={200}
         minHeight={100}
-        default={{ x: 0, y: 0, width: '100%', height: '100%' }}>
+        default={{ x: 0, y: 0, width: '100%', height: '100%' }}
+      >
         <div>test</div>
-      </Resizable>
-    ));
+      </Resizable>,
+    );
   });
 
   it('should resize', () => {
-    const wrapper = mount((
+    const wrapper = mount(
       <Resizable
         context={context}
         lockAspectRatio
         bounds="parent"
         minWidth={200}
         minHeight={100}
-        default={{ x: 0, y: 0, width: '100%', height: '100%' }}>
+        default={{ x: 0, y: 0, width: '100%', height: '100%' }}
+      >
         <div>test</div>
-      </Resizable>
-    ));
-    wrapper.instance().getInstance().updateSize({ width: 10, height: 10 });
+      </Resizable>,
+    );
+    wrapper
+      .instance()
+      .getInstance()
+      .updateSize({ width: 10, height: 10 });
   });
 
   it('should call dragStart, dragStop', () => {
     const onDragStart = spy();
     const onDragStop = spy();
 
-    const wrapper = mount((
+    const wrapper = mount(
       <Resizable
         context={context}
         onDragStart={onDragStart}
@@ -57,10 +62,11 @@ describe('<Resizable />', () => {
         bounds="parent"
         minWidth={200}
         minHeight={100}
-        default={{ x: 0, y: 0, width: '100%', height: '100%' }}>
+        default={{ x: 0, y: 0, width: '100%', height: '100%' }}
+      >
         <div>test</div>
-      </Resizable>
-    ));
+      </Resizable>,
+    );
     wrapper.simulate('mouseDown');
     wrapper.simulate('mouseUp');
 

@@ -52,4 +52,4 @@ export interface InputInstance extends ComponentBaseInstance {
   focus?: () => void;
 }
 
-export default class Input extends ComponentBase<InputProps, InputInstance> { }
+export default class Input extends ComponentBase<InputProps, InputInstance> {}

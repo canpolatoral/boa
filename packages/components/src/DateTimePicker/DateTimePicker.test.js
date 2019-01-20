@@ -15,9 +15,11 @@ describe('<DateTimePicker />', () => {
   });
 
   it('should mount', () => {
-    const wrapper = mount((
-      <AppProvider theme={context.theme}><DateTimePicker context={context} /></AppProvider>
-    ));
+    const wrapper = mount(
+      <AppProvider theme={context.theme}>
+        <DateTimePicker context={context} />
+      </AppProvider>,
+    );
     const dateInput = wrapper.find('input').first();
     dateInput.simulate('focus');
   });

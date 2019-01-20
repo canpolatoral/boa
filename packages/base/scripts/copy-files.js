@@ -38,7 +38,6 @@ async function createPackageFile() {
   return newPackageData;
 }
 
-
 async function run() {
   await Promise.all(
     ['../../README.md', '../../CHANGELOG.md', '../../LICENSE'].map(file => copyFile(file)),

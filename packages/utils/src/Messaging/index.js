@@ -135,7 +135,9 @@ function loadMessagesByGroup(groupName, languageId) {
 function isVersionCheckRequired() {
   if (!store.versions || store.versions.length === 0) return true;
   let lastReadDate = store.lastReadDate;
-  lastReadDate = moment(lastReadDate).add(messagingOptions.refreshThresold, 'm').toDate();
+  lastReadDate = moment(lastReadDate)
+    .add(messagingOptions.refreshThresold, 'm')
+    .toDate();
   return lastReadDate < new Date();
 }
 
@@ -180,7 +182,7 @@ export function getMessage(groupName, propertyName, languageId) {
 
     const responseGroup = responseVersion.data.find(x => x.ClassName === groupName);
     clientVersion = getVersionOfMessagingGroup(messagingOptions.store, groupName);
-    serverVersion = (responseGroup && responseGroup.Version) ? responseGroup.Version : -1;
+    serverVersion = responseGroup && responseGroup.Version ? responseGroup.Version : -1;
     messagesRefreshRequired = clientVersion !== serverVersion;
     if (messagesRefreshRequired && responseVersion.data && responseVersion.data.length > 0) {
       store.versions = responseVersion.data;

@@ -22,12 +22,9 @@ describe('<CalendarActionButtons />', () => {
   });
 
   it('should contains two button', () => {
-    const wrapper = shallow((
-      <CalendarActionButtons
-        cancelLabel="cancel"
-        okLabel="ok"
-        autoOk={false}
-        context={context} />));
+    const wrapper = shallow(
+      <CalendarActionButtons cancelLabel="cancel" okLabel="ok" autoOk={false} context={context} />,
+    );
     const cancelButton = wrapper.find(Button).at(0);
     const okButton = wrapper.find(Button).at(1);
     expect(cancelButton.props().text).to.equals('cancel');
@@ -35,19 +32,20 @@ describe('<CalendarActionButtons />', () => {
   });
 
   it('should swap buttons when RTL', () => {
-    const newContext = Object.assign({}, context,
-      {
-        languageId: 5,
-        localization: {
-          isRightToLeft: true,
-        },
-      });
-    const wrapper = shallow((
+    const newContext = Object.assign({}, context, {
+      languageId: 5,
+      localization: {
+        isRightToLeft: true,
+      },
+    });
+    const wrapper = shallow(
       <CalendarActionButtons
         cancelLabel="cancel"
         okLabel="ok"
         autoOk={false}
-        context={newContext} />));
+        context={newContext}
+      />,
+    );
     const cancelButton = wrapper.find(Button).at(1);
     const okButton = wrapper.find(Button).at(0);
     expect(cancelButton.props().text).to.equals('cancel');

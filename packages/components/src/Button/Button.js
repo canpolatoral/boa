@@ -194,7 +194,8 @@ class Button extends ComponentBase {
         tooltip={this.props.tooltip}
         tooltipPosition={this.props.tooltipPosition}
         onClick={this.props.onClick}
-      />);
+      />
+    );
   }
 
   createButton() {

@@ -32,7 +32,7 @@ describe('Localization', () => {
   });
 
   it('should static constructor set moment and numeral locales', () => {
-    languages.forEach((language) => {
+    languages.forEach(language => {
       Localization.staticConstructor(language.id);
       assert.strictEqual(moment.locale(), language.code);
       assert.strictEqual(numeral.locale(), language.code);
@@ -51,14 +51,14 @@ describe('Localization', () => {
   });
 
   it('should create localization context set to RTL', () => {
-    languages.forEach((language) => {
+    languages.forEach(language => {
       const localizationContext = Localization.createLocalizationContext(language.id);
       assert.strictEqual(localizationContext.isRightToLeft, !!language.isRightToLeft);
     });
   });
 
   it('should changeLocalizationLanguage set moment and numeral locales', () => {
-    languages.forEach((language) => {
+    languages.forEach(language => {
       Localization.changeLocalizationLanguage(language.id);
       assert.strictEqual(moment.locale(), language.code);
       assert.strictEqual(numeral.locale(), language.code);
@@ -66,10 +66,12 @@ describe('Localization', () => {
   });
 
   it('should return localization language', () => {
-    languages.filter(x => x.id !== 6).forEach((language) => {
-      Localization.changeLocalizationLanguage(language.id);
-      assert.strictEqual(Localization.getLocalizationLanguage().language, language.code);
-      assert.strictEqual(Localization.getLocalizationLanguage().languageId, language.id);
-    });
+    languages
+      .filter(x => x.id !== 6)
+      .forEach(language => {
+        Localization.changeLocalizationLanguage(language.id);
+        assert.strictEqual(Localization.getLocalizationLanguage().language, language.code);
+        assert.strictEqual(Localization.getLocalizationLanguage().languageId, language.id);
+      });
   });
 });

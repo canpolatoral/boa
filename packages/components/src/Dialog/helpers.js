@@ -57,9 +57,7 @@ export function prepareTitleStyle(context, leftTitleButton) {
   } else {
     Object.assign(
       titleStyle,
-      context.localization.isRightToLeft
-        ? { paddingRight: 60 }
-        : { paddingLeft: 60 },
+      context.localization.isRightToLeft ? { paddingRight: 60 } : { paddingLeft: 60 },
     );
   }
 
@@ -109,7 +107,6 @@ export function prepareObjectContent(content, context) {
     headerStyle.marginRight = 24;
     headerStyle.marginLeft = undefined;
   }
-
 
   dialogContent.push(
     <div key="dialogContent" id="dialogHeader" style={headerStyle}>
@@ -351,12 +348,16 @@ export function prepareDialog(props) {
       } else {
         dialogContent = prepareComponentContent(content, dialogRefs, dialogKey, style);
         titleWithCloseButtonEnabled = showHeader;
-        customContentStyle = Object.assign({}, {
-          maxWidth: 'none',
-          height: '90vh',
-          width: '90vw',
-          overflow: 'hidden',
-        }, style);
+        customContentStyle = Object.assign(
+          {},
+          {
+            maxWidth: 'none',
+            height: '90vh',
+            width: '90vw',
+            overflow: 'hidden',
+          },
+          style,
+        );
       }
     } else {
       dialogContent = '';
@@ -416,13 +417,13 @@ export function createDialogContent(props, dialog) {
             }}
           >
             {props.content instanceof Array ||
-              (typeof props.content === 'string' &&
-                typeof dialog.dialogContent === 'string' &&
-                dialog.dialogContent.includes('<br />')) ? (
-                <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
-              ) : (
-                dialog.dialogContent
-              )}
+            (typeof props.content === 'string' &&
+              typeof dialog.dialogContent === 'string' &&
+              dialog.dialogContent.includes('<br />')) ? (
+              <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
+            ) : (
+              dialog.dialogContent
+            )}
           </div>
         </div>
         <div style={objLine} />

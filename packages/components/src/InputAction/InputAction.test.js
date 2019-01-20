@@ -33,13 +33,12 @@ describe('<InputAction />', () => {
   });
 
   it('should mount RTL', () => {
-    const newContext = Object.assign({}, context,
-      {
-        languageId: 5,
-        localization: {
-          isRightToLeft: true,
-        },
-      });
+    const newContext = Object.assign({}, context, {
+      languageId: 5,
+      localization: {
+        isRightToLeft: true,
+      },
+    });
     mount(<InputAction context={newContext} />);
   });
 
@@ -61,16 +60,43 @@ describe('<InputAction />', () => {
 
   it('should setValue, getValue, resetValue', () => {
     const wrapper = mount(<InputAction context={context} defaultValue="test" />);
-    assert.strictEqual(wrapper.instance().getInstance().getValue(), 'test');
-    wrapper.instance().getInstance().setValue('test-new');
-    assert.strictEqual(wrapper.instance().getInstance().getValue(), 'test-new');
-    wrapper.instance().getInstance().resetValue();
-    assert.strictEqual(wrapper.instance().getInstance().getValue(), 'test');
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getValue(),
+      'test',
+    );
+    wrapper
+      .instance()
+      .getInstance()
+      .setValue('test-new');
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getValue(),
+      'test-new',
+    );
+    wrapper
+      .instance()
+      .getInstance()
+      .resetValue();
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getValue(),
+      'test',
+    );
   });
 
   it('should setDisable', () => {
     const wrapper = shallow(<InputAction context={context} defaultValue="test" />);
-    wrapper.instance().getInstance().setDisable(true);
+    wrapper
+      .instance()
+      .getInstance()
+      .setDisable(true);
     assert.strictEqual(wrapper.state().disabled, true);
   });
 
@@ -110,22 +136,22 @@ describe('<InputAction />', () => {
   describe('actions', () => {
     describe('left icons', () => {
       it('should render left icons', () => {
-        mount((
+        mount(
           <InputAction
             context={context}
             rightIconList={[
               { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
               { key: 'clearAction', dynamicIcon: 'Clear' },
             ]}
-            defaultValue="test" />
-        ));
+            defaultValue="test"
+          />,
+        );
         // const iconButtons = wrapper.find(IconButton);
       });
     });
 
     describe('left icons', () => {
-      it('should render left icons', () => {
-      });
+      it('should render left icons', () => {});
     });
   });
 
@@ -144,23 +170,37 @@ describe('<InputAction />', () => {
             { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
             { key: 'clearAction', dynamicIcon: 'Clear' },
           ]}
-          defaultValue="test" />);
+          defaultValue="test"
+        />,
+      );
     });
 
     it('should hide left icons', () => {
-      wrapper.instance().getInstance().hideLeftIcons();
+      wrapper
+        .instance()
+        .getInstance()
+        .hideLeftIcons();
     });
 
     it('should show left icons', () => {
-      wrapper.instance().getInstance().showLeftIcons();
+      wrapper
+        .instance()
+        .getInstance()
+        .showLeftIcons();
     });
 
     it('should hide right icons', () => {
-      wrapper.instance().getInstance().hideRightIcons();
+      wrapper
+        .instance()
+        .getInstance()
+        .hideRightIcons();
     });
 
     it('should show riht icons', () => {
-      wrapper.instance().getInstance().showRightIcons();
+      wrapper
+        .instance()
+        .getInstance()
+        .showRightIcons();
     });
   });
 });

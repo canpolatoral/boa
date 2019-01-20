@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Icon } from '@boa/components/Icon';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 
-const styles = ({
+const styles = {
   root: {
     textAlign: 'center',
     flex: '0 0 auto',
@@ -21,7 +21,7 @@ const styles = ({
     alignItems: 'inherit',
     justifyContent: 'inherit',
   },
-});
+};
 
 /**
  * BOA Icon Button Component
@@ -84,7 +84,6 @@ class IconButton extends ComponentBase {
      * Tooltip position
      */
     tooltipPosition: PropTypes.string,
-
   };
 
   static defaultProps = {
@@ -128,8 +127,8 @@ class IconButton extends ComponentBase {
         {iconButton}
       </Tooltip>
     ) : (
-        iconButton
-      );
+      iconButton
+    );
   }
 }
 

@@ -26,7 +26,13 @@ describe('<IconButton />', () => {
   it('should render ButtonBase', () => {
     const wrapper = shallow(<IconButton context={context} tooltip="tooltip" />).dive();
     assert.strictEqual(wrapper.dive().type(), Tooltip);
-    assert.strictEqual(wrapper.dive().childAt(0).type(), ButtonBase);
+    assert.strictEqual(
+      wrapper
+        .dive()
+        .childAt(0)
+        .type(),
+      ButtonBase,
+    );
   });
 
   it('should mount', () => {

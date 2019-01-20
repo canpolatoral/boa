@@ -80,10 +80,10 @@ block.gfm = merge({}, block.normal, {
 block.gfm.paragraph = replace(block.paragraph)(
   '(?!',
   '(?!' +
-  block.gfm.fences.source.replace('\\1', '\\2') +
-  '|' +
-  block.list.source.replace('\\1', '\\3') +
-  '|',
+    block.gfm.fences.source.replace('\\1', '\\2') +
+    '|' +
+    block.list.source.replace('\\1', '\\3') +
+    '|',
 )();
 
 /**
@@ -124,7 +124,7 @@ Lexer.rules = block;
  * Static Lex Method
  */
 
-Lexer.lex = function (src, options) {
+Lexer.lex = function(src, options) {
   var lexer = new Lexer(options);
   return lexer.lex(src);
 };
@@ -133,7 +133,7 @@ Lexer.lex = function (src, options) {
  * Preprocessing
  */
 
-Lexer.prototype.lex = function (src) {
+Lexer.prototype.lex = function(src) {
   src = src
     .replace(/\r\n|\r/g, '\n')
     .replace(/\t/g, '    ')
@@ -147,7 +147,7 @@ Lexer.prototype.lex = function (src) {
  * Lexing
  */
 
-Lexer.prototype.token = function (src, top, bq) {
+Lexer.prototype.token = function(src, top, bq) {
   var src = src.replace(/^ +$/gm, ''),
     next,
     loose,
@@ -545,7 +545,7 @@ InlineLexer.rules = inline;
  * Static Lexing/Compiling Method
  */
 
-InlineLexer.output = function (src, links, options) {
+InlineLexer.output = function(src, links, options) {
   var inline = new InlineLexer(links, options);
   return inline.output(src);
 };
@@ -554,7 +554,7 @@ InlineLexer.output = function (src, links, options) {
  * Lexing/Compiling
  */
 
-InlineLexer.prototype.output = function (src) {
+InlineLexer.prototype.output = function(src) {
   var out = '',
     link,
     text,
@@ -690,7 +690,7 @@ InlineLexer.prototype.output = function (src) {
  * Compile Link
  */
 
-InlineLexer.prototype.outputLink = function (cap, link) {
+InlineLexer.prototype.outputLink = function(cap, link) {
   var href = escape(link.href),
     title = link.title ? escape(link.title) : null;
 
@@ -703,7 +703,7 @@ InlineLexer.prototype.outputLink = function (cap, link) {
  * Smartypants Transformations
  */
 
-InlineLexer.prototype.smartypants = function (text) {
+InlineLexer.prototype.smartypants = function(text) {
   if (!this.options.smartypants) return text;
   return (
     text
@@ -728,7 +728,7 @@ InlineLexer.prototype.smartypants = function (text) {
  * Mangle Links
  */
 
-InlineLexer.prototype.mangle = function (text) {
+InlineLexer.prototype.mangle = function(text) {
   if (!this.options.mangle) return text;
   var out = '',
     l = text.length,
@@ -754,7 +754,7 @@ function Renderer(options) {
   this.options = options || {};
 }
 
-Renderer.prototype.code = function (code, lang, escaped) {
+Renderer.prototype.code = function(code, lang, escaped) {
   if (this.options.highlight) {
     var out = this.options.highlight(code, lang);
     if (out != null && out !== code) {
@@ -770,11 +770,11 @@ Renderer.prototype.code = function (code, lang, escaped) {
   return `<pre class="customPre" style="${style}" >
         <code ${!lang ? '' : 'class="hljs"'} style="${codeStyle}" >${
     escaped ? code : escape(code, true)
-    }</code>
+  }</code>
       </pre>`;
 };
 
-Renderer.prototype.notice = function (style, header, text) {
+Renderer.prototype.notice = function(style, header, text) {
   switch (style) {
     case 'tip': {
       return `
@@ -820,11 +820,11 @@ Renderer.prototype.notice = function (style, header, text) {
   }
 };
 
-Renderer.prototype.blockquote = function (quote) {
+Renderer.prototype.blockquote = function(quote) {
   return '<blockquote>\n' + quote + '</blockquote>\n';
 };
 
-Renderer.prototype.html = function (html) {
+Renderer.prototype.html = function(html) {
   return html;
 };
 
@@ -839,7 +839,7 @@ function getHeadingStyle(level) {
   }
 }
 
-Renderer.prototype.heading = function (text, level, raw) {
+Renderer.prototype.heading = function(text, level, raw) {
   TableOfContentHelper.addHeadingToTableOfContent(
     this.options.headerPrefix + raw.toLowerCase().replace(/[^\w]+/g, '-'),
     level,
@@ -868,20 +868,20 @@ Renderer.prototype.heading = function (text, level, raw) {
   );
 };
 
-Renderer.prototype.hr = function () {
+Renderer.prototype.hr = function() {
   return this.options.xhtml ? '<hr/>\n' : '<hr>\n';
 };
 
-Renderer.prototype.list = function (body, ordered) {
+Renderer.prototype.list = function(body, ordered) {
   var type = ordered ? 'ol' : 'ul';
   return '<' + type + '>\n' + body + '</' + type + '>\n';
 };
 
-Renderer.prototype.listitem = function (text) {
+Renderer.prototype.listitem = function(text) {
   return '<li>' + text + '</li>\n';
 };
 
-Renderer.prototype.paragraph = function (text) {
+Renderer.prototype.paragraph = function(text) {
   return '<p>' + text + '</p>\n';
 };
 
@@ -918,27 +918,27 @@ Renderer.prototype.tablecell = (content, flags, style, index) => {
 };
 
 // span level renderer
-Renderer.prototype.strong = function (text) {
+Renderer.prototype.strong = function(text) {
   return '<strong>' + text + '</strong>';
 };
 
-Renderer.prototype.em = function (text) {
+Renderer.prototype.em = function(text) {
   return '<em>' + text + '</em>';
 };
 
-Renderer.prototype.codespan = function (text) {
+Renderer.prototype.codespan = function(text) {
   return '<code>' + text + '</code>';
 };
 
-Renderer.prototype.br = function () {
+Renderer.prototype.br = function() {
   return this.options.xhtml ? '<br/>' : '<br>';
 };
 
-Renderer.prototype.del = function (text) {
+Renderer.prototype.del = function(text) {
   return '<del>' + text + '</del>';
 };
 
-Renderer.prototype.link = function (href, title, text) {
+Renderer.prototype.link = function(href, title, text) {
   if (this.options.sanitize) {
     try {
       var prot = decodeURIComponent(unescape(href))
@@ -963,7 +963,7 @@ Renderer.prototype.link = function (href, title, text) {
   return out;
 };
 
-Renderer.prototype.image = function (href, title, text) {
+Renderer.prototype.image = function(href, title, text) {
   var out = '<img src="' + href + '" alt="' + text + '"';
   if (title) {
     out += ' title="' + title + '"';
@@ -972,7 +972,7 @@ Renderer.prototype.image = function (href, title, text) {
   return out;
 };
 
-Renderer.prototype.text = function (text) {
+Renderer.prototype.text = function(text) {
   return text;
 };
 
@@ -993,7 +993,7 @@ function Parser(options) {
  * Static Parse Method
  */
 
-Parser.parse = function (src, options, renderer) {
+Parser.parse = function(src, options, renderer) {
   var parser = new Parser(options, renderer);
   return parser.parse(src);
 };
@@ -1002,7 +1002,7 @@ Parser.parse = function (src, options, renderer) {
  * Parse Loop
  */
 
-Parser.prototype.parse = function (src) {
+Parser.prototype.parse = function(src) {
   this.inline = new InlineLexer(src.links, this.options, this.renderer);
   this.tokens = src.reverse();
 
@@ -1020,7 +1020,7 @@ Parser.prototype.parse = function (src) {
  * Next Token
  */
 
-Parser.prototype.next = function () {
+Parser.prototype.next = function() {
   return (this.token = this.tokens.pop());
 };
 
@@ -1028,7 +1028,7 @@ Parser.prototype.next = function () {
  * Preview Next Token
  */
 
-Parser.prototype.peek = function () {
+Parser.prototype.peek = function() {
   return this.tokens[this.tokens.length - 1] || 0;
 };
 
@@ -1036,7 +1036,7 @@ Parser.prototype.peek = function () {
  * Parse Text Tokens
  */
 
-Parser.prototype.parseText = function () {
+Parser.prototype.parseText = function() {
   var body = this.token.text;
 
   while (this.peek().type === 'text') {
@@ -1050,7 +1050,7 @@ Parser.prototype.parseText = function () {
  * Parse Current Token
  */
 
-Parser.prototype.tok = function () {
+Parser.prototype.tok = function() {
   switch (this.token.type) {
     case 'space': {
       return '';
@@ -1239,7 +1239,7 @@ function escape(html, encode) {
 
 function unescape(html) {
   // explicitly match decimal, hex, and named HTML entities
-  return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function (_, n) {
+  return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
     n = n.toLowerCase();
     if (n === 'colon') return ':';
     if (n.charAt(0) === '#') {
@@ -1263,7 +1263,7 @@ function replace(regex, opt) {
   };
 }
 
-function noop() { }
+function noop() {}
 noop.exec = noop;
 
 function merge(obj) {
@@ -1309,7 +1309,7 @@ function marked(src, opt, callback) {
 
     pending = tokens.length;
 
-    var done = function (err) {
+    var done = function(err) {
       if (err) {
         opt.highlight = highlight;
         return callback(err);
@@ -1337,11 +1337,11 @@ function marked(src, opt, callback) {
     if (!pending) return done();
 
     for (; i < tokens.length; i++) {
-      (function (token) {
+      (function(token) {
         if (token.type !== 'code') {
           return --pending || done();
         }
-        return highlight(token.text, token.lang, function (err, code) {
+        return highlight(token.text, token.lang, function(err, code) {
           if (err) return done(err);
           if (code == null || code === token.text) {
             return --pending || done();
@@ -1371,20 +1371,20 @@ function marked(src, opt, callback) {
  * Options
  */
 
-marked.options = marked.setOptions = function (opt) {
+marked.options = marked.setOptions = function(opt) {
   merge(marked.defaults, opt);
   return marked;
 };
 
-marked.setEditorTypes = function (types) {
+marked.setEditorTypes = function(types) {
   editorTypes = types;
 };
 
-marked.setEditorType = function (type) {
+marked.setEditorType = function(type) {
   editorType = type;
 };
 
-marked.getTableOfContent = function () {
+marked.getTableOfContent = function() {
   return tableOfContent;
 };
 

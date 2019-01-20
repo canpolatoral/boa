@@ -186,10 +186,10 @@ class Menu extends ComponentBase {
         const rightIcon =
           item.items && item.items.length
             ? this.getIcon({
-              dynamicIcon: !this.props.context.localization.isRightToLeft
-                ? 'ChevronRight'
-                : 'ChevronLeft',
-            })
+                dynamicIcon: !this.props.context.localization.isRightToLeft
+                  ? 'ChevronRight'
+                  : 'ChevronLeft',
+              })
             : this.getIcon(item.rightIcon);
         const leftIcon = this.getIcon(item.leftIcon);
         let itemStyle = merge(
@@ -240,8 +240,8 @@ class Menu extends ComponentBase {
             allProperties={item.allProperties}
           />
         ) : (
-            <MuiDivider style={{ marginBottom: '12px', marginTop: '12px' }} key={Math.random()} />
-          );
+          <MuiDivider style={{ marginBottom: '12px', marginTop: '12px' }} key={Math.random()} />
+        );
       });
     }
 

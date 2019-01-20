@@ -12,11 +12,7 @@ class EmptyComponent extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        EmptyComponent
-      </div>
-    );
+    return <div>EmptyComponent</div>;
   }
 }
 
@@ -74,7 +70,9 @@ describe('<ComponentComposer />', () => {
 
   describe('withStyles components', () => {
     it('should have a innerRef', () => {
-      const WithStyles = withStyles(() => { return 1; })(EmptyComponent);
+      const WithStyles = withStyles(() => {
+        return 1;
+      })(EmptyComponent);
       const Compose = ComponentComposer(WithStyles);
       const wrapper = mount(<Compose />);
       assert.strictEqual(wrapper.instance().innerRef.foo(), 'foo');

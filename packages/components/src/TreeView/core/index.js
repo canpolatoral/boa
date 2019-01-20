@@ -1205,10 +1205,10 @@ class InfiniteTree extends events.EventEmitter {
 
       // Add all child nodes to the lookup table if the first child does not exist in the lookup table
       if (nodes.length > 0 && !this.nodeTable.get(nodes[0])) {
-        nodes.forEach(node => {
+        nodes.forEach(nodeItem => {
           // eslint-disable-line
-          if (node.id !== undefined) {
-            this.nodeTable.set(node.id, node);
+          if (nodeItem.id !== undefined) {
+            this.nodeTable.set(nodeItem.id, node);
           }
         });
       }
@@ -1519,14 +1519,13 @@ class InfiniteTree extends events.EventEmitter {
     }
 
     // Update open nodes and lookup table
-    this.state.openNodes = this.state.openNodes.filter(node => {
+    this.state.openNodes = this.state.openNodes.filter(nodeItem => {
       // eslint-disable-line
-      return removedNodes.indexOf(node) < 0 && node.state.open;
+      return removedNodes.indexOf(nodeItem) < 0 && nodeItem.state.open;
     });
 
-    removedNodes.forEach(node => {
-      // eslint-disable-line
-      this.nodeTable.unset(node.id);
+    removedNodes.forEach(nodeItem => {
+      this.nodeTable.unset(nodeItem.id);
     });
 
     // Update list
@@ -1765,23 +1764,23 @@ class InfiniteTree extends events.EventEmitter {
   // @param {Node} node The Node object. If null, returns the whole tree.
   // @return {string} Returns a JSON string represented the tree.
   toString(node = null) {
-    const traverse = node => {
+    const traverse = nodeItem => {
       // eslint-disable-line
       // eslint-disable-line
       let s = '[';
-      if (node && node.children) {
-        for (let i = 0; i < node.children.length; ++i) {
+      if (nodeItem && nodeItem.children) {
+        for (let i = 0; i < nodeItem.children.length; ++i) {
           const list = [];
           s = `${s}{`;
-          Object.keys(node).forEach(key => {
-            const value = node[key];
+          Object.keys(nodeItem).forEach(key => {
+            const value = nodeItem[key];
             if (key === 'parent') {
               // ignore parent
               return;
             }
             if (key === 'children') {
               // traverse child nodes
-              list.push(`"${key}":${traverse(node.children[i])}`);
+              list.push(`"${key}":${traverse(nodeItem.children[i])}`);
               return;
             }
             if (typeof value === 'string' || typeof value === 'object') {
@@ -1792,7 +1791,7 @@ class InfiniteTree extends events.EventEmitter {
             }
           });
           s = s + list.join(',');
-          s = `${s}}${i === node.children.length - 1 ? '' : ','}`;
+          s = `${s}}${i === nodeItem.children.length - 1 ? '' : ','}`;
         }
       }
       s = `${s}]`;

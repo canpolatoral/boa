@@ -5,14 +5,15 @@ import fs from 'fs';
 import yargs from 'yargs';
 import { parse } from 'react-docgen';
 
-const options = yargs.option('input', {
-  default: 'all',
-  type: 'string',
-}).option('output', {
-  default: 'console',
-  type: 'string',
-}).argv;
-
+const options = yargs
+  .option('input', {
+    default: 'all',
+    type: 'string',
+  })
+  .option('output', {
+    default: 'console',
+    type: 'string',
+  }).argv;
 
 const repair = obj => {
   for (const property in obj) {
@@ -42,10 +43,9 @@ const repair = obj => {
 const generateDocument = component => {
   if (component === 'Scroll' || component === 'Icon') return;
 
-  const fileContent = fs.readFileSync(
-    path.join(__dirname, '..', '..', component),
-    { encoding: 'utf8' },
-  );
+  const fileContent = fs.readFileSync(path.join(__dirname, '..', '..', component), {
+    encoding: 'utf8',
+  });
 
   const componentInfo = parse(fileContent);
   repair(componentInfo);

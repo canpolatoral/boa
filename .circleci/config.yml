@@ -156,7 +156,7 @@ jobs:
       - run:
           name: Visual regression tests
           command: |
-            DOCKER_TEST_URL=http://$(ip addr show lo | grep "inet\b" | awk '{print $2}' | cut -d/ -f1):3090 npm run test-regressions
+            DOCKER_TEST_URL=http://$(ip addr show lo | grep "inet\b" | awk '{print $2}' | cut -d/ -f1):3090 yarn test:regressions
             yarn argos
 workflows:
   version: 2

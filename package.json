@@ -16,7 +16,7 @@
     "size": "size-limit",
     "size:why": "size-limit --why packages/components/build/index.js",
     "spellcheck": "eslint . --config .eslintrc.spellcheck.js && echo \"eslint: no lint errors\"",
-    "test": "npm run lint && npm run typescript && npm run test-coverage",
+    "test": "yarn lint && yarn run typescript && yarn test:coverage",
     "test:integration": "cross-env NODE_ENV=test mocha  ./test/integration/*.test.js",
     "test:unit": "cross-env NODE_ENV=test mocha ./packages/**/src/**/**/**/*.test.js",
     "test:karma": "cross-env NODE_ENV=test karma start test/karma.conf.js --single-run --watch=false",

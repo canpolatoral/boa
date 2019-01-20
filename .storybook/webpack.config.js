@@ -4,9 +4,9 @@ const { resolve } = require('path');
 module.exports = {
   resolve: {
     modules: [
-      resolve(__dirname, 'packages', 'boa-base', 'src'),
-      resolve(__dirname, 'packages', 'boa-components', 'src'),
-      resolve(__dirname, 'packages', 'boa-utils', 'src'),
+      resolve(__dirname, 'packages', 'base', 'src'),
+      resolve(__dirname, 'packages', 'components', 'src'),
+      resolve(__dirname, 'packages', 'utils', 'src'),
       'node_modules',
     ],
   },

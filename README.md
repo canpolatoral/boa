@@ -9,7 +9,7 @@
 
 ## Getting Started
 
-BOA has three packages that are available as NPM packages. @boa/base has base components like a composer (HOC), themes, error boundary, enums etc. @boa/components is the main UI component library. Th@boa/utils has localization and messaging utilities. Each component was documented on the own package dictionary.
+BOA has three packages that are available as NPM packages. @boa/base has base components like a composer (HOC), themes, error boundary, enums etc. @boa/components is the main UI component library. @boa/utils has localization and messaging utilities. Each component was documented on the own package dictionary.
 
 ## Questions
 

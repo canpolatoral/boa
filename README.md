@@ -23,9 +23,9 @@ Please refer [contribution](/CONTRIBUTING.md) doc.
 
 We'll provide example projects as soon as possible.
 
-## Roadmap
+## Roadmap
 
-The future plans and high priority features and enhancements can be found in the [ROADMAP.md](roadmap/) file.
+The future plans and high priority features and enhancements can be found in the [ROADMAP](/ROADMAP.md) file.
 
 ## Thanks
 

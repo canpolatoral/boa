@@ -7,9 +7,9 @@ module.exports = {
   resolve: {
     modules: [path.join(__dirname, '../'), 'node_modules'],
     alias: {
-      '@boa/base': path.resolve(__dirname, '../packages/boa-base/src'),
-      '@boa/components': path.resolve(__dirname, '../packages/boa-components/src'),
-      '@boa/utils': path.resolve(__dirname, '../packages/boa-utils/src'),
+      '@boa/base': path.resolve(__dirname, '../packages/base/src'),
+      '@boa/components': path.resolve(__dirname, '../packages/components/src'),
+      '@boa/utils': path.resolve(__dirname, '../packages/utils/src'),
       '@boa/test': path.resolve(__dirname, '../test'),
     },
   },

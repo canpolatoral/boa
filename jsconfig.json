@@ -3,13 +3,13 @@
     "baseUrl": "./",
     "paths": {
       "@boa/base": [
-        "packages/boa-base/src"
+        "packages/base/src"
       ],
       "@boa/components": [
-        "packages/boa-components/src"
+        "packages/components/src"
       ],
       "@boa/utils": [
-        "packages/boa-utils/src"
+        "packages/utils/src"
       ],
       "@boa/test": [
         "test"

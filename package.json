@@ -14,7 +14,7 @@
     "prettier:check": "yarn --silent prettier:files | xargs prettier --list-different",
     "prettier:ci": "prettier --list-different",
     "size": "size-limit",
-    "size:why": "size-limit --why packages/boa-components/build/index.js",
+    "size:why": "size-limit --why packages/components/build/index.js",
     "spellcheck": "eslint . --config .eslintrc.spellcheck.js && echo \"eslint: no lint errors\"",
     "test": "npm run lint && npm run typescript && npm run test-coverage",
     "test:integration": "cross-env NODE_ENV=test mocha  ./test/integration/*.test.js",

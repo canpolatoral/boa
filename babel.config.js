@@ -22,9 +22,9 @@ if (process.env.NODE_ENV !== 'production') {
       {
         root: ['./'],
         alias: {
-          '@boa/base': './packages/boa-base/src',
-          '@boa/components': './packages/boa-components/src',
-          '@boa/utils': './packages/boa-utils/src',
+          '@boa/base': './packages/base/src',
+          '@boa/components': './packages/components/src',
+          '@boa/utils': './packages/utils/src',
           '@boa/test': './test',
         },
       },

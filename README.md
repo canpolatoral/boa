@@ -1,4 +1,4 @@
-<h1 align="center">boa-components</h1>
+<h1 align="center">@boa packages</h1>
 
 <div align="center">
 
@@ -17,7 +17,7 @@ Feel free about open an issue from [Issues](https://github.com/kuveytturk/boa/is
 
 ## Contributing
 
-Please refer [contribution](/CONTRIBUTING.md) doc.
+Please refer [CONTRIBUTING](/CONTRIBUTING.md) guideline.
 
 ## Examples
 

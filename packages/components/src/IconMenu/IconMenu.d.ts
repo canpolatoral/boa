@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
+import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@boa/base';
 
 export interface IconMenuProps extends ComponentBaseProps {
   iconType: 'vertical' | 'horizontal' | 'custom';

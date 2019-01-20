@@ -1,4 +1,4 @@
-import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
+import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@boa/base';
 
 export interface DocCodeProps extends ComponentBaseProps {
   content: string;

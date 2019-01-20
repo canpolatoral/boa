@@ -26,8 +26,8 @@
       "@boa/utils": [
         "packages/utils/src"
       ],
-      "@boa/test/*": [
-        "test/*"
+      "@boa/test/utils": [
+        "test/utils"
       ]
     }
   },

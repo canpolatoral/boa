@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
+import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@boa/base';
 
 export interface InputProps extends ComponentBaseProps {
   snapshot?: any;

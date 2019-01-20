@@ -1,4 +1,4 @@
-import ComponentBase, { ComponentBaseInstance, ComponentBaseProps } from '../../base/ComponentBase';
+import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@boa/base';
 
 export interface DateTimePickerProps extends ComponentBaseProps {
   minDate?: any; // TODO: propType handle edilemedi.

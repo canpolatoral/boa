@@ -10,9 +10,6 @@
     "node_modules/**/*.d.ts": true,
     "**/jquery*": true,
     "**/bootstrap*": true,
-    "components/**/package": true,
-    "framework/**/package": true,
-    "generator/**/package": true,
     "**/.vscode": true
   },
   "search.exclude": {

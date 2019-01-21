@@ -5,6 +5,7 @@ import { getMessage } from '@boa/utils';
 import { AppProvider, DialogType, DialogResponse, DialogResponseStyle } from '@boa/base';
 import { Button } from '@boa/components/Button';
 import Dialog from './Dialog';
+import { getTitleBackground } from './helpers';
 
 export default class DialogHelper {
   static dialogCounter = 0;
@@ -15,7 +16,11 @@ export default class DialogHelper {
 
   /* istanbul ignore next */
   static getContentRef(key) {
-    return this.dialogRefs[key] ? this.dialogRefs[key].contentRef : null;
+    /* istanbul ignore if */
+    if (this.dialogRefs[key]) {
+      return this.dialogRefs[key].contentRef;
+    }
+    return null;
   }
 
   /** internal methods * */
@@ -97,10 +102,7 @@ export default class DialogHelper {
       }
     }
 
-    const titleBackgroundColor =
-      Object.keys(DialogHelper.dialogRefs).length >= 1
-        ? context.theme.boaPalette.base300
-        : context.theme.boaPalette.pri500;
+    const titleBackgroundColor = getTitleBackground(DialogHelper.dialogRefs, context);
 
     const dialogElement = (
       <AppProvider theme={context.theme}>
@@ -189,6 +191,7 @@ export default class DialogHelper {
 
     idleDialog.dialog.getInstance().setState({ open: false }, () => {
       setTimeout(() => {
+        /* istanbul ignore else */
         if (idleDialog && idleDialog.onClose) {
           idleDialog.onClose(dialogResponse, returnValue);
         }
@@ -202,7 +205,9 @@ export default class DialogHelper {
     return true;
   }
 
+  /* istanbul ignore next */
   static onClose(dialogResponse) {
+    /* istanbul ignore next */
     this.close(undefined, dialogResponse, undefined);
   }
 }

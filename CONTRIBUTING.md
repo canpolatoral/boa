@@ -13,4 +13,15 @@ Depending on the package you want to build just run `yarn workspace @boa/PACKAGE
 
 ### Coding style
 
-Please follow the coding style of the project. Material-UI uses eslint, so if possible, enable linting in your editor to get real-time feedback. The linting rules can be run manually with the following command `yarn lint`.
+Please follow the coding style of the project. BOA uses eslint, so if possible, enable linting in your editor to get real-time feedback. The linting rules can be run manually with the following command `yarn lint`.
+
+### Running Storybook
+
+We're using [storybook](https://storybook.js.org/) as component catalog. To start stroybook run:
+```sh 
+yarn start
+```
+
+#### Writing stories
+
+Stories are located in *stories* folder. [Storybook guideline](https://storybook.js.org/basics/writing-stories/) is a good start point to writing stories. We've some components that provide convenience to create stories. 

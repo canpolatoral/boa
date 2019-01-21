@@ -120,6 +120,29 @@ describe('DialogHelper', () => {
         DialogHelper.clearRefs(dialogKey);
       });
     });
+
+    it('should create with header false', () => {
+      const dialog = DialogHelper.show(
+        context,
+        'test',
+        undefined,
+        undefined,
+        'test-title',
+        undefined,
+        undefined,
+        undefined,
+        false);
+      const dialogKey = Object.keys(DialogHelper.dialogRefs)[0];
+      const dialogRef = DialogHelper.dialogRefs[dialogKey];
+      const ref = ReactDOM.findDOMNode(dialogRef.dialog);
+      assert.strictEqual(dialog, dialogRef.dialog);
+      assert.isNotNull(ref);
+      const paper = ref.querySelectorAll('[class*=MuiPaper-root]')[0];
+      const dialogContent = paper.querySelectorAll('[class*=MuiDialogContent-root]')[0];
+      const content = dialogContent.getElementsByTagName('div')[3];
+      assert.strictEqual(content.innerHTML, 'test');
+      DialogHelper.clearRefs(dialogKey);
+    });
   });
 
   describe('show error', () => {
@@ -145,9 +168,11 @@ describe('DialogHelper', () => {
         context,
         'test-error',
         [{ code: 'test', errorMessage: 'result-error' }],
-        undefined,
-        undefined,
+        DialogType.WARNING,
+        DialogResponseStyle.YESNO,
         'test-title',
+        undefined,
+        undefined,
       );
       const dialogKey = Object.keys(DialogHelper.dialogRefs)[0];
       const dialogRef = DialogHelper.dialogRefs[dialogKey];
@@ -159,13 +184,11 @@ describe('DialogHelper', () => {
   });
 
   describe('close dialog', () => {
-    let dialog;
-    let idleDialogDiv;
-    const onClosing = spy();
-    const onClose = spy();
+    it('should close created dialog', done => {
+      const onClosing = spy();
+      const onClose = spy();
 
-    before(() => {
-      dialog = DialogHelper.show(
+      const dialog = DialogHelper.show(
         context,
         'test',
         undefined,
@@ -175,10 +198,36 @@ describe('DialogHelper', () => {
         undefined,
         onClosing,
       );
-      idleDialogDiv = DialogHelper.dialogDivs[dialog.props.dialogKey];
+      const idleDialogDiv = DialogHelper.dialogDivs[dialog.props.dialogKey];
+      const unmountComponentAtNode = stub(ReactDOM, 'unmountComponentAtNode').callsFake(node => {
+        assert.strictEqual(idleDialogDiv, node);
+      });
+
+      DialogHelper.close(dialog, DialogResponseStyle.OK, null);
+      setTimeout(async () => {
+        assert.strictEqual(unmountComponentAtNode.called, true);
+        assert.strictEqual(onClosing.callCount, 1);
+        assert.strictEqual(onClose.callCount, 1);
+        unmountComponentAtNode.restore();
+        done();
+      }, 200);
     });
 
-    it('should close created dialog', done => {
+    it('should close created dialog defaults', done => {
+      const onClosing = spy();
+      const onClose = spy();
+
+      const dialog = DialogHelper.show(
+        context,
+        'test',
+        undefined,
+        undefined,
+        'test-title',
+        onClose,
+        undefined,
+        onClosing,
+      );
+      const idleDialogDiv = DialogHelper.dialogDivs[dialog.props.dialogKey];
       const unmountComponentAtNode = stub(ReactDOM, 'unmountComponentAtNode').callsFake(node => {
         assert.strictEqual(idleDialogDiv, node);
       });

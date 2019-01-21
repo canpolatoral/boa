@@ -87,6 +87,21 @@ export function prepareArrayContent(content) {
   return dialogContent;
 }
 
+export function divScroll(event, context) {
+  const scrollDivStyle = document.getElementById('scrollDiv').style;
+  const headerDivStyle = document.getElementById('dialogHeader').style;
+  if (event.target.scrollTop > 0) {
+    scrollDivStyle.borderTopColor = context.theme.boaPalette.base200;
+    scrollDivStyle.borderTopStyle = 'solid';
+    scrollDivStyle.borderTopWidth = 1;
+    headerDivStyle.borderBottomWidth = 1;
+    headerDivStyle.borderBottomStyle = 'solid';
+    headerDivStyle.borderBottomColor = 'transparent';
+  } else {
+    scrollDivStyle.borderTopColor = 'transparent';
+  }
+}
+
 export function prepareObjectContent(content, context) {
   const dialogContent = [];
   const dialogSubContent = [];
@@ -173,20 +188,7 @@ export function prepareObjectContent(content, context) {
     <div
       key="scrollDiv"
       id="scrollDiv"
-      onScroll={event => {
-        const scrollDivStyle = document.getElementById('scrollDiv').style;
-        const headerDivStyle = document.getElementById('dialogHeader').style;
-        if (event.target.scrollTop > 0) {
-          scrollDivStyle.borderTopColor = context.theme.boaPalette.base200;
-          scrollDivStyle.borderTopStyle = 'solid';
-          scrollDivStyle.borderTopWidth = 1;
-          headerDivStyle.borderBottomWidth = 1;
-          headerDivStyle.borderBottomStyle = 'solid';
-          headerDivStyle.borderBottomColor = 'transparent';
-        } else {
-          scrollDivStyle.borderTopColor = 'transparent';
-        }
-      }}
+      onScroll={event => divScroll(event, context)}
       style={subObjStyle}
     >
       {subObj}
@@ -196,7 +198,7 @@ export function prepareObjectContent(content, context) {
   return { dialogContent, dialogSubContent };
 }
 
-export function preparetStringContent(content) {
+export function prepareStringContent(content) {
   let dialogContent = '';
   const text = content.replace(/\n/gi, '#00100#');
   const textArray = text.split('#00100#');
@@ -210,16 +212,18 @@ export function preparetStringContent(content) {
 
 export function prepareComponentContent(content, dialogRefs, dialogKey, style) {
   let dialogContent = '';
-  const contentProps = {
-    inDialog: true,
-    dialogKey,
-    ref: r => {
-      if (dialogRefs[dialogKey]) {
-        dialogRefs[dialogKey].contentRef = r;
-      }
-    },
-  };
+
+  /* istanbul ignore next */
   if (content.type.prototype && content.type.prototype.isReactComponent) {
+    const contentProps = {
+      inDialog: true,
+      dialogKey,
+      ref: r => {
+        if (dialogRefs[dialogKey]) {
+          dialogRefs[dialogKey].contentRef = r;
+        }
+      },
+    };
     dialogContent = React.cloneElement(content, contentProps);
   } else {
     dialogContent = content;
@@ -246,20 +250,20 @@ export function prepareContentStyle(contentStyle, buttonEnabled, context, style)
       contentStyle.height = '100vh';
     }
 
-    // mobilse her durumda dialoglar fullscreen açılsın
+    // if mobile it should be full screen
     if (context.deviceSize <= Sizes.SMALL) {
       contentStyle = Object.assign(contentStyle, { height: '100vh', width: '100vw' });
       fullScreen = true;
     }
   } else {
-    contentStyle = Object.assign(contentStyle, { margin: '8px' }, style);
+    contentStyle = Object.assign(contentStyle, { margin: 8 }, style);
   }
 
   return { customContentStyle: contentStyle, fullScreen };
 }
 
 export function getIcon(context, type) {
-  const iconStyle = { width: '48px', height: '48px' };
+  const iconStyle = { width: 48, height: 48 };
   switch (type) {
     case DialogType.INFO: {
       const icon = {
@@ -270,7 +274,6 @@ export function getIcon(context, type) {
       };
       return Icon.getIcon(icon);
     }
-    /* istanbul ignore next */
     case DialogType.QUESTION: {
       const icon = {
         dynamicIcon: 'Help',
@@ -280,7 +283,6 @@ export function getIcon(context, type) {
       };
       return Icon.getIcon(icon);
     }
-    /* istanbul ignore next */
     case DialogType.WARNING: {
       const icon = {
         dynamicIcon: 'Error',
@@ -290,7 +292,6 @@ export function getIcon(context, type) {
       };
       return Icon.getIcon(icon);
     }
-    /* istanbul ignore next */
     case DialogType.ERROR: {
       const icon = {
         dynamicIcon: 'Error',
@@ -300,7 +301,6 @@ export function getIcon(context, type) {
       };
       return Icon.getIcon(icon);
     }
-    /* istanbul ignore next */
     case DialogType.SUCCESS: {
       const icon = {
         dynamicIcon: 'CheckCircle',
@@ -342,7 +342,7 @@ export function prepareDialog(props) {
         dialogContent = prepared.dialogContent;
         dialogSubContent = prepared.dialogSubContent;
       } else if (typeof content === 'string' && content.includes('\n')) {
-        dialogContent = preparetStringContent(content);
+        dialogContent = prepareStringContent(content);
       } else if (typeof content === 'string') {
         dialogContent = Utils.getShowStatusMessageReplacedText(content);
       } else {
@@ -385,16 +385,19 @@ export function prepareDialog(props) {
 export function createDialogContent(props, dialog) {
   const context = props.context;
   const objLine = prepareLineStyle(context);
+  const linebreakExists = (
+    typeof dialog.dialogContent === 'string' &&
+    dialog.dialogContent.includes('<br />')
+  );
   return (
-    <MuiDialogContent style={{ padding: '0px', overflow: 'hidden' }}>
+    <MuiDialogContent style={{ padding: 0, overflow: 'hidden' }}>
       <div>
         <div
           style={{
             display: 'flex',
-            // alignItems: 'center',
-            padding: '0px',
-            minHeight: '96px',
-            fontSize: '16px',
+            padding: 0,
+            minHeight: 96,
+            fontSize: 16,
             direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
           }}
         >
@@ -402,8 +405,8 @@ export function createDialogContent(props, dialog) {
             <div
               style={
                 context.localization.isRightToLeft
-                  ? { paddingTop: '24px', paddingRight: '24px' }
-                  : { paddingTop: '24px', paddingLeft: '24px' }
+                  ? { paddingTop: 24, paddingRight: 24 }
+                  : { paddingTop: 24, paddingLeft: 24 }
               }
             >
               {dialog.icon}
@@ -416,14 +419,11 @@ export function createDialogContent(props, dialog) {
               alignItems: 'center',
             }}
           >
-            {props.content instanceof Array ||
-            (typeof props.content === 'string' &&
-              typeof dialog.dialogContent === 'string' &&
-              dialog.dialogContent.includes('<br />')) ? (
+            { linebreakExists ? (
               <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
             ) : (
-              dialog.dialogContent
-            )}
+                dialog.dialogContent
+              )}
           </div>
         </div>
         <div style={objLine} />

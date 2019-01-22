@@ -2,7 +2,7 @@ import React from 'react';
 import { assert } from 'chai';
 import Scroll from './Scroll';
 import { context, createMount } from '@boa/test/utils';
-import { ComponentBase, ComponentComposer, Utils, Platforms } from '@boa/base';
+import { Platforms } from '@boa/base';
 
 describe('<Scroll />', () => {
   let mount;

@@ -31,3 +31,23 @@ yarn generate:doc --input "packages/components/src/Button/Button.js" --output "s
 ```
 
 Please review ***stories*** folder before write new story.
+
+
+### Testing
+
+To run unit tests with mocha on node.js:
+
+```sh
+yarn test:unit
+```
+
+Code coverage:
+```sh
+yarn test:coverage:html
+```
+
+To run unit test with karma on real browser:
+
+```sh
+yarn test:karma
+```

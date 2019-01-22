@@ -69,6 +69,7 @@ class LinearPanel extends ComponentBase {
 
     const childs = Utils.getFormChildren(this.props.children, this.state.disabled);
     const wrappedChildren = React.Children.map(childs, currentChild => {
+      /* istanbul ignore if */
       if (React.isValidElement(currentChild) && currentChild.type.muiName === 'Subheader') {
         return currentChild;
       }

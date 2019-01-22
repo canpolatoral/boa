@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 
-const styles = {
+export const styles = {
   base: {
     position: 'absolute',
   },
@@ -84,24 +84,21 @@ export default class Resizer extends Component {
       'bottomRight',
       'bottomLeft',
       'topLeft',
-    ]).isRequired,
+    ]),
   };
 
-  constructor(props, context) {
-    super(props, context);
-    this.onTouchStart = this.onTouchStart.bind(this);
-  }
+  static defaultProps = {
+    type: 'top',
+  };
 
   shouldComponentUpdate(nextProps) {
     return !isEqual(this.props, nextProps);
   }
 
-  onTouchStart(event) {
-    this.props.onResizeStart(event);
-  }
-
   getStyle() {
-    if (this.props.replaceStyles) return this.props.replaceStyles;
+    if (this.props.replaceStyles) {
+      return this.props.replaceStyles;
+    }
     return { ...styles.base, ...styles[this.props.type] };
   }
 
@@ -111,7 +108,7 @@ export default class Resizer extends Component {
         className={this.props.className}
         style={this.getStyle()}
         onMouseDown={this.props.onResizeStart}
-        onTouchStart={this.onTouchStart}
+        onTouchStart={this.props.onResizeStart}
       />
     );
   }

@@ -385,10 +385,8 @@ export function prepareDialog(props) {
 export function createDialogContent(props, dialog) {
   const context = props.context;
   const objLine = prepareLineStyle(context);
-  const linebreakExists = (
-    typeof dialog.dialogContent === 'string' &&
-    dialog.dialogContent.includes('<br />')
-  );
+  const linebreakExists =
+    typeof dialog.dialogContent === 'string' && dialog.dialogContent.includes('<br />');
   return (
     <MuiDialogContent style={{ padding: 0, overflow: 'hidden' }}>
       <div>
@@ -419,11 +417,11 @@ export function createDialogContent(props, dialog) {
               alignItems: 'center',
             }}
           >
-            { linebreakExists ? (
+            {linebreakExists ? (
               <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
             ) : (
-                dialog.dialogContent
-              )}
+              dialog.dialogContent
+            )}
           </div>
         </div>
         <div style={objLine} />

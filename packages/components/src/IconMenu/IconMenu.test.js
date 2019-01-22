@@ -95,7 +95,7 @@ describe('<IconMenu />', () => {
     });
   });
 
-  it('should mount and render right divs', () => {
+  it('should has class MuiPaper', () => {
     const wrapper = mount(<IconMenu id="icon-menu-test" context={context} items={items} />);
     wrapper.find('button').simulate('click');
     const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
@@ -106,7 +106,7 @@ describe('<IconMenu />', () => {
     assert.strictEqual(listItem.value, 1);
   });
 
-  it('should mount and handle menuItem clicks', () => {
+  it('should handle menu item clicks', () => {
     const onChange = spy();
     const wrapper = mount(
       <IconMenu id="icon-menu-test" context={context} items={items} onChange={onChange} />,
@@ -146,7 +146,7 @@ describe('<IconMenu />', () => {
       assert.strictEqual(iconButton.childAt(0).type(), MoreHorizIcon);
     });
 
-    it('should render custom ', () => {
+    it('should render custom icon', () => {
       const Home = Icon.getIcon({ dynamicIcon: 'Home' });
       const wrapper = shallow(
         <IconMenu context={context} items={items} iconType="custom" customIcon={Home} />,

@@ -344,13 +344,43 @@ describe('<InputMask />', () => {
       const input = wrapper.find(Input);
       assert.strictEqual(input.props().maxLength, 2);
     });
+  });
 
-    // it('should not allowed value length bigger than maxLength', () => {
-    //   const wrapper = shallow(<InputMask maxLength={2} context={context} />);
-    //   const input = wrapper.find(Input);
-    //   input.simulate('change', { target: { value: '1234' } });
-    //   console.log(wrapper.instance().getInstance().getValue());
-    // });
+  describe('isCorrectFormatText', () => {
+    let instance;
+
+    before(() => {
+      const wrapper = shallow(<InputMask mask="nn aa" context={context} />);
+      instance = wrapper.instance();
+    });
+
+    it('should allow numbers', () => {
+      const result = instance.isCorrectFormatText('n n', '11');
+      assert.strictEqual(instance.isCorrectFormat, true);
+      assert.strictEqual(result.value, '1 1');
+      assert.strictEqual(result.saltValue, '11');
+    });
+
+    it('should allow letters', () => {
+      const result = instance.isCorrectFormatText('l l', 'aa');
+      assert.strictEqual(instance.isCorrectFormat, true);
+      assert.strictEqual(result.value, 'a a');
+      assert.strictEqual(result.saltValue, 'aa');
+    });
+
+    it('should allow all', () => {
+      const result = instance.isCorrectFormatText('a a', '1a');
+      assert.strictEqual(instance.isCorrectFormat, true);
+      assert.strictEqual(result.value, '1 a');
+      assert.strictEqual(result.saltValue, '1a');
+    });
+
+    it('should not allow invalid format', () => {
+      const result = instance.isCorrectFormatText('a u', '1a');
+      assert.strictEqual(instance.isCorrectFormat, false);
+      assert.strictEqual(result.value, '1 u');
+      assert.strictEqual(result.saltValue, '1');
+    });
   });
 
   it('should generate helper text', () => {
@@ -378,5 +408,18 @@ describe('<InputMask />', () => {
       assert.strictEqual(instance.forceUpdate.callCount, 0);
       instance.forceUpdate.restore();
     });
+  });
+
+  it('should style IBAN', () => {
+    const wrapper = shallow(
+      <InputMask
+        type="IBAN"
+        countryCode="TR"
+        value="TR320010009999901234567890"
+        context={context}
+      />,
+    );
+    const input = wrapper.find(Input);
+    assert.strictEqual(input.props().inputStyle.fontSize, 13);
   });
 });

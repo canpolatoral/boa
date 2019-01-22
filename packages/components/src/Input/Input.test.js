@@ -1,7 +1,6 @@
 import React from 'react';
 import { expect, assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
-import { EditorBase } from '@boa/base';
 import { IconButton } from '@boa/components/IconButton';
 import MuiInput from '@material-ui/core/Input';
 import MuiInputLabel from '@material-ui/core/InputLabel';
@@ -20,11 +19,6 @@ describe('<Input />', () => {
 
   after(() => {
     mount.cleanUp();
-  });
-
-  it('should extends EditorBase', () => {
-    const wrapper = shallow(<Input context={context} />).dive();
-    wrapper.is(EditorBase);
   });
 
   it('shuld render a div', () => {

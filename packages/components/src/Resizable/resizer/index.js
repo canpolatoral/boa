@@ -72,9 +72,6 @@ export default class Resizable extends Component {
   };
 
   static defaultProps = {
-    onResizeStart: () => null,
-    onResize: () => null,
-    onResizeStop: () => null,
     isResizable: {
       top: true,
       right: true,
@@ -107,12 +104,11 @@ export default class Resizable extends Component {
     this.onTouchMove = this.onTouchMove.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
-    if (typeof window !== 'undefined') {
-      window.addEventListener('mouseup', this.onMouseUp);
-      window.addEventListener('mousemove', this.onMouseMove);
-      window.addEventListener('touchmove', this.onTouchMove);
-      window.addEventListener('touchend', this.onMouseUp);
-    }
+
+    window.addEventListener('mouseup', this.onMouseUp);
+    window.addEventListener('mousemove', this.onMouseMove);
+    window.addEventListener('touchmove', this.onTouchMove);
+    window.addEventListener('touchend', this.onMouseUp);
   }
 
   componentDidMount() {
@@ -121,8 +117,13 @@ export default class Resizable extends Component {
   }
 
   componentWillReceiveProps({ width, height }) {
-    if (width !== this.props.width) this.setState({ width });
-    if (height !== this.props.height) this.setState({ height });
+    if (width !== this.props.width) {
+      this.setState({ width });
+    }
+
+    if (height !== this.props.height) {
+      this.setState({ height });
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -130,12 +131,10 @@ export default class Resizable extends Component {
   }
 
   componentWillUnmount() {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('mouseup', this.onMouseUp);
-      window.removeEventListener('mousemove', this.onMouseMove);
-      window.removeEventListener('touchmove', this.onTouchMove);
-      window.removeEventListener('touchend', this.onMouseUp);
-    }
+    window.removeEventListener('mouseup', this.onMouseUp);
+    window.removeEventListener('mousemove', this.onMouseMove);
+    window.removeEventListener('touchmove', this.onTouchMove);
+    window.removeEventListener('touchend', this.onMouseUp);
   }
 
   onTouchMove(event) {
@@ -300,17 +299,17 @@ export default class Resizable extends Component {
   render() {
     const userSelect = this.state.isActive
       ? {
-          userSelect: 'none',
-          MozUserSelect: 'none',
-          WebkitUserSelect: 'none',
-          MsUserSelect: 'none',
-        }
+        userSelect: 'none',
+        MozUserSelect: 'none',
+        WebkitUserSelect: 'none',
+        MsUserSelect: 'none',
+      }
       : {
-          userSelect: 'auto',
-          MozUserSelect: 'auto',
-          WebkitUserSelect: 'auto',
-          MsUserSelect: 'auto',
-        };
+        userSelect: 'auto',
+        MozUserSelect: 'auto',
+        WebkitUserSelect: 'auto',
+        MsUserSelect: 'auto',
+      };
     const style = this.getBoxStyle();
     const {
       onClick,

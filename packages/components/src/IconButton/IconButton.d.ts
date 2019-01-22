@@ -17,4 +17,4 @@ export interface IconButtonProps extends ComponentBaseProps {
 // export interface IconButtonInstance extends ComponentBaseInstance {
 // }
 
-export default class IconButton extends ComponentBase<IconButtonProps, ComponentBaseInstance> { }
+export default class IconButton extends ComponentBase<IconButtonProps, ComponentBaseInstance> {}

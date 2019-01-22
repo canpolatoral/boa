@@ -23,7 +23,7 @@ describe('<IconButton />', () => {
     assert.strictEqual(wrapper.dive().type(), ButtonBase);
   });
 
-  it('should render ButtonBase', () => {
+  it('should render Tooltip', () => {
     const wrapper = shallow(<IconButton context={context} tooltip="tooltip" />).dive();
     assert.strictEqual(wrapper.dive().type(), Tooltip);
     assert.strictEqual(

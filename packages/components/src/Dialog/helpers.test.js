@@ -221,7 +221,7 @@ describe('Dialog helper methods', () => {
       it('should scroll top', () => {
         const scrollDivStyle = {};
         const headerDivStyle = {};
-        const documentStub = stub(document, 'getElementById').callsFake((id) => {
+        const documentStub = stub(document, 'getElementById').callsFake(id => {
           if (id === 'scrollDiv') {
             return { style: scrollDivStyle };
           }
@@ -247,7 +247,7 @@ describe('Dialog helper methods', () => {
       it('should not scroll top', () => {
         const scrollDivStyle = {};
         const headerDivStyle = {};
-        const documentStub = stub(document, 'getElementById').callsFake((id) => {
+        const documentStub = stub(document, 'getElementById').callsFake(id => {
           if (id === 'scrollDiv') {
             return { style: scrollDivStyle };
           }
@@ -343,15 +343,19 @@ describe('Dialog helper methods', () => {
   describe('prepareContentStyle', () => {
     it('should resize width to 100vw', () => {
       const contentStyle = { width: 11 };
+      const innerWidth = window.innerWidth;
       window.innerWidth = 10;
       const result = Helper.prepareContentStyle(contentStyle, true, context, {});
+      window.innerWidth = innerWidth;
       assert.strictEqual(result.customContentStyle.width, '100vw');
     });
 
     it('should resize height to 100vh', () => {
       const contentStyle = { height: 11 };
+      const innerHeight = window.innerHeight;
       window.innerHeight = 10;
       const result = Helper.prepareContentStyle(contentStyle, true, context, {});
+      window.innerHeight = innerHeight;
       assert.strictEqual(result.customContentStyle.height, '100vh');
     });
 
@@ -406,7 +410,7 @@ describe('Dialog helper methods', () => {
           icon: 'CheckCircle',
           color: context.theme.boaPalette.success500,
         },
-      ].forEach((item) => {
+      ].forEach(item => {
         const iconStub = stub(Icon, 'getIcon');
         Helper.getIcon(context, item.type);
         iconStub.restore();
@@ -517,27 +521,35 @@ describe('Dialog helper methods', () => {
 
   describe('createDialogContent', () => {
     it('should return MuiDialogContent', () => {
-      const result = Helper.createDialogContent({
-        context,
-      }, {});
+      const result = Helper.createDialogContent(
+        {
+          context,
+        },
+        {},
+      );
       assert.strictEqual(result.type, MuiDialogContent);
     });
 
     it('should return MuiDialogContent', () => {
-      const result = Helper.createDialogContent({
-        context,
-      }, {});
+      const result = Helper.createDialogContent(
+        {
+          context,
+        },
+        {},
+      );
       assert.strictEqual(result.type, MuiDialogContent);
       assert.strictEqual(result.props.style.padding, 0);
       assert.strictEqual(result.props.style.overflow, 'hidden');
     });
 
-
     it('should handle RTL', () => {
       const newContext = Object.assign({}, context, { localization: { isRightToLeft: true } });
-      const result = Helper.createDialogContent({
-        context: newContext,
-      }, {});
+      const result = Helper.createDialogContent(
+        {
+          context: newContext,
+        },
+        {},
+      );
       const div = result.props.children;
       assert.strictEqual(div.props.children[0].props.style.direction, 'rtl');
     });
@@ -546,9 +558,12 @@ describe('Dialog helper methods', () => {
       const newContext = Object.assign({}, context);
       [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
         newContext.deviceSize = size;
-        const result = Helper.createDialogContent({
-          context: newContext,
-        }, {});
+        const result = Helper.createDialogContent(
+          {
+            context: newContext,
+          },
+          {},
+        );
         const div = result.props.children.props.children[0];
         const firstChild = div.props.children[0];
         if (size > Sizes.SMALL) {
@@ -563,9 +578,12 @@ describe('Dialog helper methods', () => {
       [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
         newContext.deviceSize = size;
         newContext.localization = { isRightToLeft: true };
-        const result = Helper.createDialogContent({
-          context: newContext,
-        }, {});
+        const result = Helper.createDialogContent(
+          {
+            context: newContext,
+          },
+          {},
+        );
         const div = result.props.children.props.children[0];
         const firstChild = div.props.children[0];
         if (size > Sizes.SMALL) {
@@ -577,10 +595,13 @@ describe('Dialog helper methods', () => {
 
     describe('line breaks', () => {
       it('should handle array content', () => {
-        const result = Helper.createDialogContent({
-          context,
-          content: ['test'],
-        }, { dialogContent: 'test <br />' });
+        const result = Helper.createDialogContent(
+          {
+            context,
+            content: ['test'],
+          },
+          { dialogContent: 'test <br />' },
+        );
         const span = result.props.children.props.children[0].props.children[1].props.children;
         assert.strictEqual(span.props.dangerouslySetInnerHTML.__html, 'test <br />'); // eslint-disable-line
       });

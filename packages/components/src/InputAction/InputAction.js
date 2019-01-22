@@ -96,37 +96,28 @@ class InputAction extends ComponentBase {
   }
 
   onBlur(e) {
-    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-      // console.log('safari');
-    } else {
+    /* istanbul ignore else */
+    if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
       this.setFloatingLabelStyle();
     }
 
-    // Zaten event yok
-    if (!this.props.onBlur) {
-      return;
-    }
+    if (this.props.onBlur) {
+      const textField = this.binput.getInstance().textField;
+      if (textField === e.relatedTarget) {
+        return;
+      }
 
-    // Zaten yeniden bizim inputa focus edilmisse
-    if (
-      this.binput &&
-      this.binput.getInstance() &&
-      this.binput.getInstance().textField &&
-      this.binput.getInstance().textField === e.relatedTarget
-    ) {
-      return;
-    }
+      const focusedButton = this.refs.buttons.filter(item => {
+        const buttonDom = ReactDOM.findDOMNode(item);
+        return e.relatedTarget == buttonDom; // eslint-disable-line
+      });
 
-    const focusedButton = this.refs.buttons.filter(item => {
-      const buttonDom = ReactDOM.findDOMNode(item);
-      return e.relatedTarget == buttonDom; // eslint-disable-line
-    });
-    // Bizim butonlardan birine mi focus edilmis
-    if (focusedButton && focusedButton.length > 0 && focusedButton[0]) {
-      return;
-    }
+      if (focusedButton && focusedButton.length > 0 && focusedButton[0]) {
+        return;
+      }
 
-    this.props.onBlur(e);
+      this.props.onBlur(e);
+    }
   }
 
   setFloatingLabelStyle(rightIconList, leftIconList) {
@@ -232,7 +223,7 @@ class InputAction extends ComponentBase {
       }
       if (!this.state.hideRightIcons) {
         rightIcons.push(
-          <div style={baseIconContainerStyle}>
+          <div key="right0div" style={baseIconContainerStyle}>
             <IconButton
               style={baseIconStyle}
               ref={r => this.refs.buttons.push(r)}

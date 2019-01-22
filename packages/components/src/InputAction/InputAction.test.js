@@ -1,7 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { assert } from 'chai';
-import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
-// import { IconButton } from '@boa/components/IconButton';
+import { spy, useFakeTimers, stub } from 'sinon'; // eslint-disable-line
+import { IconButton } from '@boa/components/IconButton';
 import { Input } from '@boa/components/Input';
 import { InputNumeric } from '@boa/components/InputNumeric';
 import InputAction from './InputAction';
@@ -21,24 +22,20 @@ describe('<InputAction />', () => {
   });
 
   it('should render Input', () => {
-    const wrapper = mount(<InputAction value="test" context={context} />);
+    const wrapper = shallow(<InputAction value="test" context={context} />);
     const input = wrapper.find(Input);
     assert.strictEqual('test', input.props().value);
   });
 
   it('should render InputNumeric', () => {
-    const wrapper = mount(<InputAction type="numeric" value={10} context={context} />);
+    const wrapper = shallow(<InputAction type="numeric" value={10} context={context} />);
     const input = wrapper.find(InputNumeric);
     assert.strictEqual(10, input.props().value);
   });
 
   it('should mount RTL', () => {
-    const newContext = Object.assign({}, context, {
-      languageId: 5,
-      localization: {
-        isRightToLeft: true,
-      },
-    });
+    const newContext = Object.assign({}, context);
+    newContext.localization = { isRightToLeft: true };
     mount(<InputAction context={newContext} />);
   });
 
@@ -55,6 +52,40 @@ describe('<InputAction />', () => {
       const event = n.charAt(2).toLowerCase() + n.slice(3);
       wrapper.find('input').simulate(event);
       assert.strictEqual(handlers[n].callCount, 1, `should have called the ${n} handler`);
+    });
+  });
+
+  describe('onBlur', () => {
+    it('should no effect when input is focussed', () => {
+      const onBlur = spy();
+      const wrapper = mount(<InputAction context={context} onBlur={onBlur} />);
+      const textField = wrapper.instance().binput.getInstance().textField;
+      wrapper.find('input').simulate('blur', { relatedTarget: textField });
+      assert.strictEqual(onBlur.callCount, 0);
+    });
+
+    it('should no effect when button is focussed', () => {
+      const onBlur = spy();
+      const wrapper = mount(
+        <InputAction
+          context={context}
+          rightIconList={[
+            { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+            { key: 'clearAction', dynamicIcon: 'Clear' },
+          ]}
+          defaultValue="test"
+          onBlur={onBlur}
+        />,
+      );
+      const focussedButton = wrapper.instance().refs.buttons[0];
+      const relatedTarget = ReactDOM.findDOMNode(focussedButton);
+      wrapper.find('input').simulate('blur', { relatedTarget });
+      assert.strictEqual(onBlur.callCount, 0);
+    });
+
+    it('should no effect when prop not exists', () => {
+      const wrapper = mount(<InputAction context={context} />);
+      wrapper.find('input').simulate('blur');
     });
   });
 
@@ -100,42 +131,23 @@ describe('<InputAction />', () => {
     assert.strictEqual(wrapper.state().disabled, true);
   });
 
-  describe('prop changes', () => {
-    it('should change disabled', () => {
-      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
-      wrapper.setProps({ disabled: true });
-      const input = wrapper.find(Input);
-      assert.strictEqual(input.props().disabled, true);
+  describe('props:disabled', () => {
+    it('shuold disabled', () => {
+      const wrapper = shallow(<InputAction context={context} disabled />);
+      assert.strictEqual(wrapper.state().disabled, true);
+      assert.strictEqual(wrapper.state().inputDisabled, true);
     });
 
-    it('should change value', () => {
-      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
-      wrapper.setProps({ value: 'new-value' });
-      const input = wrapper.find(Input);
-      assert.strictEqual(input.props().value, 'new-value');
-    });
-
-    it('should change inputDisabled', () => {
-      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
-      wrapper.setProps({ inputDisabled: true });
-      const input = wrapper.find(Input);
-      assert.strictEqual(input.props().disabled, true);
-    });
-
-    it('should change leftIconList', () => {
-      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
-      wrapper.setProps({
-        leftIconList: [
-          { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
-          { key: 'clearAction', dynamicIcon: 'Clear' },
-        ],
-      });
+    it('shuold disabled', () => {
+      const wrapper = shallow(<InputAction context={context} inputDisabled />);
+      assert.strictEqual(wrapper.state().disabled, false);
+      assert.strictEqual(wrapper.state().inputDisabled, true);
     });
   });
 
   describe('actions', () => {
-    describe('left icons', () => {
-      it('should render left icons', () => {
+    describe('right icons', () => {
+      it('should render right icons', () => {
         mount(
           <InputAction
             context={context}
@@ -148,10 +160,44 @@ describe('<InputAction />', () => {
         );
         // const iconButtons = wrapper.find(IconButton);
       });
+
+      it('should render right icons without key', () => {
+        mount(
+          <InputAction
+            context={context}
+            rightIconList={[{ dynamicIcon: 'AlarmOn' }, { dynamicIcon: 'Clear' }]}
+            defaultValue="test"
+          />,
+        );
+        // const iconButtons = wrapper.find(IconButton);
+      });
     });
 
     describe('left icons', () => {
-      it('should render left icons', () => {});
+      it('should render left icons', () => {
+        mount(
+          <InputAction
+            context={context}
+            leftIconList={[
+              { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+              { key: 'clearAction', dynamicIcon: 'Clear' },
+            ]}
+            defaultValue="test"
+          />,
+        );
+        // const iconButtons = wrapper.find(IconButton);
+      });
+
+      it('should render left icons without key', () => {
+        mount(
+          <InputAction
+            context={context}
+            leftIconList={[{ dynamicIcon: 'AlarmOn' }, { dynamicIcon: 'Clear' }]}
+            defaultValue="test"
+          />,
+        );
+        // const iconButtons = wrapper.find(IconButton);
+      });
     });
   });
 
@@ -201,6 +247,136 @@ describe('<InputAction />', () => {
         .instance()
         .getInstance()
         .showRightIcons();
+    });
+  });
+
+  describe('password', () => {
+    it('should render password type', () => {
+      const wrapper = mount(<InputAction context={context} type="password" />);
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().type, 'password');
+    });
+
+    it('should show password', () => {
+      const wrapper = mount(<InputAction context={context} type="password" />);
+      wrapper.setState({ showPassword: true });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().type, 'text');
+    });
+
+    it('should handle password clicked', () => {
+      const wrapper = mount(<InputAction context={context} type="password" />);
+      const button = wrapper.find(IconButton);
+      button.simulate('click');
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().type, 'text');
+    });
+
+    it('should hide righ icons', () => {
+      const wrapper = mount(<InputAction context={context} type="password" hideRightIcons />);
+      const button = wrapper.find(IconButton);
+      assert.strictEqual(button.exists(), false);
+    });
+  });
+
+  describe('numeric', () => {
+    it('should render numeric type', () => {
+      const wrapper = mount(<InputAction context={context} type="numeric" />);
+      const input = wrapper.find(InputNumeric);
+      assert.strictEqual(input.props().type, 'numeric');
+    });
+
+    it('should render leftIconList', () => {
+      const leftIconList = [
+        { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+        { key: 'clearAction', dynamicIcon: 'Clear' },
+      ];
+      const wrapper = mount(
+        <InputAction context={context} type="numeric" leftIconList={leftIconList} />,
+      );
+      const input = wrapper.find(InputNumeric);
+      assert.strictEqual(input.props().type, 'numeric');
+      assert.strictEqual(input.props().prefixText.length, 2);
+    });
+
+    it('should render rightIcons', () => {
+      const rightIconList = [
+        { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+        { key: 'clearAction', dynamicIcon: 'Clear' },
+      ];
+      const wrapper = mount(
+        <InputAction context={context} type="numeric" rightIconList={rightIconList} />,
+      );
+      const input = wrapper.find(InputNumeric);
+      assert.strictEqual(input.props().type, 'numeric');
+      assert.strictEqual(input.props().suffixText.length, 2);
+    });
+  });
+
+  it('should focus', () => {
+    const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+    const instance = wrapper.instance();
+    const inputInstance = instance.binput.getInstance();
+    const focusStub = stub(inputInstance, 'focus').returns(true);
+    instance.focus();
+    focusStub.restore();
+    assert.strictEqual(focusStub.callCount, 1);
+  });
+
+  it('should validate constraint', () => {
+    const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+    const instance = wrapper.instance();
+    const inputInstance = instance.binput.getInstance();
+    const validateConstraintStub = stub(inputInstance, 'validateConstraint').returns(false);
+    let result = instance.validateConstraint();
+    validateConstraintStub.restore();
+    assert.strictEqual(validateConstraintStub.callCount, 1);
+    assert.strictEqual(result, false);
+    instance.binput = undefined;
+    result = instance.validateConstraint();
+    assert.strictEqual(result, true);
+  });
+
+  describe('prop changes', () => {
+    it('should change disabled', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({ disabled: true });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().disabled, true);
+    });
+
+    it('should change value', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({ value: 'new-value' });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().value, 'new-value');
+    });
+
+    it('should change inputDisabled', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({ inputDisabled: true });
+      const input = wrapper.find(Input);
+      assert.strictEqual(input.props().disabled, true);
+    });
+
+    it('should change leftIconList', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({
+        leftIconList: [
+          { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+          { key: 'clearAction', dynamicIcon: 'Clear' },
+        ],
+      });
+    });
+
+    it('should change rightIconList', () => {
+      const wrapper = mount(<InputAction context={context} defaultValue="test" />);
+      wrapper.setProps({
+        rightIconList: [
+          { key: 'alarmAction', dynamicIcon: 'AlarmOn' },
+          { key: 'clearAction', dynamicIcon: 'Clear' },
+        ],
+      });
     });
   });
 });

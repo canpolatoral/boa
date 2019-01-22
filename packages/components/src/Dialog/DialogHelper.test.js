@@ -131,7 +131,8 @@ describe('DialogHelper', () => {
         undefined,
         undefined,
         undefined,
-        false);
+        false,
+      );
       const dialogKey = Object.keys(DialogHelper.dialogRefs)[0];
       const dialogRef = DialogHelper.dialogRefs[dialogKey];
       const ref = ReactDOM.findDOMNode(dialogRef.dialog);

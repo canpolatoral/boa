@@ -73,7 +73,7 @@ class Scroll extends ComponentBase {
   }
 
   componentDidUpdate() {
-    super.componentDidMount();
+    super.componentDidUpdate();
     if (this.mbContainer) {
       this.fixMobileScroll();
     }
@@ -93,7 +93,7 @@ class Scroll extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ disabled: nextProps.disabled });
+    this.setDisable(nextProps.disabled);
   }
 
   fixMobileScroll() {
@@ -137,37 +137,29 @@ class Scroll extends ComponentBase {
     return false;
   }
 
-  shouldComponentUpdate() {
-    return true;
-  }
-
   render() {
     const childs = Utils.getFormChildren(this.props.children, this.state.disabled);
-    const { context } = this.props;
-    let divStyle = { overflow: 'auto' };
-    divStyle = Object.assign({}, divStyle, this.props.divStyle);
-    let innerStyle = { direction: 'ltr' };
-    innerStyle = Object.assign({}, innerStyle, this.props.style);
+    const context = this.props.context;
+    const innerStyle = Object.assign({}, { direction: 'ltr' }, this.props.style);
+    let divStyle = Object.assign({}, { overflow: 'auto' }, this.props.divStyle);
 
     if (context.platform === Platforms.MOBILE || context.platform === Platforms.TABLET) {
-      divStyle = Object.assign({}, divStyle, { '-webkit-overflow-scrolling': 'touch' });
+      divStyle = Object.assign({}, divStyle, { WebkitOverflowScrolling: 'touch' });
+
       if (this.props.context.localization.isRightToLeft) {
         divStyle = Object.assign({}, divStyle, {
           direction: 'rtl',
-          '-webkit-overflow-scrolling': 'touch',
+          WebkitOverflowScrolling: 'touch',
         });
       }
+
       return (
-        <div
-          style={divStyle}
-          ref={ref => {
-            this.mbContainer = ref;
-          }}
-        >
+        <div style={divStyle} ref={(ref) => { this.mbContainer = ref; }}>
           <div style={innerStyle}>{childs}</div>
         </div>
       );
     }
+
     if (this.props.context.localization.isRightToLeft) {
       divStyle = { direction: 'rtl' };
     }
@@ -175,11 +167,10 @@ class Scroll extends ComponentBase {
       <div
         className="scrollbar-container"
         style={divStyle}
-        ref={ref => {
-          this.container = ref;
-        }}
-      >
-        <div style={innerStyle}>{childs}</div>
+        ref={(ref) => { this.container = ref; }}>
+        <div style={innerStyle}>
+          {childs}
+        </div>
       </div>
     );
   }

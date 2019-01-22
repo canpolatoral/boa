@@ -24,4 +24,10 @@ yarn start
 
 #### Writing stories
 
-Stories are located in *stories* folder. [Storybook guideline](https://storybook.js.org/basics/writing-stories/) is a good start point to writing stories. We've some components that provide convenience to create stories. 
+Stories are located in the ***stories*** folder. The [storybook guideline](https://storybook.js.org/basics/writing-stories/) is a good start point to writing stories. Also, we've some components that provide convenience to create stories. [Header](stories/base/header.js), [Preview](stories/base/preview.js), [PropsTable](stories/base/props-table.js) components can help you to write the story. Each component requires a [react-docgen's](https://github.com/reactjs/react-docgen) output. We can provide a script to generate required *doc.json*. For example, create doc.json for Button.js:
+
+```sh
+yarn generate:doc --input "packages/components/src/Button/Button.js" --output "stories/Buttons/Button/doc.json"
+```
+
+Please review ***stories*** folder before write new story.

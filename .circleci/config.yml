@@ -36,9 +36,9 @@ jobs:
             docker-compose --version
             env
       - *install_js
-      - run:
-          name: Should not have any git not staged
-          command: git diff --exit-code
+      # - run:
+      #    name: Should not have any git not staged
+      #    command: git diff --exit-code
       - save_cache:
           key: v10-yarn-sha-{{ checksum "yarn.lock" }}
           paths:

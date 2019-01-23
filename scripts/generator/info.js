@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import yargs from 'yargs';
 import { parse } from 'react-docgen';
-
+//
 const options = yargs
   .option('input', {
     default: 'all',

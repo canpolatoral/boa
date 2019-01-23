@@ -15,12 +15,8 @@ addDecorator((story, context) => {
 const req = require.context('../stories', true, /.stories.js$/);
 
 function loadStories() {
-  const gettingStarted = './getting-started/index.stories.js';
-  req(gettingStarted);
   req.keys().forEach(filename => {
-    if (filename !== gettingStarted) {
-      req(filename);
-    }
+    req(filename);
   });
 }
 

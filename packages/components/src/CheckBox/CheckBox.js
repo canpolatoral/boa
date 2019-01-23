@@ -37,7 +37,12 @@ const styles = theme => ({
 });
 
 /**
- * CheckBox Component is wrapped from `@material-ui/core/CheckBox`.
+ * Represents a check box. If a label prop specified the component renders a FormControl
+ * with a *Label* and *@material-ui/core/Checkbox*.
+ * If not, it renders a *@material-ui/core/Checkbox*.
+ * Also, it able to render an errorText. CheckBox component extends
+ * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
+ * from @boa/base.
  */
 @ComponentComposer
 @withStyles(styles)

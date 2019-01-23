@@ -18,7 +18,10 @@ const styles = () => ({
 });
 
 /**
- * Button Component is wrapped from `@material-ui/core/Button`.
+ * Represents a clickable button. This component is wrapped from *@material-ui/core/Button*.
+ * It able to render an *IconButton* when the "type" prop is "icon". Button component extends
+ * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
+ * from @boa/base.
  */
 @ComponentComposer
 @withStyles(styles)
@@ -110,7 +113,7 @@ class Button extends ComponentBase {
   static defaultProps = {
     ...ComponentBase.defaultProps,
     type: 'contained',
-    text: '',
+    text: 'Click',
     allowLabelCase: true,
     textPosition: 'center',
     buttonSize: 'medium',

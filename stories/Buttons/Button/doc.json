@@ -1,5 +1,5 @@
 {
-	"description": "Button Component is wrapped from `@material-ui/core/Button`.",
+	"description": "Represents a clickable button. This component is wrapped from *@material-ui/core/Button*.\nIt able to render an *IconButton* when the \"type\" prop is \"icon\". Button component extends\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
 	"displayName": "Button",
 	"methods": [
 		{
@@ -9,18 +9,6 @@
 			"params": [
 				{
 					"name": "value",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onClick",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
 					"type": null
 				}
 			],
@@ -199,7 +187,7 @@
 			"required": false,
 			"description": "Button content.",
 			"defaultValue": {
-				"value": "",
+				"value": "Click",
 				"computed": false
 			}
 		},
@@ -242,6 +230,13 @@
 			"required": false,
 			"description": "If type 'icon' tooltip will generate on icon button"
 		},
+		"tooltipPosition": {
+			"type": {
+				"name": "string"
+			},
+			"required": false,
+			"description": "tooltipPosition"
+		},
 		"type": {
 			"type": {
 				"name": "enum",
@@ -251,7 +246,7 @@
 						"computed": false
 					},
 					{
-						"value": "flat",
+						"value": "text",
 						"computed": false
 					},
 					{
@@ -265,7 +260,7 @@
 				]
 			},
 			"required": false,
-			"description": "Button type should be `contained`, `flat`, `fab` or `icon`.",
+			"description": "Button type should be `contained`, `text`, `fab` or `icon`.",
 			"defaultValue": {
 				"value": "contained",
 				"computed": false

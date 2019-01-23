@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: ~/boa
+  working_directory: ~/work/boa
   docker:
     - image: circleci/node:10.0
 

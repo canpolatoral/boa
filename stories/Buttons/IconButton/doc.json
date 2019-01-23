@@ -1,70 +1,7 @@
 {
-	"description": "BOA Icon Button Component",
+	"description": "IconButton component extends\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
 	"displayName": "IconButton",
-	"methods": [
-		{
-			"name": "setDisable",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "value",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onClick",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onTouchTap",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onBlur",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "handleTooltipClose",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "handleTooltipOpen",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		}
-	],
+	"methods": [],
 	"props": {
 		"color": {
 			"type": {
@@ -84,6 +21,10 @@
 					},
 					{
 						"value": "secondary",
+						"computed": false
+					},
+					{
+						"value": "disabled",
 						"computed": false
 					}
 				]
@@ -146,6 +87,13 @@
 			"required": false,
 			"description": "Font icon name from font icon's library."
 		},
+		"iconProperties": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": "Icon props"
+		},
 		"onClick": {
 			"type": {
 				"name": "func"
@@ -176,57 +124,7 @@
 		},
 		"tooltipPosition": {
 			"type": {
-				"name": "enum",
-				"value": [
-					{
-						"value": "bottom-end",
-						"computed": false
-					},
-					{
-						"value": "bottom-start",
-						"computed": false
-					},
-					{
-						"value": "bottom",
-						"computed": false
-					},
-					{
-						"value": "left-end",
-						"computed": false
-					},
-					{
-						"value": "left-start",
-						"computed": false
-					},
-					{
-						"value": "left",
-						"computed": false
-					},
-					{
-						"value": "right-end",
-						"computed": false
-					},
-					{
-						"value": "right-start",
-						"computed": false
-					},
-					{
-						"value": "right",
-						"computed": false
-					},
-					{
-						"value": "top-end",
-						"computed": false
-					},
-					{
-						"value": "top-start",
-						"computed": false
-					},
-					{
-						"value": "top",
-						"computed": false
-					}
-				]
+				"name": "string"
 			},
 			"required": false,
 			"description": "Tooltip position"

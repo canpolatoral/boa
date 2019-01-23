@@ -24,7 +24,9 @@ const styles = {
 };
 
 /**
- * BOA Icon Button Component
+ * IconButton component extends
+ * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
+ * from @boa/base.
  */
 @ComponentComposer
 @withStyles(styles)

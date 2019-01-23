@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: /tmp/boa
+  working_directory: /work/boa
   docker:
     - image: circleci/node:10.0
 
@@ -7,16 +7,16 @@ install_js: &install_js
   run:
     name: Install js dependencies
     command: |
-      yarn config set yarn-offline-mirror ~/.cache/npm-packages-offline-cache/v3
+      yarn config set yarn-offline-mirror ~/.cache/npm-packages-offline-cache/v4
       yarn
 
 restore_yarn_cache: &restore_yarn_cache
   restore_cache:
-    key: v3-yarn-sha-{{ checksum "yarn.lock" }}
+    key: v4-yarn-sha-{{ checksum "yarn.lock" }}
 
 restore_yarn_offline_mirror: &restore_yarn_offline_mirror
   restore_cache:
-    key: v3-npm-packages-offline-cache
+    key: v4-npm-packages-offline-cache
 
 version: 2
 jobs:
@@ -40,13 +40,13 @@ jobs:
           name: Should not have any git not staged
           command: git diff --exit-code
       - save_cache:
-          key: v3-yarn-sha-{{ checksum "yarn.lock" }}
+          key: v4-yarn-sha-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn/v3
+            - ~/.cache/yarn/v4
       - save_cache:
-          key: v3-npm-packages-offline-cache
+          key: v4-npm-packages-offline-cache
           paths:
-            - ~/.cache/npm-packages-offline-cache/v3
+            - ~/.cache/npm-packages-offline-cache/v4
   lint:
     <<: *defaults
     steps:

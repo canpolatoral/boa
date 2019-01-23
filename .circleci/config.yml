@@ -7,16 +7,16 @@ install_js: &install_js
   run:
     name: Install js dependencies
     command: |
-      yarn config set yarn-offline-mirror ~/.cache/npm-packages-offline-cache/v4
+      yarn config set yarn-offline-mirror ~/.cache/npm-packages-offline-cache/v1
       yarn
 
 restore_yarn_cache: &restore_yarn_cache
   restore_cache:
-    key: v4-yarn-sha-{{ checksum "yarn.lock" }}
+    key: v1-yarn-sha-{{ checksum "yarn.lock" }}
 
 restore_yarn_offline_mirror: &restore_yarn_offline_mirror
   restore_cache:
-    key: v4-npm-packages-offline-cache
+    key: v1-npm-packages-offline-cache
 
 version: 2
 jobs:
@@ -40,13 +40,13 @@ jobs:
           name: Should not have any git not staged
           command: git diff --exit-code
       - save_cache:
-          key: v4-yarn-sha-{{ checksum "yarn.lock" }}
+          key: v1-yarn-sha-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn/v4
+            - ~/.cache/yarn/v1
       - save_cache:
-          key: v4-npm-packages-offline-cache
+          key: v1-npm-packages-offline-cache
           paths:
-            - ~/.cache/npm-packages-offline-cache/v4
+            - ~/.cache/npm-packages-offline-cache/v1
   lint:
     <<: *defaults
     steps:

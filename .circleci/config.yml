@@ -12,11 +12,11 @@ install_js: &install_js
 
 restore_yarn_cache: &restore_yarn_cache
   restore_cache:
-    key: v2-yarn-sha-{{ checksum "yarn.lock" }}
+    key: v1-yarn-sha-{{ checksum "yarn.lock" }}
 
 restore_yarn_offline_mirror: &restore_yarn_offline_mirror
   restore_cache:
-    key: v2-npm-packages-offline-cache
+    key: v1-npm-packages-offline-cache
 
 version: 2
 jobs:

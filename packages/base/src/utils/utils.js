@@ -33,7 +33,7 @@ export class Utils {
     if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
       d += performance.now(); // use high-precision timer if available
     }
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = (d + Math.random() * 16) % 16 | 0;
       d = Math.floor(d / 16);
       return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
@@ -48,7 +48,7 @@ export class Utils {
       params = args;
     }
     var regex = new RegExp('{-?[0-9]+}', 'g');
-    return value.replace(regex, function (item) {
+    return value.replace(regex, function(item) {
       var intVal = parseInt(item.substring(1, item.length - 1));
       var replace;
       if (intVal >= 0) {
@@ -119,7 +119,7 @@ export class Utils {
       if (textArray.length == 1) {
         messages.push(<div key={0}>{textArray[0]}</div>);
       } else {
-        textArray.forEach(function (item, index) {
+        textArray.forEach(function(item, index) {
           messages.push(
             <div key={index}>
               {item}

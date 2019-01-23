@@ -289,14 +289,14 @@ describe('<InputMask />', () => {
   });
 
   describe('onFocus', () => {
-    it('shuold handle focus', () => {
+    it('should handle focus', () => {
       const wrapper = shallow(<InputMask context={context} />);
       const input = wrapper.find(Input);
       input.simulate('focus');
       assert.strictEqual(wrapper.state().focussed, true);
     });
 
-    it('shuold fire onFocus', () => {
+    it('should fire onFocus', () => {
       const onFocus = spy();
       const wrapper = shallow(<InputMask onFocus={onFocus} context={context} />);
       const input = wrapper.find(Input);
@@ -304,7 +304,7 @@ describe('<InputMask />', () => {
       assert.strictEqual(onFocus.callCount, 1);
     });
 
-    it('shuold set country code when type is IBAN', () => {
+    it('should set country code when type is IBAN', () => {
       const wrapper = shallow(<InputMask type="IBAN" countryCode="TR" context={context} />);
       const input = wrapper.find(Input);
       input.simulate('focus');
@@ -313,14 +313,14 @@ describe('<InputMask />', () => {
   });
 
   describe('onBlur', () => {
-    it('shuold handle lost focus', () => {
+    it('should handle lost focus', () => {
       const wrapper = shallow(<InputMask context={context} />);
       const input = wrapper.find(Input);
       input.simulate('blur');
       assert.strictEqual(wrapper.state().focussed, false);
     });
 
-    it('shuold fire onBlur', () => {
+    it('should fire onBlur', () => {
       const onBlur = spy();
       const wrapper = shallow(<InputMask onBlur={onBlur} context={context} />);
       const input = wrapper.find(Input);
@@ -328,7 +328,7 @@ describe('<InputMask />', () => {
       assert.strictEqual(onBlur.callCount, 1);
     });
 
-    it('shuold clear country code when type is IBAN', () => {
+    it('should clear country code when type is IBAN', () => {
       const wrapper = shallow(<InputMask type="IBAN" countryCode="TR" context={context} />);
       const input = wrapper.find(Input);
       input.simulate('focus');

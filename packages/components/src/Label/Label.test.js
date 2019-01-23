@@ -28,27 +28,27 @@ describe('<Label />', () => {
     assert.strictEqual(wrapper.text(), 'Test');
   });
 
-  it('shuold support minFontSize', () => {
+  it('should handle minFontSize', () => {
     const wrapper = shallow(<Label minFontSize={15} context={context} text="Test" />);
     assert.strictEqual(wrapper.find('div').props().style.fontSize, 15);
   });
 
-  it('shuold support maxFontSize', () => {
+  it('should handle maxFontSize', () => {
     const wrapper = shallow(<Label maxFontSize={10} context={context} text="Test" />);
     assert.strictEqual(wrapper.find('div').props().style.fontSize, 10);
   });
 
-  it('shuold support maxWidth', () => {
+  it('should handle maxWidth', () => {
     const wrapper = shallow(<Label maxWidth={10} context={context} text="Test" />);
     assert.strictEqual(wrapper.find('div').props().style.width, 10);
   });
 
-  it('shuold support textAlign', () => {
+  it('should handle textAlign', () => {
     const wrapper = shallow(<Label textAlign="center" context={context} text="Test" />);
     assert.strictEqual(wrapper.find('div').props().style.textAlign, 'center');
   });
 
-  it('shuold support RTL', () => {
+  it('should handle RTL', () => {
     const newContext = Object.assign({}, context, {
       languageId: 5,
       localization: {
@@ -58,5 +58,37 @@ describe('<Label />', () => {
     const wrapper = shallow(<Label maxWidth={10} context={newContext} text="Test" />);
     assert.strictEqual(wrapper.find('div').props().style.width, 10);
     assert.strictEqual(wrapper.find('div').props().style.textAlign, 'right');
+  });
+
+  describe('offsetWidth greater then maxWidth', () => {
+    it('should calculate fontSize', () => {
+      const wrapper = mount(
+        <Label maxWidth={10} textAlign="center" context={context} text="Test" />,
+      );
+      const instance = wrapper.instance().getInstance();
+      instance.label = { offsetWidth: 100 };
+      instance.checkLabelFontSize();
+      assert.strictEqual(wrapper.state().fontSize, (12 * 10) / 100);
+    });
+
+    it('should select minFontSize', () => {
+      const wrapper = mount(
+        <Label maxWidth={10} minFontSize={3} textAlign="center" context={context} text="Test" />,
+      );
+      const instance = wrapper.instance().getInstance();
+      instance.label = { offsetWidth: 100 };
+      instance.checkLabelFontSize();
+      assert.strictEqual(wrapper.state().fontSize, 3);
+    });
+  });
+
+  it('should select maxFontSize', () => {
+    const wrapper = mount(
+      <Label maxWidth={1000} maxFontSize={10} textAlign="center" context={context} text="Test" />,
+    );
+    const instance = wrapper.instance().getInstance();
+    instance.label = { offsetWidth: 1001 };
+    instance.checkLabelFontSize();
+    assert.strictEqual(wrapper.state().fontSize, 10);
   });
 });

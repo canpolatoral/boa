@@ -55,8 +55,12 @@ class Label extends ComponentBase {
   }
 
   checkLabelFontSize(props) {
+    if (!props) {
+      props = this.props;
+    }
     if (props.maxWidth && this.label && this.label.offsetWidth > props.maxWidth) {
-      const currentFontSize = parseFontSize(this.label.style && this.label.style.fontSize) || 12;
+      const labelFontSize = this.label.style ? this.label.style.fontSize : 12;
+      const currentFontSize = parseFontSize(labelFontSize) || 12;
       const minFontSize = parseFontSize(props.minFontSize);
       const maxFontSize = parseFontSize(props.maxFontSize);
 

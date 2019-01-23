@@ -1,3 +1,5 @@
+/* https://github.com/bokuweb/re-resizable */
+/* istanbul ignore file */
 /* eslint-disable no-bitwise, jsx-a11y/click-events-have-key-events,
 jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';

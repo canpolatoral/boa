@@ -141,6 +141,15 @@ describe('<Input />', () => {
     clock.restore();
   });
 
+  it('should focus', () => {
+    const wrapper = mount(<Input context={context} />);
+    wrapper
+      .instance()
+      .getInstance()
+      .focus();
+    assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
+  });
+
   describe('props', () => {
     it('should change timerDuration', () => {
       const onTimerFinished = spy();
@@ -198,14 +207,5 @@ describe('<Input />', () => {
         '',
       );
     });
-  });
-
-  it('should focus', () => {
-    const wrapper = mount(<Input context={context} />);
-    wrapper
-      .instance()
-      .getInstance()
-      .focus();
-    assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
   });
 });

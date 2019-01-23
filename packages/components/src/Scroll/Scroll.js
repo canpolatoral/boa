@@ -154,7 +154,12 @@ class Scroll extends ComponentBase {
       }
 
       return (
-        <div style={divStyle} ref={(ref) => { this.mbContainer = ref; }}>
+        <div
+          style={divStyle}
+          ref={ref => {
+            this.mbContainer = ref;
+          }}
+        >
           <div style={innerStyle}>{childs}</div>
         </div>
       );
@@ -167,10 +172,11 @@ class Scroll extends ComponentBase {
       <div
         className="scrollbar-container"
         style={divStyle}
-        ref={(ref) => { this.container = ref; }}>
-        <div style={innerStyle}>
-          {childs}
-        </div>
+        ref={ref => {
+          this.container = ref;
+        }}
+      >
+        <div style={innerStyle}>{childs}</div>
       </div>
     );
   }

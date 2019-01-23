@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Input } from '@boa/components/Input';
 import { Localization } from '@boa/utils';
+import KeyboardEnum from './KeyboardEnum';
 
 @ComponentComposer
 class InputNumeric extends ComponentBase {
@@ -43,7 +44,6 @@ class InputNumeric extends ComponentBase {
   constructor(props, context) {
     super(props, context);
     this.onChange = this.onChange.bind(this);
-    this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     const tempValue = this.props.value || this.props.defaultValue;
@@ -87,34 +87,44 @@ class InputNumeric extends ComponentBase {
   }
 
   onKeyDown(e) {
-    let caretPosition;
+    /* istanbul ignore next */
     const keyCode = e.keyCode || e.charCode || e.which;
     const delimiters = Localization.getDelimiters();
-    // Home, end, left and right arrows
-    const isTextCursorMoveKey = [35, 36, 37, 39].includes(keyCode);
+    const isTextCursorMoveKey = [
+      KeyboardEnum.HOME,
+      KeyboardEnum.END,
+      KeyboardEnum.LEFT_ARROW,
+      KeyboardEnum.RIGHT_ARROW,
+    ].includes(keyCode);
     const isModifierKey = e.shiftKey || e.altKey || e.ctrlKey || e.metaKey;
-    // Ctrl-A, Ctrl-V, Ctrl-C
     const isModifierUsedForClipboard =
-      [65, 67, 86].includes(keyCode) && (e.ctrlKey === true || e.metaKey === true);
-    // shift-home, shift-end, shift-left, shift-right
-    const isModifierUsedForSelection = e.shiftKey && isTextCursorMoveKey;
-    // Numbers and numeric keypad
-    const isNumberKey = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
-    const isTextModifyKey = keyCode === 8 || keyCode === 46; // Backspace And del
-    const islostFocusKey = keyCode === 9; // Tab
-    const isNotAffectingValidKey = keyCode === 45; // Ins
-    const isSignChangeKey = keyCode === 189 || keyCode === 109; // dash and subtract
-    const isIncreaseDecreaseKey = e.keyCode === 38 || e.keyCode === 40; // upper / lower
+      [KeyboardEnum.KEY_A, KeyboardEnum.KEY_C, KeyboardEnum.KEY_V].includes(keyCode) &&
+      (e.ctrlKey === true || e.metaKey === true);
 
+    const isModifierUsedForSelection = e.shiftKey && isTextCursorMoveKey;
+    const isNumPadNumber = keyCode >= KeyboardEnum.NUMPAD_0 && keyCode <= KeyboardEnum.NUMPAD_9;
+    const isBoardNumber = keyCode >= KeyboardEnum.KEY_0 && keyCode <= KeyboardEnum.KEY_9;
+    const isNumberKey = isBoardNumber || isNumPadNumber;
+    const isTextModifyKey = keyCode === KeyboardEnum.BACKSPACE || keyCode === KeyboardEnum.DELETE;
+    const islostFocusKey = keyCode === KeyboardEnum.TAB;
+    const isNotAffectingValidKey = keyCode === KeyboardEnum.INSERT;
+    const isSignChangeKey = keyCode === KeyboardEnum.DASH || keyCode === KeyboardEnum.SUBTRACT;
+    const isIncreaseDecreaseKey =
+      e.keyCode === KeyboardEnum.UP_ARROW || e.keyCode === KeyboardEnum.DOWN_ARROW;
+
+    let caretPosition;
     let isSeperatorKey = false;
-    if ((keyCode === 188 || keyCode === 110) && delimiters.decimal === ',') {
-      isSeperatorKey = true;
-    } else if (keyCode === 190 && delimiters.decimal === '.') {
-      isSeperatorKey = true;
-    }
     let returnValue = false;
     let tempValue;
-    let numericNewValue;
+
+    if (
+      (keyCode === KeyboardEnum.COMMA || keyCode === KeyboardEnum.DECIMAL) &&
+      delimiters.decimal === ','
+    ) {
+      isSeperatorKey = true;
+    } else if (keyCode === KeyboardEnum.PERIOD && delimiters.decimal === '.') {
+      isSeperatorKey = true;
+    }
 
     if (isModifierKey) {
       if (isModifierUsedForClipboard || isModifierUsedForSelection) {
@@ -123,18 +133,18 @@ class InputNumeric extends ComponentBase {
         returnValue = false;
       }
     } else if (isNumberKey) {
-      const characterCode = keyCode >= 96 && keyCode <= 105 ? keyCode - 48 : keyCode;
+      const characterCode = isNumPadNumber ? keyCode - 48 : keyCode;
       const addedNumber = String.fromCharCode(characterCode);
       const oldValue = this.state.formattedValue || '';
       const newFormattedValue =
         oldValue.substring(0, e.target.selectionStart) +
         addedNumber +
-        oldValue.substring(e.target.selectionEnd); // eslint-disable-line
+        oldValue.substring(e.target.selectionEnd);
 
       const formattedValue = this.getFormattedValue(this.state.formattedValue);
 
       if (formattedValue !== this.getFormattedValue(newFormattedValue)) {
-        numericNewValue = this.getParsedValue(newFormattedValue);
+        const numericNewValue = this.getParsedValue(newFormattedValue);
         if (numericNewValue >= this.props.minValue && numericNewValue <= this.props.maxValue) {
           returnValue = true;
         }
@@ -145,8 +155,7 @@ class InputNumeric extends ComponentBase {
       tempValue = this.binput.getInstance().getValue();
       if (e.target.selectionStart === e.target.selectionEnd) {
         caretPosition = e.target.selectionStart;
-        if (keyCode === 8) {
-          // if key is Backspace
+        if (keyCode === KeyboardEnum.BACKSPACE) {
           if (caretPosition === 0) {
             // if cursor is at the first character, then do nothing
             returnValue = false;
@@ -154,20 +163,28 @@ class InputNumeric extends ComponentBase {
             // if the cursor on delimiters do nothing and jump cursor over it
             returnValue = false;
             this.setState({ caretPosition: caretPosition - 1 });
-          } else returnValue = true;
+          } else {
+            returnValue = true;
+          }
         } else if (tempValue[caretPosition] === delimiters.thousands) {
           // if the key is delete again jump over delimiters
           returnValue = false;
           this.setState({ caretPosition: caretPosition + 1 });
-        } else returnValue = true;
-      } else returnValue = true;
+        } else {
+          returnValue = true;
+        }
+      } else {
+        returnValue = true;
+      }
     } else if (isSeperatorKey && this.props.format !== 'D') {
       // if format needs seperator then check it
       tempValue = this.binput.getInstance().getValue();
       if (!tempValue || tempValue.indexOf(delimiters.decimal) !== -1) {
         // seperator cannot be first character and cannot be more than one
         returnValue = false;
-      } else returnValue = true;
+      } else {
+        returnValue = true;
+      }
     } else if (isSignChangeKey) {
       // if sign key pressed add it
       tempValue = null;
@@ -177,36 +194,80 @@ class InputNumeric extends ComponentBase {
         tempValue = `-${this.state.formattedValue}`;
       }
 
-      numericNewValue = this.getParsedValue(tempValue);
+      const numericNewValue = this.getParsedValue(tempValue);
       caretPosition = e.target.selectionStart;
       if (numericNewValue >= this.props.minValue && numericNewValue <= this.props.maxValue) {
-        if (tempValue.indexOf('-') !== -1) this.setState({ caretPosition: caretPosition + 1 });
+        if (tempValue.indexOf('-') !== -1) {
+          this.setState({ caretPosition: caretPosition + 1 });
+        }
         this.setState({ formattedValue: tempValue });
       }
-    } else if (isIncreaseDecreaseKey) {
-      if (this.state.formattedValue !== null && this.props.step) {
-        let numericValue = this.getParsedValue(this.state.formattedValue);
-        numericValue += e.keyCode === 38 ? this.props.step : -1 * this.props.step;
-        if (numericValue >= this.props.minValue && numericValue <= this.props.maxValue) {
-          this.setState({ formattedValue: this.getFormattedValue(numericValue) });
-        }
+    } else if (isIncreaseDecreaseKey && this.state.formattedValue !== null && this.props.step) {
+      let numericValue = this.getParsedValue(this.state.formattedValue);
+      numericValue += e.keyCode === KeyboardEnum.UP_ARROW ? this.props.step : -1 * this.props.step;
+      if (numericValue >= this.props.minValue && numericValue <= this.props.maxValue) {
+        this.setState({ formattedValue: this.getFormattedValue(numericValue) });
       }
+    }
+
+    /* istanbul ignore else */
+    if (process.env.NODE_ENV === 'test') {
+      this.onKeyDownResult = returnValue;
     }
 
     if (this.props.onKeyDown) {
       this.props.onKeyDown(e);
     }
 
-    if (process.env.NODE_ENV === 'test') {
-      this.onKeyDownResult = returnValue;
-    }
-
-    /* istanbul ignore else */
     if (!returnValue && e.preventDefault) {
       e.preventDefault();
     }
 
     return returnValue;
+  }
+
+  onChange(e) {
+    const val = e.target.value;
+    const caretPosition = e.target.selectionStart;
+    const delimiters = Localization.getDelimiters();
+    const delimetersArray =
+      val.substring(0, caretPosition).match(new RegExp(`[${delimiters.thousands}]`, 'g')) || [];
+    const delimitersCount = delimetersArray.length;
+
+    let formattedValue = null;
+
+    if (this.checkNumberFormatIsValid(val)) {
+      formattedValue = this.getFormattedValue(val);
+    }
+
+    this.setState({ formattedValue });
+
+    if (formattedValue) {
+      const delimitersCountAfterFormat = (
+        formattedValue
+          .substring(0, caretPosition)
+          .match(new RegExp(`[${delimiters.thousands}]`, 'g')) || []
+      ).length;
+      const newCaretPosition = caretPosition + delimitersCountAfterFormat - delimitersCount;
+      this.setState({ caretPosition: newCaretPosition });
+    } else {
+      this.binput.getInstance().textField.value = '';
+      this.forceUpdate();
+    }
+
+    if (this.props.onChange) {
+      this.props.onChange(e, this.getParsedValue(formattedValue));
+    }
+  }
+
+  onBlur(e) {
+    const self = this;
+    this.setState({ caretPosition: null }, () => {
+      /* istanbul ignore else */
+      if (self.props.onBlur) {
+        self.props.onBlur(e);
+      }
+    });
   }
 
   getValue() {
@@ -238,49 +299,22 @@ class InputNumeric extends ComponentBase {
     this.setState({ formattedValue: snapshot });
   }
 
-  onChange(e) {
-    const val = e.target.value;
-    const caretPosition = e.target.selectionStart;
-    const delimiters = Localization.getDelimiters();
-    const delimitersCount = (
-      val.substring(0, caretPosition).match(new RegExp(`[${delimiters.thousands}]`, 'g')) || []
-    ).length; // eslint-disable-line
-    let formattedValue = null;
-
-    if (this.checkNumberFormatIsValid(val)) {
-      formattedValue = this.getFormattedValue(val);
-    }
-
-    this.setState({ formattedValue });
-
-    if (formattedValue) {
-      // eslint-disable-next-line
-      const delimitersCountAfterFormat = (
-        formattedValue
-          .substring(0, caretPosition)
-          .match(new RegExp(`[${delimiters.thousands}]`, 'g')) || []
-      ).length;
-      const newCaretPosition = caretPosition + delimitersCountAfterFormat - delimitersCount;
-      this.setState({ caretPosition: newCaretPosition });
-    } else {
-      // I also dont want to do this :) Bc of paste non numeric string this is done.
-      this.binput.getInstance().textField.value = '';
-      this.forceUpdate();
-    }
-
-    if (this.props.onChange) {
-      this.props.onChange(e, this.getParsedValue(formattedValue));
-    }
-  }
-
   checkNumberFormatIsValid(value) {
-    if (!value || value === '' || value === '-') return true;
+    if (!value || value === '' || value === '-') {
+      return true;
+    }
+
     if (typeof value === 'string') {
       const delimiters = Localization.getDelimiters();
-      if (value.indexOf(delimiters.thousands + delimiters.thousands) !== -1) return false;
+
+      if (value.indexOf(delimiters.thousands + delimiters.thousands) !== -1) {
+        return false;
+      }
       const tempValue = value.replace(new RegExp(`[${delimiters.thousands}]`, 'g'), '');
+
       if (this.props.format !== 'D' && tempValue.indexOf(delimiters.decimal) !== -1) {
         const splittedValues = tempValue.split(delimiters.decimal);
+
         if (
           splittedValues.length === 2 &&
           !isNaN(Number(splittedValues[0])) &&
@@ -307,7 +341,10 @@ class InputNumeric extends ComponentBase {
         this.props.format === 'D'
           ? Localization.getIntegerValue(tempValue)
           : Localization.getFloatValue(tempValue);
-      if (!isNaN(numberValue)) return numberValue;
+      /* istanbul ignore else */
+      if (!isNaN(numberValue)) {
+        return numberValue;
+      }
     }
     return null;
   }
@@ -321,7 +358,8 @@ class InputNumeric extends ComponentBase {
 
     if (value === null || value === '') {
       if (this.binput) {
-        this.binput.getInstance().textField.value = ''; // I also dont want to do this :) Bc of paste non numeric string this is done.
+        // I also dont want to do this :) Bc of paste non numeric string this is done.
+        this.binput.getInstance().textField.value = '';
         this.forceUpdate();
         return '';
       }
@@ -333,17 +371,19 @@ class InputNumeric extends ComponentBase {
       }
 
       const delimiters = Localization.getDelimiters();
+
       if (nextFormat !== 'D') {
         let tempValue = value.replace(new RegExp(`[${delimiters.thousands}]`, 'g'), '');
         if (tempValue.indexOf(delimiters.decimal) !== -1) {
           const splittedValues = tempValue.split(delimiters.decimal);
           const formatted = Localization.formatCurrency(splittedValues[0], nextFormat);
           const splittedAfterFormat = formatted.split(delimiters.decimal);
+
           return (
             splittedAfterFormat[0] +
             delimiters.decimal +
             (splittedAfterFormat[1].length > splittedValues[1].length
-              ? splittedValues[1]
+              ? splittedAfterFormat[1]
               : splittedValues[1].substring(0, splittedAfterFormat[1].length))
           );
         }
@@ -361,27 +401,12 @@ class InputNumeric extends ComponentBase {
     return Localization.formatCurrency(value, nextFormat);
   }
 
-  onFocus(e) {
-    if (this.props.onFocus) {
-      this.props.onFocus(e);
-    }
-  }
-
-  onBlur(e) {
-    this.state.caretPosition = null;
-    if (this.props.onBlur) {
-      this.props.onBlur(e);
-    }
-  }
-
   focus() {
     this.binput.getInstance().focus();
   }
 
   validateConstraint() {
-    return this.binput && this.binput.getInstance()
-      ? this.binput.getInstance().validateConstraint()
-      : true;
+    return this.binput.getInstance().validateConstraint();
   }
 
   render() {
@@ -395,7 +420,7 @@ class InputNumeric extends ComponentBase {
         errorText={this.props.errorText}
         value={this.state.formattedValue}
         onChange={this.onChange}
-        onFocus={this.onFocus}
+        onFocus={this.props.onFocus}
         onBlur={this.onBlur}
         onKeyDown={this.onKeyDown}
         disabled={this.state.disabled}

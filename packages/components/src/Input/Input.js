@@ -334,6 +334,7 @@ class Input extends EditorBase {
         bottomSpan.innerText = getTimeInfo(timer);
         if (--timer < 0) {
           clearInterval(self.intervalId);
+          /* istanbul ignore else */
           if (self.props.onTimerFinished) {
             self.props.onTimerFinished();
           }

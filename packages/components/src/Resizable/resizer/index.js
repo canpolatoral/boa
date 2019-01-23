@@ -1,3 +1,5 @@
+/* https://github.com/bokuweb/re-resizable */
+/* istanbul ignore file */
 /* eslint-disable no-bitwise, jsx-a11y/click-events-have-key-events,
 jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
@@ -299,17 +301,17 @@ export default class Resizable extends Component {
   render() {
     const userSelect = this.state.isActive
       ? {
-        userSelect: 'none',
-        MozUserSelect: 'none',
-        WebkitUserSelect: 'none',
-        MsUserSelect: 'none',
-      }
+          userSelect: 'none',
+          MozUserSelect: 'none',
+          WebkitUserSelect: 'none',
+          MsUserSelect: 'none',
+        }
       : {
-        userSelect: 'auto',
-        MozUserSelect: 'auto',
-        WebkitUserSelect: 'auto',
-        MsUserSelect: 'auto',
-      };
+          userSelect: 'auto',
+          MozUserSelect: 'auto',
+          WebkitUserSelect: 'auto',
+          MsUserSelect: 'auto',
+        };
     const style = this.getBoxStyle();
     const {
       onClick,

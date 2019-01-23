@@ -20,9 +20,12 @@ module.exports = {
   plugins: ['babel', 'import', 'jsx-a11y', 'mocha'],
   settings: {
     'import/resolver': {
-      webpack: {
-        config: path.join(__dirname, './scripts/webpack.js'),
-      },
+      alias: [
+        ['@boa/base', './packages/base/src'],
+        ['@boa/components', './packages/components/src'],
+        ['@boa/utils', './packages/utils/src'],
+        ['@boa/test/utils', './test/utils'],
+      ],
     },
   },
   rules: {

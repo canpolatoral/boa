@@ -26,7 +26,7 @@ describe('<Scroll />', () => {
     );
   });
 
-  it('shuold be disabled', () => {
+  it('should be disabled', () => {
     const wrapper = mount(
       <Scroll context={context} option={{ suppressScrollX: true }}>
         <div key="parent">
@@ -42,7 +42,7 @@ describe('<Scroll />', () => {
   describe('platforms', () => {
     it('should mount on MOBILE and TABLET', () => {
       const newContext = Object.assign({}, context);
-      [Platforms.MOBILE, Platforms.TABLET].forEach((item) => {
+      [Platforms.MOBILE, Platforms.TABLET].forEach(item => {
         newContext.platform = item;
         const wrapper = mount(
           <Scroll context={newContext} option={{ suppressScrollX: true }}>
@@ -62,7 +62,7 @@ describe('<Scroll />', () => {
 
     it('should handle RTL', () => {
       const newContext = Object.assign({}, context);
-      [Platforms.MOBILE, Platforms.TABLET].forEach((item) => {
+      [Platforms.MOBILE, Platforms.TABLET].forEach(item => {
         newContext.platform = item;
         newContext.localization = { isRightToLeft: true };
         const wrapper = mount(

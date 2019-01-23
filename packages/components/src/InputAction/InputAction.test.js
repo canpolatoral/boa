@@ -132,13 +132,13 @@ describe('<InputAction />', () => {
   });
 
   describe('props:disabled', () => {
-    it('shuold disabled', () => {
+    it('should disabled', () => {
       const wrapper = shallow(<InputAction context={context} disabled />);
       assert.strictEqual(wrapper.state().disabled, true);
       assert.strictEqual(wrapper.state().inputDisabled, true);
     });
 
-    it('shuold disabled', () => {
+    it('should disabled', () => {
       const wrapper = shallow(<InputAction context={context} inputDisabled />);
       assert.strictEqual(wrapper.state().disabled, false);
       assert.strictEqual(wrapper.state().inputDisabled, true);

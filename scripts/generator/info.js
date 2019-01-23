@@ -5,19 +5,15 @@ import fs from 'fs';
 import yargs from 'yargs';
 import { parse } from 'react-docgen';
 
-const COMPONENTS = '../../src/components/';
-const STORIES = '../../stories/';
-const COMPONENTS_DIRECTORY = path.join(__dirname, COMPONENTS);
-const STORIES_DIRECTORY = path.join(__dirname, STORIES);
-
-const options = yargs.option('component', {
-  default: 'all',
-  type: 'string',
-}).argv;
-
-const directories = fs.readdirSync(COMPONENTS_DIRECTORY).filter(file => {
-  return fs.statSync(path.join(COMPONENTS_DIRECTORY, file)).isDirectory();
-});
+const options = yargs
+  .option('input', {
+    default: 'all',
+    type: 'string',
+  })
+  .option('output', {
+    default: 'console',
+    type: 'string',
+  }).argv;
 
 const repair = obj => {
   for (const property in obj) {
@@ -47,29 +43,29 @@ const repair = obj => {
 const generateDocument = component => {
   if (component === 'Scroll' || component === 'Icon') return;
 
-  const fileContent = fs.readFileSync(
-    path.join(COMPONENTS_DIRECTORY, component, `${component}.js`),
-    { encoding: 'utf8' },
-  );
+  const fileContent = fs.readFileSync(path.join(__dirname, '..', '..', component), {
+    encoding: 'utf8',
+  });
 
   const componentInfo = parse(fileContent);
   repair(componentInfo);
 
-  if (!fs.existsSync(path.join(STORIES_DIRECTORY, component))) {
-    fs.mkdirSync(path.join(STORIES_DIRECTORY, component));
+  if (options.output === 'console') {
+    console.log(JSON.stringify(componentInfo, null, '\t')); // eslint-disable-line
+  } else {
+    fs.writeFileSync(
+      path.join(__dirname, '..', '..', options.output),
+      JSON.stringify(componentInfo, null, '\t'),
+      { flag: 'w', encoding: 'utf8' },
+    );
   }
-
-  fs.writeFileSync(
-    path.join(STORIES_DIRECTORY, component, 'doc.json'),
-    JSON.stringify(componentInfo, null, '\t'),
-    { flag: 'w', encoding: 'utf8' },
-  );
 };
 
 const generate = () => {
-  directories.forEach(dir => {
-    if (options.component === 'all' || dir === options.component) generateDocument(dir);
-  });
+  if (options.input === 'all') {
+    throw new Error('input not specified, use --input "packages/components/src/Button/Button.js"');
+  }
+  generateDocument(options.input);
 };
 
 generate();

@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  // So parent files don't get applied
   root: true,
   globals: {
     preval: false,
@@ -21,7 +20,12 @@ module.exports = {
   plugins: ['babel', 'import', 'jsx-a11y', 'mocha'],
   settings: {
     'import/resolver': {
-      'babel-module': {},
+      alias: [
+        ['@boa/base', './packages/base/src'],
+        ['@boa/components', './packages/components/src'],
+        ['@boa/utils', './packages/utils/src'],
+        ['@boa/test/utils', './test/utils'],
+      ],
     },
   },
   rules: {

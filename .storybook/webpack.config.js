@@ -3,7 +3,12 @@ const { resolve } = require('path');
 
 module.exports = {
   resolve: {
-    modules: [resolve(__dirname, 'src'), 'node_modules'],
+    modules: [
+      resolve(__dirname, 'packages', 'base', 'src'),
+      resolve(__dirname, 'packages', 'components', 'src'),
+      resolve(__dirname, 'packages', 'utils', 'src'),
+      'node_modules',
+    ],
   },
   module: {
     rules: [

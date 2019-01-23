@@ -28,8 +28,8 @@ export default function createMount(options1 = {}) {
         getState: () => {
           return appContext.theme;
         },
-        subscribe: () => { },
-        unsubscribe: () => { },
+        subscribe: () => {},
+        unsubscribe: () => {},
       };
     }
     return mount(node, options);

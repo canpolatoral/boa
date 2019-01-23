@@ -6,11 +6,17 @@ defaults: &defaults
 install_js: &install_js
   run:
     name: Install js dependencies
-    command: npm install
+    command: |
+      yarn config set yarn-offline-mirror ~/.cache/npm-packages-offline-cache/v1
+      yarn
 
-restore_npm_cache: &restore_npm_cache
-  restore_cache: # special step to restore the dependency cache
-    key: dependency-cache-{{ checksum "package.json" }}
+restore_yarn_cache: &restore_yarn_cache
+  restore_cache:
+    key: v1-yarn-sha-{{ checksum "yarn.lock" }}
+
+restore_yarn_offline_mirror: &restore_yarn_offline_mirror
+  restore_cache:
+    key: v1-npm-packages-offline-cache
 
 version: 2
 jobs:
@@ -18,10 +24,12 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore_npm_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - run:
           name: Check versions and env
           command: |
+            yarn --version
             node --version
             npm --version
             docker --version
@@ -32,14 +40,19 @@ jobs:
           name: Should not have any git not staged
           command: git diff --exit-code
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: v1-yarn-sha-{{ checksum "yarn.lock" }}
           paths:
-            - ./node_modules
+            - ~/.cache/yarn/v1
+      - save_cache:
+          key: v1-npm-packages-offline-cache
+          paths:
+            - ~/.cache/npm-packages-offline-cache/v1
   lint:
     <<: *defaults
     steps:
       - checkout
-      - *restore_npm_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Export changed files
@@ -48,39 +61,40 @@ jobs:
             # `git diff --name-only master` but since the checkout used reset --hard
             # we need to parse the revs for the actual master
             echo 'export CHANGED_FILES=$(git diff --name-only $(git rev-parse origin/master)...)' >> $BASH_ENV
-      - run:
-          name: Check if npm run prettier was run
-          command: |
-            # if we use an empty string as a pattern grep will match everything
-            if [ -z "$CHANGED_FILES" ]; then
-              echo "no changes"
-            else
-              # Files that should have been formatted while working on this branch
-              # CircleCI does not support interpolation when setting environment variables
-              echo 'export FORMATTED_FILES=$(npm run --silent prettier:files | grep "$CHANGED_FILES")' >> $BASH_ENV
-              source $BASH_ENV
+      # - run:
+      #     name: Check if yarn prettier was run
+      #     command: |
+      #       # if we use an empty string as a pattern grep will match everything
+      #       if [ -z "$CHANGED_FILES" ]; then
+      #         echo "no changes"
+      #       else
+      #         # Files that should have been formatted while working on this branch
+      #         # CircleCI does not support interpolation when setting environment variables
+      #         echo 'export FORMATTED_FILES=$(yarn --silent prettier:files | grep "$CHANGED_FILES")' >> $BASH_ENV
+      #         source $BASH_ENV
 
-              if [ -z "$FORMATTED_FILES" ]; then
-                echo "no files for prettier were changed"
-              else
-                npm run prettier-ci $FORMATTED_FILES
-              fi
-            fi
+      #         if [ -z "$FORMATTED_FILES" ]; then
+      #           echo "no files for prettier were changed"
+      #         else
+      #           yarn prettier:ci $FORMATTED_FILES
+      #         fi
+      #       fi
       - run:
           name: Javascript Lint
-          command: npm run lint
+          command: yarn lint
       - run:
           name: Typescript Lint
-          command: npm run typescript
+          command: yarn typescript
   test_unit:
     <<: *defaults
     steps:
       - checkout
-      - *restore_npm_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Unit tests
-          command: npm run test-coverage
+          command: yarn test:coverage
       - run:
           name: Check coverage generated
           command: |
@@ -99,19 +113,27 @@ jobs:
       - image: circleci/node:9.10
     steps:
       - checkout
-      - *restore_npm_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
+          name: Can we build base?
+          command: yarn workspace @boa/base build
+      - run:
           name: Can we build components?
-          command: npm run build
+          command: yarn workspace @boa/components build
+      - run:
+          name: Can we build utils?
+          command: yarn workspace @boa/utils build
       - run:
           name: Is the size acceptable?
-          command: npm run size
+          command: yarn size
   test_browser:
     <<: *defaults
     steps:
       - checkout
-      - *restore_npm_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Install dependencies for Chrome Headless
@@ -120,7 +142,7 @@ jobs:
             sudo apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
       - run:
           name: Tests real browsers
-          command: npm run test-karma
+          command: yarn test:karma
   test_regressions:
     <<: *defaults
     docker:
@@ -128,13 +150,14 @@ jobs:
       - image: selenium/standalone-chrome:3.11.0
     steps:
       - checkout
-      - *restore_npm_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Visual regression tests
           command: |
-            DOCKER_TEST_URL=http://$(ip addr show lo | grep "inet\b" | awk '{print $2}' | cut -d/ -f1):3090 npm run test-regressions
-            npm run argos
+            DOCKER_TEST_URL=http://$(ip addr show lo | grep "inet\b" | awk '{print $2}' | cut -d/ -f1):3090 yarn test:regressions
+            yarn argos
 workflows:
   version: 2
   pipeline:

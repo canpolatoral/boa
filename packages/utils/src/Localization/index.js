@@ -1,0 +1,258 @@
+/* eslint-disable no-underscore-dangle */
+import moment from 'moment';
+import numeral from 'numeral';
+import IBAN from 'iban';
+import phoneFormatter from 'phone-formatter';
+import 'numeral/locales';
+
+export class Localization {
+  static language = 'en';
+
+  static languageId = 2;
+
+  static currencyFormats = {
+    D: '0',
+    F: '0.00',
+    M: '0.0,',
+    FX: '0.0,00',
+  };
+
+  static numberFormats = {
+    D: '0',
+    F: '0,0',
+  };
+
+  static staticConstructor(langId) {
+    const locales = {
+      ar: {
+        delimiters: {
+          thousands: ',',
+          decimal: '.',
+        },
+        abbreviations: {
+          thousand: 'ألف',
+          million: 'مليون',
+          billion: 'مليار',
+          trillion: 'تريليون',
+        },
+        ordinal: () => {
+          return ' ';
+        },
+        currency: {
+          symbol: 'KD',
+        },
+      },
+    };
+
+    this.languageId = langId;
+
+    if (this.languageId === 1) this.language = 'tr';
+    else if (this.languageId === 2) this.language = 'en';
+    else if (this.languageId === 3) this.language = 'de';
+    else if (this.languageId === 4) this.language = 'ru';
+    else if (this.languageId === 5) this.language = 'ar-ly';
+    else {
+      this.languageId = 2;
+      this.language = 'en';
+    }
+
+    if (!numeral.locales.hasOwnProperty('ar-ly')) {
+      numeral.register('locale', 'ar-ly', locales.ar);
+    }
+    moment.locale(this.language);
+    numeral.locale(this.language);
+  }
+
+  static createLocalizationContext(langId) {
+    const localization = {
+      isRightToLeft: false,
+    };
+
+    this.languageId = langId;
+
+    if (this.languageId === 5) {
+      localization.isRightToLeft = true;
+    }
+
+    return localization;
+  }
+
+  static changeLocalizationLanguage(langId) {
+    this.languageId = langId;
+    this.language = 'en';
+    if (this.languageId === 1) this.language = 'tr';
+    else if (this.languageId === 3) this.language = 'de';
+    else if (this.languageId === 4) this.language = 'ru';
+    else if (this.languageId === 5) this.language = 'ar-ly';
+    else {
+      this.languageId = 2;
+      this.language = 'en';
+    }
+
+    moment.locale(this.language);
+    numeral.locale(this.language);
+  }
+
+  static getLocalizationLanguage() {
+    return { language: this.language, languageId: this.languageId };
+  }
+
+  /*
+    Date Time Functions
+  */
+  static getDateLocale() {
+    return moment.localeData();
+  }
+
+  static getFormattedDateLocale(date, format) {
+    return moment(date, format);
+  }
+
+  static getDateTimeFormat(format) {
+    return moment.localeData()._longDateFormat[format];
+  }
+
+  static formatDateTime(date, format) {
+    return moment.utc(date).format(format);
+  }
+
+  static formatDateTimeGMT(date, format) {
+    return moment(date).format(format);
+  }
+
+  static getDateValue(value) {
+    return moment.utc(value);
+  }
+
+  static getFloatValue(value) {
+    return numeral(value)._value;
+  }
+
+  static getIntegerValue(value) {
+    return parseInt(numeral(value)._value, 10);
+  }
+
+  /**
+   *
+   * @param {*} currency
+   * @param {*} format
+   */
+  static formatCurrency(currency, format) {
+    if (format) {
+      if (format === 'D') {
+        return numeral(currency).format(this.currencyFormats.D);
+      }
+      if (format === 'F') {
+        return numeral(currency).format(this.currencyFormats.F);
+      }
+      if (format === 'M') {
+        return numeral(currency).format(this.currencyFormats.M);
+      }
+      if (format === 'FX') {
+        return numeral(currency).format(this.currencyFormats.FX);
+      }
+
+      return numeral(currency).format(format);
+    }
+
+    return numeral(currency).format(this.currencyFormats.M);
+  }
+
+  /**
+   *
+   * @param {*} currency
+   */
+  static formatMoney(currency) {
+    return numeral(currency).format(this.currencyFormats.M);
+  }
+
+  /**
+   *
+   * @param {*} number
+   * @param {*} format
+   */
+  static formatNumber(number, format) {
+    if (format) {
+      if (format === 'D') {
+        return numeral(number).format(this.numberFormats.D);
+      }
+      if (format === 'F') {
+        return numeral(number).format(this.numberFormats.F);
+      }
+
+      return number;
+    }
+
+    return numeral(number).format(this.numberFormats.D);
+  }
+
+  /**
+   *
+   * @param {*} value
+   */
+  static formatCreditCard(value) {
+    if (value == null || value === undefined) return null;
+
+    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    const matches = v.match(/\d{4,16}/g);
+    const match = (matches && matches[0]) || '';
+    const parts = [];
+    let i = 0;
+    for (i = 0; i < match.length; i += 4) {
+      parts.push(match.substring(i, i + 4));
+    }
+    if (parts.length) {
+      return parts.join(' ');
+    }
+    return value;
+  }
+
+  /**
+   *
+   * @param {*} value
+   */
+  static formatIban(value) {
+    if (value == null || value === undefined) return null;
+    return IBAN.printFormat(value);
+  }
+
+  static formatTelephoneNumber(value, format) {
+    let defaultFormat = '0 (NNN) NNN NN NN';
+    if (value == null || value === undefined) return null;
+    if (format) defaultFormat = format;
+
+    const normalizedNumber = phoneFormatter.normalize(value);
+    return phoneFormatter.format(normalizedNumber, defaultFormat);
+  }
+
+  /*
+    String Functions
+  */
+  static stringUpperCase(value) {
+    if (this.languageId === 1) {
+      const letters = { i: 'İ', ş: 'Ş', ğ: 'Ğ', ü: 'Ü', ö: 'Ö', ç: 'Ç', ı: 'I' };
+      value = value.replace(/(([iışğüçö]))/g, letter => {
+        return letters[letter];
+      });
+    }
+    return value.toUpperCase();
+  }
+
+  static stringLowerCase(value) {
+    if (this.languageId === 1) {
+      const letters = { İ: 'i', I: 'ı', Ş: 'ş', Ğ: 'ğ', Ü: 'ü', Ö: 'ö', Ç: 'ç' };
+      value = value.replace(/(([İIŞĞÜÇÖ]))/g, letter => {
+        return letters[letter];
+      });
+    }
+    return value.toLowerCase();
+  }
+
+  static getDelimiters() {
+    return numeral.localeData().delimiters;
+  }
+}
+
+export function getLocalization() {
+  return Localization.getLocalizationLanguage();
+}

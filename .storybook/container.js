@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 
 import { AppProvider, ComponentBase, setLocalization, getTheme } from '@boa/base';
 import { Localization } from '@boa/utils';
-
-import getContext from '../stories/base/context';
+import { context } from '@boa/test/utils';
 
 export default class Container extends ComponentBase {
   state = {
-    context: getContext(),
+    context,
   };
 
   constructor(props) {

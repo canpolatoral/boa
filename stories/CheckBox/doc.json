@@ -1,5 +1,5 @@
 {
-	"description": "CheckBox Component is wrapped from `@material-ui/core/CheckBox`.",
+	"description": "Represents a check box. If a label prop specified the component renders a FormControl\nwith a *Label* and *@material-ui/core/Checkbox*.\nIf not, it renders a *@material-ui/core/Checkbox*.\nAlso, it able to render an errorText. CheckBox component extends\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
 	"displayName": "CheckBox",
 	"methods": [
 		{
@@ -84,7 +84,7 @@
 			"type": {
 				"name": "object"
 			},
-			"required": true,
+			"required": false,
 			"description": "Useful to extend the style applied to components. @ignore"
 		},
 		"color": {

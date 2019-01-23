@@ -1,29 +1,2 @@
 {
-    "javascript.validate.enable": false,
-    "javascript.implicitProjectConfig.experimentalDecorators": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/.DS_Store": true,
-        "**/*.min.js": true,
-        "node_modules/**/*.d.ts": true,
-        "**/jquery*": true,
-        "**/bootstrap*": true,
-        "components/**/package": true,
-        "framework/**/package": true,
-        "generator/**/package": true,
-        "**/.vscode": true
-    },
-    "search.exclude": {
-        "**/.git": true,
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "**/tmp": true,
-        "**/assets": false,
-        "**/loaders": true,
-        "**/*.d.ts": true
-    },
-    "vsicons.presets.angular": false,
-    "typescript.tsdk": "node_modules/typescript/lib"
 }

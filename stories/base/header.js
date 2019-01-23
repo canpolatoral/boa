@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DocViewer } from '@boa/components/DocViewer';
 
-export default class ComponentInfo extends React.Component {
+export default class ComponentHeader extends React.Component {
   static propTypes = {
     doc: PropTypes.any,
   };

@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: ~/work/boa
+  working_directory: ~/boa
   docker:
     - image: circleci/node:10.0
 
@@ -7,16 +7,16 @@ install_js: &install_js
   run:
     name: Install js dependencies
     command: |
-      # yarn config set yarn-offline-mirror ~/.cache/npm-packages-offline-cache/v1
+      yarn config set yarn-offline-mirror ~/.cache/npm-packages-offline-cache/v10
       yarn
 
-# restore_yarn_cache: &restore_yarn_cache
-#   restore_cache:
-#     key: v1-yarn-sha-{{ checksum "yarn.lock" }}
+restore_yarn_cache: &restore_yarn_cache
+  restore_cache:
+    key: v10-yarn-sha-{{ checksum "yarn.lock" }}
 
-# restore_yarn_offline_mirror: &restore_yarn_offline_mirror
-#   restore_cache:
-#     key: v1-npm-packages-offline-cache
+restore_yarn_offline_mirror: &restore_yarn_offline_mirror
+  restore_cache:
+    key: v10-npm-packages-offline-cache
 
 version: 2
 jobs:
@@ -24,8 +24,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      # - *restore_yarn_offline_mirror
-      # - *restore_yarn_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - run:
           name: Check versions and env
           command: |
@@ -40,19 +40,19 @@ jobs:
           name: Should not have any git not staged
           command: git diff --exit-code
       - save_cache:
-          key: v1-yarn-sha-{{ checksum "yarn.lock" }}
+          key: v10-yarn-sha-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn/v1
+            - ~/.cache/yarn/v10
       - save_cache:
-          key: v1-npm-packages-offline-cache
+          key: v10-npm-packages-offline-cache
           paths:
-            - ~/.cache/npm-packages-offline-cache/v1
+            - ~/.cache/npm-packages-offline-cache/v10
   lint:
     <<: *defaults
     steps:
       - checkout
-      # - *restore_yarn_offline_mirror
-      # - *restore_yarn_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Export changed files
@@ -89,8 +89,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      # - *restore_yarn_offline_mirror
-      # - *restore_yarn_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Unit tests
@@ -113,8 +113,8 @@ jobs:
       - image: circleci/node:9.10
     steps:
       - checkout
-      # - *restore_yarn_offline_mirror
-      # - *restore_yarn_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Can we build base?
@@ -132,8 +132,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      # - *restore_yarn_offline_mirror
-      # - *restore_yarn_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Install dependencies for Chrome Headless
@@ -150,8 +150,8 @@ jobs:
       - image: selenium/standalone-chrome:3.11.0
     steps:
       - checkout
-      # - *restore_yarn_offline_mirror
-      # - *restore_yarn_cache
+      - *restore_yarn_offline_mirror
+      - *restore_yarn_cache
       - *install_js
       - run:
           name: Visual regression tests

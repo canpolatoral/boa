@@ -38,6 +38,12 @@ export const Language = {
 };
 ```
 
+#### createLocalizationContext
+To provide the context prop for the components. Check out [ComponentBase](/packages/base#componentbase) to see how the context prop works.
+
+#### changeLocalizationLanguage
+Changes the localization context and registers locales to numeral and moment.
+
 ### Messaging
 
 We're receiving messages from a backend dynamically. The messaging utility receives messages and versions and caches them.
@@ -45,7 +51,9 @@ We're receiving messages from a backend dynamically. The messaging utility recei
 #### getMessage
 ComponentBase has a function called [getMessage](https://github.com/kuveytturk/boa/blob/monorepo/packages/base/src/ComponentBase/index.js#L81). It takes two parameters: *groupName*, *propertyName*
 
+We group messages by domain at our pages like *CoreBanking*, *Loans* etc. And each group has own messages with propertyName. 
 
+#### Initialization
 ```setMessagingOptions``` function provides to configure messaging library.
 
 ```js
@@ -61,8 +69,6 @@ Options:
 - **languageId:** message languages
 - **refreshThresold:** messaging version check thresold
 - **localMessages:** for offline working (please refer to test-messages folder)
-
-
 
 ```js
 export const DEFAULT_LANGUAGE_ID = 1;

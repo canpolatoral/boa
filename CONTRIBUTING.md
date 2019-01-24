@@ -11,6 +11,21 @@ As with issues, please begin the title with [ComponentName].
 To use the provided build scripts with yarn you have to install `yarn@^1.9.0`.
 Depending on the package you want to build just run `yarn workspace @boa/PACKAGE build`.
 
+```sh
+git clone https://github.com/kuveytturk/boa.git
+cd boa
+## install dependencies
+yarn
+## start storybook
+yarn start
+## build base
+yarn workspace @boa/base build
+## build components
+yarn workspace @boa/components build
+## build utils
+yarn workspace @boa/utils build
+```
+
 ### Coding style
 
 Please follow the coding style of the project. BOA uses eslint, so if possible, enable linting in your editor to get real-time feedback. The linting rules can be run manually with the following command `yarn lint`.

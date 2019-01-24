@@ -23,10 +23,6 @@
     "build:copy-files": "babel-node --config-file ../../babel.config.js ./scripts/copy-files.js",
     "build": "yarn build:es2015 && yarn build:copy-files"
   },
-  "peerDependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
-  },
   "dependencies": {
     "@material-ui/core": "3.3.0",
     "@material-ui/icons": "3.0.1",
@@ -38,7 +34,6 @@
     "infinite-tree": "^1.16.2",
     "jquery": "^3.3.1",
     "lodash": "^4.17.10",
-    "node-sass": "^4.10.0",
     "perfect-scrollbar": "^1.4.0",
     "prop-types": "^15.6.2",
     "radium": "^0.19.5",

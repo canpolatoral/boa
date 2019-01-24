@@ -1,16 +1,16 @@
-import Themes from '.';
+import { getTheme } from '.';
 import { assert } from 'chai';
 
 describe('Themes', () => {
-  it('should be same keys', () => {
-    let prev;
-    Object.keys(Themes).forEach(key => {
-      if (prev) {
-        const prevKeys = Object.keys(prev).sort();
-        const keys = Object.keys(Themes[key]).sort();
-        assert.strictEqual(JSON.stringify(prevKeys), JSON.stringify(keys));
-      }
-      prev = Themes[key];
-    });
+  it('should load theme', () => {
+    const theme = getTheme({ themeName: 'summer' });
+    assert.strictEqual(theme.typography.useNextVariants, true);
+    assert.strictEqual(theme.themeName, 'summer');
+  });
+
+  it('should load default theme', () => {
+    const theme = getTheme({ themeName: 'notfoundtheme' });
+    assert.strictEqual(theme.typography.useNextVariants, true);
+    assert.strictEqual(theme.themeName, 'winter');
   });
 });

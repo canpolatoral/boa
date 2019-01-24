@@ -1,8 +1,4 @@
-/* eslint-disable global-require */
-import merge from 'lodash/merge';
-import { createMuiTheme } from '@material-ui/core/styles';
-
-function loadTheme(colors) {
+export default function loadTheme(colors) {
   return {
     typography: {
       fontFamily: 'Roboto, sans-serif',
@@ -38,57 +34,4 @@ function loadTheme(colors) {
     },
     boaPalette: colors,
   };
-}
-
-export default function getTheme(opt) {
-  const options = merge(
-    {
-      themeName: 'winter',
-      kendoThemePath: 'assets/themes',
-      externalTheme: {},
-    },
-    opt,
-  );
-
-  let theme = {};
-  switch (options.themeName) {
-    /* istanbul ignore next */
-    case 'summer':
-      theme = loadTheme(require('../themes/summer/colors'));
-      break;
-    case 'violet':
-      theme = loadTheme(require('../themes/violet/colors'));
-      break;
-    /* istanbul ignore next */
-    case 'night':
-      theme = loadTheme(require('../themes/night/colors'));
-      break;
-    /* istanbul ignore next */
-    case 'Kuveyt Turk':
-      /* istanbul ignore next */
-      theme = loadTheme(require('../themes/primary/colors'));
-      break;
-    /* istanbul ignore next */
-    case 'spring':
-    default:
-      theme = loadTheme(require('../themes/winter/colors'));
-      break;
-  }
-
-  const targetTheme = merge(
-    {
-      centeredLayout: false,
-      themeName: options.themeName,
-      kendoThemePath: options.kendoThemePath,
-    },
-    theme,
-    options.externalTheme,
-    {
-      typography: {
-        useNextVariants: true,
-      },
-    },
-  );
-
-  return createMuiTheme(targetTheme);
 }

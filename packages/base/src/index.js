@@ -5,3 +5,4 @@ export { default as EditorBase } from './EditorBase';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export * from './utils';
 export * from './enums';
+export * from './themes';

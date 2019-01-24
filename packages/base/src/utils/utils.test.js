@@ -29,12 +29,6 @@ describe('Utils', () => {
   });
 
   describe('stringFormat', () => {
-    it('should format string', () => {
-      const format = '{0} {1}';
-      const string = Utils.stringFormat(format, 'hello', 'world');
-      assert.strictEqual(string, 'hello world');
-    });
-
     it('should format string with array', () => {
       const format = '{0} {1}';
       const string = Utils.stringFormat(format, ['hello', 'world']);

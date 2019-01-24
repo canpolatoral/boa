@@ -1,26 +1,26 @@
-/* Base Theme Color Pallette */
+/* Violet Theme Color Pallette */
 
 // Base Colors
-export const base500 = '#000000';
-export const base450 = '#212121';
-export const base400 = '#757575';
-export const base350 = 'rgba(112,112,112,0.90)';
-export const base300 = '#9E9E9E';
-export const base250 = '#BDBDBD';
-export const base200 = '#E0E0E0';
-export const base150 = '#EEEEEE';
-export const base100 = '#F5F5F5';
-export const base50 = '#F8F9FA';
-export const base10 = '#FAFAFA';
+export const base500 = '#FFFFFF';
+export const base450 = '#DEDEDE';
+export const base400 = '#8A8A8A';
+export const base350 = 'rgba(138,138,138,0.90)';
+export const base300 = '#616161';
+export const base250 = '#424242';
+export const base200 = '#1F1F1F';
+export const base150 = '#1A1A1A';
+export const base100 = '#141414';
+export const base50 = '#0F0F0F';
+export const base10 = '#0A0A0A';
 
 
 // Complementary Colors
-export const comp500 = '#FFFFFF'; // full
-export const comp450 = 'rgba(255,255,255,0.87)'; // dark
-export const comp400 = 'rgba(255,255,255,0.54)'; // light
-export const comp350 = 'rgba(255,255,255,0.38)'; // middle
-export const comp300 = 'rgba(255,255,255,0.26)'; // min
-export const comp250 = 'rgba(255,255,255,0.12)'; // faint
+export const comp500 = '#373737'; // full
+export const comp450 = 'darkrgba(55,55,55,0.87)'; //
+export const comp400 = 'darkrgba(55,55,55,0.54)'; // light
+export const comp350 = 'darkrgba(55,55,55,0.38)'; // middle
+export const comp300 = 'darkrgba(55,55,55,0.26)'; // min
+export const comp250 = 'darkrgba(55,55,55,0.12)'; // faint
 
 // Shadow Colors
 export const shad500 = '#000000'; // full
@@ -31,20 +31,23 @@ export const shad300 = 'rgba(0,0,0,0.26)'; // min
 export const shad250 = 'rgba(0,0,0,0.12)'; // faint
 
 // Primary Colors
-export const pri500 = '#1976D2';
-export const pri450 = '#3788D8';
-export const pri400 = '#A8CBEE';
-export const pri350 = '#C3DCF3';
-export const pri300 = '#D6F0FF';
-export const pri250 = '#E3F2FD';
+export const pri500 = '#C8C8C8';
+export const pri450 = '#CFCFCF';
+export const pri400 = '#E1E1E1';
+export const pri350 = '#EAEAEA';
+export const pri300 = '#F1F1F1';
+export const pri250 = '#F8F8F8';
 
 // Secondary Colors
-export const sec500 = '#FFCC00';
-export const sec450 = '#FFD321';
-export const sec400 = '#FFE375';
-export const sec350 = '#FFEC9E';
-export const sec300 = '#FFF2BD';
-export const sec250 = '#FFF9E0';
+export const sec500 = '#787878';
+export const sec450 = '#898989';
+export const sec400 = '#B6B6B6';
+export const sec350 = '#CCCCCC';
+export const sec300 = '#DCDCDC';
+export const sec250 = '#EFEFEF';
+
+// Connection Colors
+export const connect500 = '#39B54A';
 
 // Obligation Colors
 export const obli500 = '#C75050';

@@ -31,12 +31,12 @@ export const shad300 = 'rgba(0,0,0,0.26)'; // min
 export const shad250 = 'rgba(0,0,0,0.12)'; // faint
 
 // Primary Colors
-export const pri500 = '#1976D2';
-export const pri450 = '#3788D8';
-export const pri400 = '#A8CBEE';
-export const pri350 = '#C3DCF3';
-export const pri300 = '#D6F0FF';
-export const pri250 = '#E3F2FD';
+export const pri500 = '#F37C00';
+export const pri450 = '#F58D21';
+export const pri400 = '#F9B875';
+export const pri350 = '#FACD9E';
+export const pri300 = '#FCDDBD';
+export const pri250 = '#FEEFE0';
 
 // Secondary Colors
 export const sec500 = '#FFCC00';

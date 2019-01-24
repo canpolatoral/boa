@@ -13,6 +13,7 @@ export const base100 = '#F5F5F5';
 export const base50 = '#F8F9FA';
 export const base10 = '#FAFAFA';
 
+
 // Complementary Colors
 export const comp500 = '#FFFFFF'; // full
 export const comp450 = 'rgba(255,255,255,0.87)'; // dark
@@ -53,7 +54,7 @@ export const obli500 = '#C75050';
 export const obli450 = '#CE6767';
 export const obli400 = '#E1A0A0';
 export const obli350 = '#EABCBC';
-export const obli300 = '#F6B4B4';
+export const obli300 = '#F1D2D2';
 export const obli250 = '#F8EAEA';
 
 // General Colors

@@ -40,19 +40,14 @@ export class Utils {
     });
   }
 
-  static stringFormat(value, ...args) {
-    let params;
-    if (Array.isArray(args) && Array.isArray(args[0])) {
-      params = args[0];
-    } else {
-      params = args;
-    }
+  static stringFormat(value, args) {
     var regex = new RegExp('{-?[0-9]+}', 'g');
-    return value.replace(regex, function(item) {
+    return value.replace(regex, function (item) {
       var intVal = parseInt(item.substring(1, item.length - 1));
       var replace;
+      const argArray = Array.isArray(args) ? args : [args];
       if (intVal >= 0) {
-        replace = params[intVal];
+        replace = argArray[intVal];
       } else if (intVal === -1) {
         replace = '{';
       } else if (intVal === -2) {

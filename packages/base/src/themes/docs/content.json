@@ -1,0 +1,17 @@
+[
+    {
+        "name": "BTheme",
+        "desc": "BOA Theme Component",
+        "sample": ""
+    },
+    {
+        "name": "Props",
+        "infoArray" : [  
+        ]
+    },
+    {
+        "name": "Events",
+        "infoArray" : [  
+        ]
+    }
+]

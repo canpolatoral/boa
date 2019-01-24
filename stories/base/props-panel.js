@@ -14,19 +14,26 @@ import { ComponentBase } from '@boa/base';
 import { generateDefaultValue } from './utils';
 
 const style = {
-  scrollStyle: { maxHeight: 300, padding: '24px', wordWrap: 'break-word' },
-  menuItem: { paddingBottom: '12px', wordWrap: 'break-word' },
+  scrollStyle: { maxHeight: 300, padding: 12, wordWrap: 'break-word' },
+  menuItem: { paddingBottom: 12, wordWrap: 'break-word' },
   menuItemDivider: { marginLeft: '0', marginRight: '0', marginTop: '6px', marginBottom: '18px' },
   buttonStyle: { height: 40, minWidth: '100%', textAlign: 'left' },
 };
 
 const themeItems = [
-  { title: 'Kuveyt Turk', value: 'Kuveyt Turk', color: '#006754' },
-  { title: 'Violet', value: 'violet', color: '#B618CE' },
-  { title: 'Winter', value: 'winter', color: '#1976D2' },
-  { title: 'Spring', value: 'spring', color: '#3F51B5' },
+  { title: 'Kuveyt Turk', value: 'kuveytturk' },
+  { title: 'Violet', value: 'violet' },
+  { title: 'Winter', value: 'winter' },
+  { title: 'Spring', value: 'spring' },
   { title: 'Summer', value: 'summer', color: '#D11919' },
-  { title: 'Night', value: 'night', color: '#3F51B5' },
+  { title: 'Fall', value: 'fall' },
+  { title: 'Night', value: 'night' },
+  { title: 'Sea', value: 'sea' },
+  { title: 'Rose', value: 'rose' },
+  { title: 'Ash', value: 'ash' },
+  { title: 'Dark', value: 'dark' },
+  { title: 'Orange', value: 'orange' },
+  { title: 'magenta', value: 'magenta' },
 ];
 
 const languageItems = [
@@ -110,7 +117,7 @@ export default class PropsPanel extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => {}}
+          onAdd={() => { }}
           onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
@@ -294,7 +301,17 @@ export default class PropsPanel extends ComponentBase {
                 {availableProperties.map((property, i) => {
                   /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {
-                    return <div key={i}>{this.getComponent(property, property.default)}</div>;
+                    const divStyle = {};
+                    if (i === availableProperties.length - 1) {
+                      divStyle.marginBottom = 12;
+                    }
+                    return (
+                      <div
+                        key={i}
+                        style={divStyle}>
+                        {this.getComponent(property, property.default)}
+                      </div>
+                    );
                   }
                   return undefined;
                 })}

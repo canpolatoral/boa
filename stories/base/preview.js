@@ -6,6 +6,7 @@ import { DocViewer } from '@boa/components/DocViewer';
 import { DocCode } from '@boa/components/DocCode';
 import PropsPanel from './props-panel';
 import * as Utils from './utils';
+// import BaseProps from './doc.json';
 
 export default class Preview extends ComponentBase {
   constructor(props, context) {
@@ -34,23 +35,41 @@ export default class Preview extends ComponentBase {
     const availableProperties = [];
     const currentProperties = {};
 
-    Object.keys(propMetaData)
-      .sort()
-      .forEach(key => {
-        const prop = propMetaData[key];
+    // if (BaseProps.props) {
+    //   Object.keys(BaseProps.props).sort().forEach(key => {
+    //     const prop = BaseProps.props[key];
 
-        if (prop.description && prop.description.includes('@ignore')) return;
-        const property = {
-          name: key,
-          type: Utils.getPropType(prop),
-          value: Utils.getPropValue(prop),
-          values: Utils.getAavailableValues(prop),
-          default: Utils.getDefaultValue(prop),
-        };
-        availableProperties.push(property);
-        const defaultValue = Utils.getDefaultValue(prop);
-        if (defaultValue) currentProperties[key] = defaultValue;
-      });
+    //     if (prop.description && prop.description.includes('@ignore')) return;
+
+    //     const property = {
+    //       name: key,
+    //       type: Utils.getPropType(prop),
+    //       value: Utils.getPropValue(prop),
+    //       values: Utils.getAavailableValues(prop),
+    //       default: Utils.getDefaultValue(prop),
+    //     };
+    //     console.log(property);
+    //     availableProperties.push(property);
+    //     const defaultValue = Utils.getDefaultValue(prop);
+    //     if (defaultValue) currentProperties[key] = defaultValue;
+    //   });
+    // }
+
+    Object.keys(propMetaData).sort().forEach(key => {
+      const prop = propMetaData[key];
+
+      if (prop.description && prop.description.includes('@ignore')) return;
+      const property = {
+        name: key,
+        type: Utils.getPropType(prop),
+        value: Utils.getPropValue(prop),
+        values: Utils.getAavailableValues(prop),
+        default: Utils.getDefaultValue(prop),
+      };
+      availableProperties.push(property);
+      const defaultValue = Utils.getDefaultValue(prop);
+      if (defaultValue) currentProperties[key] = defaultValue;
+    });
 
     if (availableProperties && availableProperties.length > 0) {
       availableProperties.sort((a, b) => {

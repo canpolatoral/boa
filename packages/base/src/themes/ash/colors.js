@@ -31,20 +31,20 @@ export const shad300 = 'rgba(0,0,0,0.26)'; // min
 export const shad250 = 'rgba(0,0,0,0.12)'; // faint
 
 // Primary Colors
-export const pri500 = '#1976D2';
-export const pri450 = '#3788D8';
-export const pri400 = '#A8CBEE';
-export const pri350 = '#C3DCF3';
-export const pri300 = '#D6F0FF';
-export const pri250 = '#E3F2FD';
+export const pri500 = '#263238';
+export const pri450 = '#424D52';
+export const pri400 = '#8A9093';
+export const pri350 = '#ACB1B3';
+export const pri300 = '#C7CACB';
+export const pri250 = '#E5E6E7';
 
 // Secondary Colors
-export const sec500 = '#FFCC00';
-export const sec450 = '#FFD321';
-export const sec400 = '#FFE375';
-export const sec350 = '#FFEC9E';
-export const sec300 = '#FFF2BD';
-export const sec250 = '#FFF9E0';
+export const sec500 = '#4FC3F7';
+export const sec450 = '#66CBF8';
+export const sec400 = '#A0DFFB';
+export const sec350 = '#BCE8FC';
+export const sec300 = '#D1EFFD';
+export const sec250 = '#EAF8FE';
 
 // Obligation Colors
 export const obli500 = '#C75050';
@@ -70,6 +70,7 @@ export const badgeOrange = '#EC6A00';
 export const badgeOrangeLight = '#FFDEC5';
 export const badgeOlive = '#666F1F';
 export const badgeOliveLight = '#E0D8B2';
+
 
 // Calendar Colors
 export const calWorkDay = '#EDF6E3';

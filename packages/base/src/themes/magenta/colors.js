@@ -1,4 +1,4 @@
-/* Base Theme Color Pallette */
+/* Violet Theme Color Pallette */
 
 // Base Colors
 export const base500 = '#000000';
@@ -12,6 +12,7 @@ export const base150 = '#EEEEEE';
 export const base100 = '#F5F5F5';
 export const base50 = '#F8F9FA';
 export const base10 = '#FAFAFA';
+
 
 // Complementary Colors
 export const comp500 = '#FFFFFF'; // full
@@ -30,20 +31,20 @@ export const shad300 = 'rgba(0,0,0,0.26)'; // min
 export const shad250 = 'rgba(0,0,0,0.12)'; // faint
 
 // Primary Colors
-export const pri500 = '#006754';
-export const pri450 = '#0E6B58';
-export const pri400 = '#117C67';
-export const pri350 = '#229B83';
-export const pri300 = '#9EE2D5';
-export const pri250 = '#E3FCF7';
+export const pri500 = '#B618CE';
+export const pri450 = '#BE37D3';
+export const pri400 = '#E1A6EA';
+export const pri350 = '#E9C2EF';
+export const pri300 = '#F9D6FF';
+export const pri250 = '#F6E3F9';
 
 // Secondary Colors
-export const sec500 = '#FFCC00';
-export const sec450 = '#FFD321';
-export const sec400 = '#FFE375';
-export const sec350 = '#FFEC9E';
-export const sec300 = '#FFF2BD';
-export const sec250 = '#FFF9E0';
+export const sec500 = '#00FFFF';
+export const sec450 = '#21FFFF';
+export const sec400 = '#75FFFF';
+export const sec350 = '#9EFFFF';
+export const sec300 = '#BFFFFF';
+export const sec250 = '#E0FFFF';
 
 // Connection Colors
 export const connect500 = '#39B54A';
@@ -53,7 +54,7 @@ export const obli500 = '#C75050';
 export const obli450 = '#CE6767';
 export const obli400 = '#E1A0A0';
 export const obli350 = '#EABCBC';
-export const obli300 = '#F6B4B4';
+export const obli300 = '#F1D2D2';
 export const obli250 = '#F8EAEA';
 
 // General Colors

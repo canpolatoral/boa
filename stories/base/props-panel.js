@@ -117,7 +117,7 @@ export default class PropsPanel extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => { }}
+          onAdd={() => {}}
           onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
@@ -306,9 +306,7 @@ export default class PropsPanel extends ComponentBase {
                       divStyle.marginBottom = 12;
                     }
                     return (
-                      <div
-                        key={i}
-                        style={divStyle}>
+                      <div key={i} style={divStyle}>
                         {this.getComponent(property, property.default)}
                       </div>
                     );

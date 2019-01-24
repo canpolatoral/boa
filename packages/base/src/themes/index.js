@@ -21,14 +21,17 @@ export function getThemeList() {
 }
 
 export function getTheme(opt) {
-  const options = merge({
-    themeName: 'winter',
-    kendoThemePath: 'assets/themes',
-    externalTheme: {},
-  }, opt);
+  const options = merge(
+    {
+      themeName: 'winter',
+      kendoThemePath: 'assets/themes',
+      externalTheme: {},
+    },
+    opt,
+  );
 
-  const themeId = getThemeList().findIndex((t) => {
-    return t.name === (options.themeName).toLowerCase().replace(' ', '');
+  const themeId = getThemeList().findIndex(t => {
+    return t.name === options.themeName.toLowerCase().replace(' ', '');
   });
 
   if (themeId === -1) {
@@ -50,7 +53,8 @@ export function getTheme(opt) {
       typography: {
         useNextVariants: true,
       },
-    });
+    },
+  );
 
   const targetMuiTheme = createMuiTheme(targetTheme);
   return targetMuiTheme;

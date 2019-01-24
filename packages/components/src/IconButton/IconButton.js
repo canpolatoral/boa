@@ -135,12 +135,13 @@ class IconButton extends ComponentBase {
       <ToolTip
         context={this.props.context}
         tooltip={tooltipTitle}
-        tooltipPosition={tooltipPosition}>
+        tooltipPosition={tooltipPosition}
+      >
         {iconButton}
       </ToolTip>
     ) : (
-        iconButton
-      );
+      iconButton
+    );
   }
 }
 

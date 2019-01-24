@@ -152,13 +152,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-          paddingRight: paddingLeft,
-          paddingLeft: paddingRight,
-        }
+            paddingRight: paddingLeft,
+            paddingLeft: paddingRight,
+          }
         : {
-          paddingLeft,
-          paddingRight,
-        },
+            paddingLeft,
+            paddingRight,
+          },
       this.props.floatingLabelStyle,
     );
   }
@@ -244,7 +244,8 @@ class InputAction extends ComponentBase {
               }}
               onClick={this.passwordClicked}
               onBlur={this.onBlur}
-              tabIndex={actionTabIndex} />
+              tabIndex={actionTabIndex}
+            />
           </div>,
         );
       }

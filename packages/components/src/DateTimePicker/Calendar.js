@@ -592,11 +592,18 @@ class Calendar extends ComponentBase {
                   this.handleTouchTapDay(e, newDate);
                 },
               );
-            } else if (!this.props.valueConstraint ||
-              this.props.valueConstraint.required === false) {
-              this.setState({
-                selectedDate: undefined,
-              }, () => { this.handleTouchTapDay(e, undefined); });
+            } else if (
+              !this.props.valueConstraint ||
+              this.props.valueConstraint.required === false
+            ) {
+              this.setState(
+                {
+                  selectedDate: undefined,
+                },
+                () => {
+                  this.handleTouchTapDay(e, undefined);
+                },
+              );
             }
           }
         }
@@ -963,7 +970,7 @@ class Calendar extends ComponentBase {
                   </div>
                   <div style={Object.assign({}, style.transitionSlide, { minHeight })}>
                     {// TODO :SLIDE
-                      this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
+                    this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
                   </div>
 
                   {/* </Slide> */}

@@ -53,7 +53,10 @@ describe('<Scroll />', () => {
             </div>
           </Scroll>,
         );
-        const div = wrapper.find(ReactResizeDetector).first().childAt(1);
+        const div = wrapper
+          .find(ReactResizeDetector)
+          .first()
+          .childAt(1);
         assert.strictEqual(div.props().style.overflow, 'auto');
         assert.strictEqual(div.props().style.WebkitOverflowScrolling, 'touch');
         const innerDiv = div.childAt(0);
@@ -74,7 +77,10 @@ describe('<Scroll />', () => {
             </div>
           </Scroll>,
         );
-        const div = wrapper.find(ReactResizeDetector).first().childAt(1);
+        const div = wrapper
+          .find(ReactResizeDetector)
+          .first()
+          .childAt(1);
         assert.strictEqual(div.props().style.overflow, 'auto');
         assert.strictEqual(div.props().style.WebkitOverflowScrolling, 'touch');
         assert.strictEqual(div.props().style.direction, 'rtl');

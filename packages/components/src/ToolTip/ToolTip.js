@@ -76,19 +76,14 @@ class ToolTip extends ComponentBase {
           placement={this.state.placement}
           classes={{
             tooltip: classes.tooltip,
-          }}>
-          <div>
-            {this.props.children}
-          </div>
+          }}
+        >
+          <div>{this.props.children}</div>
         </MuiToolTip>
       );
     }
 
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
+    return <div>{this.props.children}</div>;
   }
 }
 

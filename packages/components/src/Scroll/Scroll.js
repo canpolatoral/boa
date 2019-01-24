@@ -131,7 +131,12 @@ class Scroll extends ComponentBase {
 
       return (
         <ReactResizeDetector handleHeight>
-          <div style={divStyle} ref={(ref) => { this.mbContainer = ref; }}>
+          <div
+            style={divStyle}
+            ref={ref => {
+              this.mbContainer = ref;
+            }}
+          >
             <div style={innerStyle}>{childs}</div>
           </div>
         </ReactResizeDetector>
@@ -145,7 +150,10 @@ class Scroll extends ComponentBase {
       <div
         className="scrollbar-container"
         style={divStyle}
-        ref={(ref) => { this.container = ref; }}>
+        ref={ref => {
+          this.container = ref;
+        }}
+      >
         <div style={innerStyle}>{childs}</div>
       </div>
     );

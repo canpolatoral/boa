@@ -63,8 +63,10 @@ export default class extends Component {
       this.eventHandlers[key] = null;
     });
 
-    this.tree.destroy();
-    this.tree = null;
+    if(this.tree) {
+      this.tree.destroy();
+      this.tree = null;
+    }
   }
 
   expandOrCollapse(isExpand) {
@@ -247,10 +249,10 @@ export default class extends Component {
             .b-treeview::-webkit-scrollbar { display: block!important; }
             .b-treeview > div { overflow:initial!important }
             .b-treeview-search-input div:before { border-bottom-color: ${
-            this.props.context.theme.boaPalette.base200
+              this.props.context.theme.boaPalette.base200
             }!important; }
             .b-treeview span.highlighted { color: ${
-            this.props.context.theme.boaPalette.pri500
+              this.props.context.theme.boaPalette.pri500
             }; background-color: #b618ce29; }
           `}
         </style>

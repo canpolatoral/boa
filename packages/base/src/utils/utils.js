@@ -42,7 +42,7 @@ export class Utils {
 
   static stringFormat(value, args) {
     var regex = new RegExp('{-?[0-9]+}', 'g');
-    return value.replace(regex, function (item) {
+    return value.replace(regex, function(item) {
       var intVal = parseInt(item.substring(1, item.length - 1));
       var replace;
       const argArray = Array.isArray(args) ? args : [args];

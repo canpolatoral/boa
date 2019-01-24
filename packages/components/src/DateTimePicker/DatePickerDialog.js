@@ -131,7 +131,7 @@ class DatePickerDialog extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  handleClickToolBar() { }
+  handleClickToolBar() {}
 
   handleRequestClose() {
     if (this.props.onAccept) {
@@ -152,7 +152,7 @@ class DatePickerDialog extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  handleWindowKeyUp() { }
+  handleWindowKeyUp() {}
 
   render() {
     const {
@@ -299,8 +299,8 @@ class DatePickerDialog extends ComponentBase {
         {this.props.noDialog ? (
           <div style={{ display: 'flex', justifyContent: 'center' }}> {calendar}</div>
         ) : (
-            <div> {isMobileOrTablet ? content : popoverContent} </div>
-          )}
+          <div> {isMobileOrTablet ? content : popoverContent} </div>
+        )}
       </div>
     );
   }

@@ -13,7 +13,6 @@ export const base100 = '#141414';
 export const base50 = '#0F0F0F';
 export const base10 = '#0A0A0A';
 
-
 // Complementary Colors
 export const comp500 = '#373737'; // full
 export const comp450 = 'darkrgba(55,55,55,0.87)'; //

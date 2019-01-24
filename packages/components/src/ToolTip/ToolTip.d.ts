@@ -6,7 +6,7 @@ export interface ToolTipProps extends ComponentBaseProps {
   style?: React.CSSProperties;
   theme?: any;
   tooltip?: React.ReactNode;
-  tooltipPosition?: "down" | "up" | "right" | "left";
+  tooltipPosition?: 'down' | 'up' | 'right' | 'left';
   tooltipStyle?: any;
 }
 

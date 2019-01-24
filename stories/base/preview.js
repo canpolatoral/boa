@@ -55,21 +55,23 @@ export default class Preview extends ComponentBase {
     //   });
     // }
 
-    Object.keys(propMetaData).sort().forEach(key => {
-      const prop = propMetaData[key];
+    Object.keys(propMetaData)
+      .sort()
+      .forEach(key => {
+        const prop = propMetaData[key];
 
-      if (prop.description && prop.description.includes('@ignore')) return;
-      const property = {
-        name: key,
-        type: Utils.getPropType(prop),
-        value: Utils.getPropValue(prop),
-        values: Utils.getAavailableValues(prop),
-        default: Utils.getDefaultValue(prop),
-      };
-      availableProperties.push(property);
-      const defaultValue = Utils.getDefaultValue(prop);
-      if (defaultValue) currentProperties[key] = defaultValue;
-    });
+        if (prop.description && prop.description.includes('@ignore')) return;
+        const property = {
+          name: key,
+          type: Utils.getPropType(prop),
+          value: Utils.getPropValue(prop),
+          values: Utils.getAavailableValues(prop),
+          default: Utils.getDefaultValue(prop),
+        };
+        availableProperties.push(property);
+        const defaultValue = Utils.getDefaultValue(prop);
+        if (defaultValue) currentProperties[key] = defaultValue;
+      });
 
     if (availableProperties && availableProperties.length > 0) {
       availableProperties.sort((a, b) => {
@@ -169,7 +171,7 @@ export default class Preview extends ComponentBase {
       <RenderedComponent {...this.state.currentProperties} />,
       {
         displayName: this.getName.bind(this),
-        filterProps: ['context', 'maxFontSize', 'minFontSize', 'doc'],
+        filterProps: ['context', 'maxFontSize', 'minFontSize', 'doc', 'data'],
       },
     );
     return `import ${this.getName()} from '@boa/components/${this.getName()}';

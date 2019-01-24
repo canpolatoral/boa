@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TreeView from './treeview';
 import decorators from './decorators';
-import sampleData from './data/sampleData';
 import * as helpers from './helpers';
 import { ComponentComposer, ComponentBase } from '@boa/base';
 import { Button } from '@boa/components/Button';
@@ -43,11 +42,7 @@ class TreeViewGrid extends ComponentBase {
    * Invoked immediately before a component is mounted
    */
   componentWillMount() {
-    if (!this.state.data && !this.props.data) {
-      const data = sampleData;
-      // let summedData = helpers.sumNodeHeader(data, true);
-      this.setValues(data);
-    } else if (this.props.data) {
+    if (this.props.data) {
       // let summedData = helpers.sumNodeHeader(this.props.data, true);
       this.setValues(this.props.data);
     }
@@ -203,13 +198,13 @@ class TreeViewGrid extends ComponentBase {
           <LinearPanel orientation="horizontal">
             <Button
               context={context}
-              text={this.getMessage('Loans', 'ExpandAll')}
+              text={this.getMessage('BOA', 'ExpandAll')}
               colorType="primary"
               onClick={this.expandAll}
             />
             <Button
               context={context}
-              text={this.getMessage('Loans', 'CollapseAll')}
+              text={this.getMessage('BOA', 'CollapseAll')}
               colorType="primary"
               onClick={this.collapseAll}
             />

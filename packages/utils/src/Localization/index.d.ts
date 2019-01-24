@@ -8,3 +8,5 @@ export const Localization: {
 };
 
 export function getLocalization(): any;
+
+export { Language } from './language';

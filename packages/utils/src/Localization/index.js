@@ -4,11 +4,12 @@ import numeral from 'numeral';
 import IBAN from 'iban';
 import phoneFormatter from 'phone-formatter';
 import 'numeral/locales';
+import { Language } from './language';
 
 export class Localization {
   static language = 'en';
 
-  static languageId = 2;
+  static languageId = Language.EN;
 
   static currencyFormats = {
     D: '0',
@@ -46,13 +47,13 @@ export class Localization {
 
     this.languageId = langId;
 
-    if (this.languageId === 1) this.language = 'tr';
-    else if (this.languageId === 2) this.language = 'en';
-    else if (this.languageId === 3) this.language = 'de';
-    else if (this.languageId === 4) this.language = 'ru';
-    else if (this.languageId === 5) this.language = 'ar-ly';
+    if (this.languageId === Language.TR) this.language = 'tr';
+    else if (this.languageId === Language.EN) this.language = 'en';
+    else if (this.languageId === Language.DE) this.language = 'de';
+    else if (this.languageId === Language.RU) this.language = 'ru';
+    else if (this.languageId === Language.AR) this.language = 'ar-ly';
     else {
-      this.languageId = 2;
+      this.languageId = Language.EN;
       this.language = 'en';
     }
 
@@ -70,7 +71,7 @@ export class Localization {
 
     this.languageId = langId;
 
-    if (this.languageId === 5) {
+    if (this.languageId === Language.AR) {
       localization.isRightToLeft = true;
     }
 
@@ -80,12 +81,12 @@ export class Localization {
   static changeLocalizationLanguage(langId) {
     this.languageId = langId;
     this.language = 'en';
-    if (this.languageId === 1) this.language = 'tr';
-    else if (this.languageId === 3) this.language = 'de';
-    else if (this.languageId === 4) this.language = 'ru';
-    else if (this.languageId === 5) this.language = 'ar-ly';
+    if (this.languageId === Language.TR) this.language = 'tr';
+    else if (this.languageId === Language.DE) this.language = 'de';
+    else if (this.languageId === Language.RU) this.language = 'ru';
+    else if (this.languageId === Language.AR) this.language = 'ar-ly';
     else {
-      this.languageId = 2;
+      this.languageId = Language.EN;
       this.language = 'en';
     }
 
@@ -256,3 +257,5 @@ export class Localization {
 export function getLocalization() {
   return Localization.getLocalizationLanguage();
 }
+
+export { Language };

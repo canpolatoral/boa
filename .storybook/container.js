@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { AppProvider, ComponentBase, setLocalization, getTheme } from '@boa/base';
-import { Localization } from '@boa/utils';
+import { Localization, Language } from '@boa/utils';
 import { context } from '@boa/test/utils';
 
 export default class Container extends ComponentBase {
@@ -20,7 +20,7 @@ export default class Container extends ComponentBase {
       versionPath: 'MessagingVersions.json',
       fileNameFormat: 'BOA.Messaging.{0}.json',
       timeout: 3000,
-      languageId: 1,
+      languageId: Language.TR,
     });
   }
 

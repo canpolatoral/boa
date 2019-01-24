@@ -17,7 +17,26 @@ yarn add @boa/utils
 
 ### Localization
 
-We're using *moment* and *numeral* for localization to dates and numbers. Localization utility provides some functionality to format the variables.
+We're using [*moment*](https://github.com/moment/moment) and [*numeral*](https://github.com/adamwdraper/Numeral-js) for localization to dates and numbers. Localization utility provides some functionality to format the variables.
+
+#### Initialization
+Localization class has a staticConstructor method to contsturct Localization instance.
+
+```js
+import { Localization, Language } from @boa/utils;
+Localization.staticConstructor(Language.EN);
+```
+
+#### Languages 
+```js
+export const Language = {
+  TR: 1,
+  EN: 2,
+  DE: 3,
+  RU: 4,
+  AR: 5,
+};
+```
 
 ### Messaging
 
@@ -40,13 +59,6 @@ Options:
 - **fileNameFormat:** messaging file name formats
 - **timeout:** timeout for HTTP request (minutes)
 - **languageId:** message languages
-```json
-  { title: 'Türkçe', value: 1 },
-  { title: 'English', value: 2 },
-  { title: 'Deutsch', value: 3 },
-  { title: 'русский', value: 4 },
-  { title: 'العربية', value: 5 },
-```
 - **refreshThresold:** messaging version check thresold
 - **localMessages:** for offline working (please refer to test-messages folder)
 

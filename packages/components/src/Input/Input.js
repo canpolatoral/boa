@@ -32,11 +32,11 @@ function baseStyles(theme) {
       fontSize: 14,
       width: '100%',
       marginTop: -4,
-      paddingTop: 2,
       transformOrigin: `top ${theme.direction === 'ltr' ? 'left' : 'right'}`,
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
+      lineHeight: '16px',
     },
   };
 }
@@ -83,11 +83,11 @@ const styles = theme => {
       },
 
       '&:before': {
-        borderBottom: `1px solid ${boaPalette.obli300}`,
+        borderBottom: `1px solid ${boaPalette.obli400}`,
       },
 
       '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-        borderBottom: `2px solid ${boaPalette.obli300}`,
+        borderBottom: `2px solid ${boaPalette.obli400}`,
       },
     },
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { assert } from 'chai';
 import IconButton from './IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
+import { ToolTip } from '@boa/components/ToolTip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { context, createShallow, createMount } from '@boa/test/utils';
 
@@ -25,7 +25,7 @@ describe('<IconButton />', () => {
 
   it('should render Tooltip', () => {
     const wrapper = shallow(<IconButton context={context} tooltip="tooltip" />).dive();
-    assert.strictEqual(wrapper.dive().type(), Tooltip);
+    assert.strictEqual(wrapper.dive().type(), ToolTip);
     assert.strictEqual(
       wrapper
         .dive()

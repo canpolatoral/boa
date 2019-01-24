@@ -11,6 +11,7 @@ class InputAction extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
     ...Input.propTypes,
+    canActionFocusable: PropTypes.bool,
     hideLeftIcons: PropTypes.bool,
     hideRightIcons: PropTypes.bool,
     inputDisabled: PropTypes.bool,
@@ -22,6 +23,7 @@ class InputAction extends ComponentBase {
   static defaultProps = {
     ...ComponentBase.defaultProps,
     ...Input.defaultProps,
+    canActionFocusable: false,
     inputDisabled: false,
     floatingLabelFixed: false,
     fullWidth: true,
@@ -150,13 +152,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-            paddingRight: paddingLeft,
-            paddingLeft: paddingRight,
-          }
+          paddingRight: paddingLeft,
+          paddingLeft: paddingRight,
+        }
         : {
-            paddingLeft,
-            paddingRight,
-          },
+          paddingLeft,
+          paddingRight,
+        },
       this.props.floatingLabelStyle,
     );
   }
@@ -193,6 +195,8 @@ class InputAction extends ComponentBase {
 
   render() {
     this.refs = { buttons: [] };
+
+    const actionTabIndex = this.props.canActionFocusable ? 0 : -1;
 
     const baseIconStyle = {
       width: this.iconContainerSize,
@@ -240,8 +244,7 @@ class InputAction extends ComponentBase {
               }}
               onClick={this.passwordClicked}
               onBlur={this.onBlur}
-              tabIndex="-1"
-            />
+              tabIndex={actionTabIndex} />
           </div>,
         );
       }
@@ -267,7 +270,7 @@ class InputAction extends ComponentBase {
               disabled={this.state.disabled}
               key={`right${index}`} // eslint-disable-line
               onBlur={this.onBlur}
-              tabIndex="-1"
+              tabIndex={actionTabIndex}
             />
           </div>
         );

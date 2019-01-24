@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import InfiniteTree from './core';
 import VirtualList from './virtual-list';
-import _ from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 const lcfirst = str => {
   str += '';
@@ -88,7 +88,7 @@ export default class extends Component {
     if (props.el !== undefined) delete props.el;
 
     props.rowRenderer = () => '';
-    this.tree = new InfiniteTree(_.cloneDeep(props));
+    this.tree = new InfiniteTree(cloneDeep(props));
 
     // Filters nodes.
     const treeFilter = this.tree.filter.bind(this.tree);
@@ -247,10 +247,10 @@ export default class extends Component {
             .b-treeview::-webkit-scrollbar { display: block!important; }
             .b-treeview > div { overflow:initial!important }
             .b-treeview-search-input div:before { border-bottom-color: ${
-              this.props.context.theme.boaPalette.base200
+            this.props.context.theme.boaPalette.base200
             }!important; }
             .b-treeview span.highlighted { color: ${
-              this.props.context.theme.boaPalette.pri500
+            this.props.context.theme.boaPalette.pri500
             }; background-color: #b618ce29; }
           `}
         </style>

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Tooltip from '@material-ui/core/Tooltip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { withStyles } from '@material-ui/core/styles';
 import { Icon } from '@boa/components/Icon';
+import { ToolTip } from '@boa/components/ToolTip';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 
 const styles = {
@@ -97,15 +97,21 @@ class IconButton extends ComponentBase {
     focusRipple: true,
   };
 
+  state = {
+    disabled: this.props.disabled,
+  };
+
   render() {
     const { classes } = this.props;
     const tooltipTitle = this.props.tooltip;
     const tooltipPosition = this.props.tooltipPosition;
-    const iconProperties = this.props.iconProperties;
+    const iconProperties = { ...this.props.iconProperties };
 
-    /* istanbul ignore if */
-    if (iconProperties) {
-      iconProperties.color = this.props.disabled ? 'disabled' : iconProperties.color;
+    /* istanbul ignore else */
+    if (iconProperties && this.state.disabled) {
+      iconProperties.color = 'disabled';
+    } else if (this.props.iconProperties) {
+      iconProperties.color = this.props.iconProperties.color;
     }
 
     const iconButton = (
@@ -119,18 +125,22 @@ class IconButton extends ComponentBase {
         disabled={this.props.disabled}
         focusRipple={this.props.focusRipple}
         disableRipple={this.props.disableRipple}
+        tabIndex={this.props.tabIndex}
       >
         {Icon.getIcon({ ...this.props, iconProperties })}
       </ButtonBase>
     );
 
     return tooltipTitle ? (
-      <Tooltip title={tooltipTitle} placement={tooltipPosition}>
+      <ToolTip
+        context={this.props.context}
+        tooltip={tooltipTitle}
+        tooltipPosition={tooltipPosition}>
         {iconButton}
-      </Tooltip>
+      </ToolTip>
     ) : (
-      iconButton
-    );
+        iconButton
+      );
   }
 }
 

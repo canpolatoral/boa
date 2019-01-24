@@ -4,6 +4,7 @@ import MuiDialog from '@material-ui/core/Dialog';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import { withStyles } from '@material-ui/core/styles';
 import { ComponentBase, ComponentComposer } from '@boa/base';
 import { Button } from '@boa/components/Button';
 import DialogHelper from './DialogHelper';
@@ -16,12 +17,18 @@ import {
   getTitleBackground,
 } from './helpers';
 
+const styles = () => ({
+  paper: {
+    borderRadius: 8,
+  },
+});
 /**
  * Dialog Component is wrapped from `@material-ui/core/Dialog`.
  * Also `DialogHelper` provides a static method called `show`
  * This method allows create window from outside the render method.
  */
 @ComponentComposer
+@withStyles(styles)
 class Dialog extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
@@ -259,6 +266,7 @@ class Dialog extends ComponentBase {
 
     return (
       <MuiDialog
+        classes={this.props.classes}
         fullScreen={dialog.fullScreen}
         fullWidth={this.props.fullWidth}
         open={this.state.open}

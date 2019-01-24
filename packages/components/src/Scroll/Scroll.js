@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import merge from 'lodash/merge';
 import { ComponentBase, ComponentComposer, Utils, Platforms } from '@boa/base';
 import PerfectScrollbar from 'perfect-scrollbar';
+import ReactResizeDetector from 'react-resize-detector';
 
 const handlerNameByEvent = {
   'ps-scroll-y': 'onScrollY',
@@ -54,13 +54,11 @@ class Scroll extends ComponentBase {
 
   componentDidMount() {
     super.componentDidMount();
-    if (this.mbContainer) {
-      this.fixMobileScroll();
-    } else {
-      // scrool min height 16 px olması isteniyor.
+    if (!this.mbcontainer) {
       const innerStyleScroll = { minScrollbarLength: 16 };
-      this.ps = new PerfectScrollbar(this.container, merge(innerStyleScroll, this.props.option));
-      // hook up events
+      if (this.container) {
+        this.ps = new PerfectScrollbar(this.container, merge(innerStyleScroll, this.props.option));
+      }
       Object.keys(handlerNameByEvent).forEach(key => {
         const callback = this.props[handlerNameByEvent[key]];
         if (callback) {
@@ -69,13 +67,6 @@ class Scroll extends ComponentBase {
           this.container.addEventListener(key, handler, false);
         }
       });
-    }
-  }
-
-  componentDidUpdate() {
-    super.componentDidUpdate();
-    if (this.mbContainer) {
-      this.fixMobileScroll();
     }
   }
 
@@ -94,21 +85,6 @@ class Scroll extends ComponentBase {
 
   componentWillReceiveProps(nextProps) {
     this.setDisable(nextProps.disabled);
-  }
-
-  fixMobileScroll() {
-    const mbcontainerDomNode = ReactDOM.findDOMNode(this.mbContainer);
-    let parentHeight;
-    if (mbcontainerDomNode.parentNode.clientHeight !== 0) {
-      parentHeight = mbcontainerDomNode.parentNode.clientHeight;
-    } else {
-      // workaround olarak tab için konuldu. burası kökten düzeltilmeli (coral)
-      const oldHeight = mbcontainerDomNode.parentNode.parentNode.style.height;
-      mbcontainerDomNode.parentNode.parentNode.style.height = '';
-      parentHeight = mbcontainerDomNode.parentNode.clientHeight;
-      mbcontainerDomNode.parentNode.parentNode.style.height = oldHeight;
-    }
-    mbcontainerDomNode.style.height = `${parentHeight.toString()}px`;
   }
 
   setDisable(value) {
@@ -154,14 +130,11 @@ class Scroll extends ComponentBase {
       }
 
       return (
-        <div
-          style={divStyle}
-          ref={ref => {
-            this.mbContainer = ref;
-          }}
-        >
-          <div style={innerStyle}>{childs}</div>
-        </div>
+        <ReactResizeDetector handleHeight>
+          <div style={divStyle} ref={(ref) => { this.mbContainer = ref; }}>
+            <div style={innerStyle}>{childs}</div>
+          </div>
+        </ReactResizeDetector>
       );
     }
 
@@ -172,10 +145,7 @@ class Scroll extends ComponentBase {
       <div
         className="scrollbar-container"
         style={divStyle}
-        ref={ref => {
-          this.container = ref;
-        }}
-      >
+        ref={(ref) => { this.container = ref; }}>
         <div style={innerStyle}>{childs}</div>
       </div>
     );

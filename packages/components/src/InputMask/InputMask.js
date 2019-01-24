@@ -21,6 +21,7 @@ class InputMask extends EditorBase {
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
+    showCounter: PropTypes.bool,
     type: PropTypes.oneOf(['CreditCard', 'IBAN', 'MobilePhoneNumber', 'PhoneNumber', 'Custom'])
       .isRequired,
     value: PropTypes.string,
@@ -33,7 +34,6 @@ class InputMask extends EditorBase {
     countryCode: 'TR',
     disabled: false,
     fullWidth: true,
-    // errorText: '',
     helperText: '',
     maxLength: -1,
     noWrap: true,
@@ -41,6 +41,7 @@ class InputMask extends EditorBase {
     type: 'Custom',
     mask: 'aa nnn',
     inputType: 'text',
+    showCounter: true,
   };
 
   constructor(props, context) {
@@ -315,7 +316,7 @@ class InputMask extends EditorBase {
         onBlur={this.onBlur}
         validationMessageStyleActive
         disabledCounterCharacter=" "
-        showCounter
+        showCounter={this.props.showCounter}
       />
     );
   }

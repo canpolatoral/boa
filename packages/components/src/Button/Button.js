@@ -188,15 +188,10 @@ class Button extends ComponentBase {
   createIconButtonElement() {
     return (
       <IconButton
-        id={this.props.id}
-        style={this.props.style}
-        context={this.props.context}
-        dynamicIcon={this.props.dynamicIcon}
+        {...this.props}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        tooltip={this.props.tooltip}
-        tooltipPosition={this.props.tooltipPosition}
-        onClick={this.props.onClick}
+        onClick={this.onClick}
       />
     );
   }

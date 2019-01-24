@@ -42,6 +42,7 @@
     "react-draggable": "^3.0.3",
     "react-event-listener": "^0.6.4",
     "react-json-view": "^1.19.1",
+    "react-resize-detector": "^3.2.1",
     "scroll": "^2.0.3",
     "shallowequal": "^0.2.2",
     "stifle": "^1.0.2",

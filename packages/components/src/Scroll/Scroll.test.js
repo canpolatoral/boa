@@ -3,6 +3,7 @@ import { assert } from 'chai';
 import Scroll from './Scroll';
 import { context, createMount } from '@boa/test/utils';
 import { Platforms } from '@boa/base';
+import ReactResizeDetector from 'react-resize-detector';
 
 describe('<Scroll />', () => {
   let mount;
@@ -52,7 +53,7 @@ describe('<Scroll />', () => {
             </div>
           </Scroll>,
         );
-        const div = wrapper.find('div').first();
+        const div = wrapper.find(ReactResizeDetector).first().childAt(1);
         assert.strictEqual(div.props().style.overflow, 'auto');
         assert.strictEqual(div.props().style.WebkitOverflowScrolling, 'touch');
         const innerDiv = div.childAt(0);
@@ -73,7 +74,7 @@ describe('<Scroll />', () => {
             </div>
           </Scroll>,
         );
-        const div = wrapper.find('div').first();
+        const div = wrapper.find(ReactResizeDetector).first().childAt(1);
         assert.strictEqual(div.props().style.overflow, 'auto');
         assert.strictEqual(div.props().style.WebkitOverflowScrolling, 'touch');
         assert.strictEqual(div.props().style.direction, 'rtl');

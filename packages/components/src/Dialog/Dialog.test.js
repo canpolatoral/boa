@@ -14,7 +14,7 @@ describe('<Dialog />', () => {
   let mount;
 
   before(() => {
-    shallow = createShallow();
+    shallow = createShallow({ untilSelector: 'Dialog' });
     mount = createMount();
   });
 
@@ -24,7 +24,7 @@ describe('<Dialog />', () => {
 
   it('should render a MuiDialog', () => {
     const wrapper = shallow(<Dialog context={context} open={false} showHeader={false} />);
-    assert.strictEqual(wrapper.dive().type(), MuiDialog);
+    assert.strictEqual(wrapper.type(), MuiDialog);
   });
 
   it('should change open', () => {

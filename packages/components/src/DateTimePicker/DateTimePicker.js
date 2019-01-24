@@ -26,6 +26,8 @@ let minSecond;
 
 /**
  * DateTimePicker with Material UI Components.
+ * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
+ * from @boa/base.
  */
 @ComponentComposer
 class DateTimePicker extends ComponentBase {

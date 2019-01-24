@@ -367,6 +367,7 @@ class DatePicker extends ComponentBase {
             pageType={this.props.pageType}
             openBoaCalendar={this.props.openBoaCalendar}
             isFlexMode={this.props.isFlexMode}
+            valueConstraint={valueConstraint}
           />
         </div>
       );

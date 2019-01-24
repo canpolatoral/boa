@@ -592,9 +592,11 @@ class Calendar extends ComponentBase {
                   this.handleTouchTapDay(e, newDate);
                 },
               );
-              // if (this.props.dateUpdate) {
-              //   this.props.dateUpdate(cloneDate(this.state.selectedDate), cloneDate(newDate), 5);
-              // }
+            } else if (!this.props.valueConstraint ||
+              this.props.valueConstraint.required === false) {
+              this.setState({
+                selectedDate: undefined,
+              }, () => { this.handleTouchTapDay(e, undefined); });
             }
           }
         }
@@ -880,8 +882,8 @@ class Calendar extends ComponentBase {
           />
           <div style={styles.inputStyle}>
             <div style={style.inputContainer}>
-              <div style={style.inputDateItem}>
-                {!this.props.noDialog && (
+              {!this.props.noDialog && (
+                <div style={style.inputDateItem}>
                   <InputMask
                     // {...other}
                     onKeyDown={this.onKeyDownInputDate}
@@ -903,8 +905,8 @@ class Calendar extends ComponentBase {
                     bottomLeftInfoEnable={false}
                     fullWidth={false}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
             {!this.props.noDialog && (
               <Divider
@@ -918,7 +920,7 @@ class Calendar extends ComponentBase {
                 }}
               />
             )}
-            <div style={{ marginTop: 15 }}>
+            <div style={{ marginTop: isFlexMode ? 0 : 15 }}>
               {this.state.displayMonthDay && !this.props.noDialog && (
                 <CalendarToolbar
                   context={this.props.context}
@@ -961,7 +963,7 @@ class Calendar extends ComponentBase {
                   </div>
                   <div style={Object.assign({}, style.transitionSlide, { minHeight })}>
                     {// TODO :SLIDE
-                    this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
+                      this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
                   </div>
 
                   {/* </Slide> */}

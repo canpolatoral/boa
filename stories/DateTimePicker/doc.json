@@ -1,5 +1,5 @@
 {
-	"description": "DateTimePicker with Material UI Components.",
+	"description": "DateTimePicker with Material UI Components.\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
 	"displayName": "DateTimePicker",
 	"methods": [
 		{
@@ -325,6 +325,17 @@
 				"computed": false
 			}
 		},
+		"isFlexMode": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "isFlexMode",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
 		"maxDate": {
 			"type": {
 				"name": "union",
@@ -410,6 +421,13 @@
 			},
 			"required": false,
 			"description": "@ignore"
+		},
+		"openBoaCalendar": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": ""
 		},
 		"pageType": {
 			"type": {

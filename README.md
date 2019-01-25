@@ -31,7 +31,10 @@ The future plans and high priority features and enhancements can be found in the
 
 Thank you to [Material-UI](https://github.com/mui-org/material-ui) for awesome React components.
 
+## License
 
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
 
 
 

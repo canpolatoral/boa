@@ -1,11 +1,38 @@
 # Contributing
+We are glad you're reading this because we need volunteer developers to help this project come to fruition. There are multiple ways and places you can contribute, and we're here to help facilitate that.
+
+## Reporting an Issue
+If you have found what you believe to be an issue please do not hesitate to file an issue on the [Issues](https://github.com/kuveytturk/boa/issues). When you creating a new issue please make sure you can explain the issue with a reproducible test case.
+
 ## Submitting a pull request
 
-BOA is a community project, so pull requests are always welcome, but, before working on a large change, it is best to open an issue first to discuss it with the maintainers.
+Pull requests are always welcome, but, before working on a large change, it is best to open an issue first to discuss it with the maintainers.
 
-As with issues, please begin the title with [ComponentName].
+### Branch Structre
+
+All stable releases are tagged (view tags). At any given time, the master branch represents the latest development version of the library. Patches or hotfix releases are prepared on an independent branch.
 
 ## Getting started
+
+Please create a new branch from an up to date master on your fork. (Note, urgent hotfixes should be branched off the latest stable release rather than master)
+
+1. Fork the boa repository on Github
+2. Clone your fork to your local machine `git clone git@github.com:<yourname>/boa.git`
+3. Create a branch `git checkout -b my-topic-branch`
+4. Make your changes, lint, then push to to GitHub with `git push --set-upstream origin my-topic-branch`.
+5. Visit GitHub and make your pull request.
+
+
+If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
+
+```sh
+git remote add upstream git@github.com:mui-org/boa.git
+git checkout master
+git pull upstream master
+git checkout -b my-topic-branch
+yarn
+```
+
 ### Building locally
 
 To use the provided build scripts with yarn you have to install `yarn@^1.9.0`.

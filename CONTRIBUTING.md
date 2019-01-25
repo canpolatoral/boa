@@ -1,20 +1,16 @@
 # Contributing
-We are glad you're reading this because we need volunteer developers to help this project come to fruition. There are multiple ways and places you can contribute, and we're here to help facilitate that.
+We are really glad you're reading this because BOA is is a community project. There are multiple ways you can contribute and being a part of the BOA.
 
 ## Reporting an Issue
-If you have found what you believe to be an issue please do not hesitate to file an issue on the [Issues](https://github.com/kuveytturk/boa/issues). When you creating a new issue please make sure you can explain the issue with a reproducible test case.
+If you have found what you believe to be an issue please feel free open an issue on the [Issues](https://github.com/kuveytturk/boa/issues). When you creating a new issue please make sure you can explain the issue with a reproducible test case.
 
 ## Submitting a pull request
 
 Pull requests are always welcome, but, before working on a large change, it is best to open an issue first to discuss it with the maintainers.
 
-### Branch Structre
-
-All stable releases are tagged (view tags). At any given time, the master branch represents the latest development version of the library. Patches or hotfix releases are prepared on an independent branch.
-
 ## Getting started
 
-Please create a new branch from an up to date master on your fork. (Note, urgent hotfixes should be branched off the latest stable release rather than master)
+Please create a new branch from an up to date master on your fork. 
 
 1. Fork the boa repository on Github
 2. Clone your fork to your local machine `git clone git@github.com:<yourname>/boa.git`
@@ -35,14 +31,9 @@ yarn
 
 ### Building locally
 
-To use the provided build scripts with yarn you have to install `yarn@^1.9.0`.
-Depending on the package you want to build just run `yarn workspace @boa/PACKAGE build`.
+To use the provided build scripts with yarn you have to [install `yarn`](https://yarnpkg.com/lang/en/docs/install/). Depending on the package you want to build just run `yarn workspace @boa/PACKAGE build`.
 
 ```sh
-git clone https://github.com/kuveytturk/boa.git
-cd boa
-## install dependencies
-yarn
 ## start storybook
 yarn start
 ## build base

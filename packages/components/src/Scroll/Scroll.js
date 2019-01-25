@@ -54,11 +54,9 @@ class Scroll extends ComponentBase {
 
   componentDidMount() {
     super.componentDidMount();
-    if (!this.mbcontainer) {
+    if (!this.mbContainer) {
       const innerStyleScroll = { minScrollbarLength: 16 };
-      if (this.container) {
-        this.ps = new PerfectScrollbar(this.container, merge(innerStyleScroll, this.props.option));
-      }
+      this.ps = new PerfectScrollbar(this.container, merge(innerStyleScroll, this.props.option));
       Object.keys(handlerNameByEvent).forEach(key => {
         const callback = this.props[handlerNameByEvent[key]];
         if (callback) {
@@ -120,8 +118,7 @@ class Scroll extends ComponentBase {
     let divStyle = Object.assign({}, { overflow: 'auto' }, this.props.divStyle);
 
     if (context.platform === Platforms.MOBILE || context.platform === Platforms.TABLET) {
-      divStyle = Object.assign({}, divStyle, { WebkitOverflowScrolling: 'touch' });
-
+      divStyle = Object.assign({}, divStyle, { height: '100%', WebkitOverflowScrolling: 'touch' });
       if (this.props.context.localization.isRightToLeft) {
         divStyle = Object.assign({}, divStyle, {
           direction: 'rtl',

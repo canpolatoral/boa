@@ -63,7 +63,7 @@ export default class extends Component {
       this.eventHandlers[key] = null;
     });
 
-    if(this.tree) {
+    if (this.tree) {
       this.tree.destroy();
       this.tree = null;
     }

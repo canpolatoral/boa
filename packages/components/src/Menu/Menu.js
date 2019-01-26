@@ -10,15 +10,13 @@ import { Icon } from '@boa/components/Icon';
 
 const styles = () => ({
   menuItem: {
-    paddingBottom: '6px',
-    paddingTop: '6px',
-    paddingLeft: '0px',
-    paddingRight: '0px',
+    paddingBottom: 6,
+    paddingTop: 6,
+    paddingLeft: 0,
+    paddingRight: 0,
     height: 'auto',
   },
-  gutters: { padding: '0px' },
   primary: {},
-  icon: {},
 });
 
 @ComponentComposer
@@ -100,9 +98,7 @@ class Menu extends ComponentBase {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.value !== nextProps.value) {
-      this.setState({
-        value: nextProps.value,
-      });
+      this.setState({ value: nextProps.value });
     }
   }
 
@@ -119,25 +115,21 @@ class Menu extends ComponentBase {
     if (iconProp) {
       let iconProperties = null;
       if (iconProp.svgIcon || iconProp.fontIcon || iconProp.dynamicIcon) {
-        iconProperties = merge(
-          {
-            style: {
-              height: '20px',
-              width: '20px',
-              margin: !isRightToLeft ? 'auto 0px auto 24px' : 'auto 24px auto 12px',
-              right: 0,
-              top: '50%',
-              color: this.props.context.theme.boaPalette.base400,
-              // transform:'translate(0%, -50%)'
-            },
+        iconProperties = {
+          style: {
+            height: 20,
+            width: 20,
+            margin: !isRightToLeft ? 'auto 0px auto 24px' : 'auto 24px auto 12px',
+            right: 0,
+            top: '50%',
+            color: this.props.context.theme.boaPalette.base400,
           },
-          iconProp.iconProperties || {},
-        );
+        };
+        iconProperties = merge(iconProperties, iconProp.iconProperties || {});
       }
       if (iconProperties) {
         iconProp.iconProperties = iconProperties;
       }
-
       const icon = Icon.getIcon(iconProp);
       return icon || iconProp;
     }
@@ -147,7 +139,69 @@ class Menu extends ComponentBase {
   render() {
     let menuItems = null;
     const isRightToLeft = this.props.context.localization.isRightToLeft;
-    if (this.props.isMenuItemList && this.props.items) {
+
+    /* istanbul ignore else */
+    if (!this.props.isMenuItemList) {
+      menuItems = this.props.items.map(item => {
+        const allProperties = item.allProperties || {};
+        const typeId = allProperties.typeId;
+
+        if (typeId !== undefined && typeId !== 1 && typeId !== 2) {
+          return null;
+        }
+
+        const rightIcon =
+          item.items && item.items.length
+            ? this.getIcon({ dynamicIcon: isRightToLeft ? 'ChevronLeft' : 'ChevronRight' })
+            : this.getIcon(item.rightIcon);
+
+        const leftIcon = this.getIcon(item.leftIcon);
+
+        let itemStyle = {
+          lineHeight: null,
+          whiteSpace: 'normal',
+          minHeight: 24,
+          fontSize: 14,
+          paddingLeft: isRightToLeft ? 0 : 12,
+          paddingRight: isRightToLeft ? 12 : 0,
+        };
+
+        itemStyle = merge(itemStyle, item.style || {});
+
+        if (item && item.leftIcon && item.leftIcon.dynamicIcon === 'ChevronLeft') {
+          itemStyle.fontSize = 16;
+        }
+
+        let innerDivStyle = {
+          padding: !isRightToLeft ? '10px 40px 10px 72px' : '10px 72px 10px 40px',
+        };
+
+        innerDivStyle = merge(innerDivStyle, item.innerDivStyle || {});
+
+        if (item.value) {
+          return (
+            <MenuItem
+              classes={this.props.classes}
+              context={this.props.context}
+              key={item.value}
+              value={item.value}
+              primaryText={item.text}
+              items={item.items}
+              rightIcon={rightIcon}
+              leftIcon={leftIcon}
+              style={itemStyle}
+              primaryTextPadding={this.props.primaryTextPadding}
+              innerDivStyle={innerDivStyle}
+              itemSelected={this.menuItemSelected}
+              width={this.props.width}
+              allProperties={item.allProperties}
+            />
+          );
+        }
+
+        return <MuiDivider style={{ marginBottom: 12, marginTop: 12 }} key={Math.random()} />;
+      });
+    } else { // isMenuItemList ????
       menuItems = this.props.items.map(item => {
         if (item.props.menuItems && item.props.menuItems.length > 0) {
           return React.cloneElement(item, {
@@ -157,12 +211,13 @@ class Menu extends ComponentBase {
             items: item.props.menuItems,
           });
         }
+
         if (!item.props.primaryText) {
           return (
             <MuiDivider
               style={{
-                marginBottom: '12px',
-                marginTop: '12px',
+                marginBottom: 12,
+                marginTop: 12,
               }}
               key={Math.random()}
             />
@@ -170,78 +225,6 @@ class Menu extends ComponentBase {
         }
 
         return item;
-      });
-    } else {
-      menuItems = this.props.items.map(item => {
-        // eğer ekran ise aktif mi değil mi!
-        if (
-          item &&
-          item.allProperties &&
-          item.allProperties.typeId &&
-          !(item.allProperties.typeId === 1 || item.allProperties.typeId === 2)
-        ) {
-          return <div />;
-        }
-
-        const rightIcon =
-          item.items && item.items.length
-            ? this.getIcon({
-                dynamicIcon: !this.props.context.localization.isRightToLeft
-                  ? 'ChevronRight'
-                  : 'ChevronLeft',
-              })
-            : this.getIcon(item.rightIcon);
-        const leftIcon = this.getIcon(item.leftIcon);
-        let itemStyle = merge(
-          {
-            lineHeight: null,
-            whiteSpace: 'normal',
-            minHeight: 24,
-            fontSize: 14,
-            paddingleft: !this.props.context.localization.isRightToLeft ? '12px' : '0px',
-            paddingRight: !this.props.context.localization.isRightToLeft ? '12px' : '0px',
-          },
-          item.style || {},
-        );
-        if (item && item.leftIcon && item.leftIcon.dynamicIcon === 'ChevronLeft') {
-          itemStyle = merge(
-            {
-              lineHeight: null,
-              whiteSpace: 'normal',
-              minHeight: 24,
-              fontSize: 16,
-              paddingleft: !this.props.context.localization.isRightToLeft ? '0px' : '12px',
-              paddingRight: !this.props.context.localization.isRightToLeft ? '0px' : '12px',
-            },
-            item.style || {},
-          );
-        }
-        const innerDivStyle = merge(
-          {
-            padding: !isRightToLeft ? '10px 40px 10px 72px' : '10px 72px 10px 40px',
-          },
-          item.innerDivStyle || {},
-        );
-        return item.value || item.text ? (
-          <MenuItem
-            classes={this.props.classes}
-            context={this.props.context}
-            key={item.value}
-            value={item.value}
-            primaryText={item.text}
-            items={item.items}
-            rightIcon={rightIcon}
-            leftIcon={leftIcon}
-            style={itemStyle}
-            primaryTextPadding={this.props.primaryTextPadding}
-            innerDivStyle={innerDivStyle}
-            itemSelected={this.menuItemSelected}
-            width={this.props.width}
-            allProperties={item.allProperties}
-          />
-        ) : (
-          <MuiDivider style={{ marginBottom: '12px', marginTop: '12px' }} key={Math.random()} />
-        );
       });
     }
 

@@ -252,8 +252,9 @@ describe('<Input />', () => {
     });
 
     it('should render maskedMaxLength', () => {
-      const wrapper = mount((
-        <Input context={context} maxLength={10} maskedMaxLength={12} showCounter />));
+      const wrapper = mount(
+        <Input context={context} maxLength={10} maskedMaxLength={12} showCounter />,
+      );
       const span = wrapper.find('span').first();
       assert.strictEqual(span.text(), '0/12');
     });
@@ -263,7 +264,10 @@ describe('<Input />', () => {
         const wrapper = mount(<Input context={context} maxLength={10} showCounter />);
         const instance = wrapper.instance().getInstance();
         instance.counterUpdate(wrapper.props(), 'test');
-        const span = wrapper.find('span').first().childAt(0);
+        const span = wrapper
+          .find('span')
+          .first()
+          .childAt(0);
         assert.strictEqual(span.getDOMNode().innerText.toString(), '4');
       });
 
@@ -271,17 +275,23 @@ describe('<Input />', () => {
         const wrapper = mount(<Input context={context} value="value" maxLength={10} showCounter />);
         const instance = wrapper.instance().getInstance();
         instance.counterUpdate(wrapper.props());
-        const span = wrapper.find('span').first().childAt(0);
+        const span = wrapper
+          .find('span')
+          .first()
+          .childAt(0);
         assert.strictEqual(span.getDOMNode().innerText.toString(), '5');
       });
 
       it('should update counter disabledCounterCharacter', () => {
-        const wrapper = mount((
-          <Input context={context} disabledCounterCharacter=" " maxLength={10} showCounter />
-        ));
+        const wrapper = mount(
+          <Input context={context} disabledCounterCharacter=" " maxLength={10} showCounter />,
+        );
         const instance = wrapper.instance().getInstance();
         instance.counterUpdate(wrapper.props(), 'test prop');
-        const span = wrapper.find('span').first().childAt(0);
+        const span = wrapper
+          .find('span')
+          .first()
+          .childAt(0);
         assert.strictEqual(span.getDOMNode().innerText.toString(), '8');
       });
     });
@@ -356,41 +366,41 @@ describe('<Input />', () => {
   });
 
   it('should render validation result', () => {
-    const validationResult = [
-      { message: 'test result' },
-    ];
+    const validationResult = [{ message: 'test result' }];
     const wrapper = mount(<Input context={context} validationResult={validationResult} />);
-    assert.strictEqual(wrapper.find(MuiFormHelperText).first().text(), 'test result');
+    assert.strictEqual(
+      wrapper
+        .find(MuiFormHelperText)
+        .first()
+        .text(),
+      'test result',
+    );
   });
 
   it('should assign floating label style', () => {
-    const wrapper = mount((
-      <Input context={context} floatingLabelText="test" floatingLabelStyle={{ margin: 10 }} />
-    ));
+    const wrapper = mount(
+      <Input context={context} floatingLabelText="test" floatingLabelStyle={{ margin: 10 }} />,
+    );
     const input = wrapper.find(MuiInputLabel);
     assert.strictEqual(input.props().style.margin, 10);
   });
 
   it('should assign disabled styles to floating label', () => {
-    const wrapper = mount((
-      <Input context={context} disabled floatingLabelText="test" />
-    ));
+    const wrapper = mount(<Input context={context} disabled floatingLabelText="test" />);
     const input = wrapper.find(MuiInputLabel);
     assert.strictEqual(input.props().classes.root, classes.inputLabelRootDisabled);
   });
 
   it('should assign value constraint styles', () => {
-    const wrapper = mount((
-      <Input context={context} valueConstraint={{ required: true }} />
-    ));
+    const wrapper = mount(<Input context={context} valueConstraint={{ required: true }} />);
     const input = wrapper.find(MuiInput);
     assert.strictEqual(input.props().classes.underline, classes.inputUnderlineRequired);
   });
 
   it('should assign value constraint styles when value exists', () => {
-    const wrapper = mount((
-      <Input context={context} defaultValue="test" valueConstraint={{ required: true }} />
-    ));
+    const wrapper = mount(
+      <Input context={context} defaultValue="test" valueConstraint={{ required: true }} />,
+    );
     const input = wrapper.find(MuiInput);
     assert.strictEqual(input.props().classes.underline, classes.inputUnderline);
   });

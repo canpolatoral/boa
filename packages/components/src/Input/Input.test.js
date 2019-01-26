@@ -5,16 +5,19 @@ import { IconButton } from '@boa/components/IconButton';
 import MuiInput from '@material-ui/core/Input';
 import MuiInputLabel from '@material-ui/core/InputLabel';
 import MuiFormControl from '@material-ui/core/FormControl';
+import MuiFormHelperText from '@material-ui/core/FormHelperText';
 import Input from './Input';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount, getClasses } from '@boa/test/utils';
 
 describe('<Input />', () => {
   let mount;
   let shallow;
+  let classes;
 
   before(() => {
     mount = createMount();
     shallow = createShallow();
+    classes = getClasses(<Input context={context} />);
   });
 
   after(() => {
@@ -207,5 +210,188 @@ describe('<Input />', () => {
         '',
       );
     });
+  });
+
+  describe('bottomRightInfoSpan', () => {
+    it('should render bottomRightInfo', () => {
+      const wrapper = mount(<Input context={context} bottomRightInfo="test" />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.props().style.fontSize, 11);
+      assert.strictEqual(span.props().style.right, 0);
+      assert.strictEqual(span.props().style.float, 'right');
+      assert.strictEqual(span.childAt(0).props().children, 'test');
+    });
+
+    it('should render bottomRightInfo RTL', () => {
+      const newContext = Object.assign({}, context);
+      newContext.localization = { isRightToLeft: true };
+      const wrapper = mount(<Input context={newContext} bottomRightInfo="test" />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.props().style.fontSize, 11);
+      assert.strictEqual(span.props().style.left, 0);
+      assert.strictEqual(span.props().style.float, 'left');
+      assert.strictEqual(span.childAt(0).props().children, 'test');
+    });
+
+    it('should render timerDuration', () => {
+      const wrapper = mount(<Input context={context} timerDuration={10} />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.childAt(0).props().children, '00:10');
+    });
+
+    it('should render timerDuration', () => {
+      const wrapper = mount(<Input context={context} timerDuration={10} />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.childAt(0).props().children, '00:10');
+    });
+
+    it('should render maxLength', () => {
+      const wrapper = mount(<Input context={context} maxLength={10} showCounter />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.text(), '0/10');
+    });
+
+    it('should render maskedMaxLength', () => {
+      const wrapper = mount((
+        <Input context={context} maxLength={10} maskedMaxLength={12} showCounter />));
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.text(), '0/12');
+    });
+
+    describe('counterUpdate', () => {
+      it('should update counter', () => {
+        const wrapper = mount(<Input context={context} maxLength={10} showCounter />);
+        const instance = wrapper.instance().getInstance();
+        instance.counterUpdate(wrapper.props(), 'test');
+        const span = wrapper.find('span').first().childAt(0);
+        assert.strictEqual(span.getDOMNode().innerText, 4);
+      });
+
+      it('should update counter', () => {
+        const wrapper = mount(<Input context={context} value="value" maxLength={10} showCounter />);
+        const instance = wrapper.instance().getInstance();
+        instance.counterUpdate(wrapper.props());
+        const span = wrapper.find('span').first().childAt(0);
+        assert.strictEqual(span.getDOMNode().innerText, 5);
+      });
+
+      it('should update counter disabledCounterCharacter', () => {
+        const wrapper = mount((
+          <Input context={context} disabledCounterCharacter=" " maxLength={10} showCounter />
+        ));
+        const instance = wrapper.instance().getInstance();
+        instance.counterUpdate(wrapper.props(), 'test prop');
+        const span = wrapper.find('span').first().childAt(0);
+        assert.strictEqual(span.getDOMNode().innerText, 8);
+      });
+    });
+  });
+
+  describe('bottomLeftInfoSpan', () => {
+    it('should render bottomLeftInfo', () => {
+      const wrapper = mount(<Input context={context} bottomLeftInfo="test" />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.props().style.fontSize, 11);
+      assert.strictEqual(span.props().style.left, 0);
+      assert.strictEqual(span.props().style.float, 'left');
+      assert.strictEqual(span.childAt(0).props().children, 'test');
+    });
+
+    it('should not render bottomLeftInfo when error exists', () => {
+      const wrapper = mount(<Input context={context} bottomLeftInfo="test" errorText="error" />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.props().style.display, 'none');
+    });
+
+    it('should render bottomLeftInfo RTL', () => {
+      const newContext = Object.assign({}, context);
+      newContext.localization = { isRightToLeft: true };
+      const wrapper = mount(<Input context={newContext} bottomLeftInfo="test" />);
+      const span = wrapper.find('span').first();
+      assert.strictEqual(span.props().style.fontSize, 11);
+      assert.strictEqual(span.props().style.right, 0);
+      assert.strictEqual(span.props().style.float, 'right');
+      assert.strictEqual(span.childAt(0).props().children, 'test');
+    });
+  });
+
+  describe('props:prefixText', () => {
+    it('should render MuiInputAdornment with prefixText', () => {
+      const wrapper = mount(<Input context={context} prefixText="test" />);
+      const input = wrapper.find(MuiInput);
+      assert.strictEqual(input.props().startAdornment.props.style.marginTop, -11);
+      assert.strictEqual(input.props().startAdornment.props.style.marginRight, 0);
+      assert.strictEqual(input.props().startAdornment.props.position, 'start');
+    });
+
+    it('should render MuiInputAdornment with prefixText RTL', () => {
+      const newContext = Object.assign({}, context);
+      newContext.localization = { isRightToLeft: true };
+      const wrapper = mount(<Input context={newContext} prefixText="test" />);
+      const input = wrapper.find(MuiInput);
+      assert.strictEqual(input.props().startAdornment.props.style.marginTop, -11);
+      assert.strictEqual(input.props().startAdornment.props.style.marginRight, -4);
+      assert.strictEqual(input.props().startAdornment.props.position, 'start');
+    });
+  });
+
+  describe('props:suffixText', () => {
+    it('should render MuiInputAdornment with suffixText', () => {
+      const wrapper = mount(<Input context={context} suffixText="test" />);
+      const input = wrapper.find(MuiInput);
+      assert.strictEqual(input.props().endAdornment.props.style.marginTop, -11);
+      assert.strictEqual(input.props().endAdornment.props.style.marginLeft, 0);
+      assert.strictEqual(input.props().endAdornment.props.position, 'end');
+    });
+
+    it('should render MuiInputAdornment with suffixText RTL', () => {
+      const newContext = Object.assign({}, context);
+      newContext.localization = { isRightToLeft: true };
+      const wrapper = mount(<Input context={newContext} suffixText="test" />);
+      const input = wrapper.find(MuiInput);
+      assert.strictEqual(input.props().endAdornment.props.style.marginTop, -11);
+      assert.strictEqual(input.props().endAdornment.props.style.marginLeft, -4);
+      assert.strictEqual(input.props().endAdornment.props.position, 'end');
+    });
+  });
+
+  it('should render validation result', () => {
+    const validationResult = [
+      { message: 'test result' },
+    ];
+    const wrapper = mount(<Input context={context} validationResult={validationResult} />);
+    assert.strictEqual(wrapper.find(MuiFormHelperText).first().text(), 'test result');
+  });
+
+  it('should assign floating label style', () => {
+    const wrapper = mount((
+      <Input context={context} floatingLabelText="test" floatingLabelStyle={{ margin: 10 }} />
+    ));
+    const input = wrapper.find(MuiInputLabel);
+    assert.strictEqual(input.props().style.margin, 10);
+  });
+
+  it('should assign disabled styles to floating label', () => {
+    const wrapper = mount((
+      <Input context={context} disabled floatingLabelText="test" />
+    ));
+    const input = wrapper.find(MuiInputLabel);
+    assert.strictEqual(input.props().classes.root, classes.inputLabelRootDisabled);
+  });
+
+  it('should assign value constraint styles', () => {
+    const wrapper = mount((
+      <Input context={context} valueConstraint={{ required: true }} />
+    ));
+    const input = wrapper.find(MuiInput);
+    assert.strictEqual(input.props().classes.underline, classes.inputUnderlineRequired);
+  });
+
+  it('should assign value constraint styles when value exists', () => {
+    const wrapper = mount((
+      <Input context={context} defaultValue="test" valueConstraint={{ required: true }} />
+    ));
+    const input = wrapper.find(MuiInput);
+    assert.strictEqual(input.props().classes.underline, classes.inputUnderline);
   });
 });

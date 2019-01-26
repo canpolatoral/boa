@@ -169,6 +169,7 @@ class Input extends EditorBase {
     textSelection: PropTypes.object,
     timerDuration: PropTypes.number,
     validationMessageStyleActive: PropTypes.bool,
+    validationResult: PropTypes.array,
     value: PropTypes.any,
   };
 
@@ -200,6 +201,7 @@ class Input extends EditorBase {
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.setTimer = this.setTimer.bind(this);
+    this.validationResult = this.props.validationResult || [];
   }
 
   componentWillReceiveProps(nextProps) {
@@ -413,7 +415,6 @@ class Input extends EditorBase {
     }
 
     const bottomTextSize = 11;
-    const disabledLabelColor = context.theme.boaPalette.base250;
     const infoTextColor = context.theme.boaPalette.base300;
     const errorTextColor = context.theme.boaPalette.error500;
 
@@ -438,7 +439,7 @@ class Input extends EditorBase {
     if (bottomLeftInfoEnable && lastBottomLeftInfo && this.state.disabled === false) {
       const bottomLeftInfoStyle = {
         fontSize: bottomTextSize,
-        color: this.state.disabled ? disabledLabelColor : infoTextColor,
+        color: infoTextColor,
         display: errorText ? 'none' : '', // error var ise helper görünmeyecek
         marginTop: 1,
       };
@@ -460,7 +461,7 @@ class Input extends EditorBase {
     if (bottomRightInfoEnable && this.state.disabled === false) {
       const bottomRightInfoStyle = {
         fontSize: bottomTextSize,
-        color: this.state.disabled ? disabledLabelColor : infoTextColor,
+        color: infoTextColor,
         marginTop: errorText ? -9 : 3,
       };
       if (!isRtl) {
@@ -489,7 +490,7 @@ class Input extends EditorBase {
           <span style={bottomRightInfoStyle}>
             {/* masked editörde maxLength ile değil maskedMaskLength görülecek  */}
             <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>/
-            {this.props.maskedMaxLength ? this.props.maskedMaxLength : maxLength}
+            {this.props.maskedMaxLength || maxLength}
           </span>
         );
       }
@@ -562,7 +563,7 @@ class Input extends EditorBase {
 
     const floatingLabelRootStyle = Object.assign(
       { display: visibleLabel === false ? 'none' : undefined },
-      this.props.floatingLabelStyle ? this.props.floatingLabelStyle : {},
+      this.props.floatingLabelStyle || {},
       hasValue(value) === false ? { textAlign: textAlignStyle } : {},
       isRtl ? { transformOrigin: 'top right' } : { transformOrigin: 'top left' },
     );
@@ -571,12 +572,12 @@ class Input extends EditorBase {
 
     // zorunlu alanlar eğer veri grilmemiş ise underline rengi farklı olacak.
     let underlineClass = classes.inputUnderline;
-    if (
-      this.props.valueConstraint &&
-      this.props.valueConstraint.required &&
-      (this.getValue() == null || this.getValue() === undefined || this.getValue() === '')
-    ) {
-      underlineClass = classes.inputUnderlineRequired;
+    const valueConstraint = this.props.valueConstraint;
+
+    if (valueConstraint && valueConstraint.required) {
+      if (!this.getValue()) {
+        underlineClass = classes.inputUnderlineRequired;
+      }
     }
 
     const { inputLabelRootDisabled, inputLabelRoot } = classes;

@@ -264,7 +264,7 @@ describe('<Input />', () => {
         const instance = wrapper.instance().getInstance();
         instance.counterUpdate(wrapper.props(), 'test');
         const span = wrapper.find('span').first().childAt(0);
-        assert.strictEqual(span.getDOMNode().innerText, 4);
+        assert.strictEqual(span.getDOMNode().innerText.toString(), '4');
       });
 
       it('should update counter', () => {
@@ -272,7 +272,7 @@ describe('<Input />', () => {
         const instance = wrapper.instance().getInstance();
         instance.counterUpdate(wrapper.props());
         const span = wrapper.find('span').first().childAt(0);
-        assert.strictEqual(span.getDOMNode().innerText, 5);
+        assert.strictEqual(span.getDOMNode().innerText.toString(), '5');
       });
 
       it('should update counter disabledCounterCharacter', () => {
@@ -282,7 +282,7 @@ describe('<Input />', () => {
         const instance = wrapper.instance().getInstance();
         instance.counterUpdate(wrapper.props(), 'test prop');
         const span = wrapper.find('span').first().childAt(0);
-        assert.strictEqual(span.getDOMNode().innerText, 8);
+        assert.strictEqual(span.getDOMNode().innerText.toString(), '8');
       });
     });
   });

@@ -166,17 +166,17 @@ describe('<Menu />', () => {
   it('should handle selected', () => {
     const wrapper = mount(<Menu items={items} context={context} />);
     const menuItem = wrapper.find(MuiMenuItem).first();
-    menuItem.simulate('click', { persist: () => { }, value: 1 });
+    menuItem.simulate('click', { persist: () => {}, value: 1 });
     assert.strictEqual(wrapper.instance().getInstance().state.value, 1);
   });
 
   it('should fire menuItemSelected', () => {
     const menuItemSelected = spy();
-    const wrapper = mount((
-      <Menu items={items} context={context} menuItemSelected={menuItemSelected} />
-    ));
+    const wrapper = mount(
+      <Menu items={items} context={context} menuItemSelected={menuItemSelected} />,
+    );
     const menuItem = wrapper.find(MuiMenuItem).first();
-    menuItem.simulate('click', { persist: () => { }, value: 1 });
+    menuItem.simulate('click', { persist: () => {}, value: 1 });
     assert.strictEqual(wrapper.instance().getInstance().state.value, 1);
     assert.strictEqual(menuItemSelected.callCount, 1);
   });

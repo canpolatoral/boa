@@ -251,7 +251,9 @@ class Popover extends ComponentBase {
       children = (
         <Resizable
           context={this.props.context}
-          ref={(ref) => { this.resizable = ref; }}
+          ref={ref => {
+            this.resizable = ref;
+          }}
           bounds="parent"
           lockAspectRatio
           minWidth={200}

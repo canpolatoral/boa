@@ -36,7 +36,7 @@ class ToolTip extends ComponentBase {
 
   constructor(props, context) {
     super(props, context);
-    let placement = this.props.tooltipPosition ? this.props.tooltipPosition : this.props.placement;
+    let placement = this.props.tooltipPosition || this.props.placement;
 
     if (placement === 'up') {
       placement = 'top';
@@ -59,6 +59,9 @@ class ToolTip extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.title !== this.props.title) {
+      this.setState({ title: nextProps.title });
+    }
     if (nextProps.tooltip !== this.props.tooltip) {
       this.setState({ title: nextProps.tooltip });
     }
@@ -67,11 +70,12 @@ class ToolTip extends ComponentBase {
   render() {
     const toolTipIsOpen = this.state.title && this.state.title.length > 0;
     const { classes } = this.props;
+    const { componentSize, newLine, visible, ...otherProps } = this.props;
 
     if (toolTipIsOpen) {
       return (
         <MuiToolTip
-          {...this.props}
+          {...otherProps}
           title={this.state.title}
           placement={this.state.placement}
           classes={{

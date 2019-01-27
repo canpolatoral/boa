@@ -45,7 +45,7 @@ describe('<Popover />', () => {
   });
 
   it('should pass onClose prop to Modal', () => {
-    const fn = () => { };
+    const fn = () => {};
     const wrapper = shallow(
       <Popover open={false} onRequestClose={fn}>
         <div />
@@ -59,14 +59,15 @@ describe('<Popover />', () => {
       const onRequestClose = spy();
       const topModalStub = stub();
       topModalStub.returns(true);
-      const wrapper = mount((
+      const wrapper = mount(
         <Popover
           open={false}
           onRequestClose={onRequestClose}
-          manager={{ isTopModal: topModalStub }}>
+          manager={{ isTopModal: topModalStub }}
+        >
           <div />
-        </Popover>
-      ));
+        </Popover>,
+      );
       const modal = wrapper.find(Modal).childAt(0);
       const event = { keyCode: keycode('esc') };
       modal.instance().handleDocumentKeyDown(event);
@@ -75,23 +76,21 @@ describe('<Popover />', () => {
 
     it('should fire onRequestClose from instance', () => {
       const onRequestClose = spy();
-      const wrapper = mount((
-        <Popover
-          open={false}
-          onRequestClose={onRequestClose}>
+      const wrapper = mount(
+        <Popover open={false} onRequestClose={onRequestClose}>
           <div />
-        </Popover>
-      ));
+        </Popover>,
+      );
       wrapper.instance().onRequestClose();
       assert.strictEqual(onRequestClose.callCount, 1);
     });
 
     it('should fire onRequestClose from instance clickAway', () => {
-      const wrapper = mount((
+      const wrapper = mount(
         <Popover open>
           <div />
-        </Popover>
-      ));
+        </Popover>,
+      );
       wrapper.instance().onRequestClose('clickAway');
       assert.strictEqual(wrapper.state().open, false);
     });
@@ -100,14 +99,15 @@ describe('<Popover />', () => {
       const onRequestClose = spy();
       const topModalStub = stub();
       topModalStub.returns(true);
-      const wrapper = mount((
+      const wrapper = mount(
         <Popover
           open={false}
           onRequestClose={onRequestClose}
-          manager={{ isTopModal: topModalStub }}>
+          manager={{ isTopModal: topModalStub }}
+        >
           <div />
-        </Popover>
-      ));
+        </Popover>,
+      );
       const modal = wrapper.find(Modal).childAt(0);
       const event = { keyCode: keycode('esc') };
       modal.instance().handleDocumentKeyDown(event);
@@ -116,15 +116,15 @@ describe('<Popover />', () => {
   });
 
   it('should mount with resizable', () => {
-    const wrapper = mount((
-      <Popover
-        context={context}
-        open
-        resizable>
+    const wrapper = mount(
+      <Popover context={context} open resizable>
         <div>test</div>
-      </Popover>
-    ));
-    wrapper.instance().getInstance().onResize({}, 'test', { height: 11, width: 13 });
+      </Popover>,
+    );
+    wrapper
+      .instance()
+      .getInstance()
+      .onResize({}, 'test', { height: 11, width: 13 });
     const resizableParent = ReactDOM.findDOMNode(wrapper.instance().resizable).parentNode;
     assert.strictEqual(resizableParent.style.height, '11px');
     assert.strictEqual(resizableParent.style.width, '13px');
@@ -132,16 +132,15 @@ describe('<Popover />', () => {
 
   it('should fire onResize', () => {
     const onResize = spy();
-    const wrapper = mount((
-      <Popover
-        context={context}
-        onResize={onResize}
-        open
-        resizable>
+    const wrapper = mount(
+      <Popover context={context} onResize={onResize} open resizable>
         <div>test</div>
-      </Popover>
-    ));
-    wrapper.instance().getInstance().onResize({}, 'test', { height: 11, width: 13 });
+      </Popover>,
+    );
+    wrapper
+      .instance()
+      .getInstance()
+      .onResize({}, 'test', { height: 11, width: 13 });
     assert.strictEqual(onResize.callCount, 1);
   });
 });

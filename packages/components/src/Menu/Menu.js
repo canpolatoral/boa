@@ -201,7 +201,8 @@ class Menu extends ComponentBase {
 
         return <MuiDivider style={{ marginBottom: 12, marginTop: 12 }} key={Math.random()} />;
       });
-    } else { // isMenuItemList ????
+    } else {
+      // isMenuItemList ????
       menuItems = this.props.items.map(item => {
         if (item.props.menuItems && item.props.menuItems.length > 0) {
           return React.cloneElement(item, {

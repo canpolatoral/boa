@@ -83,6 +83,11 @@ class Popover extends ComponentBase {
      */
     getContentAnchorEl: PropTypes.func,
     /**
+     * A modal manager used to track and manage the state of open
+     * Modals. This enables customizing how modals interact within a container.
+     */
+    manager: PropTypes.object,
+    /**
      * Specifies how close to the edge of the window the popover can appear.
      */
     marginThreshold: PropTypes.number,
@@ -246,8 +251,9 @@ class Popover extends ComponentBase {
       children = (
         <Resizable
           context={this.props.context}
-          ref={r => (this.resizable = r)}
+          ref={(ref) => { this.resizable = ref; }}
           bounds="parent"
+          lockAspectRatio
           minWidth={200}
           minHeight={100}
           default={{ x: 0, y: 0, width: '100%', height: '100%' }}
@@ -277,6 +283,7 @@ class Popover extends ComponentBase {
         disableRestoreFocus={this.props.disableRestoreFocus}
         PaperProps={this.props.PaperProps}
         marginThreshold={this.props.marginThreshold}
+        manager={this.props.manager}
       >
         {children}
       </MuiPopover>

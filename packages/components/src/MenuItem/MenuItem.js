@@ -9,16 +9,15 @@ import { Popover } from '@boa/components/Popover';
 const styles = theme => ({
   menuItem: {
     '&:hover': {
-      backgroundColor: theme.boaPalette ? theme.boaPalette.base150 : '',
+      backgroundColor: theme.boaPalette.base150,
     },
-    paddingLeft: '0px',
-    paddingRight: '0px',
-    // direction: theme.direction,
+    paddingLeft: 0,
+    paddingRight: 0,
     minWidth: 220,
   },
   primary: {},
-  leftIconClass: { display: 'flex', paddingBottom: '0px', paddingTop: '0px' },
-  rightIconClass: { display: 'flex', paddingBottom: '0px', paddingTop: '0px' },
+  leftIconClass: { display: 'flex', paddingBottom: 0, paddingTop: 0 },
+  rightIconClass: { display: 'flex', paddingBottom: 0, paddingTop: 0 },
 });
 @ComponentComposer
 @withStyles(styles)
@@ -140,8 +139,9 @@ class MenuItem extends ComponentBase {
       },
     };
 
-    const menuItems =
-      this.props.menuItems && !this.props.isAddedDrawer ? (
+    let menuItems = null;
+    if (this.props.menuItems && !this.props.isAddedDrawer) {
+      menuItems = (
         <div>
           <Popover
             context={this.props.context}
@@ -154,7 +154,8 @@ class MenuItem extends ComponentBase {
             {this.props.menuItems}
           </Popover>
         </div>
-      ) : null;
+      );
+    }
 
     return (
       <MuiMenuItem
@@ -165,38 +166,43 @@ class MenuItem extends ComponentBase {
         style={this.props.style}
         value={this.props.value}
       >
-        {leftIcon ? (
-          <MuiListItemIcon
-            style={this.props.leftIconStyle ? this.props.leftIconStyle : leftIcon.props.style}
-            className={this.props.classes.leftIconClass}
-          >
-            {leftIcon}
-          </MuiListItemIcon>
-        ) : null}
-        {this.props.primaryText && (
-          <div
-            style={{
-              flexGrow: '1',
-              width: 'calc(100% - 137px)',
-              padding: this.props.primaryTextPadding,
-              color: this.props.context.theme.boaPalette.base400,
-              textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left',
-              primary: this.props.classes.primary,
-            }}
-          >
-            {this.props.primaryText}
-          </div>
-        )}
+        {
+          leftIcon && (
+            <MuiListItemIcon
+              style={this.props.leftIconStyle || leftIcon.props.style}
+              className={this.props.classes.leftIconClass}
+            >
+              {leftIcon}
+            </MuiListItemIcon>
+          )
+        }
+        {
+          this.props.primaryText && (
+            <div
+              style={{
+                flexGrow: '1',
+                width: 'calc(100% - 137px)',
+                padding: this.props.primaryTextPadding,
+                color: this.props.context.theme.boaPalette.base400,
+                textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left',
+                primary: this.props.classes.primary,
+              }}
+            >
+              {this.props.primaryText}
+            </div>
+          )}
         {this.props.editor}
         {menuItems}
-        {rightIcon ? (
-          <MuiListItemIcon
-            style={this.props.rightIconStyle ? this.props.rightIconStyle : rightIcon.props.style}
-            className={this.props.classes.rightIconClass}
-          >
-            {rightIcon}
-          </MuiListItemIcon>
-        ) : null}
+        {
+          rightIcon && (
+            <MuiListItemIcon
+              style={this.props.rightIconStyle || rightIcon.props.style}
+              className={this.props.classes.rightIconClass}
+            >
+              {rightIcon}
+            </MuiListItemIcon>
+          )
+        }
       </MuiMenuItem>
     );
   }

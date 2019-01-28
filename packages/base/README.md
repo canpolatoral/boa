@@ -23,29 +23,29 @@ This component wraps MuiThemeProvider and also it has a [error wrapper](#ErrorBo
 
 This component is the base component of UI components. All UI components are inherited from ComponentBase. It has some common props:
 
-- componentSize: In our design guideline, all components on a page must be placed inside a card. The ComponentSize prop defines the size of the component.  The ComponentSize constant exported from [`enums`](packages/base/src/enums/index.js#L10).
-- context: The context property defines application requirements such as localization, theme, platform.
-- disabled: All components should be have disabled prop.
-- id: All components should be have id prop.
-- newLine: As described in `componentSize` prop, if any components take part in the new line on a card we're using this prop.
-- persistState: // TODO
-- snapKey: // TODO
-- snapshot: In our SPA, we want to keep the state of each component when a page will unmount. And the same page will mount again, the component mounts with snapshot prop and it should get the previous state.
-- style: All components should be have style prop.
-- valueConstraint: ...
-- visible: In ComponentComposer, we change the visibility of the component with this prop.
+- **componentSize**: In our design guideline, all components on a page must be placed inside a card. The ComponentSize prop defines the size of the component.  The ComponentSize constant exported from [`enums`](packages/base/src/enums/index.js#L10).
+- **context**: The context property defines application requirements such as localization, theme, platform. *Context typings shuold be here.*
+- **disabled**: All components should be have disabled prop.
+- **id**: All components should be have id prop.
+- **newLine**: As described in `componentSize` prop, if any components take part in the new line on a card we're using this prop.
+- **persistState**: *// TODO*
+- **snapKey**: *// TODO*
+- **snapshot**: In our SPA, we want to keep the state of each component when a page will unmount. And the same page will mount again, the component mounts with snapshot prop and it should get the previous state.
+- **style**: All components should be have style prop.
+- **valueConstraint**: ...
+- **visible**: In ComponentComposer, we change the visibility of the component with this prop.
 
 Also it has a Mui CHANNEL contextType in the ```contextTypes```. If the theme change from the AppProvider, the ComponentBase assign new theme to ```props.context.theme```.
 
 ComponentBase methods:
 
-- getInstance: Returns component instance.
-- getMessage: Get message online or offline from [@boa/utils](packages/utils#messaging) 
-- getMessageCode: TODO
-- getSnapKey: TODO
-- getSnapshot: Returns the component current state to provide status. 
-- setSnapshot: Change component status to the given snapshot.
-- validateConstraint:
+- **getInstance**: Returns component instance.
+- **getMessage**: Get message online or offline from [@boa/utils](packages/utils#messaging) 
+- **getMessageCode**: *// TODO*
+- **getSnapKey**: *// TODO*
+- **getSnapshot**: Returns the component current state to provide status. 
+- **setSnapshot**: Change component status to the given snapshot.
+- **validateConstraint** :*// TODO*
 
 ### ComponentComposer
 
@@ -114,18 +114,18 @@ export default function setLocalization(options) {
 
 Utils class has some utility functions:
 
-- generateUUID: Generate a UUID v4.
-- stringFormat: Replace `{[number]}` values with args.
-- stringPadLeft: Add padding to string.
-- getShowStatusMessageReplacedText: 
-- getUniqueKey: Generate a sequential id.
-- getFormChildren: 
-- getFormChildrenRecursive:
-- getCardChildren:
-- getCardChildrenRecursive:
-- isMobile: Check platform is mobile.
-- formHeaderTransactionTypesColor: 
-- isMobileOrTablet: Check platform is mobile or tablet.
-- getDisplayName: 
-- shallowEqual: 
-- isWrappedWithStyles: The component composed with `withStyles` from the `@material-ui/core` package.
+- **generateUUID**: Generate a UUID v4.
+- **stringFormat**: Replace `{[number]}` values with args.
+- **stringPadLeft**: Add padding to string.
+- **getShowStatusMessageReplacedText**: *// TODO*
+- **getUniqueKey**: Generate a sequential id.
+- **getFormChildren**: *// TODO*
+- **getFormChildrenRecursive**: *// TODO*
+- **getCardChildren**: *// TODO*
+- **getCardChildrenRecursive**: *// TODO*
+- **isMobile**: Check platform is mobile.
+- **formHeaderTransactionTypesColor**: *// TODO*
+- **isMobileOrTablet**: Check platform is mobile or tablet.
+- **getDisplayName**: *// TODO*
+- **shallowEqual**: *// TODO*
+- **isWrappedWithStyles**: The component composed with `withStyles` from the `@material-ui/core` package.

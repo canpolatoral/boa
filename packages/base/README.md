@@ -28,7 +28,6 @@ This component is the base component of UI components. All UI components are inh
 - **disabled**: All components should be have disabled prop.
 - **id**: All components should be have id prop.
 - **newLine**: As described in `componentSize` prop, if any components take part in the new line on a card we're using this prop.
-- **persistState**: *// TODO*
 - **snapKey**: *// TODO*
 - **snapshot**: In our SPA, we want to keep the state of each component when a page will unmount. And the same page will mount again, the component mounts with snapshot prop and it should get the previous state.
 - **style**: All components should be have style prop.

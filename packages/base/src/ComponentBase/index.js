@@ -20,7 +20,6 @@ export default class ComponentBase extends Component {
     disabled: PropTypes.bool,
     id: PropTypes.string,
     newLine: PropTypes.bool,
-    persistState: PropTypes.bool,
     snapKey: PropTypes.string,
     snapshot: PropTypes.object,
     style: PropTypes.object,
@@ -41,7 +40,6 @@ export default class ComponentBase extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = this.props.persistState;
 
     if (this.props.context && context && context[CHANNEL]) {
       this.props.context.theme = context[CHANNEL].getState();

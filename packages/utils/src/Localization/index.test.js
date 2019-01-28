@@ -74,4 +74,17 @@ describe('Localization', () => {
         assert.strictEqual(Localization.getLocalizationLanguage().languageId, language.id);
       });
   });
+
+  describe('DateTime functions', () => {
+    it('should return locale data', () => {
+      assert.strictEqual(Localization.getDateLocale(), moment.localeData());
+    });
+
+    it('should return formatter local date', () => {
+      const date = new Date();
+      const format = 'ddMMyyyy';
+      const result = Localization.getFormattedDateLocale(date, format).toISOString();
+      assert.equal(result, moment(date, format).toISOString());
+    });
+  });
 });

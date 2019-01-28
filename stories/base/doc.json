@@ -76,13 +76,6 @@
 				"computed": false
 			}
 		},
-		"persistState": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": ""
-		},
 		"snapKey": {
 			"type": {
 				"name": "string"

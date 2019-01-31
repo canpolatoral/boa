@@ -163,19 +163,6 @@ export default class VirtualList extends PureComponent {
     const { scrollDirection } = this.props;
     const { size, offset } = this.sizeAndPositionManager.getSizeAndPositionForIndex(index);
 
-    console.log(size, offset);
-
-    console.log(positionProp);
-    console.log(scrollDirection);
-
-    console.log(positionProp[scrollDirection]);
-
-    console.log({
-      ...STYLE_ITEM,
-      [sizeProp[scrollDirection]]: size,
-      [positionProp[scrollDirection]]: offset,
-    });
-
     return (this.styleCache[index] = {
       ...STYLE_ITEM,
       [sizeProp[scrollDirection]]: size,

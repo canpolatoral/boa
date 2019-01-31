@@ -1,5 +1,5 @@
 {
-	"description": "DateTimePicker with Material UI Components.\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
+	"description": "The DateTimePicker allows users to enter a date and time by choosing a datetime.\nIt is made up of several components and directives that work together.\nDateTimePicker component extends ComponentBase from `@boa/base` and\ncompose with withStyles from `@material-ui/core/styles` and ComponentComposer from `@boa/base`.",
 	"displayName": "DateTimePicker",
 	"methods": [
 		{
@@ -168,7 +168,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "Selectable max date. Prop could be a Date object or UTC formatted string.",
+			"description": "If `false`, can not allow to select older dates from today.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -179,7 +179,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "Selected date. Prop could be a Date object or UTC formatted string.",
+			"description": "If `false`, can not allow to select special days.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -190,7 +190,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "Default selected value for uncontrolled usage.\nProp could be a Date object or UTC formatted string.",
+			"description": "If `false`, can not allow to select weekend days.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -228,21 +228,51 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "ignore"
+			"description": "ErrorText for date part of the component."
 		},
 		"errorTextTime": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "Hint text for date input."
+			"description": "ErrorText for time part of the component."
 		},
 		"firstDayOfWeek": {
 			"type": {
-				"name": "number"
+				"name": "enum",
+				"value": [
+					{
+						"value": 0,
+						"computed": false
+					},
+					{
+						"value": 1,
+						"computed": false
+					},
+					{
+						"value": 2,
+						"computed": false
+					},
+					{
+						"value": 3,
+						"computed": false
+					},
+					{
+						"value": 4,
+						"computed": false
+					},
+					{
+						"value": 5,
+						"computed": false
+					},
+					{
+						"value": 6,
+						"computed": false
+					}
+				]
 			},
 			"required": false,
-			"description": "First day of week.",
+			"description": "First day of week. Default: 1, Monday.",
 			"defaultValue": {
 				"value": 1,
 				"computed": false

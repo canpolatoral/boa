@@ -25,10 +25,11 @@ let minMinute;
 let minSecond;
 
 /**
- * DateTimePicker with Material UI Components.
- * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
- * from @boa/base.
- */
+ * The DateTimePicker allows users to enter a date and time by choosing a datetime.
+ * It is made up of several components and directives that work together.
+ * DateTimePicker component extends ComponentBase from `@boa/base` and
+ * compose with withStyles from `@material-ui/core/styles` and ComponentComposer from `@boa/base`.
+ * */
 @ComponentComposer
 class DateTimePicker extends ComponentBase {
   static propTypes = {
@@ -38,16 +39,15 @@ class DateTimePicker extends ComponentBase {
      */
     cancelLabel: PropTypes.string,
     /**
-     * Selectable max date. Prop could be a Date object or UTC formatted string.
+     * If `false`, can not allow to select older dates from today.
      */
     canSelectOldDates: PropTypes.bool,
     /**
-     * Selected date. Prop could be a Date object or UTC formatted string.
+     * If `false`, can not allow to select special days.
      */
     canSelectSpecialDays: PropTypes.bool,
     /**
-     * Default selected value for uncontrolled usage.
-     * Prop could be a Date object or UTC formatted string.
+     * If `false`, can not allow to select weekend days.
      */
     canSelectWeekendDays: PropTypes.bool,
     /**
@@ -60,17 +60,17 @@ class DateTimePicker extends ComponentBase {
      */
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /**
-     * ignore
+     * ErrorText for date part of the component.
      */
     errorTextDate: PropTypes.string,
     /**
-     * Hint text for date input.
+     * ErrorText for time part of the component.
      */
     errorTextTime: PropTypes.string,
     /**
-     * First day of week.
+     * First day of week. Default: 1, Monday.
      */
-    firstDayOfWeek: PropTypes.number,
+    firstDayOfWeek: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6]),
     /**
      * Floating label text for date input.
      */

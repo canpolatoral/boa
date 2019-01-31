@@ -1,5 +1,5 @@
 {
-	"description": "IconButton component extends\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
+	"description": "Icon buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/ButtonBase`.\nIt able to render an `<ToolTip />` when the \"tooltipTitle\" prop exists. IconButton\ncomponent extends ComponentBase from `@boa/base` and compose with withStyles\nfrom `@material-ui/core/styles` and ComponentComposer from `@boa/base`.",
 	"displayName": "IconButton",
 	"methods": [],
 	"props": {
@@ -74,7 +74,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, the base button will have a keyboard focus ripple.\ndisableRipple` must also be `false`.",
+			"description": "If `true`, the base button will have a keyboard focus ripple.\n`disableRipple` must also be `false`.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -92,7 +92,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Icon props"
+			"description": "Icon props that be passed to the `<Icon />` element."
 		},
 		"onClick": {
 			"type": {
@@ -106,7 +106,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Override the style of element"
+			"description": "Override the style of element."
 		},
 		"svgIcon": {
 			"type": {
@@ -120,14 +120,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Tooltip"
+			"description": "If type 'icon' tooltip will generate on icon button."
 		},
 		"tooltipPosition": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "Tooltip position"
+			"description": "The position of the tooltip in button."
 		}
 	},
 	"composes": [

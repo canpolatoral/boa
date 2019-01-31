@@ -1,5 +1,5 @@
 {
-	"description": "Represents a clickable button. This component is wrapped from *@material-ui/core/Button*.\nIt able to render an *IconButton* when the \"type\" prop is \"icon\". Button component extends\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
+	"description": "Buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/Button`.\nIt able to render an `<IconButton />` when the \"type\" prop is \"icon\". Button component extends\nComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`\nand ComponentComposer from `@boa/base`.",
 	"displayName": "Button",
 	"methods": [
 		{
@@ -54,7 +54,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `false` , content of the button wil be upper case",
+			"description": "If `false`, content of the button wil be upper case.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -79,7 +79,7 @@
 				]
 			},
 			"required": false,
-			"description": "Size of button.",
+			"description": "Predefined sizes of button.",
 			"defaultValue": {
 				"value": "medium",
 				"computed": false
@@ -143,14 +143,14 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": "Custom icon"
+			"description": "The custom icon element to be rendered inside the button."
 		},
 		"iconProperties": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": "Icon props"
+			"description": "Icon props that be passed to the `<Icon />` element."
 		},
 		"mini": {
 			"type": {
@@ -210,7 +210,7 @@
 				]
 			},
 			"required": false,
-			"description": "Text position on the button.",
+			"description": "The position of the text in button.",
 			"defaultValue": {
 				"value": "center",
 				"computed": false
@@ -228,14 +228,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "If type 'icon' tooltip will generate on icon button"
+			"description": "If type 'icon' tooltip will generate on icon button."
 		},
 		"tooltipPosition": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "tooltipPosition"
+			"description": "The position of the tooltip in button."
 		},
 		"type": {
 			"type": {

@@ -4,7 +4,8 @@ import path from 'path';
 import fs from 'fs';
 import yargs from 'yargs';
 import { parse } from 'react-docgen';
-//
+import readlineSync from 'readline-sync';
+
 const options = yargs
   .option('input', {
     default: 'all',
@@ -40,21 +41,21 @@ const repair = obj => {
   }
 };
 
-const generateDocument = component => {
-  if (component === 'Scroll' || component === 'Icon') return;
+const generateDocument = (input, output) => {
+  if (input === 'Scroll' || input === 'Icon') return;
 
-  const fileContent = fs.readFileSync(path.join(__dirname, '..', '..', component), {
+  const fileContent = fs.readFileSync(path.join(__dirname, '..', '..', input), {
     encoding: 'utf8',
   });
 
   const componentInfo = parse(fileContent);
   repair(componentInfo);
 
-  if (options.output === 'console') {
+  if (output === 'console') {
     console.log(JSON.stringify(componentInfo, null, '\t')); // eslint-disable-line
   } else {
     fs.writeFileSync(
-      path.join(__dirname, '..', '..', options.output),
+      path.join(__dirname, '..', '..', output),
       JSON.stringify(componentInfo, null, '\t'),
       { flag: 'w', encoding: 'utf8' },
     );
@@ -62,10 +63,41 @@ const generateDocument = component => {
 };
 
 const generate = () => {
-  if (options.input === 'all') {
+  if (options.input === 'all' && options.output === 'console') {
+    // eslint-disable-next-line
+    const response = readlineSync.question(`The all of doc.json's will re-generate. Are you sure? (Y/N): `);
+    if (response.toLocaleLowerCase().startsWith('y')) {
+      // #region All Components
+      [
+        {
+          input: 'packages/components/src/Button/Button.js',
+          output: 'stories/Buttons/Button/doc.json',
+        },
+        {
+          input: 'packages/components/src/IconButton/IconButton.js',
+          output: 'stories/Buttons/IconButton/doc.json',
+        },
+        {
+          input: 'packages/components/src/CheckBox/CheckBox.js',
+          output: 'stories/CheckBox/doc.json',
+        },
+        {
+          input: 'packages/components/src/DateTimePicker/DateTimePicker.js',
+          output: 'stories/DateTimePicker/doc.json',
+        },
+      ].forEach((item) => {
+        console.log('generating: ' + item.input + ' to ' + item.output); // eslint-disable-line
+        generateDocument(item.input, item.output);
+      });
+      // #endregion All Components
+    } else {
+      process.exit(0);
+    }
+  } else if (options.input === 'all') {
     throw new Error('input not specified, use --input "packages/components/src/Button/Button.js"');
+  } else {
+    generateDocument(options.input, options.output);
   }
-  generateDocument(options.input);
 };
 
 generate();

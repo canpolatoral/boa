@@ -35,26 +35,6 @@ export default class Preview extends ComponentBase {
     const availableProperties = [];
     const currentProperties = {};
 
-    // if (BaseProps.props) {
-    //   Object.keys(BaseProps.props).sort().forEach(key => {
-    //     const prop = BaseProps.props[key];
-
-    //     if (prop.description && prop.description.includes('@ignore')) return;
-
-    //     const property = {
-    //       name: key,
-    //       type: Utils.getPropType(prop),
-    //       value: Utils.getPropValue(prop),
-    //       values: Utils.getAavailableValues(prop),
-    //       default: Utils.getDefaultValue(prop),
-    //     };
-    //     console.log(property);
-    //     availableProperties.push(property);
-    //     const defaultValue = Utils.getDefaultValue(prop);
-    //     if (defaultValue) currentProperties[key] = defaultValue;
-    //   });
-    // }
-
     Object.keys(propMetaData)
       .sort()
       .forEach(key => {
@@ -65,7 +45,7 @@ export default class Preview extends ComponentBase {
           name: key,
           type: Utils.getPropType(prop),
           value: Utils.getPropValue(prop),
-          values: Utils.getAavailableValues(prop),
+          values: Utils.getAvailableValues(prop),
           default: Utils.getDefaultValue(prop),
         };
         availableProperties.push(property);
@@ -94,9 +74,23 @@ export default class Preview extends ComponentBase {
     return this.props.doc.displayName;
   }
 
-  propertyChanged(property, value) {
+  propertyChanged(property, val) {
     const self = this;
     const { currentProperties } = this.state;
+
+    let value = val;
+    /*
+     * If component propType is oneOf([..]) and values are not string
+     * The NativeSelect component (on the props-panel.js) returns selected value as string,
+     * So we are find the correct value from doc.json
+     */
+    if (typeof value === 'string') {
+      const values = Utils.getAvailableValues(this.props.doc.props[property]);
+      if (values && values.length > 0) {
+        value = values.find(x => x.toString() === val);
+      }
+    }
+
     const newCurrentProperties = Object.assign({}, currentProperties);
     newCurrentProperties[property] = value;
     this.setState({ currentProperties: newCurrentProperties }, () => {
@@ -171,11 +165,21 @@ export default class Preview extends ComponentBase {
       <RenderedComponent {...this.state.currentProperties} />,
       {
         displayName: this.getName.bind(this),
-        filterProps: ['context', 'maxFontSize', 'minFontSize', 'doc', 'data'],
+        filterProps: [
+          'context',
+          'maxFontSize',
+          'minFontSize',
+          'doc',
+          'data',
+          'componentSize',
+          'newLine'],
       },
     );
+
+    const strings = RenderedComponentString.split('\n');
+    strings.splice(1, 0, '  context={context}');
     return `import ${this.getName()} from '@boa/components/${this.getName()}';
 
-${RenderedComponentString}`;
+${strings.join('\n')}`;
   }
 }

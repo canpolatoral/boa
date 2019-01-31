@@ -111,6 +111,7 @@
     "react-hot-loader": "3.0.0-beta.7",
     "react-jss": "^8.6.1",
     "react-to-typescript-definitions": "^1.2.0",
+    "readline-sync": "^1.4.9",
     "recast": "^0.15.5",
     "resolve": "^1.8.1",
     "rimraf": "^2.5.4",

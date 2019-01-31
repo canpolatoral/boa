@@ -37,12 +37,13 @@ const styles = theme => ({
 });
 
 /**
- * Represents a check box. If a label prop specified the component renders a FormControl
- * with a *Label* and *@material-ui/core/Checkbox*.
- * If not, it renders a *@material-ui/core/Checkbox*.
- * Also, it able to render an errorText. CheckBox component extends
- * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
- * from @boa/base.
+ * A CheckBox represents a button with two states, selected and unselected.
+ * This component is wrapped from `@material-ui/core/Checkbox`.
+ * If the label prop specified, the component renders `@material-ui/core/FormControlLabel`
+ * If not, it renders a `@material-ui/core/Checkbox`
+ * Also, it is able to render an errorText prop. CheckBox component extends
+ * ComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`
+ * and ComponentComposer from `@boa/base`.
  */
 @ComponentComposer
 @withStyles(styles)
@@ -52,13 +53,13 @@ class CheckBox extends ComponentBase {
     /**
      * If `true`, the component is checked.
      */
-    checked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+    checked: PropTypes.bool,
     /**
      * The icon to display when the component is checked.
      */
     checkedIcon: PropTypes.node,
     /**
-     * Useful to extend the style applied to components. @ignore
+     * @ignore
      */
     classes: PropTypes.object,
     /**
@@ -83,7 +84,7 @@ class CheckBox extends ComponentBase {
      */
     errorText: PropTypes.string,
     /**
-     * If `true`, and component has label and errorText the errorText will be visible
+     * If `true`, and component has label and errorText the errorText will be visible.
      */
     errorTextVisible: PropTypes.bool,
     /**
@@ -95,19 +96,7 @@ class CheckBox extends ComponentBase {
      */
     indeterminate: PropTypes.bool,
     /**
-     * The icon to display when the component is indeterminate.
-     */
-    indeterminateIcon: PropTypes.node,
-    /**
-     * Properties applied to the `input` element.
-     */
-    inputProps: PropTypes.object,
-    /**
-     * Use that property to pass a ref callback to the native input component.
-     */
-    inputRef: PropTypes.func,
-    /**
-     * If exists, checkbox will be render with <Label> component
+     * If exists, checkbox will be render with `<Label>` component
      */
     label: PropTypes.string,
     /**
@@ -118,10 +107,6 @@ class CheckBox extends ComponentBase {
      * @ignore
      */
     onChange: PropTypes.func,
-    /**
-     * The input component property `type`.
-     */
-    type: PropTypes.string,
     /**
      * The value of the component.
      */

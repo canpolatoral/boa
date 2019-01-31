@@ -75,11 +75,11 @@ export function getPropValue(prop) {
   return null;
 }
 
-export function getAavailableValues(prop) {
+export function getAvailableValues(prop) {
   if (prop && prop.type) {
     if (prop.type.value) {
       if (Array.isArray(prop.type.value)) {
-        if (prop.type.value[0].value) {
+        if (prop.type.value[0].value !== undefined && prop.type.value[0].value !== null) {
           // oneOf
           return prop.type.value.map(item => {
             return item.value;

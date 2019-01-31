@@ -18,25 +18,26 @@ const styles = () => ({
 });
 
 /**
- * Represents a clickable button. This component is wrapped from *@material-ui/core/Button*.
- * It able to render an *IconButton* when the "type" prop is "icon". Button component extends
- * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
- * from @boa/base.
+ * Buttons allow users to take actions, and make choices, with a single tap.
+ * This component is wrapped from `@material-ui/core/Button`.
+ * It able to render an `<IconButton />` when the "type" prop is "icon". Button component extends
+ * ComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`
+ * and ComponentComposer from `@boa/base`.
  */
 @ComponentComposer
 @withStyles(styles)
 class Button extends ComponentBase {
   static propTypes = {
     /**
-     * Base properties from ComponentBase
+     * Base properties from ComponentBase.
      */
     ...ComponentBase.propTypes,
     /**
-     * If `false` , content of the button wil be upper case
+     * If `false`, content of the button wil be upper case.
      */
     allowLabelCase: PropTypes.bool,
     /**
-     * Size of button.
+     * Predefined sizes of button.
      */
     buttonSize: PropTypes.oneOf(['small', 'medium', 'large']),
     /**
@@ -61,11 +62,11 @@ class Button extends ComponentBase {
      */
     fullWidth: PropTypes.bool,
     /**
-     * Custom icon
+     * The custom icon element to be rendered inside the button.
      */
     icon: PropTypes.any,
     /**
-     * Icon props
+     * Icon props that be passed to the `<Icon />` element.
      */
     iconProperties: PropTypes.object,
     /**
@@ -89,7 +90,7 @@ class Button extends ComponentBase {
      */
     text: PropTypes.string,
     /**
-     * Text position on the button.
+     * The position of the text in button.
      */
     textPosition: PropTypes.oneOf(['center', 'left', 'right']),
     /**
@@ -97,11 +98,11 @@ class Button extends ComponentBase {
      */
     textStyle: PropTypes.object,
     /**
-     * If type 'icon' tooltip will generate on icon button
+     * If type 'icon' tooltip will generate on icon button.
      */
     tooltip: PropTypes.string,
     /**
-     * tooltipPosition
+     * The position of the tooltip in button.
      */
     tooltipPosition: PropTypes.string,
     /**

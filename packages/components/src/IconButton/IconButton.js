@@ -24,16 +24,18 @@ const styles = {
 };
 
 /**
- * IconButton component extends
- * ComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*
- * from @boa/base.
+ * Icon buttons allow users to take actions, and make choices, with a single tap.
+ * This component is wrapped from `@material-ui/core/ButtonBase`.
+ * It able to render an `<ToolTip />` when the "tooltipTitle" prop exists. IconButton
+ * component extends ComponentBase from `@boa/base` and compose with withStyles
+ * from `@material-ui/core/styles` and ComponentComposer from `@boa/base`.
  */
 @ComponentComposer
 @withStyles(styles)
 class IconButton extends ComponentBase {
   static propTypes = {
     /**
-     * Base properties from ComponentBase
+     * Base properties from ComponentBase.
      */
     ...ComponentBase.propTypes,
     /**
@@ -55,7 +57,7 @@ class IconButton extends ComponentBase {
     dynamicIcon: PropTypes.string,
     /**
      * If `true`, the base button will have a keyboard focus ripple.
-     * disableRipple` must also be `false`.
+     * `disableRipple` must also be `false`.
      */
     focusRipple: PropTypes.bool,
     /**
@@ -63,7 +65,7 @@ class IconButton extends ComponentBase {
      */
     fontIcon: PropTypes.string,
     /**
-     * Icon props
+     * Icon props that be passed to the `<Icon />` element.
      */
     iconProperties: PropTypes.object,
     /**
@@ -71,7 +73,7 @@ class IconButton extends ComponentBase {
      */
     onClick: PropTypes.func,
     /**
-     * Override the style of element
+     * Override the style of element.
      */
     style: PropTypes.object,
     /**
@@ -79,13 +81,16 @@ class IconButton extends ComponentBase {
      */
     svgIcon: PropTypes.string,
     /**
-     * Tooltip
+     * If type 'icon' tooltip will generate on icon button.
      */
     tooltip: PropTypes.string,
     /**
-     * Tooltip position
+     * The position of the tooltip in button.
      */
     tooltipPosition: PropTypes.string,
+    /**
+     * Button type should be `contained`, `text`, `fab` or `icon`.
+     */
   };
 
   static defaultProps = {
@@ -140,8 +145,8 @@ class IconButton extends ComponentBase {
         {iconButton}
       </ToolTip>
     ) : (
-      iconButton
-    );
+        iconButton
+      );
   }
 }
 

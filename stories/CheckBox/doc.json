@@ -1,5 +1,5 @@
 {
-	"description": "Represents a check box. If a label prop specified the component renders a FormControl\nwith a *Label* and *@material-ui/core/Checkbox*.\nIf not, it renders a *@material-ui/core/Checkbox*.\nAlso, it able to render an errorText. CheckBox component extends\nComponentBase and compose with *withStyles* from @material-ui/core/styles and *ComponentComposer*\nfrom @boa/base.",
+	"description": "A CheckBox represents a button with two states, selected and unselected.\nThis component is wrapped from `@material-ui/core/Checkbox`.\nIf the label prop specified, the component renders `@material-ui/core/FormControlLabel`\nIf not, it renders a `@material-ui/core/Checkbox`\nAlso, it is able to render an errorText prop. CheckBox component extends\nComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`\nand ComponentComposer from `@boa/base`.",
 	"displayName": "CheckBox",
 	"methods": [
 		{
@@ -60,15 +60,7 @@
 	"props": {
 		"checked": {
 			"type": {
-				"name": "union",
-				"value": [
-					{
-						"name": "bool"
-					},
-					{
-						"name": "string"
-					}
-				]
+				"name": "bool"
 			},
 			"required": false,
 			"description": "If `true`, the component is checked."
@@ -85,7 +77,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Useful to extend the style applied to components. @ignore"
+			"description": "@ignore"
 		},
 		"color": {
 			"type": {
@@ -149,7 +141,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, and component has label and errorText the errorText will be visible",
+			"description": "If `true`, and component has label and errorText the errorText will be visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -173,33 +165,12 @@
 				"computed": false
 			}
 		},
-		"indeterminateIcon": {
-			"type": {
-				"name": "node"
-			},
-			"required": false,
-			"description": "The icon to display when the component is indeterminate."
-		},
-		"inputProps": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": "Properties applied to the `input` element."
-		},
-		"inputRef": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": "Use that property to pass a ref callback to the native input component."
-		},
 		"label": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "If exists, checkbox will be render with <Label> component"
+			"description": "If exists, checkbox will be render with `<Label>` component"
 		},
 		"name": {
 			"type": {
@@ -214,13 +185,6 @@
 			},
 			"required": false,
 			"description": "@ignore"
-		},
-		"type": {
-			"type": {
-				"name": "string"
-			},
-			"required": false,
-			"description": "The input component property `type`."
 		},
 		"value": {
 			"type": {

@@ -1,0 +1,33 @@
+[
+  {
+    "alias": "Button",
+    "input": "packages/components/src/Button/Button.js",
+    "output": "stories/Buttons/Button/doc.json"
+  },
+  {
+    "alias": "IconButton",
+    "input": "packages/components/src/IconButton/IconButton.js",
+    "output": "stories/Buttons/IconButton/doc.json"
+  },
+  {
+    "alias": "CheckBox",
+    "input": "packages/components/src/CheckBox/CheckBox.js",
+    "output": "stories/CheckBox/doc.json"
+  },
+  {
+    "alias": "DateTimePicker",
+    "input": "packages/components/src/DateTimePicker/DateTimePicker.js",
+    "output": "stories/DateTimePicker/doc.json"
+  },
+  {
+    "alias": "TreeView",
+    "input": "packages/components/src/TreeView/TreeView.js",
+    "output": "stories/TreeView/doc.json"
+  },
+  {
+    "alias": "TreeViewGrid",
+    "input": "packages/components/src/TreeViewGrid/TreeViewGrid.js",
+    "output": "stories/TreeViewGrid/doc.json"
+  }
+
+]

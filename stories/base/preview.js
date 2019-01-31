@@ -172,7 +172,8 @@ export default class Preview extends ComponentBase {
           'doc',
           'data',
           'componentSize',
-          'newLine'],
+          'newLine',
+        ],
       },
     );
 

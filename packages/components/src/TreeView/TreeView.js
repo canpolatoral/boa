@@ -7,6 +7,11 @@ import { InputAction } from '@boa/components/InputAction';
 import Footer from './components/Footer';
 import Tree from './Tree';
 
+/**
+ * This component visualizes the elements hierarchically.
+ * Almost anything can be represented in a tree structure.
+ * See the `./data/sampleData.js` for sample data.
+ */
 @ComponentComposer
 class TreeView extends ComponentBase {
   static propTypes = {

@@ -5,6 +5,7 @@ import fs from 'fs';
 import yargs from 'yargs';
 import { parse } from 'react-docgen';
 import readlineSync from 'readline-sync';
+import AllComponents from './components.json';
 
 const options = yargs
   .option('input', {
@@ -65,38 +66,26 @@ const generateDocument = (input, output) => {
 const generate = () => {
   if (options.input === 'all' && options.output === 'console') {
     // eslint-disable-next-line
-    const response = readlineSync.question(`The all of doc.json's will re-generate. Are you sure? (Y/N): `);
+    const response = readlineSync.question(
+      "The all of doc.json's will re-generate. Are you sure? (Y/N): ",
+    );
     if (response.toLocaleLowerCase().startsWith('y')) {
-      // #region All Components
-      [
-        {
-          input: 'packages/components/src/Button/Button.js',
-          output: 'stories/Buttons/Button/doc.json',
-        },
-        {
-          input: 'packages/components/src/IconButton/IconButton.js',
-          output: 'stories/Buttons/IconButton/doc.json',
-        },
-        {
-          input: 'packages/components/src/CheckBox/CheckBox.js',
-          output: 'stories/CheckBox/doc.json',
-        },
-        {
-          input: 'packages/components/src/DateTimePicker/DateTimePicker.js',
-          output: 'stories/DateTimePicker/doc.json',
-        },
-      ].forEach((item) => {
+      AllComponents.forEach(item => {
         console.log('generating: ' + item.input + ' to ' + item.output); // eslint-disable-line
         generateDocument(item.input, item.output);
       });
-      // #endregion All Components
     } else {
       process.exit(0);
     }
   } else if (options.input === 'all') {
     throw new Error('input not specified, use --input "packages/components/src/Button/Button.js"');
   } else {
-    generateDocument(options.input, options.output);
+    const cmp = AllComponents.find(x => x.alias === options.input);
+    if (cmp && cmp.alias) {
+      generateDocument(cmp.input, cmp.output);
+    } else {
+      generateDocument(options.input, options.output);
+    }
   }
 };
 

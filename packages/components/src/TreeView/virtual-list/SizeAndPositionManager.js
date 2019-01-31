@@ -177,7 +177,7 @@ export default class SizeAndPositionManager {
     return null;
   }
 
-  _exponentialSearch({ index, offset }) {
+  exponentialSearch({ index, offset }) {
     let interval = 1;
 
     while (index < this.itemCount && this.getSizeAndPositionForIndex(index).offset < offset) {
@@ -198,7 +198,7 @@ export default class SizeAndPositionManager {
    * If no exact match is found the next lowest item index will be returned.
    * This allows partially visible items (with offsets just before/above the fold) to be visible.
    */
-  _findNearestItem(offset) {
+  findNearestItem(offset) {
     if (isNaN(offset)) {
       throw Error(`Invalid offset ${offset} specified`);
     }

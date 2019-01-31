@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "This components is the grid version of TreeView component.\nIt renders the data into a data grid.",
 	"displayName": "TreeViewGrid",
 	"methods": [
 		{
@@ -133,7 +133,7 @@
 					}
 				]
 			},
-			"required": true,
+			"required": false,
 			"description": ""
 		},
 		"disabled": {

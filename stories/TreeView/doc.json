@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "This component visualizes the elements hierarchically.\nAlmost anything can be represented in a tree structure.\nSee the `./data/sampleData.js` for sample data.",
 	"displayName": "TreeView",
 	"methods": [
 		{

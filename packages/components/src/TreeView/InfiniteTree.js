@@ -14,6 +14,8 @@ export default class extends Component {
 
   tree = null;
 
+  state = {};
+
   eventHandlers = {
     onContentWillUpdate: null,
     onContentDidUpdate: null,

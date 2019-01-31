@@ -26,6 +26,8 @@ const STYLE_ITEM = { position: 'absolute', left: 0, minWidth: '100%' };
 export default class VirtualList extends PureComponent {
   static defaultProps = {
     overscanCount: 3,
+    scrollDirection: DIRECTION_VERTICAL,
+    width: '100%',
   };
 
   static propTypes = {
@@ -160,6 +162,19 @@ export default class VirtualList extends PureComponent {
 
     const { scrollDirection } = this.props;
     const { size, offset } = this.sizeAndPositionManager.getSizeAndPositionForIndex(index);
+
+    console.log(size, offset);
+
+    console.log(positionProp);
+    console.log(scrollDirection);
+
+    console.log(positionProp[scrollDirection]);
+
+    console.log({
+      ...STYLE_ITEM,
+      [sizeProp[scrollDirection]]: size,
+      [positionProp[scrollDirection]]: offset,
+    });
 
     return (this.styleCache[index] = {
       ...STYLE_ITEM,

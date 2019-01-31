@@ -145,8 +145,8 @@ class IconButton extends ComponentBase {
         {iconButton}
       </ToolTip>
     ) : (
-        iconButton
-      );
+      iconButton
+    );
   }
 }
 

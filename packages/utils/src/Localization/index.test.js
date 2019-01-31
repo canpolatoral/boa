@@ -2,14 +2,15 @@ import { spy } from 'sinon';
 import { assert, expect } from 'chai';
 import moment from 'moment';
 import numeral from 'numeral';
-import { Localization } from '..';
+import { Localization, getLocalization } from '..';
+import { Language } from './language';
 
 const languages = [
-  { id: 1, code: 'tr' },
-  { id: 2, code: 'en' },
-  { id: 3, code: 'de' },
-  { id: 4, code: 'ru' },
-  { id: 5, code: 'ar-ly', isRightToLeft: true },
+  { id: Language.TR, code: 'tr' },
+  { id: Language.EN, code: 'en' },
+  { id: Language.DE, code: 'de' },
+  { id: Language.RU, code: 'ru' },
+  { id: Language.AR, code: 'ar-ly', isRightToLeft: true },
   { id: 6, code: 'en' }, // for default values
 ];
 
@@ -72,6 +73,8 @@ describe('Localization', () => {
         Localization.changeLocalizationLanguage(language.id);
         assert.strictEqual(Localization.getLocalizationLanguage().language, language.code);
         assert.strictEqual(Localization.getLocalizationLanguage().languageId, language.id);
+        assert.strictEqual(getLocalization().language, language.code);
+        assert.strictEqual(getLocalization().languageId, language.id);
       });
   });
 
@@ -85,6 +88,32 @@ describe('Localization', () => {
       const format = 'ddMMyyyy';
       const result = Localization.getFormattedDateLocale(date, format).toISOString();
       assert.equal(result, moment(date, format).toISOString());
+    });
+  });
+
+  describe('String functions', () => {
+    it('should string to upper case', () => {
+      [
+        { value: 'test', result: 'TEST', languageId: Language.TR },
+        { value: 'cçgğıioösşuü', result: 'CÇGĞIİOÖSŞUÜ', languageId: Language.TR },
+        { value: 'test', result: 'test'.toUpperCase(), languageId: Language.EN },
+        { value: 'cçgğıioösşuü', result: 'cçgğıioösşuü'.toUpperCase(), languageId: Language.EN },
+      ].forEach((item) => {
+        Localization.changeLocalizationLanguage(item.languageId);
+        assert.strictEqual(Localization.stringUpperCase(item.value), item.result);
+      });
+    });
+
+    it('should string to upper case', () => {
+      [
+        { value: 'TEST', result: 'test', languageId: Language.TR },
+        { value: 'CÇGĞIİOÖSŞUÜ', result: 'cçgğıioösşuü', languageId: Language.TR },
+        { value: 'TEST', result: 'TEST'.toLowerCase(), languageId: Language.EN },
+        { value: 'CÇGĞIİOÖSŞUÜ', result: 'CÇGĞIİOÖSŞUÜ'.toLowerCase(), languageId: Language.EN },
+      ].forEach((item) => {
+        Localization.changeLocalizationLanguage(item.languageId);
+        assert.strictEqual(Localization.stringLowerCase(item.value), item.result);
+      });
     });
   });
 });

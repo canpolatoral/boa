@@ -8,6 +8,10 @@ import { Button } from '@boa/components/Button';
 import { IconButton } from '@boa/components/IconButton';
 import { LinearPanel } from '@boa/components/LinearPanel';
 
+/**
+ * This components is the grid version of TreeView component.
+ * It renders the data into a data grid.
+ */
 @ComponentComposer
 class TreeViewGrid extends ComponentBase {
   static propTypes = {

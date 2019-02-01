@@ -13,7 +13,7 @@ Pull requests are always welcome, but, before working on a large change, it is b
 Please create a new branch from an up to date master on your fork. 
 
 1. Fork the boa repository on Github
-2. Clone your fork to your local machine `git clone git@github.com:<yourname>/boa.git`
+2. Clone your fork to your local machine `git clone https://github.com/<yourname>/boa.git`
 3. Create a branch `git checkout -b my-topic-branch`
 4. Make your changes, lint, then push to to GitHub with `git push --set-upstream origin my-topic-branch`.
 5. Visit GitHub and make your pull request.
@@ -22,7 +22,7 @@ Please create a new branch from an up to date master on your fork.
 If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
 
 ```sh
-git remote add upstream git@github.com:kuveytturk/boa.git
+git remote add upstream https://github.com/kuveytturk/boa.git
 git checkout master
 git pull upstream master
 git checkout -b my-topic-branch

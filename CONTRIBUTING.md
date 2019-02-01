@@ -22,7 +22,7 @@ Please create a new branch from an up to date master on your fork.
 If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
 
 ```sh
-git remote add upstream git@github.com:mui-org/boa.git
+git remote add upstream git@github.com:kuveytturk/boa.git
 git checkout master
 git pull upstream master
 git checkout -b my-topic-branch

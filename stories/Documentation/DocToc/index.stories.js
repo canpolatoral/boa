@@ -13,7 +13,17 @@ stories.add('DocToc', ({ props }) => {
   return (
     <div style={{ padding: 20, background: 'white' }}>
       <Header {...props} component={DocToc} doc={doc} />
-      <Preview {...props} component={DocToc} doc={doc} />
+      <Preview
+        {...props}
+        component={DocToc}
+        doc={doc}
+        content={[
+          {
+            id: 'test',
+            content: 'hiii',
+            level: 1,
+          }
+        ]} />
       <Props {...props} component={DocToc} doc={doc} />
     </div>
   );

@@ -20,6 +20,26 @@
     "output": "stories/DateTimePicker/doc.json"
   },
   {
+    "alias": "DocCode",
+    "input": "packages/components/src/DocCode/DocCode.js",
+    "output": "stories/Documentation/DocCode/doc.json"
+  },
+  {
+    "alias": "DocNotice",
+    "input": "packages/components/src/DocNotice/DocNotice.js",
+    "output": "stories/Documentation/DocNotice/doc.json"
+  },
+  {
+    "alias": "DocToc",
+    "input": "packages/components/src/DocToc/DocToc.js",
+    "output": "stories/Documentation/DocToc/doc.json"
+  },
+  {
+    "alias": "DocViewer",
+    "input": "packages/components/src/DocViewer/DocViewer.js",
+    "output": "stories/Documentation/DocViewer/doc.json"
+  },
+  {
     "alias": "TreeView",
     "input": "packages/components/src/TreeView/TreeView.js",
     "output": "stories/TreeView/doc.json"
@@ -29,5 +49,4 @@
     "input": "packages/components/src/TreeViewGrid/TreeViewGrid.js",
     "output": "stories/TreeViewGrid/doc.json"
   }
-
 ]

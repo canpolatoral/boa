@@ -1,5 +1,5 @@
 {
-	"description": "Code documentation component",
+	"description": "This component highlights the codes.\nIt provides different color themes.",
 	"displayName": "DocCode",
 	"methods": [
 		{
@@ -25,7 +25,7 @@
 			"required": false,
 			"description": "Code that will be highlighted.",
 			"defaultValue": {
-				"value": "console.log(\\'Hello world\\');",
+				"value": "console.log('Hello world');",
 				"computed": false
 			}
 		},
@@ -54,7 +54,7 @@
 						"computed": false
 					},
 					{
-						"value": "raiinbow",
+						"value": "rainbow",
 						"computed": false
 					},
 					{
@@ -68,7 +68,7 @@
 				]
 			},
 			"required": false,
-			"description": "Editor type that will be colored",
+			"description": "Editor theme.",
 			"defaultValue": {
 				"value": "github",
 				"computed": false
@@ -90,7 +90,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Code language.",
+			"description": "Programming language of the code,",
 			"defaultValue": {
 				"value": "js",
 				"computed": false

@@ -4,20 +4,21 @@ import { ComponentBase, AppProvider } from '@boa/base';
 import { Icon } from '@boa/components/Icon';
 
 /**
- * Notice component for BOA markdown documents.
+ * This component renders the messages with several types:
+ * 'Tip, Info, Warning, Error'
  */
 class DocNotice extends ComponentBase {
   static propTypes = {
     /**
-     * Notice text
+     * The text to display.
      */
-    content: PropTypes.string,
+    content: PropTypes.string.isRequired,
     /**
      * Determines the paddings in interior design. Default false, wide paddings like material.
      */
     fitMode: PropTypes.bool,
     /**
-     * Header of the notice.
+     * Header message of the notice.
      */
     header: PropTypes.string,
     /**
@@ -28,6 +29,8 @@ class DocNotice extends ComponentBase {
 
   static defaultProps = {
     type: 'tip',
+    content: 'Tip Message',
+    header: 'Tip Header',
     fitMode: false,
   };
 

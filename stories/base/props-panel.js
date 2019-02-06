@@ -117,7 +117,7 @@ export default class PropsPanel extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => {}}
+          onAdd={() => { }}
           onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}

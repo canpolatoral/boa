@@ -24,7 +24,7 @@ This component wraps MuiThemeProvider and also it has a [error wrapper](#ErrorBo
 This component is the base component of UI components. All UI components are inherited from ComponentBase. It has some common props:
 
 - **componentSize**: In our design guideline, all components on a page must be placed inside a card. The ComponentSize prop defines the size of the component.  The ComponentSize constant exported from [`enums`](packages/base/src/enums/index.js#L10).
-- **context**: The context property defines application requirements such as localization, theme, platform. *Context typings shuold be here.*
+- **context**: The context property defines application requirements such as localization, theme, platform. We are storing our context parameters at Redux store, in our SPA. Please refer to our [Storybook Container](/.storybook/container.js) to how we changing the theme, language or device size.
 - **disabled**: All components should be have disabled prop.
 - **id**: All components should be have id prop.
 - **newLine**: As described in `componentSize` prop, if any components take part in the new line on a card we're using this prop.

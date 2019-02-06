@@ -99,7 +99,7 @@ describe('<IconMenu />', () => {
     const wrapper = mount(<IconMenu id="icon-menu-test" context={context} items={items} />);
     wrapper.find('button').simulate('click');
     const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
-    assert.strictEqual(paper.tagName.toLocaleLowerCase(), 'div');
+    assert.strictEqual(paper.tagName.toLowerCase(), 'div');
     const list = paper.getElementsByTagName('ul')[0];
     assert.strictEqual(list.attributes.role.value, 'menu');
     const listItem = list.getElementsByTagName('li')[0];
@@ -125,7 +125,7 @@ describe('<IconMenu />', () => {
       const wrapper = mount(<IconMenu id="icon-menu-test" context={context} items={items} />);
       wrapper.find('button').simulate('click');
       const paper = document.querySelectorAll('[class*=MuiPaper-root]')[0];
-      assert.strictEqual(paper.tagName.toLocaleLowerCase(), 'div');
+      assert.strictEqual(paper.tagName.toLowerCase(), 'div');
       const list = paper.getElementsByTagName('ul')[0];
       assert.strictEqual(list.attributes.role.value, 'menu');
       const listItem = list.getElementsByTagName('li')[0];

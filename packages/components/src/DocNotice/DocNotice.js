@@ -29,8 +29,8 @@ class DocNotice extends ComponentBase {
 
   static defaultProps = {
     type: 'tip',
-    content: 'Tip Message',
-    header: 'Tip Header',
+    content: '',
+    header: '',
     fitMode: false,
   };
 

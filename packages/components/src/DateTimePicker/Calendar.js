@@ -262,7 +262,7 @@ class Calendar extends ComponentBase {
     }
 
     const newDisplayDate = getFirstDayOfMonth(adjustedDate);
-    if (newDisplayDate !== this.state.displayDate) {
+    if (newDisplayDate !== undefined && newDisplayDate !== this.state.displayDate) {
       this.setDisplayDate(newDisplayDate, adjustedDate);
     } else {
       this.setState({
@@ -621,6 +621,10 @@ class Calendar extends ComponentBase {
   }
 
   mounthSelector() {
+    const { minDate, maxDate } = this.props;
+    const minValue = minDate ? minDate.getFullYear() : Calendar.defaultProps.minDate.getFullYear();
+    const maxValue = maxDate ? maxDate.getFullYear() : Calendar.defaultProps.maxDate.getFullYear();
+
     if (!this.props.disableYearSelection) {
       return (
         <TimeBase
@@ -629,8 +633,8 @@ class Calendar extends ComponentBase {
           DateTimeFormat={this.props.DateTimeFormat}
           onTouchTapTime={this.handleTouchTapMonth}
           selectedDate={this.state.selectedYearMonthDate}
-          minValue={this.props.minMonth}
-          maxValue={this.props.maxMonth}
+          minValue={minValue}
+          maxValue={maxValue}
           timeType={4}
           format={this.props.dateFormat}
         />
@@ -970,7 +974,7 @@ class Calendar extends ComponentBase {
                   </div>
                   <div style={Object.assign({}, style.transitionSlide, { minHeight })}>
                     {// TODO :SLIDE
-                    this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
+                      this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
                   </div>
 
                   {/* </Slide> */}

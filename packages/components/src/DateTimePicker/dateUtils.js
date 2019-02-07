@@ -35,7 +35,7 @@ const monthLongList = [
 ];
 const seperator = '.';
 
-String.prototype.replaceAll = function(target, replacement) {
+String.prototype.replaceAll = function (target, replacement) {
   return this.split(target).join(replacement);
 };
 
@@ -68,7 +68,7 @@ export function getLocalizedTime(value, datetimeOption, timeformat) {
   return '';
 }
 export function dateTimeFormat(options) {
-  this.format = function(date) {
+  this.format = function (date) {
     if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
       return `${dayList[date.getDay()]}, ${monthList[date.getMonth()]} ${date.getDate()}`;
     }
@@ -355,16 +355,26 @@ export function substructDay(d1, d2) {
   return (d2.getTime() - d1.getTime()) / (24 * 60 * 60 * 1000);
 }
 export function isBeforeDate(d1, d2) {
-  const date1 = cloneAsDate(d1);
-  const date2 = cloneAsDate(d2);
+  if (d1 == null || d2 == null) {
+    return false;
+  }
+  else {
+    const date1 = cloneAsDate(d1);
+    const date2 = cloneAsDate(d2);
 
-  return date1.getTime() < date2.getTime();
+    return (date1.getTime() < date2.getTime());
+  }
 }
 export function isAfterDate(d1, d2) {
-  const date1 = cloneAsDate(d1);
-  const date2 = cloneAsDate(d2);
+  if (d1 == null || d2 == null) {
+    return false;
+  }
+  else {
+    const date1 = cloneAsDate(d1);
+    const date2 = cloneAsDate(d2);
 
-  return date1.getTime() > date2.getTime();
+    return (date1.getTime() > date2.getTime());
+  }
 }
 export function isBetweenDates(dateToCheck, startDate, endDate) {
   return !isBeforeDate(dateToCheck, startDate) && !isAfterDate(dateToCheck, endDate);

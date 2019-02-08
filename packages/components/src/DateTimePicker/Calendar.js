@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import keycode from 'keycode';
-import { ComponentBase, Utils } from '@boa/base';
+import { ComponentBase } from '@boa/base';
 import { Localization } from '@boa/utils';
 import { Button } from '@boa/components/Button';
 import { Divider } from '@boa/components/Divider';
@@ -690,7 +690,7 @@ class Calendar extends ComponentBase {
   }
 
   render() {
-    const isMobile = Utils.isMobile(this.props);
+    const isMobile = this.isMobile(this.props);
     const openBoaCalendar = !isMobile && this.props.openBoaCalendar;
     const { isFlexMode } = this.props;
     this.setSpecialDays();

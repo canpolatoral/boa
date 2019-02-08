@@ -92,39 +92,20 @@ export function getThemeList() {
 }
 ```
 
-### Utils
-
-@boa/base package some utility exports.
-
 #### setLocalization
 
-Configure the [@boa/utils](packages/utils) package. 
+Thiss function exported from `@boa/base` package to configure the [@boa/utils](packages/utils) package. See the [@boa/utils](packages/utils) package for details. Example configuration:
 
 ```js
-import { Localization, setMessagingOptions } from '@boa/utils';
+import { setLocalization } from '@boa/base';
+import { Language } from '@boa/utils';
 
-export default function setLocalization(options) {
-  setMessagingOptions(options);
-  Localization.staticConstructor(options.languageId);
-}
+setLocalization({
+  url: 'http://boaonedev',
+  path: '/messaging/',
+  versionPath: 'MessagingVersions.json',
+  fileNameFormat: 'BOA.Messaging.{0}.json',
+  timeout: 3000,
+  languageId: Language.TR,
+});
 ```
-
-### Utils
-
-Utils class has some utility functions:
-
-- **generateUUID**: Generate a UUID v4.
-- **stringFormat**: Replace `{[number]}` values with args.
-- **stringPadLeft**: Add padding to string.
-- **getShowStatusMessageReplacedText**: *// TODO*
-- **getUniqueKey**: Generate a sequential id.
-- **getFormChildren**: *// TODO*
-- **getFormChildrenRecursive**: *// TODO*
-- **getCardChildren**: *// TODO*
-- **getCardChildrenRecursive**: *// TODO*
-- **isMobile**: Check platform is mobile.
-- **formHeaderTransactionTypesColor**: *// TODO*
-- **isMobileOrTablet**: Check platform is mobile or tablet.
-- **getDisplayName**: *// TODO*
-- **shallowEqual**: *// TODO*
-- **isWrappedWithStyles**: The component composed with `withStyles` from the `@material-ui/core` package.

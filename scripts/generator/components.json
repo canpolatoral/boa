@@ -43,10 +43,5 @@
     "alias": "TreeView",
     "input": "packages/components/src/TreeView/TreeView.js",
     "output": "stories/TreeView/doc.json"
-  },
-  {
-    "alias": "TreeViewGrid",
-    "input": "packages/components/src/TreeViewGrid/TreeViewGrid.js",
-    "output": "stories/TreeViewGrid/doc.json"
   }
 ]

@@ -18,7 +18,7 @@ const editorTypes = [
 ];
 
 /**
- * Markdown doc viewer
+ * This component renders the markdown documents. It supports all markdown features.
  */
 class DocViewer extends ComponentBase {
   static propTypes = {
@@ -27,7 +27,7 @@ class DocViewer extends ComponentBase {
      */
     content: PropTypes.string.isRequired,
     /**
-     * Editor type that will be colored
+     * Editor type that will be colored.
      */
     editorType: PropTypes.oneOf(editorTypes),
   };

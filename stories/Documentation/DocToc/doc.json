@@ -1,5 +1,5 @@
 {
-	"description": "Table of Content component for BOA markdown documents.",
+	"description": "This component renders a table of content tree.\nIt supports `[{id, level, content, [children]}]` formatted JSONs.",
 	"displayName": "DocToc",
 	"methods": [
 		{
@@ -76,7 +76,7 @@
 				"name": "array"
 			},
 			"required": false,
-			"description": "Data for table. [{id, level, content, [children]}]",
+			"description": "Data for the table tree.",
 			"defaultValue": {
 				"value": [],
 				"computed": false

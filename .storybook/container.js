@@ -3,16 +3,14 @@ import React, { Component } from 'react';
 import { AppProvider, ComponentBase, setLocalization, getTheme } from '@boa/base';
 import { Localization, Language } from '@boa/utils';
 import { context } from '@boa/test/utils';
+import detectSize from './utils/detectSize';
 
 export default class Container extends ComponentBase {
-  state = {
-    context,
-  };
-
   constructor(props) {
     super(props);
     this.onThemeChange = this.onThemeChange.bind(this);
     this.onLanguageChange = this.onLanguageChange.bind(this);
+    this.onResize = this.onResize.bind(this);
 
     setLocalization({
       url: 'http://boaonedev',
@@ -22,6 +20,15 @@ export default class Container extends ComponentBase {
       timeout: 3000,
       languageId: Language.TR,
     });
+
+    context.deviceSize = detectSize();
+    window.addEventListener('resize', this.onResize);
+    this.state = { context };
+  }
+
+  onResize() {
+    const deviceSize = detectSize();
+    this.setState({ context: Object.assign({}, this.state.context, { deviceSize }) });
   }
 
   onThemeChange(themeName) {

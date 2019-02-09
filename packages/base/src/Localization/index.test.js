@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { stub } from 'sinon';
-import setLocalization from './localization';
+import setLocalization from '.';
 import { Localization } from '@boa/utils';
 
 describe('setLocalization', () => {

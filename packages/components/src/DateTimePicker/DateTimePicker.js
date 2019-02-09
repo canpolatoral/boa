@@ -230,9 +230,10 @@ class DateTimePicker extends ComponentBase {
   handleRemoveDate(e) {
     let handleDate;
     if (this.getValue()) {
+      const oldDate = new Date(this.getValue());
       handleDate = new Date(this.getValue());
       handleDate.setDate(handleDate.getDate() - 1);
-      handleDate = this.dateUpdate(handleDate, handleDate, -1);
+      handleDate = this.dateUpdate(oldDate, handleDate, -1);
       this.dateOnChange(e, handleDate, false);
     } else {
       handleDate = new Date();
@@ -247,9 +248,10 @@ class DateTimePicker extends ComponentBase {
   handleAddDate(e) {
     let handleDate;
     if (this.getValue()) {
+      const oldDate = new Date(this.getValue());
       handleDate = new Date(this.getValue());
       handleDate.setDate(handleDate.getDate() + 1);
-      handleDate = this.dateUpdate(handleDate, handleDate, 1);
+      handleDate = this.dateUpdate(oldDate, handleDate, 1);
       this.dateOnChange(e, handleDate, false);
     } else {
       handleDate = new Date();

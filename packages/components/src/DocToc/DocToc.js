@@ -15,7 +15,8 @@ const getMinLevel = content => {
 };
 
 /**
- * Table of Content component for BOA markdown documents.
+ * This component renders a table of content tree.
+ * It supports `[{id, level, content, [children]}]` formatted JSONs.
  */
 class DocToc extends ComponentBase {
   static propTypes = {
@@ -24,7 +25,7 @@ class DocToc extends ComponentBase {
      */
     activeItem: PropTypes.string,
     /**
-     * Data for table. [{id, level, content, [children]}]
+     * Data for the table tree.
      */
     content: PropTypes.array.isRequired,
     /**

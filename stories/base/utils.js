@@ -23,9 +23,9 @@ export function getPropType(prop) {
     if (prop.type.name === 'shape') {
       propType = prop.type.name;
     } else if (prop.type.name === 'enum') {
-      propType = `${prop.type.name} &#124;`;
+      propType = '';
       prop.type.value.forEach(item => {
-        propType += ` \`${item.value}\`, `;
+        propType += ` \`${item.value}\`, <br />`;
       });
     } else if (prop.type.name === 'union') {
       propType = `${prop.type.name} &#124;`;

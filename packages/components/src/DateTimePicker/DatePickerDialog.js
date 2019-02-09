@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import { Popover } from '@boa/components/Popover';
-import { ComponentBase, Sizes } from '@boa/base';
+import { ComponentBase } from '@boa/base';
 import { Dialog } from '@boa/components/Dialog';
 import { dateTimeFormat } from './dateUtils';
 import Calendar from './Calendar';
@@ -196,7 +196,6 @@ class DatePickerDialog extends ComponentBase {
     } = this.props;
 
     const { open } = this.state;
-    const isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
     const popoverOrigin = { horizontal: 'left', vertical: 'top' };
 
     const calendar = (
@@ -299,7 +298,7 @@ class DatePickerDialog extends ComponentBase {
         {this.props.noDialog ? (
           <div style={{ display: 'flex', justifyContent: 'center' }}> {calendar}</div>
         ) : (
-          <div> {isMobileOrTablet ? content : popoverContent} </div>
+          <div> {this.isMobile() ? content : popoverContent} </div>
         )}
       </div>
     );

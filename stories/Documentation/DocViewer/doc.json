@@ -1,5 +1,5 @@
 {
-	"description": "Markdown doc viewer",
+	"description": "This component renders the markdown documents. It supports all markdown features.",
 	"displayName": "DocViewer",
 	"methods": [
 		{
@@ -94,7 +94,7 @@
 				]
 			},
 			"required": false,
-			"description": "Editor type that will be colored",
+			"description": "Editor type that will be colored.",
 			"defaultValue": {
 				"value": "atomOneDark",
 				"computed": false

@@ -5,9 +5,19 @@ import hljs from 'highlight.js';
 import { ComponentBase } from '@boa/base';
 import styles from './styles';
 
+const editorTypes = ['androidStudio',
+  'atomOneDark',
+  'atomOneLight',
+  'github',
+  'monokaiSublime',
+  'rainbow',
+  'vs',
+  'xcode',
+];
 /**
- * Code documentation component
- */
+ * This component highlights the codes.
+ * It provides different color themes.
+ * */
 class DocCode extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
@@ -16,24 +26,15 @@ class DocCode extends ComponentBase {
      */
     content: PropTypes.string.isRequired,
     /**
-     * Editor type that will be colored
+     * Editor theme.
      */
-    editorType: PropTypes.oneOf([
-      'androidStudio',
-      'atomOneDark',
-      'atomOneLight',
-      'github',
-      'monokaiSublime',
-      'rainbow',
-      'vs',
-      'xcode',
-    ]),
+    editorType: PropTypes.oneOf(editorTypes),
     /**
      * If `true`, the code will be highlighted.
      */
     highlight: PropTypes.bool,
     /**
-     * Code language.
+     * Programming language of the code,
      */
     lang: PropTypes.string,
   };
@@ -41,6 +42,7 @@ class DocCode extends ComponentBase {
   static defaultProps = {
     content: "console.log('Hello world');",
     highlight: true,
+    lang: 'js',
     editorType: 'github',
   };
 

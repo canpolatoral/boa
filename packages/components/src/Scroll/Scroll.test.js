@@ -2,7 +2,7 @@ import React from 'react';
 import { assert } from 'chai';
 import Scroll from './Scroll';
 import { context, createMount } from '@boa/test/utils';
-import { Platforms } from '@boa/base';
+import { Platform } from '@boa/base';
 import ReactResizeDetector from 'react-resize-detector';
 
 describe('<Scroll />', () => {
@@ -43,7 +43,7 @@ describe('<Scroll />', () => {
   describe('platforms', () => {
     it('should mount on MOBILE and TABLET', () => {
       const newContext = Object.assign({}, context);
-      [Platforms.MOBILE, Platforms.TABLET].forEach(item => {
+      [Platform.MOBILE, Platform.TABLET].forEach(item => {
         newContext.platform = item;
         const wrapper = mount(
           <Scroll context={newContext} option={{ suppressScrollX: true }}>
@@ -66,7 +66,7 @@ describe('<Scroll />', () => {
 
     it('should handle RTL', () => {
       const newContext = Object.assign({}, context);
-      [Platforms.MOBILE, Platforms.TABLET].forEach(item => {
+      [Platform.MOBILE, Platform.TABLET].forEach(item => {
         newContext.platform = item;
         newContext.localization = { isRightToLeft: true };
         const wrapper = mount(

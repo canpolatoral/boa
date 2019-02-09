@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
-import { ComponentBase } from '..';
+import { ComponentBase, Sizes } from '..';
 import { context, createShallow, createMount, serviceCallSync } from '@boa/test/utils';
 
 // eslint-disable-next-line
@@ -122,5 +122,21 @@ describe('<ComponentBase />', () => {
         .getSnapKey('child'),
       'child',
     );
+  });
+
+  it('should check device size', () => {
+    const newContext = Object.assign({}, context);
+    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      newContext.deviceSize = size;
+      const wrapper = shallow(<EmptyComponent context={newContext} />);
+      if (size <= Sizes.SMALL) {
+        expect(wrapper.instance().isMobile()).equals(true);
+      } else if (size <= Sizes.MEDIUM) {
+        expect(wrapper.instance().isMobileOrTablet()).equals(true);
+      } else {
+        expect(wrapper.instance().isMobile()).equals(false);
+        expect(wrapper.instance().isMobileOrTablet()).equals(false);
+      }
+    });
   });
 });

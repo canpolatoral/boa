@@ -73,7 +73,7 @@ const styles = theme => {
       },
 
       '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-        borderBottom: `2px solid ${boaPalette.base250}`,
+        borderBottom: `1px solid ${theme.boaPalette.base400}`,
       },
     },
 
@@ -87,7 +87,7 @@ const styles = theme => {
       },
 
       '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-        borderBottom: `2px solid ${boaPalette.obli400}`,
+        borderBottom: `2px solid ${theme.boaPalette.obli400}`,
       },
     },
 
@@ -249,10 +249,8 @@ class Input extends EditorBase {
   componentDidUpdate() {
     const textSelection = this.props.textSelection;
     if (textSelection && textSelection.start && textSelection.end) {
-      /* istanbul ignore else */
-      if (this.textField) {
-        this.textField.setSelectionRange(textSelection.start, textSelection.end);
-      }
+      // eslint-disable-next-line
+      this.textField && this.textField.setSelectionRange(textSelection.start, textSelection.end);
     }
   }
 

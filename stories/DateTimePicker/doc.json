@@ -1,5 +1,5 @@
 {
-	"description": "The DateTimePicker allows users to enter a date and time by choosing a datetime.\nIt is made up of several components and directives that work together.\nDateTimePicker component extends ComponentBase from `@boa/base` and\ncompose with withStyles from `@material-ui/core/styles` and ComponentComposer from `@boa/base`.",
+	"description": "The DateTimePicker allows users to enter a date and time by choosing a datetime.\nIt is made up of several components and directives that work together.",
 	"displayName": "DateTimePicker",
 	"methods": [
 		{

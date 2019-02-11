@@ -1,5 +1,5 @@
 {
-	"description": "Buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/Button`.\nIt able to render an `<IconButton />` when the \"type\" prop is \"icon\". Button component extends\nComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`\nand ComponentComposer from `@boa/base`.",
+	"description": "Buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/Button`.\nIt able to render an `<IconButton />` when the \"type\" prop is \"icon\".",
 	"displayName": "Button",
 	"methods": [
 		{

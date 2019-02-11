@@ -12,7 +12,7 @@ const stories = storiesOf('TreeView', module);
 
 stories.add('TreeView', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={TreeView} doc={doc} />
       <Preview {...props} component={TreeView} doc={doc} sampleData={sampleData} />
       <Props {...props} component={TreeView} doc={doc} />

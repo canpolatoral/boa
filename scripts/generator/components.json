@@ -40,6 +40,11 @@
     "output": "stories/Documentation/DocViewer/doc.json"
   },
   {
+    "alias": "Input",
+    "input": "packages/components/src/Input/Input.js",
+    "output": "stories/Inputs/Input/doc.json"
+  },
+  {
     "alias": "TreeView",
     "input": "packages/components/src/TreeView/TreeView.js",
     "output": "stories/TreeView/doc.json"

@@ -11,7 +11,7 @@ const stories = storiesOf('CheckBox', module);
 
 stories.add('CheckBox', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={CheckBox} doc={doc} />
       <Preview {...props} component={CheckBox} doc={doc} />
       <Props {...props} component={CheckBox} doc={doc} />

@@ -1,5 +1,5 @@
 {
-	"description": "Icon buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/ButtonBase`.\nIt able to render an `<ToolTip />` when the \"tooltipTitle\" prop exists. IconButton\ncomponent extends ComponentBase from `@boa/base` and compose with withStyles\nfrom `@material-ui/core/styles` and ComponentComposer from `@boa/base`.",
+	"description": "Icon buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/ButtonBase`.\nIt able to render an `<ToolTip />` when the \"tooltipTitle\" prop exists.",
 	"displayName": "IconButton",
 	"methods": [],
 	"props": {

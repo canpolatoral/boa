@@ -25,7 +25,7 @@
 			"required": false,
 			"description": "The text to display.",
 			"defaultValue": {
-				"value": "Tip Message",
+				"value": "",
 				"computed": false
 			}
 		},
@@ -47,7 +47,7 @@
 			"required": false,
 			"description": "Header message of the notice.",
 			"defaultValue": {
-				"value": "Tip Header",
+				"value": "",
 				"computed": false
 			}
 		},

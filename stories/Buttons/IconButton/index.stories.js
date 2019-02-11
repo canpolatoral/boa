@@ -11,7 +11,7 @@ const stories = storiesOf('Button', module);
 
 stories.add('IconButton', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={IconButton} doc={doc} />
       <Preview {...props} component={IconButton} doc={doc} />
       <Props {...props} component={IconButton} doc={doc} />

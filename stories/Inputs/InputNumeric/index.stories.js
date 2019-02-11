@@ -11,7 +11,7 @@ const stories = storiesOf('Inputs', module);
 
 stories.add('InputNumeric', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={InputNumeric} doc={doc} />
       <Preview {...props} component={InputNumeric} doc={doc} />
       <Props {...props} component={InputNumeric} doc={doc} />

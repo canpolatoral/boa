@@ -11,7 +11,7 @@ const stories = storiesOf('DateTimePicker', module);
 
 stories.add('DateTimePicker', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={DateTimePicker} doc={doc} />
       <Preview {...props} component={DateTimePicker} doc={doc} />
       <Props {...props} component={DateTimePicker} doc={doc} />

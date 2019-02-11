@@ -25,6 +25,6 @@ setOptions({
   showDownPanel: true,
   downPanelInRight: true,
   name: '@boa',
-  url: 'https://github.com/kuveytturk/boa-components',
+  url: 'https://github.com/kuveytturk/boa',
   sidebarAnimations: true,
 });

@@ -11,7 +11,7 @@ const stories = storiesOf('TabBar', module);
 
 stories.add('TabBar', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={TabBar} doc={doc} />
       <Preview {...props} component={TabBar} doc={doc} />
       <Props {...props} component={TabBar} doc={doc} />

@@ -112,6 +112,9 @@ const styles = theme => {
   };
 };
 
+/**
+ * Text fields let users enter and edit text.
+ */
 @ComponentComposer
 @withStyles(styles)
 class Input extends EditorBase {

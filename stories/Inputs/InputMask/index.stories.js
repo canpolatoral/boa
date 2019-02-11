@@ -11,7 +11,7 @@ const stories = storiesOf('Inputs', module);
 
 stories.add('InputMask', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={InputMask} doc={doc} />
       <Preview {...props} component={InputMask} doc={doc} />
       <Props {...props} component={InputMask} doc={doc} />

@@ -32,7 +32,6 @@ export default class ComponentBase<TProps = any, TInstance = any> extends React.
 
   getInstance(): TInstance;
   getMessage(groupName: string, propertyName: string): string;
-  getMessageCode(groupName: string, propertyName: string): string;
   getSnapKey(childSnapKey: string): string;
   getChildId(childName: string): string;
   getSnapshot(): object;

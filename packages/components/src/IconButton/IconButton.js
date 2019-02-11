@@ -26,9 +26,7 @@ const styles = {
 /**
  * Icon buttons allow users to take actions, and make choices, with a single tap.
  * This component is wrapped from `@material-ui/core/ButtonBase`.
- * It able to render an `<ToolTip />` when the "tooltipTitle" prop exists. IconButton
- * component extends ComponentBase from `@boa/base` and compose with withStyles
- * from `@material-ui/core/styles` and ComponentComposer from `@boa/base`.
+ * It able to render an `<ToolTip />` when the "tooltipTitle" prop exists.
  */
 @ComponentComposer
 @withStyles(styles)

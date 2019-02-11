@@ -11,7 +11,7 @@ const stories = storiesOf('Documentation', module);
 
 stories.add('DocViewer', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={DocViewer} doc={doc} />
       <Preview {...props} component={DocViewer} doc={doc} />
       <Props {...props} component={DocViewer} doc={doc} />

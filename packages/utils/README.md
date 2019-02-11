@@ -80,7 +80,7 @@ export const DEFAULT_FILE_NAME_FORMAT = 'BOA.Messaging.{0}.json';
 export const DEFAULT_THRESOLD = 1; // minutes
 ```
 
-Our storybook container has a sample usage of @boa/utils from @boa/boa
+Our storybook container has a sample usage of @boa/utils with @boa/base
 
 ```jsx
 import React, { Component } from 'react';

@@ -84,13 +84,6 @@ describe('<ComponentBase />', () => {
         .getMessage('test', 'test'),
       'test',
     );
-    assert.strictEqual(
-      wrapper
-        .instance()
-        .getInstance()
-        .getMessageCode('test', 'test'),
-      'code',
-    );
     stub.restore();
   });
 

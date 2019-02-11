@@ -80,10 +80,6 @@ export default class ComponentBase extends Component {
     return getMessage(groupName, propertyName, this.props.context.language).Description;
   }
 
-  getMessageCode(groupName, propertyName) {
-    return getMessage(groupName, propertyName, this.props.context.language).Code;
-  }
-
   getSnapKey(childSnapKey) {
     return this.props.snapKey ? `${this.props.snapKey}_${childSnapKey}` : childSnapKey;
   }

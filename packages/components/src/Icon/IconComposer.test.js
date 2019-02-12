@@ -10,7 +10,7 @@ describe('<IconComposer />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

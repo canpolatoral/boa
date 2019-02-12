@@ -100,7 +100,7 @@ class InputAction extends ComponentBase {
 
   onBlur(e) {
     /* istanbul ignore else */
-    if (!(/^((?!chrome|android).)*safari/i.test(navigator.userAgent))) {
+    if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
       this.setFloatingLabelStyle();
     }
 
@@ -153,13 +153,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-          paddingRight: paddingLeft,
-          paddingLeft: paddingRight,
-        }
+            paddingRight: paddingLeft,
+            paddingLeft: paddingRight,
+          }
         : {
-          paddingLeft,
-          paddingRight,
-        },
+            paddingLeft,
+            paddingRight,
+          },
       this.props.floatingLabelStyle,
     );
   }
@@ -260,7 +260,9 @@ class InputAction extends ComponentBase {
       if (this.state.hideRightIcons) {
         if (this.props.hideRightIconKeyList && this.props.hideRightIconKeyList.length > 0) {
           // eslint-disable-next-line max-len
-          newRightIconList = this.props.rightIconList.filter(i => !hideRightIconKeyList.includes(i.key));
+          newRightIconList = this.props.rightIconList.filter(
+            i => !hideRightIconKeyList.includes(i.key),
+          );
         } else {
           newRightIconList = [];
         }

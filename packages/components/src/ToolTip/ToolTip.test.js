@@ -13,7 +13,7 @@ describe('<ToolTip />', () => {
     shallow = createShallow({ untilSelector: 'ToolTip' });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

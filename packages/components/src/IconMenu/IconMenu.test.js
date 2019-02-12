@@ -46,7 +46,7 @@ describe('<IconMenu />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

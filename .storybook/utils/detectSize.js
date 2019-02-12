@@ -2,7 +2,7 @@ import { Sizes } from '@boa/base';
 
 const deviceThresholds = {
   SMALL: 512,
-  MEDIUM: 1024
+  MEDIUM: 1024,
 };
 
 export default function detectSize() {

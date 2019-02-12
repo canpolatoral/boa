@@ -14,7 +14,7 @@ describe('<IconButton />', () => {
     shallow = createShallow({ includeBOAcontext: false });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

@@ -11,7 +11,7 @@ describe('<DocCode />', () => {
     chai.should();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

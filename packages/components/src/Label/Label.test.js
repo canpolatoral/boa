@@ -12,7 +12,7 @@ describe('<Label />', () => {
     shallow = createShallow({ dive: true });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

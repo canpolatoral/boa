@@ -10,7 +10,7 @@ describe('<DateTimePicker />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

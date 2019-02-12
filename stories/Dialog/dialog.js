@@ -29,15 +29,15 @@ const styles = theme => ({
 class DialogHelperFixture extends ComponentBase {
   state = { expanded: {} };
 
-  handleExpandClick = (id) => {
-    this.setState((prevState) => {
+  handleExpandClick = id => {
+    this.setState(prevState => {
       const expanded = Object.assign({}, prevState.expanded);
       expanded[id] = !expanded[id];
       return { expanded };
     });
   };
 
-  onClick = (type) => {
+  onClick = type => {
     if (type === 'warning') {
       DialogHelper.show(
         this.props.context,
@@ -66,7 +66,8 @@ class DialogHelperFixture extends ComponentBase {
       );
     } else if (type === 'object') {
       const obj = {
-        mainContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        mainContent:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         subcontents: [
           {
             header: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -104,7 +105,7 @@ class DialogHelperFixture extends ComponentBase {
       };
       const onClose = function onClose(closeType) {
         let closeTypeString;
-        Object.keys(DialogResponse).forEach((key) => {
+        Object.keys(DialogResponse).forEach(key => {
           if (DialogResponse[key] === closeType) {
             closeTypeString = `DialogResponse.${key}`;
           }
@@ -128,19 +129,24 @@ class DialogHelperFixture extends ComponentBase {
           context={this.props.context}
           type="raised"
           text="Open Dialog"
-          onClick={() => DialogHelper.show(this.props.context,
-            <div>Test</div>,
-            DialogType.ERROR,
-            DialogResponseStyle.OK,
-            'Test Title',
-            null,
-            null,
-            null,
-            null,
-            true,
-          )} />
+          onClick={() =>
+            DialogHelper.show(
+              this.props.context,
+              <div>Test</div>,
+              DialogType.ERROR,
+              DialogResponseStyle.OK,
+              'Test Title',
+              null,
+              null,
+              null,
+              null,
+              true,
+            )
+          }
+        />
       );
-      DialogHelper.show(this.props.context,
+      DialogHelper.show(
+        this.props.context,
         content,
         DialogType.ERROR,
         DialogResponseStyle.OK,
@@ -152,14 +158,14 @@ class DialogHelperFixture extends ComponentBase {
         false,
       );
     }
-  }
+  };
 
   render() {
     const { classes } = this.props;
     return (
       <div style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
         <div>
-        <DocViewer content="# Samples" />
+          <DocViewer content="# Samples" />
         </div>
         <div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>

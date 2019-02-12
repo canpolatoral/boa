@@ -5,7 +5,8 @@ import hljs from 'highlight.js';
 import { ComponentBase } from '@boa/base';
 import styles from './styles';
 
-const editorTypes = ['androidStudio',
+const editorTypes = [
+  'androidStudio',
   'atomOneDark',
   'atomOneLight',
   'github',

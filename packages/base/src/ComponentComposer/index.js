@@ -8,8 +8,9 @@ export default function ComponentComposer(WrappedComponent) {
       ...WrappedComponent.propTypes,
     };
 
-    static displayName =
-      `ComponentComposer(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    static displayName = `ComponentComposer(${WrappedComponent.displayName ||
+      WrappedComponent.name ||
+      'Component'})`;
 
     getInstance() {
       return this.innerRef || this;

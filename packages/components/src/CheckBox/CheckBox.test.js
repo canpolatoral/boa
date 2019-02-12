@@ -19,7 +19,7 @@ describe('<CheckBox />', () => {
     classes = getClasses(<CheckBox context={context} label="label" />);
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

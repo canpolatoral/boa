@@ -16,6 +16,7 @@ const languages = [
 
 describe('Localization', () => {
   it('should default values set to english ', () => {
+    Localization.staticConstructor();
     assert.strictEqual(Localization.language, 'en');
     assert.strictEqual(Localization.languageId, 2);
   });
@@ -98,7 +99,7 @@ describe('Localization', () => {
         { value: 'cçgğıioösşuü', result: 'CÇGĞIİOÖSŞUÜ', languageId: Language.TR },
         { value: 'test', result: 'test'.toUpperCase(), languageId: Language.EN },
         { value: 'cçgğıioösşuü', result: 'cçgğıioösşuü'.toUpperCase(), languageId: Language.EN },
-      ].forEach((item) => {
+      ].forEach(item => {
         Localization.changeLocalizationLanguage(item.languageId);
         assert.strictEqual(Localization.stringUpperCase(item.value), item.result);
       });
@@ -110,7 +111,7 @@ describe('Localization', () => {
         { value: 'CÇGĞIİOÖSŞUÜ', result: 'cçgğıioösşuü', languageId: Language.TR },
         { value: 'TEST', result: 'TEST'.toLowerCase(), languageId: Language.EN },
         { value: 'CÇGĞIİOÖSŞUÜ', result: 'CÇGĞIİOÖSŞUÜ'.toLowerCase(), languageId: Language.EN },
-      ].forEach((item) => {
+      ].forEach(item => {
         Localization.changeLocalizationLanguage(item.languageId);
         assert.strictEqual(Localization.stringLowerCase(item.value), item.result);
       });

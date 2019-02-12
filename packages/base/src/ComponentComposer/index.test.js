@@ -25,7 +25,7 @@ describe('<ComponentComposer />', () => {
     mount = createMount({ includeBOAcontext: false });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

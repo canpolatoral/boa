@@ -144,13 +144,25 @@ describe('<Input />', () => {
     clock.restore();
   });
 
-  it('should focus', () => {
-    const wrapper = mount(<Input context={context} />);
-    wrapper
-      .instance()
-      .getInstance()
-      .focus();
-    assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
+  describe('focus', () => {
+    let mountFocus;
+
+    before(() => {
+      mountFocus = createMount();
+    });
+
+    after(() => {
+      mountFocus.cleanUp();
+    });
+
+    it('should focus', () => {
+      const wrapper = mountFocus(<Input context={context} />);
+      wrapper
+        .instance()
+        .getInstance()
+        .focus();
+      assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
+    });
   });
 
   describe('props', () => {

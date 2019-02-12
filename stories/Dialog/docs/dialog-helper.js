@@ -19,6 +19,6 @@ import { DialogHelper } from '@boa/components/Dialog';
   - **title**: The of dialog window.
   - **onClose**: Callback function that will fire on the dialog window closed.
   - **style**: Override the style of \`<Dialog />\` element.
-  - **onClosin**: Callback function that will fire on the dialog window is closing.
+  - **onClosing**: Callback function that will fire on the dialog window is closing.
   - **showHeader**: Flag the visibility of the title.,
 `;

@@ -113,7 +113,7 @@ class Button extends ComponentBase {
     ...ComponentBase.defaultProps,
     type: 'contained',
     text: 'Click',
-    allowLabelCase: true,
+    allowLabelCase: false,
     textPosition: 'center',
     buttonSize: 'medium',
   };

@@ -17,7 +17,7 @@ describe('<InputAction />', () => {
     shallow = createShallow();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

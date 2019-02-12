@@ -9,7 +9,7 @@ describe('<ListItem />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

@@ -20,7 +20,7 @@ describe('<Input />', () => {
     classes = getClasses(<Input context={context} />);
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

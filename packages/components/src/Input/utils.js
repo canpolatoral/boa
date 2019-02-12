@@ -36,7 +36,8 @@ function stringPadLeft(str, len, ch) {
   // loop
   while (loop) {
     // add `ch` to `pad` if `len` is odd
-    if (len & 1) { // eslint-disable-line no-bitwise
+    if (len & 1) {
+      // eslint-disable-line no-bitwise
       pad += ch;
     }
     // divide `len` by 2, ditch the remainder
@@ -46,7 +47,8 @@ function stringPadLeft(str, len, ch) {
     // similar to finding a value in binary search tree, hence O(log(n))
     if (len) {
       ch += ch;
-    } else { // `len` is 0, exit the loop
+    } else {
+      // `len` is 0, exit the loop
       break;
     }
   }

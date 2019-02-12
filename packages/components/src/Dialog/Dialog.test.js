@@ -18,7 +18,7 @@ describe('<Dialog />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

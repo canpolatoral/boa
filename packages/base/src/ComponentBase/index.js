@@ -52,7 +52,7 @@ export default class ComponentBase extends Component {
     }
   }
 
-  componentDidMount() { }
+  componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.snapshot) {
@@ -65,12 +65,12 @@ export default class ComponentBase extends Component {
   }
 
   // eslint-disable-next-line no-unused-vars
-  componentWillUpdate(nextProps, nextState) { }
+  componentWillUpdate(nextProps, nextState) {}
 
   // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(prevProps, prevState) { }
+  componentDidUpdate(prevProps, prevState) {}
 
-  componentWillUnmount() { }
+  componentWillUnmount() {}
 
   getInstance() {
     return this;

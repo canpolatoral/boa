@@ -16,7 +16,7 @@ describe('<Popover />', () => {
     shallow = createShallow({ untilSelector: 'Popover' });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

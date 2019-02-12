@@ -12,7 +12,7 @@ describe('<Scroll />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

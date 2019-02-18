@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { assert } from 'chai';
 import { spy, stub } from 'sinon';
-import keycode from 'keycode';
 import Modal from '@material-ui/core/Modal';
 import Popover from './Popover';
 import { context, createMount, createShallow } from '@boa/test/utils';
@@ -45,7 +44,7 @@ describe('<Popover />', () => {
   });
 
   it('should pass onClose prop to Modal', () => {
-    const fn = () => {};
+    const fn = () => { };
     const wrapper = shallow(
       <Popover open={false} onRequestClose={fn}>
         <div />
@@ -69,8 +68,9 @@ describe('<Popover />', () => {
         </Popover>,
       );
       const modal = wrapper.find(Modal).childAt(0);
-      const event = { keyCode: keycode('esc') };
-      modal.instance().handleDocumentKeyDown(event);
+      const event = { key: 'Escape', stopPropagation: () => { } };
+
+      modal.instance().handleKeyDown(event);
       assert.strictEqual(onRequestClose.callCount, 1);
     });
 
@@ -109,8 +109,8 @@ describe('<Popover />', () => {
         </Popover>,
       );
       const modal = wrapper.find(Modal).childAt(0);
-      const event = { keyCode: keycode('esc') };
-      modal.instance().handleDocumentKeyDown(event);
+      const event = { key: 'Escape', stopPropagation: () => { } };
+      modal.instance().handleKeyDown(event);
       assert.strictEqual(onRequestClose.callCount, 1);
     });
   });

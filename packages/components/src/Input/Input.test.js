@@ -35,11 +35,11 @@ describe('<Input />', () => {
     assert.strictEqual(control.shallow().name(), 'FormControl');
   });
 
-  it('shuld render a MuiInputLabel inside the FormControl', () => {
+  it('should render a MuiInputLabel inside the FormControl', () => {
     const wrapper = shallow(<Input floatingLabelText="test" context={context} />).dive();
     const control = wrapper.dive().find(MuiFormControl);
     const input = control.shallow().find(MuiInputLabel);
-    assert.strictEqual(input.shallow().name(), 'InputLabel');
+    assert.strictEqual(input.shallow().name(), 'WithFormControlContext(InputLabel)');
     assert.strictEqual(input.shallow().props().children, 'test');
   });
 

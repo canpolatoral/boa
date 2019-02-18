@@ -62,6 +62,8 @@ class DocNotice extends ComponentBase {
       ? { padding: '12px 12px 12px 48px', margin: '16px 0px', width: '100%' }
       : { padding: '12px 24px 12px 60px', margin: '16px 0px', width: '100%' };
 
+    style.minHeight = 48;
+
     switch (this.props.type) {
       case 'info': {
         Object.assign(style, {

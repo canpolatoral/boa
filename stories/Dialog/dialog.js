@@ -48,8 +48,7 @@ class DialogHelperFixture extends ComponentBase {
         null,
         null,
         null,
-        null,
-        false,
+        true,
       );
     } else if (type === 'success') {
       DialogHelper.show(
@@ -57,7 +56,6 @@ class DialogHelperFixture extends ComponentBase {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         DialogType.SUCCESS,
         DialogResponseStyle.OK,
-        null,
         null,
         null,
         null,
@@ -120,7 +118,6 @@ class DialogHelperFixture extends ComponentBase {
         null,
         onClose,
         null,
-        null,
         false,
       );
     } else if (type === 'dialog') {
@@ -139,7 +136,6 @@ class DialogHelperFixture extends ComponentBase {
               null,
               null,
               null,
-              null,
               true,
             )
           }
@@ -154,8 +150,7 @@ class DialogHelperFixture extends ComponentBase {
         null,
         null,
         null,
-        null,
-        false,
+        true,
       );
     }
   };
@@ -165,11 +160,11 @@ class DialogHelperFixture extends ComponentBase {
     return (
       <div style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
         <div>
-          <DocViewer content="# Samples" />
+          <DocViewer content="# Samples" editorType="github" />
         </div>
         <div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <DocViewer content="## String Content" />
+            <DocViewer content="## String Content" editorType="github" />
             <IconButton
               className={classnames(classes.expand, {
                 [classes.expandOpen]: this.state.expanded['1'],
@@ -196,7 +191,7 @@ class DialogHelperFixture extends ComponentBase {
         </div>
         <div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <DocViewer content="## Long String Content" />
+            <DocViewer content="## Long String Content" editorType="github" />
             <IconButton
               className={classnames(classes.expand, {
                 [classes.expandOpen]: this.state.expanded['2'],
@@ -250,7 +245,7 @@ class DialogHelperFixture extends ComponentBase {
         </div>
         <div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <DocViewer content="## Dialog in Dialog" />
+            <DocViewer content="## Dialog in Dialog" editorType="github" />
             <IconButton
               className={classnames(classes.expand, {
                 [classes.expandOpen]: this.state.expanded['4'],

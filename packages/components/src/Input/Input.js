@@ -150,11 +150,7 @@ class Input extends EditorBase {
     noWrap: PropTypes.bool,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
-    /**
-     * onchange setState bitmeden tetikleniyor.
-     * SetState callbacinde fırlatılan bir evente ihtiyacımız oldu.
-     * Kullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi.
-     */
+
     onChangeSync: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -171,8 +167,7 @@ class Input extends EditorBase {
     textareaStyle: PropTypes.object,
     textSelection: PropTypes.object,
     timerDuration: PropTypes.number,
-    validationMessageStyleActive: PropTypes.bool,
-    validationResult: PropTypes.array,
+    type: PropTypes.oneOf(['password', 'text']),
     value: PropTypes.any,
   };
 
@@ -185,7 +180,6 @@ class Input extends EditorBase {
     defaultValue: '',
     bottomLeftInfoEnable: true,
     bottomRightInfoEnable: true,
-    validationMessageStyleActive: false,
     disabledCounterCharacter: '',
     showCounter: false,
     showClearButton: false,
@@ -365,6 +359,7 @@ class Input extends EditorBase {
       maxLength,
       fullWidth,
       rows,
+      type,
       rowsMax,
       prefixText,
       showClearButton,
@@ -489,7 +484,6 @@ class Input extends EditorBase {
       } else if (showCounter && maxLength) {
         bottomRightInfoSpace = (
           <span style={bottomRightInfoStyle}>
-            {/* masked editörde maxLength ile değil maskedMaskLength görülecek  */}
             <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>/
             {this.props.maskedMaxLength || maxLength}
           </span>
@@ -620,14 +614,12 @@ class Input extends EditorBase {
             inputProps={inputPropsMerged}
             inputRef={this.props.inputRef}
             fullWidth={fullWidth}
-            type="text"
-            // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+            type={type}
             style={this.props.inputStyle}
             value={this.state.value}
             disabled={this.state.disabled}
             disableUnderline={!underlineShow}
             multiline={this.props.multiLine}
-            // margin={'dense'}
             error={!this.state.disabled && error}
             onBlur={this.onBlur}
             onChange={this.onChange}

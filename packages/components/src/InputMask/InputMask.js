@@ -314,7 +314,6 @@ class InputMask extends EditorBase {
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
-        validationMessageStyleActive
         disabledCounterCharacter=" "
         showCounter={this.props.showCounter}
       />

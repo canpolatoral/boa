@@ -281,7 +281,7 @@ describe('<InputAction />', () => {
 
   describe('numeric', () => {
     it('should render numeric type', () => {
-      const wrapper = mount(<InputAction context={context} type="numeric" test/>);
+      const wrapper = mount(<InputAction context={context} type="numeric" test />);
       const input = wrapper.find(InputNumeric);
       assert.strictEqual(input.props().test, true);
     });

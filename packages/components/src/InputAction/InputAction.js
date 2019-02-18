@@ -153,13 +153,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-            paddingRight: paddingLeft,
-            paddingLeft: paddingRight,
-          }
+          paddingRight: paddingLeft,
+          paddingLeft: paddingRight,
+        }
         : {
-            paddingLeft,
-            paddingRight,
-          },
+          paddingLeft,
+          paddingRight,
+        },
       this.props.floatingLabelStyle,
     );
   }
@@ -328,7 +328,7 @@ class InputAction extends ComponentBase {
 
     const bInput =
       this.props.type === 'numeric'
-        ? this.renderBInputNumeric(type, leftIcons, rightIcons)
+        ? this.renderBInputNumeric(leftIcons, rightIcons)
         : this.renderBInput(type, leftIcons, rightIcons);
 
     return (
@@ -360,17 +360,16 @@ class InputAction extends ComponentBase {
     );
   }
 
-  renderBInputNumeric(type, leftIcons, rightIcons) {
+  renderBInputNumeric(leftIcons, rightIcons) {
     // b-input-action snapshot ı dışardan verildiğinde b-inputu ezmemeli
     // eslint-disable-next-line no-unused-vars
-    const { context, snapshot, ...others } = this.props;
+    const { context, snapshot, type, ...others } = this.props;
     return (
       <InputNumeric
         ref={r => (this.binput = r)}
         context={context}
         {...others}
         disabled={this.state.inputDisabled}
-        type={type}
         value={this.state.value}
         onChange={this.onChange}
         onFocus={this.onFocus}

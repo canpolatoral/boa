@@ -52,7 +52,7 @@ export default class PropsPanel extends ComponentBase {
   }
 
   state = {
-    selectedTheme: 'violet',
+    selectedTheme: this.props.context.theme.themeName,
     selectedLanguage: 1,
   };
 

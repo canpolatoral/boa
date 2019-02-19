@@ -11,7 +11,6 @@ import { InputNumeric } from '@boa/components/InputNumeric';
 import { Toggle } from '@boa/components/Toggle';
 import { Scroll } from '@boa/components/Scroll';
 import { ComponentBase } from '@boa/base';
-import { generateDefaultValue } from './utils';
 
 const style = {
   scrollStyle: { maxHeight: 300, padding: 12, wordWrap: 'break-word' },
@@ -49,21 +48,16 @@ export default class PropsPanel extends ComponentBase {
     super(props, context);
     this.componentPropertySource = [];
     this.onPropertyChanged = this.onPropertyChanged.bind(this);
-    this.onApplyClick = this.onApplyClick.bind(this);
     this.componentRef = React.createRef();
   }
 
   state = {
-    selectedTheme: 'violet',
+    selectedTheme: this.props.context.theme.themeName,
     selectedLanguage: 1,
   };
 
   onPropertyChanged(property, value) {
     this.props.onPropertyChanged(property, value);
-  }
-
-  onApplyClick() {
-    this.props.onApplyClick();
   }
 
   getBInput(property, value) {
@@ -117,7 +111,7 @@ export default class PropsPanel extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => {}}
+          onAdd={() => { }}
           onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
@@ -128,48 +122,6 @@ export default class PropsPanel extends ComponentBase {
       </div>
     );
   }
-
-  // getShape(property, value) {
-  //   const self = this;
-  //   return (
-  //     <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
-  //       <InputLabel htmlFor="theme">{property.name}</InputLabel>
-  //       <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
-  //         {
-  //           Object.keys(property.value).map((key) => {
-  //             return (
-  //               <InputLabel htmlFor={property.name + key}>{key}</InputLabel>
-  //             );
-  //           })
-  //         }
-  //       </FormControl>
-  //     </FormControl>
-  //     // <FormControl style={{ maxWidth: 300, width: '100%' }}>
-  //     //   <InputLabel htmlFor="theme">{property.name}</InputLabel>
-  //     //   {
-  //     //     Object.keys(property.value).map((key) => {
-  //     //       return (
-  //     //         <div>
-  //     //           <InputLabel htmlFor="theme">{key}</InputLabel>
-  //     //           <NativeSelect
-  //     //             onChange={
-  //     //               (event) => {
-  //     //                 // self.onPropertyChanged(property.name, event.target.value);
-  //     //               }
-  //     //             }>
-  //     //             {
-  //     //               property.value[key].value.map((item) => {
-  //     //                 return <option value={item}>{item}</option>;
-  //     //               })
-  //     //             }
-  //     //           </NativeSelect>
-  //     //         </div>
-  //     //       );
-  //     //     })
-  //     //   }
-  //     // </FormControl>
-  //   );
-  // }
 
   getComponent(property, value) {
     const self = this;
@@ -198,9 +150,7 @@ export default class PropsPanel extends ComponentBase {
         </div>
       );
     }
-    // if (property.type.toLowerCase().includes('shape')) {
-    //   return this.getShape(property, value);
-    // }
+
     if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
     }
@@ -217,13 +167,13 @@ export default class PropsPanel extends ComponentBase {
       property.type.toLowerCase().includes('object') ||
       property.type.toLowerCase().includes('array')
     ) {
-      return this.getJsonViewer(property, generateDefaultValue(property.type));
+      return this.getJsonViewer(property, value);
     }
     return null;
   }
 
   render() {
-    const { availableProperties } = this.props;
+    const { availableProperties, currentProperties } = this.props;
     const self = this;
 
     if (!availableProperties || availableProperties.length === 0) {
@@ -302,12 +252,13 @@ export default class PropsPanel extends ComponentBase {
                   /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {
                     const divStyle = {};
+                    const defaultValue = currentProperties[property.name] || property.default;
                     if (i === availableProperties.length - 1) {
                       divStyle.marginBottom = 12;
                     }
                     return (
                       <div key={i} style={divStyle}>
-                        {this.getComponent(property, property.default)}
+                        {this.getComponent(property, defaultValue)}
                       </div>
                     );
                   }

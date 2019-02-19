@@ -13,7 +13,6 @@ export default class Preview extends ComponentBase {
     super(props, context);
     this.componentPropertySource = [];
     this.onPropertyChanged = this.onPropertyChanged.bind(this);
-    this.onApplyClick = this.onApplyClick.bind(this);
     this.componentRef = React.createRef();
   }
 
@@ -39,8 +38,8 @@ export default class Preview extends ComponentBase {
       .sort()
       .forEach(key => {
         const prop = propMetaData[key];
-
         if (prop.description && prop.description.includes('@ignore')) return;
+
         const property = {
           name: key,
           type: Utils.getPropType(prop),
@@ -48,9 +47,17 @@ export default class Preview extends ComponentBase {
           values: Utils.getAvailableValues(prop),
           default: Utils.getDefaultValue(prop),
         };
+
         availableProperties.push(property);
-        const defaultValue = Utils.getDefaultValue(prop);
-        if (defaultValue) currentProperties[key] = defaultValue;
+        let defaultValue = Utils.getDefaultValue(prop);
+        if (defaultValue) {
+          currentProperties[key] = defaultValue;
+        } else {
+          defaultValue = Utils.generateDefaultValue(property.type);
+          if (defaultValue !== undefined) {
+            currentProperties[key] = defaultValue;
+          }
+        }
       });
 
     if (availableProperties && availableProperties.length > 0) {
@@ -63,7 +70,9 @@ export default class Preview extends ComponentBase {
       });
     }
 
-    currentProperties.data = this.props.sampleData;
+    // currentProperties.data = this.props.sampleData;
+    Object.assign(currentProperties, this.props.defaultProps);
+
     this.setState({ availableProperties, currentProperties }, () => {
       const code = self.getComponentString();
       this.setState({ code });
@@ -75,9 +84,6 @@ export default class Preview extends ComponentBase {
   }
 
   propertyChanged(property, val) {
-    const self = this;
-    const { currentProperties } = this.state;
-
     let value = val;
     /*
      * If component propType is oneOf([..]) and values are not string
@@ -91,30 +97,18 @@ export default class Preview extends ComponentBase {
       }
     }
 
-    const newCurrentProperties = Object.assign({}, currentProperties);
-    newCurrentProperties[property] = value;
-    this.setState({ currentProperties: newCurrentProperties }, () => {
-      const code = self.getComponentString();
-      self.setState({ code });
+    this.setState((prevState) => {
+      const { currentProperties } = prevState;
+      currentProperties[property] = value;
+      return { currentProperties };
+    }, () => {
+      const code = this.getComponentString();
+      this.setState({ code });
     });
   }
 
   onPropertyChanged(property, value) {
-    if (this.props.applyRequired) {
-      if (!this.waitingChanges) {
-        this.waitingChanges = [];
-      }
-      this.waitingChanges.push({ property, value });
-    } else {
-      this.propertyChanged(property, value);
-    }
-  }
-
-  onApplyClick() {
-    const self = this;
-    self.waitingChanges.forEach(change => {
-      self.propertyChanged(change.property, change.value);
-    });
+    this.propertyChanged(property, value);
   }
 
   render() {
@@ -132,8 +126,8 @@ export default class Preview extends ComponentBase {
           <div style={{ width: '100%' }}>
             <DocViewer content={'## Props'} editorType="github" />
             <PropsPanel
-              onApplyClick={this.onApplyClick}
               availableProperties={availableProperties}
+              currentProperties={currentProperties}
               onPropertyChanged={this.onPropertyChanged}
               {...this.props}
             />

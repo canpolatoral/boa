@@ -129,14 +129,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Information text that located in bottom left side of iput element."
 		},
 		"bottomLeftInfoEnable": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, the bottomLeftInfo will be showed.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -147,14 +147,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Information text that located in bottom right side of iput element."
 		},
 		"bottomRightInfoEnable": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, the bottomRightInfo will be showed.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -165,7 +165,7 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": "",
+			"description": "The text string to use for the default value.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -176,7 +176,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "",
+			"description": "Character that is not involved in counting operation.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -187,67 +187,42 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Styles applied to the input element in error state."
 		},
 		"errorText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
-		},
-		"floatingLabelFixed": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
-		},
-		"floatingLabelFocusStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
-		},
-		"floatingLabelShrinkStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
+			"description": "Message to display when the input is in an error state.\n When this is present, also visually highlights the component as in error."
 		},
 		"floatingLabelStyle": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "The style object to use to override floating label styles."
 		},
 		"floatingLabelText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "The content to use for the floating label element."
 		},
 		"formControlStyle": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Override the inline-styles of the root element."
 		},
 		"fullWidth": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `false`, the field receives the property width 100.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -258,35 +233,28 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
-		},
-		"hintStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
+			"description": "The content to use for the helper text element."
 		},
 		"hintText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "The hint content to display."
 		},
 		"id": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "The id prop for the text field."
 		},
 		"inlineGridMode": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, the component transforms itself into grid mode",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -311,21 +279,21 @@
 				]
 			},
 			"required": false,
-			"description": ""
+			"description": "Aligment of text in input element."
 		},
 		"inputProps": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Attributes applied to the input element."
 		},
 		"inputStyle": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Override the inline-styles of the TextField's input element.\nWhen multiLine is false: define the style of the input element.\nWhen multiLine is true: define the style of the container of the textarea."
 		},
 		"maskedMaxLength": {
 			"type": {
@@ -339,14 +307,14 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Maximum character count of input element."
 		},
 		"multiLine": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If true, a textarea element will be rendered.\nThe textarea also grows and shrinks according to the number of lines.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -357,14 +325,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Name applied to the input."
 		},
 		"noWrap": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": ""
+			"description": "If `true`, element will not wrapped."
 		},
 		"onBlur": {
 			"type": {
@@ -385,7 +353,7 @@
 				"name": "func"
 			},
 			"required": false,
-			"description": "onchange setState bitmeden tetikleniyor.\nSetState callbacinde fırlatılan bir evente ihtiyacımız oldu.\nKullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi."
+			"description": ""
 		},
 		"onFocus": {
 			"type": {
@@ -434,7 +402,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": "",
+			"description": "Number of rows to display when multiLine option is set to true.",
 			"defaultValue": {
 				"value": 1,
 				"computed": false
@@ -445,7 +413,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Maximum number of rows to display when\nmultiLine option is set to true."
 		},
 		"showClearButton": {
 			"type": {
@@ -483,13 +451,6 @@
 			"required": false,
 			"description": ""
 		},
-		"textareaStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
-		},
 		"textSelection": {
 			"type": {
 				"name": "object"
@@ -502,7 +463,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Timer that shown in right bottom info by seconds"
 		},
 		"type": {
 			"type": {
@@ -519,21 +480,25 @@
 				]
 			},
 			"required": false,
-			"description": ""
+			"description": "Specifies the type of input to display\nsuch as \"password\" or \"text\"."
+		},
+		"underlineShow": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If true, shows the underline for the text field.",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
 		},
 		"value": {
 			"type": {
 				"name": "any"
 			},
 			"required": false,
-			"description": ""
-		},
-		"underlineShow": {
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			},
-			"required": false
+			"description": "The value of the text field."
 		}
 	},
 	"composes": [

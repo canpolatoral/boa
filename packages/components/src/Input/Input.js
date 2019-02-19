@@ -120,37 +120,105 @@ const styles = theme => {
 class Input extends EditorBase {
   static propTypes = {
     ...EditorBase.propTypes,
+    /**
+     * Information text that located in bottom left side of iput element.
+     */
     bottomLeftInfo: PropTypes.string,
+    /**
+     * If `true`, the bottomLeftInfo will be showed.
+     */
     bottomLeftInfoEnable: PropTypes.bool,
+    /**
+     * Information text that located in bottom right side of iput element.
+     */
     bottomRightInfo: PropTypes.string,
+    /**
+     * If `true`, the bottomRightInfo will be showed.
+     */
     bottomRightInfoEnable: PropTypes.bool,
+    /**
+     * The text string to use for the default value.
+     */
     defaultValue: PropTypes.any,
+    /**
+     * Character that is not involved in counting operation.
+     */
     disabledCounterCharacter: PropTypes.string,
+    /**
+     * Styles applied to the input element in error state.
+     */
     errorStyle: PropTypes.object,
+    /**
+     *  Message to display when the input is in an error state.
+     *  When this is present, also visually highlights the component as in error.
+     */
     errorText: PropTypes.string,
-    floatingLabelFixed: PropTypes.bool,
-    floatingLabelFocusStyle: PropTypes.object,
-    floatingLabelShrinkStyle: PropTypes.object,
+    /**
+     * The style object to use to override floating label styles.
+     */
     floatingLabelStyle: PropTypes.object,
+   /**
+     * The content to use for the floating label element.
+     */
     floatingLabelText: PropTypes.string,
+    /**
+     * Override the inline-styles of the root element.
+     */
     formControlStyle: PropTypes.object,
+    /**
+     * If `false`, the field receives the property width 100.
+     */
     fullWidth: PropTypes.bool,
+    /**
+     * The content to use for the helper text element.
+     */
     helperText: PropTypes.string,
-    hintStyle: PropTypes.object,
+   /**
+     * The hint content to display.
+     */
     hintText: PropTypes.string,
+    /**
+     * The id prop for the text field.
+     */
     id: PropTypes.string,
+    /**
+     * If `true`, the component transforms itself into grid mode
+     */
     inlineGridMode: PropTypes.bool,
+    /**
+     * Aligment of text in input element.
+     */
     inputAlign: PropTypes.oneOf(['left', 'right', 'center']),
+    /**
+     * Attributes applied to the input element.
+     */
     inputProps: PropTypes.object,
+    /**
+     * Override the inline-styles of the TextField's input element.
+     * When multiLine is false: define the style of the input element.
+     * When multiLine is true: define the style of the container of the textarea.
+     */
     inputStyle: PropTypes.object,
     maskedMaxLength: PropTypes.number,
+    /**
+     * Maximum character count of input element.
+     */
     maxLength: PropTypes.number,
+    /**
+     * If true, a textarea element will be rendered.
+     * The textarea also grows and shrinks according to the number of lines.
+     */
     multiLine: PropTypes.bool,
+    /**
+     * Name applied to the input.
+     */
     name: PropTypes.string,
+    /**
+     * If `true`, element will not wrapped.
+     */
     noWrap: PropTypes.bool,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
-
     onChangeSync: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -158,22 +226,41 @@ class Input extends EditorBase {
     onTimerFinished: PropTypes.func,
     outerStyle: PropTypes.object,
     prefixText: PropTypes.any,
+    /**
+     * Number of rows to display when multiLine option is set to true.
+     */
     rows: PropTypes.number,
+    /**
+     * Maximum number of rows to display when
+     * multiLine option is set to true.
+     */
     rowsMax: PropTypes.number,
     showClearButton: PropTypes.bool,
     showCounter: PropTypes.bool,
     style: PropTypes.object,
     suffixText: PropTypes.any,
-    textareaStyle: PropTypes.object,
     textSelection: PropTypes.object,
+    /**
+     * Timer that shown in right bottom info by seconds
+     */
     timerDuration: PropTypes.number,
+    /**
+     * Specifies the type of input to display
+     * such as "password" or "text".
+     */
     type: PropTypes.oneOf(['password', 'text']),
+    /**
+     * If true, shows the underline for the text field.
+     */
+    underlineShow: PropTypes.bool,
+   /**
+     * The value of the text field.
+     */
     value: PropTypes.any,
   };
 
   static defaultProps = {
     ...EditorBase.defaultProps,
-    floatingLabelFixed: false,
     fullWidth: true,
     multiLine: false,
     rows: 1,
@@ -207,9 +294,7 @@ class Input extends EditorBase {
     if (timerDuration !== this.props.timerDuration) {
       this.setTimer(timerDuration);
     }
-    // null ise kasıtlı siliniyordur, silmeli.
-    // undefined ise value geçilmemiştir, değişmemeli.
-    // diğer durumlarda prop yada state'ten farklı gelmişse değişmeli.
+
     if (value === null) {
       this.setState({ value: '' });
     } else if (value !== undefined && (value !== this.props.value || value !== this.state.value)) {
@@ -233,7 +318,6 @@ class Input extends EditorBase {
       }
       if (text !== '') {
         if (this.props.disabledCounterCharacter !== '') {
-          // bazı karakterleri sayaca eklememesi için
           text = text.split(this.props.disabledCounterCharacter);
           text = text.join('');
         }
@@ -283,7 +367,6 @@ class Input extends EditorBase {
   onBlur(e) {
     this.setState({ focussed: false });
     // this.validateConstraint();
-    // her blur oluşunda value constraint mesajlarının temizlenmesi için.
     /* istanbul ignore else */
     if (this.props.onBlur) {
       this.props.onBlur(e);
@@ -436,7 +519,7 @@ class Input extends EditorBase {
       const bottomLeftInfoStyle = {
         fontSize: bottomTextSize,
         color: infoTextColor,
-        display: errorText ? 'none' : '', // error var ise helper görünmeyecek
+        display: errorText ? 'none' : '', // if errorText is visible, hide helperText
         marginTop: 1,
       };
       if (!isRtl) {
@@ -504,15 +587,6 @@ class Input extends EditorBase {
       marginTop: 2,
     };
 
-    // inline grid style
-    // if (this.props.inlineGridMode) {
-    //   inputStyle = Object.assign(inputStyle, {
-    //     marginLeft: 12,
-    //     marginRight: 12
-    //   });
-    // }
-
-    // inputProps.style && delete inputProps.style; // todo geçici
     const inputPropsMerged = Object.assign(
       {},
       {
@@ -538,7 +612,6 @@ class Input extends EditorBase {
       position: 'relative',
       paddingTop: 10,
       marginTop: 0,
-      // this.props.inlineGridMode ? (this.props.multiLine ? 10 : hideshowMarginTop ? 0 : 12) : 0
     };
     const rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
     let visibleLabel = true;
@@ -565,7 +638,6 @@ class Input extends EditorBase {
 
     const { classes } = this.props;
 
-    // zorunlu alanlar eğer veri grilmemiş ise underline rengi farklı olacak.
     let underlineClass = classes.inputUnderline;
     const valueConstraint = this.props.valueConstraint;
 

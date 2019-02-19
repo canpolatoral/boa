@@ -118,7 +118,7 @@ class Toggle extends ComponentBase {
 
   state = {
     disabled: this.props.disabled,
-    toggled: this.props.toggled,
+    toggled: this.props.defaultToggled || this.props.toggled,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -191,8 +191,8 @@ class Toggle extends ComponentBase {
           ? 0
           : 1
         : this.props.labelPosition === 'right'
-        ? 1
-        : 0,
+          ? 1
+          : 0,
     });
 
     return (
@@ -202,7 +202,6 @@ class Toggle extends ComponentBase {
           <FormControlLabel
             control={
               <Switch
-                defaultChecked={this.props.defaultToggled}
                 checked={this.state.toggled}
                 disabled={this.state.disabled}
                 color="primary"

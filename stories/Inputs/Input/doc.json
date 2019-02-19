@@ -504,20 +504,19 @@
 			"required": false,
 			"description": ""
 		},
-		"validationMessageStyleActive": {
+		"type": {
 			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
-		},
-		"validationResult": {
-			"type": {
-				"name": "array"
+				"name": "enum",
+				"value": [
+					{
+						"value": "password",
+						"computed": false
+					},
+					{
+						"value": "text",
+						"computed": false
+					}
+				]
 			},
 			"required": false,
 			"description": ""

@@ -180,6 +180,7 @@ class CheckBox extends ComponentBase {
         name={this.props.name}
         checked={this.state.isChecked}
         disabled={this.state.disabled}
+        disableRipple={this.props.disableRipple}
         checkedIcon={this.props.checkedIcon ? this.props.checkedIcon : undefined}
         icon={this.props.icon}
         color={this.props.color}

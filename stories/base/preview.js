@@ -167,8 +167,6 @@ export default class Preview extends ComponentBase {
         displayName: this.getName.bind(this),
         filterProps: [
           'context',
-          'maxFontSize',
-          'minFontSize',
           'doc',
           'data',
           'componentSize',

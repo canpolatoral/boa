@@ -5,11 +5,6 @@
     "output": "stories/Buttons/Button/doc.json"
   },
   {
-    "alias": "IconButton",
-    "input": "packages/components/src/IconButton/IconButton.js",
-    "output": "stories/Buttons/IconButton/doc.json"
-  },
-  {
     "alias": "CheckBox",
     "input": "packages/components/src/CheckBox/CheckBox.js",
     "output": "stories/CheckBox/doc.json"

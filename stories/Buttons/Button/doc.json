@@ -125,7 +125,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Font icon name from font icon's library."
+			"description": "Font icon name from font icon's library.\n@@ignore"
 		},
 		"fullWidth": {
 			"type": {
@@ -174,7 +174,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "SVG Icon name from material svg icon library."
+			"description": "SVG Icon name from material svg icon library.\n@ignore"
 		},
 		"text": {
 			"type": {
@@ -206,7 +206,7 @@
 				]
 			},
 			"required": false,
-			"description": "The position of the text in button.",
+			"description": "The position of the text in button.\nIt applies given position to text if button width is greater than text width.",
 			"defaultValue": {
 				"value": "center",
 				"computed": false

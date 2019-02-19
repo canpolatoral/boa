@@ -53,6 +53,7 @@ class Button extends ComponentBase {
     dynamicIcon: PropTypes.string,
     /**
      * Font icon name from font icon's library.
+     * @@ignore
      */
     fontIcon: PropTypes.string,
     /**
@@ -81,6 +82,7 @@ class Button extends ComponentBase {
     style: PropTypes.object,
     /**
      * SVG Icon name from material svg icon library.
+     * @ignore
      */
     svgIcon: PropTypes.string,
     /**
@@ -89,6 +91,7 @@ class Button extends ComponentBase {
     text: PropTypes.string,
     /**
      * The position of the text in button.
+     * It applies given position to text if button width is greater than text width.
      */
     textPosition: PropTypes.oneOf(['center', 'left', 'right']),
     /**
@@ -190,7 +193,7 @@ class Button extends ComponentBase {
         {...this.props}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        onClick={this.onClick}
+        onClick={this.props.onClick}
       />
     );
   }

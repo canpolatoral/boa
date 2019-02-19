@@ -281,9 +281,9 @@ describe('<InputAction />', () => {
 
   describe('numeric', () => {
     it('should render numeric type', () => {
-      const wrapper = mount(<InputAction context={context} type="numeric" />);
+      const wrapper = mount(<InputAction context={context} type="numeric" test />);
       const input = wrapper.find(InputNumeric);
-      assert.strictEqual(input.props().type, 'numeric');
+      assert.strictEqual(input.props().test, true);
     });
 
     it('should render leftIconList', () => {
@@ -295,7 +295,6 @@ describe('<InputAction />', () => {
         <InputAction context={context} type="numeric" leftIconList={leftIconList} />,
       );
       const input = wrapper.find(InputNumeric);
-      assert.strictEqual(input.props().type, 'numeric');
       assert.strictEqual(input.props().prefixText.length, 2);
     });
 
@@ -308,7 +307,6 @@ describe('<InputAction />', () => {
         <InputAction context={context} type="numeric" rightIconList={rightIconList} />,
       );
       const input = wrapper.find(InputNumeric);
-      assert.strictEqual(input.props().type, 'numeric');
       assert.strictEqual(input.props().suffixText.length, 2);
     });
   });

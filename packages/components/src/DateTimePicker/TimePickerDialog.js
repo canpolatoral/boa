@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import keycode from 'keycode';
 import { Popover } from '@boa/components/Popover';
-import { ComponentBase, Sizes } from '@boa/base';
+import { ComponentBase } from '@boa/base';
 import { InputAction } from '@boa/components/InputAction';
 import { Dialog } from '@boa/components/Dialog';
 import TimeBase from './TimeBase';
@@ -637,8 +637,7 @@ class TimePickerDialog extends ComponentBase {
       </Dialog>
     );
 
-    const isMobileOrTablet = this.props.context.deviceSize < Sizes.MEDIUM;
-    return <div ref="root">{isMobileOrTablet ? dialogContent : popoverContent}</div>;
+    return <div ref="root">{this.isMobile() ? dialogContent : popoverContent}</div>;
   }
 }
 

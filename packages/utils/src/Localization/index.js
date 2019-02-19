@@ -21,6 +21,7 @@ export class Localization {
   static numberFormats = {
     D: '0',
     F: '0,0',
+    FDOT: '0.0',
   };
 
   static staticConstructor(langId) {
@@ -139,6 +140,10 @@ export class Localization {
    * @param {*} format
    */
   static formatCurrency(currency, format) {
+    if (currency === null) {
+      return null;
+    }
+
     if (format) {
       if (format === 'D') {
         return numeral(currency).format(this.currencyFormats.D);
@@ -173,12 +178,19 @@ export class Localization {
    * @param {*} format
    */
   static formatNumber(number, format) {
+    if (number === null) {
+      return null;
+    }
+
     if (format) {
       if (format === 'D') {
         return numeral(number).format(this.numberFormats.D);
       }
       if (format === 'F') {
         return numeral(number).format(this.numberFormats.F);
+      }
+      if (format === 'FDOT') {
+        return numeral(number).format(this.numberFormats.FDOT);
       }
 
       return number;
@@ -230,6 +242,10 @@ export class Localization {
     String Functions
   */
   static stringUpperCase(value) {
+    if (value === null) {
+      return '';
+    }
+
     if (this.languageId === 1) {
       const letters = { i: 'İ', ş: 'Ş', ğ: 'Ğ', ü: 'Ü', ö: 'Ö', ç: 'Ç', ı: 'I' };
       value = value.replace(/(([iışğüçö]))/g, letter => {
@@ -240,6 +256,9 @@ export class Localization {
   }
 
   static stringLowerCase(value) {
+    if (value === null) {
+      return '';
+    }
     if (this.languageId === 1) {
       const letters = { İ: 'i', I: 'ı', Ş: 'ş', Ğ: 'ğ', Ü: 'ü', Ö: 'ö', Ç: 'ç' };
       value = value.replace(/(([İIŞĞÜÇÖ]))/g, letter => {

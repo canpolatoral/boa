@@ -73,7 +73,7 @@ const styles = theme => {
       },
 
       '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-        borderBottom: `2px solid ${boaPalette.base250}`,
+        borderBottom: `1px solid ${theme.boaPalette.base400}`,
       },
     },
 
@@ -87,7 +87,7 @@ const styles = theme => {
       },
 
       '&:hover:not($inputDisabled):not($inputfocused):not($inputError):before': {
-        borderBottom: `2px solid ${boaPalette.obli400}`,
+        borderBottom: `2px solid ${theme.boaPalette.obli400}`,
       },
     },
 
@@ -112,6 +112,9 @@ const styles = theme => {
   };
 };
 
+/**
+ * Text fields let users enter and edit text.
+ */
 @ComponentComposer
 @withStyles(styles)
 class Input extends EditorBase {
@@ -147,11 +150,7 @@ class Input extends EditorBase {
     noWrap: PropTypes.bool,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
-    /**
-     * onchange setState bitmeden tetikleniyor.
-     * SetState callbacinde fırlatılan bir evente ihtiyacımız oldu.
-     * Kullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi.
-     */
+
     onChangeSync: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -168,8 +167,7 @@ class Input extends EditorBase {
     textareaStyle: PropTypes.object,
     textSelection: PropTypes.object,
     timerDuration: PropTypes.number,
-    validationMessageStyleActive: PropTypes.bool,
-    validationResult: PropTypes.array,
+    type: PropTypes.oneOf(['password', 'text']),
     value: PropTypes.any,
   };
 
@@ -182,7 +180,6 @@ class Input extends EditorBase {
     defaultValue: '',
     bottomLeftInfoEnable: true,
     bottomRightInfoEnable: true,
-    validationMessageStyleActive: false,
     disabledCounterCharacter: '',
     showCounter: false,
     showClearButton: false,
@@ -249,10 +246,8 @@ class Input extends EditorBase {
   componentDidUpdate() {
     const textSelection = this.props.textSelection;
     if (textSelection && textSelection.start && textSelection.end) {
-      /* istanbul ignore else */
-      if (this.textField) {
-        this.textField.setSelectionRange(textSelection.start, textSelection.end);
-      }
+      // eslint-disable-next-line
+      this.textField && this.textField.setSelectionRange(textSelection.start, textSelection.end);
     }
   }
 
@@ -364,6 +359,7 @@ class Input extends EditorBase {
       maxLength,
       fullWidth,
       rows,
+      type,
       rowsMax,
       prefixText,
       showClearButton,
@@ -488,7 +484,6 @@ class Input extends EditorBase {
       } else if (showCounter && maxLength) {
         bottomRightInfoSpace = (
           <span style={bottomRightInfoStyle}>
-            {/* masked editörde maxLength ile değil maskedMaskLength görülecek  */}
             <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>/
             {this.props.maskedMaxLength || maxLength}
           </span>
@@ -619,14 +614,12 @@ class Input extends EditorBase {
             inputProps={inputPropsMerged}
             inputRef={this.props.inputRef}
             fullWidth={fullWidth}
-            type="text"
-            // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+            type={type}
             style={this.props.inputStyle}
             value={this.state.value}
             disabled={this.state.disabled}
             disableUnderline={!underlineShow}
             multiline={this.props.multiLine}
-            // margin={'dense'}
             error={!this.state.disabled && error}
             onBlur={this.onBlur}
             onChange={this.onChange}

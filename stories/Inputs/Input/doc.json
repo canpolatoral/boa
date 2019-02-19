@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "Text fields let users enter and edit text.",
 	"displayName": "Input",
 	"methods": [
 		{
@@ -86,30 +86,6 @@
 		},
 		{
 			"name": "onFocus",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onKeyDown",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onKeyUp",
 			"docblock": null,
 			"modifiers": [],
 			"params": [
@@ -471,6 +447,17 @@
 			"required": false,
 			"description": ""
 		},
+		"showClearButton": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
 		"showCounter": {
 			"type": {
 				"name": "bool"
@@ -503,6 +490,13 @@
 			"required": false,
 			"description": ""
 		},
+		"textSelection": {
+			"type": {
+				"name": "object"
+			},
+			"required": false,
+			"description": ""
+		},
 		"timerDuration": {
 			"type": {
 				"name": "number"
@@ -525,22 +519,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": "text",
-				"computed": false
-			}
-		},
-		"validationMessageStyleActive": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
+			"description": ""
 		},
 		"value": {
 			"type": {

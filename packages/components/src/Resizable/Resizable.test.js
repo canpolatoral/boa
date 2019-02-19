@@ -11,7 +11,7 @@ describe('<Resizable />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

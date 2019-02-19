@@ -17,7 +17,7 @@ describe('<Toggle />', () => {
     shallow = createShallow({ dive: true });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

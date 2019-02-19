@@ -2,7 +2,7 @@ import React from 'react';
 import { assert } from 'chai';
 import { stub } from 'sinon';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import { Utils, DialogType, Sizes } from '@boa/base';
+import { DialogType, Sizes } from '@boa/base';
 import { Icon } from '@boa/components/Icon';
 import * as Helper from './helpers';
 import { context } from '@boa/test/utils';
@@ -490,10 +490,8 @@ describe('Dialog helper methods', () => {
           context,
           content: 'hello world',
         };
-        const stubUtils = stub(Utils, 'getShowStatusMessageReplacedText').returns('test');
         const result = Helper.prepareDialog(props);
-        stubUtils.restore();
-        assert.strictEqual(result.dialogContent, 'test');
+        assert.strictEqual(result.dialogContent.length, 1);
       });
 
       it('should call prepareComponentContent', () => {

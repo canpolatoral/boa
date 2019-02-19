@@ -355,16 +355,24 @@ export function substructDay(d1, d2) {
   return (d2.getTime() - d1.getTime()) / (24 * 60 * 60 * 1000);
 }
 export function isBeforeDate(d1, d2) {
-  const date1 = cloneAsDate(d1);
-  const date2 = cloneAsDate(d2);
+  if (d1 == null || d2 == null) {
+    return false;
+  } else {
+    const date1 = cloneAsDate(d1);
+    const date2 = cloneAsDate(d2);
 
-  return date1.getTime() < date2.getTime();
+    return date1.getTime() < date2.getTime();
+  }
 }
 export function isAfterDate(d1, d2) {
-  const date1 = cloneAsDate(d1);
-  const date2 = cloneAsDate(d2);
+  if (d1 == null || d2 == null) {
+    return false;
+  } else {
+    const date1 = cloneAsDate(d1);
+    const date2 = cloneAsDate(d2);
 
-  return date1.getTime() > date2.getTime();
+    return date1.getTime() > date2.getTime();
+  }
 }
 export function isBetweenDates(dateToCheck, startDate, endDate) {
   return !isBeforeDate(dateToCheck, startDate) && !isAfterDate(dateToCheck, endDate);

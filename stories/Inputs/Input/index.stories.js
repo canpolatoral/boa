@@ -11,7 +11,7 @@ const stories = storiesOf('Inputs', module);
 
 stories.add('Input', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={Input} doc={doc} />
       <Preview {...props} component={Input} doc={doc} />
       <Props {...props} component={Input} doc={doc} />

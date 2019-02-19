@@ -66,11 +66,10 @@ class Dialog extends ComponentBase {
     disableEscapeKeyDown: PropTypes.bool,
     /**
      * If true, the modal will not restore focus to previously focused element once modal is hidden.
-     * (input bileşeninin focusunda açıyorsanız can kurtarır!)
      */
     disableRestoreFocus: PropTypes.bool,
     /**
-     * If `true`, it will be full-screen
+     * If `true`, it will be full-screen.
      */
     fullScreen: PropTypes.bool,
     /**

@@ -13,6 +13,7 @@ class InputAction extends ComponentBase {
     ...Input.propTypes,
     canActionFocusable: PropTypes.bool,
     hideLeftIcons: PropTypes.bool,
+    hideRightIconKeyList: PropTypes.arrayOf(String),
     hideRightIcons: PropTypes.bool,
     inputDisabled: PropTypes.bool,
     leftIconList: PropTypes.array,
@@ -152,13 +153,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-            paddingRight: paddingLeft,
-            paddingLeft: paddingRight,
-          }
+          paddingRight: paddingLeft,
+          paddingLeft: paddingRight,
+        }
         : {
-            paddingLeft,
-            paddingRight,
-          },
+          paddingLeft,
+          paddingRight,
+        },
       this.props.floatingLabelStyle,
     );
   }
@@ -249,8 +250,25 @@ class InputAction extends ComponentBase {
           </div>,
         );
       }
-    } else if (this.props.rightIconList && !this.state.hideRightIcons) {
-      rightIcons = this.props.rightIconList.map((icon, index) => {
+    } else if (this.props.rightIconList) {
+      // !this.state.hideRightIcons hepsini çiz
+      //  this.state.hideRightIcons ve hideRightIconKeyList içinde değilse çiz
+
+      let newRightIconList = this.props.rightIconList;
+      const hideRightIconKeyList = this.props.hideRightIconKeyList;
+
+      if (this.state.hideRightIcons) {
+        if (this.props.hideRightIconKeyList && this.props.hideRightIconKeyList.length > 0) {
+          // eslint-disable-next-line max-len
+          newRightIconList = this.props.rightIconList.filter(
+            i => !hideRightIconKeyList.includes(i.key),
+          );
+        } else {
+          newRightIconList = [];
+        }
+      }
+
+      rightIcons = newRightIconList.map((icon, index) => {
         return (
           <div
             key={icon.key || `rightIcon${index}`}
@@ -310,7 +328,7 @@ class InputAction extends ComponentBase {
 
     const bInput =
       this.props.type === 'numeric'
-        ? this.renderBInputNumeric(type, leftIcons, rightIcons)
+        ? this.renderBInputNumeric(leftIcons, rightIcons)
         : this.renderBInput(type, leftIcons, rightIcons);
 
     return (
@@ -321,7 +339,9 @@ class InputAction extends ComponentBase {
   }
 
   renderBInput(type, leftIcons, rightIcons) {
-    const { context, ...others } = this.props;
+    // b-input-action snapshot ı dışardan verildiğinde b-inputu ezmemeli
+    // eslint-disable-next-line no-unused-vars
+    const { context, snapshot, ...others } = this.props;
     return (
       <Input
         ref={r => (this.binput = r)}
@@ -340,15 +360,16 @@ class InputAction extends ComponentBase {
     );
   }
 
-  renderBInputNumeric(type, leftIcons, rightIcons) {
-    const { context, ...others } = this.props;
+  renderBInputNumeric(leftIcons, rightIcons) {
+    // b-input-action snapshot ı dışardan verildiğinde b-inputu ezmemeli
+    // eslint-disable-next-line no-unused-vars
+    const { context, snapshot, type, ...others } = this.props;
     return (
       <InputNumeric
         ref={r => (this.binput = r)}
         context={context}
         {...others}
         disabled={this.state.inputDisabled}
-        type={type}
         value={this.state.value}
         onChange={this.onChange}
         onFocus={this.onFocus}

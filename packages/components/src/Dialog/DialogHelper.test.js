@@ -18,7 +18,7 @@ describe('DialogHelper', () => {
       const paper = ref.querySelectorAll('[class*=MuiPaper-root]')[0];
       const dialogContent = paper.querySelectorAll('[class*=MuiDialogContent-root]')[0];
       const content = dialogContent.getElementsByTagName('div')[3];
-      assert.strictEqual(content.innerHTML, 'test');
+      assert.strictEqual(content.innerHTML, '<div>test</div>');
       DialogHelper.clearRefs(dialogKey);
     });
 
@@ -141,7 +141,7 @@ describe('DialogHelper', () => {
       const paper = ref.querySelectorAll('[class*=MuiPaper-root]')[0];
       const dialogContent = paper.querySelectorAll('[class*=MuiDialogContent-root]')[0];
       const content = dialogContent.getElementsByTagName('div')[3];
-      assert.strictEqual(content.innerHTML, 'test');
+      assert.strictEqual(content.innerHTML, '<div>test</div>');
       DialogHelper.clearRefs(dialogKey);
     });
   });

@@ -5,11 +5,6 @@
     "output": "stories/Buttons/Button/doc.json"
   },
   {
-    "alias": "IconButton",
-    "input": "packages/components/src/IconButton/IconButton.js",
-    "output": "stories/Buttons/IconButton/doc.json"
-  },
-  {
     "alias": "CheckBox",
     "input": "packages/components/src/CheckBox/CheckBox.js",
     "output": "stories/CheckBox/doc.json"
@@ -20,14 +15,33 @@
     "output": "stories/DateTimePicker/doc.json"
   },
   {
+    "alias": "DocCode",
+    "input": "packages/components/src/DocCode/DocCode.js",
+    "output": "stories/Documentation/DocCode/doc.json"
+  },
+  {
+    "alias": "DocNotice",
+    "input": "packages/components/src/DocNotice/DocNotice.js",
+    "output": "stories/Documentation/DocNotice/doc.json"
+  },
+  {
+    "alias": "DocToc",
+    "input": "packages/components/src/DocToc/DocToc.js",
+    "output": "stories/Documentation/DocToc/doc.json"
+  },
+  {
+    "alias": "DocViewer",
+    "input": "packages/components/src/DocViewer/DocViewer.js",
+    "output": "stories/Documentation/DocViewer/doc.json"
+  },
+  {
+    "alias": "Input",
+    "input": "packages/components/src/Input/Input.js",
+    "output": "stories/Inputs/Input/doc.json"
+  },
+  {
     "alias": "TreeView",
     "input": "packages/components/src/TreeView/TreeView.js",
     "output": "stories/TreeView/doc.json"
-  },
-  {
-    "alias": "TreeViewGrid",
-    "input": "packages/components/src/TreeViewGrid/TreeViewGrid.js",
-    "output": "stories/TreeViewGrid/doc.json"
   }
-
 ]

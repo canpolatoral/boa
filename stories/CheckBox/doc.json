@@ -1,5 +1,5 @@
 {
-	"description": "A CheckBox represents a button with two states, selected and unselected.\nThis component is wrapped from `@material-ui/core/Checkbox`.\nIf the label prop specified, the component renders `@material-ui/core/FormControlLabel`\nIf not, it renders a `@material-ui/core/Checkbox`\nAlso, it is able to render an errorText prop. CheckBox component extends\nComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`\nand ComponentComposer from `@boa/base`.",
+	"description": "A CheckBox represents a button with two states, selected and unselected.\nThis component is wrapped from `@material-ui/core/Checkbox`.\nIf the label prop specified, the component renders `@material-ui/core/FormControlLabel`\nIf not, it renders a `@material-ui/core/Checkbox`.\nAlso, it is able to render an error text with label if the errorText prop specified.",
 	"displayName": "CheckBox",
 	"methods": [
 		{

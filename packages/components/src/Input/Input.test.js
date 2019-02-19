@@ -20,7 +20,7 @@ describe('<Input />', () => {
     classes = getClasses(<Input context={context} />);
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 
@@ -35,11 +35,11 @@ describe('<Input />', () => {
     assert.strictEqual(control.shallow().name(), 'FormControl');
   });
 
-  it('shuld render a MuiInputLabel inside the FormControl', () => {
+  it('should render a MuiInputLabel inside the FormControl', () => {
     const wrapper = shallow(<Input floatingLabelText="test" context={context} />).dive();
     const control = wrapper.dive().find(MuiFormControl);
     const input = control.shallow().find(MuiInputLabel);
-    assert.strictEqual(input.shallow().name(), 'InputLabel');
+    assert.strictEqual(input.shallow().name(), 'WithFormControlContext(InputLabel)');
     assert.strictEqual(input.shallow().props().children, 'test');
   });
 
@@ -144,13 +144,25 @@ describe('<Input />', () => {
     clock.restore();
   });
 
-  it('should focus', () => {
-    const wrapper = mount(<Input context={context} />);
-    wrapper
-      .instance()
-      .getInstance()
-      .focus();
-    assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
+  describe('focus', () => {
+    let mountFocus;
+
+    before(() => {
+      mountFocus = createMount();
+    });
+
+    after(() => {
+      mountFocus.cleanUp();
+    });
+
+    it('should focus', () => {
+      const wrapper = mountFocus(<Input context={context} />);
+      wrapper
+        .instance()
+        .getInstance()
+        .focus();
+      assert.strictEqual(document.activeElement, wrapper.instance().getInstance().textField);
+    });
   });
 
   describe('props', () => {

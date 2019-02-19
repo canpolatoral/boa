@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
-import { ComponentBase, ComponentComposer, Utils, Platforms } from '@boa/base';
+import { ComponentBase, ComponentComposer, Platform } from '@boa/base';
 import PerfectScrollbar from 'perfect-scrollbar';
 import ReactResizeDetector from 'react-resize-detector';
 
@@ -112,12 +112,14 @@ class Scroll extends ComponentBase {
   }
 
   render() {
-    const childs = Utils.getFormChildren(this.props.children, this.state.disabled);
+    // TODO: disabled eklenecek mgumus
+    // const childs = Utils.getFormChildren(this.props.children, this.state.disabled);
+    const childs = this.props.children;
     const context = this.props.context;
     const innerStyle = Object.assign({}, { direction: 'ltr' }, this.props.style);
     let divStyle = Object.assign({}, { overflow: 'auto' }, this.props.divStyle);
 
-    if (context.platform === Platforms.MOBILE || context.platform === Platforms.TABLET) {
+    if (context.platform === Platform.MOBILE || context.platform === Platform.TABLET) {
       divStyle = Object.assign({}, divStyle, { height: '100%', WebkitOverflowScrolling: 'touch' });
       if (this.props.context.localization.isRightToLeft) {
         divStyle = Object.assign({}, divStyle, {

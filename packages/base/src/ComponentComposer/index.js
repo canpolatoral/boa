@@ -1,5 +1,6 @@
 import React from 'react';
-import { ErrorBoundary, Utils, isWrappedWithStyles } from '..';
+import { ErrorBoundary } from '..';
+import { isWrappedWithStyles } from '../helpers';
 
 export default function ComponentComposer(WrappedComponent) {
   return class IIBComponent extends WrappedComponent {
@@ -7,7 +8,9 @@ export default function ComponentComposer(WrappedComponent) {
       ...WrappedComponent.propTypes,
     };
 
-    static displayName = `ComponentComposer(${Utils.getDisplayName(WrappedComponent)})`;
+    static displayName = `ComponentComposer(${WrappedComponent.displayName ||
+      WrappedComponent.name ||
+      'Component'})`;
 
     getInstance() {
       return this.innerRef || this;

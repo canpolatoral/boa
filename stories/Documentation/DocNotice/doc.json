@@ -1,5 +1,5 @@
 {
-	"description": "Notice component for BOA markdown documents.",
+	"description": "This component renders the messages with several types:\n'Tip, Info, Warning, Error'",
 	"displayName": "DocNotice",
 	"methods": [
 		{
@@ -23,9 +23,9 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Notice text",
+			"description": "The text to display.",
 			"defaultValue": {
-				"value": "This is a tip message.",
+				"value": "",
 				"computed": false
 			}
 		},
@@ -45,9 +45,9 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Header of the notice.",
+			"description": "Header message of the notice.",
 			"defaultValue": {
-				"value": "Tip Message",
+				"value": "",
 				"computed": false
 			}
 		},

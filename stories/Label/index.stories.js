@@ -11,7 +11,7 @@ const stories = storiesOf('Label', module);
 
 stories.add('Label', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={Label} doc={doc} />
       <Preview {...props} component={Label} doc={doc} />
       <Props {...props} component={Label} doc={doc} />

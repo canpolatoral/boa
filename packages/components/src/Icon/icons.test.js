@@ -9,7 +9,7 @@ describe('Icons', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

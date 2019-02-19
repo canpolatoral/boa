@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types, react/no-danger */
+/* eslint-disable react/prop-types, react/no-danger, react/no-array-index-key */
 import React from 'react';
-import { DialogType, Utils, Sizes } from '@boa/base';
+import { DialogType, Sizes } from '@boa/base';
 import { Icon } from '@boa/components/Icon';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 
@@ -315,6 +315,28 @@ export function getIcon(context, type) {
   }
 }
 
+/* istanbul ignore next */
+export function getShowStatusMessageReplacedText(value) {
+  const text = value.replace(/\n/gi, '#00100#');
+  const textArray = text.split('#00100#');
+  const messages = [];
+  if (textArray && textArray.length > 0) {
+    if (textArray.length === 1) {
+      messages.push(<div key={0}>{textArray[0]}</div>);
+    } else {
+      textArray.forEach((item, index) => {
+        messages.push(
+          <div key={index}>
+            {item}
+            {index !== textArray.length ? <br /> : ''}
+          </div>,
+        );
+      }, this);
+    }
+  }
+  return messages;
+}
+
 export function prepareDialog(props) {
   const {
     context,
@@ -344,7 +366,7 @@ export function prepareDialog(props) {
       } else if (typeof content === 'string' && content.includes('\n')) {
         dialogContent = prepareStringContent(content);
       } else if (typeof content === 'string') {
-        dialogContent = Utils.getShowStatusMessageReplacedText(content);
+        dialogContent = getShowStatusMessageReplacedText(content);
       } else {
         dialogContent = prepareComponentContent(content, dialogRefs, dialogKey, style);
         titleWithCloseButtonEnabled = showHeader;

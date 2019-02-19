@@ -252,12 +252,13 @@ export default class PropsPanel extends ComponentBase {
                   /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {
                     const divStyle = {};
+                    const defaultValue = currentProperties[property.name] || property.default;
                     if (i === availableProperties.length - 1) {
                       divStyle.marginBottom = 12;
                     }
                     return (
                       <div key={i} style={divStyle}>
-                        {this.getComponent(property, currentProperties[property.name] || property.default)}
+                        {this.getComponent(property, defaultValue)}
                       </div>
                     );
                   }

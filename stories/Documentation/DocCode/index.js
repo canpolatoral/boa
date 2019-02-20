@@ -1,15 +1,13 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { DocCode } from '@boa/components/DocCode';
 import Header from '../../base/header';
 import Props from '../../base/props-table';
 import Preview from '../../base/preview';
 import doc from './doc.json';
 
-const stories = storiesOf('Documentation', module);
-
-stories.add('DocCode', ({ props }) => {
+// eslint-disable-next-line
+export default ({ props }) => {
   return (
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={DocCode} doc={doc} />
@@ -17,4 +15,4 @@ stories.add('DocCode', ({ props }) => {
       <Props {...props} component={DocCode} doc={doc} />
     </div>
   );
-});
+};

@@ -4,13 +4,13 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import ReactJson from 'react-json-view';
 import { Input } from '@boa/components/Input';
 import { InputNumeric } from '@boa/components/InputNumeric';
 import { Toggle } from '@boa/components/Toggle';
 import { Scroll } from '@boa/components/Scroll';
 import { ComponentBase } from '@boa/base';
+import { generateDefaultValue } from './utils';
 
 const style = {
   scrollStyle: { maxHeight: 300, padding: 12, wordWrap: 'break-word' },
@@ -103,11 +103,18 @@ export default class PropsPanel extends ComponentBase {
 
   getJsonViewer(property, value) {
     const self = this;
+    let cmpValue = value;
+    if (cmpValue === undefined || cmpValue === null) {
+      const defaultValue = generateDefaultValue(property.type);
+      if (defaultValue !== undefined) {
+        cmpValue = defaultValue;
+      }
+    }
     return (
       <div style={{ marginTop: 15 }}>
         <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
         <ReactJson
-          src={value}
+          src={cmpValue}
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
@@ -128,24 +135,25 @@ export default class PropsPanel extends ComponentBase {
     if (property.values && property.values.length > 0) {
       return (
         <div>
-          <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
-            <InputLabel htmlFor="theme">{property.name}</InputLabel>
-            <NativeSelect
+          <FormControl style={{ maxWidth: 300, width: '100%', marginBottom: 15 }}>
+            <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
+            <Select
+              value={value}
               onChange={event => {
                 self.onPropertyChanged(property.name, event.target.value);
               }}
             >
               {property.values.map((item, index) => {
                 return (
-                  <option
+                  <MenuItem
                     key={`property${index}`} // eslint-disable-line
                     value={item}
                   >
                     {item}
-                  </option>
+                  </MenuItem>
                 );
               })}
-            </NativeSelect>
+            </Select>
           </FormControl>
         </div>
       );

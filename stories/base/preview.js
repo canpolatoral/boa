@@ -49,14 +49,9 @@ export default class Preview extends ComponentBase {
         };
 
         availableProperties.push(property);
-        let defaultValue = Utils.getDefaultValue(prop);
+        const defaultValue = Utils.getDefaultValue(prop);
         if (defaultValue) {
           currentProperties[key] = defaultValue;
-        } else {
-          defaultValue = Utils.generateDefaultValue(property.type);
-          if (defaultValue !== undefined) {
-            currentProperties[key] = defaultValue;
-          }
         }
       });
 
@@ -98,9 +93,9 @@ export default class Preview extends ComponentBase {
     }
 
     this.setState((prevState) => {
-      const { currentProperties } = prevState;
-      currentProperties[property] = value;
-      return { currentProperties };
+      const newCurrentProperties = Object.assign({}, prevState.currentProperties);
+      newCurrentProperties[property] = value;
+      return { currentProperties: newCurrentProperties };
     }, () => {
       const code = this.getComponentString();
       this.setState({ code });

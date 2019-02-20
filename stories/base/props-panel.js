@@ -32,7 +32,7 @@ const themeItems = [
   { title: 'Ash', value: 'ash' },
   { title: 'Dark', value: 'dark' },
   { title: 'Orange', value: 'orange' },
-  { title: 'magenta', value: 'magenta' },
+  { title: 'Magenta', value: 'magenta' },
 ];
 
 const languageItems = [

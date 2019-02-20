@@ -31,6 +31,9 @@ const styles = () => ({
 @withStyles(styles)
 class Dialog extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     /**
      * Dialog children, usually the included sub-components.
@@ -132,7 +135,6 @@ class Dialog extends ComponentBase {
     PaperProps: PropTypes.object,
     repositionOnUpdate: PropTypes.bool,
     showHeader: PropTypes.bool,
-    style: PropTypes.object,
     /**
      * If true, the modal will not restore focus to previously focused element once modal is hidden.
      */

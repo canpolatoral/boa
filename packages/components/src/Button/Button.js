@@ -44,10 +44,6 @@ class Button extends ComponentBase {
      */
     colorType: PropTypes.oneOf(['default', 'primary', 'secondary']),
     /**
-     * If `true`, the button will be disabled.
-     */
-    disabled: PropTypes.bool,
-    /**
      * Icon name from BOA icon library.
      */
     dynamicIcon: PropTypes.string,
@@ -76,10 +72,6 @@ class Button extends ComponentBase {
      * @ignore
      */
     onClick: PropTypes.func,
-    /**
-     * Override the style of element
-     */
-    style: PropTypes.object,
     /**
      * SVG Icon name from material svg icon library.
      * @ignore

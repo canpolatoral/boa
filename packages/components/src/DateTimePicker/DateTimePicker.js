@@ -31,6 +31,9 @@ let minSecond;
 @ComponentComposer
 class DateTimePicker extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     /**
      * Cancel label.

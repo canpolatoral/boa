@@ -21,9 +21,11 @@ Object.freeze(handlerNameByEvent);
 @ComponentComposer
 class Scroll extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     children: PropTypes.node.isRequired,
-    disabled: PropTypes.bool,
     divStyle: PropTypes.object,
     onScrollDown: PropTypes.func,
     onScrollLeft: PropTypes.func,
@@ -36,7 +38,6 @@ class Scroll extends ComponentBase {
     onYReachEnd: PropTypes.func,
     onYReachStart: PropTypes.func,
     option: PropTypes.object,
-    style: PropTypes.object,
   };
 
   static defaultProps = {

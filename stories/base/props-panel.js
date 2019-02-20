@@ -110,6 +110,11 @@ export default class PropsPanel extends ComponentBase {
         cmpValue = defaultValue;
       }
     }
+
+    if (cmpValue === undefined || cmpValue === null) {
+      return null;
+    }
+
     return (
       <div style={{ marginTop: 15 }}>
         <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
@@ -138,7 +143,7 @@ export default class PropsPanel extends ComponentBase {
           <FormControl style={{ maxWidth: 300, width: '100%', marginBottom: 15 }}>
             <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
             <Select
-              value={value}
+              value={value || property.values[0]}
               onChange={event => {
                 self.onPropertyChanged(property.name, event.target.value);
               }}

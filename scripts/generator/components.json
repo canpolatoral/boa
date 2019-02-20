@@ -40,6 +40,21 @@
     "output": "stories/Inputs/Input/doc.json"
   },
   {
+    "alias": "InputAction",
+    "input": "packages/components/src/InputAction/InputAction.js",
+    "output": "stories/Inputs/InputAction/doc.json"
+  },
+  {
+    "alias": "InputMask",
+    "input": "packages/components/src/InputMask/InputMask.js",
+    "output": "stories/Inputs/InputMask/doc.json"
+  },
+  {
+    "alias": "InputNumeric",
+    "input": "packages/components/src/InputNumeric/InputNumeric.js",
+    "output": "stories/Inputs/InputNumeric/doc.json"
+  },
+  {
     "alias": "TreeView",
     "input": "packages/components/src/TreeView/TreeView.js",
     "output": "stories/TreeView/doc.json"

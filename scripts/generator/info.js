@@ -24,6 +24,9 @@ const repair = obj => {
         repair(obj[property]);
       } else {
         let str = obj[property];
+        if (typeof str === 'string' && str.includes('\r')) {
+          obj[property] = str.split('\r').join('');
+        }
         if (typeof str === 'string' && str[0] === "'" && str[str.length - 1] === "'") {
           obj[property] = str.slice(1, str.length - 1);
         } else if (typeof str === 'string' && str.startsWith('new Date(')) {

@@ -285,7 +285,7 @@ class Input extends EditorBase {
      * Specifies the type of input to display
      * such as "password" or "text".
      */
-    type: PropTypes.oneOf(['password', 'text']),
+    type: PropTypes.oneOf(['password', 'text', 'numeric']),
     /**
      * If true, shows the underline for the text field.
      */

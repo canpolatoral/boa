@@ -3,18 +3,6 @@
 	"displayName": "InputMask",
 	"methods": [
 		{
-			"name": "setMaskProp",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "props",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
 			"name": "setProps",
 			"docblock": null,
 			"modifiers": [],
@@ -24,25 +12,6 @@
 					"type": null
 				}
 			],
-			"returns": null
-		},
-		{
-			"name": "onChange",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "runRender",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
 			"returns": null
 		},
 		{
@@ -62,16 +31,12 @@
 			"returns": null
 		},
 		{
-			"name": "detectCopyPaste",
+			"name": "onChange",
 			"docblock": null,
 			"modifiers": [],
 			"params": [
 				{
-					"name": "keyCode",
-					"type": null
-				},
-				{
-					"name": "event",
+					"name": "e",
 					"type": null
 				}
 			],
@@ -90,13 +55,6 @@
 			"returns": null
 		},
 		{
-			"name": "getValue",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
 			"name": "setDisable",
 			"docblock": null,
 			"modifiers": [],
@@ -109,29 +67,17 @@
 			"returns": null
 		},
 		{
+			"name": "getValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
 			"name": "resetValue",
 			"docblock": null,
 			"modifiers": [],
 			"params": [],
-			"returns": null
-		},
-		{
-			"name": "getSnapshot",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "setSnapshot",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "snapshot",
-					"type": null
-				}
-			],
 			"returns": null
 		},
 		{
@@ -159,13 +105,6 @@
 			"returns": null
 		},
 		{
-			"name": "validateConstraint",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
 			"name": "setCounter",
 			"docblock": null,
 			"modifiers": [],
@@ -174,96 +113,64 @@
 		},
 		{
 			"name": "generateHelperText",
-			"docblock": "generateHelperText\n@param {*} text",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "runRender",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setTestResult",
+			"docblock": null,
 			"modifiers": [],
 			"params": [
 				{
-					"name": "text",
-					"description": null,
-					"type": {
-						"name": "mixed"
-					}
+					"name": "value",
+					"type": null
 				}
 			],
-			"returns": null,
-			"description": "generateHelperText"
+			"returns": null
 		}
 	],
 	"props": {
-		"bottomRightInfo": {
+		"countryCode": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
-		},
-		"bottomRightInfoEnable": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": ""
-		},
-		"counterLabelShow": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
+			"description": "Country code for masked IBAN input elements.",
 			"defaultValue": {
-				"value": true,
+				"value": "TR",
 				"computed": false
 			}
 		},
-		"disabled": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
-		},
-		"errorText": {
+		"inputType": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Specifies the type of input to display\nsuch as \"password\" or \"text\".",
+			"defaultValue": {
+				"value": "text",
+				"computed": false
+			}
 		},
 		"mask": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "",
+			"description": "mask of input element. If type selected custom, you can define your own mask.",
 			"defaultValue": {
 				"value": "aa nnn",
 				"computed": false
 			}
-		},
-		"onBlur": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onChange": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onFocus": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
 		},
 		"type": {
 			"type": {
@@ -282,28 +189,28 @@
 						"computed": false
 					},
 					{
+						"value": "PhoneNumber",
+						"computed": false
+					},
+					{
 						"value": "Custom",
 						"computed": false
 					}
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Specifies the type of mask to display\nsuch as \"CreditCard\" or \"PhoneNumber\" etc.",
 			"defaultValue": {
 				"value": "Custom",
 				"computed": false
 			}
 		},
-		"value": {
-			"type": {
-				"name": "string"
-			},
-			"required": false,
-			"description": "",
+		"disabled": {
 			"defaultValue": {
-				"value": "",
+				"value": false,
 				"computed": false
-			}
+			},
+			"required": false
 		},
 		"fullWidth": {
 			"defaultValue": {
@@ -327,6 +234,20 @@
 			"required": false
 		},
 		"noWrap": {
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			},
+			"required": false
+		},
+		"value": {
+			"defaultValue": {
+				"value": "",
+				"computed": false
+			},
+			"required": false
+		},
+		"showCounter": {
 			"defaultValue": {
 				"value": true,
 				"computed": false

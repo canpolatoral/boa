@@ -11,7 +11,7 @@ describe('<DocViewer />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

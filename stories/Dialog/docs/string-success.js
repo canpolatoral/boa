@@ -10,7 +10,6 @@ DialogHelper.show(
   null,
   null,
   null,
-  null,
   false,
 );\`\`\`
 `;

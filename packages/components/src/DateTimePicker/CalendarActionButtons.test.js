@@ -13,7 +13,7 @@ describe('<CalendarActionButtons />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

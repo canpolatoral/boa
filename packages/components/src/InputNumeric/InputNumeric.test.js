@@ -15,7 +15,7 @@ describe('<InputNumeric />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 
@@ -543,7 +543,7 @@ describe('<InputNumeric />', () => {
     let wrapper;
     let languageId;
 
-    before(() => {
+    beforeEach(() => {
       wrapper = mount(<InputNumeric context={context} />);
       instance = wrapper.instance().getInstance();
       languageId = Localization.getLocalizationLanguage().languageId;
@@ -662,7 +662,7 @@ describe('<InputNumeric />', () => {
     let wrapper;
     let languageId;
 
-    before(() => {
+    beforeEach(() => {
       wrapper = mount(<InputNumeric context={context} />);
       instance = wrapper.instance().getInstance();
       languageId = Localization.getLocalizationLanguage().languageId;

@@ -14,7 +14,7 @@ describe('<DocNotice />', () => {
     shallow = createShallow();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

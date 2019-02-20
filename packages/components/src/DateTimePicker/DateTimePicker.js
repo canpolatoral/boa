@@ -27,8 +27,6 @@ let minSecond;
 /**
  * The DateTimePicker allows users to enter a date and time by choosing a datetime.
  * It is made up of several components and directives that work together.
- * DateTimePicker component extends ComponentBase from `@boa/base` and
- * compose with withStyles from `@material-ui/core/styles` and ComponentComposer from `@boa/base`.
  * */
 @ComponentComposer
 class DateTimePicker extends ComponentBase {

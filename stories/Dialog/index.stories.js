@@ -13,7 +13,7 @@ const stories = storiesOf('Dialog', module);
 
 stories.add('Dialog', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={Dialog} doc={doc} />
       <Props {...props} component={Dialog} doc={doc} />
     </div>
@@ -21,7 +21,7 @@ stories.add('Dialog', ({ props }) => {
 });
 stories.add('DialogHelper', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <DocViewer content={dialogHelperDoc} editorType="github" />
       <DialogFixture {...props} />
       {/* <Preview {...props} component={DateTimePicker} doc={doc} />

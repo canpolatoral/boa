@@ -28,11 +28,13 @@ This component is the base component of UI components. All UI components are inh
 - **disabled**: All components should be have disabled prop.
 - **id**: All components should be have id prop.
 - **newLine**: As described in `componentSize` prop, if any components take part in the new line on a card we're using this prop.
-- **snapKey**: *// TODO*
-- **snapshot**: In our SPA, we want to keep the state of each component when a page will unmount. And the same page will mount again, the component mounts with snapshot prop and it should get the previous state.
+- **snapshot&ast;**: In our SPA, we want to keep the state of each component when a page will unmount. And the same page will mount again, the component mounts with snapshot prop and it should get the previous state.
+- **snapKey&ast;**: The snapKey property is used to manage snapshots of the child components.
 - **style**: All components should be have style prop.
-- **valueConstraint**: ...
+- **valueConstraint**: The valueConstraint is used to some validation on components like limit, required etc.
 - **visible**: In ComponentComposer, we change the visibility of the component with this prop.
+
+&ast;To be detailed in next releases.
 
 Also it has a Mui CHANNEL contextType in the ```contextTypes```. If the theme change from the AppProvider, the ComponentBase assign new theme to ```props.context.theme```.
 
@@ -40,11 +42,9 @@ ComponentBase methods:
 
 - **getInstance**: Returns component instance.
 - **getMessage**: Get message online or offline from [@boa/utils](packages/utils#messaging) 
-- **getMessageCode**: *// TODO*
-- **getSnapKey**: *// TODO*
 - **getSnapshot**: Returns the component current state to provide status. 
 - **setSnapshot**: Change component status to the given snapshot.
-- **validateConstraint** :*// TODO*
+- **validateConstraint**: Check the valueConstraint requirements.
 
 ### ComponentComposer
 
@@ -94,7 +94,7 @@ export function getThemeList() {
 
 #### setLocalization
 
-Thiss function exported from `@boa/base` package to configure the [@boa/utils](packages/utils) package. See the [@boa/utils](packages/utils) package for details. Example configuration:
+This function exported from `@boa/base` package to configure the [@boa/utils](packages/utils) package. See the [@boa/utils](packages/utils) package for details. Example configuration:
 
 ```js
 import { setLocalization } from '@boa/base';

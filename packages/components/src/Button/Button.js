@@ -20,9 +20,7 @@ const styles = () => ({
 /**
  * Buttons allow users to take actions, and make choices, with a single tap.
  * This component is wrapped from `@material-ui/core/Button`.
- * It able to render an `<IconButton />` when the "type" prop is "icon". Button component extends
- * ComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`
- * and ComponentComposer from `@boa/base`.
+ * It able to render an `<IconButton />` when the "type" prop is "icon".
  */
 @ComponentComposer
 @withStyles(styles)
@@ -44,13 +42,14 @@ class Button extends ComponentBase {
      * The color of the component.
      * It supports those theme colors that make sense for this component.
      */
-    colorType: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
+    colorType: PropTypes.oneOf(['default', 'primary', 'secondary']),
     /**
      * Icon name from BOA icon library.
      */
     dynamicIcon: PropTypes.string,
     /**
      * Font icon name from font icon's library.
+     * @@ignore
      */
     fontIcon: PropTypes.string,
     /**
@@ -75,6 +74,7 @@ class Button extends ComponentBase {
     onClick: PropTypes.func,
     /**
      * SVG Icon name from material svg icon library.
+     * @ignore
      */
     svgIcon: PropTypes.string,
     /**
@@ -83,6 +83,7 @@ class Button extends ComponentBase {
     text: PropTypes.string,
     /**
      * The position of the text in button.
+     * It applies given position to text if button width is greater than text width.
      */
     textPosition: PropTypes.oneOf(['center', 'left', 'right']),
     /**
@@ -107,7 +108,7 @@ class Button extends ComponentBase {
     ...ComponentBase.defaultProps,
     type: 'contained',
     text: 'Click',
-    allowLabelCase: true,
+    allowLabelCase: false,
     textPosition: 'center',
     buttonSize: 'medium',
   };
@@ -184,7 +185,7 @@ class Button extends ComponentBase {
         {...this.props}
         disabled={this.state.disabled}
         disableRipple={this.state.disabled}
-        onClick={this.onClick}
+        onClick={this.props.onClick}
       />
     );
   }

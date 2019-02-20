@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "Text fields let users enter and edit text.",
 	"displayName": "Input",
 	"methods": [
 		{
@@ -97,30 +97,6 @@
 			"returns": null
 		},
 		{
-			"name": "onKeyDown",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onKeyUp",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
 			"name": "setTimer",
 			"docblock": null,
 			"modifiers": [],
@@ -153,14 +129,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Information text that located in bottom left side of iput element."
 		},
 		"bottomLeftInfoEnable": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, the bottomLeftInfo will be showed.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -171,14 +147,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Information text that located in bottom right side of iput element."
 		},
 		"bottomRightInfoEnable": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, the bottomRightInfo will be showed.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -189,7 +165,7 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": "",
+			"description": "The text string to use for the default value.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -200,7 +176,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "",
+			"description": "Character that is not involved in counting operation.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -211,67 +187,42 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Styles applied to the input element in error state."
 		},
 		"errorText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
-		},
-		"floatingLabelFixed": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
-		},
-		"floatingLabelFocusStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
-		},
-		"floatingLabelShrinkStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
+			"description": "Message to display when the input is in an error state.\n When this is present, also visually highlights the component as in error."
 		},
 		"floatingLabelStyle": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "The style object to use to override floating label styles."
 		},
 		"floatingLabelText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "The content to use for the floating label element."
 		},
 		"formControlStyle": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Override the inline-styles of the root element."
 		},
 		"fullWidth": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `false`, the field receives the property width 100.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -282,35 +233,28 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
-		},
-		"hintStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
+			"description": "The content to use for the helper text element."
 		},
 		"hintText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "The hint content to display."
 		},
 		"id": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "The id prop for the text field."
 		},
 		"inlineGridMode": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, the component transforms itself into grid mode",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -335,42 +279,42 @@
 				]
 			},
 			"required": false,
-			"description": ""
+			"description": "Aligment of text in input element."
 		},
 		"inputProps": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Attributes applied to the input element."
 		},
 		"inputStyle": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Override the inline-styles of the TextField's input element.\nWhen multiLine is false: define the style of the input element.\nWhen multiLine is true: define the style of the container of the textarea."
 		},
 		"maskedMaxLength": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Maximum character count of masked input element."
 		},
 		"maxLength": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Maximum character count of input element."
 		},
 		"multiLine": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If true, a textarea element will be rendered.\nThe textarea also grows and shrinks according to the number of lines.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -381,84 +325,77 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Name applied to the input."
 		},
 		"noWrap": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": ""
+			"description": "If `true`, element will not wrapped."
 		},
 		"onBlur": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function input blur"
 		},
 		"onChange": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input changed."
 		},
 		"onChangeSync": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": "onchange setState bitmeden tetikleniyor.\nSetState callbacinde fırlatılan bir evente ihtiyacımız oldu.\nKullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi."
+			"description": "Callback function when input changed sync."
 		},
 		"onFocus": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input focussed."
 		},
 		"onKeyDown": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input key down."
 		},
 		"onKeyUp": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input key up."
 		},
 		"onTimerFinished": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
-		},
-		"outerStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
+			"description": "Callback function when timer finished."
 		},
 		"prefixText": {
 			"type": {
 				"name": "any"
 			},
 			"required": false,
-			"description": ""
+			"description": "Shows prefix text of input element text."
 		},
 		"rows": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": "",
+			"description": "Number of rows to display when multiLine option is set to true.",
 			"defaultValue": {
 				"value": 1,
 				"computed": false
@@ -469,46 +406,50 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Maximum number of rows to display when\nmultiLine option is set to true."
+		},
+		"showClearButton": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "Shows clear button on the right side of component.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
 		},
 		"showCounter": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "Shows counter on the right bottom info.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
 			}
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
 		},
 		"suffixText": {
 			"type": {
 				"name": "any"
 			},
 			"required": false,
-			"description": ""
+			"description": "Shows suffix text of input element text."
 		},
-		"textareaStyle": {
+		"textSelection": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Sets the start and end positions of the current text selection"
 		},
 		"timerDuration": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Timer that shown in right bottom info by seconds"
 		},
 		"type": {
 			"type": {
@@ -521,24 +462,24 @@
 					{
 						"value": "text",
 						"computed": false
+					},
+					{
+						"value": "numeric",
+						"computed": false
 					}
 				]
 			},
 			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": "text",
-				"computed": false
-			}
+			"description": "Specifies the type of input to display\nsuch as \"password\" or \"text\"."
 		},
-		"validationMessageStyleActive": {
+		"underlineShow": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If true, shows the underline for the text field.",
 			"defaultValue": {
-				"value": false,
+				"value": true,
 				"computed": false
 			}
 		},
@@ -547,14 +488,7 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": ""
-		},
-		"underlineShow": {
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			},
-			"required": false
+			"description": "The value of the text field."
 		}
 	},
 	"composes": [

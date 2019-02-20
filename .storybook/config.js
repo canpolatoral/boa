@@ -24,7 +24,7 @@ configure(loadStories, module);
 setOptions({
   showDownPanel: true,
   downPanelInRight: true,
-  name: 'boa-components',
-  url: 'https://github.com/kuveytturk/boa-components',
+  name: '@boa',
+  url: 'https://github.com/kuveytturk/boa',
   sidebarAnimations: true,
 });

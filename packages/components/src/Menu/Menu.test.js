@@ -66,7 +66,7 @@ describe('<Menu />', () => {
     shallow = createShallow({ untilSelector: 'Menu' });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

@@ -13,7 +13,7 @@ describe('<Divider />', () => {
     mount = createMount();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

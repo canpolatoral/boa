@@ -1,5 +1,5 @@
 {
-	"description": "Buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/Button`.\nIt able to render an `<IconButton />` when the \"type\" prop is \"icon\". Button component extends\nComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`\nand ComponentComposer from `@boa/base`.",
+	"description": "Buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/Button`.\nIt able to render an `<IconButton />` when the \"type\" prop is \"icon\".",
 	"displayName": "Button",
 	"methods": [
 		{
@@ -56,7 +56,7 @@
 			"required": false,
 			"description": "If `false`, content of the button wil be upper case.",
 			"defaultValue": {
-				"value": true,
+				"value": false,
 				"computed": false
 			}
 		},
@@ -94,10 +94,6 @@
 						"computed": false
 					},
 					{
-						"value": "inherit",
-						"computed": false
-					},
-					{
 						"value": "primary",
 						"computed": false
 					},
@@ -129,7 +125,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Font icon name from font icon's library."
+			"description": "Font icon name from font icon's library.\n@@ignore"
 		},
 		"fullWidth": {
 			"type": {
@@ -178,7 +174,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "SVG Icon name from material svg icon library."
+			"description": "SVG Icon name from material svg icon library.\n@ignore"
 		},
 		"text": {
 			"type": {
@@ -210,7 +206,7 @@
 				]
 			},
 			"required": false,
-			"description": "The position of the text in button.",
+			"description": "The position of the text in button.\nIt applies given position to text if button width is greater than text width.",
 			"defaultValue": {
 				"value": "center",
 				"computed": false

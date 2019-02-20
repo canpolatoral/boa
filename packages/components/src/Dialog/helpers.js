@@ -315,7 +315,6 @@ export function getIcon(context, type) {
   }
 }
 
-
 /* istanbul ignore next */
 export function getShowStatusMessageReplacedText(value) {
   const text = value.replace(/\n/gi, '#00100#');
@@ -337,7 +336,6 @@ export function getShowStatusMessageReplacedText(value) {
   }
   return messages;
 }
-
 
 export function prepareDialog(props) {
   const {
@@ -444,8 +442,8 @@ export function createDialogContent(props, dialog) {
             {linebreakExists ? (
               <span dangerouslySetInnerHTML={{ __html: dialog.dialogContent }} />
             ) : (
-                dialog.dialogContent
-              )}
+              dialog.dialogContent
+            )}
           </div>
         </div>
         <div style={objLine} />

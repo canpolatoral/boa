@@ -112,75 +112,198 @@ const styles = theme => {
   };
 };
 
+/**
+ * Text fields let users enter and edit text.
+ */
 @ComponentComposer
 @withStyles(styles)
 class Input extends EditorBase {
   static propTypes = {
     ...EditorBase.propTypes,
+    /**
+     * Information text that located in bottom left side of iput element.
+     */
     bottomLeftInfo: PropTypes.string,
+    /**
+     * If `true`, the bottomLeftInfo will be showed.
+     */
     bottomLeftInfoEnable: PropTypes.bool,
+    /**
+     * Information text that located in bottom right side of iput element.
+     */
     bottomRightInfo: PropTypes.string,
+    /**
+     * If `true`, the bottomRightInfo will be showed.
+     */
     bottomRightInfoEnable: PropTypes.bool,
+    /**
+     * The text string to use for the default value.
+     */
     defaultValue: PropTypes.any,
+    /**
+     * Character that is not involved in counting operation.
+     */
     disabledCounterCharacter: PropTypes.string,
+    /**
+     * Styles applied to the input element in error state.
+     */
     errorStyle: PropTypes.object,
+    /**
+     *  Message to display when the input is in an error state.
+     *  When this is present, also visually highlights the component as in error.
+     */
     errorText: PropTypes.string,
-    floatingLabelFixed: PropTypes.bool,
-    floatingLabelFocusStyle: PropTypes.object,
-    floatingLabelShrinkStyle: PropTypes.object,
+    /**
+     * The style object to use to override floating label styles.
+     */
     floatingLabelStyle: PropTypes.object,
+   /**
+     * The content to use for the floating label element.
+     */
     floatingLabelText: PropTypes.string,
+    /**
+     * Override the inline-styles of the root element.
+     */
     formControlStyle: PropTypes.object,
+    /**
+     * If `false`, the field receives the property width 100.
+     */
     fullWidth: PropTypes.bool,
+    /**
+     * The content to use for the helper text element.
+     */
     helperText: PropTypes.string,
-    hintStyle: PropTypes.object,
+   /**
+     * The hint content to display.
+     */
     hintText: PropTypes.string,
+    /**
+     * The id prop for the text field.
+     */
+    id: PropTypes.string,
+    /**
+     * If `true`, the component transforms itself into grid mode
+     */
     inlineGridMode: PropTypes.bool,
+    /**
+     * Aligment of text in input element.
+     */
     inputAlign: PropTypes.oneOf(['left', 'right', 'center']),
+    /**
+     * Attributes applied to the input element.
+     */
     inputProps: PropTypes.object,
+    /**
+     * Override the inline-styles of the TextField's input element.
+     * When multiLine is false: define the style of the input element.
+     * When multiLine is true: define the style of the container of the textarea.
+     */
     inputStyle: PropTypes.object,
+    /**
+     * Maximum character count of masked input element.
+     */
     maskedMaxLength: PropTypes.number,
+    /**
+     * Maximum character count of input element.
+     */
     maxLength: PropTypes.number,
+    /**
+     * If true, a textarea element will be rendered.
+     * The textarea also grows and shrinks according to the number of lines.
+     */
     multiLine: PropTypes.bool,
+    /**
+     * Name applied to the input.
+     */
     name: PropTypes.string,
+    /**
+     * If `true`, element will not wrapped.
+     */
     noWrap: PropTypes.bool,
+    /**
+     * Callback function input blur
+     */
     onBlur: PropTypes.func,
+    /**
+     * Callback function when input changed.
+     */
     onChange: PropTypes.func,
     /**
-     * onchange setState bitmeden tetikleniyor.
-     * SetState callbacinde fırlatılan bir evente ihtiyacımız oldu.
-     * Kullanan yerlerin etkilenmemesi için bu prop ayrı olarak eklendi.
+     * Callback function when input changed sync.
      */
     onChangeSync: PropTypes.func,
+    /**
+     * Callback function when input focussed.
+     */
     onFocus: PropTypes.func,
+    /**
+     * Callback function when input key down.
+     */
     onKeyDown: PropTypes.func,
+    /**
+     * Callback function when input key up.
+     */
     onKeyUp: PropTypes.func,
+    /**
+     * Callback function when timer finished.
+     */
     onTimerFinished: PropTypes.func,
-    outerStyle: PropTypes.object,
+    /**
+     * Shows prefix text of input element text.
+     */
     prefixText: PropTypes.any,
+    /**
+     * Number of rows to display when multiLine option is set to true.
+     */
     rows: PropTypes.number,
+    /**
+     * Maximum number of rows to display when
+     * multiLine option is set to true.
+     */
     rowsMax: PropTypes.number,
+    /**
+     * Shows clear button on the right side of component.
+     */
     showClearButton: PropTypes.bool,
+    /**
+     * Shows counter on the right bottom info.
+     */
     showCounter: PropTypes.bool,
+    /**
+     * Shows suffix text of input element text.
+     */
     suffixText: PropTypes.any,
-    textareaStyle: PropTypes.object,
+    /**
+     * Sets the start and end positions of the current text selection
+     */
     textSelection: PropTypes.object,
+    /**
+     * Timer that shown in right bottom info by seconds
+     */
     timerDuration: PropTypes.number,
-    validationMessageStyleActive: PropTypes.bool,
-    validationResult: PropTypes.array,
+    /**
+     * Specifies the type of input to display
+     * such as "password" or "text".
+     */
+    type: PropTypes.oneOf(['password', 'text', 'numeric']),
+    /**
+     * If true, shows the underline for the text field.
+     */
+    underlineShow: PropTypes.bool,
+   /**
+     * The value of the text field.
+     */
     value: PropTypes.any,
   };
 
   static defaultProps = {
     ...EditorBase.defaultProps,
-    floatingLabelFixed: false,
     fullWidth: true,
     multiLine: false,
     rows: 1,
     defaultValue: '',
     bottomLeftInfoEnable: true,
     bottomRightInfoEnable: true,
-    validationMessageStyleActive: false,
     disabledCounterCharacter: '',
     showCounter: false,
     showClearButton: false,
@@ -208,9 +331,7 @@ class Input extends EditorBase {
     if (timerDuration !== this.props.timerDuration) {
       this.setTimer(timerDuration);
     }
-    // null ise kasıtlı siliniyordur, silmeli.
-    // undefined ise value geçilmemiştir, değişmemeli.
-    // diğer durumlarda prop yada state'ten farklı gelmişse değişmeli.
+
     if (value === null) {
       this.setState({ value: '' });
     } else if (value !== undefined && (value !== this.props.value || value !== this.state.value)) {
@@ -234,7 +355,6 @@ class Input extends EditorBase {
       }
       if (text !== '') {
         if (this.props.disabledCounterCharacter !== '') {
-          // bazı karakterleri sayaca eklememesi için
           text = text.split(this.props.disabledCounterCharacter);
           text = text.join('');
         }
@@ -284,7 +404,6 @@ class Input extends EditorBase {
   onBlur(e) {
     this.setState({ focussed: false });
     // this.validateConstraint();
-    // her blur oluşunda value constraint mesajlarının temizlenmesi için.
     /* istanbul ignore else */
     if (this.props.onBlur) {
       this.props.onBlur(e);
@@ -360,6 +479,7 @@ class Input extends EditorBase {
       maxLength,
       fullWidth,
       rows,
+      type,
       rowsMax,
       prefixText,
       showClearButton,
@@ -436,7 +556,7 @@ class Input extends EditorBase {
       const bottomLeftInfoStyle = {
         fontSize: bottomTextSize,
         color: infoTextColor,
-        display: errorText ? 'none' : '', // error var ise helper görünmeyecek
+        display: errorText ? 'none' : '', // if errorText is visible, hide helperText
         marginTop: 1,
       };
       if (!isRtl) {
@@ -484,7 +604,6 @@ class Input extends EditorBase {
       } else if (showCounter && maxLength) {
         bottomRightInfoSpace = (
           <span style={bottomRightInfoStyle}>
-            {/* masked editörde maxLength ile değil maskedMaskLength görülecek  */}
             <span ref={r => (this.bottomRightInfoSpan = r)}>0</span>/
             {this.props.maskedMaxLength || maxLength}
           </span>
@@ -505,15 +624,6 @@ class Input extends EditorBase {
       marginTop: 2,
     };
 
-    // inline grid style
-    // if (this.props.inlineGridMode) {
-    //   inputStyle = Object.assign(inputStyle, {
-    //     marginLeft: 12,
-    //     marginRight: 12
-    //   });
-    // }
-
-    // inputProps.style && delete inputProps.style; // todo geçici
     const inputPropsMerged = Object.assign(
       {},
       {
@@ -539,7 +649,6 @@ class Input extends EditorBase {
       position: 'relative',
       paddingTop: 10,
       marginTop: 0,
-      // this.props.inlineGridMode ? (this.props.multiLine ? 10 : hideshowMarginTop ? 0 : 12) : 0
     };
     const rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
     let visibleLabel = true;
@@ -566,7 +675,6 @@ class Input extends EditorBase {
 
     const { classes } = this.props;
 
-    // zorunlu alanlar eğer veri grilmemiş ise underline rengi farklı olacak.
     let underlineClass = classes.inputUnderline;
     const valueConstraint = this.props.valueConstraint;
 
@@ -615,14 +723,12 @@ class Input extends EditorBase {
             inputProps={inputPropsMerged}
             inputRef={this.props.inputRef}
             fullWidth={fullWidth}
-            type="text"
-            // gelen style inline olarak uygulanır, sınıflardan geleni ezer.
+            type={type}
             style={this.props.inputStyle}
             value={this.state.value}
             disabled={this.state.disabled}
             disableUnderline={!underlineShow}
             multiline={this.props.multiLine}
-            // margin={'dense'}
             error={!this.state.disabled && error}
             onBlur={this.onBlur}
             onChange={this.onChange}

@@ -14,10 +14,25 @@ class InputNumeric extends ComponentBase {
      */
     ...ComponentBase.propTypes,
     ...Input.propTypes,
+    /**
+    * Indicator for the text insertion point
+    */
     caretPosition: PropTypes.number,
+    /**
+     * Format for numeric value such as 'D' for decimal.
+     */
     format: PropTypes.string,
+    /**
+     * Max value for numeric field.
+     */
     maxValue: PropTypes.number,
+    /**
+     * Min value for numeric field.
+     */
     minValue: PropTypes.number,
+    /**
+     * Define increment factor of arrow keys.
+     */
     step: PropTypes.number,
   };
 

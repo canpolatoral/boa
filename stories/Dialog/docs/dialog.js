@@ -14,7 +14,6 @@ const content = (
       null,
       null,
       null,
-      null,
       true,
     )} />
 );
@@ -26,8 +25,7 @@ DialogHelper.show(this.props.context,
   null,
   null,
   null,
-  null,
-  false,
+  true,
 );
 \`\`\`
 `;

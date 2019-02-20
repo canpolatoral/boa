@@ -40,10 +40,8 @@ const styles = theme => ({
  * A CheckBox represents a button with two states, selected and unselected.
  * This component is wrapped from `@material-ui/core/Checkbox`.
  * If the label prop specified, the component renders `@material-ui/core/FormControlLabel`
- * If not, it renders a `@material-ui/core/Checkbox`
- * Also, it is able to render an errorText prop. CheckBox component extends
- * ComponentBase from `@boa/base` and compose with withStyles from `@material-ui/core/styles`
- * and ComponentComposer from `@boa/base`.
+ * If not, it renders a `@material-ui/core/Checkbox`.
+ * Also, it is able to render an error text with label if the errorText prop specified.
  */
 @ComponentComposer
 @withStyles(styles)
@@ -181,6 +179,7 @@ class CheckBox extends ComponentBase {
         name={this.props.name}
         checked={this.state.isChecked}
         disabled={this.state.disabled}
+        disableRipple={this.props.disableRipple}
         checkedIcon={this.props.checkedIcon ? this.props.checkedIcon : undefined}
         icon={this.props.icon}
         color={this.props.color}

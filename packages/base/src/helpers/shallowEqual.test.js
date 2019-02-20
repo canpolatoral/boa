@@ -14,9 +14,7 @@ describe('shallowEqual', () => {
   });
 
   it('returns true if arguments are shallow equal', () => {
-    expect(shallowEqual({ a: 1, b: 2, c: 3 }, { a: 1, b: 2, c: 3 })).to.equals(
-      true,
-    );
+    expect(shallowEqual({ a: 1, b: 2, c: 3 }, { a: 1, b: 2, c: 3 })).to.equals(true);
   });
 
   it('returns false if arguments are not objects and not equal', () => {
@@ -37,15 +35,11 @@ describe('shallowEqual', () => {
 
   it('returns true if values are not primitives but are ===', () => {
     const obj = {};
-    expect(
-      shallowEqual({ a: 1, b: 2, c: obj }, { a: 1, b: 2, c: obj }),
-    ).to.equals(true);
+    expect(shallowEqual({ a: 1, b: 2, c: obj }, { a: 1, b: 2, c: obj })).to.equals(true);
   });
 
   // subsequent test cases are copied from lodash tests
   it('returns false if arguments are not shallow equal', () => {
-    expect(shallowEqual({ a: 1, b: 2, c: {} }, { a: 1, b: 2, c: {} })).to.equals(
-      false,
-    );
+    expect(shallowEqual({ a: 1, b: 2, c: {} }, { a: 1, b: 2, c: {} })).to.equals(false);
   });
 });

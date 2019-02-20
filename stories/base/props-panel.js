@@ -4,7 +4,6 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import ReactJson from 'react-json-view';
 import { Input } from '@boa/components/Input';
 import { InputNumeric } from '@boa/components/InputNumeric';
@@ -49,21 +48,16 @@ export default class PropsPanel extends ComponentBase {
     super(props, context);
     this.componentPropertySource = [];
     this.onPropertyChanged = this.onPropertyChanged.bind(this);
-    this.onApplyClick = this.onApplyClick.bind(this);
     this.componentRef = React.createRef();
   }
 
   state = {
-    selectedTheme: 'violet',
+    selectedTheme: this.props.context.theme.themeName,
     selectedLanguage: 1,
   };
 
   onPropertyChanged(property, value) {
     this.props.onPropertyChanged(property, value);
-  }
-
-  onApplyClick() {
-    this.props.onApplyClick();
   }
 
   getBInput(property, value) {
@@ -109,11 +103,18 @@ export default class PropsPanel extends ComponentBase {
 
   getJsonViewer(property, value) {
     const self = this;
+    let cmpValue = value;
+    if (cmpValue === undefined || cmpValue === null) {
+      const defaultValue = generateDefaultValue(property.type);
+      if (defaultValue !== undefined) {
+        cmpValue = defaultValue;
+      }
+    }
     return (
       <div style={{ marginTop: 15 }}>
         <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
         <ReactJson
-          src={value}
+          src={cmpValue}
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
@@ -129,78 +130,35 @@ export default class PropsPanel extends ComponentBase {
     );
   }
 
-  // getShape(property, value) {
-  //   const self = this;
-  //   return (
-  //     <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
-  //       <InputLabel htmlFor="theme">{property.name}</InputLabel>
-  //       <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
-  //         {
-  //           Object.keys(property.value).map((key) => {
-  //             return (
-  //               <InputLabel htmlFor={property.name + key}>{key}</InputLabel>
-  //             );
-  //           })
-  //         }
-  //       </FormControl>
-  //     </FormControl>
-  //     // <FormControl style={{ maxWidth: 300, width: '100%' }}>
-  //     //   <InputLabel htmlFor="theme">{property.name}</InputLabel>
-  //     //   {
-  //     //     Object.keys(property.value).map((key) => {
-  //     //       return (
-  //     //         <div>
-  //     //           <InputLabel htmlFor="theme">{key}</InputLabel>
-  //     //           <NativeSelect
-  //     //             onChange={
-  //     //               (event) => {
-  //     //                 // self.onPropertyChanged(property.name, event.target.value);
-  //     //               }
-  //     //             }>
-  //     //             {
-  //     //               property.value[key].value.map((item) => {
-  //     //                 return <option value={item}>{item}</option>;
-  //     //               })
-  //     //             }
-  //     //           </NativeSelect>
-  //     //         </div>
-  //     //       );
-  //     //     })
-  //     //   }
-  //     // </FormControl>
-  //   );
-  // }
-
   getComponent(property, value) {
     const self = this;
     if (property.values && property.values.length > 0) {
       return (
         <div>
-          <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
-            <InputLabel htmlFor="theme">{property.name}</InputLabel>
-            <NativeSelect
+          <FormControl style={{ maxWidth: 300, width: '100%', marginBottom: 15 }}>
+            <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
+            <Select
+              value={value}
               onChange={event => {
                 self.onPropertyChanged(property.name, event.target.value);
               }}
             >
               {property.values.map((item, index) => {
                 return (
-                  <option
+                  <MenuItem
                     key={`property${index}`} // eslint-disable-line
                     value={item}
                   >
                     {item}
-                  </option>
+                  </MenuItem>
                 );
               })}
-            </NativeSelect>
+            </Select>
           </FormControl>
         </div>
       );
     }
-    // if (property.type.toLowerCase().includes('shape')) {
-    //   return this.getShape(property, value);
-    // }
+
     if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
     }
@@ -217,13 +175,13 @@ export default class PropsPanel extends ComponentBase {
       property.type.toLowerCase().includes('object') ||
       property.type.toLowerCase().includes('array')
     ) {
-      return this.getJsonViewer(property, generateDefaultValue(property.type));
+      return this.getJsonViewer(property, value);
     }
     return null;
   }
 
   render() {
-    const { availableProperties } = this.props;
+    const { availableProperties, currentProperties } = this.props;
     const self = this;
 
     if (!availableProperties || availableProperties.length === 0) {
@@ -302,12 +260,13 @@ export default class PropsPanel extends ComponentBase {
                   /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {
                     const divStyle = {};
+                    const defaultValue = currentProperties[property.name] || property.default;
                     if (i === availableProperties.length - 1) {
                       divStyle.marginBottom = 12;
                     }
                     return (
                       <div key={i} style={divStyle}>
-                        {this.getComponent(property, property.default)}
+                        {this.getComponent(property, defaultValue)}
                       </div>
                     );
                   }

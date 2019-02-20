@@ -55,7 +55,6 @@ DialogHelper.show(
   null,
   onClose,
   null,
-  null,
   false,
 );
 \`\`\`

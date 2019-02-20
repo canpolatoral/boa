@@ -22,7 +22,7 @@ describe('<ErrorBoundary />', () => {
     mount = createMount({ includeBOAcontext: false });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

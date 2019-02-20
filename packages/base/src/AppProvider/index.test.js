@@ -15,7 +15,7 @@ describe('<AppProvider />', () => {
     mount = createMount({ includeBOAcontext: false });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

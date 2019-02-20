@@ -1,20 +1,8 @@
-/* eslint-disable max-len */
-import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Menu } from '@boa/components/Menu';
-import Header from '../base/header';
-import Props from '../base/props-table';
-import Preview from '../base/preview';
-import doc from './doc.json';
+import IconMenu from './IconMenu';
+import Menu from './Menu';
 
 const stories = storiesOf('Menu', module);
 
-stories.add('Menu', ({ props }) => {
-  return (
-    <div style={{ padding: 20, background: 'white' }}>
-      <Header {...props} component={Menu} doc={doc} />
-      <Preview {...props} component={Menu} doc={doc} />
-      <Props {...props} component={Menu} doc={doc} />
-    </div>
-  );
-});
+stories.add('IconMenu', IconMenu);
+stories.add('Menu', Menu);

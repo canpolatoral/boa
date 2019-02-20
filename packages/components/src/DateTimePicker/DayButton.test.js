@@ -15,7 +15,7 @@ describe('<DayButton />', () => {
     mount = createMount({ includeBOAcontext: false });
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

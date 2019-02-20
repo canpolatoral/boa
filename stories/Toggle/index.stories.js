@@ -11,7 +11,7 @@ const stories = storiesOf('Toggle', module);
 
 stories.add('Toggle', ({ props }) => {
   return (
-    <div style={{ padding: 20, background: 'white' }}>
+    <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={Toggle} doc={doc} />
       <Preview {...props} component={Toggle} doc={doc} />
       <Props {...props} component={Toggle} doc={doc} />

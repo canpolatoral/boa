@@ -15,10 +15,50 @@
 			"returns": null
 		},
 		{
+			"name": "onChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "onBlur",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
 			"name": "getValue",
 			"docblock": null,
 			"modifiers": [],
 			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setValue",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				},
+				{
+					"name": "format",
+					"type": null
+				}
+			],
 			"returns": null
 		},
 		{
@@ -54,18 +94,6 @@
 			"params": [
 				{
 					"name": "snapshot",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onChange",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
 					"type": null
 				}
 			],
@@ -112,30 +140,6 @@
 			"returns": null
 		},
 		{
-			"name": "onFocus",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "onBlur",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "e",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
 			"name": "focus",
 			"docblock": null,
 			"modifiers": [],
@@ -151,12 +155,19 @@
 		}
 	],
 	"props": {
+		"caretPosition": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "Indicator for the text insertion point"
+		},
 		"format": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "",
+			"description": "Format for numeric value such as 'D' for decimal.",
 			"defaultValue": {
 				"value": "D",
 				"computed": false
@@ -167,7 +178,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": "",
+			"description": "Max value for numeric field.",
 			"defaultValue": {
 				"value": "Number.MAX_VALUE",
 				"computed": true
@@ -178,7 +189,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": "",
+			"description": "Min value for numeric field.",
 			"defaultValue": {
 				"value": "Number.NEGATIVE_INFINITY",
 				"computed": true
@@ -189,7 +200,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": "",
+			"description": "Define increment factor of arrow keys.",
 			"defaultValue": {
 				"value": 1,
 				"computed": false

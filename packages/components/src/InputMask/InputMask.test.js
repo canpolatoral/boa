@@ -16,7 +16,7 @@ describe('<InputMask />', () => {
     shallow = createShallow();
   });
 
-  after(() => {
+  afterEach(() => {
     mount.cleanUp();
   });
 

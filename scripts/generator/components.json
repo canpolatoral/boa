@@ -2,12 +2,7 @@
   {
     "alias": "Button",
     "input": "packages/components/src/Button/Button.js",
-    "output": "stories/Buttons/Button/doc.json"
-  },
-  {
-    "alias": "IconButton",
-    "input": "packages/components/src/IconButton/IconButton.js",
-    "output": "stories/Buttons/IconButton/doc.json"
+    "output": "stories/Button/doc.json"
   },
   {
     "alias": "CheckBox",
@@ -38,6 +33,26 @@
     "alias": "DocViewer",
     "input": "packages/components/src/DocViewer/DocViewer.js",
     "output": "stories/Documentation/DocViewer/doc.json"
+  },
+  {
+    "alias": "Input",
+    "input": "packages/components/src/Input/Input.js",
+    "output": "stories/Inputs/Input/doc.json"
+  },
+  {
+    "alias": "InputAction",
+    "input": "packages/components/src/InputAction/InputAction.js",
+    "output": "stories/Inputs/InputAction/doc.json"
+  },
+  {
+    "alias": "InputMask",
+    "input": "packages/components/src/InputMask/InputMask.js",
+    "output": "stories/Inputs/InputMask/doc.json"
+  },
+  {
+    "alias": "InputNumeric",
+    "input": "packages/components/src/InputNumeric/InputNumeric.js",
+    "output": "stories/Inputs/InputNumeric/doc.json"
   },
   {
     "alias": "TreeView",

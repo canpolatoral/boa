@@ -10,6 +10,7 @@ import { InputNumeric } from '@boa/components/InputNumeric';
 import { Toggle } from '@boa/components/Toggle';
 import { Scroll } from '@boa/components/Scroll';
 import { ComponentBase } from '@boa/base';
+import { generateDefaultValue } from './utils';
 
 const style = {
   scrollStyle: { maxHeight: 300, padding: 12, wordWrap: 'break-word' },
@@ -102,11 +103,18 @@ export default class PropsPanel extends ComponentBase {
 
   getJsonViewer(property, value) {
     const self = this;
+    let cmpValue = value;
+    if (cmpValue === undefined || cmpValue === null) {
+      const defaultValue = generateDefaultValue(property.type);
+      if (defaultValue !== undefined) {
+        cmpValue = defaultValue;
+      }
+    }
     return (
       <div style={{ marginTop: 15 }}>
         <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
         <ReactJson
-          src={value}
+          src={cmpValue}
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}

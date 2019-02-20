@@ -49,14 +49,9 @@ export default class Preview extends ComponentBase {
         };
 
         availableProperties.push(property);
-        let defaultValue = Utils.getDefaultValue(prop);
+        const defaultValue = Utils.getDefaultValue(prop);
         if (defaultValue) {
           currentProperties[key] = defaultValue;
-        } else {
-          defaultValue = Utils.generateDefaultValue(property.type);
-          if (defaultValue !== undefined) {
-            currentProperties[key] = defaultValue;
-          }
         }
       });
 

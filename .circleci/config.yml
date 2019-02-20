@@ -176,8 +176,8 @@ workflows:
       - test_browser:
           requires:
             - checkout
-      - test_regressions:
-          requires:
-            - test_unit
-            - test_build
-            - test_browser
+      # - test_regressions:
+      #     requires:
+      #       - test_unit
+      #       - test_build
+      #       - test_browser

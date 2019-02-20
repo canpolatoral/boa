@@ -21,10 +21,10 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: [
-        ['@boa/base', './packages/base/src'],
-        ['@boa/components', './packages/components/src'],
-        ['@boa/utils', './packages/utils/src'],
-        ['@boa/test/utils', './test/utils'],
+        ['@kuveytturk/boa-base', './packages/base/src'],
+        ['@kuveytturk/boa-components', './packages/components/src'],
+        ['@kuveytturk/boa-utils', './packages/utils/src'],
+        ['@kuveytturk/boa-test/utils', './test/utils'],
       ],
     },
   },

@@ -2,11 +2,11 @@ import React from 'react';
 import { assert } from 'chai';
 import { spy, useFakeTimers, stub } from 'sinon'; // eslint-disable-line
 import keycode from 'keycode';
-import { Input } from '@boa/components/Input';
-import { Localization } from '@boa/utils';
+import { Input } from '@kuveytturk/boa-components/Input';
+import { Localization } from '@kuveytturk/boa-utils';
 import InputNumeric from './InputNumeric';
 import KeyboardEnum from './KeyboardEnum';
-import { context, createMount } from '@boa/test/utils';
+import { context, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<InputNumeric />', () => {
   let mount;

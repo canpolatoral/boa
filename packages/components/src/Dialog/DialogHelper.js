@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-bind, react/no-this-in-sfc */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { getMessage } from '@boa/utils';
-import { AppProvider, DialogType, DialogResponse, DialogResponseStyle } from '@boa/base';
-import { Button } from '@boa/components/Button';
+import { getMessage } from '@kuveytturk/boa-utils';
+import { AppProvider, DialogType, DialogResponse, DialogResponseStyle } from '@kuveytturk/boa-base';
+import { Button } from '@kuveytturk/boa-components/Button';
 import Dialog from './Dialog';
 import { getTitleBackground } from './helpers';
 

@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { assert } from 'chai';
 import { spy, useFakeTimers, stub } from 'sinon'; // eslint-disable-line
-import { IconButton } from '@boa/components/IconButton';
-import { Input } from '@boa/components/Input';
-import { InputNumeric } from '@boa/components/InputNumeric';
+import { IconButton } from '@kuveytturk/boa-components/IconButton';
+import { Input } from '@kuveytturk/boa-components/Input';
+import { InputNumeric } from '@kuveytturk/boa-components/InputNumeric';
 import InputAction from './InputAction';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<InputAction />', () => {
   let mount;

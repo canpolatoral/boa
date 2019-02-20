@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { stub } from 'sinon';
 import setLocalization from '.';
-import { Localization } from '@boa/utils';
+import { Localization } from '@kuveytturk/boa-utils';
 
 describe('setLocalization', () => {
   it('should call right functions', () => {

@@ -14,19 +14,19 @@
     "experimentalDecorators": true,
     "baseUrl": "./",
     "paths": {
-      "@boa/base": [
+      "@kuveytturk/boa-base": [
         "packages/base/src"
       ],
-      "@boa/components": [
+      "@kuveytturk/boa-components": [
         "packages/components/src"
       ],
-      "@boa/components/*": [
+      "@kuveytturk/boa-components/*": [
         "packages/components/src/*"
       ],
-      "@boa/utils": [
+      "@kuveytturk/boa-utils": [
         "packages/utils/src"
       ],
-      "@boa/test/utils": [
+      "@kuveytturk/boa-test/utils": [
         "test/utils"
       ]
     }

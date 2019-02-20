@@ -1,6 +1,6 @@
 import { getTheme, getThemeList } from '.';
 import { assert } from 'chai';
-import { getTestRunner } from '@boa/test/utils';
+import { getTestRunner } from '@kuveytturk/boa-test/utils';
 
 describe('Themes', () => {
   it('should load theme', () => {

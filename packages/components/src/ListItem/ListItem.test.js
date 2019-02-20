@@ -1,6 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
-import { context, createMount } from '@boa/test/utils';
+import { context, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<ListItem />', () => {
   let mount;

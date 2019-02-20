@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, Sizes } from '@boa/base';
-import { Input } from '@boa/components/Input';
+import { ComponentBase, Sizes } from '@kuveytturk/boa-base';
+import { Input } from '@kuveytturk/boa-components/Input';
 import { isEqualDateTime, getLocalizedDate, getLocalizedTime } from './dateUtils';
 import DatePickerDialog from './DatePickerDialog';
 import TimePickerDialog from './TimePickerDialog';

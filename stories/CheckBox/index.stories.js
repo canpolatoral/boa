@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { CheckBox } from '@boa/components/CheckBox';
+import { CheckBox } from '@kuveytturk/boa-components/CheckBox';
 import Header from '../base/header';
 import Props from '../base/props-table';
 import Preview from '../base/preview';

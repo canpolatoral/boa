@@ -2,7 +2,7 @@ import React from 'react';
 // import { assert } from 'chai';
 // import { spy } from 'sinon';
 import TabBar from './TabBar';
-import { context, createShallow } from '@boa/test/utils';
+import { context, createShallow } from '@kuveytturk/boa-test/utils';
 
 describe('<TabBar />', () => {
   // let mount;

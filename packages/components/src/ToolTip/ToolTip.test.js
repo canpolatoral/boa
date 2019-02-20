@@ -2,7 +2,7 @@ import React from 'react';
 import { assert } from 'chai';
 import MuiToolTip from '@material-ui/core/Tooltip';
 import ToolTip from './ToolTip';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<ToolTip />', () => {
   let mount;

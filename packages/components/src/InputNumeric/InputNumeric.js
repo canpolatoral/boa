@@ -1,9 +1,9 @@
 /* eslint-disable no-restricted-globals, max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { Input } from '@boa/components/Input';
-import { Localization } from '@boa/utils';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { Input } from '@kuveytturk/boa-components/Input';
+import { Localization } from '@kuveytturk/boa-utils';
 import KeyboardEnum from './KeyboardEnum';
 
 @ComponentComposer

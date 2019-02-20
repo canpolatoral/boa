@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, AppProvider } from '@boa/base';
-import { Icon } from '@boa/components/Icon';
+import { ComponentBase, AppProvider } from '@kuveytturk/boa-base';
+import { Icon } from '@kuveytturk/boa-components/Icon';
 
 /**
  * This component renders the messages with several types:

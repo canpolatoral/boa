@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { DocToc } from '@boa/components/DocToc';
+import { DocToc } from '@kuveytturk/boa-components/DocToc';
 import Header from '../../base/header';
 import Props from '../../base/props-table';
 import Preview from '../../base/preview';

@@ -2,7 +2,7 @@ import React from 'react';
 import { assert } from 'chai';
 import MuiDivider from '@material-ui/core/Divider';
 import Divider from './Divider';
-import { createShallow, createMount } from '@boa/test/utils';
+import { createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<Divider />', () => {
   let shallow;

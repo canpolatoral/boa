@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
-import { ComponentBase } from '@boa/base';
+import { ComponentBase } from '@kuveytturk/boa-base';
 import marked from './marked';
 import CodeStyles from './styles';
 

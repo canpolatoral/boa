@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { DocViewer } from '@boa/components/DocViewer';
-import { Dialog } from '@boa/components/Dialog';
+import { DocViewer } from '@kuveytturk/boa-components/DocViewer';
+import { Dialog } from '@kuveytturk/boa-components/Dialog';
 import DialogFixture from './dialog';
 import doc from './doc.json';
 import { dialogHelperDoc } from './docs';

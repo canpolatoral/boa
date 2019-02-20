@@ -1,16 +1,16 @@
-# @boa/base
+# @kuveytturk/boa-base
 
-@boa/base package is the core package of boa.
+@kuveytturk/boa-base package is the core package of boa.
 
 ## Installation
 
 
 ```sh
 // with npm
-npm install @boa/base
+npm install @kuveytturk/boa-base
 
 // with yarn
-yarn add @boa/base
+yarn add @kuveytturk/boa-base
 ```
 
 ## API Reference
@@ -41,7 +41,7 @@ Also it has a Mui CHANNEL contextType in the ```contextTypes```. If the theme ch
 ComponentBase methods:
 
 - **getInstance**: Returns component instance.
-- **getMessage**: Get message online or offline from [@boa/utils](packages/utils#messaging) 
+- **getMessage**: Get message online or offline from [@kuveytturk/boa-utils](packages/utils#messaging) 
 - **getSnapshot**: Returns the component current state to provide status. 
 - **setSnapshot**: Change component status to the given snapshot.
 - **validateConstraint**: Check the valueConstraint requirements.
@@ -64,7 +64,7 @@ ErrorBoundary is an error wrapper. It has the componentDidCatch method from the 
 We're using different color palettes with [custom themes](packages/base/src/themes). To get theme
 
 ```js
-import { getTheme } from '@boa/base';
+import { getTheme } from '@kuveytturk/boa-base';
 const theme = getTheme({ themeName: themeName });
 ```
 
@@ -94,11 +94,11 @@ export function getThemeList() {
 
 #### setLocalization
 
-This function exported from `@boa/base` package to configure the [@boa/utils](packages/utils) package. See the [@boa/utils](packages/utils) package for details. Example configuration:
+This function exported from `@kuveytturk/boa-base` package to configure the [@kuveytturk/boa-utils](packages/utils) package. See the [@kuveytturk/boa-utils](packages/utils) package for details. Example configuration:
 
 ```js
-import { setLocalization } from '@boa/base';
-import { Language } from '@boa/utils';
+import { setLocalization } from '@kuveytturk/boa-base';
+import { Language } from '@kuveytturk/boa-utils';
 
 setLocalization({
   url: 'http://boaonedev',

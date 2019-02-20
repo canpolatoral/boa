@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import { spy, stub } from 'sinon';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Tab from './Tab';
-import { createMount, createShallow, getClasses } from '@boa/test/utils';
+import { createMount, createShallow, getClasses } from '@kuveytturk/boa-test/utils';
 
 describe('<Tab />', () => {
   let mount;

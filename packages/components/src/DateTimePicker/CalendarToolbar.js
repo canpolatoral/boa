@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import MuiIconButton from '@material-ui/core/IconButton/IconButton';
 import MuiChevronLeft from '@material-ui/icons/ChevronLeft';
 import MuiChevronRight from '@material-ui/icons/ChevronRight';
-import { ComponentBase } from '@boa/base';
+import { ComponentBase } from '@kuveytturk/boa-base';
 import { dateTimeFormat } from './dateUtils';
 
 class CalendarToolbar extends ComponentBase {

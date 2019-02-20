@@ -1,4 +1,4 @@
-<h1 align="center">@boa packages</h1>
+<h1 align="center">@kuveytturk packages</h1>
 
 <div align="center">
 
@@ -10,7 +10,7 @@
 
 ## Getting Started
 
-BOA has three packages that are available as NPM packages. [@boa/base](/packages/base/) has base components like a composer (HOC), themes, error boundary, enums etc. [@boa/components](/packages/components/) is the main UI component library. [@boa/utils](/packages/utils/) has localization and messaging utilities. Each component was documented on the own package dictionary.
+BOA has three packages that are available as NPM packages. [@kuveytturk/boa-base](/packages/base/) has base components like a composer (HOC), themes, error boundary, enums etc. [@kuveytturk/boa-components](/packages/components/) is the main UI component library. [@kuveytturk/boa-utils](/packages/utils/) has localization and messaging utilities. Each component was documented on the own package dictionary.
 
 ## Questions
 

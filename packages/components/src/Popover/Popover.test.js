@@ -4,7 +4,7 @@ import { assert } from 'chai';
 import { spy, stub } from 'sinon';
 import Modal from '@material-ui/core/Modal';
 import Popover from './Popover';
-import { context, createMount, createShallow } from '@boa/test/utils';
+import { context, createMount, createShallow } from '@kuveytturk/boa-test/utils';
 
 describe('<Popover />', () => {
   let mount;

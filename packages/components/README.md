@@ -1,16 +1,16 @@
-# @boa/components
+# @kuveytturk/boa-components
 
-@boa/components includes the UI components.
+@kuveytturk/boa-components includes the UI components.
 
 ## Installation
 
 
 ```sh
 // with npm
-npm install @boa/components
+npm install @kuveytturk/boa-components
 
 // with yarn
-yarn add @boa/components
+yarn add @kuveytturk/boa-components
 ```
 
 ## Documentation

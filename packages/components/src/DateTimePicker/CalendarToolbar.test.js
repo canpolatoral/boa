@@ -6,7 +6,7 @@ import MuiChevronLeft from '@material-ui/icons/ChevronLeft';
 import MuiChevronRight from '@material-ui/icons/ChevronRight';
 import CalendarToolbar from './CalendarToolbar';
 import { dateTimeFormat } from './dateUtils';
-import { context, createShallow } from '@boa/test/utils';
+import { context, createShallow } from '@kuveytturk/boa-test/utils';
 
 describe('<CalendarToolbar />', () => {
   let shallow;

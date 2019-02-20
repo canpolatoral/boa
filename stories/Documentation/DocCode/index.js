@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { DocCode } from '@boa/components/DocCode';
+import { DocCode } from '@kuveytturk/boa-components/DocCode';
 import Header from '../../base/header';
 import Props from '../../base/props-table';
 import Preview from '../../base/preview';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Draggable from 'react-draggable';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import InnerResizable from './resizer';
 
 const boxStyle = {

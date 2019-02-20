@@ -1,4 +1,4 @@
-import { getTheme, Sizes } from '@boa/base';
+import { getTheme, Sizes } from '@kuveytturk/boa-base';
 
 const context = {};
 context.theme = getTheme({ themeName: 'kuveytturk' });

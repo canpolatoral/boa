@@ -256,7 +256,7 @@
 		}
 	},
 	"composes": [
-		"@boa/base",
-		"@boa/components/Input"
+		"@kuveytturk/boa-base",
+		"@kuveytturk/boa-components/Input"
 	]
 }

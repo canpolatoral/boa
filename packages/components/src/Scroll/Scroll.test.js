@@ -1,8 +1,8 @@
 import React from 'react';
 import { assert } from 'chai';
 import Scroll from './Scroll';
-import { context, createMount } from '@boa/test/utils';
-import { Platform } from '@boa/base';
+import { context, createMount } from '@kuveytturk/boa-test/utils';
+import { Platform } from '@kuveytturk/boa-base';
 import ReactResizeDetector from 'react-resize-detector';
 
 describe('<Scroll />', () => {

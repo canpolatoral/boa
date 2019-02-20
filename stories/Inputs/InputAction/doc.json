@@ -260,20 +260,6 @@
 			"required": false,
 			"description": "icons will be showed in right side of input elements."
 		},
-		"floatingLabelFixed": {
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			},
-			"required": false
-		},
-		"fullWidth": {
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			},
-			"required": false
-		},
 		"type": {
 			"defaultValue": {
 				"value": "text",

@@ -46,9 +46,6 @@ class InputAction extends ComponentBase {
     ...Input.defaultProps,
     canActionFocusable: false,
     inputDisabled: false,
-    floatingLabelFixed: false,
-    fullWidth: true,
-    type: 'text',
     hideLeftIcons: false,
     hideRightIcons: false,
   };

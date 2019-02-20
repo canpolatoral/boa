@@ -6,6 +6,9 @@ import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 @ComponentComposer
 class Divider extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     absolute: PropTypes.bool,
     /**

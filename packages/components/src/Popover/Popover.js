@@ -8,8 +8,10 @@ import { Resizable } from '@kuveytturk/boa-components/Resizable';
 @ComponentComposer
 class Popover extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
-
     action: PropTypes.func,
     /**
      * This is the DOM element, or a function that returns the DOM element,

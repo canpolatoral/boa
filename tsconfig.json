@@ -12,6 +12,7 @@
     "strict": true,
     "noEmit": true,
     "experimentalDecorators": true,
+    "allowJs": true,
     "baseUrl": "./",
     "paths": {
       "@kuveytturk/boa-base": [

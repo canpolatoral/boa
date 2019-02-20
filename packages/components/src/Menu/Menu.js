@@ -31,6 +31,9 @@ class Menu extends ComponentBase {
   };
 
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     /**
      * @ignore
@@ -68,10 +71,6 @@ class Menu extends ComponentBase {
      *
      */
     primaryTextPadding: PropTypes.any,
-    /**
-     * Override the inline-styles of the underlying `List` element.
-     */
-    style: PropTypes.object,
     /**
      * If `multiple` is true, an array of the `value`s of the selected
      * menu items. Otherwise, the `value` of the selected menu item.

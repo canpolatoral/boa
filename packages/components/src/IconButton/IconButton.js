@@ -42,10 +42,6 @@ class IconButton extends ComponentBase {
      */
     color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary', 'disabled']),
     /**
-     * If `true`, the button will be disabled.
-     */
-    disabled: PropTypes.bool,
-    /**
      * If `true`, the ripple will be disabled.
      */
     disableRipple: PropTypes.bool,
@@ -70,10 +66,6 @@ class IconButton extends ComponentBase {
      * @ignore
      */
     onClick: PropTypes.func,
-    /**
-     * Override the style of element.
-     */
-    style: PropTypes.object,
     /**
      * SVG Icon name from material svg icon library.
      */

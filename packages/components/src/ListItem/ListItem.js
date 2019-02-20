@@ -46,6 +46,9 @@ const styles = theme => ({
 @withStyles(styles)
 class ListItem extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     /**
      * If `true`, the list item will be a button (using `ButtonBase`).
@@ -82,10 +85,6 @@ class ListItem extends ComponentBase {
      * If `true`, compact vertical padding designed for keyboard and mouse input will be used.
      */
     dense: PropTypes.bool,
-    /**
-     * @ignore
-     */
-    disabled: PropTypes.bool,
     /**
      * If `true`, the left and right padding is removed.
      */

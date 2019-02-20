@@ -15,6 +15,9 @@ import Tree from './Tree';
 @ComponentComposer
 class TreeView extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     canCheckChildsByParent: PropTypes.bool,
     caseSensitive: PropTypes.bool,
@@ -58,8 +61,6 @@ class TreeView extends ComponentBase {
 
     // Whether or not a node is selectable in the tree.
     showSearch: PropTypes.bool,
-
-    style: PropTypes.object,
     // Specifies the tab order to make tree focusable.
     tabIndex: PropTypes.number,
     // Width of the tree.

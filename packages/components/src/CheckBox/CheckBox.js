@@ -47,6 +47,9 @@ const styles = theme => ({
 @withStyles(styles)
 class CheckBox extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     /**
      * If `true`, the component is checked.
@@ -69,10 +72,6 @@ class CheckBox extends ComponentBase {
      * The default value of component.
      */
     defaultChecked: PropTypes.bool,
-    /**
-     * If `true`, the switch will be disabled.
-     */
-    disabled: PropTypes.bool,
     /**
      * If `true`, the ripple effect will be disabled.
      */

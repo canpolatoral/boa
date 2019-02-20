@@ -1,4 +1,5 @@
-export default {
-  showClearButton: true,
-  maxLength: 100,
-};
+export default () => ({
+    showClearButton: true,
+    maxLength: 100,
+  }
+);

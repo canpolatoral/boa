@@ -23,6 +23,18 @@ export default class Preview extends ComponentBase {
     selectedLanguage: 1,
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.defaultProps !== this.props.defaultProps) {
+      this.setState((prevState) => {
+        const props = Object.assign(prevState.currentProperties, nextProps.defaultProps);
+        return { currentProperties: props };
+      }, () => {
+        const code = this.getComponentString();
+        this.setState({ code });
+      });
+    }
+  }
+
   componentWillMount() {
     this.prepareData();
   }

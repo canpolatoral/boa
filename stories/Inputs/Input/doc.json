@@ -462,6 +462,10 @@
 					{
 						"value": "text",
 						"computed": false
+					},
+					{
+						"value": "numeric",
+						"computed": false
 					}
 				]
 			},

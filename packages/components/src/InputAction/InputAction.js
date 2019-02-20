@@ -9,6 +9,9 @@ import { InputNumeric } from '@kuveytturk/boa-components/InputNumeric';
 @ComponentComposer
 class InputAction extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     ...Input.propTypes,
     /**

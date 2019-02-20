@@ -36,7 +36,6 @@ class Label extends ComponentBase {
      */
     maxWidth: PropTypes.number,
     minFontSize: PropTypes.number,
-    style: PropTypes.object,
     text: PropTypes.string,
     textAlign: PropTypes.string,
   };

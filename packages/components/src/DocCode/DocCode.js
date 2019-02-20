@@ -21,6 +21,9 @@ const editorTypes = [
  * */
 class DocCode extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     /**
      * Code that will be highlighted.

@@ -1,4 +1,4 @@
-import { Localization, setMessagingOptions } from '@boa/utils';
+import { Localization, setMessagingOptions } from '@kuveytturk/boa-utils';
 
 export default function setLocalization(options) {
   setMessagingOptions(options);

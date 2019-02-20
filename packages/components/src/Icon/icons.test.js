@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icons from './icons';
-import { createMount } from '@boa/test/utils';
+import { createMount } from '@kuveytturk/boa-test/utils';
 
 describe('Icons', () => {
   let mount;

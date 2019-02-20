@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@boa/components/Button';
+import { Button } from '@kuveytturk/boa-components/Button';
 import Header from '../base/header';
 import Props from '../base/props-table';
 import Preview from '../base/preview';

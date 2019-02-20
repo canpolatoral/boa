@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
 import { ComponentBase, Sizes } from '..';
-import { context, createShallow, createMount, serviceCallSync } from '@boa/test/utils';
+import { context, createShallow, createMount, serviceCallSync } from '@kuveytturk/boa-test/utils';
 
 // eslint-disable-next-line
 class EmptyComponent extends ComponentBase {

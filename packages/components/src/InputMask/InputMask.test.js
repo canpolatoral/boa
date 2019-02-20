@@ -2,10 +2,10 @@ import React from 'react';
 import { assert } from 'chai';
 import { spy, stub } from 'sinon';
 import keycode from 'keycode';
-import { Input } from '@boa/components/Input';
+import { Input } from '@kuveytturk/boa-components/Input';
 import InputMask from './InputMask';
 import PredefinedMask from './constants';
-import { context, createMount, createShallow } from '@boa/test/utils';
+import { context, createMount, createShallow } from '@kuveytturk/boa-test/utils';
 
 describe('<InputMask />', () => {
   let mount;

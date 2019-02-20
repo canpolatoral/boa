@@ -4,7 +4,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import TabScrollButton from './TabScrollButton';
-import { createMount, createShallow, getClasses } from '@boa/test/utils';
+import { createMount, createShallow, getClasses } from '@kuveytturk/boa-test/utils';
 
 describe('<TabScrollButton />', () => {
   const props = {

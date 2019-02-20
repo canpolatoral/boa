@@ -4,7 +4,7 @@ import { stub } from 'sinon';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import ErrorBoundary from '.';
-import { createShallow, createMount, getTestRunner } from '@boa/test/utils';
+import { createShallow, createMount, getTestRunner } from '@kuveytturk/boa-test/utils';
 
 // eslint-disable-next-line
 class EmptyComponent extends Component {

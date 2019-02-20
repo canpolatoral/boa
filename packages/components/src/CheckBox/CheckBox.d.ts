@@ -1,4 +1,4 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@boa/base';
+import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
 
 export interface CheckBoxProps extends ComponentBaseProps {
   label?: string;

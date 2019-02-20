@@ -259,17 +259,10 @@
 			},
 			"required": false,
 			"description": "icons will be showed in right side of input elements."
-		},
-		"type": {
-			"defaultValue": {
-				"value": "text",
-				"computed": false
-			},
-			"required": false
 		}
 	},
 	"composes": [
-		"@boa/base",
-		"@boa/components/Input"
+		"@kuveytturk/boa-base",
+		"@kuveytturk/boa-components/Input"
 	]
 }

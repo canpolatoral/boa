@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { IconButton } from '@boa/components/IconButton';
-import { Input } from '@boa/components/Input';
-import { InputNumeric } from '@boa/components/InputNumeric';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { IconButton } from '@kuveytturk/boa-components/IconButton';
+import { Input } from '@kuveytturk/boa-components/Input';
+import { InputNumeric } from '@kuveytturk/boa-components/InputNumeric';
 
 @ComponentComposer
 class InputAction extends ComponentBase {

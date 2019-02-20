@@ -2,9 +2,9 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { withStyles } from '@material-ui/core/styles';
-import { Icon } from '@boa/components/Icon';
-import { ToolTip } from '@boa/components/ToolTip';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { Icon } from '@kuveytturk/boa-components/Icon';
+import { ToolTip } from '@kuveytturk/boa-components/ToolTip';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 
 const styles = {
   root: {
@@ -25,7 +25,7 @@ const styles = {
 
 /**
  * Icon buttons allow users to take actions, and make choices, with a icon tap.
- * This component is made up `@material-ui/core/ButtonBase`, and  `@boa/components/Icon`.
+ * This component is made up `@material-ui/core/ButtonBase`, and  `@kuveytturk/boa-components/Icon`.
  * It able to render an `<ToolTip />` when the "tooltipTitle" prop exists.
  */
 @ComponentComposer

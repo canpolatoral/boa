@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MuiDivider from '@material-ui/core/Divider';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 
 @ComponentComposer
 class Divider extends ComponentBase {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase } from '@boa/base';
+import { ComponentBase } from '@kuveytturk/boa-base';
 
 const getMinLevel = content => {
   let level = 0;

@@ -1,4 +1,4 @@
-import { Sizes } from '@boa/base';
+import { Sizes } from '@kuveytturk/boa-base';
 
 const deviceThresholds = {
   SMALL: 512,

@@ -3,9 +3,9 @@ import { assert, expect } from 'chai';
 import { spy } from 'sinon';
 import { Home } from '@material-ui/icons';
 import MuiButton from '@material-ui/core/Button';
-import { IconButton } from '@boa/components/IconButton';
+import { IconButton } from '@kuveytturk/boa-components/IconButton';
 import { Button } from '.';
-import { createShallow, createMount } from '@boa/test/utils';
+import { createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<Button />', () => {
   let shallow;

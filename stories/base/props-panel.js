@@ -5,11 +5,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import ReactJson from 'react-json-view';
-import { Input } from '@boa/components/Input';
-import { InputNumeric } from '@boa/components/InputNumeric';
-import { Toggle } from '@boa/components/Toggle';
-import { Scroll } from '@boa/components/Scroll';
-import { ComponentBase } from '@boa/base';
+import { Input } from '@kuveytturk/boa-components/Input';
+import { InputNumeric } from '@kuveytturk/boa-components/InputNumeric';
+import { Toggle } from '@kuveytturk/boa-components/Toggle';
+import { Scroll } from '@kuveytturk/boa-components/Scroll';
+import { ComponentBase } from '@kuveytturk/boa-base';
 import { generateDefaultValue } from './utils';
 
 const style = {

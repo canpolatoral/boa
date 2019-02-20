@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 
 import React from 'react';
-import { ComponentBase, Sizes } from '@boa/base';
+import { ComponentBase, Sizes } from '@kuveytturk/boa-base';
 
 var editorTypes, editorType, tableOfContent;
 

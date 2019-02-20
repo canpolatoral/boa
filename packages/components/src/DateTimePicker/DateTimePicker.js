@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from './DatePicker';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { IconButton } from '@boa/components/IconButton';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { IconButton } from '@kuveytturk/boa-components/IconButton';
 import {
   getFormatDecomposition,
   receiveFormat,

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { AppProvider, ComponentBase, setLocalization, getTheme } from '@boa/base';
-import { Localization, Language } from '@boa/utils';
-import { context } from '@boa/test/utils';
+import { AppProvider, ComponentBase, setLocalization, getTheme } from '@kuveytturk/boa-base';
+import { Localization, Language } from '@kuveytturk/boa-utils';
+import { context } from '@kuveytturk/boa-test/utils';
 import detectSize from './utils/detectSize';
 
 export default class Container extends ComponentBase {

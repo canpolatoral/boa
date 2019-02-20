@@ -1,9 +1,9 @@
 import React from 'react';
 import { assert, expect } from 'chai';
-import { AppProvider } from '@boa/base';
+import { AppProvider } from '@kuveytturk/boa-base';
 import * as SvgIcons from '@material-ui/icons';
 import DocNotice from './DocNotice';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<DocNotice />', () => {
   let mount;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@boa/components/Button';
+import { Button } from '@kuveytturk/boa-components/Button';
 
 export default function Buttons() {
   return (

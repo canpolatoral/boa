@@ -2,14 +2,14 @@ import React from 'react';
 import { assert } from 'chai';
 import { spy } from 'sinon';
 import IconButton from '@material-ui/core/IconButton';
-import { Popover } from '@boa/components/Popover';
-import { Icon } from '@boa/components/Icon';
+import { Popover } from '@kuveytturk/boa-components/Popover';
+import { Icon } from '@kuveytturk/boa-components/Icon';
 import MenuList from '@material-ui/core/MenuList';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import * as SvgIcons from '@material-ui/icons';
 import IconMenu from './IconMenu';
-import { context, createShallow, createMount } from '@boa/test/utils/index';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils/index';
 
 describe('<IconMenu />', () => {
   const items = [

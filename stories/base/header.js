@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DocViewer } from '@boa/components/DocViewer';
+import { DocViewer } from '@kuveytturk/boa-components/DocViewer';
 
 export default class ComponentHeader extends React.Component {
   static propTypes = {

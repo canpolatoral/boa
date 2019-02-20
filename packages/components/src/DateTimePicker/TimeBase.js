@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import { ComponentBase } from '@boa/base';
+import { ComponentBase } from '@kuveytturk/boa-base';
 import TimeButton from './TimeButton';
 import { cloneDate, dateTimeFormat, TimeType } from './dateUtils';
 

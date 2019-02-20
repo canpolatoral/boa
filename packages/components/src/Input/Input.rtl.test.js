@@ -1,7 +1,7 @@
 import React from 'react';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
 import Input from './Input';
-import { context, createMount } from '@boa/test/utils';
+import { context, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<Input />', () => {
   let mount;

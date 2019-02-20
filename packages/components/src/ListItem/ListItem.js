@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiListItem from '@material-ui/core/ListItem';
 import MuiListItemText from '@material-ui/core/ListItemText';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';

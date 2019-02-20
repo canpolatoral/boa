@@ -492,6 +492,6 @@
 		}
 	},
 	"composes": [
-		"@boa/base"
+		"@kuveytturk/boa-base"
 	]
 }

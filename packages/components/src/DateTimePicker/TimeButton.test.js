@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import { spy } from 'sinon';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import TimeButton from './TimeButton';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<TimeButton />', () => {
   let shallow;

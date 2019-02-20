@@ -10,27 +10,30 @@ class InputMask extends EditorBase {
   static propTypes = {
     ...EditorBase.propTypes,
     ...Input.propTypes,
-    bottomRightInfo: PropTypes.string,
-    bottomRightInfoEnable: PropTypes.bool,
-    counterLabelShow: PropTypes.bool,
+    /**
+     * Country code for masked IBAN input elements.
+     */
     countryCode: PropTypes.string,
-    disabled: PropTypes.bool,
-    errorText: PropTypes.string,
+    /**
+     * Specifies the type of input to display
+     * such as "password" or "text".
+     */
     inputType: PropTypes.string,
+    /**
+     * mask of input element. If type selected custom, you can define your own mask.
+     */
     mask: PropTypes.string.isRequired,
-    onBlur: PropTypes.func,
-    onChange: PropTypes.func,
-    onFocus: PropTypes.func,
-    showCounter: PropTypes.bool,
+    /**
+     * Specifies the type of mask to display
+     * such as "CreditCard" or "PhoneNumber" etc.
+     */
     type: PropTypes.oneOf(['CreditCard', 'IBAN', 'MobilePhoneNumber', 'PhoneNumber', 'Custom'])
       .isRequired,
-    value: PropTypes.string,
   };
 
   static defaultProps = {
     ...EditorBase.defaultProps,
     ...Input.defaultProps,
-    counterLabelShow: true,
     countryCode: 'TR',
     disabled: false,
     fullWidth: true,

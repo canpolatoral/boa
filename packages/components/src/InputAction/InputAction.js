@@ -11,14 +11,34 @@ class InputAction extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
     ...Input.propTypes,
+    /**
+     * If `true`, icons will be focussable.
+     */
     canActionFocusable: PropTypes.bool,
+    /**
+     * If `true`, all left icons will be hidden.
+     */
     hideLeftIcons: PropTypes.bool,
+    /**
+    * If `true`, selected icons will be hidden.
+    */
     hideRightIconKeyList: PropTypes.arrayOf(String),
+    /**
+     * If `true`, all right icons will be hidden.
+     */
     hideRightIcons: PropTypes.bool,
+    /**
+    * If `true`, only the input element will be disabled.
+    */
     inputDisabled: PropTypes.bool,
+    /**
+    * icons will be showed in left side of input elements.
+    */
     leftIconList: PropTypes.array,
+    /**
+    * icons will be showed in right side of input elements.
+    */
     rightIconList: PropTypes.array,
-    type: PropTypes.oneOf(['password', 'text', 'numeric']),
   };
 
   static defaultProps = {
@@ -26,9 +46,6 @@ class InputAction extends ComponentBase {
     ...Input.defaultProps,
     canActionFocusable: false,
     inputDisabled: false,
-    floatingLabelFixed: false,
-    fullWidth: true,
-    type: 'text',
     hideLeftIcons: false,
     hideRightIcons: false,
   };
@@ -203,7 +220,6 @@ class InputAction extends ComponentBase {
       width: this.iconContainerSize,
       height: this.iconContainerSize,
       padding: 0,
-      // transform: 'scale(0.83)' // icon boyutları 20 px olması için diğer türlü olmuyor.
     };
 
     const baseIconContainerStyle = {
@@ -212,7 +228,6 @@ class InputAction extends ComponentBase {
       display: 'inline-block',
     };
 
-    /* iconProperties={{width: '20px', height:'20px'}} */
     let rightIcons = [];
 
     let { type } = this.props;
@@ -251,9 +266,6 @@ class InputAction extends ComponentBase {
         );
       }
     } else if (this.props.rightIconList) {
-      // !this.state.hideRightIcons hepsini çiz
-      //  this.state.hideRightIcons ve hideRightIconKeyList içinde değilse çiz
-
       let newRightIconList = this.props.rightIconList;
       const hideRightIconKeyList = this.props.hideRightIconKeyList;
 
@@ -339,7 +351,6 @@ class InputAction extends ComponentBase {
   }
 
   renderBInput(type, leftIcons, rightIcons) {
-    // b-input-action snapshot ı dışardan verildiğinde b-inputu ezmemeli
     // eslint-disable-next-line no-unused-vars
     const { context, snapshot, ...others } = this.props;
     return (
@@ -361,7 +372,6 @@ class InputAction extends ComponentBase {
   }
 
   renderBInputNumeric(leftIcons, rightIcons) {
-    // b-input-action snapshot ı dışardan verildiğinde b-inputu ezmemeli
     // eslint-disable-next-line no-unused-vars
     const { context, snapshot, type, ...others } = this.props;
     return (

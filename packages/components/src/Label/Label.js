@@ -30,12 +30,18 @@ class Label extends ComponentBase {
     /**
      * Label text
      */
-    maxFontSize: PropTypes.number,
+    maxFontSize: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
     /**
      * Override style of element.
      */
     maxWidth: PropTypes.number,
-    minFontSize: PropTypes.number,
+    minFontSize: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
     style: PropTypes.object,
     text: PropTypes.string,
     textAlign: PropTypes.string,

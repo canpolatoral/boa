@@ -199,6 +199,9 @@ class Input extends EditorBase {
      * When multiLine is true: define the style of the container of the textarea.
      */
     inputStyle: PropTypes.object,
+    /**
+     * Maximum character count of masked input element.
+     */
     maskedMaxLength: PropTypes.number,
     /**
      * Maximum character count of input element.
@@ -217,14 +220,37 @@ class Input extends EditorBase {
      * If `true`, element will not wrapped.
      */
     noWrap: PropTypes.bool,
+    /**
+     * Callback function input blur
+     */
     onBlur: PropTypes.func,
+    /**
+     * Callback function when input changed.
+     */
     onChange: PropTypes.func,
+    /**
+     * Callback function when input changed sync.
+     */
     onChangeSync: PropTypes.func,
+    /**
+     * Callback function when input focussed.
+     */
     onFocus: PropTypes.func,
+    /**
+     * Callback function when input key down.
+     */
     onKeyDown: PropTypes.func,
+    /**
+     * Callback function when input key up.
+     */
     onKeyUp: PropTypes.func,
+    /**
+     * Callback function when timer finished.
+     */
     onTimerFinished: PropTypes.func,
-    outerStyle: PropTypes.object,
+    /**
+     * Shows prefix text of input element text.
+     */
     prefixText: PropTypes.any,
     /**
      * Number of rows to display when multiLine option is set to true.
@@ -235,10 +261,21 @@ class Input extends EditorBase {
      * multiLine option is set to true.
      */
     rowsMax: PropTypes.number,
+    /**
+     * Shows clear button on the right side of component.
+     */
     showClearButton: PropTypes.bool,
+    /**
+     * Shows counter on the right bottom info.
+     */
     showCounter: PropTypes.bool,
-    style: PropTypes.object,
+    /**
+     * Shows suffix text of input element text.
+     */
     suffixText: PropTypes.any,
+    /**
+     * Sets the start and end positions of the current text selection
+     */
     textSelection: PropTypes.object,
     /**
      * Timer that shown in right bottom info by seconds

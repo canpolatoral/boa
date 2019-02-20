@@ -4,9 +4,9 @@ import { assert, expect } from 'chai';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as SvgIcons from '@material-ui/icons';
 import Switch from '@material-ui/core/Switch';
-import { Label } from '@boa/components/Label';
+import { Label } from '@kuveytturk/boa-components/Label';
 import Toggle from './Toggle';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<Toggle />', () => {
   let mount;

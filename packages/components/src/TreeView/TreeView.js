@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentComposer, ComponentBase } from '@boa/base';
-import { Divider } from '@boa/components/Divider';
-import { InputAction } from '@boa/components/InputAction';
+import { ComponentComposer, ComponentBase } from '@kuveytturk/boa-base';
+import { Divider } from '@kuveytturk/boa-components/Divider';
+import { InputAction } from '@kuveytturk/boa-components/InputAction';
 import Footer from './components/Footer';
 import Tree from './Tree';
 

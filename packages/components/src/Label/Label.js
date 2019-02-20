@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import parseFontSize from './parseFontSize';
 
 /**

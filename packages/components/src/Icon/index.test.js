@@ -4,7 +4,7 @@ import MuiIcon from '@material-ui/core/Icon';
 import * as SvgIcons from '@material-ui/icons';
 import * as Icons from './icons';
 import { Icon } from './index';
-import { createMount } from '@boa/test/utils';
+import { createMount } from '@kuveytturk/boa-test/utils';
 
 describe('Icon', () => {
   let mount;

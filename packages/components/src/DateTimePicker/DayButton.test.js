@@ -4,7 +4,7 @@ import { spy } from 'sinon';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import DayButton from './DayButton';
 import { getDatePickerStyle, DayType } from './dateUtils';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<DayButton />', () => {
   let shallow;

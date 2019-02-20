@@ -1,17 +1,17 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { Localization } from '@boa/utils';
-import { Button } from '@boa/components/Button';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { Localization } from '@kuveytturk/boa-utils';
+import { Button } from '@kuveytturk/boa-components/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { ListItem } from '@boa/components/ListItem';
-import { IconMenu } from '@boa/components/IconMenu';
+import { ListItem } from '@kuveytturk/boa-components/ListItem';
+import { IconMenu } from '@kuveytturk/boa-components/IconMenu';
 import Tabs from './Tabs';
 import Tab from './Tab';
 // eslint-disable-line
-const DoubleChevronRight = require('@boa/components/Icon').Actions.DoubleChevronRight;
-const DoubleChevronLeft = require('@boa/components/Icon').Actions.DoubleChevronLeft;
+const DoubleChevronRight = require('@kuveytturk/boa-components/Icon').Actions.DoubleChevronRight;
+const DoubleChevronLeft = require('@kuveytturk/boa-components/Icon').Actions.DoubleChevronLeft;
 
 const styles = theme => ({
   primary: {

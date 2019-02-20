@@ -2,7 +2,7 @@ import React from 'react';
 import { spy } from 'sinon';
 import { assert } from 'chai';
 import Resizable from './Resizable';
-import { context, createMount } from '@boa/test/utils';
+import { context, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<Resizable />', () => {
   let mount;

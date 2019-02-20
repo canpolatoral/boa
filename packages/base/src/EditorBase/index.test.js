@@ -2,7 +2,7 @@ import React from 'react';
 import { assert, expect } from 'chai';
 import ComponentBase from '../ComponentBase';
 import EditorBase from '.';
-import { context, createShallow } from '@boa/test/utils';
+import { context, createShallow } from '@kuveytturk/boa-test/utils';
 
 /* eslint-disable-next-line */
 class EmptyComponent extends EditorBase {

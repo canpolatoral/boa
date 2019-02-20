@@ -2,7 +2,7 @@ import React from 'react';
 import { assert, expect } from 'chai';
 import DocViewer from './DocViewer';
 import content from './test/doc';
-import { createMount } from '@boa/test/utils';
+import { createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<DocViewer />', () => {
   let mount;

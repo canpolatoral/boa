@@ -2,10 +2,10 @@ import React from 'react';
 import { assert } from 'chai';
 import { stub } from 'sinon';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import { DialogType, Sizes } from '@boa/base';
-import { Icon } from '@boa/components/Icon';
+import { DialogType, Sizes } from '@kuveytturk/boa-base';
+import { Icon } from '@kuveytturk/boa-components/Icon';
 import * as Helper from './helpers';
-import { context } from '@boa/test/utils';
+import { context } from '@kuveytturk/boa-test/utils';
 
 describe('Dialog helper methods', () => {
   describe('prepareLineStyle', () => {

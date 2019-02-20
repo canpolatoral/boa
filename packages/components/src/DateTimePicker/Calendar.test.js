@@ -4,7 +4,7 @@ import chai, { assert, expect } from 'chai';
 import asserttype from 'chai-asserttype';
 import EventListener from 'react-event-listener';
 import Calendar from './Calendar';
-import { context, createShallow } from '@boa/test/utils';
+import { context, createShallow } from '@kuveytturk/boa-test/utils';
 
 describe('<Calendar />', () => {
   let shallow;

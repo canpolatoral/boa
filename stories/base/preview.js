@@ -1,9 +1,9 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import { ComponentBase } from '@boa/base';
-import { DocViewer } from '@boa/components/DocViewer';
-import { DocCode } from '@boa/components/DocCode';
+import { ComponentBase } from '@kuveytturk/boa-base';
+import { DocViewer } from '@kuveytturk/boa-components/DocViewer';
+import { DocCode } from '@kuveytturk/boa-components/DocCode';
 import PropsPanel from './props-panel';
 import * as Utils from './utils';
 // import BaseProps from './doc.json';
@@ -22,6 +22,18 @@ export default class Preview extends ComponentBase {
     selectedTheme: 'violet',
     selectedLanguage: 1,
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.defaultProps !== this.props.defaultProps) {
+      this.setState((prevState) => {
+        const props = Object.assign(prevState.currentProperties, nextProps.defaultProps);
+        return { currentProperties: props };
+      }, () => {
+        const code = this.getComponentString();
+        this.setState({ code });
+      });
+    }
+  }
 
   componentWillMount() {
     this.prepareData();
@@ -166,7 +178,7 @@ export default class Preview extends ComponentBase {
 
     const strings = RenderedComponentString.split('\n');
     strings.splice(1, 0, '  context={context}');
-    return `import ${this.getName()} from '@boa/components/${this.getName()}';
+    return `import ${this.getName()} from '@kuveytturk/boa-components/${this.getName()}';
 
 ${strings.join('\n')}`;
   }

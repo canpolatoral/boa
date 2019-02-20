@@ -2,7 +2,7 @@ import React from 'react';
 import { expect, assert } from 'chai';
 import { withStyles } from '@material-ui/core/styles';
 import { ErrorBoundary, ComponentComposer } from '..';
-import { createShallow, createMount } from '@boa/test/utils';
+import { createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 // eslint disable next-line
 class EmptyComponent extends React.Component {

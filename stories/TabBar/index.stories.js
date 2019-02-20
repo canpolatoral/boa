@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TabBar } from '@boa/components/TabBar';
+import { TabBar } from '@kuveytturk/boa-components/TabBar';
 import Header from '../base/header';
 import Props from '../base/props-table';
 import Preview from '../base/preview';

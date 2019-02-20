@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TreeView } from '@boa/components/TreeView';
+import { TreeView } from '@kuveytturk/boa-components/TreeView';
 import Header from '../base/header';
 import Props from '../base/props-table';
 import Preview from '../base/preview';

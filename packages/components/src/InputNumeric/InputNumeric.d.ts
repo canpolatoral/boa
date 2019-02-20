@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@boa/base';
+import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
 
 export interface InputNumericProps extends ComponentBaseProps {
   defaultValue?: number;

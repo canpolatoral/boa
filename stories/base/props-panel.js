@@ -127,7 +127,7 @@ export default class PropsPanel extends ComponentBase {
     if (property.values && property.values.length > 0) {
       return (
         <div>
-          <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
+          <FormControl style={{ maxWidth: 300, width: '100%', marginBottom: 15 }}>
             <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
             <Select
               value={value}

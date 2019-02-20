@@ -2,9 +2,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@boa/components/Button';
-import Header from '../../base/header';
-import Props from '../../base/props-table';
-import Preview from '../../base/preview';
+import Header from '../base/header';
+import Props from '../base/props-table';
+import Preview from '../base/preview';
 import doc from './doc.json';
 
 const stories = storiesOf('Button', module);

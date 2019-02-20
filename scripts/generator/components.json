@@ -2,7 +2,7 @@
   {
     "alias": "Button",
     "input": "packages/components/src/Button/Button.js",
-    "output": "stories/Buttons/Button/doc.json"
+    "output": "stories/Button/doc.json"
   },
   {
     "alias": "CheckBox",

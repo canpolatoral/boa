@@ -6,7 +6,7 @@ import NodeIcon from './components/NodeIcon';
 import Text from './components/Text';
 import Checkbox from './components/Checkbox';
 import Radiobox from './components/Radiobox';
-import { ComponentBase, ComponentComposer } from '@boa/base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 
 @ComponentComposer
 class Tree extends ComponentBase {

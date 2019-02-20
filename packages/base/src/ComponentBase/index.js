@@ -2,7 +2,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CHANNEL } from '@material-ui/core/styles/themeListener';
-import { getMessage } from '@boa/utils';
+import { getMessage } from '@kuveytturk/boa-utils';
 import { ComponentSize, Sizes } from '../enums';
 import { shallowEqual } from '../helpers';
 

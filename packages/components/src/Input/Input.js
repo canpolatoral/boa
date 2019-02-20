@@ -8,9 +8,9 @@ import MuiInputAdornment from '@material-ui/core/InputAdornment';
 import MuiFormControl from '@material-ui/core/FormControl';
 import MuiFormHelperText from '@material-ui/core/FormHelperText';
 import { withStyles } from '@material-ui/core/styles';
-import { ComponentComposer, EditorBase } from '@boa/base';
+import { ComponentComposer, EditorBase } from '@kuveytturk/boa-base';
 import { getTimeInfo, hasValue } from './utils';
-import { IconButton } from '@boa/components/IconButton';
+import { IconButton } from '@kuveytturk/boa-components/IconButton';
 
 function baseStyles(theme) {
   const { boaPalette } = theme;

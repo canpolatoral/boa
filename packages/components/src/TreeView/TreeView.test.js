@@ -2,9 +2,9 @@
 // import { spy } from 'sinon';
 // import { assert } from 'chai';
 // import TreeView from './TreeView';
-// import { context, createMount } from '@boa/test/utils';
-// import { InputAction } from '@boa/components/InputAction';
-// import { IconButton } from '@boa/components/IconButton';
+// import { context, createMount } from '@kuveytturk/boa-test/utils';
+// import { InputAction } from '@kuveytturk/boa-components/InputAction';
+// import { IconButton } from '@kuveytturk/boa-components/IconButton';
 // import sampleData from './data/sampleData';
 
 // describe('<TreeView />', () => {

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import MuiPopover from '@material-ui/core/Popover';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { Resizable } from '@boa/components/Resizable';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { Resizable } from '@kuveytturk/boa-components/Resizable';
 
 @ComponentComposer
 class Popover extends ComponentBase {

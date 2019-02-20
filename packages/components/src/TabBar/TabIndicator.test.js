@@ -1,7 +1,7 @@
 import React from 'react';
 import { assert } from 'chai';
 import TabIndicator from './TabIndicator';
-import { createShallow, getClasses } from '@boa/test/utils';
+import { createShallow, getClasses } from '@kuveytturk/boa-test/utils';
 
 describe('<TabIndicator />', () => {
   let shallow;

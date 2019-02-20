@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-concat */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DocViewer } from '@boa/components/DocViewer';
+import { DocViewer } from '@kuveytturk/boa-components/DocViewer';
 import * as Utils from './utils';
 
 export default class PropsTable extends React.Component {

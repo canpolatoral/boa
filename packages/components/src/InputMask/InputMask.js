@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PredefinedMask from './constants';
-import { EditorBase, ComponentComposer } from '@boa/base';
-import { Input } from '@boa/components/Input';
+import { EditorBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { Input } from '@kuveytturk/boa-components/Input';
 import detectCopyPaste from './detectCopyPaste';
 
 @ComponentComposer

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
-import { ComponentBase, ComponentComposer, Platform } from '@boa/base';
+import { ComponentBase, ComponentComposer, Platform } from '@kuveytturk/boa-base';
 import PerfectScrollbar from 'perfect-scrollbar';
 import ReactResizeDetector from 'react-resize-detector';
 

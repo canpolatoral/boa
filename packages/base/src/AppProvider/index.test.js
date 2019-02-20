@@ -4,7 +4,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ErrorBoundary, getTheme } from '..';
 import AppProvider from './index';
-import { createShallow, createMount } from '@boa/test/utils';
+import { createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<AppProvider />', () => {
   let shallow;

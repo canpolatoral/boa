@@ -4,9 +4,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { Icon } from '@boa/components/Icon';
-import { Label } from '@boa/components/Label';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { Icon } from '@kuveytturk/boa-components/Icon';
+import { Label } from '@kuveytturk/boa-components/Label';
 import merge from 'lodash/merge';
 
 const styles = theme => ({

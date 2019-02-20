@@ -118,13 +118,13 @@ jobs:
       - *install_js
       - run:
           name: Can we build base?
-          command: yarn workspace @boa/base build
+          command: yarn workspace @kuveytturk/boa-base build
       - run:
           name: Can we build components?
-          command: yarn workspace @boa/components build
+          command: yarn workspace @kuveytturk/boa-components build
       - run:
           name: Can we build utils?
-          command: yarn workspace @boa/utils build
+          command: yarn workspace @kuveytturk/boa-utils build
       - run:
           name: Is the size acceptable?
           command: yarn size

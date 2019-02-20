@@ -1,7 +1,7 @@
 /* eslint-disable */
 import warning from 'warning';
 import isString from 'lodash/isString';
-import { Localization } from '@boa/utils';
+import { Localization } from '@kuveytturk/boa-utils';
 
 const dayAbbreviation = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

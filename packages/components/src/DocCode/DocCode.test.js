@@ -1,7 +1,7 @@
 import React from 'react';
 import chai from 'chai';
 import DocCode from './DocCode';
-import { createMount } from '@boa/test/utils';
+import { createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<DocCode />', () => {
   let mount;

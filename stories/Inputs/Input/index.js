@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { Input } from '@boa/components/Input';
+import { Input } from '@kuveytturk/boa-components/Input';
 import Header from '../../base/header';
 import Props from '../../base/props-table';
 import Preview from '../../base/preview';

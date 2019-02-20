@@ -1,8 +1,8 @@
 import React from 'react';
 import { expect } from 'chai';
-import { Button } from '@boa/components/Button';
+import { Button } from '@kuveytturk/boa-components/Button';
 import CalendarActionButtons from './CalendarActionButtons';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<CalendarActionButtons />', () => {
   let shallow;

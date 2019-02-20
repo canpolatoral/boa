@@ -13,7 +13,7 @@ import { get } from './utilities';
 import LookupTable from './lookup-table';
 import { defaultRowRenderer } from './renderer';
 import { preventDefault, addEventListener, removeEventListener } from './dom';
-import { Localization } from '@boa/utils';
+import { Localization } from '@kuveytturk/boa-utils';
 
 const noop = () => {};
 

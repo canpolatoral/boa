@@ -1,16 +1,16 @@
-# @boa/utils
+# @kuveytturk/boa-utils
 
-@boa/utils package has Localization and Messaging utilities.
+@kuveytturk/boa-utils package has Localization and Messaging utilities.
 
 ## Installation
 
 
 ```sh
 // with npm
-npm install @boa/utils
+npm install @kuveytturk/boa-utils
 
 // with yarn
-yarn add @boa/utils
+yarn add @kuveytturk/boa-utils
 ```
 
 ## API Reference
@@ -23,7 +23,7 @@ We're using [*moment*](https://github.com/moment/moment) and [*numeral*](https:/
 Localization class has a staticConstructor method to contsturct Localization instance.
 
 ```js
-import { Localization, Language } from @boa/utils;
+import { Localization, Language } from @kuveytturk/boa-utils;
 Localization.staticConstructor(Language.EN);
 ```
 
@@ -80,14 +80,14 @@ export const DEFAULT_FILE_NAME_FORMAT = 'BOA.Messaging.{0}.json';
 export const DEFAULT_THRESOLD = 1; // minutes
 ```
 
-Our storybook container has a sample usage of @boa/utils with @boa/base
+Our storybook container has a sample usage of @kuveytturk/boa-utils with @kuveytturk/boa-base
 
 ```jsx
 import React, { Component } from 'react';
 
-import { AppProvider, ComponentBase, setLocalization, getTheme } from '@boa/base';
-import { Localization, Language } from '@boa/utils';
-import { context } from '@boa/test/utils';
+import { AppProvider, ComponentBase, setLocalization, getTheme } from '@kuveytturk/boa-base';
+import { Localization, Language } from '@kuveytturk/boa-utils';
+import { context } from '@kuveytturk/boa-test/utils';
 import detectSize from './utils/detectSize';
 
 export default class Container extends ComponentBase {

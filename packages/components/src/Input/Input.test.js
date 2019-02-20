@@ -1,13 +1,13 @@
 import React from 'react';
 import { expect, assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
-import { IconButton } from '@boa/components/IconButton';
+import { IconButton } from '@kuveytturk/boa-components/IconButton';
 import MuiInput from '@material-ui/core/Input';
 import MuiInputLabel from '@material-ui/core/InputLabel';
 import MuiFormControl from '@material-ui/core/FormControl';
 import MuiFormHelperText from '@material-ui/core/FormHelperText';
 import Input from './Input';
-import { context, createShallow, createMount, getClasses } from '@boa/test/utils';
+import { context, createShallow, createMount, getClasses } from '@kuveytturk/boa-test/utils';
 
 describe('<Input />', () => {
   let mount;

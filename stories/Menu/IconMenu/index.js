@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { IconMenu } from '@boa/components/IconMenu';
+import { IconMenu } from '@kuveytturk/boa-components/IconMenu';
 import Header from '../../base/header';
 import Props from '../../base/props-table';
 import Preview from '../../base/preview';

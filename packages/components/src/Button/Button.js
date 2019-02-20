@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
 import MuiButton from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { Localization } from '@boa/utils';
-import { Icon } from '@boa/components/Icon';
-import { IconButton } from '@boa/components/IconButton';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { Localization } from '@kuveytturk/boa-utils';
+import { Icon } from '@kuveytturk/boa-components/Icon';
+import { IconButton } from '@kuveytturk/boa-components/IconButton';
 
 const styles = () => ({
   label: {

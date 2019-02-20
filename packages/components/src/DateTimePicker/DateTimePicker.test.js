@@ -1,7 +1,7 @@
 import React from 'react';
-import { AppProvider } from '@boa/base';
+import { AppProvider } from '@kuveytturk/boa-base';
 import DateTimePicker from './DateTimePicker';
-import { context, createMount } from '@boa/test/utils';
+import { context, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<DateTimePicker />', () => {
   let mount;

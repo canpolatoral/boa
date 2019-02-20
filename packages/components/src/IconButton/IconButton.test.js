@@ -1,9 +1,9 @@
 import React from 'react';
 import { assert } from 'chai';
 import IconButton from './IconButton';
-import { ToolTip } from '@boa/components/ToolTip';
+import { ToolTip } from '@kuveytturk/boa-components/ToolTip';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<IconButton />', () => {
   let mount;

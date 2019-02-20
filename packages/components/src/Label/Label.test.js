@@ -1,7 +1,7 @@
 import React from 'react';
 import { assert } from 'chai';
 import Label from './Label';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<Label />', () => {
   let mount;

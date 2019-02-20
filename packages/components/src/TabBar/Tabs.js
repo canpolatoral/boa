@@ -6,7 +6,7 @@ import EventListener from 'react-event-listener';
 import debounce from 'lodash/debounce';
 import { getNormalizedScrollLeft, detectScrollType } from 'normalize-scroll-left';
 import scroll from 'scroll';
-import { ScrollbarSize } from '@boa/components/ScrollbarSize';
+import { ScrollbarSize } from '@kuveytturk/boa-components/ScrollbarSize';
 import { withStyles } from '@material-ui/core/styles';
 import TabIndicator from './TabIndicator';
 import TabScrollButton from './TabScrollButton';

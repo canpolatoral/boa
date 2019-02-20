@@ -2,7 +2,7 @@ import React from 'react';
 import { expect, assert } from 'chai';
 import { spy } from 'sinon';
 import DocToc from './DocToc';
-import { context, createShallow, createMount } from '@boa/test/utils';
+import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 
 describe('<DocToc />', () => {
   let mount;

@@ -4,9 +4,9 @@ import merge from 'lodash/merge';
 import { withStyles } from '@material-ui/core/styles';
 import MuiMenuList from '@material-ui/core/MenuList';
 import MuiDivider from '@material-ui/core/Divider';
-import { ComponentBase, ComponentComposer } from '@boa/base';
-import { MenuItem } from '@boa/components/MenuItem';
-import { Icon } from '@boa/components/Icon';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { MenuItem } from '@kuveytturk/boa-components/MenuItem';
+import { Icon } from '@kuveytturk/boa-components/Icon';
 
 const styles = () => ({
   menuItem: {

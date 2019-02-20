@@ -31,17 +31,17 @@ yarn
 
 ### Building locally
 
-To use the provided build scripts with yarn you have to [install `yarn`](https://yarnpkg.com/lang/en/docs/install/). Depending on the package you want to build just run `yarn workspace @boa/PACKAGE build`.
+To use the provided build scripts with yarn you have to [install `yarn`](https://yarnpkg.com/lang/en/docs/install/). Depending on the package you want to build just run `yarn workspace @kuveytturk/boa-PACKAGE build`.
 
 ```sh
 ## start storybook
 yarn start
 ## build base
-yarn workspace @boa/base build
+yarn workspace @kuveytturk/boa-base build
 ## build components
-yarn workspace @boa/components build
+yarn workspace @kuveytturk/boa-components build
 ## build utils
-yarn workspace @boa/utils build
+yarn workspace @kuveytturk/boa-utils build
 ```
 
 ### Coding style

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
-import { Popover } from '@boa/components/Popover';
-import { ComponentBase } from '@boa/base';
-import { Dialog } from '@boa/components/Dialog';
+import { Popover } from '@kuveytturk/boa-components/Popover';
+import { ComponentBase } from '@kuveytturk/boa-base';
+import { Dialog } from '@kuveytturk/boa-components/Dialog';
 import { dateTimeFormat } from './dateUtils';
 import Calendar from './Calendar';
 

@@ -43,10 +43,6 @@ class Toggle extends ComponentBase {
      */
     defaultToggled: PropTypes.bool,
     /**
-     * Will disable the toggle if true.
-     */
-    disabled: PropTypes.bool,
-    /**
      * Indicates the style of element.
      */
     elementStyle: PropTypes.object,
@@ -87,10 +83,6 @@ class Toggle extends ComponentBase {
      * Indicates the style of ripple.
      */
     rippleStyle: PropTypes.object,
-    /**
-     * Indicates the style.
-     */
-    style: PropTypes.object,
     /**
      * Indicates the toggled or not.
      */

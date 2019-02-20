@@ -31,6 +31,9 @@ class MenuItem extends ComponentBase {
   };
 
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     allProperties: PropTypes.object,
     /**
@@ -81,10 +84,6 @@ class MenuItem extends ComponentBase {
      * Can be used to render secondary text within the menu item.
      */
     secondaryText: PropTypes.node,
-    /**
-     * Override the inline-styles of the root element.
-     */
-    style: PropTypes.object,
     /**
      * The value of the menu item.
      */

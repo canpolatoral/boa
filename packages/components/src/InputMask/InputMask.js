@@ -14,7 +14,6 @@ class InputMask extends EditorBase {
     bottomRightInfoEnable: PropTypes.bool,
     counterLabelShow: PropTypes.bool,
     countryCode: PropTypes.string,
-    disabled: PropTypes.bool,
     errorText: PropTypes.string,
     inputType: PropTypes.string,
     mask: PropTypes.string.isRequired,

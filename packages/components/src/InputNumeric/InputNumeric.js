@@ -9,6 +9,9 @@ import KeyboardEnum from './KeyboardEnum';
 @ComponentComposer
 class InputNumeric extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     ...Input.propTypes,
     caretPosition: PropTypes.number,

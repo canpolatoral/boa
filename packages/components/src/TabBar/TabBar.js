@@ -53,6 +53,9 @@ const styles = theme => ({
 @withStyles(styles)
 class TabBar extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     centered: PropTypes.bool,
     children: PropTypes.node,

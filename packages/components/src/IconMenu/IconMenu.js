@@ -22,6 +22,9 @@ const styles = theme => ({
 @withStyles(styles)
 class IconMenu extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     /**
      * Type of the `IconButton` to render.
@@ -110,7 +113,6 @@ class IconMenu extends ComponentBase {
      * If set to 0 then the auto close functionality
      * will be disabled.
      */
-    style: PropTypes.object,
     /* Callback function fired when the menu item is selected */
     touchTapCloseDelay: PropTypes.number,
     /* Callback function fired when the IconButton element is clicked */

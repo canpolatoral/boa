@@ -20,6 +20,9 @@ const styles = theme => ({
 @withStyles(styles)
 class ToolTip extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from ComponentBase.
+     */
     ...ComponentBase.propTypes,
     ...MuiToolTip.propTypes,
     tooltip: PropTypes.string,

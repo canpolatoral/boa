@@ -21,6 +21,10 @@ const getMinLevel = content => {
 class DocToc extends ComponentBase {
   static propTypes = {
     /**
+     * Base properties from ComponentBase.
+     */
+    ...ComponentBase.propTypes,
+    /**
      * Active item id on component.
      */
     activeItem: PropTypes.string,
@@ -36,10 +40,6 @@ class DocToc extends ComponentBase {
      * Event for item clicked.
      */
     linkOnClick: PropTypes.func,
-    /**
-     * Override style of component.
-     */
-    style: PropTypes.object,
   };
 
   static defaultProps = {

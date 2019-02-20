@@ -4,7 +4,6 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import ReactJson from 'react-json-view';
 import { Input } from '@boa/components/Input';
 import { InputNumeric } from '@boa/components/InputNumeric';
@@ -129,23 +128,24 @@ export default class PropsPanel extends ComponentBase {
       return (
         <div>
           <FormControl style={{ maxWidth: 300, width: '100%', marginTop: 15 }}>
-            <InputLabel htmlFor="theme">{property.name}</InputLabel>
-            <NativeSelect
+            <InputLabel htmlFor={property.name}>{property.name}</InputLabel>
+            <Select
+              value={value}
               onChange={event => {
                 self.onPropertyChanged(property.name, event.target.value);
               }}
             >
               {property.values.map((item, index) => {
                 return (
-                  <option
+                  <MenuItem
                     key={`property${index}`} // eslint-disable-line
                     value={item}
                   >
                     {item}
-                  </option>
+                  </MenuItem>
                 );
               })}
-            </NativeSelect>
+            </Select>
           </FormControl>
         </div>
       );

@@ -98,9 +98,9 @@ export default class Preview extends ComponentBase {
     }
 
     this.setState((prevState) => {
-      const { currentProperties } = prevState;
-      currentProperties[property] = value;
-      return { currentProperties };
+      const newCurrentProperties = Object.assign({}, prevState.currentProperties);
+      newCurrentProperties[property] = value;
+      return { currentProperties: newCurrentProperties };
     }, () => {
       const code = this.getComponentString();
       this.setState({ code });

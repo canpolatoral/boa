@@ -300,7 +300,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "Maximum character count of masked input element."
 		},
 		"maxLength": {
 			"type": {
@@ -339,63 +339,56 @@
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function input blur"
 		},
 		"onChange": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input changed."
 		},
 		"onChangeSync": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input changed sync."
 		},
 		"onFocus": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input focussed."
 		},
 		"onKeyDown": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input key down."
 		},
 		"onKeyUp": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when input key up."
 		},
 		"onTimerFinished": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
-		},
-		"outerStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
+			"description": "Callback function when timer finished."
 		},
 		"prefixText": {
 			"type": {
 				"name": "any"
 			},
 			"required": false,
-			"description": ""
+			"description": "Shows prefix text of input element text."
 		},
 		"rows": {
 			"type": {
@@ -420,7 +413,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "Shows clear button on the right side of component.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -431,32 +424,25 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "Shows counter on the right bottom info.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
 			}
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
 		},
 		"suffixText": {
 			"type": {
 				"name": "any"
 			},
 			"required": false,
-			"description": ""
+			"description": "Shows suffix text of input element text."
 		},
 		"textSelection": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Sets the start and end positions of the current text selection"
 		},
 		"timerDuration": {
 			"type": {

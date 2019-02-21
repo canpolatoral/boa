@@ -99,13 +99,9 @@
 			},
 			"required": false,
 			"description": "Event for item clicked."
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": "Override style of component."
 		}
-	}
+	},
+	"composes": [
+		"@kuveytturk/boa-base"
+	]
 }

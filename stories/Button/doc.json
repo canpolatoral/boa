@@ -106,13 +106,6 @@
 			"required": false,
 			"description": "The color of the component.\nIt supports those theme colors that make sense for this component."
 		},
-		"disabled": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "If `true`, the button will be disabled."
-		},
 		"dynamicIcon": {
 			"type": {
 				"name": "string"
@@ -161,13 +154,6 @@
 			},
 			"required": false,
 			"description": "@ignore"
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": "Override the style of element"
 		},
 		"svgIcon": {
 			"type": {

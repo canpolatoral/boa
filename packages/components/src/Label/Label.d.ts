@@ -3,7 +3,7 @@ import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuvey
 export interface LabelProps extends ComponentBaseProps {
   text?: string;
   style?: React.CSSProperties;
-  textAlign?: string;
+  textPosition?: string;
 }
 
 // Commented-Tslint: An interface declaring no members is equivalent to its supertype.

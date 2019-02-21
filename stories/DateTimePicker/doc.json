@@ -432,7 +432,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, dialog will render inline mode.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -457,7 +457,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": ""
+			"description": "@ignore"
 		},
 		"pageType": {
 			"type": {
@@ -474,7 +474,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "@ignore",
 			"defaultValue": {
 				"value": "browse",
 				"computed": false

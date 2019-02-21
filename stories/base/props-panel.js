@@ -137,6 +137,10 @@ export default class PropsPanel extends ComponentBase {
 
   getComponent(property, value) {
     const self = this;
+    if (this.props.ignoreProps && this.props.ignoreProps.includes(property.name)) {
+      return null;
+    }
+
     if (property.values && property.values.length > 0) {
       return (
         <div>

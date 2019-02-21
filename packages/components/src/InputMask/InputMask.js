@@ -87,6 +87,9 @@ class InputMask extends EditorBase {
     if (nextProps.disabled !== this.props.disabled) {
       this.setDisable(nextProps.disabled);
     }
+    if (nextProps.mask !== this.props.mask || nextProps.type !== this.props.type) {
+      this.setState({ value: '', saltValue: '' });
+    }
   }
 
   isCorrectFormatText(mask, text) {

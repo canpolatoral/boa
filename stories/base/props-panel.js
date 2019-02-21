@@ -5,8 +5,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import ReactJson from 'react-json-view';
+import { Divider } from '@kuveytturk/boa-components';
 import { Input } from '@kuveytturk/boa-components/Input';
 import { InputNumeric } from '@kuveytturk/boa-components/InputNumeric';
+import { Label } from '@kuveytturk/boa-components/Label';
 import { Toggle } from '@kuveytturk/boa-components/Toggle';
 import { Scroll } from '@kuveytturk/boa-components/Scroll';
 import { ComponentBase } from '@kuveytturk/boa-base';
@@ -181,10 +183,14 @@ export default class PropsPanel extends ComponentBase {
   }
 
   render() {
-    const { availableProperties, currentProperties } = this.props;
+    const { context, currentProperties } = this.props;
     const self = this;
 
-    if (!availableProperties || availableProperties.length === 0) {
+    const availableProperties = this.props.availableProperties || [];
+    const availableComposedProperties = this.props.availableComposedProperties || [];
+    const hasComposedProps = availableComposedProperties.length > 0;
+
+    if (availableProperties.length === 0 && availableComposedProperties.length === 0) {
       return null;
     }
 
@@ -193,7 +199,7 @@ export default class PropsPanel extends ComponentBase {
         <Paper>
           <div style={style.criteriaPanel}>
             <Scroll
-              context={this.props.context}
+              context={context}
               option={{ suppressScrollX: true }}
               style={style.scrollStyle}
               divStyle={style.scrollStyle}
@@ -257,6 +263,37 @@ export default class PropsPanel extends ComponentBase {
                   </Select>
                 </FormControl>
                 {availableProperties.map((property, i) => {
+                  /* eslint-disable react/no-array-index-key */
+                  if (!property.hidden && property.type !== 'func') {
+                    const divStyle = {};
+                    const defaultValue = currentProperties[property.name] || property.default;
+                    if (i === availableProperties.length - 1) {
+                      divStyle.marginBottom = 12;
+                    }
+                    return (
+                      <div key={i} style={divStyle}>
+                        {this.getComponent(property, defaultValue)}
+                      </div>
+                    );
+                  }
+                  return undefined;
+                })}
+                {
+                  hasComposedProps &&
+                  <Divider context={context} style={{ width: 'inherit', margin: '12px -24px' }} />
+                }
+                {
+                  hasComposedProps &&
+                  <Label
+                    context={context}
+                    text="Inherited Props"
+                    style={{
+                      color: context.theme.palette.primary.main,
+                      fontSize: 14,
+                      paddingBottom: 12,
+                    }} />
+                }
+                {availableComposedProperties.map((property, i) => {
                   /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {
                     const divStyle = {};

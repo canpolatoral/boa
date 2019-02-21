@@ -9,45 +9,59 @@ export default class PropsTable extends React.Component {
     doc: PropTypes.any,
   };
 
-  prepareData() {
-    let doc = '## Props';
+  prepareData = (doc) => {
+    let docString = '## Props';
 
-    if (this.props.doc.composes && this.props.doc.composes.length > 0) {
-      doc += '\n';
-      doc = `${doc}The ${this.props.doc.displayName} propTypes have spread attribute from: `;
-      const composes = this.props.doc.composes.map(compose => {
+    if (doc.composes && doc.composes.length > 0) {
+      docString += '\n';
+      docString = `${docString}The ${doc.displayName} propTypes have spread attribute from: `;
+      const composes = doc.composes.map(compose => {
         return `\`${Utils.parseComponent(compose)}\``;
       });
-      doc = `${doc + composes.join(', ')}\n`;
+      docString = `${docString + composes.join(', ')}\n`;
     }
 
-    doc = `${doc}\n` + '| gray |' + '\n' + '| Name | Type  |  Default | Description |';
-    doc = `${doc}\n` + '|---|----|----|----:|';
+    const propTable = (propMetaData) => {
+      let docTable = '';
+      docTable = `${docTable}\n` + '| gray |' + '\n' + '| Name | Type  |  Default | Description |';
+      docTable = `${docTable}\n` + '|---|----|----|----:|';
 
-    const propMetaData = this.props.doc.props;
+      Object.keys(propMetaData)
+        .sort()
+        .forEach(key => {
+          const prop = propMetaData[key];
 
-    Object.keys(propMetaData)
-      .sort()
-      .forEach(key => {
-        const prop = propMetaData[key];
+          if (prop.description && prop.description.includes('@ignore')) return;
 
-        if (prop.description && prop.description.includes('@ignore')) return;
+          if (prop.type && prop.type.name === 'func') return;
 
-        if (prop.type && prop.type.name === 'func') return;
+          // eslint-disable-next-line max-len
+          docTable =
+            `${docTable}\n` +
+            `|${Utils.getPropName(prop, key)}|${Utils.getPropType(
+              prop,
+            )}|${Utils.getDefaultValueForMarkdown(prop)}|${Utils.getPropDescription(prop)}|`;
+        });
+      return docTable;
+    };
 
-        // eslint-disable-next-line max-len
-        doc =
-          `${doc}\n` +
-          `|${Utils.getPropName(prop, key)}|${Utils.getPropType(
-            prop,
-          )}|${Utils.getDefaultValueForMarkdown(prop)}|${Utils.getPropDescription(prop)}|`;
+    docString += propTable(doc.props);
+    if (doc.composeProps) {
+      Object.keys(doc.composeProps).forEach(composeName => {
+        const composeClassPath = composeName.split('/');
+        const composeClass = composeClassPath[composeClassPath.length - 2];
+        docString += '\n';
+        docString += `## ${composeClass} Props`;
+        docString += '\n';
+        docString += propTable(doc.composeProps[composeName]);
       });
+    }
 
-    return doc;
+    return docString;
   }
 
   render() {
-    const data = this.prepareData();
+    const data = this.prepareData(this.props.doc);
     return <DocViewer content={data} editorType="github" />;
   }
 }

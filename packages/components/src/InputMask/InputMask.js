@@ -8,7 +8,9 @@ import detectCopyPaste from './detectCopyPaste';
 @ComponentComposer
 class InputMask extends EditorBase {
   static propTypes = {
-    ...EditorBase.propTypes,
+    /**
+     * Base properties from Input.
+     */
     ...Input.propTypes,
     /**
      * Country code for masked IBAN input elements.
@@ -32,7 +34,6 @@ class InputMask extends EditorBase {
   };
 
   static defaultProps = {
-    ...EditorBase.defaultProps,
     ...Input.defaultProps,
     countryCode: 'TR',
     disabled: false,

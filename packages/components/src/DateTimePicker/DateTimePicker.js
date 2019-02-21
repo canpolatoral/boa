@@ -116,6 +116,9 @@ class DateTimePicker extends ComponentBase {
      * Calendar dialog type.
      */
     mode: PropTypes.oneOf(['portrait', 'landscape']),
+    /**
+     * If `true`, dialog will render inline mode.
+     */
     noDialog: PropTypes.bool,
     /**
      * OK
@@ -125,7 +128,13 @@ class DateTimePicker extends ComponentBase {
      * @ignore
      */
     onChange: PropTypes.func,
+    /**
+     * @ignore
+     */
     openBoaCalendar: PropTypes.bool,
+    /**
+     * @ignore
+     */
     pageType: PropTypes.oneOf(['browse', 'transactional']),
     /**
      * @ignore

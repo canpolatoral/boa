@@ -101,5 +101,13 @@
     "composes": [
       "packages/base/src/ComponentBase/index.js"
     ]
+  },
+  {
+    "alias": "Label",
+    "input": "packages/components/src/Label/Label.js",
+    "output": "stories/Label/doc.json",
+    "composes": [
+      "packages/base/src/ComponentBase/index.js"
+    ]
   }
 ]

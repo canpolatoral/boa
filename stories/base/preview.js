@@ -139,7 +139,6 @@ export default class Preview extends ComponentBase {
     if (!availableProperties || availableProperties.length === 0) {
       return null;
     }
-
     return (
       <div>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -183,9 +182,9 @@ export default class Preview extends ComponentBase {
         filterProps: [
           'context',
           'doc',
-          'data',
           'componentSize',
           'newLine',
+          ...[this.props.ignoreProps],
         ],
       },
     );

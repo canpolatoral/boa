@@ -28,16 +28,36 @@ class Label extends ComponentBase {
 
   static propTypes = {
     /**
-     * Label text
+     * Max font size of label element
      */
-    maxFontSize: PropTypes.number,
+    maxFontSize: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
+    /**
+     * Max width label container element.
+     */
+    maxWidth: PropTypes.number,
+    /**
+     * Min font size of label element
+     */
+    minFontSize: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
     /**
      * Override style of element.
      */
-    maxWidth: PropTypes.number,
-    minFontSize: PropTypes.number,
+    style: PropTypes.object,
+    /**
+     * Text of label element.
+     */
     text: PropTypes.string,
-    textAlign: PropTypes.string,
+    /**
+     * The position of the text in label.
+     * It applies given position to text if label width is greater than text width.
+     */
+    textPosition: PropTypes.oneOf(['center', 'left', 'right']),
   };
 
   static defaultProps = {
@@ -90,8 +110,8 @@ class Label extends ComponentBase {
       styleDiv = { textAlign: 'right' };
     }
 
-    if (this.props.textAlign) {
-      Object.assign(styleDiv, { textAlign: this.props.textAlign });
+    if (this.props.textPosition) {
+      Object.assign(styleDiv, { textAlign: this.props.textPosition });
     }
 
     return (

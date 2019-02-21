@@ -170,7 +170,7 @@ export default class Preview extends ComponentBase {
           'doc',
           'componentSize',
           'newLine',
-          ...[this.props.ignoreProps]
+          ...[this.props.ignoreProps],
         ],
       },
     );

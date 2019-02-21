@@ -43,8 +43,8 @@ describe('<Label />', () => {
     assert.strictEqual(wrapper.find('div').props().style.width, 10);
   });
 
-  it('should handle textAlign', () => {
-    const wrapper = shallow(<Label textAlign="center" context={context} text="Test" />);
+  it('should handle textPosition', () => {
+    const wrapper = shallow(<Label textPosition="center" context={context} text="Test" />);
     assert.strictEqual(wrapper.find('div').props().style.textAlign, 'center');
   });
 

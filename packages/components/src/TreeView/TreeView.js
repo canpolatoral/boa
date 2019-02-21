@@ -19,51 +19,158 @@ class TreeView extends ComponentBase {
      * Base properties from ComponentBase.
      */
     ...ComponentBase.propTypes,
+    /**
+     * If `true`, when check a parent node, all of childs will be checked.
+     */
     canCheckChildsByParent: PropTypes.bool,
+    /**
+     * If `true`, search field will be case sensitive.
+     */
     caseSensitive: PropTypes.bool,
+    /**
+     * The data source of treeview element.
+     */
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+    /**
+     * If `true`, search field will only match exact words.
+     */
     exactMatch: PropTypes.bool,
+    /**
+     * If `true`, treeview's all node will be expanded.
+     */
     expandAll: PropTypes.bool,
+    /**
+     * Overrides style of footer element.
+     */
     footerStyle: PropTypes.object,
+    /**
+     * Height of tree element.
+     */
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    /**
+     * Hint text of search element.
+     */
     hintText: PropTypes.string,
+    /**
+     * @ignore
+     */
     includeAncestors: PropTypes.bool,
+    /**
+     * @ignore
+     */
     includeDescendants: PropTypes.bool,
+    /**
+     * If `true`, all tree view nodes will be checkable.
+     */
     isCheckable: PropTypes.bool,
+    /**
+     * If `true`, only leaf nodes of tree view will be checkable.
+     */
     isLeafCheckable: PropTypes.bool,
+    /**
+     * If `true`, checkbox will appers in nodes and multi selection will be actived.
+     * If `false`, radio button will appers in nodes and single selection will be actived.
+     */
     isMultiSelect: PropTypes.bool,
-    isSingleCheckable: PropTypes.bool,
+    /**
+     * Callback function when all nodes loaded.
+     */
     loadNodes: PropTypes.func,
+    /**
+     * Callback function when node checkes
+     */
     onCheckNode: PropTypes.func,
+    /**
+     * Callback function when node closes
+     */
     onCloseNode: PropTypes.func,
+    /**
+     * Callback function when content of treview did update.
+     */
     onContentDidUpdate: PropTypes.func,
+    /**
+     * Callback function when content of treview will update.
+     */
     onContentWillUpdate: PropTypes.func,
+    /**
+     * Callback function when search element key down.
+     */
     onKeyDown: PropTypes.func,
+    /**
+     * Callback function when search element key up.
+     */
     onKeyUp: PropTypes.func,
+    /**
+     * Callback function when node opens.
+     */
     onOpenNode: PropTypes.func,
+   /**
+     * Callback function when tree scrolls.
+     */
     onScroll: PropTypes.func,
+    /**
+     * Callback function when node selects.
+     */
     onSelectNode: PropTypes.func,
+    /**
+     * Callback function when node will close.
+     */
     onWillCloseNode: PropTypes.func,
+    /**
+     * Callback function when node will open.
+     */
     onWillOpenNode: PropTypes.func,
+    /**
+     * Callback function when node will select.
+     */
     onWillSelectNode: PropTypes.func,
+    /**
+     * Row heigth of tree view nodes.
+     */
     rowHeight: PropTypes.oneOfType([PropTypes.number]),
+    /**
+     * @ignore
+     */
     scrollOffset: PropTypes.number,
+    /**
+     * @ignore
+     */
     scrollToIndex: PropTypes.number,
+    /**
+     * @ignore
+     */
     selectable: PropTypes.bool,
+    /**
+     * @ignore
+     */
     selectedNode: PropTypes.object,
+    /**
+     * @ignore
+     */
     selectedNodeId: PropTypes.number,
+    /**
+     * @ignore
+     */
     shouldSelectNode: PropTypes.func,
-
+    /**
+     * If `true`, footer of treeview is visible.
+     */
     showFooter: PropTypes.bool,
-
-    // Whether or not a node is selectable in the tree.
+     /**
+     * If `true`, icons of all nodes is visible.
+     */
     showIcons: PropTypes.bool,
-
-    // Whether or not a node is selectable in the tree.
+    /**
+     * If `true`, search input element is visible.
+     */
     showSearch: PropTypes.bool,
-    // Specifies the tab order to make tree focusable.
+    /**
+     * Specifies the tab order to make tree focusable.
+     */
     tabIndex: PropTypes.number,
-    // Width of the tree.
+    /**
+     * Width of tree view.
+     */
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
@@ -87,7 +194,6 @@ class TreeView extends ComponentBase {
     showIcons: true,
     showSearch: true,
     canCheckChildsByParent: true,
-    isSingleCheckable: false,
   };
 
   searchActionButton = {

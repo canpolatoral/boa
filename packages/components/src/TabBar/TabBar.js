@@ -92,7 +92,7 @@ class TabBar extends ComponentBase {
      * It able to render a dynamicIcon with a string prop.
      * Also it able to renders a React Element.
      */
-    leftIcon: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+    leftIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /**
      * If `false` the left icon is not shown.
      */

@@ -18,10 +18,18 @@
 	"props": {
 		"maxFontSize": {
 			"type": {
-				"name": "number"
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "number"
+					}
+				]
 			},
 			"required": false,
-			"description": "Label text",
+			"description": "Max font size of label element",
 			"defaultValue": {
 				"value": "Number.POSITIVE_INFINITY",
 				"computed": true
@@ -32,14 +40,22 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": "Override style of element."
+			"description": "Max width label container element."
 		},
 		"minFontSize": {
 			"type": {
-				"name": "number"
+				"name": "union",
+				"value": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "number"
+					}
+				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Min font size of label element",
 			"defaultValue": {
 				"value": "Number.NEGATIVE_INFINITY",
 				"computed": true
@@ -50,21 +66,35 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Override style of element."
 		},
 		"text": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Text of label element."
 		},
-		"textAlign": {
+		"textPosition": {
 			"type": {
-				"name": "string"
+				"name": "enum",
+				"value": [
+					{
+						"value": "center",
+						"computed": false
+					},
+					{
+						"value": "left",
+						"computed": false
+					},
+					{
+						"value": "right",
+						"computed": false
+					}
+				]
 			},
 			"required": false,
-			"description": ""
+			"description": "The position of the text in label.\nIt applies given position to text if label width is greater than text width."
 		}
 	}
 }

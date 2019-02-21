@@ -504,7 +504,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, when check a parent node, all of childs will be checked.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -515,7 +515,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, search field will be case sensitive.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -534,7 +534,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "The data source of treeview element.",
 			"defaultValue": {
 				"value": [],
 				"computed": false
@@ -545,7 +545,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, search field will only match exact words.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -556,7 +556,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, treeview's all node will be expanded.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -567,7 +567,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Overrides style of footer element."
 		},
 		"height": {
 			"type": {
@@ -582,7 +582,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Height of tree element.",
 			"defaultValue": {
 				"value": 400,
 				"computed": false
@@ -593,7 +593,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Hint text of search element."
 		},
 		"includeAncestors": {
 			"type": {
@@ -622,7 +622,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, all tree view nodes will be checkable.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -633,7 +633,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, only leaf nodes of tree view will be checkable.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -644,20 +644,9 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, checkbox will appers in nodes and multi selection will be actived.\nIf `false`, radio button will appers in nodes and single selection will be actived.",
 			"defaultValue": {
 				"value": true,
-				"computed": false
-			}
-		},
-		"isSingleCheckable": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
 				"computed": false
 			}
 		},
@@ -846,13 +835,6 @@
 				"value": true,
 				"computed": false
 			}
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
 		},
 		"tabIndex": {
 			"type": {

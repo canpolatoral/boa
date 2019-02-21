@@ -585,7 +585,10 @@ class TreeView extends ComponentBase {
     const inputDiv = {
       marginTop: '0px',
       marginBottom: '18px',
-      height: '30px',
+    };
+
+    const inputStyle = {
+      height: 30,
     };
 
     return {
@@ -594,6 +597,7 @@ class TreeView extends ComponentBase {
       startAdornmentStyle,
       endAdornmentStyle,
       inputDiv,
+      inputStyle,
     };
   }
 
@@ -607,6 +611,7 @@ class TreeView extends ComponentBase {
             <InputAction
               ref={r => (this.searchInput = r)}
               style={{ width: style.width }}
+              inputStyle={style.inputStyle}
               startAdornmentStyle={style.startAdornmentStyle}
               endAdornmentStyle={style.endAdornmentStyle}
               context={this.props.context}

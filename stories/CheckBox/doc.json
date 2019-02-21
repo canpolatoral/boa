@@ -115,13 +115,6 @@
 			"required": false,
 			"description": "The default value of component."
 		},
-		"disabled": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "If `true`, the switch will be disabled."
-		},
 		"disableRipple": {
 			"type": {
 				"name": "bool"

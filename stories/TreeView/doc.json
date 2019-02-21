@@ -504,7 +504,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, when check a parent node, all of childs will be checked.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -515,7 +515,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, search field will be case sensitive.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -534,7 +534,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "The data source of treeview element.",
 			"defaultValue": {
 				"value": [],
 				"computed": false
@@ -545,7 +545,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, search field will only match exact words.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -556,7 +556,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, treeview's all node will be expanded.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -567,7 +567,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Overrides style of footer element."
 		},
 		"height": {
 			"type": {
@@ -582,7 +582,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Height of tree element.",
 			"defaultValue": {
 				"value": 400,
 				"computed": false
@@ -593,14 +593,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
+			"description": "Hint text of search element."
 		},
 		"includeAncestors": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "@ignore",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -611,7 +611,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "@ignore",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -622,7 +622,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, all tree view nodes will be checkable.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -633,7 +633,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, only leaf nodes of tree view will be checkable.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -644,20 +644,9 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, checkbox will appers in nodes and multi selection will be actived.\nIf `false`, radio button will appers in nodes and single selection will be actived.",
 			"defaultValue": {
 				"value": true,
-				"computed": false
-			}
-		},
-		"isSingleCheckable": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
 				"computed": false
 			}
 		},
@@ -666,91 +655,91 @@
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when all nodes loaded."
 		},
 		"onCheckNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when node checkes"
 		},
 		"onCloseNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when node closes"
 		},
 		"onContentDidUpdate": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when content of treview did update."
 		},
 		"onContentWillUpdate": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when content of treview will update."
 		},
 		"onKeyDown": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when search element key down."
 		},
 		"onKeyUp": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when search element key up."
 		},
 		"onOpenNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when node opens."
 		},
 		"onScroll": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when tree scrolls."
 		},
 		"onSelectNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when node selects."
 		},
 		"onWillCloseNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when node will close."
 		},
 		"onWillOpenNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when node will open."
 		},
 		"onWillSelectNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "Callback function when node will select."
 		},
 		"rowHeight": {
 			"type": {
@@ -762,7 +751,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Row heigth of tree view nodes.",
 			"defaultValue": {
 				"value": 36,
 				"computed": false
@@ -773,21 +762,21 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "@ignore"
 		},
 		"scrollToIndex": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "@ignore"
 		},
 		"selectable": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "@ignore",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -798,28 +787,28 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "@ignore"
 		},
 		"selectedNodeId": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": ""
+			"description": "@ignore"
 		},
 		"shouldSelectNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
+			"description": "@ignore"
 		},
 		"showFooter": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, footer of treeview is visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -830,7 +819,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, icons of all nodes is visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -841,25 +830,18 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, search input element is visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
 			}
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
 		},
 		"tabIndex": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": "",
+			"description": "Specifies the tab order to make tree focusable.",
 			"defaultValue": {
 				"value": 0,
 				"computed": false
@@ -878,7 +860,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Width of tree view.",
 			"defaultValue": {
 				"value": "100%",
 				"computed": false

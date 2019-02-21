@@ -63,5 +63,10 @@
     "alias": "TreeView",
     "input": "packages/components/src/TreeView/TreeView.js",
     "output": "stories/TreeView/doc.json"
+  },
+  {
+    "alias": "Label",
+    "input": "packages/components/src/Label/Label.js",
+    "output": "stories/Label/doc.json"
   }
 ]

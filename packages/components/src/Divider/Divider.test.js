@@ -24,13 +24,13 @@ describe('<Divider />', () => {
 
   it('should assign default style', () => {
     const wrapper = shallow(<Divider />);
-    assert.strictEqual(wrapper.props().style.width, 'calc(100% -24)');
+    assert.strictEqual(wrapper.props().style.width, 'calc(100% - 24px)');
     assert.strictEqual(wrapper.props().style.margin, 12);
   });
 
   it('should override style', () => {
     const wrapper = shallow(<Divider style={{ padding: 10, margin: 5 }} />);
-    assert.strictEqual(wrapper.props().style.width, 'calc(100% -24)');
+    assert.strictEqual(wrapper.props().style.width, 'calc(100% - 24px)');
     assert.strictEqual(wrapper.props().style.margin, 5);
     assert.strictEqual(wrapper.props().style.padding, 10);
   });

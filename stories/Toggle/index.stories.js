@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Toggle } from '@kuveytturk/boa-components/Toggle';
 import Header from '../base/header';
-import Props from '../base/props-table';
+import PropsTable from '../base/props-table';
 import Preview from '../base/preview';
 import doc from './doc.json';
 
@@ -14,7 +14,7 @@ stories.add('Toggle', ({ props }) => {
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={Toggle} doc={doc} />
       <Preview {...props} component={Toggle} doc={doc} />
-      <Props {...props} component={Toggle} doc={doc} />
+      <PropsTable {...props} component={Toggle} doc={doc} />
     </div>
   );
 });

@@ -1,18 +1,17 @@
 /* eslint-disable no-restricted-globals, max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
+import { ComponentComposer, EditorBase } from '@kuveytturk/boa-base';
 import { Input } from '@kuveytturk/boa-components/Input';
 import { Localization } from '@kuveytturk/boa-utils';
 import KeyboardEnum from './KeyboardEnum';
 
 @ComponentComposer
-class InputNumeric extends ComponentBase {
+class InputNumeric extends EditorBase {
   static propTypes = {
     /**
-     * Base properties from ComponentBase.
+     * Base properties from Input.
      */
-    ...ComponentBase.propTypes,
     ...Input.propTypes,
     /**
     * Indicator for the text insertion point
@@ -37,7 +36,6 @@ class InputNumeric extends ComponentBase {
   };
 
   static defaultProps = {
-    ...ComponentBase.defaultProps,
     ...Input.defaultProps,
     onFocus: null,
     onBlur: null,

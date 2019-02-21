@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { CheckBox } from '@kuveytturk/boa-components/CheckBox';
 import Header from '../base/header';
-import Props from '../base/props-table';
+import PropsTable from '../base/props-table';
 import Preview from '../base/preview';
 import doc from './doc.json';
 
@@ -14,7 +14,7 @@ stories.add('CheckBox', ({ props }) => {
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={CheckBox} doc={doc} />
       <Preview {...props} component={CheckBox} doc={doc} />
-      <Props {...props} component={CheckBox} doc={doc} />
+      <PropsTable {...props} component={CheckBox} doc={doc} />
     </div>
   );
 });

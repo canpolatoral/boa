@@ -2,7 +2,7 @@
 import React from 'react';
 import { InputAction } from '@kuveytturk/boa-components/InputAction';
 import Header from '../../base/header';
-import Props from '../../base/props-table';
+import PropsTable from '../../base/props-table';
 import Preview from '../../base/preview';
 import doc from './doc.json';
 import defaultProps from './default';
@@ -12,7 +12,7 @@ export default ({ props }) => {
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={InputAction} doc={doc} />
       <Preview {...props} defaultProps={defaultProps(props.context)} component={InputAction} doc={doc} />
-      <Props {...props} component={InputAction} doc={doc} />
+      <PropsTable {...props} component={InputAction} doc={doc} />
     </div>
   );
 };

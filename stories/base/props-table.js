@@ -33,7 +33,7 @@ export default class PropsTable extends React.Component {
 
         if (prop.description && prop.description.includes('@ignore')) return;
 
-        if (prop.type && prop.type.name === 'func') return;
+        // if (prop.type && prop.type.name === 'func') return;
 
         // eslint-disable-next-line max-len
         doc =

@@ -23,24 +23,24 @@ class InputAction extends ComponentBase {
      */
     hideLeftIcons: PropTypes.bool,
     /**
-    * If `true`, selected icons will be hidden.
-    */
+     * If `true`, selected icons will be hidden.
+     */
     hideRightIconKeyList: PropTypes.arrayOf(String),
     /**
      * If `true`, all right icons will be hidden.
      */
     hideRightIcons: PropTypes.bool,
     /**
-    * If `true`, only the input element will be disabled.
-    */
+     * If `true`, only the input element will be disabled.
+     */
     inputDisabled: PropTypes.bool,
     /**
-    * icons will be showed in left side of input elements.
-    */
+     * icons will be showed in left side of input elements.
+     */
     leftIconList: PropTypes.array,
     /**
-    * icons will be showed in right side of input elements.
-    */
+     * icons will be showed in right side of input elements.
+     */
     rightIconList: PropTypes.array,
   };
 
@@ -173,13 +173,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-          paddingRight: paddingLeft,
-          paddingLeft: paddingRight,
-        }
+            paddingRight: paddingLeft,
+            paddingLeft: paddingRight,
+          }
         : {
-          paddingLeft,
-          paddingRight,
-        },
+            paddingLeft,
+            paddingRight,
+          },
       this.props.floatingLabelStyle,
     );
   }

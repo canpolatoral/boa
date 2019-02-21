@@ -4,7 +4,12 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { DialogHelper } from '@kuveytturk/boa-components/Dialog';
 import { Button } from '@kuveytturk/boa-components/Button';
-import { ComponentBase, DialogType, DialogResponseStyle, DialogResponse } from '@kuveytturk/boa-base';
+import {
+  ComponentBase,
+  DialogType,
+  DialogResponseStyle,
+  DialogResponse,
+} from '@kuveytturk/boa-base';
 import { DocViewer } from '@kuveytturk/boa-components/DocViewer';
 import { warningDoc, successDoc, objectDoc, dialogDoc } from './docs';
 import Collapse from '@material-ui/core/Collapse';

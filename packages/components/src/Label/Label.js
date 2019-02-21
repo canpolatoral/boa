@@ -30,10 +30,7 @@ class Label extends ComponentBase {
     /**
      * Max font size of label element
      */
-    maxFontSize: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
+    maxFontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /**
      * Max width label container element.
      */
@@ -41,10 +38,7 @@ class Label extends ComponentBase {
     /**
      * Min font size of label element
      */
-    minFontSize: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
+    minFontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /**
      * Override style of element.
      */

@@ -6,7 +6,7 @@ const PreviewContainer = styled.div`
   font-size: 14px;
   font-weight: bold;
   color: #9197a3;
-  backgroundColor: #fff;
+  backgroundcolor: #fff;
   padding: 20px;
   min-height: 10px;
 `;

@@ -3,7 +3,11 @@ import { assert } from 'chai';
 import { spy, stub, useFakeTimers } from 'sinon';
 import { ShallowWrapper } from 'enzyme';
 import {
-  createShallow, createMount, consoleErrorMock, getClasses, unwrap,
+  createShallow,
+  createMount,
+  consoleErrorMock,
+  getClasses,
+  unwrap,
 } from '@kuveytturk/boa-test/utils';
 import Tab from './Tab';
 import Tabs from './Tabs';

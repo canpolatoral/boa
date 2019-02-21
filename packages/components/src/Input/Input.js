@@ -157,7 +157,7 @@ class Input extends EditorBase {
      * The style object to use to override floating label styles.
      */
     floatingLabelStyle: PropTypes.object,
-   /**
+    /**
      * The content to use for the floating label element.
      */
     floatingLabelText: PropTypes.string,
@@ -173,7 +173,7 @@ class Input extends EditorBase {
      * The content to use for the helper text element.
      */
     helperText: PropTypes.string,
-   /**
+    /**
      * The hint content to display.
      */
     hintText: PropTypes.string,
@@ -290,7 +290,7 @@ class Input extends EditorBase {
      * If true, shows the underline for the text field.
      */
     underlineShow: PropTypes.bool,
-   /**
+    /**
      * The value of the text field.
      */
     value: PropTypes.any,

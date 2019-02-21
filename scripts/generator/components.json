@@ -95,6 +95,11 @@
     ]
   },
   {
+    "alias": "TabBar",
+    "input": "packages/components/src/TabBar/TabBar.js",
+    "output": "stories/TabBar/doc.json"
+  },
+  {
     "alias": "TreeView",
     "input": "packages/components/src/TreeView/TreeView.js",
     "output": "stories/TreeView/doc.json",

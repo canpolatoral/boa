@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { getMessage } from '@kuveytturk/boa-utils';
 import { AppProvider, DialogType, DialogResponse, DialogResponseStyle } from '@kuveytturk/boa-base';
-import { Button } from '@kuveytturk/boa-components/Button';
+import { Button } from '../Button';
 import Dialog from './Dialog';
 import { getTitleBackground } from './helpers';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect, assert } from 'chai';
 import { spy, useFakeTimers } from 'sinon'; // eslint-disable-line
-import { IconButton } from '@kuveytturk/boa-components/IconButton';
+import { IconButton } from '../IconButton';
 import MuiInput from '@material-ui/core/Input';
 import MuiInputLabel from '@material-ui/core/InputLabel';
 import MuiFormControl from '@material-ui/core/FormControl';

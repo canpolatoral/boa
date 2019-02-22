@@ -2,7 +2,7 @@ import React from 'react';
 import { assert } from 'chai';
 import { spy, useFakeTimers, stub } from 'sinon'; // eslint-disable-line
 import keycode from 'keycode';
-import { Input } from '@kuveytturk/boa-components/Input';
+import { Input } from '../Input';
 import { Localization } from '@kuveytturk/boa-utils';
 import InputNumeric from './InputNumeric';
 import KeyboardEnum from './KeyboardEnum';

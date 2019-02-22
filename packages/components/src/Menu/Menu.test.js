@@ -1,7 +1,7 @@
 import React from 'react';
 import { assert } from 'chai';
 import { spy } from 'sinon';
-import { MenuItem } from '@kuveytturk/boa-components/MenuItem';
+import { MenuItem } from '../MenuItem';
 import * as SvgIcons from '@material-ui/icons';
 import MuiDivider from '@material-ui/core/Divider';
 import MuiMenuItem from '@material-ui/core/MenuItem';

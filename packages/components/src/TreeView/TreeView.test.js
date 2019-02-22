@@ -3,8 +3,8 @@
 // import { assert } from 'chai';
 // import TreeView from './TreeView';
 // import { context, createMount } from '@kuveytturk/boa-test/utils';
-// import { InputAction } from '@kuveytturk/boa-components/InputAction';
-// import { IconButton } from '@kuveytturk/boa-components/IconButton';
+// import { InputAction } from '../InputAction';
+// import { IconButton } from '../IconButton';
 // import sampleData from './data/sampleData';
 
 // describe('<TreeView />', () => {

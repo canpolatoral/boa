@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase } from '@kuveytturk/boa-base';
-import { Button } from '@kuveytturk/boa-components/Button';
+import { Button } from '../Button';
 
 class CalendarActionButton extends ComponentBase {
   static propTypes = {

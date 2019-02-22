@@ -1,6 +1,6 @@
 import React from 'react';
 import { expect } from 'chai';
-import { Button } from '@kuveytturk/boa-components/Button';
+import { Button } from '../Button';
 import CalendarActionButtons from './CalendarActionButtons';
 import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';
 

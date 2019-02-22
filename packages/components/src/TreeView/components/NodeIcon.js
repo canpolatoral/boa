@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FolderSpecial from '@material-ui/icons/FolderSpecial';
 import FolderOpen from '@material-ui/icons/FolderOpen';
-import { Icon } from '@kuveytturk/boa-components/Icon';
+import { Icon } from '../../Icon';
 
 const NodeIcon = styled(({ state, ...props }) =>
   props.icon ? (

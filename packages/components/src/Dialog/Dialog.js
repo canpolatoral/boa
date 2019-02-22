@@ -6,7 +6,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
-import { Button } from '@kuveytturk/boa-components/Button';
+import { Button } from '../Button';
 import DialogHelper from './DialogHelper';
 import {
   prepareDialog,

@@ -4,7 +4,7 @@ import merge from 'lodash/merge';
 import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
-import { Label } from '@kuveytturk/boa-components/Label';
+import { Label } from '../Label';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 
 const styles = theme => ({

@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentComposer, ComponentBase } from '@kuveytturk/boa-base';
-import { Divider } from '@kuveytturk/boa-components/Divider';
-import { InputAction } from '@kuveytturk/boa-components/InputAction';
+import { Divider } from '../Divider';
+import { InputAction } from '../InputAction';
 import Footer from './components/Footer';
 import Tree from './Tree';
 

@@ -4,7 +4,7 @@ import { assert, expect } from 'chai';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import { Label } from '@kuveytturk/boa-components/Label';
+import { Label } from '../Label';
 import CheckBox from './CheckBox';
 import { context, createShallow, createMount, getClasses } from '@kuveytturk/boa-test/utils';
 

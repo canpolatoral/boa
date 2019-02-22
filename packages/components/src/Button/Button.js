@@ -5,8 +5,8 @@ import MuiButton from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import { Localization } from '@kuveytturk/boa-utils';
-import { Icon } from '@kuveytturk/boa-components/Icon';
-import { IconButton } from '@kuveytturk/boa-components/IconButton';
+import { Icon } from '../Icon';
+import { IconButton } from '../IconButton';
 
 const styles = () => ({
   label: {

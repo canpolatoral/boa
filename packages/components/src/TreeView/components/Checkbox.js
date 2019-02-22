@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BCheckbox from '@kuveytturk/boa-components/CheckBox';
+import BCheckbox from '../../CheckBox';
 
 const Checkbox = styled(({ node, ...props }) => (
   <BCheckbox

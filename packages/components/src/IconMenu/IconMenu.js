@@ -6,10 +6,10 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import { Popover } from '@kuveytturk/boa-components/Popover';
+import { Popover } from '../Popover';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base'; //
-import { MenuItem } from '@kuveytturk/boa-components/MenuItem';
-import { Icon } from '@kuveytturk/boa-components/Icon';
+import { MenuItem } from '../MenuItem';
+import { Icon } from '../Icon';
 
 /* eslint-disable no-unused-vars */
 const styles = theme => ({

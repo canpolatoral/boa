@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentComposer, EditorBase } from '@kuveytturk/boa-base';
-import { Input } from '@kuveytturk/boa-components/Input';
+import { Input } from '../Input';
 import { Localization } from '@kuveytturk/boa-utils';
 import KeyboardEnum from './KeyboardEnum';
 

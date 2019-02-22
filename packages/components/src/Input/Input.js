@@ -51,6 +51,7 @@ const styles = theme => {
     multiline: Object.assign(baseStyles(theme).input, {
       padding: '3px 0 3px',
       marginTop: '13px !important',
+      lineHeight: '16px',
     }),
 
     inputDisabled: {
@@ -119,6 +120,9 @@ const styles = theme => {
 @withStyles(styles)
 class Input extends EditorBase {
   static propTypes = {
+    /**
+     * Base properties from EditorBase.
+     */
     ...EditorBase.propTypes,
     /**
      * Information text that located in bottom left side of iput element.

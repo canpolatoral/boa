@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { DateTimePicker } from '@kuveytturk/boa-components/DateTimePicker';
 import Header from '../base/header';
-import Props from '../base/props-table';
+import PropsTable from '../base/props-table';
 import Preview from '../base/preview';
 import doc from './doc.json';
 
@@ -14,7 +14,7 @@ stories.add('DateTimePicker', ({ props }) => {
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={DateTimePicker} doc={doc} />
       <Preview {...props} component={DateTimePicker} doc={doc} />
-      <Props {...props} component={DateTimePicker} doc={doc} />
+      <PropsTable {...props} component={DateTimePicker} doc={doc} />
     </div>
   );
 });

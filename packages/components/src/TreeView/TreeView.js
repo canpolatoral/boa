@@ -74,7 +74,7 @@ class TreeView extends ComponentBase {
      * If `true`, footer of treeview is visible.
      */
     showFooter: PropTypes.bool,
-    /**
+     /**
      * If `true`, icons of all nodes is visible.
      */
     showIcons: PropTypes.bool,
@@ -101,6 +101,23 @@ class TreeView extends ComponentBase {
     isLeafCheckable: false,
     showIcons: true,
     showSearch: true,
+    canCheckChildsByParent: true,
+  };
+
+  searchActionButton = {
+    dynamicIcon: 'Search',
+    iconProperties: { color: 'primary' },
+    onClick: () => {
+      this.filterTree();
+    },
+  };
+
+  clearActionButton = {
+    dynamicIcon: 'Clear',
+    iconProperties: { color: this.props.context.theme.boaPalette.pri500 },
+    onClick: () => {
+      this.filterTree(null);
+    },
   };
 
   state = {

@@ -45,14 +45,27 @@ const repair = obj => {
   }
 };
 
-const generateDocument = (input, output) => {
-  if (input === 'Scroll' || input === 'Icon') return;
-
-  const fileContent = fs.readFileSync(path.join(__dirname, '..', '..', input), {
+const getFileContent = (filePath) => {
+  return fs.readFileSync(path.join(__dirname, '..', '..', filePath), {
     encoding: 'utf8',
   });
+};
+
+const generateDocument = (input, output, composes) => {
+  if (input === 'Scroll' || input === 'Icon') return;
+
+  const fileContent = getFileContent(input);
 
   const componentInfo = parse(fileContent);
+  const composeProps = {};
+  if (composes) {
+    composes.forEach(compose => {
+      const composeContent = getFileContent(compose);
+      composeProps[compose] = parse(composeContent).props;
+    });
+  }
+  componentInfo.composeProps = composeProps;
+
   repair(componentInfo);
 
   if (output === 'console') {
@@ -75,7 +88,7 @@ const generate = () => {
     if (response.toLocaleLowerCase().startsWith('y')) {
       AllComponents.forEach(item => {
         console.log('generating: ' + item.input + ' to ' + item.output); // eslint-disable-line
-        generateDocument(item.input, item.output);
+        generateDocument(item.input, item.output, item.composes);
       });
     } else {
       process.exit(0);
@@ -85,9 +98,9 @@ const generate = () => {
   } else {
     const cmp = AllComponents.find(x => x.alias === options.input);
     if (cmp && cmp.alias) {
-      generateDocument(cmp.input, cmp.output);
+      generateDocument(cmp.input, cmp.output, cmp.composes);
     } else {
-      generateDocument(options.input, options.output);
+      generateDocument(options.input, options.output, cmp.composes);
     }
   }
 };

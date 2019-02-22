@@ -5,12 +5,12 @@ export interface MenuItemProps extends ComponentBaseProps {
   disabled?: boolean;
   focusState?: any; // tip handle edilemedi. özelleştirilebilir
   insetChildren?: boolean;
-  leftIcon?: React.ReactElement<any>;
+  leftIcon?: any;
   menuItems?: React.ReactNode;
   onTouchTap?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
   itemSelected?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
   primaryText?: React.ReactNode;
-  rightIcon?: React.ReactElement<any>;
+  rightIcon?: any;
   secondaryText?: React.ReactNode;
   style?: React.CSSProperties;
   innerDivStyle?: any;

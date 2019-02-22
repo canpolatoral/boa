@@ -2,6 +2,7 @@
 .vs/
 .idea
 .vscode
+.out
 *.log
 /.eslintcache
 /.next

@@ -31,11 +31,11 @@ function createDOM() {
         global[key] = dom.window[key];
       }
     });
-    global.$ = {};
-    // eslint-disable-next-line
-    global.$.ajax = function(request) {
-      request.success([]);
-    };
-  }
+  global.$ = {};
+  // eslint-disable-next-line
+  global.$.ajax = function(request) {
+    request.success([]);
+  };
+}
 
 module.exports = createDOM;

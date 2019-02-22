@@ -1,4 +1,4 @@
-export default (context) => ({
+export default context => ({
   leftIconList: [
     {
       dynamicIcon: 'Toys',

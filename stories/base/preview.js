@@ -25,13 +25,16 @@ export default class Preview extends ComponentBase {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.defaultProps !== this.props.defaultProps) {
-      this.setState((prevState) => {
-        const props = Object.assign(prevState.currentProperties, nextProps.defaultProps);
-        return { currentProperties: props };
-      }, () => {
-        const code = this.getComponentString();
-        this.setState({ code });
-      });
+      this.setState(
+        prevState => {
+          const props = Object.assign(prevState.currentProperties, nextProps.defaultProps);
+          return { currentProperties: props };
+        },
+        () => {
+          const code = this.getComponentString();
+          this.setState({ code });
+        },
+      );
     }
   }
 
@@ -117,14 +120,17 @@ export default class Preview extends ComponentBase {
       }
     }
 
-    this.setState((prevState) => {
-      const newCurrentProperties = Object.assign({}, prevState.currentProperties);
-      newCurrentProperties[property] = value;
-      return { currentProperties: newCurrentProperties };
-    }, () => {
-      const code = this.getComponentString();
-      this.setState({ code });
-    });
+    this.setState(
+      prevState => {
+        const newCurrentProperties = Object.assign({}, prevState.currentProperties);
+        newCurrentProperties[property] = value;
+        return { currentProperties: newCurrentProperties };
+      },
+      () => {
+        const code = this.getComponentString();
+        this.setState({ code });
+      },
+    );
   }
 
   onPropertyChanged(property, value) {
@@ -179,13 +185,7 @@ export default class Preview extends ComponentBase {
       <RenderedComponent {...this.state.currentProperties} />,
       {
         displayName: this.getName.bind(this),
-        filterProps: [
-          'context',
-          'doc',
-          'componentSize',
-          'newLine',
-          ...[this.props.ignoreProps],
-        ],
+        filterProps: ['context', 'doc', 'componentSize', 'newLine', ...[this.props.ignoreProps]],
       },
     );
 

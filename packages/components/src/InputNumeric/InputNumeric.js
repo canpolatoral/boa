@@ -14,8 +14,8 @@ class InputNumeric extends EditorBase {
      */
     ...Input.propTypes,
     /**
-    * Indicator for the text insertion point
-    */
+     * Indicator for the text insertion point
+     */
     caretPosition: PropTypes.number,
     /**
      * Format for numeric value such as 'D' for decimal.

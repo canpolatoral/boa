@@ -16,7 +16,7 @@ const config = {
 };
 
 /* istanbul ignore else */
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' || process.env.STORYBOOK_BUILD === 'production') {
   config.plugins.push([
     'babel-plugin-module-resolver',
     {

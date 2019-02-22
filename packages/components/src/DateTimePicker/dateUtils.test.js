@@ -24,21 +24,21 @@ describe('dateUtils', () => {
     const date = new Date();
     const added = 3;
     const addedDate = addHours(date, added);
-    assert.strictEqual(addedDate.getHours(), date.getHours() + added);
+    assert.strictEqual(addedDate.getHours() % 24, (date.getHours() + added) % 24);
   });
 
   it('addMinutes', () => {
     const date = new Date();
     const added = 3;
     const addedDate = addMinutes(date, added);
-    assert.strictEqual(addedDate.getMinutes(), date.getMinutes() + added);
+    assert.strictEqual(addedDate.getMinutes() % 60, (date.getMinutes() + added) % 60);
   });
 
   it('addSeconds', () => {
     const date = new Date();
     const added = 3;
     const addedDate = addSeconds(date, added);
-    assert.strictEqual(addedDate.getSeconds(), date.getSeconds() + added);
+    assert.strictEqual(addedDate.getSeconds() % 60, (date.getSeconds() + added) % 60);
   });
 
   it('cloneDate', () => {

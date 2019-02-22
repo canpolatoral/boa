@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { configure, setAddon, addDecorator } from '@storybook/react';
 import { withOptions } from '@storybook/addon-options';
 import jquery from 'jquery';
-
 import Container from './container';
 
 global.$ = jquery;

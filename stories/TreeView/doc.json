@@ -3,157 +3,54 @@
 	"displayName": "TreeView",
 	"methods": [
 		{
-			"name": "getFooterText",
+			"name": "getSnapshot",
 			"docblock": null,
 			"modifiers": [],
 			"params": [],
+			"returns": null
+		},
+		{
+			"name": "setSnapshot",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "snapshot",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "manageNodes",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "data",
+					"type": null
+				},
+				{
+					"name": "expandAll",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "handleChange",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "nodes",
+					"type": null
+				}
+			],
 			"returns": null
 		},
 		{
 			"name": "getValue",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "resetValue",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "addChildNodes",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "newNodes",
-					"type": null
-				},
-				{
-					"name": "index",
-					"type": null
-				},
-				{
-					"name": "parentNode",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "appendChildNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "newNode",
-					"type": null
-				},
-				{
-					"name": "parentNode",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "checkNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				},
-				{
-					"name": "checked",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "closeNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				},
-				{
-					"name": "options",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "getChildNodes",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "parentNode",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "getNodeById",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "id",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "getNodeFromPoint",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "x",
-					"type": null
-				},
-				{
-					"name": "y",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "getOpenNodes",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "getRootNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "getSelectedNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "getSelectedIndex",
 			"docblock": null,
 			"modifiers": [],
 			"params": [],
@@ -167,66 +64,7 @@
 			"returns": null
 		},
 		{
-			"name": "getCheckedNodeIds",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "insertNodeAfter",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "newNode",
-					"type": null
-				},
-				{
-					"name": "referenceNode",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "insertNodeBefore",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "newNode",
-					"type": null
-				},
-				{
-					"name": "referenceNode",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "moveNodeTo",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				},
-				{
-					"name": "parentNode",
-					"type": null
-				},
-				{
-					"name": "index",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "openNode",
+			"name": "onSelectedTreeNode",
 			"docblock": null,
 			"modifiers": [],
 			"params": [
@@ -238,7 +76,7 @@
 			"returns": null
 		},
 		{
-			"name": "removeNode",
+			"name": "generateTreeNode",
 			"docblock": null,
 			"modifiers": [],
 			"params": [
@@ -247,244 +85,31 @@
 					"type": null
 				},
 				{
-					"name": "options",
+					"name": "rest",
 					"type": null
 				}
 			],
 			"returns": null
 		},
 		{
-			"name": "removeChildNodes",
+			"name": "wrap",
 			"docblock": null,
 			"modifiers": [],
 			"params": [
 				{
-					"name": "parentNode",
-					"type": null
-				},
-				{
-					"name": "options",
+					"name": "match",
 					"type": null
 				}
 			],
 			"returns": null
 		},
 		{
-			"name": "scrollToNode",
+			"name": "highlightSearchTerm",
 			"docblock": null,
 			"modifiers": [],
 			"params": [
 				{
 					"name": "node",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "selectNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "swapNodes",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node1",
-					"type": null
-				},
-				{
-					"name": "node2",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "toggleNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "update",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "updateNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				},
-				{
-					"name": "data",
-					"type": null
-				},
-				{
-					"name": "options",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "getFilteredNodes",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "clear",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "toString",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "isLeafSelected",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "expandAll",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "collapseAll",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "getSnapshot",
-			"docblock": "Get Snapshot",
-			"modifiers": [],
-			"params": [],
-			"returns": null,
-			"description": "Get Snapshot"
-		},
-		{
-			"name": "setSnapshot",
-			"docblock": "Set Snapshot\n@param {*} snapshot",
-			"modifiers": [],
-			"params": [
-				{
-					"name": "snapshot",
-					"description": null,
-					"type": {
-						"name": "mixed"
-					}
-				}
-			],
-			"returns": null,
-			"description": "Set Snapshot"
-		},
-		{
-			"name": "filterTree",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "keyword",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "handleOnSearchChange",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "name",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "handleOnCheckNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				},
-				{
-					"name": "checked",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "handleOnselectNode",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "node",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "handleOnKeyDown",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "event",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "handleOnSearchTextKeyDown",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "event",
 					"type": null
 				}
 			],
@@ -496,31 +121,28 @@
 			"modifiers": [],
 			"params": [],
 			"returns": null
+		},
+		{
+			"name": "getFooterText",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "nodes",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "calculateHeight",
+			"docblock": null,
+			"modifiers": [],
+			"params": [],
+			"returns": null
 		}
 	],
 	"props": {
-		"canCheckChildsByParent": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			}
-		},
-		"caseSensitive": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
-		},
 		"data": {
 			"type": {
 				"name": "union",
@@ -534,20 +156,9 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "The data source of treeview element.",
 			"defaultValue": {
 				"value": [],
-				"computed": false
-			}
-		},
-		"exactMatch": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
 				"computed": false
 			}
 		},
@@ -556,7 +167,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, treeview's all node will be expanded.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -567,7 +178,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": ""
+			"description": "Overrides style of footer element."
 		},
 		"height": {
 			"type": {
@@ -582,9 +193,9 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Height of tree element.",
 			"defaultValue": {
-				"value": 400,
+				"value": 500,
 				"computed": false
 			}
 		},
@@ -593,36 +204,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": ""
-		},
-		"includeAncestors": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			}
-		},
-		"includeDescendants": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			}
+			"description": "Hint text of search element."
 		},
 		"isCheckable": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, all tree view nodes will be checkable.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -633,7 +222,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, only leaf nodes of tree view will be checkable.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -644,113 +233,18 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, checkbox will appers in nodes and multi selection will be actived.\nIf `false`, radio button will appers in nodes and single selection will be actived.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
 			}
-		},
-		"isSingleCheckable": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
-		},
-		"loadNodes": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
 		},
 		"onCheckNode": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": ""
-		},
-		"onCloseNode": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onContentDidUpdate": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onContentWillUpdate": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onKeyDown": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onKeyUp": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onOpenNode": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onScroll": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onSelectNode": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onWillCloseNode": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onWillOpenNode": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
-		},
-		"onWillSelectNode": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
+			"description": "Callback function when node checkes"
 		},
 		"rowHeight": {
 			"type": {
@@ -762,64 +256,18 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Row heigth of tree view nodes.",
 			"defaultValue": {
 				"value": 36,
 				"computed": false
 			}
-		},
-		"scrollOffset": {
-			"type": {
-				"name": "number"
-			},
-			"required": false,
-			"description": ""
-		},
-		"scrollToIndex": {
-			"type": {
-				"name": "number"
-			},
-			"required": false,
-			"description": ""
-		},
-		"selectable": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			}
-		},
-		"selectedNode": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
-		},
-		"selectedNodeId": {
-			"type": {
-				"name": "number"
-			},
-			"required": false,
-			"description": ""
-		},
-		"shouldSelectNode": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": ""
 		},
 		"showFooter": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, footer of treeview is visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -830,7 +278,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, icons of all nodes is visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -841,27 +289,9 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If `true`, search input element is visible.",
 			"defaultValue": {
 				"value": true,
-				"computed": false
-			}
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
-		},
-		"tabIndex": {
-			"type": {
-				"name": "number"
-			},
-			"required": false,
-			"description": "",
-			"defaultValue": {
-				"value": 0,
 				"computed": false
 			}
 		},
@@ -878,7 +308,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Width of tree view.",
 			"defaultValue": {
 				"value": "100%",
 				"computed": false

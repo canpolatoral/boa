@@ -1,14 +1,29 @@
-import styled from 'styled-components';
+import React from 'react';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 
-const Footer = styled.p`
-  margin: 0;
-  padding: 14px 18px;
-  background-color: white;
-  border-width: 0px;
-  border-top: 0;
-  border-style: solid;
-  font-size: 14px;
-  border-color: ${props => props.context.theme.boaPalette.base200};
-`;
+@ComponentComposer
+class Footer extends ComponentBase {
+  getStyle() {
+    return {
+      margin: 0,
+      padding: '14px 18px',
+      backgroundColor: 'white',
+      borderWidth: 0,
+      borderTop: 0,
+      borderStyle: 'solid',
+      fontSize: 14,
+      borderColor: this.props.context.theme.boaPalette.base200,
+    };
+  }
+
+  render() {
+    const style = this.getStyle();
+    return (
+      <p style={style}>
+        {this.props.children}
+      </p>
+    );
+  }
+}
 
 export default Footer;

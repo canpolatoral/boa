@@ -402,7 +402,7 @@
 			"required": false,
 			"description": "Selectable minimum date. Prop could be a Date object or UTC formatted string.",
 			"defaultValue": {
-				"value": "1949-12-31T22:03:05.000Z",
+				"value": "1949-12-31T23:03:05.000Z",
 				"computed": false
 			}
 		},

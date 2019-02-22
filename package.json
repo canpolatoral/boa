@@ -24,7 +24,7 @@
     "test:coverage": "cross-env NODE_ENV=test BABEL_ENV=coverage nyc mocha ./packages/**/src/**/**/**/*.test.js && nyc report -r lcovonly",
     "test:coverage:html": "cross-env NODE_ENV=test BABEL_ENV=coverage nyc mocha ./packages/**/src/**/**/**/*.test.js && nyc report --reporter=html",
     "storybook": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -c .storybook -o ",
+    "storybook:build": "cross-env STORYBOOK_BUILD=production build-storybook -c .storybook -o .out",
     "typescript": "tslint -p tsconfig.json \"packages/*/{src,test}/**/*.{ts,tsx}\"",
     "argos": "argos upload test/regressions/screenshots/chrome --token $ARGOS_TOKEN || true",
     "generate:doc": "babel-node ./scripts/generator/info.js"

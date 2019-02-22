@@ -10,23 +10,23 @@
 
 ## Getting Started
 
-BOA has three packages that are available as NPM packages. [@kuveytturk/boa-base](/packages/base/) has base components like a composer (HOC), themes, error boundary, enums etc. [@kuveytturk/boa-components](/packages/components/) is the main UI component library. [@kuveytturk/boa-utils](/packages/utils/) has localization and messaging utilities. Each component was documented on the own package dictionary.
+BOA has three packages that are available as NPM packages. [@kuveytturk/boa-base](/packages/base/) has base components like a composer (HOC), themes, error boundary, enums etc. [@kuveytturk/boa-components](/packages/components/) is the main UI component library. [@kuveytturk/boa-utils](/packages/utils/) has localization and messaging utilities. Each component is documented on its own package dictionary.
 
 ## Questions
 
-Feel free about open an issue from [Issues](https://github.com/kuveytturk/boa/issues) pages for your issues or questions.
+Feel free about to open an issue at the [Issues](https://github.com/kuveytturk/boa/issues) page for your issues or questions.
 
 ## Contributing
 
-Please refer [CONTRIBUTING](/CONTRIBUTING.md) guideline.
+Please refer to the [CONTRIBUTING](/CONTRIBUTING.md) guideline.
 
 ## Examples
 
-We'll provide example projects as soon as possible.
+We will provide example projects as soon as possible.
 
 ## Roadmap
 
-The future plans and high priority features and enhancements can be found in the [ROADMAP](/ROADMAP.md) file.
+The future plans, prioritized features and enhancements can be found in the [ROADMAP](/ROADMAP.md) file.
 
 ## Thanks
 

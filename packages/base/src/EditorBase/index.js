@@ -3,6 +3,9 @@ import ComponentBase from '../ComponentBase';
 
 export default class EditorBase extends ComponentBase {
   static propTypes = {
+    /**
+     * Base properties from Input.
+     */
     ...ComponentBase.propTypes,
   };
 
@@ -84,4 +87,7 @@ export default class EditorBase extends ComponentBase {
     }
     return null;
   }
+
+  // eslint-disable-next-line
+  render() { return; }
 }

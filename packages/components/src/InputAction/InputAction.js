@@ -10,9 +10,8 @@ import { InputNumeric } from '@kuveytturk/boa-components/InputNumeric';
 class InputAction extends ComponentBase {
   static propTypes = {
     /**
-     * Base properties from ComponentBase.
+     * Base properties from Input.
      */
-    ...ComponentBase.propTypes,
     ...Input.propTypes,
     /**
      * If `true`, icons will be focussable.
@@ -45,7 +44,6 @@ class InputAction extends ComponentBase {
   };
 
   static defaultProps = {
-    ...ComponentBase.defaultProps,
     ...Input.defaultProps,
     canActionFocusable: false,
     inputDisabled: false,

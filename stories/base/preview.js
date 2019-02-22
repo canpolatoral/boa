@@ -45,45 +45,58 @@ export default class Preview extends ComponentBase {
   prepareData() {
     const self = this;
     const propMetaData = self.props.doc.props;
+    const composeMetaData = self.props.doc.composeProps;
 
     const availableProperties = [];
+    const availableComposedProperties = [];
     const currentProperties = {};
 
-    Object.keys(propMetaData)
-      .sort()
-      .forEach(key => {
-        const prop = propMetaData[key];
-        if (prop.description && prop.description.includes('@ignore')) return;
+    const createPropMeta = (metaData, available, current) => {
+      Object.keys(metaData)
+        .sort()
+        .forEach(key => {
+          const prop = metaData[key];
+          if (prop.description && prop.description.includes('@ignore')) return;
 
-        const property = {
-          name: key,
-          type: Utils.getPropType(prop),
-          value: Utils.getPropValue(prop),
-          values: Utils.getAvailableValues(prop),
-          default: Utils.getDefaultValue(prop),
-        };
+          const property = {
+            name: key,
+            type: Utils.getPropType(prop),
+            value: Utils.getPropValue(prop),
+            values: Utils.getAvailableValues(prop),
+            default: Utils.getDefaultValue(prop),
+          };
 
-        availableProperties.push(property);
-        const defaultValue = Utils.getDefaultValue(prop);
-        if (defaultValue) {
-          currentProperties[key] = defaultValue;
-        }
-      });
+          available.push(property);
+          const defaultValue = Utils.getDefaultValue(prop);
+          if (defaultValue) {
+            current[key] = defaultValue;
+          }
+        });
 
-    if (availableProperties && availableProperties.length > 0) {
-      availableProperties.sort((a, b) => {
-        if (a.type < b.type) return -1;
-        if (a.type > b.type) return 1;
-        if (a.name > b.name) return 1;
-        if (a.name < b.name) return -1;
-        return 0;
+      if (available && available.length > 0) {
+        available.sort((a, b) => {
+          if (a.type < b.type) return -1;
+          if (a.type > b.type) return 1;
+          if (a.name > b.name) return 1;
+          if (a.name < b.name) return -1;
+          return 0;
+        });
+      }
+    };
+
+    if (composeMetaData) {
+      Object.keys(composeMetaData).forEach(composeName => {
+        createPropMeta(composeMetaData[composeName], availableComposedProperties,
+          currentProperties);
       });
     }
+
+    createPropMeta(propMetaData, availableProperties, currentProperties);
 
     // currentProperties.data = this.props.sampleData;
     Object.assign(currentProperties, this.props.defaultProps);
 
-    this.setState({ availableProperties, currentProperties }, () => {
+    this.setState({ availableProperties, availableComposedProperties, currentProperties }, () => {
       const code = self.getComponentString();
       this.setState({ code });
     });
@@ -127,7 +140,7 @@ export default class Preview extends ComponentBase {
   render() {
     const self = this;
     const RenderedComponent = this.props.component;
-    const { availableProperties, currentProperties } = this.state;
+    const { availableProperties, availableComposedProperties, currentProperties } = this.state;
 
     if (!availableProperties || availableProperties.length === 0) {
       return null;
@@ -139,6 +152,7 @@ export default class Preview extends ComponentBase {
             <DocViewer content={'## Props'} editorType="github" />
             <PropsPanel
               availableProperties={availableProperties}
+              availableComposedProperties={availableComposedProperties}
               currentProperties={currentProperties}
               onPropertyChanged={this.onPropertyChanged}
               {...this.props}

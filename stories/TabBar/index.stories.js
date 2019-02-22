@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TabBar } from '@kuveytturk/boa-components/TabBar';
 import Header from '../base/header';
-import Props from '../base/props-table';
+import PropsTable from '../base/props-table';
 import Preview from '../base/preview';
 import doc from './doc.json';
 import defaultProps from './default';
@@ -15,7 +15,7 @@ stories.add('TabBar', ({ props }) => {
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={TabBar} doc={doc} />
       <Preview {...props} component={TabBar} doc={doc} defaultProps={defaultProps} />
-      <Props {...props} component={TabBar} doc={doc} />
+      <PropsTable {...props} component={TabBar} doc={doc} />
     </div>
   );
 });

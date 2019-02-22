@@ -349,15 +349,13 @@
 		},
 		"leftIcon": {
 			"type": {
-				"name": "enum",
+				"name": "union",
 				"value": [
 					{
-						"value": "PropTypes.string",
-						"computed": true
+						"name": "string"
 					},
 					{
-						"value": "PropTypes.node",
-						"computed": true
+						"name": "node"
 					}
 				]
 			},

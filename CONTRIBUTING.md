@@ -1,8 +1,8 @@
 # Contributing
-We are really glad you're reading this because BOA is is a community project. There are multiple ways you can contribute and being a part of the BOA.
+We are really glad you are reading this, because BOA is a community project. There are multiple ways you can contribute and be a part of the BOA.
 
 ## Reporting an Issue
-If you have found what you believe to be an issue please feel free open an issue on the [Issues](https://github.com/kuveytturk/boa/issues). When you creating a new issue please make sure you can explain the issue with a reproducible test case.
+If you have found what you believe to be an issue please feel free open an issue on the [Issues](https://github.com/kuveytturk/boa/issues). When you are creating a new issue please make sure you can explain the issue with a reproducible test case.
 
 ## Submitting a pull request
 
@@ -12,14 +12,14 @@ Pull requests are always welcome, but, before working on a large change, it is b
 
 Please create a new branch from an up to date master on your fork. 
 
-1. Fork the boa repository on Github
-2. Clone your fork to your local machine `git clone https://github.com/<yourname>/boa.git`
-3. Create a branch `git checkout -b my-topic-branch`
-4. Make your changes, lint, then push to to GitHub with `git push --set-upstream origin my-topic-branch`.
+1. Fork the boa repository on GitHub.
+2. Clone your fork to your local machine with `git clone https://github.com/<yourname>/boa.git`.
+3. Create a branch with `git checkout -b my-topic-branch`.
+4. Make your changes, lint, then push to GitHub with `git push --set-upstream origin my-topic-branch`.
 5. Visit GitHub and make your pull request.
 
 
-If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
+If you have an existing local repository, please update it before you start, to minimize the chance of merge conflicts.
 
 ```sh
 git remote add upstream https://github.com/kuveytturk/boa.git
@@ -31,7 +31,7 @@ yarn
 
 ### Building locally
 
-To use the provided build scripts with yarn you have to [install `yarn`](https://yarnpkg.com/lang/en/docs/install/). Depending on the package you want to build just run `yarn workspace @kuveytturk/boa-PACKAGE build`.
+To use the provided build scripts with yarn you have to [install `yarn`](https://yarnpkg.com/lang/en/docs/install/). Depending on the package you want to build, just run `yarn workspace @kuveytturk/boa-PACKAGE build`.
 
 ```sh
 ## start storybook
@@ -50,20 +50,20 @@ Please follow the coding style of the project. BOA uses eslint, so if possible, 
 
 ### Running Storybook
 
-We're using [storybook](https://storybook.js.org/) as component catalog. To start stroybook run:
+We are using [storybook](https://storybook.js.org/) as the component catalog. To start stroybook, run:
 ```sh 
 yarn start
 ```
 
 #### Writing stories
 
-Stories are located in the ***stories*** folder. The [storybook guideline](https://storybook.js.org/basics/writing-stories/) is a good start point to writing stories. Also, we've some components that provide convenience to create stories. [Header](stories/base/header.js), [Preview](stories/base/preview.js), [PropsTable](stories/base/props-table.js) components can help you to write the story. Each component requires a [react-docgen's](https://github.com/reactjs/react-docgen) output. We can provide a script to generate required *doc.json*. For example, create doc.json for Button.js:
+Stories are located in the ***stories*** folder. The [storybook guideline](https://storybook.js.org/basics/writing-stories/) is a good start point to write stories. Also, we have some components that provide convenience to create stories. [Header](stories/base/header.js), [Preview](stories/base/preview.js), [PropsTable](stories/base/props-table.js) components can help you to write a story. Each component requires a [react-docgen's](https://github.com/reactjs/react-docgen) output. We can provide a script to generate required *doc.json*. For example, create doc.json for Button.js:
 
 ```sh
 yarn generate:doc --input Button
 ```
 
-Please review ***stories*** folder before write new story.
+Please review ***stories*** folder before writing a new story.
 
 
 ### Testing

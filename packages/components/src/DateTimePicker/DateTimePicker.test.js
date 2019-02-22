@@ -23,4 +23,16 @@ describe('<DateTimePicker />', () => {
     const dateInput = wrapper.find('input').first();
     dateInput.simulate('focus');
   });
+
+  it('should select day', () => {
+    const wrapper = mount(
+      <AppProvider theme={context.theme}>
+        <DateTimePicker context={context} />
+      </AppProvider>,
+    );
+    const dateInput = wrapper.find('input').first();
+    dateInput.simulate('click');
+
+    wrapper.find('button').last().simulate('click');
+  });
 });

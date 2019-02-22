@@ -44,7 +44,7 @@ describe('<Popover />', () => {
   });
 
   it('should pass onClose prop to Modal', () => {
-    const fn = () => { };
+    const fn = () => {};
     const wrapper = shallow(
       <Popover open={false} onRequestClose={fn}>
         <div />
@@ -68,7 +68,7 @@ describe('<Popover />', () => {
         </Popover>,
       );
       const modal = wrapper.find(Modal).childAt(0);
-      const event = { key: 'Escape', stopPropagation: () => { } };
+      const event = { key: 'Escape', stopPropagation: () => {} };
 
       modal.instance().handleKeyDown(event);
       assert.strictEqual(onRequestClose.callCount, 1);
@@ -109,7 +109,7 @@ describe('<Popover />', () => {
         </Popover>,
       );
       const modal = wrapper.find(Modal).childAt(0);
-      const event = { key: 'Escape', stopPropagation: () => { } };
+      const event = { key: 'Escape', stopPropagation: () => {} };
       modal.instance().handleKeyDown(event);
       assert.strictEqual(onRequestClose.callCount, 1);
     });

@@ -11,13 +11,15 @@ addDecorator((story, context) => {
   return <Container story={story} context={context} />;
 });
 
-addDecorator(withOptions({
-  showAddonPanel: true,
-  addonPanelInRight: true,
-  name: 'BOA-UI',
-  url: 'https://github.com/kuveytturk/boa',
-  sidebarAnimations: true,
-}));
+addDecorator(
+  withOptions({
+    showAddonPanel: true,
+    addonPanelInRight: true,
+    name: 'BOA-UI',
+    url: 'https://github.com/kuveytturk/boa',
+    sidebarAnimations: true,
+  }),
+);
 const req = require.context('../stories', true, /.stories.js$/);
 
 function loadStories() {

@@ -74,7 +74,7 @@ class TreeView extends ComponentBase {
      * If `true`, footer of treeview is visible.
      */
     showFooter: PropTypes.bool,
-     /**
+    /**
      * If `true`, icons of all nodes is visible.
      */
     showIcons: PropTypes.bool,

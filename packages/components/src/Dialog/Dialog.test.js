@@ -4,7 +4,7 @@ import { stub } from 'sinon';
 import MuiDialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import { Button } from '@kuveytturk/boa-components/Button';
+import { Button } from '../Button';
 import Dialog from './Dialog';
 import DialogHelper from './DialogHelper';
 import { context, createShallow, createMount } from '@kuveytturk/boa-test/utils';

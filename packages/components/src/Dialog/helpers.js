@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types, react/no-danger, react/no-array-index-key */
 import React from 'react';
 import { DialogType, Sizes } from '@kuveytturk/boa-base';
-import { Icon } from '@kuveytturk/boa-components/Icon';
+import { Icon } from '../Icon';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 
 export function prepareLineStyle(context) {

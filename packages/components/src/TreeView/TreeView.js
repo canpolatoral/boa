@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Divider } from '@kuveytturk/boa-components/Divider';
+import { Divider } from '../Divider';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import Tree from 'react-virtualized-tree';
 import Toggler from './components/Toggler';

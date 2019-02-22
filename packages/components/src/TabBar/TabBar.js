@@ -3,15 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import { Localization } from '@kuveytturk/boa-utils';
-import { Button } from '@kuveytturk/boa-components/Button';
+import { Button } from '../Button';
 import { withStyles } from '@material-ui/core/styles';
-import { ListItem } from '@kuveytturk/boa-components/ListItem';
-import { IconMenu } from '@kuveytturk/boa-components/IconMenu';
+import { ListItem } from '../ListItem';
+import { IconMenu } from '../IconMenu';
 import Tabs from './Tabs';
 import Tab from './Tab';
 
-const DoubleChevronRight = require('@kuveytturk/boa-components/Icon').Actions.DoubleChevronRight;
-const DoubleChevronLeft = require('@kuveytturk/boa-components/Icon').Actions.DoubleChevronLeft;
+const DoubleChevronRight = require('../Icon').Actions.DoubleChevronRight;
+const DoubleChevronLeft = require('../Icon').Actions.DoubleChevronLeft;
 
 const styles = theme => ({
   primary: {

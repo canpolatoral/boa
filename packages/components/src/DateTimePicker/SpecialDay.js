@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ComponentBase } from '@kuveytturk/boa-base';
-import { Divider } from '@kuveytturk/boa-components/Divider';
+import { Divider } from '../Divider';
 import sortBy from 'lodash/sortBy';
 import {
   cloneDate,

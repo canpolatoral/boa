@@ -3,7 +3,7 @@ import React from 'react';
 import FolderSpecial from '@material-ui/icons/FolderSpecial';
 import FolderOpen from '@material-ui/icons/FolderOpen';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
-import { Icon } from '@kuveytturk/boa-components/Icon';
+import { Icon } from '../../Icon';
 
 @ComponentComposer
 class NodeIcon extends ComponentBase {

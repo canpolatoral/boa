@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import { stub } from 'sinon';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import { DialogType, Sizes } from '@kuveytturk/boa-base';
-import { Icon } from '@kuveytturk/boa-components/Icon';
+import { Icon } from '../Icon';
 import * as Helper from './helpers';
 import { context } from '@kuveytturk/boa-test/utils';
 

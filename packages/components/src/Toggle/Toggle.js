@@ -5,8 +5,8 @@ import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
-import { Icon } from '@kuveytturk/boa-components/Icon';
-import { Label } from '@kuveytturk/boa-components/Label';
+import { Icon } from '../Icon';
+import { Label } from '../Label';
 import merge from 'lodash/merge';
 
 const styles = theme => ({

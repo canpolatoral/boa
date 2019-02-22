@@ -19,6 +19,15 @@ export default class Container extends ComponentBase {
       fileNameFormat: 'BOA.Messaging.{0}.json',
       timeout: 3000,
       languageId: Language.TR,
+      localMessages: {
+        BOA: [
+          {
+            PropertyName: "Ok",
+            Description: "TAMAM",
+            LanguageId: 1 
+          }
+        ]
+      }
     });
 
     context.deviceSize = detectSize();

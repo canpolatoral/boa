@@ -16,7 +16,6 @@ export interface PopoverProps extends ComponentBaseProps {
   targetOrigin?: any;
   useLayerForClickAway?: boolean;
   zDepth?: 0 | 1 | 2 | 3 | 4 | 5;
-  isResizable?: boolean;
 }
 
 // Commented-Tslint: An interface declaring no members is equivalent to its supertype.

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import MuiPopover from '@material-ui/core/Popover';
 import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
-import { Resizable } from '../Resizable';
 
 @ComponentComposer
 class Popover extends ComponentBase {
@@ -124,7 +122,6 @@ class Popover extends ComponentBase {
      */
     onExiting: PropTypes.func,
     onRequestClose: PropTypes.func,
-    onResize: PropTypes.func,
     /**
      * If `true`, the popover is visible.
      */
@@ -133,7 +130,6 @@ class Popover extends ComponentBase {
      * Properties applied to the `Paper` element.
      */
     PaperProps: PropTypes.object,
-    resizable: PropTypes.bool,
     /**
      * @ignore
      */
@@ -200,7 +196,6 @@ class Popover extends ComponentBase {
     super(props, context);
     this.onRequestClose = this.onRequestClose.bind(this);
     this.openPopover = this.openPopover.bind(this);
-    this.onResize = this.onResize.bind(this);
   }
 
   openPopover() {
@@ -237,38 +232,7 @@ class Popover extends ComponentBase {
     }
   }
 
-  onResize(e, direction, refToResizableElement) {
-    const resizableParent = ReactDOM.findDOMNode(this.resizable).parentNode;
-    resizableParent.style.height = `${refToResizableElement.height}px`;
-    resizableParent.style.width = `${refToResizableElement.width}px`;
-
-    if (this.props.onResize) {
-      this.props.onResize(e, direction, refToResizableElement);
-    }
-  }
-
   render() {
-    let children;
-    if (this.props.resizable) {
-      children = (
-        <Resizable
-          context={this.props.context}
-          ref={ref => {
-            this.resizable = ref;
-          }}
-          bounds="parent"
-          lockAspectRatio
-          minWidth={200}
-          minHeight={100}
-          default={{ x: 0, y: 0, width: '100%', height: '100%' }}
-          onResize={this.onResize}
-        >
-          {this.props.children}
-        </Resizable>
-      );
-    } else {
-      children = this.props.children;
-    }
     return (
       <MuiPopover
         id={this.props.id}
@@ -289,7 +253,7 @@ class Popover extends ComponentBase {
         marginThreshold={this.props.marginThreshold}
         manager={this.props.manager}
       >
-        {children}
+        {this.props.children}
       </MuiPopover>
     );
   }

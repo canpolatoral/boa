@@ -19,7 +19,6 @@ export { default as IconMenu } from './IconMenu';
 // export { default as Menu } from './Menu';
 // export { default as MenuItem } from './MenuItem';
 // export { default as Popover } from './Popover';
-// export { default as Resizable } from './Resizable';
 // export { default as Scroll } from './Scroll';
 // export { default as TabBar } from './TabBar';
 // export { default as Toggle } from './Toggle';

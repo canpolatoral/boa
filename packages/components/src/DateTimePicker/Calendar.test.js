@@ -1,10 +1,11 @@
 import React from 'react';
-import { spy } from 'sinon';
+import { spy, stub } from 'sinon';
 import chai, { assert, expect } from 'chai';
 import asserttype from 'chai-asserttype';
 import EventListener from 'react-event-listener';
 import Calendar from './Calendar';
 import { context, createShallow } from '@kuveytturk/boa-test/utils';
+import * as Utils from './dateUtils';
 
 describe('<Calendar />', () => {
   let shallow;
@@ -240,13 +241,28 @@ describe('<Calendar />', () => {
     });
   });
 
-  // it('should setValue, getValue, resetValue', () => {
-  //   const wrapper = shallow(<Calendar context={context} />).dive();
-  //   const input = wrapper.dive();
-  //   assert.strictEqual(input.instance().getInstance().getValue(), false);
-  //   input.instance().getInstance().setValue(true);
-  //   assert.strictEqual(input.instance().getInstance().getValue(), true);
-  //   input.instance().getInstance().resetValue();
-  //   assert.strictEqual(input.instance().getInstance().getValue(), false);
-  // });
+  it('should setDisplayDate with date and newSelectedDate', () => {
+    const wrapper = shallow(<Calendar context={context} style={{}} />);
+    const displayDate = new Date('2018-05-19');
+    const getFirstDatOfMount = stub(Utils, 'getFirstDayOfMonth').returns(new Date('2018-05-01'));
+    const firsDayOfMountOfDisplayDate = new Date('2018-05-01');
+    const selectedDate = new Date('2018-11-29');
+
+    wrapper
+      .instance()
+      .getInstance()
+      .setDisplayDate(displayDate, selectedDate);
+
+    getFirstDatOfMount.restore();
+    assert.strictEqual(
+      firsDayOfMountOfDisplayDate.getDate(),
+      wrapper.state().displayDate.getDate(),
+      'display date is not equal.',
+    );
+    assert.strictEqual(
+      selectedDate.getDate(),
+      wrapper.state().selectedDate.getDate(),
+      'selected date is not equal.',
+    );
+  });
 });

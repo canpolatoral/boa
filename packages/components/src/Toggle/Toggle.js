@@ -186,8 +186,8 @@ class Toggle extends ComponentBase {
           ? 0
           : 1
         : this.props.labelPosition === 'right'
-          ? 1
-          : 0,
+        ? 1
+        : 0,
     });
 
     return (

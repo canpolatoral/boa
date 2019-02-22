@@ -104,7 +104,7 @@ class TreeView extends ComponentBase {
      * Callback function when node opens.
      */
     onOpenNode: PropTypes.func,
-   /**
+    /**
      * Callback function when tree scrolls.
      */
     onScroll: PropTypes.func,
@@ -156,7 +156,7 @@ class TreeView extends ComponentBase {
      * If `true`, footer of treeview is visible.
      */
     showFooter: PropTypes.bool,
-     /**
+    /**
      * If `true`, icons of all nodes is visible.
      */
     showIcons: PropTypes.bool,

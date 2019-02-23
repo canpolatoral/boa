@@ -20,7 +20,7 @@ describe('TreeView:FilteringContainer', () => {
   describe('props:showSearch', () => {
     it('should render search area', () => {
       const renderer = () => <div>test</div>;
-      const wrapper = shallow((
+      const wrapper = shallow(
         <FilteringContainer
           context={context}
           nodes={[]}
@@ -30,17 +30,18 @@ describe('TreeView:FilteringContainer', () => {
             },
           }}
           showSearch
-          hintText="hintText">
+          hintText="hintText"
+        >
           {renderer}
-        </FilteringContainer>
-      ));
+        </FilteringContainer>,
+      );
       const input = wrapper.find(InputAction);
       assert.strictEqual(input.props().hintText, 'hintText');
     });
 
     it('should not render search area', () => {
       const renderer = () => <div>test</div>;
-      const wrapper = shallow((
+      const wrapper = shallow(
         <FilteringContainer
           context={context}
           nodes={[]}
@@ -50,10 +51,11 @@ describe('TreeView:FilteringContainer', () => {
             },
           }}
           showSearch={false}
-          hintText="hintText">
+          hintText="hintText"
+        >
           {renderer}
-        </FilteringContainer>
-      ));
+        </FilteringContainer>,
+      );
       const input = wrapper.find(InputAction);
       assert.strictEqual(input.isEmptyRender(), true);
     });

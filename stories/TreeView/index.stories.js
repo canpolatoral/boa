@@ -14,7 +14,13 @@ stories.add('TreeView', ({ props }) => {
   return (
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={TreeView} doc={doc} />
-      <Preview {...props} defaultProps={defaultProps} component={TreeView} doc={doc} ignoreProps={['data']} />
+      <Preview
+        {...props}
+        defaultProps={defaultProps}
+        component={TreeView}
+        doc={doc}
+        ignoreProps={['data']}
+      />
       <PropsTable {...props} component={TreeView} doc={doc} />
     </div>
   );

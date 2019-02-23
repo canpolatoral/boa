@@ -45,7 +45,7 @@ const repair = obj => {
   }
 };
 
-const getFileContent = (filePath) => {
+const getFileContent = filePath => {
   return fs.readFileSync(path.join(__dirname, '..', '..', filePath), {
     encoding: 'utf8',
   });

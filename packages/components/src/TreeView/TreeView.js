@@ -14,7 +14,9 @@ import iterateTree from './iterateTree';
 
 const getTotalNumberOfElements = (nodes, counter = 0) => {
   // eslint-disable-next-line max-len
-  return counter + nodes ? (nodes.length + nodes.reduce((acc, n) => getTotalNumberOfElements(n.children, acc), counter)) : 0;
+  return counter + nodes
+    ? nodes.length + nodes.reduce((acc, n) => getTotalNumberOfElements(n.children, acc), counter)
+    : 0;
 };
 
 /**
@@ -125,7 +127,6 @@ class TreeView extends ComponentBase {
     nodes: this.manageNodes(this.props.data, this.props.expandAll),
   };
 
-
   constructor(props, context) {
     super(props, context);
     this.onSelectedTreeNode = this.onSelectedTreeNode.bind(this);
@@ -174,8 +175,7 @@ class TreeView extends ComponentBase {
         const node = item;
         if (node.state === undefined) node.state = {};
         if (node.state.checked && node.id !== this.selectedNode.id) node.state.checked = false;
-      },
-      );
+      });
     }
     this.nodes = nodes;
     this.setState({ nodes });
@@ -192,8 +192,7 @@ class TreeView extends ComponentBase {
       const node = item;
       if (node.state === undefined) node.state = {};
       if (node.state.checked) list.push(node);
-    },
-    );
+    });
     return list;
   }
 
@@ -243,7 +242,8 @@ class TreeView extends ComponentBase {
         depth={node.deepness}
         rowHeight={this.props.rowHeight}
         node={node}
-        onSelected={this.onSelectedTreeNode}>
+        onSelected={this.onSelectedTreeNode}
+      >
         <Toggler
           context={this.props.context}
           node={node}
@@ -251,39 +251,44 @@ class TreeView extends ComponentBase {
           rowHeight={this.props.rowHeight}
         />
         {this.props.isLeafCheckable ? (node.children || []).length === 0 && checkBox : checkBox}
-        {
-          this.props.showIcons && (
-            <NodeIcon
-              state={toggleState}
-              context={this.props.context}
-              icon={node.icon}
-              rowHeight={this.props.rowHeight} />
-          )
-        }
-        <span style={{
-          cursor: 'pointer',
-          margin: 0,
-          userSelect: 'none',
-          display: 'inline-block',
-          verticalAlign: 'middle',
-          whiteSpace: 'nowrap',
-          height: this.props.rowHeight,
-          fontSize: '14px',
-          color: this.props.context.theme.boaPalette.base450,
-          lineHeight: `${this.props.rowHeight}px`,
-        }}> {node.detail ? (
-          <span style={{ lineHeight: '15px', display: 'inline-block', verticalAlign: 'middle' }}>
-            {this.highlightSearchTerm(node)}
-            <br />
-            <span style={{
-              color: theme.boaPalette.base400,
-              fontWeight: '400',
-              fontSize: '12px',
-            }}>
-              {node.detail}
+        {this.props.showIcons && (
+          <NodeIcon
+            state={toggleState}
+            context={this.props.context}
+            icon={node.icon}
+            rowHeight={this.props.rowHeight}
+          />
+        )}
+        <span
+          style={{
+            cursor: 'pointer',
+            margin: 0,
+            userSelect: 'none',
+            display: 'inline-block',
+            verticalAlign: 'middle',
+            whiteSpace: 'nowrap',
+            height: this.props.rowHeight,
+            fontSize: '14px',
+            color: this.props.context.theme.boaPalette.base450,
+            lineHeight: `${this.props.rowHeight}px`,
+          }}
+        >
+          {' '}
+          {node.detail ? (
+            <span style={{ lineHeight: '15px', display: 'inline-block', verticalAlign: 'middle' }}>
+              {this.highlightSearchTerm(node)}
+              <br />
+              <span
+                style={{
+                  color: theme.boaPalette.base400,
+                  fontWeight: '400',
+                  fontSize: '12px',
+                }}
+              >
+                {node.detail}
+              </span>
             </span>
-          </span>
-        ) : (
+          ) : (
             this.highlightSearchTerm(node)
           )}
         </span>
@@ -293,12 +298,15 @@ class TreeView extends ComponentBase {
 
   wrap(match) {
     // eslint-disable-next-line max-len
-    return `<span style="color: ${this.props.context.theme.boaPalette.pri500}; background-color: #b618ce29">${match}</span>`;
+    return `<span style="color: ${
+      this.props.context.theme.boaPalette.pri500
+    }; background-color: #b618ce29">${match}</span>`;
   }
 
   highlightSearchTerm(node) {
     // eslint-disable-next-line max-len
-    const filterTerm = this.filteringContainer && this.filteringContainer.getInstance().getFilterTerm();
+    const filterTerm =
+      this.filteringContainer && this.filteringContainer.getInstance().getFilterTerm();
     if (filterTerm && node.name) {
       const regex = new RegExp(filterTerm, 'gi');
       const p = node.name.replace(regex, match => this.wrap(match));
@@ -355,7 +363,8 @@ class TreeView extends ComponentBase {
   getFooterText(nodes) {
     let footerText = this.getMessage('BOA', 'TreeviewItemNotSelected');
     // eslint-disable-next-line max-len
-    const filterTerm = this.filteringContainer && this.filteringContainer.getInstance().getFilterTerm();
+    const filterTerm =
+      this.filteringContainer && this.filteringContainer.getInstance().getFilterTerm();
     if (filterTerm) {
       const totalNumberOfNodes = getTotalNumberOfElements(nodes);
       footerText = this.getMessage('BOA', 'TreeviewItemNotFound');
@@ -385,37 +394,31 @@ class TreeView extends ComponentBase {
     return (
       <div style={style.mainDiv}>
         <FilteringContainer
-          ref={r => this.filteringContainer = r}
+          ref={r => (this.filteringContainer = r)}
           context={this.props.context}
           style={style}
           showSearch={this.props.showSearch}
           hintText={this.props.hintText}
-          nodes={this.state.nodes}>
+          nodes={this.state.nodes}
+        >
           {({ nodes }) => (
             <div>
               <div style={{ height: this.calculateHeight() }}>
-                <Tree
-                  ref={r => (this.tree = r)}
-                  nodes={nodes}
-                  onChange={this.handleChange}>
-                  {({ node, ...rest }) => (
-                    this.generateTreeNode(node, rest)
-                  )}
+                <Tree ref={r => (this.tree = r)} nodes={nodes} onChange={this.handleChange}>
+                  {({ node, ...rest }) => this.generateTreeNode(node, rest)}
                 </Tree>
               </div>
-              {this.props.isCheckable &&
-                this.props.showFooter && (
-                  <div>
-                    <Divider style={{ margin: 0 }} />
-                    <Footer style={this.props.footerStyle} context={this.props.context}>
-                      {this.getFooterText(nodes)}
-                    </Footer>
-                  </div>
-                )}
+              {this.props.isCheckable && this.props.showFooter && (
+                <div>
+                  <Divider style={{ margin: 0 }} />
+                  <Footer style={this.props.footerStyle} context={this.props.context}>
+                    {this.getFooterText(nodes)}
+                  </Footer>
+                </div>
+              )}
             </div>
           )}
         </FilteringContainer>
-
       </div>
     );
   }

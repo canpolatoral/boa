@@ -35,24 +35,24 @@ class TreeCheckBox extends ComponentBase {
         style={
           node.state && node.state.indeterminate
             ? {
-              display: 'flex',
-              color: context.theme.boaPalette.base400,
-              width: '24px',
-              marginRight: !context.localization.isRightToLeft && 12,
-              marginLeft: context.localization.isRightToLeft && 12,
-              marginTop: '0px',
-              height: rowHeight,
-              lineHeight: `${this.props.rowHeight}px`,
-            }
+                display: 'flex',
+                color: context.theme.boaPalette.base400,
+                width: '24px',
+                marginRight: !context.localization.isRightToLeft && 12,
+                marginLeft: context.localization.isRightToLeft && 12,
+                marginTop: '0px',
+                height: rowHeight,
+                lineHeight: `${this.props.rowHeight}px`,
+              }
             : {
-              display: 'flex',
-              width: '24px',
-              marginRight: !context.localization.isRightToLeft && 12,
-              marginLeft: context.localization.isRightToLeft && 12,
-              marginTop: '0px',
-              height: rowHeight,
-              lineHeight: `${this.props.rowHeight}px`,
-            }
+                display: 'flex',
+                width: '24px',
+                marginRight: !context.localization.isRightToLeft && 12,
+                marginLeft: context.localization.isRightToLeft && 12,
+                marginTop: '0px',
+                height: rowHeight,
+                lineHeight: `${this.props.rowHeight}px`,
+              }
         }
       />
     );

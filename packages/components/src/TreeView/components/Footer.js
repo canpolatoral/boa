@@ -18,11 +18,7 @@ class Footer extends ComponentBase {
 
   render() {
     const style = this.getStyle();
-    return (
-      <p style={style}>
-        {this.props.children}
-      </p>
-    );
+    return <p style={style}>{this.props.children}</p>;
   }
 }
 

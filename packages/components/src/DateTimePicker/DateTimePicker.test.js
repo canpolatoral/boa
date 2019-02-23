@@ -33,6 +33,9 @@ describe('<DateTimePicker />', () => {
     const dateInput = wrapper.find('input').first();
     dateInput.simulate('click');
 
-    wrapper.find('button').last().simulate('click');
+    wrapper
+      .find('button')
+      .last()
+      .simulate('click');
   });
 });

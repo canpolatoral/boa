@@ -55,7 +55,7 @@ export default class PropsPanel extends ComponentBase {
 
   state = {
     selectedTheme: this.props.context.theme.themeName,
-    selectedLanguage: 1,
+    selectedLanguage: this.props.context.language,
   };
 
   onPropertyChanged(property, value) {
@@ -287,12 +287,10 @@ export default class PropsPanel extends ComponentBase {
                   }
                   return undefined;
                 })}
-                {
-                  hasComposedProps &&
+                {hasComposedProps && (
                   <Divider context={context} style={{ width: 'inherit', margin: '12px -24px' }} />
-                }
-                {
-                  hasComposedProps &&
+                )}
+                {hasComposedProps && (
                   <Label
                     context={context}
                     text="Inherited Props"
@@ -300,8 +298,9 @@ export default class PropsPanel extends ComponentBase {
                       color: context.theme.palette.primary.main,
                       fontSize: 14,
                       paddingBottom: 12,
-                    }} />
-                }
+                    }}
+                  />
+                )}
                 {availableComposedProperties.map((property, i) => {
                   /* eslint-disable react/no-array-index-key */
                   if (!property.hidden && property.type !== 'func') {

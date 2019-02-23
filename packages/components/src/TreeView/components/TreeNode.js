@@ -9,7 +9,7 @@ import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 class TreeNode extends ComponentBase {
   state = {
     hovered: false,
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -70,7 +70,8 @@ class TreeNode extends ComponentBase {
         style={this.getStyle()}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        onClick={this.onClick}>
+        onClick={this.onClick}
+      >
         {this.props.children}
       </div>
     );

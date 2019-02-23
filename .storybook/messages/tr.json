@@ -1,0 +1,44 @@
+{
+    "BOA": [
+      {
+        "PropertyName": "Ok",
+        "Description": "Tamam",
+        "LanguageId": 1 
+      },
+      {
+        "PropertyName": "Cancel",
+        "Description": "İptal",
+        "LanguageId": 1 
+      },
+      {
+        "PropertyName": "Hour",
+        "Description": "Saat",
+        "LanguageId": 1 
+      },
+      {
+        "PropertyName": "Minute",
+        "Description": "Dakika",
+        "LanguageId": 1 
+      },
+      {
+        "PropertyName": "Second",
+        "Description": "Saniye",
+        "LanguageId": 1 
+      },
+      {
+        "PropertyName": "Today",
+        "Description": "Bugün",
+        "LanguageId": 1 
+      },
+      {
+        "PropertyName": "Yes",
+        "Description": "Evet",
+        "LanguageId": 1 
+      },
+      {
+        "PropertyName": "No",
+        "Description": "Hayır",
+        "LanguageId": 1 
+      }
+    ]
+  }

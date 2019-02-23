@@ -14,7 +14,7 @@ describe('TreeView:TreeCheckBox', () => {
   });
 
   it('should render CheckBox', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <TreeCheckBox
         node={{
           state: {
@@ -22,8 +22,9 @@ describe('TreeView:TreeCheckBox', () => {
           },
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), CheckBox);
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -32,7 +33,7 @@ describe('TreeView:TreeCheckBox', () => {
   });
 
   it('should render CheckBox indeterminate', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <TreeCheckBox
         node={{
           state: {
@@ -40,8 +41,9 @@ describe('TreeView:TreeCheckBox', () => {
           },
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), CheckBox);
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -52,7 +54,7 @@ describe('TreeView:TreeCheckBox', () => {
   it('should render CheckBox indeterminate RTL', () => {
     const newContext = Object.assign({}, context);
     newContext.localization = { isRightToLeft: true };
-    const wrapper = shallow((
+    const wrapper = shallow(
       <TreeCheckBox
         node={{
           state: {
@@ -60,8 +62,9 @@ describe('TreeView:TreeCheckBox', () => {
           },
         }}
         context={newContext}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), CheckBox);
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -72,7 +75,7 @@ describe('TreeView:TreeCheckBox', () => {
   it('should render CheckBox RTL', () => {
     const newContext = Object.assign({}, context);
     newContext.localization = { isRightToLeft: true };
-    const wrapper = shallow((
+    const wrapper = shallow(
       <TreeCheckBox
         node={{
           state: {
@@ -80,8 +83,9 @@ describe('TreeView:TreeCheckBox', () => {
           },
         }}
         context={newContext}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), CheckBox);
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -91,7 +95,7 @@ describe('TreeView:TreeCheckBox', () => {
   it('should render disabled CheckBox', () => {
     const newContext = Object.assign({}, context);
     newContext.localization = { isRightToLeft: true };
-    const wrapper = shallow((
+    const wrapper = shallow(
       <TreeCheckBox
         node={{
           isCheckable: false,
@@ -100,14 +104,15 @@ describe('TreeView:TreeCheckBox', () => {
           },
         }}
         context={newContext}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), CheckBox);
     assert.strictEqual(wrapper.props().disabled, true);
   });
 
   it('should handle click', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <TreeCheckBox
         node={{
           state: {
@@ -116,8 +121,9 @@ describe('TreeView:TreeCheckBox', () => {
           children: ['test-data'],
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     if (getTestRunner() !== 'karma') {
       const updateSpy = spy(NodeHelper, 'updateNode');
       wrapper.simulate('change', { target: { checked: false } });
@@ -130,7 +136,7 @@ describe('TreeView:TreeCheckBox', () => {
   it('should fire onClick', () => {
     const onCheckNode = spy();
     const onChange = spy();
-    const wrapper = shallow((
+    const wrapper = shallow(
       <TreeCheckBox
         onCheckNode={onCheckNode}
         onChange={onChange}
@@ -141,8 +147,9 @@ describe('TreeView:TreeCheckBox', () => {
           children: ['test-data'],
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     if (getTestRunner() !== 'karma') {
       const updateSpy = spy(NodeHelper, 'updateNode');
       wrapper.simulate('change', { target: { checked: false } });

@@ -11,7 +11,12 @@ export default ({ props }) => {
   return (
     <div style={{ padding: 20, background: 'white', textAlign: 'justify' }}>
       <Header {...props} component={InputAction} doc={doc} />
-      <Preview {...props} defaultProps={defaultProps(props.context)} component={InputAction} doc={doc} />
+      <Preview
+        {...props}
+        defaultProps={defaultProps(props.context)}
+        component={InputAction}
+        doc={doc}
+      />
       <PropsTable {...props} component={InputAction} doc={doc} />
     </div>
   );

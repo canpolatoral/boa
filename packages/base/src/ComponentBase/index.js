@@ -10,14 +10,13 @@ export default class ComponentBase extends Component {
   static propTypes = {
     /**
      * Defines the size of the component. The ComponentSize constant exported from enums.
+     * @ignore
      */
     componentSize: PropTypes.oneOf([
       ComponentSize.LARGE,
       ComponentSize.MEDIUM,
       ComponentSize.SMALL,
-      ComponentSize['1'],
-      ComponentSize['2'],
-      ComponentSize['3'],
+      ComponentSize.XSMALL,
     ]),
     /**
      * Defines application requirements such as localization, theme, platform.
@@ -34,16 +33,19 @@ export default class ComponentBase extends Component {
     /**
      * As described in componentSize prop, if any components take part in the new line
      * on a card we're using this prop.
+     * @ignore
      */
     newLine: PropTypes.bool,
     /**
      * The snapKey property is used to manage snapshots of the child components.
+     * @ignore
      */
     snapKey: PropTypes.string,
     /**
      * In our SPA, we want to keep the state of each component when a page will unmount.
      * And the same page will mount again, the component mounts with snapshot prop and
      * it should get the previous state.
+     * @ignore
      */
     snapshot: PropTypes.object,
     /**

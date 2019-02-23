@@ -4,7 +4,7 @@ export default `
 const content = (
   <Button
     context={this.props.context}
-    type="raised"
+    type="contained"
     text="Open Dialog"
     onClick={() => DialogHelper.show(this.props.context,
       <div>Test</div>,

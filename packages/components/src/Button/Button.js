@@ -49,7 +49,7 @@ class Button extends ComponentBase {
     dynamicIcon: PropTypes.string,
     /**
      * Font icon name from font icon's library.
-     * @@ignore
+     * @ignore
      */
     fontIcon: PropTypes.string,
     /**

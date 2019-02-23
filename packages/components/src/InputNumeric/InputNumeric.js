@@ -45,8 +45,6 @@ class InputNumeric extends EditorBase {
     // errorText: '',
     floatingLabelText: '',
     disabled: false,
-    minValue: Number.NEGATIVE_INFINITY,
-    maxValue: Number.MAX_VALUE,
     maxLength: null,
     step: 1,
   };
@@ -161,7 +159,7 @@ class InputNumeric extends EditorBase {
 
       if (formattedValue !== this.getFormattedValue(newFormattedValue)) {
         const numericNewValue = this.getParsedValue(newFormattedValue);
-        if (numericNewValue >= this.props.minValue && numericNewValue <= this.props.maxValue) {
+        if (this.checkNumberRangeIsValid(numericNewValue)) {
           returnValue = true;
         }
       }
@@ -212,7 +210,7 @@ class InputNumeric extends EditorBase {
 
       const numericNewValue = this.getParsedValue(tempValue);
       caretPosition = e.target.selectionStart;
-      if (numericNewValue >= this.props.minValue && numericNewValue <= this.props.maxValue) {
+      if (this.checkNumberRangeIsValid(numericNewValue)) {
         if (tempValue.indexOf('-') !== -1) {
           this.setState({ caretPosition: caretPosition + 1 });
         }
@@ -221,7 +219,7 @@ class InputNumeric extends EditorBase {
     } else if (isIncreaseDecreaseKey && this.state.formattedValue !== null && this.props.step) {
       let numericValue = this.getParsedValue(this.state.formattedValue);
       numericValue += e.keyCode === KeyboardEnum.UP_ARROW ? this.props.step : -1 * this.props.step;
-      if (numericValue >= this.props.minValue && numericValue <= this.props.maxValue) {
+      if (this.checkNumberRangeIsValid(numericValue)) {
         this.setState({ formattedValue: this.getFormattedValue(numericValue) });
       }
     }
@@ -344,6 +342,11 @@ class InputNumeric extends EditorBase {
       return !isNaN(Number(tempValue));
     }
     return true;
+  }
+
+  checkNumberRangeIsValid(value) {
+    return (this.props.minValue === undefined || value >= this.props.minValue) &&
+      (this.props.maxValue === undefined || value <= this.props.maxValue);
   }
 
   getParsedValue(value) {

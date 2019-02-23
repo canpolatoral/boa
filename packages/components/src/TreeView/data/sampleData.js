@@ -17,7 +17,7 @@ const clearIcon = {
 
 const hiddenIcon = {
   dynamicIcon: 'CropFree',
-  iconProperties: { color: 'gray' },
+  iconProperties: { color: 'primary' },
 };
 
 const sampleData = [

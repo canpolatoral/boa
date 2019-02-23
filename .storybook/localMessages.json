@@ -3,42 +3,73 @@
       {
         "PropertyName": "Ok",
         "Description": "Ok",
-        "LanguageId": 2 
+        "LanguageId": 2
       },
       {
         "PropertyName": "Cancel",
         "Description": "Cancel",
-        "LanguageId": 2 
+        "LanguageId": 2
       },
       {
         "PropertyName": "Hour",
         "Description": "Hour",
-        "LanguageId": 2 
+        "LanguageId": 2
       },
       {
         "PropertyName": "Minute",
         "Description": "Minute",
-        "LanguageId": 2 
+        "LanguageId": 2
       },
       {
         "PropertyName": "Second",
         "Description": "Second",
-        "LanguageId": 2 
+        "LanguageId": 2
       },
       {
         "PropertyName": "Today",
         "Description": "Today",
-        "LanguageId": 2 
+        "LanguageId": 2
       },
       {
         "PropertyName": "Yes",
         "Description": "Yes",
-        "LanguageId": 2 
+        "LanguageId": 2
       },
       {
         "PropertyName": "No",
         "Description": "No",
-        "LanguageId": 2 
+        "LanguageId": 2
+      },
+      {
+        "PropertyName": "TreeviewItemNotSelected",
+        "Description": "No item selected.",
+        "LanguageId": 2
+      },
+      {
+        "PropertyName": "TreeviewItemNotSelected",
+        "Description": "Öge seçilmedi",
+        "LanguageId": 1
+      },
+      {
+        "PropertyName": "TreeviewItemFound",
+        "Description": "item(s) found.",
+        "LanguageId": 2
+      },
+      {
+        "PropertyName": "TreeviewItemFound",
+        "Description": "öge bulundu",
+        "LanguageId": 1
+      },
+      {
+        "PropertyName": "TreeviewItemSelected",
+        "Description": "item(s) selected",
+        "LanguageId": 2
+      },
+      {
+        "PropertyName": "TreeviewItemSelected",
+        "Description": "öge seçildi",
+        "LanguageId": 1
       }
+
     ]
   }

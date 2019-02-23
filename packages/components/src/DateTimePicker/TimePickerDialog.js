@@ -608,7 +608,6 @@ class TimePickerDialog extends ComponentBase {
           maxheight: 'calc(100% - 24px)',
           direction: !this.props.context.localization.isRightToLeft ? 'ltr' : 'rtl',
         }}
-        isResizable={false}
         open={open}
         context={this.props.context}
         anchorOrigin={popoverOrigin}

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { assert } from 'chai';
 import { spy, stub } from 'sinon';
 import Modal from '@material-ui/core/Modal';
@@ -113,34 +112,5 @@ describe('<Popover />', () => {
       modal.instance().handleKeyDown(event);
       assert.strictEqual(onRequestClose.callCount, 1);
     });
-  });
-
-  it('should mount with resizable', () => {
-    const wrapper = mount(
-      <Popover context={context} open resizable>
-        <div>test</div>
-      </Popover>,
-    );
-    wrapper
-      .instance()
-      .getInstance()
-      .onResize({}, 'test', { height: 11, width: 13 });
-    const resizableParent = ReactDOM.findDOMNode(wrapper.instance().resizable).parentNode;
-    assert.strictEqual(resizableParent.style.height, '11px');
-    assert.strictEqual(resizableParent.style.width, '13px');
-  });
-
-  it('should fire onResize', () => {
-    const onResize = spy();
-    const wrapper = mount(
-      <Popover context={context} onResize={onResize} open resizable>
-        <div>test</div>
-      </Popover>,
-    );
-    wrapper
-      .instance()
-      .getInstance()
-      .onResize({}, 'test', { height: 11, width: 13 });
-    assert.strictEqual(onResize.callCount, 1);
   });
 });

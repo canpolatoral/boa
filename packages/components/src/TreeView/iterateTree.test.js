@@ -14,23 +14,28 @@ describe('TreeView:iterateTree', () => {
   });
 
   it('should iterate with childs', () => {
-    const nodes = [{
-      id: 1,
-      children: [1, 2, 3],
-    }, {
-      id: 2,
-      children: [4, 5, 6],
-    }, {
-      id: 3,
-    }, {
-      id: 4,
-      children: [
-        {
-          id: 5,
-          children: [7, 8, 9],
-        },
-      ],
-    }];
+    const nodes = [
+      {
+        id: 1,
+        children: [1, 2, 3],
+      },
+      {
+        id: 2,
+        children: [4, 5, 6],
+      },
+      {
+        id: 3,
+      },
+      {
+        id: 4,
+        children: [
+          {
+            id: 5,
+            children: [7, 8, 9],
+          },
+        ],
+      },
+    ];
     const iterateSpy = spy();
     iterateTree(nodes, iterateSpy);
     assert.strictEqual(iterateSpy.callCount, 14);

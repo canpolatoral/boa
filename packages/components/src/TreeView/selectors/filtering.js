@@ -7,20 +7,21 @@ const filterNodes = (filter, nodes, parents = []) =>
       : INITIAL_FILTERED_VALUE;
 
     return !(filter(n) || filteredChildren.length)
-      ? filtered : {
-        nodes: [
-          ...filtered.nodes,
-          {
-            ...n,
-            children: filteredChildren,
+      ? filtered
+      : {
+          nodes: [
+            ...filtered.nodes,
+            {
+              ...n,
+              children: filteredChildren,
+            },
+          ],
+          nodeParentMappings: {
+            ...filtered.nodeParentMappings,
+            ...childrenNodeMappings,
+            [n.id]: parents,
           },
-        ],
-        nodeParentMappings: {
-          ...filtered.nodeParentMappings,
-          ...childrenNodeMappings,
-          [n.id]: parents,
-        },
-      };
+        };
   }, INITIAL_FILTERED_VALUE);
 
-  export default filterNodes;
+export default filterNodes;

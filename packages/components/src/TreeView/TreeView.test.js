@@ -22,21 +22,11 @@ describe('<TreeView />', () => {
   });
 
   it('should mount', () => {
-    mount((
-      <TreeView
-        sampleData={sampleData}
-        context={context}
-      />
-    ));
+    mount(<TreeView sampleData={sampleData} context={context} />);
   });
 
   it('should search', () => {
-    const wrapper = mount((
-      <TreeView
-        sampleData={sampleData}
-        context={context}
-      />
-    ));
+    const wrapper = mount(<TreeView sampleData={sampleData} context={context} />);
     const input = wrapper.find(InputAction).first();
     const instance = input.instance();
     const getValueStub = stub(instance, 'getInstance').returns({

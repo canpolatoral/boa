@@ -166,9 +166,13 @@ export function getMessage(groupName, propertyName, languageId) {
     // eslint-disable-next-line
     const messageGroup = messagingOptions.localMessages[groupName];
     if (messageGroup) {
-      const message = messageGroup.find(x => x.PropertyName === propertyName);
+      const message = messageGroup.find(
+        x =>
+          x.PropertyName === propertyName &&
+          x.LanguageId === (languageId || messagingOptions.languageId),
+      );
       /* istanbul ignore next */
-      if (message && message.LanguageId === (languageId || messagingOptions.languageId)) {
+      if (message) {
         return message;
       }
     }

@@ -39,15 +39,13 @@ class NodeIcon extends ComponentBase {
           {{
             opened: <FolderOpen style={{ color: this.props.context.theme.boaPalette.pri500 }} />,
             closed: <FolderSpecial style={{ color: this.props.context.theme.boaPalette.pri500 }} />,
-          }[this.props.state] || <FolderSpecial style={{ color: this.props.context.theme.boaPalette.pri500 }} />}
+          }[this.props.state] || (
+            <FolderSpecial style={{ color: this.props.context.theme.boaPalette.pri500 }} />
+          )}
         </div>
       );
     }
-    return (
-      <div style={this.getStyle()}>
-        {content}
-      </div>
-    );
+    return <div style={this.getStyle()}>{content}</div>;
   }
 }
 export default NodeIcon;

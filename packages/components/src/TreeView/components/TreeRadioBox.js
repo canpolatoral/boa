@@ -40,7 +40,8 @@ class TreeRadioBox extends ComponentBase {
           marginLeft: this.props.context.localization.isRightToLeft && 12,
           marginTop: '0px',
           height: this.props.rowHeight,
-        }} />
+        }}
+      />
     );
   }
 }

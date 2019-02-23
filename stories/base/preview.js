@@ -20,7 +20,7 @@ export default class Preview extends ComponentBase {
     availableProperties: [],
     currentProperties: {},
     selectedTheme: 'violet',
-    selectedLanguage: 1,
+    selectedLanguage: this.props.context.language,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -86,8 +86,11 @@ export default class Preview extends ComponentBase {
 
     if (composeMetaData) {
       Object.keys(composeMetaData).forEach(composeName => {
-        createPropMeta(composeMetaData[composeName], availableComposedProperties,
-          currentProperties);
+        createPropMeta(
+          composeMetaData[composeName],
+          availableComposedProperties,
+          currentProperties,
+        );
       });
     }
 

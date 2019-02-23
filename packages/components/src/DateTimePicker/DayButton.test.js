@@ -50,12 +50,7 @@ describe('<DayButton />', () => {
       it('should render WorkDay', () => {
         const date = new Date();
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -67,12 +62,7 @@ describe('<DayButton />', () => {
         const date = new Date();
         date.setMonth(date.getMonth() + 1);
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -154,12 +144,7 @@ describe('<DayButton />', () => {
       it('should render WorkDay', () => {
         const date = new Date();
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -171,12 +156,7 @@ describe('<DayButton />', () => {
         const date = new Date();
         date.setMonth(date.getMonth() + 1);
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -258,12 +238,7 @@ describe('<DayButton />', () => {
       it('should render WorkDay', () => {
         const date = new Date();
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -275,12 +250,7 @@ describe('<DayButton />', () => {
         const date = new Date();
         date.setMonth(date.getMonth() + 1);
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -362,12 +332,7 @@ describe('<DayButton />', () => {
       it('should render WorkDay', () => {
         const date = new Date();
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -379,12 +344,7 @@ describe('<DayButton />', () => {
         const date = new Date();
         date.setMonth(date.getMonth() + 1);
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -466,12 +426,7 @@ describe('<DayButton />', () => {
       it('should render WorkDay', () => {
         const date = new Date();
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;
@@ -483,12 +438,7 @@ describe('<DayButton />', () => {
         const date = new Date();
         date.setMonth(date.getMonth() + 1);
         const wrapper = shallow(
-          <DayButton
-            context={context}
-            date={date}
-            business
-            dayInfo={{ dayType }}
-          />,
+          <DayButton context={context} date={date} business dayInfo={{ dayType }} />,
         );
         const divStyle = wrapper.childAt(0).props().style;
         const spanStyle = wrapper.childAt(1).props().style;

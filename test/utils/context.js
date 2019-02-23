@@ -4,7 +4,7 @@ const context = {};
 context.theme = getTheme({ themeName: 'kuveytturk' });
 context.localization = [];
 context.localization.isRightToLeft = false;
-context.language = 1;
+context.language = 2;
 context.platform = '';
 context.deviceSize = Sizes.MEDIUM;
 

@@ -18,13 +18,11 @@ describe('TreeView:TreeNode', () => {
   });
 
   it('should render child', () => {
-    const wrapper = shallow((
-      <TreeNode
-        context={context}
-        rowHeight={10}>
+    const wrapper = shallow(
+      <TreeNode context={context} rowHeight={10}>
         <div>test</div>
-      </TreeNode>
-    ));
+      </TreeNode>,
+    );
     assert.strictEqual(wrapper.type(), 'div');
     assert.strictEqual(wrapper.childAt(0).type(), 'div');
     assert.strictEqual(wrapper.childAt(0).text(), 'test');
@@ -34,14 +32,11 @@ describe('TreeView:TreeNode', () => {
   });
 
   it('should render selected', () => {
-    const wrapper = shallow((
-      <TreeNode
-        selected
-        context={context}
-        rowHeight={10}>
+    const wrapper = shallow(
+      <TreeNode selected context={context} rowHeight={10}>
         <div>test</div>
-      </TreeNode>
-    ));
+      </TreeNode>,
+    );
     assert.strictEqual(wrapper.type(), 'div');
     assert.strictEqual(wrapper.childAt(0).type(), 'div');
     assert.strictEqual(wrapper.childAt(0).text(), 'test');
@@ -51,26 +46,25 @@ describe('TreeView:TreeNode', () => {
   });
 
   it('should render hovered', () => {
-    const wrapper = mount((
-      <TreeNode
-        context={context}
-        rowHeight={10}>
+    const wrapper = mount(
+      <TreeNode context={context} rowHeight={10}>
         <div>test</div>
-      </TreeNode>
-    ));
+      </TreeNode>,
+    );
     wrapper.setState({ hovered: true });
-    const props = wrapper.find('div').first().props();
+    const props = wrapper
+      .find('div')
+      .first()
+      .props();
     assert.strictEqual(props.style.background, 'RGBA(0, 0, 0, 0.08)');
   });
 
   it('should handle mouseEnter, mouseLeave', () => {
-    const wrapper = mount((
-      <TreeNode
-        context={context}
-        rowHeight={10}>
+    const wrapper = mount(
+      <TreeNode context={context} rowHeight={10}>
         <div>test</div>
-      </TreeNode>
-    ));
+      </TreeNode>,
+    );
     wrapper.simulate('mouseEnter');
     assert.strictEqual(wrapper.state().hovered, true);
     wrapper.simulate('mouseLeave');
@@ -79,14 +73,11 @@ describe('TreeView:TreeNode', () => {
 
   it('should handle click', () => {
     const onSelected = spy();
-    const wrapper = shallow((
-      <TreeNode
-        onSelected={onSelected}
-        context={context}
-        rowHeight={10}>
+    const wrapper = shallow(
+      <TreeNode onSelected={onSelected} context={context} rowHeight={10}>
         <div>test</div>
-      </TreeNode>
-    ));
+      </TreeNode>,
+    );
     wrapper.simulate('click');
     assert.strictEqual(onSelected.callCount, 1);
   });
@@ -95,13 +86,11 @@ describe('TreeView:TreeNode', () => {
     const newContext = Object.assign({}, context);
     newContext.localization = { isRightToLeft: true };
 
-    const wrapper = shallow((
-      <TreeNode
-        context={newContext}
-        rowHeight={10}>
+    const wrapper = shallow(
+      <TreeNode context={newContext} rowHeight={10}>
         <div>test</div>
-      </TreeNode>
-    ));
+      </TreeNode>,
+    );
     assert.strictEqual(wrapper.type(), 'div');
     assert.strictEqual(wrapper.childAt(0).type(), 'div');
     assert.strictEqual(wrapper.childAt(0).text(), 'test');

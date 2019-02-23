@@ -4,6 +4,7 @@ import { AppProvider, ComponentBase, setLocalization, getTheme } from '@kuveyttu
 import { Localization, Language } from '@kuveytturk/boa-utils';
 import { context } from '@kuveytturk/boa-test/utils';
 import detectSize from './utils/detectSize';
+import Messages from './messages';
 
 export default class Container extends ComponentBase {
   constructor(props) {
@@ -12,22 +13,16 @@ export default class Container extends ComponentBase {
     this.onLanguageChange = this.onLanguageChange.bind(this);
     this.onResize = this.onResize.bind(this);
 
+    context.language = Language.EN;
+
     setLocalization({
       url: 'http://boaonedev',
       path: '/messaging/',
       versionPath: 'MessagingVersions.json',
       fileNameFormat: 'BOA.Messaging.{0}.json',
       timeout: 3000,
-      languageId: Language.TR,
-      localMessages: {
-        BOA: [
-          {
-            PropertyName: "Ok",
-            Description: "TAMAM",
-            LanguageId: 1 
-          }
-        ]
-      }
+      languageId: context.language,
+      localMessages: Messages,
     });
 
     context.deviceSize = detectSize();
@@ -49,7 +44,8 @@ export default class Container extends ComponentBase {
 
   onLanguageChange(value) {
     const localization = { isRightToLeft: value === 5 ? true : false };
-    Localization.changeLocalizationLanguage(value);
+    Localization.staticConstructor(value);
+
     this.setState({
       context: Object.assign({}, this.state.context, {
         language: value,

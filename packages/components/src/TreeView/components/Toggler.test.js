@@ -16,11 +16,7 @@ describe('TreeView:Toggler', () => {
   });
 
   it('should render empty', () => {
-    const wrapper = shallow((
-      <Toggler
-        context={context}
-        rowHeight={10} />
-    ));
+    const wrapper = shallow(<Toggler context={context} rowHeight={10} />);
     assert.strictEqual(wrapper.type(), 'a');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -29,7 +25,7 @@ describe('TreeView:Toggler', () => {
   });
 
   it('should render empty when no child', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <Toggler
         node={{
           state: {
@@ -37,8 +33,9 @@ describe('TreeView:Toggler', () => {
           },
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), 'a');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -47,7 +44,7 @@ describe('TreeView:Toggler', () => {
   });
 
   it('should render expanded', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <Toggler
         node={{
           state: {
@@ -56,8 +53,9 @@ describe('TreeView:Toggler', () => {
           children: ['test-data'],
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), 'a');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -66,7 +64,7 @@ describe('TreeView:Toggler', () => {
   });
 
   it('should render collapsed', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <Toggler
         node={{
           state: {
@@ -75,8 +73,9 @@ describe('TreeView:Toggler', () => {
           children: ['test-data'],
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), 'a');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -85,7 +84,7 @@ describe('TreeView:Toggler', () => {
   });
 
   it('should render empty when undefined', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <Toggler
         node={{
           state: {
@@ -94,8 +93,9 @@ describe('TreeView:Toggler', () => {
           children: ['test-data'],
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), 'a');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -106,12 +106,7 @@ describe('TreeView:Toggler', () => {
   it('should render RTL', () => {
     const newContext = Object.assign({}, context);
     newContext.localization = { isRightToLeft: true };
-    const wrapper = shallow((
-      <Toggler
-        context={newContext}
-        node={sampleData[0]}
-        rowHeight={10} />
-    ));
+    const wrapper = shallow(<Toggler context={newContext} node={sampleData[0]} rowHeight={10} />);
     assert.strictEqual(wrapper.type(), 'a');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -119,7 +114,7 @@ describe('TreeView:Toggler', () => {
   });
 
   it('should handle click', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <Toggler
         node={{
           state: {
@@ -128,8 +123,9 @@ describe('TreeView:Toggler', () => {
           children: ['test-data'],
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     if (getTestRunner() !== 'karma') {
       const updateSpy = spy(NodeHelper, 'updateNode');
       wrapper.simulate('click');
@@ -141,7 +137,7 @@ describe('TreeView:Toggler', () => {
 
   it('should fire onClick', () => {
     const onChange = spy();
-    const wrapper = shallow((
+    const wrapper = shallow(
       <Toggler
         onChange={onChange}
         node={{
@@ -151,8 +147,9 @@ describe('TreeView:Toggler', () => {
           children: ['test-data'],
         }}
         context={context}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     if (getTestRunner() !== 'karma') {
       const updateSpy = spy(NodeHelper, 'updateNode');
       wrapper.simulate('click');

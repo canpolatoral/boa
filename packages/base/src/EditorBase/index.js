@@ -89,5 +89,7 @@ export default class EditorBase extends ComponentBase {
   }
 
   // eslint-disable-next-line
-  render() { return; }
+  render() {
+    return;
+  }
 }

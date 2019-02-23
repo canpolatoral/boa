@@ -9,7 +9,7 @@ export default class PropsTable extends React.Component {
     doc: PropTypes.any,
   };
 
-  prepareData = (doc) => {
+  prepareData = doc => {
     let docString = '## Props';
 
     if (doc.composes && doc.composes.length > 0) {
@@ -21,7 +21,7 @@ export default class PropsTable extends React.Component {
       docString = `${docString + composes.join(', ')}\n`;
     }
 
-    const propTable = (propMetaData) => {
+    const propTable = propMetaData => {
       let docTable = '';
       docTable = `${docTable}\n` + '| gray |' + '\n' + '| Name | Type  |  Default | Description |';
       docTable = `${docTable}\n` + '|---|----|----|----:|';
@@ -58,7 +58,7 @@ export default class PropsTable extends React.Component {
     }
 
     return docString;
-  }
+  };
 
   render() {
     const data = this.prepareData(this.props.doc);

@@ -75,10 +75,7 @@ class FilteringContainer extends ComponentBase {
 
   render() {
     const { filterTerm } = this.state;
-    const {
-      nodes,
-      children: treeRenderer,
-    } = this.props;
+    const { nodes, children: treeRenderer } = this.props;
 
     const relevantNodes = { nodes };
 

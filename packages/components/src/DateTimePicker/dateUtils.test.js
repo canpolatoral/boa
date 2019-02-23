@@ -7,7 +7,8 @@ import {
   addSeconds,
   cloneDate,
   isEqualDateTime,
-  isEqualDate } from './dateUtils';
+  isEqualDate,
+} from './dateUtils';
 
 describe('dateUtils', () => {
   it('formatIso length', () => {

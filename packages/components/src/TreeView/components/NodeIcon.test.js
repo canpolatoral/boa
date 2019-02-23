@@ -15,12 +15,13 @@ describe('TreeView:NodeIcon', () => {
   });
 
   it('should render', () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <NodeIcon
         context={context}
         icon={<PlaylistAddCheck style={{ color: '#ff000' }} />}
-        rowHeight={10} />
-    ));
+        rowHeight={10}
+      />,
+    );
     assert.strictEqual(wrapper.type(), 'div');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -29,41 +30,42 @@ describe('TreeView:NodeIcon', () => {
   });
 
   it('should render opened', () => {
-    const wrapper = shallow((
-      <NodeIcon
-        state="opened"
-        context={context}
-        rowHeight={10} />
-    ));
-    assert.strictEqual(wrapper.childAt(0).childAt(0).type(), FolderOpen);
+    const wrapper = shallow(<NodeIcon state="opened" context={context} rowHeight={10} />);
+    assert.strictEqual(
+      wrapper
+        .childAt(0)
+        .childAt(0)
+        .type(),
+      FolderOpen,
+    );
   });
 
   it('should render closed', () => {
-    const wrapper = shallow((
-      <NodeIcon
-        state="closed"
-        context={context}
-        rowHeight={10} />
-    ));
-    assert.strictEqual(wrapper.childAt(0).childAt(0).type(), FolderSpecial);
+    const wrapper = shallow(<NodeIcon state="closed" context={context} rowHeight={10} />);
+    assert.strictEqual(
+      wrapper
+        .childAt(0)
+        .childAt(0)
+        .type(),
+      FolderSpecial,
+    );
   });
 
   it('should render default', () => {
-    const wrapper = shallow((
-      <NodeIcon
-        context={context}
-        rowHeight={10} />
-    ));
-    assert.strictEqual(wrapper.childAt(0).childAt(0).type(), FolderSpecial);
+    const wrapper = shallow(<NodeIcon context={context} rowHeight={10} />);
+    assert.strictEqual(
+      wrapper
+        .childAt(0)
+        .childAt(0)
+        .type(),
+      FolderSpecial,
+    );
   });
 
   it('should render dynamicIcon', () => {
-    const wrapper = shallow((
-      <NodeIcon
-        context={context}
-        icon={{ dynamicIcon: 'Home' }}
-        rowHeight={10} />
-    ));
+    const wrapper = shallow(
+      <NodeIcon context={context} icon={{ dynamicIcon: 'Home' }} rowHeight={10} />,
+    );
     assert.strictEqual(wrapper.type(), 'div');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');
@@ -73,12 +75,9 @@ describe('TreeView:NodeIcon', () => {
   it('should render RTL', () => {
     const newContext = Object.assign({}, context);
     newContext.localization = { isRightToLeft: true };
-    const wrapper = shallow((
-      <NodeIcon
-        context={newContext}
-        icon={{ dynamicIcon: 'Home' }}
-        rowHeight={10} />
-    ));
+    const wrapper = shallow(
+      <NodeIcon context={newContext} icon={{ dynamicIcon: 'Home' }} rowHeight={10} />,
+    );
     assert.strictEqual(wrapper.type(), 'div');
     assert.strictEqual(wrapper.props().style.height, 10);
     assert.strictEqual(wrapper.props().style.lineHeight, '10px');

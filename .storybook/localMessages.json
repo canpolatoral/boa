@@ -1,0 +1,44 @@
+{
+    "BOA": [
+      {
+        "PropertyName": "Ok",
+        "Description": "Ok",
+        "LanguageId": 2 
+      },
+      {
+        "PropertyName": "Cancel",
+        "Description": "Cancel",
+        "LanguageId": 2 
+      },
+      {
+        "PropertyName": "Hour",
+        "Description": "Hour",
+        "LanguageId": 2 
+      },
+      {
+        "PropertyName": "Minute",
+        "Description": "Minute",
+        "LanguageId": 2 
+      },
+      {
+        "PropertyName": "Second",
+        "Description": "Second",
+        "LanguageId": 2 
+      },
+      {
+        "PropertyName": "Today",
+        "Description": "Today",
+        "LanguageId": 2 
+      },
+      {
+        "PropertyName": "Yes",
+        "Description": "Yes",
+        "LanguageId": 2 
+      },
+      {
+        "PropertyName": "No",
+        "Description": "No",
+        "LanguageId": 2 
+      }
+    ]
+  }

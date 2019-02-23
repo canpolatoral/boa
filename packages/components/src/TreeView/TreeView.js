@@ -324,8 +324,7 @@ class TreeView extends ComponentBase {
     };
 
     // eslint-disable-next-line max-len
-    mainDiv.boxShadow =
-      '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)';
+    mainDiv.boxShadow = '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)';
     const width = typeof this.props.width === 'string' ? this.props.width : `${this.props.width}px`;
 
     const startAdornmentStyle = {

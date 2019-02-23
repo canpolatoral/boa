@@ -139,7 +139,5 @@ export default class ComponentBase extends Component {
   }
 
   // eslint-disable-next-line
-  render() {
-    return;
-  }
+  render() { return; }
 }

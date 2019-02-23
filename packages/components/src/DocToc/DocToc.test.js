@@ -44,7 +44,7 @@ describe('<DocToc />', () => {
         ],
       },
     ];
-    const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
+    const wrapper = shallow(<DocToc context={context} header="header" content={content} />).dive();
     const ul = wrapper.childAt(0);
     expect(ul.type()).equals('ul');
     const header = ul.childAt(0);
@@ -59,7 +59,7 @@ describe('<DocToc />', () => {
 
   it('should render empty content', () => {
     const content = [];
-    const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
+    const wrapper = shallow(<DocToc context={context} header="header" content={content} />).dive();
     const ul = wrapper.childAt(0);
     expect(ul.type()).equals('ul');
     const header = ul.childAt(0);
@@ -164,7 +164,7 @@ describe('<DocToc />', () => {
         ],
       },
     ];
-    const wrapper = shallow(<DocToc context={context} header="header" content={content} />);
+    const wrapper = shallow(<DocToc context={context} header="header" content={content} />).dive();
     wrapper.setProps({ content: [] });
     const ul = wrapper.childAt(0);
     expect(ul.type()).equals('ul');

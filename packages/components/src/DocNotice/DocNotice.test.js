@@ -21,7 +21,8 @@ describe('<DocNotice />', () => {
   it('should render info', () => {
     const wrapper = shallow(
       <DocNotice context={context} content="info" header="info" type="info" />,
-    );
+    ).dive();
+
     expect(
       wrapper
         .find(AppProvider)
@@ -35,7 +36,7 @@ describe('<DocNotice />', () => {
   it('should render warning', () => {
     const wrapper = shallow(
       <DocNotice context={context} content="warning" header="warning" type="warning" />,
-    );
+    ).dive();
     expect(
       wrapper
         .find(AppProvider)
@@ -49,7 +50,7 @@ describe('<DocNotice />', () => {
   it('should render error', () => {
     const wrapper = shallow(
       <DocNotice context={context} content="error" header="error" type="error" />,
-    );
+    ).dive();
     expect(
       wrapper
         .find(AppProvider)
@@ -61,7 +62,8 @@ describe('<DocNotice />', () => {
   });
 
   it('should render tip', () => {
-    const wrapper = shallow(<DocNotice context={context} content="tip" header="tip" type="tip" />);
+    const wrapper = shallow(<DocNotice context={context} content="tip" header="tip" type="tip" />)
+      .dive();
     expect(
       wrapper
         .find(AppProvider)
@@ -77,7 +79,7 @@ describe('<DocNotice />', () => {
   });
 
   it('should render without header', () => {
-    const wrapper = shallow(<DocNotice context={context} content="info" type="info" />);
+    const wrapper = shallow(<DocNotice context={context} content="info" type="info" />).dive();
     expect(
       wrapper
         .find(AppProvider)

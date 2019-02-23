@@ -178,22 +178,14 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": "Max value for numeric field.",
-			"defaultValue": {
-				"value": "Number.MAX_VALUE",
-				"computed": true
-			}
+			"description": "Max value for numeric field."
 		},
 		"minValue": {
 			"type": {
 				"name": "number"
 			},
 			"required": false,
-			"description": "Min value for numeric field.",
-			"defaultValue": {
-				"value": "Number.NEGATIVE_INFINITY",
-				"computed": true
-			}
+			"description": "Min value for numeric field."
 		},
 		"step": {
 			"type": {
@@ -257,7 +249,7 @@
 		}
 	},
 	"composes": [
-		"@kuveytturk/boa-components/Input"
+		"../Input"
 	],
 	"composeProps": {
 		"packages/components/src/Input/Input.js": {
@@ -646,21 +638,13 @@
 							"computed": true
 						},
 						{
-							"value": "ComponentSize['1']",
-							"computed": true
-						},
-						{
-							"value": "ComponentSize['2']",
-							"computed": true
-						},
-						{
-							"value": "ComponentSize['3']",
+							"value": "ComponentSize.XSMALL",
 							"computed": true
 						}
 					]
 				},
 				"required": false,
-				"description": "Defines the size of the component. The ComponentSize constant exported from enums.",
+				"description": "Defines the size of the component. The ComponentSize constant exported from enums.\n@ignore",
 				"defaultValue": {
 					"value": "ComponentSize.LARGE",
 					"computed": true
@@ -696,7 +680,7 @@
 					"name": "bool"
 				},
 				"required": false,
-				"description": "As described in componentSize prop, if any components take part in the new line\non a card we're using this prop.",
+				"description": "As described in componentSize prop, if any components take part in the new line\non a card we're using this prop.\n@ignore",
 				"defaultValue": {
 					"value": false,
 					"computed": false
@@ -707,14 +691,14 @@
 					"name": "string"
 				},
 				"required": false,
-				"description": "The snapKey property is used to manage snapshots of the child components."
+				"description": "The snapKey property is used to manage snapshots of the child components.\n@ignore"
 			},
 			"snapshot": {
 				"type": {
 					"name": "object"
 				},
 				"required": false,
-				"description": "In our SPA, we want to keep the state of each component when a page will unmount.\nAnd the same page will mount again, the component mounts with snapshot prop and\nit should get the previous state."
+				"description": "In our SPA, we want to keep the state of each component when a page will unmount.\nAnd the same page will mount again, the component mounts with snapshot prop and\nit should get the previous state.\n@ignore"
 			},
 			"style": {
 				"type": {

@@ -129,7 +129,7 @@ class DialogHelperFixture extends ComponentBase {
       const content = (
         <Button
           context={this.props.context}
-          type="raised"
+          type="contained"
           text="Open Dialog"
           onClick={() =>
             DialogHelper.show(
@@ -187,7 +187,7 @@ class DialogHelperFixture extends ComponentBase {
             <Button
               fullWidth
               context={this.props.context}
-              variant="raised"
+              variant="contained"
               colorType="primary"
               text={'Show'}
               onClick={() => this.onClick('warning')}
@@ -214,7 +214,7 @@ class DialogHelperFixture extends ComponentBase {
             <Button
               fullWidth
               context={this.props.context}
-              variant="raised"
+              variant="contained"
               colorType="primary"
               text={'Show'}
               onClick={() => this.onClick('success')}
@@ -241,7 +241,7 @@ class DialogHelperFixture extends ComponentBase {
             <Button
               fullWidth
               context={this.props.context}
-              variant="raised"
+              variant="contained"
               colorType="primary"
               text={'Show'}
               onClick={() => this.onClick('object')}
@@ -268,7 +268,7 @@ class DialogHelperFixture extends ComponentBase {
             <Button
               fullWidth
               context={this.props.context}
-              variant="raised"
+              variant="contained"
               colorType="primary"
               text={'Show'}
               onClick={() => this.onClick('dialog')}

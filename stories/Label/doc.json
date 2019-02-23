@@ -1,5 +1,5 @@
 {
-	"description": "Label component",
+	"description": "This component allows you fit label contents to the specified width by changing the font size.",
 	"displayName": "Label",
 	"methods": [
 		{

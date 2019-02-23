@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
-import { ComponentBase } from '@kuveytturk/boa-base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import styles from './styles';
 
 const editorTypes = [
@@ -19,6 +19,7 @@ const editorTypes = [
  * This component highlights the codes.
  * It provides different color themes.
  * */
+@ComponentComposer
 class DocCode extends ComponentBase {
   static propTypes = {
     /**

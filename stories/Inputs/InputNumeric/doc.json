@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "Text fields let users enter and edit numeric inputs.",
 	"displayName": "InputNumeric",
 	"methods": [
 		{
@@ -101,6 +101,18 @@
 		},
 		{
 			"name": "checkNumberFormatIsValid",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "value",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
+			"name": "checkNumberRangeIsValid",
 			"docblock": null,
 			"modifiers": [],
 			"params": [

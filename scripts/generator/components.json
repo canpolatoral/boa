@@ -114,5 +114,29 @@
     "composes": [
       "packages/base/src/ComponentBase/index.js"
     ]
+  },
+  {
+    "alias": "IconMenu",
+    "input": "packages/components/src/IconMenu/IconMenu.js",
+    "output": "stories/Menu/IconMenu/doc.json",
+    "composes": [
+      "packages/base/src/ComponentBase/index.js"
+    ]
+  },
+  {
+    "alias": "Menu",
+    "input": "packages/components/src/Menu/Menu.js",
+    "output": "stories/Menu/Menu/doc.json",
+    "composes": [
+      "packages/base/src/ComponentBase/index.js"
+    ]
+  },
+  {
+    "alias": "Toggle",
+    "input": "packages/components/src/Toggle/Toggle.js",
+    "output": "stories/Toggle/doc.json",
+    "composes": [
+      "packages/base/src/ComponentBase/index.js"
+    ]
   }
 ]

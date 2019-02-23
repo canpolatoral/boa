@@ -4,7 +4,7 @@ import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import parseFontSize from './parseFontSize';
 
 /**
- * Label component
+ * This component allows you fit label contents to the specified width by changing the font size.
  */
 @ComponentComposer
 class Label extends ComponentBase {

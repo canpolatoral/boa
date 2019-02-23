@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "Menus allow you to take an action by selecting from a list revealed upon opening a temporary, new sheet of material.",
 	"displayName": "Menu",
 	"methods": [
 		{
@@ -28,45 +28,12 @@
 		}
 	],
 	"props": {
-		"autoWidth": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "If true, the width of the menu will be set automatically\naccording to the widths of its children,\nusing proper keyline increments (64px for desktop,\n56px otherwise).",
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			}
-		},
 		"classes": {
 			"type": {
 				"name": "object"
 			},
-			"required": true,
+			"required": false,
 			"description": "@ignore"
-		},
-		"disableAutoFocus": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "If true, the menu will not be auto-focused.",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
-		},
-		"initiallyKeyboardFocused": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "If true, the menu will be keyboard-focused initially.",
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			}
 		},
 		"isMenuItemList": {
 			"type": {
@@ -90,24 +57,6 @@
 				"computed": false
 			}
 		},
-		"listStyle": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": "If true, `value` must be an array and the menu will support\nmultiple selections."
-		},
-		"maxHeight": {
-			"type": {
-				"name": "number"
-			},
-			"required": false,
-			"description": "The maximum height of the menu in pixels. If specified,\nthe menu will be scrollable if it is taller than the provided\nheight.",
-			"defaultValue": {
-				"value": null,
-				"computed": false
-			}
-		},
 		"multiple": {
 			"type": {
 				"name": "bool"
@@ -126,20 +75,6 @@
 			"required": false,
 			"description": "Callback function fired when a menu item with `value` not\nequal to the current `value` of the menu is touch-tapped.\n\n@param {object} event TouchTap event targeting the menu item.\n@param {any}  value If `multiple` is true, the menu's `value`\narray with either the menu item's `value` added (if\nit wasn't already selected) or omitted (if it was already selected).\nOtherwise, the `value` of the menu item."
 		},
-		"onEscKeyDown": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": "Callback function fired when the menu is focused and the *Esc* key\nis pressed.\n\n@param {object} event `keydown` event targeting the menu."
-		},
-		"onItemTouchTap": {
-			"type": {
-				"name": "func"
-			},
-			"required": false,
-			"description": "/**\nCallback function fired when a menu item is touch-tapped.\n\n@param {object} event TouchTap event targeting the menu item.\n@param {object} menuItem The menu item.\n@param {number} index The index of the menu item."
-		},
 		"parentMenuItem": {
 			"type": {
 				"name": "object"
@@ -157,13 +92,6 @@
 				"value": "0px 24px 0px 24px",
 				"computed": false
 			}
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": "Override the inline-styles of the underlying `List` element."
 		},
 		"value": {
 			"type": {
@@ -190,5 +118,113 @@
 	},
 	"composes": [
 		"@kuveytturk/boa-base"
-	]
+	],
+	"composeProps": {
+		"packages/base/src/ComponentBase/index.js": {
+			"componentSize": {
+				"type": {
+					"name": "enum",
+					"value": [
+						{
+							"value": "ComponentSize.LARGE",
+							"computed": true
+						},
+						{
+							"value": "ComponentSize.MEDIUM",
+							"computed": true
+						},
+						{
+							"value": "ComponentSize.SMALL",
+							"computed": true
+						},
+						{
+							"value": "ComponentSize.XSMALL",
+							"computed": true
+						}
+					]
+				},
+				"required": false,
+				"description": "Defines the size of the component. The ComponentSize constant exported from enums.\n@ignore",
+				"defaultValue": {
+					"value": "ComponentSize.LARGE",
+					"computed": true
+				}
+			},
+			"context": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "Defines application requirements such as localization, theme, platform."
+			},
+			"disabled": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "If true, all of the component functionality will be disabled.",
+				"defaultValue": {
+					"value": false,
+					"computed": false
+				}
+			},
+			"id": {
+				"type": {
+					"name": "string"
+				},
+				"required": false,
+				"description": "All components should be have id prop."
+			},
+			"newLine": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "As described in componentSize prop, if any components take part in the new line\non a card we're using this prop.\n@ignore",
+				"defaultValue": {
+					"value": false,
+					"computed": false
+				}
+			},
+			"snapKey": {
+				"type": {
+					"name": "string"
+				},
+				"required": false,
+				"description": "The snapKey property is used to manage snapshots of the child components.\n@ignore"
+			},
+			"snapshot": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "In our SPA, we want to keep the state of each component when a page will unmount.\nAnd the same page will mount again, the component mounts with snapshot prop and\nit should get the previous state.\n@ignore"
+			},
+			"style": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "All components should be have style prop."
+			},
+			"valueConstraint": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "The valueConstraint is used to some validation on components like limit, required etc."
+			},
+			"visible": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "In ComponentComposer, we change the visibility of the component with this prop.",
+				"defaultValue": {
+					"value": true,
+					"computed": false
+				}
+			}
+		}
+	}
 }

@@ -311,6 +311,17 @@
 				"computed": false
 			}
 		},
+		"fullWidth": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `false`, the field receives the property width 100.",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
 		"hintTextDate": {
 			"type": {
 				"name": "string"
@@ -502,13 +513,6 @@
 			},
 			"required": false,
 			"description": "Selected date. Prop could be a Date object or UTC formatted string."
-		},
-		"fullWidth": {
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			},
-			"required": false
 		}
 	},
 	"composes": [

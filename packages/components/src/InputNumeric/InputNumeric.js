@@ -6,6 +6,9 @@ import { Input } from '../Input';
 import { Localization } from '@kuveytturk/boa-utils';
 import KeyboardEnum from './KeyboardEnum';
 
+/**
+ * Text fields let users enter and edit numeric inputs.
+ */
 @ComponentComposer
 class InputNumeric extends EditorBase {
   static propTypes = {

@@ -85,6 +85,10 @@ class DateTimePicker extends ComponentBase {
      */
     format: PropTypes.string.isRequired,
     /**
+     * If `false`, the field receives the property width 100.
+     */
+    fullWidth: PropTypes.bool,
+    /**
      * Hint text for date input.
      */
     hintTextDate: PropTypes.string,

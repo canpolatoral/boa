@@ -30,6 +30,9 @@ const styles = theme => ({
   },
 });
 
+/**
+ * A toggle switch is used as an on/off control.
+ */
 @ComponentComposer
 @withStyles(styles)
 class Toggle extends ComponentBase {
@@ -186,8 +189,8 @@ class Toggle extends ComponentBase {
           ? 0
           : 1
         : this.props.labelPosition === 'right'
-        ? 1
-        : 0,
+          ? 1
+          : 0,
     });
 
     return (

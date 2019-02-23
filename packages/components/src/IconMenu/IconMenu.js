@@ -18,6 +18,11 @@ const styles = theme => ({
   icon: {},
 });
 /* eslint-enable no-unused-vars */
+
+/**
+ * Icon Menus are menus that open from icons.
+ * They can give options related to the icon and use a minimal space.
+ */
 @ComponentComposer
 @withStyles(styles)
 class IconMenu extends ComponentBase {

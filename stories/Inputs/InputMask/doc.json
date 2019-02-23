@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "Text fields let users enter and edit text with specified mask.",
 	"displayName": "InputMask",
 	"methods": [
 		{

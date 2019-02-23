@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hljs from 'highlight.js';
-import { ComponentBase } from '@kuveytturk/boa-base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import marked from './marked';
 import CodeStyles from './styles';
 
@@ -20,6 +20,7 @@ const editorTypes = [
 /**
  * This component renders the markdown documents. It supports all markdown features.
  */
+@ComponentComposer
 class DocViewer extends ComponentBase {
   static propTypes = {
     /**

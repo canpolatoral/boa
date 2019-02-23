@@ -1,5 +1,5 @@
 {
-	"description": "",
+	"description": "Text fields let users enter, edit text and set action buttons on left and right sides of input.",
 	"displayName": "InputAction",
 	"methods": [
 		{

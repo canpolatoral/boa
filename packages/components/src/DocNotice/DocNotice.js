@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, AppProvider } from '@kuveytturk/boa-base';
+import { AppProvider, ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import { Icon } from '../Icon';
 
 /**
  * This component renders the messages with several types:
  * 'Tip, Info, Warning, Error'
  */
+@ComponentComposer
 class DocNotice extends ComponentBase {
   static propTypes = {
     /**

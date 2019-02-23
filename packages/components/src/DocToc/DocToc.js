@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase } from '@kuveytturk/boa-base';
+import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 
 const getMinLevel = content => {
   let level = 0;
@@ -18,6 +18,7 @@ const getMinLevel = content => {
  * This component renders a table of content tree.
  * It supports `[{id, level, content, [children]}]` formatted JSONs.
  */
+@ComponentComposer
 class DocToc extends ComponentBase {
   static propTypes = {
     /**

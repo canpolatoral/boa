@@ -5,6 +5,9 @@ import { EditorBase, ComponentComposer } from '@kuveytturk/boa-base';
 import { Input } from '../Input';
 import detectCopyPaste from './detectCopyPaste';
 
+/**
+ * Text fields let users enter and edit text with specified mask.
+ */
 @ComponentComposer
 class InputMask extends EditorBase {
   static propTypes = {

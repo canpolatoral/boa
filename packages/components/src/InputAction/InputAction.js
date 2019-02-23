@@ -6,6 +6,9 @@ import { IconButton } from '../IconButton';
 import { Input } from '../Input';
 import { InputNumeric } from '../InputNumeric';
 
+/**
+ * Text fields let users enter, edit text and set action buttons on left and right sides of input.
+ */
 @ComponentComposer
 class InputAction extends ComponentBase {
   static propTypes = {
@@ -171,13 +174,13 @@ class InputAction extends ComponentBase {
     return Object.assign(
       isRtl
         ? {
-            paddingRight: paddingLeft,
-            paddingLeft: paddingRight,
-          }
+          paddingRight: paddingLeft,
+          paddingLeft: paddingRight,
+        }
         : {
-            paddingLeft,
-            paddingRight,
-          },
+          paddingLeft,
+          paddingRight,
+        },
       this.props.floatingLabelStyle,
     );
   }

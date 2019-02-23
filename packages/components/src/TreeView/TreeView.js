@@ -106,22 +106,6 @@ class TreeView extends ComponentBase {
     canCheckChildsByParent: true,
   };
 
-  searchActionButton = {
-    dynamicIcon: 'Search',
-    iconProperties: { color: 'primary' },
-    onClick: () => {
-      this.filterTree();
-    },
-  };
-
-  clearActionButton = {
-    dynamicIcon: 'Clear',
-    iconProperties: { color: this.props.context.theme.boaPalette.pri500 },
-    onClick: () => {
-      this.filterTree(null);
-    },
-  };
-
   state = {
     disabled: this.props.disabled,
     nodes: this.manageNodes(this.props.data, this.props.expandAll),
@@ -134,6 +118,7 @@ class TreeView extends ComponentBase {
   }
 
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore else */
     if (nextProps.data !== this.props.data || nextProps.expandAll !== this.props.expandAll) {
       this.setState({
         nodes: this.manageNodes(nextProps.data, nextProps.expandAll),

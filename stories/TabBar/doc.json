@@ -501,5 +501,6 @@
 	},
 	"composes": [
 		"@kuveytturk/boa-base"
-	]
+	],
+	"composeProps": {}
 }

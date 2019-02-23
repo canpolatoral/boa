@@ -96,6 +96,10 @@ export function getDefaultValue(prop) {
     if (typeof prop.defaultValue.value === 'string' && prop.defaultValue.value.includes('{')) {
       return null;
     }
+    if (prop.defaultValue.computed && !prop.description.includes('@ignore')) {
+      // eslint-disable-next-line no-eval
+      return eval(prop.defaultValue.value);
+    }
     return prop.defaultValue.value;
   }
   return null;

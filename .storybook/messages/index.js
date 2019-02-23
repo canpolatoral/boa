@@ -6,7 +6,7 @@ function getMessage() {
 
   for (var messageGroup in MessagesEN) {
     messages[messageGroup] = MessagesEN[messageGroup];
-    cmessages[messageGroup] = messages[messageGroup].concat(MessagesTR[messageGroup]);
+    messages[messageGroup] = messages[messageGroup].concat(MessagesTR[messageGroup]);
   }
 
   return messages;

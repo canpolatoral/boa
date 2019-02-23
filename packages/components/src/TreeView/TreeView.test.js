@@ -3,7 +3,10 @@ import { stub, useFakeTimers } from 'sinon';
 import { assert } from 'chai';
 import { InputAction } from '@kuveytturk/boa-components/InputAction';
 import TreeView from './TreeView';
-// import FilteringContainer from './FilteringContainer';
+// import Tree from 'react-virtualized-tree';
+// import TreeNode from './components/TreeNode';
+import TreeRadioBox from './components/TreeRadioBox';
+import TreeCheckBox from './components/TreeCheckBox';
 import { context, createMount } from '@kuveytturk/boa-test/utils';
 import sampleData from './data/sampleData';
 
@@ -22,6 +25,12 @@ describe('<TreeView />', () => {
 
   it('should mount', () => {
     mount(<TreeView data={sampleData} context={context} />);
+  });
+
+  it('should mount RTL', () => {
+    const newContext = Object.assign({}, context);
+    newContext.localization = { isRightToLeft: true };
+    mount(<TreeView data={sampleData} context={newContext} />);
   });
 
   describe('FilteringContainer', () => {
@@ -101,6 +110,169 @@ describe('<TreeView />', () => {
       const button = wrapper.find('button').last();
       button.simulate('click');
       assert.strictEqual(wrapper.find('p').text(), '1 BOA.TreeviewItemSelected');
+    });
+  });
+
+  describe('generateTreeNode', () => {
+    describe('selects', () => {
+      it('should render TreeCheckBox', () => {
+        const wrapper = mount(<TreeView data={sampleData} context={context} />);
+        const node = {
+          state: {
+            indeterminate: true,
+          },
+        };
+        const treeNode = wrapper.instance().generateTreeNode(node, {});
+        assert.strictEqual(treeNode.props.children[1].type, TreeCheckBox);
+      });
+
+      it('should render TreeRadioBox', () => {
+        const wrapper = mount(<TreeView data={sampleData} context={context} />);
+        wrapper.setProps({ isCheckable: true, isMultiSelect: false });
+        const node = {
+          state: {
+            indeterminate: true,
+          },
+        };
+        const treeNode = wrapper.instance().generateTreeNode(node, {});
+        assert.strictEqual(treeNode.props.children[1].type, TreeRadioBox);
+      });
+
+      it('should render without select', () => {
+        const wrapper = mount(<TreeView data={sampleData} context={context} />);
+        wrapper.setProps({ isCheckable: false, isMultiSelect: false });
+        const node = {
+          state: {
+            indeterminate: true,
+          },
+        };
+        const treeNode = wrapper.instance().generateTreeNode(node, {});
+        assert.strictEqual(treeNode.props.children[1]); // undefined
+      });
+
+      it('should render TreeCheckBox at leaf', () => {
+        const wrapper = mount(<TreeView data={sampleData} context={context} />);
+        wrapper.setProps({ isLeafCheckable: true });
+        const node = {
+          state: {
+            indeterminate: true,
+          },
+        };
+        const treeNode = wrapper.instance().generateTreeNode(node, {});
+        assert.strictEqual(treeNode.props.children[1].type, TreeCheckBox);
+      });
+    });
+
+    describe('icons', () => {
+      it('should render collapsed', () => {
+        const wrapper = mount(<TreeView data={sampleData} context={context} />);
+        const node = {
+          state: {
+            open: false,
+          },
+          children: [{ state: { open: false, foo: 'foo' } }],
+        };
+        const treeNode = wrapper.instance().generateTreeNode(node, {});
+        assert.strictEqual(treeNode.props.children[2].props.state, 'closed');
+      });
+
+      it('should render expanded', () => {
+        const wrapper = mount(<TreeView data={sampleData} context={context} />);
+        const node = {
+          state: {
+            open: true,
+          },
+          children: [{ state: { open: true, foo: 'foo' } }],
+        };
+        const treeNode = wrapper.instance().generateTreeNode(node, {});
+        assert.strictEqual(treeNode.props.children[2].props.state, 'opened');
+      });
+    });
+
+    it('should render node detail', () => {
+      const wrapper = mount(<TreeView data={sampleData} context={context} />);
+      const node = {
+        state: {
+          indeterminate: true,
+        },
+        detail: 'test',
+      };
+      const treeNode = wrapper.instance().generateTreeNode(node, {});
+      const span = treeNode.props.children[3];
+      assert.strictEqual(span.props.children[1].props.children[2].props.children, 'test');
+    });
+  });
+
+  describe('style', () => {
+    it('should return correct style', () => {
+      const wrapper = mount(<TreeView context={context} />);
+      const style = wrapper.instance().getStyle();
+      assert.strictEqual(style.mainDiv.outline, 'none');
+      assert.strictEqual(style.mainDiv.background, 'white');
+      // eslint-disable-next-line max-len
+      const shadow = '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)';
+      assert.strictEqual(style.mainDiv.boxShadow, shadow);
+
+      const startAdornmentStyle = {
+        paddingLeft: '24px',
+        marginLeft: '0',
+        paddingBottom: '12px',
+        marginTop: '6px',
+      };
+      assert.deepEqual(style.startAdornmentStyle, startAdornmentStyle);
+
+      const inputDiv = {
+        marginTop: '0px',
+        marginBottom: '18px',
+        height: '30px',
+      };
+      assert.deepEqual(style.inputDiv, inputDiv);
+    });
+
+    it('should assign style', () => {
+      const wrapper = mount(<TreeView style={{ margin: 10 }} context={context} />);
+      const style = wrapper.instance().getStyle();
+      assert.strictEqual(style.mainDiv.margin, 10);
+    });
+
+    it('should assign width', () => {
+      const wrapper = mount(<TreeView width="60%" context={context} />);
+      let style = wrapper.instance().getStyle();
+      assert.strictEqual(style.width, '60%');
+      wrapper.setProps({ width: 70 });
+      style = wrapper.instance().getStyle();
+      assert.strictEqual(style.width, '70px');
+    });
+  });
+
+  it('should save snapshot', () => {
+    const wrapper = mount(<TreeView data={sampleData} context={context} />);
+    const snapshot = wrapper.instance().getSnapshot();
+    const first = Object.assign({}, wrapper.instance());
+    wrapper.setProps({ data: [] });
+    wrapper.update();
+    assert.strictEqual(wrapper.state().nodes.length, 0);
+    wrapper.instance().setSnapshot(snapshot);
+    wrapper.update();
+    const second = Object.assign({}, wrapper.instance());
+    assert.strictEqual(first.state.nodes, second.state.nodes);
+  });
+
+  it('should expand all', () => {
+    const wrapper = mount(<TreeView data={sampleData} context={context} />);
+    wrapper.setProps({ expandAll: true });
+    const nodes = wrapper.state().nodes;
+    nodes.forEach((item) => {
+      assert.strictEqual(item.isExpanded, true);
+      assert.strictEqual(item.state.expanded, true);
+      if (item.children && item.children.length > 0) {
+        item.children.forEach((child) => {
+          assert.strictEqual(child.state.expanded, true);
+          if (child.children && child.children.lenght > 0) {
+            assert.strictEqual(child.isExpanded, true);
+          }
+        });
+      }
     });
   });
 });

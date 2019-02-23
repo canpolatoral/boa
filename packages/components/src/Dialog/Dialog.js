@@ -89,6 +89,11 @@ class Dialog extends ComponentBase {
     /**
      * Callback fired when the backdrop is clicked.
      */
+    /**
+     * Force the user to use one of the actions in the `Dialog`.
+     * Clicking outside the `Dialog` will not trigger the `onRequestClose`.
+     */
+    modal: PropTypes.bool,
     onBackdropClick: PropTypes.func,
     /**
      * Callback fired when the component requests to be closed.
@@ -133,7 +138,13 @@ class Dialog extends ComponentBase {
      * Properties applied to the `Paper` element.
      */
     PaperProps: PropTypes.object,
+    /**
+     * Determines whether the `Dialog` should be repositioned when it’s contents are updated.
+     */
     repositionOnUpdate: PropTypes.bool,
+    /**
+     * If true, dialog shows header area.
+     */
     showHeader: PropTypes.bool,
     /**
      * If true, the modal will not restore focus to previously focused element once modal is hidden.

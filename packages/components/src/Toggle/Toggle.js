@@ -109,7 +109,6 @@ class Toggle extends ComponentBase {
      */
     ...ComponentBase.defaultProps,
     defaultToggled: false,
-    disabled: false,
     toggled: false,
     labelPosition: 'left',
   };

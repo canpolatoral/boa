@@ -150,6 +150,17 @@
 				"computed": false
 			}
 		},
+		"fullWidth": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If true, the field receives the property width 100%. Default is false.",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
 		"inputType": {
 			"type": {
 				"name": "string"
@@ -169,6 +180,39 @@
 			"description": "mask of input element. If type selected custom, you can define your own mask.",
 			"defaultValue": {
 				"value": "aa nnn",
+				"computed": false
+			}
+		},
+		"maxLength": {
+			"type": {
+				"name": "number"
+			},
+			"required": false,
+			"description": "Limit of the input text’s character length.",
+			"defaultValue": {
+				"value": -1,
+				"computed": false
+			}
+		},
+		"noWrap": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If true, the text inside input does not go down line. Default is true.",
+			"defaultValue": {
+				"value": true,
+				"computed": false
+			}
+		},
+		"showCounter": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "Shows the counter label if set to true. Default is false.",
+			"defaultValue": {
+				"value": true,
 				"computed": false
 			}
 		},
@@ -205,51 +249,9 @@
 				"computed": false
 			}
 		},
-		"disabled": {
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			},
-			"required": false
-		},
-		"fullWidth": {
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			},
-			"required": false
-		},
-		"helperText": {
-			"defaultValue": {
-				"value": "",
-				"computed": false
-			},
-			"required": false
-		},
-		"maxLength": {
-			"defaultValue": {
-				"value": -1,
-				"computed": false
-			},
-			"required": false
-		},
-		"noWrap": {
-			"defaultValue": {
-				"value": true,
-				"computed": false
-			},
-			"required": false
-		},
 		"value": {
 			"defaultValue": {
 				"value": "",
-				"computed": false
-			},
-			"required": false
-		},
-		"showCounter": {
-			"defaultValue": {
-				"value": true,
 				"computed": false
 			},
 			"required": false

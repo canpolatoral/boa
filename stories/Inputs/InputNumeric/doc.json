@@ -209,55 +209,6 @@
 				"value": 1,
 				"computed": false
 			}
-		},
-		"onFocus": {
-			"defaultValue": {
-				"value": null,
-				"computed": false
-			},
-			"required": false
-		},
-		"onBlur": {
-			"defaultValue": {
-				"value": null,
-				"computed": false
-			},
-			"required": false
-		},
-		"onChange": {
-			"defaultValue": {
-				"value": null,
-				"computed": false
-			},
-			"required": false
-		},
-		"hintText": {
-			"defaultValue": {
-				"value": "",
-				"computed": false
-			},
-			"required": false
-		},
-		"floatingLabelText": {
-			"defaultValue": {
-				"value": "",
-				"computed": false
-			},
-			"required": false
-		},
-		"disabled": {
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			},
-			"required": false
-		},
-		"maxLength": {
-			"defaultValue": {
-				"value": null,
-				"computed": false
-			},
-			"required": false
 		}
 	},
 	"composes": [

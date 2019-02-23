@@ -184,13 +184,6 @@
 			},
 			"required": false,
 			"description": "Indicates the value of link."
-		},
-		"disabled": {
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			},
-			"required": false
 		}
 	},
 	"composes": [

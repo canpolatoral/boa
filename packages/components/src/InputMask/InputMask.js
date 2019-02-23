@@ -20,6 +20,10 @@ class InputMask extends EditorBase {
      */
     countryCode: PropTypes.string,
     /**
+     * If true, the field receives the property width 100%. Default is false.
+     */
+    fullWidth: PropTypes.bool,
+    /**
      * Specifies the type of input to display
      * such as "password" or "text".
      */
@@ -28,6 +32,18 @@ class InputMask extends EditorBase {
      * mask of input element. If type selected custom, you can define your own mask.
      */
     mask: PropTypes.string.isRequired,
+    /**
+     * Limit of the input text’s character length.
+     */
+    maxLength: PropTypes.number,
+    /**
+     * If true, the text inside input does not go down line. Default is true.
+     */
+    noWrap: PropTypes.bool,
+    /**
+     * Shows the counter label if set to true. Default is false.
+     */
+    showCounter: PropTypes.bool,
     /**
      * Specifies the type of mask to display
      * such as "CreditCard" or "PhoneNumber" etc.
@@ -39,9 +55,7 @@ class InputMask extends EditorBase {
   static defaultProps = {
     ...Input.defaultProps,
     countryCode: 'TR',
-    disabled: false,
     fullWidth: true,
-    helperText: '',
     maxLength: -1,
     noWrap: true,
     value: '',

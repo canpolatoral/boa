@@ -31,6 +31,16 @@
         "LanguageId": 1 
       },
       {
+        "PropertyName": "Month",
+        "Description": "Ay",
+        "LanguageId": 1 
+      },      
+      {
+        "PropertyName": "Year",
+        "Description": "Yıl",
+        "LanguageId": 1
+      },
+      {
         "PropertyName": "Yes",
         "Description": "Evet",
         "LanguageId": 1 

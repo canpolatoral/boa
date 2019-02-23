@@ -29,6 +29,16 @@
         "PropertyName": "Today",
         "Description": "Today",
         "LanguageId": 2 
+      },      
+      {
+        "PropertyName": "Month",
+        "Description": "Month",
+        "LanguageId": 2 
+      },      
+      {
+        "PropertyName": "Year",
+        "Description": "Year",
+        "LanguageId": 2 
       },
       {
         "PropertyName": "Yes",

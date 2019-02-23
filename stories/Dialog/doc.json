@@ -3,25 +3,6 @@
 	"displayName": "Dialog",
 	"methods": [
 		{
-			"name": "getValue",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "setValue",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "value",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
 			"name": "setTitle",
 			"docblock": null,
 			"modifiers": [],
@@ -46,13 +27,6 @@
 			"returns": null
 		},
 		{
-			"name": "onCloseClicked",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
 			"name": "open",
 			"docblock": null,
 			"modifiers": [],
@@ -66,25 +40,6 @@
 		},
 		{
 			"name": "fireClosable",
-			"docblock": null,
-			"modifiers": [],
-			"params": [],
-			"returns": null
-		},
-		{
-			"name": "getIcon",
-			"docblock": null,
-			"modifiers": [],
-			"params": [
-				{
-					"name": "type",
-					"type": null
-				}
-			],
-			"returns": null
-		},
-		{
-			"name": "prepareDialog",
 			"docblock": null,
 			"modifiers": [],
 			"params": [],
@@ -114,7 +69,7 @@
 			"type": {
 				"name": "node"
 			},
-			"required": true,
+			"required": false,
 			"description": "Dialog children, usually the included sub-components."
 		},
 		"classes": {
@@ -176,14 +131,14 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If true, the modal will not restore focus to previously focused element once modal is hidden.\n(input bileşeninin focusunda açıyorsanız can kurtarır!)"
+			"description": "If true, the modal will not restore focus to previously focused element once modal is hidden."
 		},
 		"fullScreen": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, it will be full-screen",
+			"description": "If `true`, it will be full-screen.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -225,12 +180,23 @@
 			"required": false,
 			"description": "Determine the max width of the dialog.\nThe dialog width grows with the size of the screen, this property is useful\non the desktop where you might need some coherent different width size across your\napplication. Set to `false` to disable `maxWidth`."
 		},
+		"modal": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "Force the user to use one of the actions in the `Dialog`.\nClicking outside the `Dialog` will not trigger the `onRequestClose`.",
+			"defaultValue": {
+				"value": false,
+				"computed": false
+			}
+		},
 		"onBackdropClick": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": "Callback fired when the backdrop is clicked."
+			"description": ""
 		},
 		"onClose": {
 			"type": {
@@ -307,7 +273,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "Determines whether the `Dialog` should be repositioned when it’s contents are updated.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -318,25 +284,11 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "If true, dialog shows header area.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
 			}
-		},
-		"style": {
-			"type": {
-				"name": "object"
-			},
-			"required": false,
-			"description": ""
-		},
-		"titleBackgroundColor": {
-			"type": {
-				"name": "string"
-			},
-			"required": false,
-			"description": ""
 		},
 		"titleWithCloseButtonEnabled": {
 			"type": {
@@ -388,16 +340,117 @@
 			},
 			"required": false,
 			"description": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object."
-		},
-		"modal": {
-			"defaultValue": {
-				"value": false,
-				"computed": false
-			},
-			"required": false
 		}
 	},
 	"composes": [
 		"@kuveytturk/boa-base"
-	]
+	],
+	"composeProps": {
+		"packages/base/src/ComponentBase/index.js": {
+			"componentSize": {
+				"type": {
+					"name": "enum",
+					"value": [
+						{
+							"value": "ComponentSize.LARGE",
+							"computed": true
+						},
+						{
+							"value": "ComponentSize.MEDIUM",
+							"computed": true
+						},
+						{
+							"value": "ComponentSize.SMALL",
+							"computed": true
+						},
+						{
+							"value": "ComponentSize.XSMALL",
+							"computed": true
+						}
+					]
+				},
+				"required": false,
+				"description": "Defines the size of the component. The ComponentSize constant exported from enums.\n@ignore",
+				"defaultValue": {
+					"value": "ComponentSize.LARGE",
+					"computed": true
+				}
+			},
+			"context": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "Defines application requirements such as localization, theme, platform."
+			},
+			"disabled": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "If true, all of the component functionality will be disabled.",
+				"defaultValue": {
+					"value": false,
+					"computed": false
+				}
+			},
+			"id": {
+				"type": {
+					"name": "string"
+				},
+				"required": false,
+				"description": "All components should be have id prop."
+			},
+			"newLine": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "As described in componentSize prop, if any components take part in the new line\non a card we're using this prop.\n@ignore",
+				"defaultValue": {
+					"value": false,
+					"computed": false
+				}
+			},
+			"snapKey": {
+				"type": {
+					"name": "string"
+				},
+				"required": false,
+				"description": "The snapKey property is used to manage snapshots of the child components.\n@ignore"
+			},
+			"snapshot": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "In our SPA, we want to keep the state of each component when a page will unmount.\nAnd the same page will mount again, the component mounts with snapshot prop and\nit should get the previous state.\n@ignore"
+			},
+			"style": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "All components should be have style prop."
+			},
+			"valueConstraint": {
+				"type": {
+					"name": "object"
+				},
+				"required": false,
+				"description": "The valueConstraint is used to some validation on components like limit, required etc."
+			},
+			"visible": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "In ComponentComposer, we change the visibility of the component with this prop.",
+				"defaultValue": {
+					"value": true,
+					"computed": false
+				}
+			}
+		}
+	}
 }

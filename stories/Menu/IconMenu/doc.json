@@ -89,7 +89,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "",
+			"description": "To set origin from outside",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -142,7 +142,7 @@
 				]
 			},
 			"required": false,
-			"description": "",
+			"description": "Type of the `IconButton` to render. If ‘custom’ required customIcon button",
 			"defaultValue": {
 				"value": "vertical",
 				"computed": false
@@ -160,7 +160,7 @@
 				"name": "array"
 			},
 			"required": false,
-			"description": ""
+			"description": "Menu items with ‘text’ and ‘value’ props."
 		},
 		"menuItems": {
 			"type": {
@@ -270,7 +270,7 @@
 				}
 			},
 			"required": false,
-			"description": "",
+			"description": "Callback function fired when the IconButton element is clicked",
 			"defaultValue": {
 				"value": "{\n  vertical: 'top',\n  horizontal: 'left',\n}",
 				"computed": false

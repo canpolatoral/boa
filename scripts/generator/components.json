@@ -138,5 +138,13 @@
     "composes": [
       "packages/base/src/ComponentBase/index.js"
     ]
+  },
+  {
+    "alias": "Dialog",
+    "input": "packages/components/src/Dialog/Dialog.js",
+    "output": "stories/Dialog/doc.json",
+    "composes": [
+      "packages/base/src/ComponentBase/index.js"
+    ]
   }
 ]

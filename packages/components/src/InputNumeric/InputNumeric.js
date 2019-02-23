@@ -40,15 +40,7 @@ class InputNumeric extends EditorBase {
 
   static defaultProps = {
     ...Input.defaultProps,
-    onFocus: null,
-    onBlur: null,
-    onChange: null,
-    hintText: '',
     format: 'D',
-    // errorText: '',
-    floatingLabelText: '',
-    disabled: false,
-    maxLength: null,
     step: 1,
   };
 

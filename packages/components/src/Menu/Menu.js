@@ -45,7 +45,7 @@ class Menu extends ComponentBase {
      */
     classes: PropTypes.object,
     /**
-     *
+     * @ignore
      */
     isMenuItemList: PropTypes.bool,
     /**
@@ -73,7 +73,7 @@ class Menu extends ComponentBase {
      */
     parentMenuItem: PropTypes.object,
     /**
-     *
+     * Can be used to render primary text  padding within the menu item.
      */
     primaryTextPadding: PropTypes.any,
     /**
@@ -206,7 +206,6 @@ class Menu extends ComponentBase {
         return <MuiDivider style={{ marginBottom: 12, marginTop: 12 }} key={Math.random()} />;
       });
     } else {
-      // isMenuItemList ????
       menuItems = this.props.items.map(item => {
         if (item.props.menuItems && item.props.menuItems.length > 0) {
           return React.cloneElement(item, {

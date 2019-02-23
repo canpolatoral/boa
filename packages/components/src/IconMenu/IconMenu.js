@@ -38,29 +38,24 @@ class IconMenu extends ComponentBase {
       horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
       vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
     }),
-
-    /*
-     * to set origin from outside
+    /**
+     * To set origin from outside
      */
     animated: PropTypes.bool,
-
     /**
      * Custom icon for 'IconButton' to render.
      */
     classes: PropTypes.object,
-
     /**
      * Item list
      *
      */
     className: PropTypes.string,
-
     /**
      * Menu item list
      *
      */
     customIcon: PropTypes.object,
-
     /**
      * This is the point on the icon where the menu
      * `transformOrigin` will attach.
@@ -69,40 +64,39 @@ class IconMenu extends ComponentBase {
      * horizontal: [left, center, right].
      */
     iconStyle: PropTypes.object,
-
+    /**
+     * Type of the `IconButton` to render. If ‘custom’ required customIcon button
+     */
     iconType: PropTypes.oneOf(['vertical', 'horizontal', 'custom']).isRequired,
     /**
      * If true, the popover will apply transitions when
      * it gets added to the DOM.
      */
     isOriginSetted: PropTypes.bool,
+    /**
+     * Menu items with ‘text’ and ‘value’ props.
+     */
     items: PropTypes.array,
-
     /**
      * Override the inline-styles of the underlying icon element.
      */
     menuItems: PropTypes.array,
-
     /**
      * Override the inline-styles of the menu element.
      */
     menuStyle: PropTypes.object,
-
     /**
      * If true, the value can an be array and allow the menu to be a multi-select.
      */
     multiple: PropTypes.bool,
-
     /**
      * If true, the `IconMenu` is opened.
      */
     onChange: PropTypes.func,
-
     /**
      * Override the inline-styles of the root element.
      */
     onClick: PropTypes.func,
-
     /**
      * This is the point on the menu which will stick to the menu
      * origin.
@@ -111,7 +105,6 @@ class IconMenu extends ComponentBase {
      * horizontal: [left, center, right].
      */
     open: PropTypes.bool,
-
     /**
      * Sets the delay in milliseconds before closing the
      * menu when an item is clicked.
@@ -120,7 +113,9 @@ class IconMenu extends ComponentBase {
      */
     /* Callback function fired when the menu item is selected */
     touchTapCloseDelay: PropTypes.number,
-    /* Callback function fired when the IconButton element is clicked */
+    /**
+     * Callback function fired when the IconButton element is clicked
+     */
     transformOrigin: PropTypes.shape({
       horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
       vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,

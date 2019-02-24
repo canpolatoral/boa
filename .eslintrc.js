@@ -46,6 +46,7 @@ module.exports = {
       2,
       {
         ignoreUrls: true,
+        ignoreComments: true
       },
     ], // airbnb is allowing some edge cases
     'no-console': 'error', // airbnb is using warn

@@ -6,7 +6,7 @@ import { Input } from '../Input';
 import detectCopyPaste from './detectCopyPaste';
 
 /**
- * Text fields let users enter and edit text with specified mask.
+ * Text fields let users enter and edit text with the specified mask.
  */
 @ComponentComposer
 class InputMask extends EditorBase {
@@ -16,11 +16,11 @@ class InputMask extends EditorBase {
      */
     ...Input.propTypes,
     /**
-     * Country code for masked IBAN input elements.
+     * Country code for the masked IBAN input elements.
      */
     countryCode: PropTypes.string,
     /**
-     * If true, the field receives the property width 100%. Default is false.
+     * If true, the width property of the field is assigned 100%. Default is false.
      */
     fullWidth: PropTypes.bool,
     /**
@@ -29,7 +29,7 @@ class InputMask extends EditorBase {
      */
     inputType: PropTypes.string,
     /**
-     * mask of input element. If type selected custom, you can define your own mask.
+     * Mask of the input element. If the type is selected 'Custom', you can define your own mask.
      */
     mask: PropTypes.string.isRequired,
     /**
@@ -37,7 +37,7 @@ class InputMask extends EditorBase {
      */
     maxLength: PropTypes.number,
     /**
-     * If true, the text inside input does not go down line. Default is true.
+     * If true, the text inside the input does not go bottom line. Default is true.
      */
     noWrap: PropTypes.bool,
     /**
@@ -45,8 +45,8 @@ class InputMask extends EditorBase {
      */
     showCounter: PropTypes.bool,
     /**
-     * Specifies the type of mask to display
-     * such as "CreditCard" or "PhoneNumber" etc.
+     * Specifies type of the mask to display
+     * such as "CreditCard", "PhoneNumber", etc.
      */
     type: PropTypes.oneOf(['CreditCard', 'IBAN', 'MobilePhoneNumber', 'PhoneNumber', 'Custom'])
       .isRequired,

@@ -39,9 +39,9 @@ const styles = theme => ({
 /**
  * A CheckBox represents a button with two states, selected and unselected.
  * This component is wrapped from `@material-ui/core/Checkbox`.
- * If the label prop specified, the component renders `@material-ui/core/FormControlLabel`
+ * If the label prop is specified, the component renders `@material-ui/core/FormControlLabel`.
  * If not, it renders a `@material-ui/core/Checkbox`.
- * Also, it is able to render an error text with label if the errorText prop specified.
+ * Also, it renders an error text with a label if the errorText prop is specified.
  */
 @ComponentComposer
 @withStyles(styles)
@@ -56,7 +56,7 @@ class CheckBox extends ComponentBase {
      */
     checked: PropTypes.bool,
     /**
-     * The icon to display when the component is checked.
+     * Icon to display when the component is checked.
      */
     checkedIcon: PropTypes.node,
     /**
@@ -64,28 +64,28 @@ class CheckBox extends ComponentBase {
      */
     classes: PropTypes.object,
     /**
-     * The color of the component.
-     * It supports those theme colors that make sense for this component.
+     * Color of the component.
+     * It supports the theme colors that make sense for this component.
      */
     color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
     /**
-     * The default value of component.
+     * Default value of the component.
      */
     defaultChecked: PropTypes.bool,
     /**
-     * If `true`, the ripple effect will be disabled.
+     * If `true`, the ripple effect is disabled.
      */
     disableRipple: PropTypes.bool,
     /**
-     * Error message that inside the component.
+     * Error message of the component.
      */
     errorText: PropTypes.string,
     /**
-     * If `true`, and component has label and errorText the errorText will be visible.
+     * If `true` and the component has a label and an errorText, the errorText is visible.
      */
     errorTextVisible: PropTypes.bool,
     /**
-     * The icon to display when the component is unchecked.
+     * Icon to display when the component is unchecked.
      */
     icon: PropTypes.node,
     /**
@@ -93,7 +93,7 @@ class CheckBox extends ComponentBase {
      */
     indeterminate: PropTypes.bool,
     /**
-     * If exists, checkbox will be render with `<Label>` component
+     * If exists, checkbox renders with a `<Label>` component.
      */
     label: PropTypes.string,
     /**

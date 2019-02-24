@@ -42,7 +42,7 @@ TabScrollButton.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Which direction should the button indicate?
+   * Direction the button indicates.
    */
   direction: PropTypes.oneOf(['left', 'right']),
   /**
@@ -50,7 +50,7 @@ TabScrollButton.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * Should the button be present or just consume space.
+   * Visibility of the button.
    */
   visible: PropTypes.bool,
 };

@@ -32,52 +32,52 @@ class TreeView extends ComponentBase {
      */
     ...ComponentBase.propTypes,
     /**
-     * The data source of treeview element.
+     * Data source of the treeview element.
      */
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
     /**
-     * If `true`, treeview's all node will be expanded.
+     * If `true`, all nodes of the treeview are expanded.
      */
     expandAll: PropTypes.bool,
     /**
-     * Overrides style of footer element.
+     * Overrides style of the footer element.
      */
     footerStyle: PropTypes.object,
     /**
-     * Height of tree element.
+     * Height of the tree element.
      */
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     /**
-     * Hint text of search element.
+     * Hint text of the search element.
      */
     hintText: PropTypes.string,
     /**
-     * If `true`, all tree view nodes will be checkable.
+     * If `true`, all treeview nodes become checkable.
      */
     isCheckable: PropTypes.bool,
     /**
-     * If `true`, only leaf nodes of tree view will be checkable.
+     * If `true`, only leaf nodes of the treeview become checkable.
      */
     isLeafCheckable: PropTypes.bool,
     /**
-     * If `true`, checkbox will appers in nodes and multi selection will be actived.
-     * If `false`, radio button will appers in nodes and single selection will be actived.
+     * If `true`, checkboxes appear in nodes and multi selection is actived.
+     * If `false`, radio buttons appear in nodes and single selection is actived.
      */
     isMultiSelect: PropTypes.bool,
     /**
-     * Callback function when node checkes
+     * Callback function when a node is checked.
      */
     onCheckNode: PropTypes.func,
     /**
-     * Row heigth of tree view nodes.
+     * Row height of the treeview nodes.
      */
     rowHeight: PropTypes.oneOfType([PropTypes.number]),
     /**
-     * If `true`, footer of treeview is visible.
+     * If `true`, footer of the treeview is visible.
      */
     showFooter: PropTypes.bool,
     /**
-     * If `true`, icons of all nodes is visible.
+     * If `true`, icons of all nodes are visible.
      */
     showIcons: PropTypes.bool,
     /**
@@ -85,7 +85,7 @@ class TreeView extends ComponentBase {
      */
     showSearch: PropTypes.bool,
     /**
-     * Width of tree view.
+     * Width of the treeview.
      */
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };

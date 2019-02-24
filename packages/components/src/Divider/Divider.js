@@ -25,11 +25,11 @@ class Divider extends ComponentBase {
      */
     component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     /**
-     * If `true`, the divider will be indented.
+     * If `true`, the divider is indented.
      */
     inset: PropTypes.bool,
     /**
-     * If `true`, the divider will have a lighter color.
+     * If `true`, the divider has a lighter color.
      */
     light: PropTypes.bool,
   };

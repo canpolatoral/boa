@@ -156,7 +156,7 @@
 				]
 			},
 			"required": false,
-			"description": "The data source of treeview element.",
+			"description": "Data source of the treeview element.",
 			"defaultValue": {
 				"value": [],
 				"computed": false
@@ -167,7 +167,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, treeview's all node will be expanded.",
+			"description": "If `true`, all nodes of the treeview are expanded.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -178,7 +178,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Overrides style of footer element."
+			"description": "Overrides style of the footer element."
 		},
 		"height": {
 			"type": {
@@ -193,7 +193,7 @@
 				]
 			},
 			"required": false,
-			"description": "Height of tree element.",
+			"description": "Height of the tree element.",
 			"defaultValue": {
 				"value": 500,
 				"computed": false
@@ -204,14 +204,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Hint text of search element."
+			"description": "Hint text of the search element."
 		},
 		"isCheckable": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, all tree view nodes will be checkable.",
+			"description": "If `true`, all treeview nodes become checkable.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -222,7 +222,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, only leaf nodes of tree view will be checkable.",
+			"description": "If `true`, only leaf nodes of the treeview become checkable.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -233,7 +233,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, checkbox will appers in nodes and multi selection will be actived.\nIf `false`, radio button will appers in nodes and single selection will be actived.",
+			"description": "If `true`, checkboxes appear in nodes and multi selection is actived.\nIf `false`, radio buttons appear in nodes and single selection is actived.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -244,7 +244,7 @@
 				"name": "func"
 			},
 			"required": false,
-			"description": "Callback function when node checkes"
+			"description": "Callback function when a node is checked."
 		},
 		"rowHeight": {
 			"type": {
@@ -256,7 +256,7 @@
 				]
 			},
 			"required": false,
-			"description": "Row heigth of tree view nodes.",
+			"description": "Row height of the treeview nodes.",
 			"defaultValue": {
 				"value": 36,
 				"computed": false
@@ -267,7 +267,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, footer of treeview is visible.",
+			"description": "If `true`, footer of the treeview is visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -278,7 +278,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, icons of all nodes is visible.",
+			"description": "If `true`, icons of all nodes are visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -308,7 +308,7 @@
 				]
 			},
 			"required": false,
-			"description": "Width of tree view.",
+			"description": "Width of the treeview.",
 			"defaultValue": {
 				"value": "100%",
 				"computed": false

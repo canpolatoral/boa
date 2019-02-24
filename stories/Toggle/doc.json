@@ -63,7 +63,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "The default value of toggle.",
+			"description": "The default value of the toggle.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -74,14 +74,14 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Indicates the style of element."
+			"description": "Indicates style of the element."
 		},
 		"errorText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "Indicates the style of icon."
+			"description": "Indicates the error text."
 		},
 		"iconProperties": {
 			"type": {
@@ -95,7 +95,7 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Indicates the style of icon."
+			"description": "Indicates style of the icon."
 		},
 		"informationText": {
 			"type": {
@@ -109,14 +109,14 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Indicates the style of input."
+			"description": "Indicates style of the input."
 		},
 		"label": {
 			"type": {
 				"name": "node"
 			},
 			"required": false,
-			"description": "The label of toggle component."
+			"description": "Label of the toggle component."
 		},
 		"labelPosition": {
 			"type": {
@@ -133,7 +133,7 @@
 				]
 			},
 			"required": false,
-			"description": "The position of the label in toggle.",
+			"description": "Position of the toggle label.",
 			"defaultValue": {
 				"value": "left",
 				"computed": false
@@ -144,28 +144,28 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Indicates the style of label."
+			"description": "Indicates style of the label."
 		},
 		"onToggle": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": "The event to handle toggle."
+			"description": "Event to handle the toggle."
 		},
 		"rippleStyle": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": "Indicates the style of ripple."
+			"description": "Indicates style of the ripple."
 		},
 		"toggled": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "Indicates the toggled or not.",
+			"description": "Indicates whether the component is toggled or not.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -176,14 +176,14 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Indicates the style of track switched."
+			"description": "Indicates style of the track switched."
 		},
 		"valueLink": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": "Indicates the value of link."
+			"description": "Indicates value of the link."
 		}
 	},
 	"composes": [

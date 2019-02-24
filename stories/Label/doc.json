@@ -1,5 +1,5 @@
 {
-	"description": "This component allows you fit label contents to the specified width by changing the font size.",
+	"description": "This component allows fitting label contents to the specified width by changing the font size.",
 	"displayName": "Label",
 	"methods": [
 		{
@@ -29,7 +29,7 @@
 				]
 			},
 			"required": false,
-			"description": "Max font size of label element",
+			"description": "Max font size of the label element.",
 			"defaultValue": {
 				"value": "Number.POSITIVE_INFINITY",
 				"computed": true
@@ -40,7 +40,7 @@
 				"name": "number"
 			},
 			"required": false,
-			"description": "Max width label container element."
+			"description": "Max width of the label container element."
 		},
 		"minFontSize": {
 			"type": {
@@ -55,7 +55,7 @@
 				]
 			},
 			"required": false,
-			"description": "Min font size of label element",
+			"description": "Min font size of the label element.",
 			"defaultValue": {
 				"value": "Number.NEGATIVE_INFINITY",
 				"computed": true
@@ -66,14 +66,14 @@
 				"name": "object"
 			},
 			"required": false,
-			"description": "Override style of element."
+			"description": "Override style of the element."
 		},
 		"text": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "Text of label element."
+			"description": "Text of the label element."
 		},
 		"textPosition": {
 			"type": {
@@ -94,7 +94,7 @@
 				]
 			},
 			"required": false,
-			"description": "The position of the text in label.\nIt applies given position to text if label width is greater than text width."
+			"description": "Position of the text of the label.\nIt applies given position to text if label width is greater than the text width."
 		}
 	},
 	"composeProps": {

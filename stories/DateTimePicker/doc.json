@@ -1,5 +1,5 @@
 {
-	"description": "The DateTimePicker allows users to enter a date and time by choosing a datetime.\nIt is made up of several components and directives that work together.",
+	"description": "The DateTimePicker allows users to enter a date and time by choosing a datetime.\nIt is created using several components and directives that work together.",
 	"displayName": "DateTimePicker",
 	"methods": [
 		{
@@ -168,7 +168,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `false`, can not allow to select older dates from today.",
+			"description": "If `false`, selecting past dates is not allowed.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -179,7 +179,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `false`, can not allow to select special days.",
+			"description": "If `false`, selecting special days is not allowed.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -190,7 +190,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `false`, can not allow to select weekend days.",
+			"description": "If `false`, selecting weekend days is not allowed.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -217,7 +217,7 @@
 				]
 			},
 			"required": false,
-			"description": "Default selected value for uncontrolled usage.\nProp could be a Date object or UTC formatted string.",
+			"description": "Default selected value for uncontrolled usage.\nProp can be a Date object or a UTC formatted string.",
 			"defaultValue": {
 				"value": null,
 				"computed": false
@@ -228,14 +228,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "ErrorText for date part of the component."
+			"description": "Error text for the date part of the component."
 		},
 		"errorTextTime": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "ErrorText for time part of the component."
+			"description": "Error text for the time part of the component."
 		},
 		"firstDayOfWeek": {
 			"type": {
@@ -272,7 +272,7 @@
 				]
 			},
 			"required": false,
-			"description": "First day of week. Default: 1, Monday.",
+			"description": "First day of the week. Default: 1, Monday.",
 			"defaultValue": {
 				"value": 1,
 				"computed": false
@@ -283,7 +283,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Floating label text for date input.",
+			"description": "Floating label text for the date input.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -294,7 +294,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Floating label text for text input.",
+			"description": "Floating label text for the text input.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -316,7 +316,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `false`, the field receives the property width 100.",
+			"description": "If `false`, width property of the field is assigned 100.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -327,7 +327,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Hint text for date input.",
+			"description": "Hint text for the date input.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -338,7 +338,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Hint text for text input.",
+			"description": "Hint text for the text input.",
 			"defaultValue": {
 				"value": "",
 				"computed": false
@@ -391,7 +391,7 @@
 				]
 			},
 			"required": false,
-			"description": "Selectable max date. Prop could be a Date object or UTC formatted string.",
+			"description": "Selectable max date. Prop can be a Date object or a UTC formatted string.",
 			"defaultValue": {
 				"value": "2099-12-30T17:03:14.000Z",
 				"computed": false
@@ -411,7 +411,7 @@
 				]
 			},
 			"required": false,
-			"description": "Selectable minimum date. Prop could be a Date object or UTC formatted string.",
+			"description": "Selectable minimum date. Prop can be a Date object or a UTC formatted string.",
 			"defaultValue": {
 				"value": "1949-12-31T22:03:05.000Z",
 				"computed": false
@@ -443,7 +443,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, dialog will render inline mode.",
+			"description": "If `true`, the dialog will render inline mode.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -512,7 +512,7 @@
 				]
 			},
 			"required": false,
-			"description": "Selected date. Prop could be a Date object or UTC formatted string."
+			"description": "Selected date. Prop can be a Date object or a UTC formatted string."
 		}
 	},
 	"composes": [

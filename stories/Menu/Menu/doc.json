@@ -62,7 +62,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If true, `value` must be an array and the menu will support\nmultiple selections.",
+			"description": "If true, `value` must be an array and the menu supports\nmultiple selections.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -87,7 +87,7 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": "Can be used to render primary text  padding within the menu item.",
+			"description": "Can be used to render primary text padding within the menu item.",
 			"defaultValue": {
 				"value": "0px 24px 0px 24px",
 				"computed": false

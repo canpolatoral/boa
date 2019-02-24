@@ -125,23 +125,23 @@ class Input extends EditorBase {
      */
     ...EditorBase.propTypes,
     /**
-     * Information text that located in bottom left side of iput element.
+     * Information text that is located in bottom left side of the input element.
      */
     bottomLeftInfo: PropTypes.string,
     /**
-     * If `true`, the bottomLeftInfo will be showed.
+     * If `true`, the bottomLeftInfo is shown.
      */
     bottomLeftInfoEnable: PropTypes.bool,
     /**
-     * Information text that located in bottom right side of iput element.
+     * Information text that is located in bottom right side of the input element.
      */
     bottomRightInfo: PropTypes.string,
     /**
-     * If `true`, the bottomRightInfo will be showed.
+     * If `true`, the bottomRightInfo is shown.
      */
     bottomRightInfoEnable: PropTypes.bool,
     /**
-     * The text string to use for the default value.
+     * The text string used as the default value.
      */
     defaultValue: PropTypes.any,
     /**
@@ -149,12 +149,12 @@ class Input extends EditorBase {
      */
     disabledCounterCharacter: PropTypes.string,
     /**
-     * Styles applied to the input element in error state.
+     * Styles applied to the input element in the error state.
      */
     errorStyle: PropTypes.object,
     /**
      *  Message to display when the input is in an error state.
-     *  When this is present, also visually highlights the component as in error.
+     *  When this is present, the component is also visually highlighted to indicate it is in error.
      */
     errorText: PropTypes.string,
     /**
@@ -170,7 +170,7 @@ class Input extends EditorBase {
      */
     formControlStyle: PropTypes.object,
     /**
-     * If `false`, the field receives the property width 100.
+     * If `false`, the width property of the field is assigned 100.
      */
     fullWidth: PropTypes.bool,
     /**
@@ -186,11 +186,11 @@ class Input extends EditorBase {
      */
     id: PropTypes.string,
     /**
-     * If `true`, the component transforms itself into grid mode
+     * If `true`, the component transforms itself into grid mode.
      */
     inlineGridMode: PropTypes.bool,
     /**
-     * Aligment of text in input element.
+     * Alingment of the text in the input element.
      */
     inputAlign: PropTypes.oneOf(['left', 'right', 'center']),
     /**
@@ -199,8 +199,8 @@ class Input extends EditorBase {
     inputProps: PropTypes.object,
     /**
      * Override the inline-styles of the TextField's input element.
-     * When multiLine is false: define the style of the input element.
-     * When multiLine is true: define the style of the container of the textarea.
+     * When multiLine is false: defines the style of the input element.
+     * When multiLine is true: defines the style of the container of the textarea.
      */
     inputStyle: PropTypes.object,
     /**
@@ -212,8 +212,8 @@ class Input extends EditorBase {
      */
     maxLength: PropTypes.number,
     /**
-     * If true, a textarea element will be rendered.
-     * The textarea also grows and shrinks according to the number of lines.
+     * If true, a textarea element is rendered.
+     * The textarea also expands and shrinks according to the number of lines.
      */
     multiLine: PropTypes.bool,
     /**
@@ -221,39 +221,39 @@ class Input extends EditorBase {
      */
     name: PropTypes.string,
     /**
-     * If `true`, element will not wrapped.
+     * If `true`, the element is not wrapped.
      */
     noWrap: PropTypes.bool,
     /**
-     * Callback function input blur
+     * Callback function for the input blur.
      */
     onBlur: PropTypes.func,
     /**
-     * Callback function when input changed.
+     * Callback function when the input changed.
      */
     onChange: PropTypes.func,
     /**
-     * Callback function when input changed sync.
+     * Callback function when the input is changed sync.
      */
     onChangeSync: PropTypes.func,
     /**
-     * Callback function when input focussed.
+     * Callback function when the input is focused.
      */
     onFocus: PropTypes.func,
     /**
-     * Callback function when input key down.
+     * Callback function when a key is down.
      */
     onKeyDown: PropTypes.func,
     /**
-     * Callback function when input key up.
+     * Callback function when a key is up.
      */
     onKeyUp: PropTypes.func,
     /**
-     * Callback function when timer finished.
+     * Callback function when the timer ends.
      */
     onTimerFinished: PropTypes.func,
     /**
-     * Shows prefix text of input element text.
+     * Shows prefix text of the input element text.
      */
     prefixText: PropTypes.any,
     /**
@@ -266,7 +266,7 @@ class Input extends EditorBase {
      */
     rowsMax: PropTypes.number,
     /**
-     * Shows clear button on the right side of component.
+     * Shows clear button on the right side of the component.
      */
     showClearButton: PropTypes.bool,
     /**
@@ -274,28 +274,28 @@ class Input extends EditorBase {
      */
     showCounter: PropTypes.bool,
     /**
-     * Shows suffix text of input element text.
+     * Shows suffix text of the input element text.
      */
     suffixText: PropTypes.any,
     /**
-     * Sets the start and end positions of the current text selection
+     * Sets start and end positions of the current text selection.
      */
     textSelection: PropTypes.object,
     /**
-     * Timer that shown in right bottom info by seconds
+     * Timer shown on the right bottom info, showing duration in seconds.
      */
     timerDuration: PropTypes.number,
     /**
-     * Specifies the type of input to display
+     * Specifies type of the input to display
      * such as "password" or "text".
      */
     type: PropTypes.oneOf(['password', 'text', 'numeric']),
     /**
-     * If true, shows the underline for the text field.
+     * If true, the underline is shown.
      */
     underlineShow: PropTypes.bool,
     /**
-     * The value of the text field.
+     * Value of the text field.
      */
     value: PropTypes.any,
   };

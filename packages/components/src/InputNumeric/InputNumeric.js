@@ -33,7 +33,7 @@ class InputNumeric extends EditorBase {
      */
     minValue: PropTypes.number,
     /**
-     * Define increment siz of the arrow keys.
+     * Define increment size of the arrow keys.
      */
     step: PropTypes.number,
   };

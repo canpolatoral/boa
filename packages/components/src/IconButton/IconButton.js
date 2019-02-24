@@ -24,9 +24,9 @@ const styles = {
 };
 
 /**
- * Icon buttons allow users to take actions, and make choices, with a icon tap.
- * This component is made up `@material-ui/core/ButtonBase`, and  `../Icon`.
- * It able to render an `<ToolTip />` when the "tooltipTitle" prop exists.
+ * Icon buttons allow users to take actions, and make choices, with an icon tap.
+ * This component is created from `@material-ui/core/ButtonBase`, and  `../Icon`.
+ * It also renders a `<ToolTip />` when the "tooltipTitle" prop exists.
  */
 @ComponentComposer
 @withStyles(styles)
@@ -38,11 +38,11 @@ class IconButton extends ComponentBase {
     ...ComponentBase.propTypes,
     /**
      * The color of the component.
-     * It supports those theme colors that make sense for this component.
+     * It supports the theme colors that make sense for this component.
      */
     color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary', 'disabled']),
     /**
-     * If `true`, the ripple will be disabled.
+     * If `true`, the ripple is disabled.
      */
     disableRipple: PropTypes.bool,
     /**
@@ -50,7 +50,7 @@ class IconButton extends ComponentBase {
      */
     dynamicIcon: PropTypes.string,
     /**
-     * If `true`, the base button will have a keyboard focus ripple.
+     * If `true`, the base button has a keyboard focus ripple.
      * `disableRipple` must also be `false`.
      */
     focusRipple: PropTypes.bool,
@@ -59,7 +59,7 @@ class IconButton extends ComponentBase {
      */
     fontIcon: PropTypes.string,
     /**
-     * Icon props that be passed to the `<Icon />` element.
+     * Icon props that are passed to the `<Icon />` element.
      */
     iconProperties: PropTypes.object,
     /**
@@ -71,15 +71,15 @@ class IconButton extends ComponentBase {
      */
     svgIcon: PropTypes.string,
     /**
-     * If type 'icon' tooltip will generate on icon button.
+     * If the type is 'icon', tooltip is generated on the icon button.
      */
     tooltip: PropTypes.string,
     /**
-     * The position of the tooltip in button.
+     * Position of the tooltip in button.
      */
     tooltipPosition: PropTypes.string,
     /**
-     * Button type should be `contained`, `text`, `fab` or `icon`.
+     * Button type must be `contained`, `text`, `fab` or `icon`.
      */
   };
 

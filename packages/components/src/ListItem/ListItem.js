@@ -55,7 +55,7 @@ class ListItem extends ComponentBase {
      */
     button: PropTypes.bool,
     /**
-     * The content of the component.
+     * Content of the component.
      */
     children: PropTypes.node,
     /**
@@ -69,7 +69,7 @@ class ListItem extends ComponentBase {
     /**
      * The component used for the root node.
      * Either a string to use a DOM element or a component.
-     * By default, it's a `li` when `button` is `false` and a `div` when `button` is `true`.
+     * By default, it is a `li` when `button` is `false` and a `div` when `button` is `true`.
      */
     component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     /**
@@ -82,11 +82,11 @@ class ListItem extends ComponentBase {
      */
     ContainerProps: PropTypes.object,
     /**
-     * If `true`, compact vertical padding designed for keyboard and mouse input will be used.
+     * If `true`, the compact vertical padding designed for the keyboard and the mouse input is used.
      */
     dense: PropTypes.bool,
     /**
-     * If `true`, the left and right padding is removed.
+     * If `true`, left and right paddings are removed.
      */
     disableGutters: PropTypes.bool,
     /**

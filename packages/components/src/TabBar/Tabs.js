@@ -390,16 +390,16 @@ Tabs.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * If `true`, the tabs will grow to use all the available space.
+   * If `true`, the tabs will expand to use all the available space.
    * This property is intended for small views, like on mobile.
    */
   fullWidth: PropTypes.bool,
   /**
-   * The CSS class name of the indicator element.
+   * CSS class name of the indicator element.
    */
   indicatorClassName: PropTypes.string,
   /**
-   * Determines the color of the indicator.
+   * Determines color of the indicator.
    */
   indicatorColor: PropTypes.oneOfType([
     PropTypes.string,
@@ -418,10 +418,10 @@ Tabs.propTypes = {
    */
   scrollable: PropTypes.bool,
   /**
-   * Determine behavior of scroll buttons when tabs are set to scroll
-   * `auto` will only present them on medium and larger viewports
-   * `on` will always present them
-   * `off` will never present them
+   * Determine behavior of scroll buttons when tabs are set to scroll.
+   * `auto` shows scroll buttons on medium and larger viewports.
+   * `on` always shows scroll buttons.
+   * `off` never shows scroll buttons.
    */
   scrollButtons: PropTypes.oneOf(['auto', 'on', 'off']),
   /**
@@ -429,7 +429,7 @@ Tabs.propTypes = {
    */
   TabScrollButton: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /**
-   * Determines the color of the `Tab`.
+   * Determines color of the `Tab`.
    */
   textColor: PropTypes.oneOf(['secondary', 'primary', 'inherit']),
   /**
@@ -437,8 +437,8 @@ Tabs.propTypes = {
    */
   theme: PropTypes.object.isRequired,
   /**
-   * The value of the currently selected `Tab`.
-   * If you don't want any selected `Tab`, you can set this property to `false`.
+   * Value of the currently selected `Tab`.
+   * If you do not want tabs to be selectable, you can set this property to `false`.
    */
   value: PropTypes.any,
 };

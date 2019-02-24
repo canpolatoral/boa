@@ -7,7 +7,7 @@ import { Localization } from '@kuveytturk/boa-utils';
 import KeyboardEnum from './KeyboardEnum';
 
 /**
- * Text fields let users enter and edit numeric inputs.
+ * Text field letting users enter and edit numeric inputs.
  */
 @ComponentComposer
 class InputNumeric extends EditorBase {
@@ -17,23 +17,23 @@ class InputNumeric extends EditorBase {
      */
     ...Input.propTypes,
     /**
-     * Indicator for the text insertion point
+     * Indicator for the text insertion point.
      */
     caretPosition: PropTypes.number,
     /**
-     * Format for numeric value such as 'D' for decimal.
+     * Format for the numeric value such as 'D' for decimal.
      */
     format: PropTypes.string,
     /**
-     * Max value for numeric field.
+     * Max value for the numeric field.
      */
     maxValue: PropTypes.number,
     /**
-     * Min value for numeric field.
+     * Min value for the numeric field.
      */
     minValue: PropTypes.number,
     /**
-     * Define increment factor of arrow keys.
+     * Define increment siz of the arrow keys.
      */
     step: PropTypes.number,
   };

@@ -44,12 +44,12 @@ class TabBar extends ComponentBase {
   static propTypes = {
     ...ComponentBase.propTypes,
     /**
-     * If `true`, the tabs will be centered.
+     * If `true`, the tabs are centered.
      * This property is intended for large views.
      */
     centered: PropTypes.bool,
     /**
-     * The content of the component.
+     * Content of the component.
      */
     children: PropTypes.node,
     /**
@@ -63,7 +63,7 @@ class TabBar extends ComponentBase {
      */
     className: PropTypes.string,
     /**
-     * Indicates the location of the tabs. Each container type has own style.
+     * Indicates location of the tabs. Each container type has its own style.
      */
     containerType: PropTypes.oneOf(['default', 'page', 'card']),
     /**
@@ -71,7 +71,7 @@ class TabBar extends ComponentBase {
      */
     defaultValue: PropTypes.any,
     /**
-     * If `true`, the tabs will grow to use all the available space.
+     * If `true`, the tabs expand to use all the available space.
      * This property is intended for small views, like on mobile.
      */
     fullWidth: PropTypes.bool,
@@ -80,28 +80,28 @@ class TabBar extends ComponentBase {
      */
     indicatorClassName: PropTypes.string,
     /**
-     * Determines the color of the indicator.
+     * Determines color of the indicator.
      */
     indicatorColor: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.oneOf(['secondary', 'primary']),
     ]),
     /**
-     * If `true` the content of tabs no shown.
+     * If `true`, contents of tabs are not shown.
      */
     isContentDisabled: PropTypes.bool,
     /**
-     * The icon button is placed at left of tabs.
-     * It able to render a dynamicIcon with a string prop.
-     * Also it able to renders a React Element.
+     * The icon button is placed on the left side of tabs.
+     * It renders a dynamicIcon with a string prop.
+     * It also renders a React Element.
      */
     leftIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /**
-     * If `false` the left icon is not shown.
+     * If `false`, the left icon is not shown.
      */
     leftIconButtonVisibility: PropTypes.bool,
     /**
-     * If `primary` the tabs are colored with primary color of the current theme.
+     * If `primary`, the tabs are colored with the primary color of the current theme.
      */
     mode: PropTypes.oneOf(['primary', 'secondary']),
     /**
@@ -124,15 +124,15 @@ class TabBar extends ComponentBase {
      */
     rightIconButtonVisibility: PropTypes.bool,
     /**
-     * If `true`, it will invoke scrolling properties and allow for horizontally
+     * If `true`, it invokes scrolling properties and allows horizontally
      * scrolling (or swiping) of the tab bar.
      */
     scrollable: PropTypes.bool,
     /**
-     * Determine behavior of scroll buttons when tabs are set to scroll
-     * `auto` will only present them on medium and larger viewports
-     * `on` will always present them
-     * `off` will never present them
+     * Determines behavior of the scroll buttons when tabs are set to scroll.
+     * `auto` shows scroll buttons on medium and larger viewports.
+     * `on` always shows scroll buttons.
+     * `off` never shows scroll buttons.
      */
     scrollButtons: PropTypes.oneOf(['auto', 'on', 'off']),
     /**
@@ -149,7 +149,7 @@ class TabBar extends ComponentBase {
     tabTemplateStyle: PropTypes.object,
     /**
      * The value of the currently selected `Tab`.
-     * If you don't want any selected `Tab`, you can set this property to `false`.
+     * If you don't want to make tabs selectable, you can set this property to `false`.
      */
     value: PropTypes.any,
   };

@@ -20,8 +20,8 @@ const styles = theme => ({
 /* eslint-enable no-unused-vars */
 
 /**
- * Icon Menus are menus that open from icons.
- * They can give options related to the icon and use a minimal space.
+ * Icon Menus are the menus that are opened from icons.
+ * They provide options related to the icon and use a minimal space.
  */
 @ComponentComposer
 @withStyles(styles)
@@ -39,7 +39,7 @@ class IconMenu extends ComponentBase {
       vertical: PropTypes.oneOf(['top', 'center', 'bottom']).isRequired,
     }),
     /**
-     * To set origin from outside
+     * To set origin from outside.
      */
     animated: PropTypes.bool,
     /**
@@ -47,29 +47,29 @@ class IconMenu extends ComponentBase {
      */
     classes: PropTypes.object,
     /**
-     * Item list
+     * Item list.
      *
      */
     className: PropTypes.string,
     /**
-     * Menu item list
+     * Menu item list.
      *
      */
     customIcon: PropTypes.object,
     /**
      * This is the point on the icon where the menu
-     * `transformOrigin` will attach.
+     * `transformOrigin` attaches.
      * Options:
      * vertical: [top, middle, bottom]
      * horizontal: [left, center, right].
      */
     iconStyle: PropTypes.object,
     /**
-     * Type of the `IconButton` to render. If ‘custom’ required customIcon button
+     * Type of the `IconButton` to render. If ‘custom’, a customIcon button is required.
      */
     iconType: PropTypes.oneOf(['vertical', 'horizontal', 'custom']).isRequired,
     /**
-     * If true, the popover will apply transitions when
+     * If true, the popover applies transitions when
      * it gets added to the DOM.
      */
     isOriginSetted: PropTypes.bool,
@@ -78,15 +78,15 @@ class IconMenu extends ComponentBase {
      */
     items: PropTypes.array,
     /**
-     * Override the inline-styles of the underlying icon element.
+     * Overrides the inline-styles of the underlying icon element.
      */
     menuItems: PropTypes.array,
     /**
-     * Override the inline-styles of the menu element.
+     * Overrides the inline-styles of the menu element.
      */
     menuStyle: PropTypes.object,
     /**
-     * If true, the value can an be array and allow the menu to be a multi-select.
+     * If true, the value can an be array and allows the menu to be multi-selectable.
      */
     multiple: PropTypes.bool,
     /**
@@ -94,11 +94,11 @@ class IconMenu extends ComponentBase {
      */
     onChange: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * Overrides the inline-styles of the root element.
      */
     onClick: PropTypes.func,
     /**
-     * This is the point on the menu which will stick to the menu
+     * This is the point on the menu which sticks to the menu
      * origin.
      * Options:
      * vertical: [top, middle, bottom]
@@ -108,13 +108,13 @@ class IconMenu extends ComponentBase {
     /**
      * Sets the delay in milliseconds before closing the
      * menu when an item is clicked.
-     * If set to 0 then the auto close functionality
-     * will be disabled.
+     * If set to 0, then the auto close functionality
+     * is disabled.
      */
-    /* Callback function fired when the menu item is selected */
+    /* Callback function fired when the menu item is selected. */
     touchTapCloseDelay: PropTypes.number,
     /**
-     * Callback function fired when the IconButton element is clicked
+     * Callback function fired when the IconButton element is clicked.
      */
     transformOrigin: PropTypes.shape({
       horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,

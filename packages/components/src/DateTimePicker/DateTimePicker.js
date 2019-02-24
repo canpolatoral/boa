@@ -26,7 +26,7 @@ let minSecond;
 
 /**
  * The DateTimePicker allows users to enter a date and time by choosing a datetime.
- * It is made up of several components and directives that work together.
+ * It is created using several components and directives that work together.
  * */
 @ComponentComposer
 class DateTimePicker extends ComponentBase {
@@ -40,15 +40,15 @@ class DateTimePicker extends ComponentBase {
      */
     cancelLabel: PropTypes.string,
     /**
-     * If `false`, can not allow to select older dates from today.
+     * If `false`, selecting past dates is not allowed.
      */
     canSelectOldDates: PropTypes.bool,
     /**
-     * If `false`, can not allow to select special days.
+     * If `false`, selecting special days is not allowed.
      */
     canSelectSpecialDays: PropTypes.bool,
     /**
-     * If `false`, can not allow to select weekend days.
+     * If `false`, selecting weekend days is not allowed.
      */
     canSelectWeekendDays: PropTypes.bool,
     /**
@@ -57,27 +57,27 @@ class DateTimePicker extends ComponentBase {
     dateOnChange: PropTypes.func,
     /**
      * Default selected value for uncontrolled usage.
-     * Prop could be a Date object or UTC formatted string.
+     * Prop can be a Date object or a UTC formatted string.
      */
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /**
-     * ErrorText for date part of the component.
+     * Error text for the date part of the component.
      */
     errorTextDate: PropTypes.string,
     /**
-     * ErrorText for time part of the component.
+     * Error text for the time part of the component.
      */
     errorTextTime: PropTypes.string,
     /**
-     * First day of week. Default: 1, Monday.
+     * First day of the week. Default: 1, Monday.
      */
     firstDayOfWeek: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6]),
     /**
-     * Floating label text for date input.
+     * Floating label text for the date input.
      */
     floatingLabelTextDate: PropTypes.string,
     /**
-     * Floating label text for text input.
+     * Floating label text for the text input.
      */
     floatingLabelTextTime: PropTypes.string,
     /**
@@ -85,15 +85,15 @@ class DateTimePicker extends ComponentBase {
      */
     format: PropTypes.string.isRequired,
     /**
-     * If `false`, the field receives the property width 100.
+     * If `false`, width property of the field is assigned 100.
      */
     fullWidth: PropTypes.bool,
     /**
-     * Hint text for date input.
+     * Hint text for the date input.
      */
     hintTextDate: PropTypes.string,
     /**
-     * Hint text for text input.
+     * Hint text for the text input.
      */
     hintTextTime: PropTypes.string,
     /**
@@ -109,11 +109,11 @@ class DateTimePicker extends ComponentBase {
      */
     isFlexMode: PropTypes.bool,
     /**
-     * Selectable max date. Prop could be a Date object or UTC formatted string.
+     * Selectable max date. Prop can be a Date object or a UTC formatted string.
      */
     maxDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /**
-     * Selectable minimum date. Prop could be a Date object or UTC formatted string.
+     * Selectable minimum date. Prop can be a Date object or a UTC formatted string.
      */
     minDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /**
@@ -121,7 +121,7 @@ class DateTimePicker extends ComponentBase {
      */
     mode: PropTypes.oneOf(['portrait', 'landscape']),
     /**
-     * If `true`, dialog will render inline mode.
+     * If `true`, the dialog will render inline mode.
      */
     noDialog: PropTypes.bool,
     /**
@@ -145,7 +145,7 @@ class DateTimePicker extends ComponentBase {
      */
     timeOnChange: PropTypes.func,
     /**
-     * Selected date. Prop could be a Date object or UTC formatted string.
+     * Selected date. Prop can be a Date object or a UTC formatted string.
      */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
   };

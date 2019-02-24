@@ -53,7 +53,7 @@ class Menu extends ComponentBase {
      */
     items: PropTypes.array.isRequired,
     /**
-     * If true, `value` must be an array and the menu will support
+     * If true, `value` must be an array and the menu supports
      * multiple selections.
      */
     multiple: PropTypes.bool,
@@ -73,7 +73,7 @@ class Menu extends ComponentBase {
      */
     parentMenuItem: PropTypes.object,
     /**
-     * Can be used to render primary text  padding within the menu item.
+     * Can be used to render primary text padding within the menu item.
      */
     primaryTextPadding: PropTypes.any,
     /**

@@ -6,11 +6,9 @@ import { IconButton } from '../IconButton';
 import { Input } from '../Input';
 import { InputNumeric } from '../InputNumeric';
 
-/* eslint-disable max-len */
 /**
  * Text fields let users enter, edit text and set action buttons on left and right sides of the input.
  */
-/* eslint-enable max-len */
 @ComponentComposer
 class InputAction extends ComponentBase {
   static propTypes = {

@@ -65,11 +65,9 @@ class Popover extends ComponentBase {
      * so it is simply `document.body` most of the time.
      */
     container: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-    /* eslint-disable max-len */
     /**
      * If true, the modal does not restore focus to the previously focused element once modal is hidden.
      */
-    /* eslint-enable max-len */
     disableRestoreFocus: PropTypes.bool,
     /**
      * Elevation of the popover.

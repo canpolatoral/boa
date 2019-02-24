@@ -19,11 +19,9 @@ const styles = () => ({
   primary: {},
 });
 
-/* eslint-disable max-len */
 /**
  * Menus allow you to take an action by selecting from a list revealed upon opening a temporary, new sheet of material.
  */
-/* eslint-enable max-len */
 @ComponentComposer
 @withStyles(styles)
 class Menu extends ComponentBase {

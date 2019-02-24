@@ -1,5 +1,5 @@
 {
-	"description": "Buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/Button`.\nIt able to render an `<IconButton />` when the \"type\" prop is \"icon\".",
+	"description": "Buttons allow users to take actions, and make choices, with a single tap.\nThis component is wrapped from `@material-ui/core/Button`.\nIt also renders an `<IconButton />` when the \"type\" prop is \"icon\".",
 	"displayName": "Button",
 	"methods": [
 		{
@@ -54,7 +54,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `false`, content of the button wil be upper case.",
+			"description": "If `false`, content of the button is shown uppercase.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -79,7 +79,7 @@
 				]
 			},
 			"required": false,
-			"description": "Predefined sizes of button.",
+			"description": "Predefined sizes of the button.",
 			"defaultValue": {
 				"value": "medium",
 				"computed": false
@@ -104,7 +104,7 @@
 				]
 			},
 			"required": false,
-			"description": "The color of the component.\nIt supports those theme colors that make sense for this component."
+			"description": "Color of the component.\nIt supports the theme colors that make sense for this component."
 		},
 		"dynamicIcon": {
 			"type": {
@@ -125,21 +125,21 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If true, the button will take up the full width of its container."
+			"description": "If true, the button has the full width of its container."
 		},
 		"icon": {
 			"type": {
 				"name": "any"
 			},
 			"required": false,
-			"description": "The custom icon element to be rendered inside the button."
+			"description": "Custom icon element to be rendered inside the button."
 		},
 		"iconProperties": {
 			"type": {
 				"name": "object"
 			},
 			"required": false,
-			"description": "Icon props that be passed to the `<Icon />` element."
+			"description": "Icon props that are passed to the `<Icon />` element."
 		},
 		"mini": {
 			"type": {
@@ -192,7 +192,7 @@
 				]
 			},
 			"required": false,
-			"description": "The position of the text in button.\nIt applies given position to text if button width is greater than text width.",
+			"description": "Position of the text in the button.\nIt assigns given position to text if button width is greater than the text width.",
 			"defaultValue": {
 				"value": "center",
 				"computed": false
@@ -210,14 +210,14 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "If type 'icon' tooltip will generate on icon button."
+			"description": "If type is 'icon', a tooltip is generated on the icon button."
 		},
 		"tooltipPosition": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "The position of the tooltip in button."
+			"description": "Position of the button tooltip."
 		},
 		"type": {
 			"type": {

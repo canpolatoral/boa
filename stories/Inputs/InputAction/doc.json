@@ -1,5 +1,5 @@
 {
-	"description": "Text fields let users enter, edit text and set action buttons on left and right sides of input.",
+	"description": "Text fields let users enter, edit text and set action buttons on left and right sides of the input.",
 	"displayName": "InputAction",
 	"methods": [
 		{
@@ -196,7 +196,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, icons will be focussable.",
+			"description": "If `true`, icons are focusable.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -207,7 +207,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, all left icons will be hidden.",
+			"description": "If `true`, all left icons are hidden.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -222,14 +222,14 @@
 				}
 			},
 			"required": false,
-			"description": "If `true`, selected icons will be hidden."
+			"description": "If `true`, selected icons are hidden."
 		},
 		"hideRightIcons": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, all right icons will be hidden.",
+			"description": "If `true`, all right icons are hidden.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -240,7 +240,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, only the input element will be disabled.",
+			"description": "If `true`, only the input element is disabled.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -251,14 +251,14 @@
 				"name": "array"
 			},
 			"required": false,
-			"description": "icons will be showed in left side of input elements."
+			"description": "icons shown on the left side of the input elements."
 		},
 		"rightIconList": {
 			"type": {
 				"name": "array"
 			},
 			"required": false,
-			"description": "icons will be showed in right side of input elements."
+			"description": "icons shown on the right side of the input elements."
 		}
 	},
 	"composes": [
@@ -271,14 +271,14 @@
 					"name": "string"
 				},
 				"required": false,
-				"description": "Information text that located in bottom left side of iput element."
+				"description": "Information text that is located in bottom left side of the input element."
 			},
 			"bottomLeftInfoEnable": {
 				"type": {
 					"name": "bool"
 				},
 				"required": false,
-				"description": "If `true`, the bottomLeftInfo will be showed.",
+				"description": "If `true`, the bottomLeftInfo is shown.",
 				"defaultValue": {
 					"value": true,
 					"computed": false
@@ -289,14 +289,14 @@
 					"name": "string"
 				},
 				"required": false,
-				"description": "Information text that located in bottom right side of iput element."
+				"description": "Information text that is located in bottom right side of the input element."
 			},
 			"bottomRightInfoEnable": {
 				"type": {
 					"name": "bool"
 				},
 				"required": false,
-				"description": "If `true`, the bottomRightInfo will be showed.",
+				"description": "If `true`, the bottomRightInfo is shown.",
 				"defaultValue": {
 					"value": true,
 					"computed": false
@@ -307,7 +307,7 @@
 					"name": "any"
 				},
 				"required": false,
-				"description": "The text string to use for the default value.",
+				"description": "The text string used as the default value.",
 				"defaultValue": {
 					"value": "",
 					"computed": false
@@ -329,14 +329,14 @@
 					"name": "object"
 				},
 				"required": false,
-				"description": "Styles applied to the input element in error state."
+				"description": "Styles applied to the input element in the error state."
 			},
 			"errorText": {
 				"type": {
 					"name": "string"
 				},
 				"required": false,
-				"description": "Message to display when the input is in an error state.\n When this is present, also visually highlights the component as in error."
+				"description": "Message to display when the input is in an error state.\n When this is present, the component is also visually highlighted to indicate it is in error."
 			},
 			"floatingLabelStyle": {
 				"type": {
@@ -364,7 +364,7 @@
 					"name": "bool"
 				},
 				"required": false,
-				"description": "If `false`, the field receives the property width 100.",
+				"description": "If `false`, the width property of the field is assigned 100.",
 				"defaultValue": {
 					"value": true,
 					"computed": false
@@ -396,7 +396,7 @@
 					"name": "bool"
 				},
 				"required": false,
-				"description": "If `true`, the component transforms itself into grid mode",
+				"description": "If `true`, the component transforms itself into grid mode.",
 				"defaultValue": {
 					"value": false,
 					"computed": false
@@ -421,7 +421,7 @@
 					]
 				},
 				"required": false,
-				"description": "Aligment of text in input element."
+				"description": "Alingment of the text in the input element."
 			},
 			"inputProps": {
 				"type": {
@@ -435,7 +435,7 @@
 					"name": "object"
 				},
 				"required": false,
-				"description": "Override the inline-styles of the TextField's input element.\nWhen multiLine is false: define the style of the input element.\nWhen multiLine is true: define the style of the container of the textarea."
+				"description": "Override the inline-styles of the TextField's input element.\nWhen multiLine is false: defines the style of the input element.\nWhen multiLine is true: defines the style of the container of the textarea."
 			},
 			"maskedMaxLength": {
 				"type": {
@@ -456,7 +456,7 @@
 					"name": "bool"
 				},
 				"required": false,
-				"description": "If true, a textarea element will be rendered.\nThe textarea also grows and shrinks according to the number of lines.",
+				"description": "If true, a textarea element is rendered.\nThe textarea also expands and shrinks according to the number of lines.",
 				"defaultValue": {
 					"value": false,
 					"computed": false
@@ -474,63 +474,63 @@
 					"name": "bool"
 				},
 				"required": false,
-				"description": "If `true`, element will not wrapped."
+				"description": "If `true`, the element is not wrapped."
 			},
 			"onBlur": {
 				"type": {
 					"name": "func"
 				},
 				"required": false,
-				"description": "Callback function input blur"
+				"description": "Callback function for the input blur."
 			},
 			"onChange": {
 				"type": {
 					"name": "func"
 				},
 				"required": false,
-				"description": "Callback function when input changed."
+				"description": "Callback function when the input changed."
 			},
 			"onChangeSync": {
 				"type": {
 					"name": "func"
 				},
 				"required": false,
-				"description": "Callback function when input changed sync."
+				"description": "Callback function when the input is changed sync."
 			},
 			"onFocus": {
 				"type": {
 					"name": "func"
 				},
 				"required": false,
-				"description": "Callback function when input focussed."
+				"description": "Callback function when the input is focused."
 			},
 			"onKeyDown": {
 				"type": {
 					"name": "func"
 				},
 				"required": false,
-				"description": "Callback function when input key down."
+				"description": "Callback function when a key is down."
 			},
 			"onKeyUp": {
 				"type": {
 					"name": "func"
 				},
 				"required": false,
-				"description": "Callback function when input key up."
+				"description": "Callback function when a key is up."
 			},
 			"onTimerFinished": {
 				"type": {
 					"name": "func"
 				},
 				"required": false,
-				"description": "Callback function when timer finished."
+				"description": "Callback function when the timer ends."
 			},
 			"prefixText": {
 				"type": {
 					"name": "any"
 				},
 				"required": false,
-				"description": "Shows prefix text of input element text."
+				"description": "Shows prefix text of the input element text."
 			},
 			"rows": {
 				"type": {
@@ -555,7 +555,7 @@
 					"name": "bool"
 				},
 				"required": false,
-				"description": "Shows clear button on the right side of component.",
+				"description": "Shows clear button on the right side of the component.",
 				"defaultValue": {
 					"value": false,
 					"computed": false
@@ -577,21 +577,21 @@
 					"name": "any"
 				},
 				"required": false,
-				"description": "Shows suffix text of input element text."
+				"description": "Shows suffix text of the input element text."
 			},
 			"textSelection": {
 				"type": {
 					"name": "object"
 				},
 				"required": false,
-				"description": "Sets the start and end positions of the current text selection"
+				"description": "Sets start and end positions of the current text selection."
 			},
 			"timerDuration": {
 				"type": {
 					"name": "number"
 				},
 				"required": false,
-				"description": "Timer that shown in right bottom info by seconds"
+				"description": "Timer shown on the right bottom info, showing duration in seconds."
 			},
 			"type": {
 				"type": {
@@ -612,14 +612,14 @@
 					]
 				},
 				"required": false,
-				"description": "Specifies the type of input to display\nsuch as \"password\" or \"text\"."
+				"description": "Specifies type of the input to display\nsuch as \"password\" or \"text\"."
 			},
 			"underlineShow": {
 				"type": {
 					"name": "bool"
 				},
 				"required": false,
-				"description": "If true, shows the underline for the text field.",
+				"description": "If true, the underline is shown.",
 				"defaultValue": {
 					"value": true,
 					"computed": false
@@ -630,7 +630,7 @@
 					"name": "any"
 				},
 				"required": false,
-				"description": "The value of the text field."
+				"description": "Value of the text field."
 			}
 		},
 		"packages/base/src/ComponentBase/index.js": {

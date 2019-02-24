@@ -1,5 +1,5 @@
 {
-	"description": "A CheckBox represents a button with two states, selected and unselected.\nThis component is wrapped from `@material-ui/core/Checkbox`.\nIf the label prop specified, the component renders `@material-ui/core/FormControlLabel`\nIf not, it renders a `@material-ui/core/Checkbox`.\nAlso, it is able to render an error text with label if the errorText prop specified.",
+	"description": "A CheckBox represents a button with two states, selected and unselected.\nThis component is wrapped from `@material-ui/core/Checkbox`.\nIf the label prop is specified, the component renders `@material-ui/core/FormControlLabel`.\nIf not, it renders a `@material-ui/core/Checkbox`.\nAlso, it renders an error text with a label if the errorText prop is specified.",
 	"displayName": "CheckBox",
 	"methods": [
 		{
@@ -70,7 +70,7 @@
 				"name": "node"
 			},
 			"required": false,
-			"description": "The icon to display when the component is checked."
+			"description": "Icon to display when the component is checked."
 		},
 		"classes": {
 			"type": {
@@ -102,7 +102,7 @@
 				]
 			},
 			"required": false,
-			"description": "The color of the component.\nIt supports those theme colors that make sense for this component.",
+			"description": "Color of the component.\nIt supports the theme colors that make sense for this component.",
 			"defaultValue": {
 				"value": "primary",
 				"computed": false
@@ -113,28 +113,28 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "The default value of component."
+			"description": "Default value of the component."
 		},
 		"disableRipple": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, the ripple effect will be disabled."
+			"description": "If `true`, the ripple effect is disabled."
 		},
 		"errorText": {
 			"type": {
 				"name": "string"
 			},
 			"required": false,
-			"description": "Error message that inside the component."
+			"description": "Error message of the component."
 		},
 		"errorTextVisible": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, and component has label and errorText the errorText will be visible.",
+			"description": "If `true` and the component has a label and an errorText, the errorText is visible.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -145,7 +145,7 @@
 				"name": "node"
 			},
 			"required": false,
-			"description": "The icon to display when the component is unchecked."
+			"description": "Icon to display when the component is unchecked."
 		},
 		"indeterminate": {
 			"type": {
@@ -163,7 +163,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "If exists, checkbox will be render with `<Label>` component"
+			"description": "If exists, checkbox renders with a `<Label>` component."
 		},
 		"name": {
 			"type": {

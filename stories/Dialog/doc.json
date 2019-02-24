@@ -1,5 +1,5 @@
 {
-	"description": "Dialog Component is wrapped from `@material-ui/core/Dialog`.\nAlso `DialogHelper` provides a static method called `show`\nThis method allows create window from outside the render method.",
+	"description": "The Dialog Component is wrapped from `@material-ui/core/Dialog`.\nAlso `DialogHelper` provides a static method called `show`.\nThis method allows creating windows other than the render method.",
 	"displayName": "Dialog",
 	"methods": [
 		{
@@ -91,14 +91,14 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": "If `true`, hitting escape will not fire the `onClose` callback."
+			"description": "If `true`, hitting escape does not fire the `onClose` callback."
 		},
 		"dialogBoxContentPadding": {
 			"type": {
 				"name": "any"
 			},
 			"required": false,
-			"description": "If `true`, it will be full-screen",
+			"description": "If `true`, the dialog is shown full-screen.",
 			"defaultValue": {
 				"value": "24px",
 				"computed": false
@@ -109,7 +109,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, clicking the backdrop will not fire the `onClose` callback.",
+			"description": "If `true`, clicking the backdrop does not fire the `onClose` callback.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -120,7 +120,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, hitting escape will not fire the `onClose` callback.",
+			"description": "If `true`, hitting escape does not fire the `onClose` callback.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -131,14 +131,14 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If true, the modal will not restore focus to previously focused element once modal is hidden."
+			"description": "If true, the modal does not restore focus to previously focused element once modal is hidden."
 		},
 		"fullScreen": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, it will be full-screen.",
+			"description": "If `true`, the dialog is shown full-screen.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -149,7 +149,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If specified, stretches dialog to max width.",
+			"description": "If specified, extends dialog to max width.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -178,14 +178,14 @@
 				]
 			},
 			"required": false,
-			"description": "Determine the max width of the dialog.\nThe dialog width grows with the size of the screen, this property is useful\non the desktop where you might need some coherent different width size across your\napplication. Set to `false` to disable `maxWidth`."
+			"description": "Determine the max width of the dialog.\nThe dialog width expands with the size of the screen, this property is useful\non the desktop where you might need some coherent different width size across your\napplication. Set to `false` to disable `maxWidth`."
 		},
 		"modal": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "Force the user to use one of the actions in the `Dialog`.\nClicking outside the `Dialog` will not trigger the `onRequestClose`.",
+			"description": "Force the user to use one of the actions in the dialog.\nClicking outside of the dialog will not trigger the `onRequestClose`.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -210,14 +210,14 @@
 				"name": "func"
 			},
 			"required": false,
-			"description": "Callback fired before the dialog enters."
+			"description": "Callback fired before the dialog is entered."
 		},
 		"onEntered": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": "Callback fired when the dialog has entered."
+			"description": "Callback fired when the dialog is entered."
 		},
 		"onEntering": {
 			"type": {
@@ -238,28 +238,28 @@
 				"name": "func"
 			},
 			"required": false,
-			"description": "Callback fired before the dialog exits."
+			"description": "Callback fired before the dialog is closed."
 		},
 		"onExited": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": "Callback fired when the dialog has exited."
+			"description": "Callback fired when the dialog is closed."
 		},
 		"onExiting": {
 			"type": {
 				"name": "func"
 			},
 			"required": false,
-			"description": "Callback fired when the dialog is exiting."
+			"description": "Callback fired when the dialog is closing."
 		},
 		"open": {
 			"type": {
 				"name": "bool"
 			},
 			"required": true,
-			"description": "If `true`, the Dialog is open."
+			"description": "If `true`, the dialog is open."
 		},
 		"PaperProps": {
 			"type": {
@@ -273,7 +273,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "Determines whether the `Dialog` should be repositioned when it’s contents are updated.",
+			"description": "Determines whether the dialog should be repositioned when its contents are updated.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -284,7 +284,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If true, dialog shows header area.",
+			"description": "If true, the dialog has a header area.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -339,7 +339,7 @@
 				]
 			},
 			"required": false,
-			"description": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object."
+			"description": "Duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually for an object."
 		}
 	},
 	"composes": [

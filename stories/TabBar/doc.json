@@ -238,14 +238,14 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, the tabs will be centered.\nThis property is intended for large views."
+			"description": "If `true`, the tabs are centered.\nThis property is intended for large views."
 		},
 		"children": {
 			"type": {
 				"name": "node"
 			},
 			"required": false,
-			"description": "The content of the component."
+			"description": "Content of the component."
 		},
 		"classes": {
 			"type": {
@@ -280,7 +280,7 @@
 				]
 			},
 			"required": false,
-			"description": "Indicates the location of the tabs. Each container type has own style."
+			"description": "Indicates location of the tabs. Each container type has its own style."
 		},
 		"defaultValue": {
 			"type": {
@@ -298,7 +298,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, the tabs will grow to use all the available space.\nThis property is intended for small views, like on mobile.",
+			"description": "If `true`, the tabs expand to use all the available space.\nThis property is intended for small views, like on mobile.",
 			"defaultValue": {
 				"value": true,
 				"computed": false
@@ -334,14 +334,14 @@
 				]
 			},
 			"required": false,
-			"description": "Determines the color of the indicator."
+			"description": "Determines color of the indicator."
 		},
 		"isContentDisabled": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true` the content of tabs no shown.",
+			"description": "If `true`, contents of tabs are not shown.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -360,14 +360,14 @@
 				]
 			},
 			"required": false,
-			"description": "The icon button is placed at left of tabs.\nIt able to render a dynamicIcon with a string prop.\nAlso it able to renders a React Element."
+			"description": "The icon button is placed on the left side of tabs.\nIt renders a dynamicIcon with a string prop.\nIt also renders a React Element."
 		},
 		"leftIconButtonVisibility": {
 			"type": {
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `false` the left icon is not shown.",
+			"description": "If `false`, the left icon is not shown.",
 			"defaultValue": {
 				"value": false,
 				"computed": false
@@ -388,7 +388,7 @@
 				]
 			},
 			"required": false,
-			"description": "If `primary` the tabs are colored with primary color of the current theme.",
+			"description": "If `primary`, the tabs are colored with the primary color of the current theme.",
 			"defaultValue": {
 				"value": "primary",
 				"computed": false
@@ -424,7 +424,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, it will invoke scrolling properties and allow for horizontally\nscrolling (or swiping) of the tab bar."
+			"description": "If `true`, it invokes scrolling properties and allows horizontally\nscrolling (or swiping) of the tab bar."
 		},
 		"scrollButtons": {
 			"type": {
@@ -445,7 +445,7 @@
 				]
 			},
 			"required": false,
-			"description": "Determine behavior of scroll buttons when tabs are set to scroll\n`auto` will only present them on medium and larger viewports\n`on` will always present them\n`off` will never present them"
+			"description": "Determines behavior of the scroll buttons when tabs are set to scroll.\n`auto` shows scroll buttons on medium and larger viewports.\n`on` always shows scroll buttons.\n`off` never shows scroll buttons."
 		},
 		"tabItems": {
 			"type": {
@@ -485,7 +485,7 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": "The value of the currently selected `Tab`.\nIf you don't want any selected `Tab`, you can set this property to `false`.",
+			"description": "The value of the currently selected `Tab`.\nIf you don't want to make tabs selectable, you can set this property to `false`.",
 			"defaultValue": {
 				"value": 0,
 				"computed": false

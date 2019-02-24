@@ -81,9 +81,11 @@ class ListItem extends ComponentBase {
      * is used to display a `ListItemSecondaryAction`.
      */
     ContainerProps: PropTypes.object,
+    /* eslint-disable max-len */
     /**
      * If `true`, the compact vertical padding designed for the keyboard and the mouse input is used.
      */
+    /* eslint-enable max-len */
     dense: PropTypes.bool,
     /**
      * If `true`, left and right paddings are removed.

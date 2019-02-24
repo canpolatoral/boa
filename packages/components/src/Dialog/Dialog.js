@@ -23,9 +23,9 @@ const styles = () => ({
   },
 });
 /**
- * Dialog Component is wrapped from `@material-ui/core/Dialog`.
- * Also `DialogHelper` provides a static method called `show`
- * This method allows create window from outside the render method.
+ * The Dialog Component is wrapped from `@material-ui/core/Dialog`.
+ * Also `DialogHelper` provides a static method called `show`.
+ * This method allows creating windows other than the render method.
  */
 @ComponentComposer
 @withStyles(styles)
@@ -52,36 +52,36 @@ class Dialog extends ComponentBase {
      */
     className: PropTypes.string,
     /**
-     * If `true`, hitting escape will not fire the `onClose` callback.
+     * If `true`, hitting escape does not fire the `onClose` callback.
      */
     content: PropTypes.any,
     /**
-     * If `true`, it will be full-screen
+     * If `true`, the dialog is shown full-screen.
      */
     dialogBoxContentPadding: PropTypes.any,
     /**
-     * If `true`, clicking the backdrop will not fire the `onClose` callback.
+     * If `true`, clicking the backdrop does not fire the `onClose` callback.
      */
     disableBackdropClick: PropTypes.bool,
     /**
-     * If `true`, hitting escape will not fire the `onClose` callback.
+     * If `true`, hitting escape does not fire the `onClose` callback.
      */
     disableEscapeKeyDown: PropTypes.bool,
     /**
-     * If true, the modal will not restore focus to previously focused element once modal is hidden.
+     * If true, the modal does not restore focus to previously focused element once modal is hidden.
      */
     disableRestoreFocus: PropTypes.bool,
     /**
-     * If `true`, it will be full-screen.
+     * If `true`, the dialog is shown full-screen.
      */
     fullScreen: PropTypes.bool,
     /**
-     * If specified, stretches dialog to max width.
+     * If specified, extends dialog to max width.
      */
     fullWidth: PropTypes.bool,
     /**
      * Determine the max width of the dialog.
-     * The dialog width grows with the size of the screen, this property is useful
+     * The dialog width expands with the size of the screen, this property is useful
      * on the desktop where you might need some coherent different width size across your
      * application. Set to `false` to disable `maxWidth`.
      */
@@ -90,8 +90,8 @@ class Dialog extends ComponentBase {
      * Callback fired when the backdrop is clicked.
      */
     /**
-     * Force the user to use one of the actions in the `Dialog`.
-     * Clicking outside the `Dialog` will not trigger the `onRequestClose`.
+     * Force the user to use one of the actions in the dialog.
+     * Clicking outside of the dialog will not trigger the `onRequestClose`.
      */
     modal: PropTypes.bool,
     onBackdropClick: PropTypes.func,
@@ -102,11 +102,11 @@ class Dialog extends ComponentBase {
      */
     onClose: PropTypes.func,
     /**
-     * Callback fired before the dialog enters.
+     * Callback fired before the dialog is entered.
      */
     onEnter: PropTypes.func,
     /**
-     * Callback fired when the dialog has entered.
+     * Callback fired when the dialog is entered.
      */
     onEntered: PropTypes.func,
     /**
@@ -119,19 +119,19 @@ class Dialog extends ComponentBase {
      */
     onEscapeKeyDown: PropTypes.func,
     /**
-     * Callback fired before the dialog exits.
+     * Callback fired before the dialog is closed.
      */
     onExit: PropTypes.func,
     /**
-     * Callback fired when the dialog has exited.
+     * Callback fired when the dialog is closed.
      */
     onExited: PropTypes.func,
     /**
-     * Callback fired when the dialog is exiting.
+     * Callback fired when the dialog is closing.
      */
     onExiting: PropTypes.func,
     /**
-     * If `true`, the Dialog is open.
+     * If `true`, the dialog is open.
      */
     open: PropTypes.bool.isRequired,
     /**
@@ -139,11 +139,11 @@ class Dialog extends ComponentBase {
      */
     PaperProps: PropTypes.object,
     /**
-     * Determines whether the `Dialog` should be repositioned when it’s contents are updated.
+     * Determines whether the dialog should be repositioned when its contents are updated.
      */
     repositionOnUpdate: PropTypes.bool,
     /**
-     * If true, dialog shows header area.
+     * If true, the dialog has a header area.
      */
     showHeader: PropTypes.bool,
     /**
@@ -155,8 +155,8 @@ class Dialog extends ComponentBase {
      */
     transition: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     /**
-     * The duration for the transition, in milliseconds.
-     * You may specify a single timeout for all transitions, or individually with an object.
+     * Duration for the transition, in milliseconds.
+     * You may specify a single timeout for all transitions, or individually for an object.
      */
     transitionDuration: PropTypes.oneOfType([
       PropTypes.number,

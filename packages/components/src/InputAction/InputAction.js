@@ -7,7 +7,7 @@ import { Input } from '../Input';
 import { InputNumeric } from '../InputNumeric';
 
 /**
- * Text fields let users enter, edit text and set action buttons on left and right sides of input.
+ * Text fields let users enter, edit text and set action buttons on left and right sides of the input.
  */
 @ComponentComposer
 class InputAction extends ComponentBase {
@@ -17,31 +17,31 @@ class InputAction extends ComponentBase {
      */
     ...Input.propTypes,
     /**
-     * If `true`, icons will be focussable.
+     * If `true`, icons are focusable.
      */
     canActionFocusable: PropTypes.bool,
     /**
-     * If `true`, all left icons will be hidden.
+     * If `true`, all left icons are hidden.
      */
     hideLeftIcons: PropTypes.bool,
     /**
-     * If `true`, selected icons will be hidden.
+     * If `true`, selected icons are hidden.
      */
     hideRightIconKeyList: PropTypes.arrayOf(String),
     /**
-     * If `true`, all right icons will be hidden.
+     * If `true`, all right icons are hidden.
      */
     hideRightIcons: PropTypes.bool,
     /**
-     * If `true`, only the input element will be disabled.
+     * If `true`, only the input element is disabled.
      */
     inputDisabled: PropTypes.bool,
     /**
-     * icons will be showed in left side of input elements.
+     * icons shown on the left side of the input elements.
      */
     leftIconList: PropTypes.array,
     /**
-     * icons will be showed in right side of input elements.
+     * icons shown on the right side of the input elements.
      */
     rightIconList: PropTypes.array,
   };

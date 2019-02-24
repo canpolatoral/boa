@@ -42,15 +42,15 @@ class Toggle extends ComponentBase {
      */
     ...ComponentBase.propTypes,
     /**
-     * The default value of toggle.
+     * The default value of the toggle.
      */
     defaultToggled: PropTypes.bool,
     /**
-     * Indicates the style of element.
+     * Indicates style of the element.
      */
     elementStyle: PropTypes.object,
     /**
-     * Indicates the style of icon.
+     * Indicates the error text.
      */
     errorText: PropTypes.string,
     /**
@@ -58,7 +58,7 @@ class Toggle extends ComponentBase {
      */
     iconProperties: PropTypes.object,
     /**
-     * Indicates the style of icon.
+     * Indicates style of the icon.
      */
     iconStyle: PropTypes.object,
     /**
@@ -66,39 +66,39 @@ class Toggle extends ComponentBase {
      */
     informationText: PropTypes.string,
     /**
-     * Indicates the style of input.
+     * Indicates style of the input.
      */
     inputStyle: PropTypes.object,
     /**
-     * The label of toggle component.
+     * Label of the toggle component.
      */
     label: PropTypes.node,
     /**
-     * The position of the label in toggle.
+     * Position of the toggle label.
      */
     labelPosition: PropTypes.oneOf(['left', 'right']),
     /**
-     * Indicates the style of label.
+     * Indicates style of the label.
      */
     labelStyle: PropTypes.object,
     /**
-     * The event to handle toggle.
+     * Event to handle the toggle.
      */
     onToggle: PropTypes.func,
     /**
-     * Indicates the style of ripple.
+     * Indicates style of the ripple.
      */
     rippleStyle: PropTypes.object,
     /**
-     * Indicates the toggled or not.
+     * Indicates whether the component is toggled or not.
      */
     toggled: PropTypes.bool,
     /**
-     * Indicates the style of track switched.
+     * Indicates style of the track switched.
      */
     trackSwitchedStyle: PropTypes.object,
     /**
-     * Indicates the value of link.
+     * Indicates value of the link.
      */
     valueLink: PropTypes.object,
   };

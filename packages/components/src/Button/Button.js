@@ -20,7 +20,7 @@ const styles = () => ({
 /**
  * Buttons allow users to take actions, and make choices, with a single tap.
  * This component is wrapped from `@material-ui/core/Button`.
- * It able to render an `<IconButton />` when the "type" prop is "icon".
+ * It also renders an `<IconButton />` when the "type" prop is "icon".
  */
 @ComponentComposer
 @withStyles(styles)
@@ -31,16 +31,16 @@ class Button extends ComponentBase {
      */
     ...ComponentBase.propTypes,
     /**
-     * If `false`, content of the button wil be upper case.
+     * If `false`, content of the button is shown uppercase.
      */
     allowLabelCase: PropTypes.bool,
     /**
-     * Predefined sizes of button.
+     * Predefined sizes of the button.
      */
     buttonSize: PropTypes.oneOf(['small', 'medium', 'large']),
     /**
-     * The color of the component.
-     * It supports those theme colors that make sense for this component.
+     * Color of the component.
+     * It supports the theme colors that make sense for this component.
      */
     colorType: PropTypes.oneOf(['default', 'primary', 'secondary']),
     /**
@@ -53,15 +53,15 @@ class Button extends ComponentBase {
      */
     fontIcon: PropTypes.string,
     /**
-     * If true, the button will take up the full width of its container.
+     * If true, the button has the full width of its container.
      */
     fullWidth: PropTypes.bool,
     /**
-     * The custom icon element to be rendered inside the button.
+     * Custom icon element to be rendered inside the button.
      */
     icon: PropTypes.any,
     /**
-     * Icon props that be passed to the `<Icon />` element.
+     * Icon props that are passed to the `<Icon />` element.
      */
     iconProperties: PropTypes.object,
     /**
@@ -82,8 +82,8 @@ class Button extends ComponentBase {
      */
     text: PropTypes.string,
     /**
-     * The position of the text in button.
-     * It applies given position to text if button width is greater than text width.
+     * Position of the text in the button.
+     * It assigns given position to text if button width is greater than the text width.
      */
     textPosition: PropTypes.oneOf(['center', 'left', 'right']),
     /**
@@ -91,11 +91,11 @@ class Button extends ComponentBase {
      */
     textStyle: PropTypes.object,
     /**
-     * If type 'icon' tooltip will generate on icon button.
+     * If type is 'icon', a tooltip is generated on the icon button.
      */
     tooltip: PropTypes.string,
     /**
-     * The position of the tooltip in button.
+     * Position of the button tooltip.
      */
     tooltipPosition: PropTypes.string,
     /**

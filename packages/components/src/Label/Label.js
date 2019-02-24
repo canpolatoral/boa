@@ -4,7 +4,7 @@ import { ComponentBase, ComponentComposer } from '@kuveytturk/boa-base';
 import parseFontSize from './parseFontSize';
 
 /**
- * This component allows you fit label contents to the specified width by changing the font size.
+ * This component allows fitting label contents to the specified width by changing the font size.
  */
 @ComponentComposer
 class Label extends ComponentBase {
@@ -28,28 +28,28 @@ class Label extends ComponentBase {
 
   static propTypes = {
     /**
-     * Max font size of label element
+     * Max font size of the label element.
      */
     maxFontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /**
-     * Max width label container element.
+     * Max width of the label container element.
      */
     maxWidth: PropTypes.number,
     /**
-     * Min font size of label element
+     * Min font size of the label element.
      */
     minFontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /**
-     * Override style of element.
+     * Override style of the element.
      */
     style: PropTypes.object,
     /**
-     * Text of label element.
+     * Text of the label element.
      */
     text: PropTypes.string,
     /**
-     * The position of the text in label.
-     * It applies given position to text if label width is greater than text width.
+     * Position of the text of the label.
+     * It applies given position to text if label width is greater than the text width.
      */
     textPosition: PropTypes.oneOf(['center', 'left', 'right']),
   };

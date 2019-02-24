@@ -46,12 +46,12 @@ class Popover extends ComponentBase {
       top: PropTypes.number,
     }),
     /*
-     * This determines which anchor prop to refer to to set
+     * This determines which anchor prop to refer to set
      * the position of the popover.
      */
     anchorReference: PropTypes.oneOf(['anchorEl', 'anchorPosition']),
     /**
-     * The content of the component.
+     *  Content of the component.
      */
     children: PropTypes.node,
     /**
@@ -61,23 +61,23 @@ class Popover extends ComponentBase {
     /**
      * A node, component instance, or function that returns either.
      * The `container` will passed to the Modal component.
-     * By default, it's using the body of the anchorEl's top-level document object,
-     * so it's simply `document.body` most of the time.
+     * By default, it is using the body of the anchorEl's top-level document object,
+     * so it is simply `document.body` most of the time.
      */
     container: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     /**
-     * If true, the modal will not restore focus to previously focused element once modal is hidden.
+     * If true, the modal does not restore focus to the previously focused element once modal is hidden.
      */
     disableRestoreFocus: PropTypes.bool,
     /**
-     * The elevation of the popover.
+     * Elevation of the popover.
      */
     elevation: PropTypes.number,
     /**
      * This function is called in order to retrieve the content anchor element.
-     * It's the opposite of the `anchorEl` property.
+     * It is the opposite of the `anchorEl` property.
      * The content anchor element should be an element inside the popover.
-     * It's used to correctly scroll and set the position of the popover.
+     * It is used to scroll correctly and set the position of the popover.
      * The positioning strategy tries to make the content anchor element just above the
      * anchor element.
      */
@@ -88,7 +88,7 @@ class Popover extends ComponentBase {
      */
     manager: PropTypes.object,
     /**
-     * Specifies how close to the edge of the window the popover can appear.
+     * Specifies how close the popover can appear to the edge of the window.
      */
     marginThreshold: PropTypes.number,
     /**
@@ -98,27 +98,27 @@ class Popover extends ComponentBase {
      */
     onClose: PropTypes.func,
     /**
-     * Callback fired before the component is entering.
+     * Callback fired before the component is entered.
      */
     onEnter: PropTypes.func,
     /**
-     * Callback fired when the component has entered.
+     * Callback fired when the component is entered.
      */
     onEntered: PropTypes.func,
     /**
-     * Callback fired when the component is entering.
+     * Callback fired when the component is being entered.
      */
     onEntering: PropTypes.func,
     /**
-     * Callback fired before the component is exiting.
+     * Callback fired before the component is exited.
      */
     onExit: PropTypes.func,
     /**
-     * Callback fired when the component has exited.
+     * Callback fired when the component is exited.
      */
     onExited: PropTypes.func,
     /**
-     * Callback fired when the component is exiting.
+     * Callback fired when the component is being exited.
      */
     onExiting: PropTypes.func,
     onRequestClose: PropTypes.func,
@@ -158,7 +158,7 @@ class Popover extends ComponentBase {
     transition: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 
     /**
-     * Set to 'auto' to automatically calculate transition time based on height.
+     * Set to 'auto' to calculate transition time automatically based on height.
      */
     transitionDuration: PropTypes.oneOfType([
       PropTypes.number,

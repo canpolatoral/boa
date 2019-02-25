@@ -29,6 +29,10 @@ We will provide example projects as soon as possible.
 
 The future plans, prioritized features and enhancements can be found in the [ROADMAP](/ROADMAP.md) file.
 
+## Supported Platforms
+
+Now, kuveytturk/boa opensource library supports the latest stable releases of all major browsers and platforms. We are also planning to support IE.
+
 ## Thanks
 
 Thank you to [Material-UI](https://github.com/mui-org/material-ui) for awesome React components.

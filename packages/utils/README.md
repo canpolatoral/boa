@@ -49,7 +49,7 @@ Changes the localization context and registers locales to numeral and moment.
 We're receiving messages from a backend dynamically. The messaging utility receives messages and versions and caches them.
 
 #### getMessage
-ComponentBase has a function called [getMessage](https://github.com/kuveytturk/boa/blob/monorepo/packages/base/src/ComponentBase/index.js#L81). It takes two parameters: *groupName*, *propertyName*
+ComponentBase has a function called [getMessage](/packages/base/src/ComponentBase/index.js#L114). It takes two parameters: *groupName*, *propertyName*
 
 We group messages by domain at our pages like *CoreBanking*, *Loans* etc. And each group has own messages with propertyName. 
 

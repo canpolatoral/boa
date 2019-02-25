@@ -23,7 +23,7 @@ This component wraps MuiThemeProvider and it also has an [error wrapper](#ErrorB
 
 This component is the base component of UI components. All UI components are inherited from ComponentBase. It has some common props:
 
-- **componentSize**: In our design guideline, all components on a page must be placed inside a card. The ComponentSize prop defines the size of the component.  The ComponentSize constant is exported from [`enums`](packages/base/src/enums/index.js#L10).
+- **componentSize**: In our design guideline, all components on a page must be placed inside a card. The ComponentSize prop defines the size of the component.  The ComponentSize constant is exported from [`enums`](/packages/base/src/enums/index.js#L10).
 - **context**: The context property defines application requirements such as localization, theme, platform. We are storing our context parameters at Redux store, in our SPA. Please refer to our [Storybook Container](/.storybook/container.js) for how we change the theme, language or device size.
 - **disabled**: All components should have disabled prop.
 - **id**: All components should have id prop.
@@ -41,7 +41,7 @@ Also it has a Mui CHANNEL contextType in the ```contextTypes```. If the theme is
 ComponentBase methods:
 
 - **getInstance**: Returns component instance.
-- **getMessage**: Gets message online or offline from [@kuveytturk/boa-utils](packages/utils#messaging) 
+- **getMessage**: Gets message online or offline from [@kuveytturk/boa-utils](/packages/utils#messaging) 
 - **getSnapshot**: Returns the current state of the component to provide status. 
 - **setSnapshot**: Changes component status to the given snapshot.
 - **validateConstraint**: Checks the valueConstraint requirements.
@@ -61,7 +61,7 @@ ErrorBoundary is an error wrapper. It has the componentDidCatch method from the 
 
 ### Themes
 
-We are using different color palettes with [custom themes](packages/base/src/themes). To get the theme:
+We are using different color palettes with [custom themes](/packages/base/src/themes). To get the theme:
 
 ```js
 import { getTheme } from '@kuveytturk/boa-base';
@@ -94,7 +94,7 @@ export function getThemeList() {
 
 #### setLocalization
 
-This function is exported from `@kuveytturk/boa-base` package to configure the [@kuveytturk/boa-utils](packages/utils) package. See the [@kuveytturk/boa-utils](packages/utils) package for details. Example configuration:
+This function is exported from `@kuveytturk/boa-base` package to configure the [@kuveytturk/boa-utils](/packages/utils) package. See the [@kuveytturk/boa-utils](/packages/utils) package for details. Example configuration:
 
 ```js
 import { setLocalization } from '@kuveytturk/boa-base';

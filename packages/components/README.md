@@ -15,4 +15,4 @@ yarn add @kuveytturk/boa-components
 
 ## Documentation
 
-Each component documented on the storybook. To start the storybook please refer [contibuting](/CONTRIBUTING.md) guideline or visit our [demo page](demo).
+Each component documented on the storybook. To start the storybook please refer [contibuting](/CONTRIBUTING.md) guideline or visit our [Storybook](https://kuveytturk.github.io/boa).

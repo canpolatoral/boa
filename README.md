@@ -4,6 +4,7 @@
 
 [React](http://facebook.github.io/react/) components that implement [Google's Material Design](https://www.google.com/design/spec/material-design/introduction.html). 
 
+[![npm package](https://img.shields.io/npm/v/@kuveytturk/boa-components/latest.svg)](https://www.npmjs.com/package/@kuveytturk/boa-components)
 [![CircleCI](https://circleci.com/gh/kuveytturk/boa.svg?style=shield&circle-token=17c2c9d64b57ee4fa97b2dbf59a59ddf26ac60dd)](https://circleci.com/gh/kuveytturk/boa) [![codecov](https://codecov.io/gh/kuveytturk/boa/branch/master/graph/badge.svg?token=OVabLixPmT)](https://codecov.io/gh/kuveytturk/boa) ![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/kuveytturk/boa/badge)](https://www.codefactor.io/repository/github/kuveytturk/boa)
 [![Storybook](https://github.com/storybooks/brand/blob/master/badge/badge-storybook.svg)](https://kuveytturk.github.io/boa)

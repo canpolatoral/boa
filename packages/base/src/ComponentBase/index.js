@@ -9,7 +9,7 @@ import { shallowEqual } from '../helpers';
 export default class ComponentBase extends Component {
   static propTypes = {
     /**
-     * Defines the size of the component. The ComponentSize constant exported from enums.
+     * Defines size of the component. The ComponentSize constant is exported from enums.
      * @ignore
      */
     componentSize: PropTypes.oneOf([
@@ -23,16 +23,16 @@ export default class ComponentBase extends Component {
      */
     context: PropTypes.object,
     /**
-     * If true, all of the component functionality will be disabled.
+     * If true, all component functionalities are disabled.
      */
     disabled: PropTypes.bool,
     /**
-     * All components should be have id prop.
+     * All components must have an id prop.
      */
     id: PropTypes.string,
     /**
-     * As described in componentSize prop, if any components take part in the new line
-     * on a card we're using this prop.
+     * As described in componentSize prop, if one of the components takes part in the new line
+     * on a card we are using this prop.
      * @ignore
      */
     newLine: PropTypes.bool,
@@ -42,22 +42,22 @@ export default class ComponentBase extends Component {
      */
     snapKey: PropTypes.string,
     /**
-     * In our SPA, we want to keep the state of each component when a page will unmount.
-     * And the same page will mount again, the component mounts with snapshot prop and
-     * it should get the previous state.
+     * In our SPA, we want to keep the state of each component when a page unmounts.
+     * And when the same page mounts again, the component mounts with the snapshot prop and
+     * it gets the previous state.
      * @ignore
      */
     snapshot: PropTypes.object,
     /**
-     * All components should be have style prop.
+     * All components must have a style prop.
      */
     style: PropTypes.object,
     /**
-     * The valueConstraint is used to some validation on components like limit, required etc.
+     * The valueConstraint is used for validations on components like limit, required, etc.
      */
     valueConstraint: PropTypes.object,
     /**
-     * In ComponentComposer, we change the visibility of the component with this prop.
+     * In the ComponentComposer, we change the visibility of the component with this prop.
      */
     visible: PropTypes.bool,
   };

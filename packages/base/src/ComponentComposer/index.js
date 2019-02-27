@@ -17,7 +17,8 @@ export default function ComponentComposer(WrappedComponent) {
     }
 
     render() {
-      if (this.props.visible || this.props.visible === undefined) {
+      const visible = this.props.visible !== undefined ? this.props.visible : this.props.isVisible;
+      if (visible || visible === undefined) {
         if (isWrappedWithStyles(WrappedComponent)) {
           const innerComp = super.render();
           const newProps = {

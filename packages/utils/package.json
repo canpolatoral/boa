@@ -6,7 +6,8 @@
   "description": "BOA Components Utility Package",
   "keywords": [
     "messaging",
-    "localization"
+    "localization",
+    "utility"
   ],
   "repository": {
     "type": "git",

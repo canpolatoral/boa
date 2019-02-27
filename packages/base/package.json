@@ -3,10 +3,11 @@
   "private": true,
   "author": "Kuveyt Turk BOA One Team",
   "version": "0.1.2",
-  "description": "Composer, BaseComponent, Theme, ErrorBoundary and Utils for BOA Components",
+  "description": "Composer, BaseComponent, Theme, ErrorBoundary for BOA Components",
   "keywords": [
     "react",
-    "theme"
+    "react-component",
+    "material design"
   ],
   "repository": {
     "type": "git",

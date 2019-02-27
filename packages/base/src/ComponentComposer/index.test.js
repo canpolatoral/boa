@@ -68,6 +68,12 @@ describe('<ComponentComposer />', () => {
     assert.isTrue(wrapper.isEmptyRender());
   });
 
+  it('should return null when not visible (legacy)', () => {
+    const Compose = ComponentComposer(EmptyComponent);
+    const wrapper = mount(<Compose isVisible={false} />);
+    assert.isTrue(wrapper.isEmptyRender());
+  });
+
   describe('withStyles components', () => {
     it('should have a innerRef', () => {
       const WithStyles = withStyles(() => {

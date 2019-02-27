@@ -31,6 +31,12 @@ export default class ComponentBase extends Component {
      */
     id: PropTypes.string,
     /**
+     * @deprecated
+     * @ignore
+     * In the ComponentComposer, we change the visibility of the component with this prop.
+     */
+    isVisible: PropTypes.bool,
+    /**
      * As described in componentSize prop, if one of the components takes part in the new line
      * on a card we are using this prop.
      * @ignore

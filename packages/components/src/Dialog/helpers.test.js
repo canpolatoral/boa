@@ -2,7 +2,7 @@ import React from 'react';
 import { assert } from 'chai';
 import { stub } from 'sinon';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import { DialogType, Sizes } from '@kuveytturk/boa-base';
+import { DialogType, DeviceSize } from '@kuveytturk/boa-base';
 import { Icon } from '../Icon';
 import * as Helper from './helpers';
 import { context } from '@kuveytturk/boa-test/utils';
@@ -26,10 +26,10 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const style = Helper.prepareLineStyle(newContext);
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(style.marginRight, 24);
           assert.strictEqual(style.marginLeft, 24);
         }
@@ -54,10 +54,10 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const style = Helper.prepareCloseButtonStyle(newContext);
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(style.paddingRight, 4);
         }
       });
@@ -65,10 +65,10 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size with localization', () => {
       const newContext = Object.assign({}, context, { localization: { isRightToLeft: true } });
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const style = Helper.prepareCloseButtonStyle(newContext);
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(style.paddingLeft, 4);
         }
       });
@@ -92,10 +92,10 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const style = Helper.prepareTitleStyle(newContext);
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(style.paddingLeft, 44);
         }
       });
@@ -103,10 +103,10 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size with localization', () => {
       const newContext = Object.assign({}, context, { localization: { isRightToLeft: true } });
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const style = Helper.prepareTitleStyle(newContext);
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(style.paddingRight, 44);
         }
       });
@@ -143,10 +143,10 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const style = Helper.prepareTitleStyle(newContext);
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(style.paddingLeft, 44);
         }
       });
@@ -268,7 +268,7 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const content = {
           mainContent: <div>test</div>,
@@ -282,7 +282,7 @@ describe('Dialog helper methods', () => {
         assert.strictEqual(objectContent.dialogSubContent[0].props.style.height, '60vh');
         assert.strictEqual(objectContent.dialogSubContent[0].props.style.direction, 'ltr');
 
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(objectContent.dialogSubContent[0].props.style.paddingLeft, 24);
           assert.strictEqual(objectContent.dialogSubContent[0].props.style.paddingBottom, 24);
         } else {
@@ -361,11 +361,11 @@ describe('Dialog helper methods', () => {
 
     it('should handle device sizes', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const contentStyle = {};
         const result = Helper.prepareContentStyle(contentStyle, true, newContext, {});
-        if (size <= Sizes.SMALL) {
+        if (size <= DeviceSize.SMALL) {
           assert.strictEqual(result.customContentStyle.height, '100vh');
           assert.strictEqual(result.customContentStyle.height, '100vh');
           assert.strictEqual(result.fullScreen, true);
@@ -554,7 +554,7 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         const result = Helper.createDialogContent(
           {
@@ -564,7 +564,7 @@ describe('Dialog helper methods', () => {
         );
         const div = result.props.children.props.children[0];
         const firstChild = div.props.children[0];
-        if (size > Sizes.SMALL) {
+        if (size > DeviceSize.SMALL) {
           assert.strictEqual(firstChild.props.style.paddingTop, 24);
           assert.strictEqual(firstChild.props.style.paddingLeft, 24);
         }
@@ -573,7 +573,7 @@ describe('Dialog helper methods', () => {
 
     it('should handle device size RTL', () => {
       const newContext = Object.assign({}, context);
-      [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+      [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
         newContext.deviceSize = size;
         newContext.localization = { isRightToLeft: true };
         const result = Helper.createDialogContent(
@@ -584,7 +584,7 @@ describe('Dialog helper methods', () => {
         );
         const div = result.props.children.props.children[0];
         const firstChild = div.props.children[0];
-        if (size > Sizes.SMALL) {
+        if (size > DeviceSize.SMALL) {
           assert.strictEqual(firstChild.props.style.paddingTop, 24);
           assert.strictEqual(firstChild.props.style.paddingRight, 24);
         }

@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 
 import React from 'react';
-import { ComponentBase, Sizes } from '@kuveytturk/boa-base';
+import { ComponentBase, DeviceSize } from '@kuveytturk/boa-base';
 
 var editorTypes, editorType, tableOfContent;
 
@@ -764,7 +764,7 @@ Renderer.prototype.code = function(code, lang, escaped) {
   }
   const style = `margin-top: 1em; margin-bottom: 1em;`;
   const codeStyle =
-    this.options.context && this.options.context.deviceSize < Sizes.LARGE
+    this.options.context && this.options.context.deviceSize < DeviceSize.LARGE
       ? 'max-height: 300px;'
       : 'max-height: 600px;';
   return `<pre class="customPre" style="${style}" >

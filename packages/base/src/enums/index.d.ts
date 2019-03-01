@@ -3,13 +3,14 @@ export const Platform: {
   MOBILE: number;
   TABLET: number;
 };
-export const Size: {
-  LARGE: number;
-  MEDIUM: number;
-  SMALL: number;
+export const DeviceSize: {
   XSMALL: number;
+  SMALL: number;
+  MEDIUM: number;
+  LARGE: number;
 };
 export const ComponentSize: {
+  XSMALL: number;
   SMALL: number;
   MEDIUM: number;
   LARGE: number;

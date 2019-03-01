@@ -127,8 +127,10 @@ function loadMessagesByGroup(groupName, languageId) {
   const responseLanguage = serviceCallSync(request);
 
   if (responseLanguage.isSuccess) {
-    store.messages[groupName] = responseLanguage.data;
-    store.messages[groupName].languageId = languageId;
+    if (!store.messages[groupName]) {
+      store.messages[groupName] = {};
+    }
+    store.messages[groupName][languageId] = responseLanguage.data;
   }
 }
 
@@ -162,6 +164,10 @@ export function getMessage(groupName, propertyName, languageId) {
   let clientVersion;
   let serverVersion;
 
+  if (!languageId) {
+    languageId = messagingOptions.languageId;
+  }
+
   if (messagingOptions.localMessages) {
     // eslint-disable-next-line
     const messageGroup = messagingOptions.localMessages[groupName];
@@ -169,7 +175,7 @@ export function getMessage(groupName, propertyName, languageId) {
       const message = messageGroup.find(
         x =>
           x.PropertyName === propertyName &&
-          x.LanguageId === (languageId || messagingOptions.languageId),
+          x.LanguageId === languageId,
       );
       /* istanbul ignore next */
       if (message) {
@@ -196,16 +202,16 @@ export function getMessage(groupName, propertyName, languageId) {
   const messages = store.messages;
   let messageGroup = messages && messages[groupName] ? messages[groupName] : null;
   const messagesNotExists = !messages || !messageGroup;
-  const languageNotExists = messages && messageGroup && messageGroup.languageId !== languageId;
+  const languageNotExists = messages && messageGroup && messageGroup[languageId] === undefined;
 
   if (messagesNotExists || languageNotExists || messagesRefreshRequired) {
-    loadMessagesByGroup(groupName, languageId || messagingOptions.languageId);
+    loadMessagesByGroup(groupName, languageId);
     messageGroup = messages && messages[groupName] ? messages[groupName] : null;
   }
 
-  if (messages && messageGroup && messageGroup.find(x => x.PropertyName === propertyName)) {
-    const message = messageGroup.find(x => x.PropertyName === propertyName);
-    if (message.LanguageId === (languageId || messagingOptions.languageId)) {
+  if (messages && messageGroup && messageGroup[languageId]) {
+    const message = messageGroup[languageId].find(x => x.PropertyName === propertyName);
+    if (message) {
       return message;
     }
   }

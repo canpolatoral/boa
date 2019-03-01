@@ -3,7 +3,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CHANNEL } from '@material-ui/core/styles/themeListener';
 import { getMessage } from '@kuveytturk/boa-utils';
-import { ComponentSize, Sizes } from '../enums';
+import { ComponentSize, DeviceSize } from '../enums';
 import { shallowEqual } from '../helpers';
 
 export default class ComponentBase extends Component {
@@ -121,6 +121,10 @@ export default class ComponentBase extends Component {
     return getMessage(groupName, propertyName, this.props.context.language).Description;
   }
 
+  getMessageCode(groupName, propertyName) {
+    return getMessage(groupName, propertyName, this.props.context.language).Code;
+  }
+
   getSnapKey(childSnapKey) {
     return this.props.snapKey ? `${this.props.snapKey}_${childSnapKey}` : childSnapKey;
   }
@@ -134,11 +138,11 @@ export default class ComponentBase extends Component {
   }
 
   isMobile() {
-    return this.props.context.deviceSize <= Sizes.SMALL;
+    return this.props.context.deviceSize <= DeviceSize.SMALL;
   }
 
   isMobileOrTablet() {
-    return this.props.context.deviceSize <= Sizes.MEDIUM;
+    return this.props.context.deviceSize <= DeviceSize.MEDIUM;
   }
 
   // eslint-disable-next-line class-methods-use-this

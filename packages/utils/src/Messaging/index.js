@@ -143,6 +143,19 @@ function isVersionCheckRequired() {
   return lastReadDate < new Date();
 }
 
+function getMessageFromCache(groupName, propertyName, languageId) {
+  const messages = store.messages;
+  const messageGroup = messages && messages[groupName] ? messages[groupName] : null;
+
+  if (messages && messageGroup && messageGroup[languageId]) {
+    const message = messageGroup[languageId].find(x => x.PropertyName === propertyName);
+    if (message) {
+      return message;
+    }
+  }
+  return null;
+}
+
 export function setMessagingOptions(options) {
   /* istanbul ignore next */
   if (options) {
@@ -187,7 +200,8 @@ export function getMessage(groupName, propertyName, languageId) {
   if (versionCheckRequired) {
     const responseVersion = getMessagesVersion();
     if (!responseVersion.isSuccess) {
-      return { Description: `${groupName}.${propertyName}`, Code: propertyName };
+      return getMessageFromCache(groupName, propertyName, languageId) ||
+        { Description: `${groupName}.${propertyName}`, Code: propertyName };
     }
 
     const responseGroup = responseVersion.data.find(x => x.ClassName === groupName);
@@ -209,14 +223,13 @@ export function getMessage(groupName, propertyName, languageId) {
     messageGroup = messages && messages[groupName] ? messages[groupName] : null;
   }
 
-  if (messages && messageGroup && messageGroup[languageId]) {
-    const message = messageGroup[languageId].find(x => x.PropertyName === propertyName);
-    if (message) {
-      return message;
-    }
-  }
+  return getMessageFromCache(groupName, propertyName, languageId)
+    || { Description: `${groupName}.${propertyName}` };
+}
 
-  return { Description: `${groupName}.${propertyName}` };
+export function clearMessages() {
+  store.messages = {};
+  store.versions = [];
 }
 
 export function getMessagingOptions() {

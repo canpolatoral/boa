@@ -93,7 +93,7 @@ export default class ComponentBase extends Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.snapshot) {
@@ -106,12 +106,12 @@ export default class ComponentBase extends Component {
   }
 
   // eslint-disable-next-line no-unused-vars
-  componentWillUpdate(nextProps, nextState) {}
+  componentWillUpdate(nextProps, nextState) { }
 
   // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) { }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
   getInstance() {
     return this;
@@ -150,6 +150,10 @@ export default class ComponentBase extends Component {
     return true;
   }
 
-  // eslint-disable-next-line
-  render() { return; }
+  /* eslint-disable */
+  render() {
+    /* istanbul ignore next */
+    return;
+  }
+  /* eslint-enable */
 }

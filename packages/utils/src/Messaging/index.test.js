@@ -106,13 +106,13 @@ describe('Messaging', () => {
       assert.strictEqual(message.Description, 'test-new');
     });
 
-    it('should get message when service not sends language', () => {
+    it('should clear messages', () => {
       Messaging.setMessagingOptions({ refreshThresold: -1 });
       const versions = [{ id: 1, name: 'test', ClassName: 'test', Version: 2 }];
       const messages = [
         {
           Code: 'test',
-          Description: 'test-new',
+          Description: 'test-clear',
           GroupName: 'test',
           LanguageId: 1,
           PropertyName: 'test',
@@ -123,8 +123,11 @@ describe('Messaging', () => {
       const stub = sinon.stub($, 'ajax').callsFake(request => {
         return serviceCallSync(request, versions, messages);
       });
-      const message = Messaging.getMessage('test', 'test', 2);
+      let message = Messaging.getMessage('test', 'test');
       stub.restore();
+      assert.strictEqual(message.Description, 'test-clear');
+      Messaging.clearMessages();
+      message = Messaging.getMessage('test', 'test');
       assert.strictEqual(message.Description, 'test.test');
     });
 

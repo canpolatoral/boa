@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ComponentBase, Sizes } from '@kuveytturk/boa-base';
+import { ComponentBase, DeviceSize } from '@kuveytturk/boa-base';
 import { Input } from '../Input';
 import { isEqualDateTime, getLocalizedDate, getLocalizedTime } from './dateUtils';
 import DatePickerDialog from './DatePickerDialog';
@@ -117,7 +117,7 @@ class DatePicker extends ComponentBase {
   }
 
   isMobile() {
-    if (this.props.context.deviceSize === Sizes.SMALL) return true;
+    if (this.props.context.deviceSize === DeviceSize.SMALL) return true;
     return false;
   }
 

@@ -127,8 +127,10 @@ function loadMessagesByGroup(groupName, languageId) {
   const responseLanguage = serviceCallSync(request);
 
   if (responseLanguage.isSuccess) {
-    store.messages[groupName] = responseLanguage.data;
-    store.messages[groupName].languageId = languageId;
+    if (!store.messages[groupName]) {
+      store.messages[groupName] = {};
+    }
+    store.messages[groupName][languageId] = responseLanguage.data;
   }
 }
 
@@ -139,6 +141,19 @@ function isVersionCheckRequired() {
     .add(messagingOptions.refreshThresold, 'm')
     .toDate();
   return lastReadDate < new Date();
+}
+
+function getMessageFromCache(groupName, propertyName, languageId) {
+  const messages = store.messages;
+  const messageGroup = messages && messages[groupName] ? messages[groupName] : null;
+
+  if (messages && messageGroup && messageGroup[languageId]) {
+    const message = messageGroup[languageId].find(x => x.PropertyName === propertyName);
+    if (message) {
+      return message;
+    }
+  }
+  return null;
 }
 
 export function setMessagingOptions(options) {
@@ -162,6 +177,10 @@ export function getMessage(groupName, propertyName, languageId) {
   let clientVersion;
   let serverVersion;
 
+  if (!languageId) {
+    languageId = messagingOptions.languageId;
+  }
+
   if (messagingOptions.localMessages) {
     // eslint-disable-next-line
     const messageGroup = messagingOptions.localMessages[groupName];
@@ -169,7 +188,7 @@ export function getMessage(groupName, propertyName, languageId) {
       const message = messageGroup.find(
         x =>
           x.PropertyName === propertyName &&
-          x.LanguageId === (languageId || messagingOptions.languageId),
+          x.LanguageId === languageId,
       );
       /* istanbul ignore next */
       if (message) {
@@ -181,7 +200,8 @@ export function getMessage(groupName, propertyName, languageId) {
   if (versionCheckRequired) {
     const responseVersion = getMessagesVersion();
     if (!responseVersion.isSuccess) {
-      return { Description: `${groupName}.${propertyName}`, Code: propertyName };
+      return getMessageFromCache(groupName, propertyName, languageId) ||
+        { Description: `${groupName}.${propertyName}`, Code: propertyName };
     }
 
     const responseGroup = responseVersion.data.find(x => x.ClassName === groupName);
@@ -196,21 +216,20 @@ export function getMessage(groupName, propertyName, languageId) {
   const messages = store.messages;
   let messageGroup = messages && messages[groupName] ? messages[groupName] : null;
   const messagesNotExists = !messages || !messageGroup;
-  const languageNotExists = messages && messageGroup && messageGroup.languageId !== languageId;
+  const languageNotExists = messages && messageGroup && messageGroup[languageId] === undefined;
 
   if (messagesNotExists || languageNotExists || messagesRefreshRequired) {
-    loadMessagesByGroup(groupName, languageId || messagingOptions.languageId);
+    loadMessagesByGroup(groupName, languageId);
     messageGroup = messages && messages[groupName] ? messages[groupName] : null;
   }
 
-  if (messages && messageGroup && messageGroup.find(x => x.PropertyName === propertyName)) {
-    const message = messageGroup.find(x => x.PropertyName === propertyName);
-    if (message.LanguageId === (languageId || messagingOptions.languageId)) {
-      return message;
-    }
-  }
+  return getMessageFromCache(groupName, propertyName, languageId)
+    || { Description: `${groupName}.${propertyName}` };
+}
 
-  return { Description: `${groupName}.${propertyName}` };
+export function clearMessages() {
+  store.messages = {};
+  store.versions = [];
 }
 
 export function getMessagingOptions() {

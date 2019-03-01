@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types, react/no-danger, react/no-array-index-key */
 import React from 'react';
-import { DialogType, Sizes } from '@kuveytturk/boa-base';
+import { DialogType, DeviceSize } from '@kuveytturk/boa-base';
 import { Icon } from '../Icon';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 
@@ -22,7 +22,7 @@ export function prepareLineStyle(context) {
 
   Object.assign(
     objLine,
-    context.deviceSize <= Sizes.SMALL ? { marginRight: 24, marginLeft: 24 } : {},
+    context.deviceSize <= DeviceSize.SMALL ? { marginRight: 24, marginLeft: 24 } : {},
   );
 
   return objLine;
@@ -35,7 +35,7 @@ export function prepareCloseButtonStyle(context) {
     context.localization.isRightToLeft ? { paddingLeft: 12 } : { paddingRight: 12 },
   );
 
-  if (context.deviceSize <= Sizes.SMALL) {
+  if (context.deviceSize <= DeviceSize.SMALL) {
     Object.assign(
       closeButtonStyle,
       context.localization.isRightToLeft ? { paddingLeft: 4 } : { paddingRight: 4 },
@@ -47,7 +47,7 @@ export function prepareCloseButtonStyle(context) {
 export function prepareTitleStyle(context, leftTitleButton) {
   const titleStyle = { flex: 1, paddingTop: 9 };
 
-  if (context.deviceSize <= Sizes.SMALL) {
+  if (context.deviceSize <= DeviceSize.SMALL) {
     Object.assign(
       titleStyle,
       context.localization.isRightToLeft
@@ -146,7 +146,7 @@ export function prepareObjectContent(content, context) {
 
   Object.assign(
     subObjStyle,
-    context.deviceSize <= Sizes.SMALL ? { paddingLeft: 24, paddingRight: 24 } : {},
+    context.deviceSize <= DeviceSize.SMALL ? { paddingLeft: 24, paddingRight: 24 } : {},
   );
 
   if (!content.subcontents) {
@@ -251,7 +251,7 @@ export function prepareContentStyle(contentStyle, buttonEnabled, context, style)
     }
 
     // if mobile it should be full screen
-    if (context.deviceSize <= Sizes.SMALL) {
+    if (context.deviceSize <= DeviceSize.SMALL) {
       contentStyle = Object.assign(contentStyle, { height: '100vh', width: '100vw' });
       fullScreen = true;
     }
@@ -421,7 +421,7 @@ export function createDialogContent(props, dialog) {
             direction: context.localization.isRightToLeft ? 'rtl' : 'ltr',
           }}
         >
-          {context.deviceSize > Sizes.SMALL && (
+          {context.deviceSize > DeviceSize.SMALL && (
             <div
               style={
                 context.localization.isRightToLeft

@@ -1,4 +1,4 @@
-<h1 align="center">@kuveytturk packages</h1>
+<h1 align="center">Kuveyt Turk BOA Packages</h1>
 
 <div align="center">
 

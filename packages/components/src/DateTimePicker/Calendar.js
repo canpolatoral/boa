@@ -848,7 +848,7 @@ class Calendar extends ComponentBase {
           height: 16,
           marginTop: 7,
         }}
-        onClick={this.handleAddDate.bind}
+        onClick={this.handleAddDate}
         disabled={this.state.disabled}
       />
     );

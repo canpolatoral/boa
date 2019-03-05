@@ -4,7 +4,8 @@ export interface ComponentBaseProps {
   context?: object;
   disabled?: boolean;
   id?: string;
-  isVisible?: boolean;
+  isVisible?: boolean; // @deprecated
+  visible?: boolean;
   newLine?: boolean;
   componentSize?: number;
   snapKey?: string;

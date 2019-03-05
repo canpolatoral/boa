@@ -29,7 +29,6 @@ class Menu extends ComponentBase {
     ...ComponentBase.defaultProps,
     multiple: false,
     isMenuItemList: false,
-    primaryTextPadding: '0px 24px 0px 24px',
     items: [],
   };
 
@@ -93,8 +92,8 @@ class Menu extends ComponentBase {
     value: this.props.value,
   };
 
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.menuItemSelected = this.menuItemSelected.bind(this);
   }
 
@@ -112,8 +111,6 @@ class Menu extends ComponentBase {
   }
 
   getIcon(iconProp) {
-    const isRightToLeft = this.props.context.localization.isRightToLeft;
-
     if (iconProp) {
       let iconProperties = null;
       if (iconProp.svgIcon || iconProp.fontIcon || iconProp.dynamicIcon) {
@@ -121,9 +118,6 @@ class Menu extends ComponentBase {
           style: {
             height: 20,
             width: 20,
-            margin: !isRightToLeft ? 'auto 0px auto 24px' : 'auto 24px auto 12px',
-            right: 0,
-            top: '50%',
             color: this.props.context.theme.boaPalette.base400,
           },
         };
@@ -170,6 +164,8 @@ class Menu extends ComponentBase {
 
         itemStyle = merge(itemStyle, item.style || {});
 
+        const leftIconStyle = { margin: 'auto 12px auto 12px' };
+
         if (item && item.leftIcon && item.leftIcon.dynamicIcon === 'ChevronLeft') {
           itemStyle.fontSize = 16;
         }
@@ -191,6 +187,7 @@ class Menu extends ComponentBase {
               items={item.items}
               rightIcon={rightIcon}
               leftIcon={leftIcon}
+              leftIconStyle={leftIconStyle}
               style={itemStyle}
               primaryTextPadding={this.props.primaryTextPadding}
               innerDivStyle={innerDivStyle}

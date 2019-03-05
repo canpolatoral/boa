@@ -43,11 +43,11 @@ describe('Icon', () => {
 
   it('should return null when icon not exists', () => {
     const SvgIcon = Icon.getIcon({ bIcon: 'aaaa', iconProperties: { folder: 'Logos' } });
-    assert.strictEqual(SvgIcon, null);
+    assert.strictEqual(SvgIcon.type, Icons.Actions.None);
   });
 
   it('should return null when folder not exists', () => {
     const SvgIcon = Icon.getIcon({ bIcon: 'aaaa', iconProperties: { folder: 'aaaa' } });
-    assert.strictEqual(SvgIcon, null);
+    assert.strictEqual(SvgIcon.type, Icons.Actions.None);
   });
 });

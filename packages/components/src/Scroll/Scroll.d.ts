@@ -8,4 +8,4 @@ import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuvey
 // export interface ResizableInstance extends ComponentBaseInstance {
 // }
 
-export default class Resizable extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> {}
+export default class Scroll extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> {}

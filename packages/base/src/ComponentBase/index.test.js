@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
-import { ComponentBase, Sizes } from '..';
+import { ComponentBase, DeviceSize } from '..';
 import { context, createShallow, createMount, serviceCallSync } from '@kuveytturk/boa-test/utils';
 
 // eslint-disable-next-line
@@ -84,6 +84,13 @@ describe('<ComponentBase />', () => {
         .getMessage('test', 'test'),
       'test',
     );
+    assert.strictEqual(
+      wrapper
+        .instance()
+        .getInstance()
+        .getMessageCode('test', 'test'),
+      'code',
+    );
     stub.restore();
   });
 
@@ -119,12 +126,12 @@ describe('<ComponentBase />', () => {
 
   it('should check device size', () => {
     const newContext = Object.assign({}, context);
-    [Sizes.XSMALL, Sizes.SMALL, Sizes.MEDIUM, Sizes.LARGE].forEach(size => {
+    [DeviceSize.XSMALL, DeviceSize.SMALL, DeviceSize.MEDIUM, DeviceSize.LARGE].forEach(size => {
       newContext.deviceSize = size;
       const wrapper = shallow(<EmptyComponent context={newContext} />);
-      if (size <= Sizes.SMALL) {
+      if (size <= DeviceSize.SMALL) {
         expect(wrapper.instance().isMobile()).equals(true);
-      } else if (size <= Sizes.MEDIUM) {
+      } else if (size <= DeviceSize.MEDIUM) {
         expect(wrapper.instance().isMobileOrTablet()).equals(true);
       } else {
         expect(wrapper.instance().isMobile()).equals(false);

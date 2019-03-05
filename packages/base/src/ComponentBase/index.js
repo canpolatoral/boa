@@ -3,7 +3,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CHANNEL } from '@material-ui/core/styles/themeListener';
 import { getMessage } from '@kuveytturk/boa-utils';
-import { ComponentSize, Sizes } from '../enums';
+import { ComponentSize, DeviceSize } from '../enums';
 import { shallowEqual } from '../helpers';
 
 export default class ComponentBase extends Component {
@@ -93,7 +93,7 @@ export default class ComponentBase extends Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.snapshot) {
@@ -106,12 +106,12 @@ export default class ComponentBase extends Component {
   }
 
   // eslint-disable-next-line no-unused-vars
-  componentWillUpdate(nextProps, nextState) {}
+  componentWillUpdate(nextProps, nextState) { }
 
   // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) { }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
   getInstance() {
     return this;
@@ -119,6 +119,10 @@ export default class ComponentBase extends Component {
 
   getMessage(groupName, propertyName) {
     return getMessage(groupName, propertyName, this.props.context.language).Description;
+  }
+
+  getMessageCode(groupName, propertyName) {
+    return getMessage(groupName, propertyName, this.props.context.language).Code;
   }
 
   getSnapKey(childSnapKey) {
@@ -134,11 +138,11 @@ export default class ComponentBase extends Component {
   }
 
   isMobile() {
-    return this.props.context.deviceSize <= Sizes.SMALL;
+    return this.props.context.deviceSize <= DeviceSize.SMALL;
   }
 
   isMobileOrTablet() {
-    return this.props.context.deviceSize <= Sizes.MEDIUM;
+    return this.props.context.deviceSize <= DeviceSize.MEDIUM;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -146,6 +150,10 @@ export default class ComponentBase extends Component {
     return true;
   }
 
-  // eslint-disable-next-line
-  render() { return; }
+  /* eslint-disable */
+  render() {
+    /* istanbul ignore next */
+    return;
+  }
+  /* eslint-enable */
 }

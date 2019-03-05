@@ -1,4 +1,4 @@
-export const Sizes = {
+export const DeviceSize = {
   XSMALL: 1,
   SMALL: 2,
   MEDIUM: 3,

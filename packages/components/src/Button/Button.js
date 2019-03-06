@@ -106,7 +106,7 @@ class Button extends ComponentBase {
 
   static defaultProps = {
     ...ComponentBase.defaultProps,
-    type: 'flat',
+    type: 'contained',
     allowLabelCase: false,
     textPosition: 'center',
     buttonSize: 'medium',

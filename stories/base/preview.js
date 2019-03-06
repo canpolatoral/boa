@@ -95,10 +95,7 @@ export default class Preview extends ComponentBase {
     }
 
     createPropMeta(propMetaData, availableProperties, currentProperties);
-
-    // currentProperties.data = this.props.sampleData;
     Object.assign(currentProperties, this.props.defaultProps);
-
     this.setState({ availableProperties, availableComposedProperties, currentProperties }, () => {
       const code = self.getComponentString();
       this.setState({ code });

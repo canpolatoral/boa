@@ -11,7 +11,7 @@ import * as Utils from './utils';
 export default class Preview extends ComponentBase {
   constructor(props, context) {
     super(props, context);
-    this.componentPropertySource = [];
+    this.componentDefaultProps = {};
     this.onPropertyChanged = this.onPropertyChanged.bind(this);
     this.componentRef = React.createRef();
   }
@@ -70,6 +70,7 @@ export default class Preview extends ComponentBase {
           const defaultValue = Utils.getDefaultValue(prop);
           if (defaultValue) {
             current[key] = defaultValue;
+            self.componentDefaultProps[key] = defaultValue;
           }
         });
 
@@ -95,10 +96,7 @@ export default class Preview extends ComponentBase {
     }
 
     createPropMeta(propMetaData, availableProperties, currentProperties);
-
-    // currentProperties.data = this.props.sampleData;
     Object.assign(currentProperties, this.props.defaultProps);
-
     this.setState({ availableProperties, availableComposedProperties, currentProperties }, () => {
       const code = self.getComponentString();
       this.setState({ code });
@@ -137,6 +135,7 @@ export default class Preview extends ComponentBase {
   }
 
   onPropertyChanged(property, value) {
+    delete this.componentDefaultProps[property];
     this.propertyChanged(property, value);
   }
 
@@ -144,6 +143,18 @@ export default class Preview extends ComponentBase {
     const self = this;
     const RenderedComponent = this.props.component;
     const { availableProperties, availableComposedProperties, currentProperties } = this.state;
+    const changedProps = {};
+
+    if (currentProperties) {
+      const keys = Object.keys(currentProperties);
+      if (keys.length > 0) {
+        keys.forEach((key) => {
+          if (!self.componentDefaultProps[key]) {
+            changedProps[key] = currentProperties[key];
+          }
+        });
+      }
+    }
 
     if (!availableProperties || availableProperties.length === 0) {
       return null;
@@ -166,7 +177,7 @@ export default class Preview extends ComponentBase {
             {this.props.sample}
             {!this.props.sample && (
               <RenderedComponent
-                {...currentProperties}
+                {...changedProps}
                 ref={this.componentRef}
                 onChange={action(`${self.getName()}-onChange`)}
                 onClick={action(`${self.getName()}-onClick`)}

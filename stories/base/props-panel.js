@@ -48,9 +48,7 @@ const languageItems = [
 export default class PropsPanel extends ComponentBase {
   constructor(props, context) {
     super(props, context);
-    this.componentPropertySource = [];
     this.onPropertyChanged = this.onPropertyChanged.bind(this);
-    this.componentRef = React.createRef();
   }
 
   state = {
@@ -125,7 +123,7 @@ export default class PropsPanel extends ComponentBase {
           style={{ paddingTop: 10, paddingLeft: 10 }}
           defaultValue={value === 'array' ? 'array' : null}
           enableClipboard={false}
-          onAdd={() => {}}
+          onAdd={() => { }}
           onEdit={src => {
             self.onPropertyChanged(property.name, src.updated_src);
           }}
@@ -139,6 +137,7 @@ export default class PropsPanel extends ComponentBase {
 
   getComponent(property, value) {
     const self = this;
+
     if (this.props.ignoreProps && this.props.ignoreProps.includes(property.name)) {
       return null;
     }
@@ -173,28 +172,33 @@ export default class PropsPanel extends ComponentBase {
     if (property.type.toLowerCase().includes('date')) {
       return this.getBInput(property, value);
     }
+
     if (property.type.toLowerCase().includes('string')) {
       return this.getBInput(property, value);
     }
+
     if (property.type.toLowerCase().includes('number')) {
       return this.getBInputNumeric(property, value);
     }
+
     if (property.type.toLowerCase().includes('bool')) {
       return this.getBToggle(property, value);
     }
-    if (
-      property.type.toLowerCase().includes('object') ||
-      property.type.toLowerCase().includes('array')
-    ) {
+
+    if (property.type.toLowerCase().includes('object')) {
       return this.getJsonViewer(property, value);
     }
+
+    if (property.type.toLowerCase().includes('array')) {
+      return this.getJsonViewer(property, value);
+    }
+
     return null;
   }
 
   render() {
-    const { context, currentProperties } = this.props;
     const self = this;
-
+    const { context, currentProperties } = this.props;
     const availableProperties = this.props.availableProperties || [];
     const availableComposedProperties = this.props.availableComposedProperties || [];
     const hasComposedProps = availableComposedProperties.length > 0;

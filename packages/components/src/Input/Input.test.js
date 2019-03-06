@@ -321,8 +321,8 @@ describe('<Input />', () => {
 
     it('should not render bottomLeftInfo when error exists', () => {
       const wrapper = mount(<Input context={context} bottomLeftInfo="test" errorText="error" />);
-      const span = wrapper.find('span').first();
-      assert.strictEqual(span.props().style.display, 'none');
+      const span = wrapper.find('span');
+      assert.strictEqual(span.exists(), false);
     });
 
     it('should render bottomLeftInfo RTL', () => {

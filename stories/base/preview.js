@@ -177,6 +177,7 @@ export default class Preview extends ComponentBase {
             {this.props.sample}
             {!this.props.sample && (
               <RenderedComponent
+                {...currentProperties}
                 {...changedProps}
                 ref={this.componentRef}
                 onChange={action(`${self.getName()}-onChange`)}

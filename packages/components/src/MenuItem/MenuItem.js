@@ -26,7 +26,7 @@ class MenuItem extends ComponentBase {
     ...ComponentBase.defaultProps,
     checked: false,
     disabled: false,
-    primaryTextPadding: '0px 24px 0px 24px',
+    primaryTextPadding: '0px 12px 0px 12px',
     isAddedDrawer: false,
   };
 
@@ -167,7 +167,7 @@ class MenuItem extends ComponentBase {
       >
         {leftIcon && (
           <MuiListItemIcon
-            style={this.props.leftIconStyle || leftIcon.props.style}
+            style={this.props.leftIconStyle}
             className={this.props.classes.leftIconClass}
           >
             {leftIcon}

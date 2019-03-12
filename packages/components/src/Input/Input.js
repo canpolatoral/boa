@@ -689,6 +689,33 @@ class Input extends EditorBase {
     }
 
     const { inputLabelRootDisabled, inputLabelRoot } = classes;
+    let formHelperText;
+
+    if (!this.props.inlineGridMode && error) {
+      formHelperText = (
+        <div style={errorStyle}>
+          <MuiFormHelperText style={{ marginTop: 0 }} disabled={this.state.disabled}>
+            {errorText}
+          </MuiFormHelperText>
+        </div>
+      );
+    } else if (!this.props.inlineGridMode && (bottomLeftInfoSpace || bottomRightInfoSpace)) {
+      formHelperText = (
+        <div style={bottomInfoStyle}>
+          <MuiFormHelperText style={{ marginTop: 0 }} disabled={this.state.disabled}>
+            {bottomLeftInfoSpace}
+            {bottomRightInfoSpace}
+          </MuiFormHelperText>
+        </div>
+      );
+    } else {
+      formHelperText = (
+        <MuiFormHelperText
+          style={{ marginTop: 0 }}
+          disabled={this.state.disabled} />
+      );
+    }
+
     return (
       <div style={rootStyle}>
         <MuiFormControl
@@ -769,21 +796,7 @@ class Input extends EditorBase {
               )
             }
           />
-          {!this.props.inlineGridMode && error && (
-            <div style={errorStyle}>
-              <MuiFormHelperText style={{ marginTop: 0 }} disabled={this.state.disabled}>
-                {errorText}
-              </MuiFormHelperText>
-            </div>
-          )}
-          {!this.props.inlineGridMode && (bottomLeftInfoSpace || bottomRightInfoSpace) && (
-            <div style={bottomInfoStyle}>
-              <MuiFormHelperText style={{ marginTop: 0 }} disabled={this.state.disabled}>
-                {bottomLeftInfoSpace}
-                {bottomRightInfoSpace}
-              </MuiFormHelperText>
-            </div>
-          )}
+          {formHelperText}
         </MuiFormControl>
       </div>
     );

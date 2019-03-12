@@ -87,11 +87,7 @@
 				"name": "any"
 			},
 			"required": false,
-			"description": "Can be used to render primary text padding within the menu item.",
-			"defaultValue": {
-				"value": "0px 24px 0px 24px",
-				"computed": false
-			}
+			"description": "Can be used to render primary text padding within the menu item."
 		},
 		"value": {
 			"type": {
@@ -174,6 +170,13 @@
 				},
 				"required": false,
 				"description": "All components must have an id prop."
+			},
+			"isVisible": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "@deprecated\n@ignore\nIn the ComponentComposer, we change the visibility of the component with this prop."
 			},
 			"newLine": {
 				"type": {

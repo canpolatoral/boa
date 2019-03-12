@@ -32,7 +32,7 @@ export class Icon {
           return <BIconType {...cmpProps.iconProperties} />;
         }
       }
-      return null;
+      return <BIcons.Actions.None {...cmpProps.iconProperties} />;
     }
     /* istanbul ignore if */
     if (cmpProps.icon) {

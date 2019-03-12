@@ -2,7 +2,7 @@
   "name": "@kuveytturk/boa-components",
   "private": true,
   "author": "Kuveyt Turk BOA One Team",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React components that implement Google's Material Design.",
   "keywords": [
     "react",

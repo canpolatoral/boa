@@ -167,11 +167,7 @@
 				"name": "string"
 			},
 			"required": false,
-			"description": "Button content.",
-			"defaultValue": {
-				"value": "Click",
-				"computed": false
-			}
+			"description": "Button content."
 		},
 		"textPosition": {
 			"type": {
@@ -307,6 +303,13 @@
 				},
 				"required": false,
 				"description": "All components must have an id prop."
+			},
+			"isVisible": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": "@deprecated\n@ignore\nIn the ComponentComposer, we change the visibility of the component with this prop."
 			},
 			"newLine": {
 				"type": {

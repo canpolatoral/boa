@@ -55,7 +55,7 @@ describe('<TreeView />', () => {
       });
       wrapper.instance().filteringContainer.search();
       getValueStub.restore();
-      assert.strictEqual(wrapper.find('p').text(), '2 BOA.TreeviewItemFound');
+      assert.strictEqual(wrapper.find('p').at(1).text(), '2 BOA.TreeviewItemFound');
     });
 
     it('should search with click', () => {
@@ -68,7 +68,7 @@ describe('<TreeView />', () => {
       });
       button.simulate('click');
       getValueStub.restore();
-      assert.strictEqual(wrapper.find('p').text(), '2 BOA.TreeviewItemFound');
+      assert.strictEqual(wrapper.find('p').at(1).text(), '2 BOA.TreeviewItemFound');
     });
 
     it('should search async with key down', () => {
@@ -82,7 +82,7 @@ describe('<TreeView />', () => {
       input.find('input').simulate('keyDown', { keyCode: 40 });
       clock.tick(1000);
       getValueStub.restore();
-      assert.strictEqual(wrapper.find('p').text(), '2 BOA.TreeviewItemFound');
+      assert.strictEqual(wrapper.find('p').at(1).text(), '2 BOA.TreeviewItemFound');
     });
 
     it('should search with enter key down immediately', () => {
@@ -94,7 +94,7 @@ describe('<TreeView />', () => {
       });
       input.find('input').simulate('keyDown', { keyCode: 13 });
       getValueStub.restore();
-      assert.strictEqual(wrapper.find('p').text(), '2 BOA.TreeviewItemFound');
+      assert.strictEqual(wrapper.find('p').at(1).text(), '2 BOA.TreeviewItemFound');
     });
 
     it('should clear search', () => {
@@ -109,7 +109,7 @@ describe('<TreeView />', () => {
       getValueStub.restore();
       const button = wrapper.find('button').last();
       button.simulate('click');
-      assert.strictEqual(wrapper.find('p').text(), '1 BOA.TreeviewItemSelected');
+      assert.strictEqual(wrapper.find('p').at(1).text(), '1 BOA.TreeviewItemSelected');
     });
   });
 

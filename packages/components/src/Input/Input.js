@@ -31,7 +31,7 @@ function baseStyles(theme) {
     inputLabeRootBase: {
       fontSize: 14,
       width: '100%',
-      marginTop: -4,
+      marginTop: -3,
       transformOrigin: `top ${theme.direction === 'ltr' ? 'left' : 'right'}`,
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',

@@ -4,6 +4,8 @@ import merge from 'lodash/merge';
 import { ComponentBase, ComponentComposer, Platform } from '@kuveytturk/boa-base';
 import PerfectScrollbar from 'perfect-scrollbar';
 import ReactResizeDetector from 'react-resize-detector';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
+
 
 const handlerNameByEvent = {
   'ps-scroll-y': 'onScrollY',
@@ -118,7 +120,7 @@ class Scroll extends ComponentBase {
     const childs = this.props.children;
     const context = this.props.context;
     const innerStyle = Object.assign({}, { direction: 'ltr' }, this.props.style);
-    let divStyle = Object.assign({}, { overflow: 'auto' }, this.props.divStyle);
+    let divStyle = Object.assign({}, this.props.divStyle, { position: 'relative' });
 
     if (context.platform === Platform.MOBILE || context.platform === Platform.TABLET) {
       divStyle = Object.assign({}, divStyle, { height: '100%', WebkitOverflowScrolling: 'touch' });

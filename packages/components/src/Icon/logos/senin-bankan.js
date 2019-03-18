@@ -192,7 +192,7 @@ const SeninBankan = props => {
 };
 
 SeninBankan.defaultProps = {
-  viewBox: '0 0 28 28',
+  viewBox: '0 0 84 27.006',
 };
 
 export default IconComposer(SeninBankan);

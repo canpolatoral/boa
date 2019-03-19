@@ -237,6 +237,10 @@ class Input extends EditorBase {
      */
     onChangeSync: PropTypes.func,
     /**
+     * Callback function when clear button of the input is clicked.
+     */
+    onClearClick: PropTypes.func,
+    /**
      * Callback function when the input is focused.
      */
     onFocus: PropTypes.func,
@@ -512,6 +516,10 @@ class Input extends EditorBase {
                   this.props.onChangeSync(e, v);
                 }
               });
+              /* istanbul ignore else */
+              if (this.props.onClearClick) {
+                this.props.onClearClick(e, v);
+              }
               /* istanbul ignore else */
               if (this.props.onChange) {
                 this.props.onChange(e, v);

@@ -239,10 +239,6 @@ class InputNumeric extends EditorBase {
     const val = e.target.value;
     const caretPosition = e.target.selectionStart;
     const delimiters = Localization.getDelimiters();
-    const delimetersArray =
-      val.substring(0, caretPosition).match(new RegExp(`[${delimiters.thousands}]`, 'g')) || [];
-    const delimitersCount = delimetersArray.length;
-
     let formattedValue = null;
 
     if (this.checkNumberFormatIsValid(val)) {
@@ -252,6 +248,9 @@ class InputNumeric extends EditorBase {
     this.setState({ formattedValue });
 
     if (formattedValue) {
+      const delimetersArray = val.substring(0, caretPosition).match(new RegExp(`[${delimiters.thousands}]`, 'g')) || [];
+      const delimitersCount = delimetersArray.length;
+
       const delimitersCountAfterFormat = (
         formattedValue
           .substring(0, caretPosition)

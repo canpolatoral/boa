@@ -355,6 +355,13 @@
 			"required": false,
 			"description": "Callback function when the input is changed sync."
 		},
+		"onClearClick": {
+			"type": {
+				"name": "func"
+			},
+			"required": false,
+			"description": "Callback function when clear button of the input is clicked."
+		},
 		"onFocus": {
 			"type": {
 				"name": "func"

@@ -14,12 +14,6 @@ import { Scroll } from '@kuveytturk/boa-components/Scroll';
 import { ComponentBase } from '@kuveytturk/boa-base';
 import { generateDefaultValue } from './utils';
 
-const style = {
-  scrollStyle: { maxHeight: 300, padding: 12, wordWrap: 'break-word' },
-  menuItem: { paddingBottom: 12, wordWrap: 'break-word' },
-  menuItemDivider: { marginLeft: '0', marginRight: '0', marginTop: '6px', marginBottom: '18px' },
-  buttonStyle: { height: 40, minWidth: '100%', textAlign: 'left' },
-};
 
 const themeItems = [
   { title: 'Kuveyt Turk', value: 'kuveytturk' },
@@ -210,120 +204,118 @@ export default class PropsPanel extends ComponentBase {
     return (
       <div style={{ maxWidth: 300, position: 'relative' }}>
         <Paper>
-          <div style={style.criteriaPanel}>
-            <Scroll
-              context={context}
-              option={{ suppressScrollX: true }}
-              style={style.scrollStyle}
-              divStyle={style.scrollStyle}
-            >
-              <div>
-                <FormControl style={{ maxWidth: 300, width: '100%' }}>
-                  <InputLabel htmlFor="theme">Theme</InputLabel>
-                  <Select
-                    value={this.state.selectedTheme}
-                    onChange={event => {
-                      self.setState({
-                        selectedTheme: event.target.value,
-                      });
-                      if (self.props.onThemeChange) {
-                        self.props.onThemeChange(event.target.value);
-                      }
-                    }}
-                  >
-                    {themeItems.map((item, index) => {
-                      return (
-                        <MenuItem
-                          key={`themeItems${index}`} // eslint-disable-line
-                          value={item.value}
-                        >
-                          {item.title}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
-                <FormControl
-                  style={{
-                    maxWidth: 300,
-                    width: '100%',
-                    marginTop: 15,
-                    marginBottom: 15,
+          <Scroll
+            style={{ maxHeight: 300, padding: 24, wordWrap: 'break-word' }}
+            divStyle={{ width: 300, height: 300, position: 'relative' }}
+            context={context}
+            option={{ suppressScrollX: true }}
+          >
+            <div>
+              <FormControl style={{ maxWidth: 300, width: '100%' }}>
+                <InputLabel htmlFor="theme">Theme</InputLabel>
+                <Select
+                  value={this.state.selectedTheme}
+                  onChange={event => {
+                    self.setState({
+                      selectedTheme: event.target.value,
+                    });
+                    if (self.props.onThemeChange) {
+                      self.props.onThemeChange(event.target.value);
+                    }
                   }}
                 >
-                  <InputLabel htmlFor="lang">Language</InputLabel>
-                  <Select
-                    value={this.state.selectedLanguage}
-                    onChange={event => {
-                      self.setState({
-                        selectedLanguage: event.target.value,
-                      });
-                      if (self.props.onThemeChange) {
-                        self.props.onLanguageChange(event.target.value);
-                      }
-                    }}
-                  >
-                    {languageItems.map((item, index) => {
-                      return (
-                        <MenuItem
-                          key={`languageItems${index}`} // eslint-disable-line
-                          value={item.value}
-                        >
-                          {item.title}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
-                {availableProperties.map((property, i) => {
-                  /* eslint-disable react/no-array-index-key */
-                  if (!property.hidden && property.type !== 'func') {
-                    const divStyle = {};
-                    const defaultValue = currentProperties[property.name] || property.default;
-                    if (i === availableProperties.length - 1) {
-                      divStyle.marginBottom = 12;
-                    }
+                  {themeItems.map((item, index) => {
                     return (
-                      <div key={i} style={divStyle}>
-                        {this.getComponent(property, defaultValue)}
-                      </div>
+                      <MenuItem
+                        key={`themeItems${index}`} // eslint-disable-line
+                        value={item.value}
+                      >
+                        {item.title}
+                      </MenuItem>
                     );
-                  }
-                  return undefined;
-                })}
-                {hasComposedProps && (
-                  <Divider context={context} style={{ width: 'inherit', margin: '12px -24px' }} />
-                )}
-                {hasComposedProps && (
-                  <Label
-                    context={context}
-                    text="Inherited Props"
-                    style={{
-                      color: context.theme.palette.primary.main,
-                      fontSize: 14,
-                      paddingBottom: 12,
-                    }}
-                  />
-                )}
-                {availableComposedProperties.map((property, i) => {
-                  /* eslint-disable react/no-array-index-key */
-                  if (!property.hidden && property.type !== 'func') {
-                    const divStyle = {};
-                    const defaultValue = currentProperties[property.name] || property.default;
-                    if (i === availableProperties.length - 1) {
-                      divStyle.marginBottom = 12;
+                  })}
+                </Select>
+              </FormControl>
+              <FormControl
+                style={{
+                  maxWidth: 300,
+                  width: '100%',
+                  marginTop: 15,
+                  marginBottom: 15,
+                }}
+              >
+                <InputLabel htmlFor="lang">Language</InputLabel>
+                <Select
+                  value={this.state.selectedLanguage}
+                  onChange={event => {
+                    self.setState({
+                      selectedLanguage: event.target.value,
+                    });
+                    if (self.props.onThemeChange) {
+                      self.props.onLanguageChange(event.target.value);
                     }
+                  }}
+                >
+                  {languageItems.map((item, index) => {
                     return (
-                      <div key={i} style={divStyle}>
-                        {this.getComponent(property, defaultValue)}
-                      </div>
+                      <MenuItem
+                        key={`languageItems${index}`} // eslint-disable-line
+                        value={item.value}
+                      >
+                        {item.title}
+                      </MenuItem>
                     );
+                  })}
+                </Select>
+              </FormControl>
+              {availableProperties.map((property, i) => {
+                /* eslint-disable react/no-array-index-key */
+                if (!property.hidden && property.type !== 'func') {
+                  const divStyle = {};
+                  const defaultValue = currentProperties[property.name] || property.default;
+                  if (i === availableProperties.length - 1) {
+                    divStyle.marginBottom = 12;
                   }
-                  return undefined;
-                })}
-              </div>
-            </Scroll>
-          </div>
+                  return (
+                    <div key={i} style={divStyle}>
+                      {this.getComponent(property, defaultValue)}
+                    </div>
+                  );
+                }
+                return undefined;
+              })}
+              {hasComposedProps && (
+                <Divider context={context} style={{ width: 'inherit', margin: '12px -24px' }} />
+              )}
+              {hasComposedProps && (
+                <Label
+                  context={context}
+                  text="Inherited Props"
+                  style={{
+                    color: context.theme.palette.primary.main,
+                    fontSize: 14,
+                    paddingBottom: 12,
+                  }}
+                />
+              )}
+              {availableComposedProperties.map((property, i) => {
+                /* eslint-disable react/no-array-index-key */
+                if (!property.hidden && property.type !== 'func') {
+                  const divStyle = {};
+                  const defaultValue = currentProperties[property.name] || property.default;
+                  if (i === availableProperties.length - 1) {
+                    divStyle.marginBottom = 12;
+                  }
+                  return (
+                    <div key={i} style={divStyle}>
+                      {this.getComponent(property, defaultValue)}
+                    </div>
+                  );
+                }
+                return undefined;
+              })}
+            </div>
+          </Scroll>
         </Paper>
       </div>
     );

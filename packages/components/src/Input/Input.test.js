@@ -222,6 +222,17 @@ describe('<Input />', () => {
         '',
       );
     });
+
+    it('should fire onClearClick after onClick', () => {
+      const onClearClick = spy();
+      const wrapper = mount(
+        <Input context={context} onClearClick={onClearClick} value="test" showClearButton />,
+      );
+
+      const button = wrapper.find(IconButton);
+      button.simulate('click');
+      assert.strictEqual(onClearClick.callCount, 1);
+    });
   });
 
   describe('bottomRightInfoSpan', () => {

@@ -13,6 +13,7 @@ export interface InputProps extends ComponentBaseProps {
   onFocus?: (e: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
   onBlur?: (e: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
   onChange?: (e: object, value: string) => void;
+  onClearClick?: (e: any) => void;
   onKeyDown?: (e: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
   onBeforeInput?: () => void; // TODO: method parametre ve dönüş tipi eklenmeli!
   hintText?: string;
@@ -52,4 +53,4 @@ export interface InputInstance extends ComponentBaseInstance {
   focus?: () => void;
 }
 
-export default class Input extends ComponentBase<InputProps, InputInstance> {}
+export default class Input extends ComponentBase<InputProps, InputInstance> { }

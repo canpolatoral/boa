@@ -31,7 +31,7 @@ function baseStyles(theme) {
     inputLabeRootBase: {
       fontSize: 14,
       width: '100%',
-      marginTop: -4,
+      marginTop: -3,
       transformOrigin: `top ${theme.direction === 'ltr' ? 'left' : 'right'}`,
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
@@ -236,6 +236,10 @@ class Input extends EditorBase {
      * Callback function when the input is changed sync.
      */
     onChangeSync: PropTypes.func,
+    /**
+     * Callback function when clear button of the input is clicked.
+     */
+    onClearClick: PropTypes.func,
     /**
      * Callback function when the input is focused.
      */
@@ -512,6 +516,10 @@ class Input extends EditorBase {
                   this.props.onChangeSync(e, v);
                 }
               });
+              /* istanbul ignore else */
+              if (this.props.onClearClick) {
+                this.props.onClearClick(e, v);
+              }
               /* istanbul ignore else */
               if (this.props.onChange) {
                 this.props.onChange(e, v);

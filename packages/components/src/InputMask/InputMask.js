@@ -68,6 +68,7 @@ class InputMask extends EditorBase {
   constructor(props, context) {
     super(props, context);
     this.onChange = this.onChange.bind(this);
+    this.onClearClick = this.onClearClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
@@ -167,6 +168,16 @@ class InputMask extends EditorBase {
     }
   }
 
+  onClearClick(e) {
+    const v = '';
+    this.setState({ value: v });
+
+    /* istanbul ignore else */
+    if (this.props.onClearClick) {
+      this.props.onClearClick(e);
+    }
+  }
+
   onKeyDown(e) {
     const key = e.key;
     const keyCode = e.keyCode || e.which;
@@ -201,13 +212,7 @@ class InputMask extends EditorBase {
 
     const regex = PredefinedMask.Regex[typeOfMask];
 
-    if (!regex) {
-      e.preventDefault();
-      this.setTestResult(false);
-      return;
-    }
-
-    if (regex.test(key) === false && this.specialKey === false) {
+    if (this.specialKey === false && (!regex || regex.test(key) === false)) {
       e.preventDefault();
       this.setTestResult(false);
       return;
@@ -335,6 +340,7 @@ class InputMask extends EditorBase {
         maskedMaxLength={this.maskedMaxLength}
         value={inputValue}
         onChange={this.onChange}
+        onClearClick={this.onClearClick}
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}

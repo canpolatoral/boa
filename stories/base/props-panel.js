@@ -88,7 +88,6 @@ export default class PropsPanel extends ComponentBase {
         context={this.props.context}
         label={property.label ? property.label : property.name}
         labelPosition="left"
-        defaultToggled={value}
         toggled={value}
         onToggle={(event, isInputChecked) => this.onPropertyChanged(property.name, isInputChecked)}
       />

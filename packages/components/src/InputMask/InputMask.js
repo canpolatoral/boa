@@ -116,28 +116,30 @@ class InputMask extends EditorBase {
     let saltText = '';
     let count = 0;
 
-    this.isCorrectFormat = text.length > 0;
+    this.isCorrectFormat = text === undefined || text.length > 0;
 
-    for (let i = 0; i < mask.length; i++) {
-      const m = mask[i];
-      const isExist = PredefinedMask.Regex[m] !== undefined;
-      const t = text[i - count];
-      if (isExist === true && t !== undefined) {
-        saltText += t;
-      }
-      if (isExist === false) {
-        if (t !== undefined && t !== m) {
-          newText += m;
-          count += 1;
-          if (PredefinedMask.AllowSpecialKeys.indexOf(m) >= 0) {
-            continue; // eslint-disable-line
+    if (text !== undefined) {
+      for (let i = 0; i < mask.length; i++) {
+        const m = mask[i];
+        const isExist = PredefinedMask.Regex[m] !== undefined;
+        const t = text[i - count];
+        if (isExist === true && t !== undefined) {
+          saltText += t;
+        }
+        if (isExist === false) {
+          if (t !== undefined && t !== m) {
+            newText += m;
+            count += 1;
+            if (PredefinedMask.AllowSpecialKeys.indexOf(m) >= 0) {
+              continue; // eslint-disable-line
+            }
+            this.isCorrectFormat = false;
+          } else if (t !== undefined) {
+            newText += t;
           }
-          this.isCorrectFormat = false;
         } else if (t !== undefined) {
           newText += t;
         }
-      } else if (t !== undefined) {
-        newText += t;
       }
     }
 

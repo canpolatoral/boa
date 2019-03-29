@@ -1,35 +1,29 @@
-import * as React from 'react';
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { InputProps } from "../Input/Input";
+import { EditorBase } from "@kuveytturk/boa-base";
 
-export interface InputNumericProps extends ComponentBaseProps {
-  defaultValue?: number;
-  value?: number;
+export interface InputNumericProps extends InputProps {
+  caretPosition?: number;
   format?: string;
-  maxLength?: any;
-  onFocus?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
-  onBlur?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
-  onChange?: (e: any, value: any) => void;
-  hintText?: string;
-  errorText?: string;
-  floatingLabelText?: string;
-  setValue?: () => void; // TODO: method parametre ve dönüş tipi eklenmeli!
-  timerDuration?: number;
-  onTimerFinished?: () => void;
-  disabled?: boolean;
-  suffixText?: string;
   maxValue?: number;
   minValue?: number;
-  style?: React.CSSProperties;
-  valueConstraint?: any;
-  fullWidth?: boolean;
-  outerStyle?: any;
-  inputStyle?: React.CSSProperties;
+  step?: number;
 }
 
-export interface InputNumericInstance extends ComponentBaseInstance {
+export default class InputNumeric extends EditorBase<InputNumericProps> {
+  onKeyDown(e: any): any;
+  onChange(e: any): any;
+  onBlur(e: any): any;
   getValue(): any;
-  resetValue(): void;
-  focus?: () => void;
+  setValue(value: any, format: any): any;
+  resetValue(): any;
+  setDisable(value: any): any;
+  getSnapshot(): any;
+  setSnapshot(snapshot: any): any;
+  checkNumberFormatIsValid(value: any): any;
+  checkNumberRangeIsValid(value: any): any;
+  getParsedValue(value: any): any;
+  getFormattedValue(value: any, format: any): any;
+  focus(): any;
+  validateConstraint(): any;
 }
-
-export default class InputNumeric extends ComponentBase<InputNumericProps, InputNumericInstance> {}

@@ -1,14 +1,15 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface LabelProps extends ComponentBaseProps {
+  maxFontSize?: string | number;
+  maxWidth?: number;
+  minFontSize?: string | number;
+  style?: object;
   text?: string;
-  style?: React.CSSProperties;
-  textPosition?: string;
+  textPosition?: "center" | "left" | "right";
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface LabelInstance extends ComponentBaseInstance {
-// }
-
-export default class Label extends ComponentBase<LabelProps, ComponentBaseInstance> {}
+export default class Label extends ComponentBase<LabelProps> {
+  checkLabelFontSize(props: any): any;
+}

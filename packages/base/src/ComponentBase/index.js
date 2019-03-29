@@ -113,18 +113,37 @@ export default class ComponentBase extends Component {
 
   componentWillUnmount() { }
 
+  /**
+   * @returns {this}
+   */
   getInstance() {
     return this;
   }
 
+  /**
+   *
+   * @param {string} groupName
+   * @param {string} propertyName
+   * @returns {string}
+   */
   getMessage(groupName, propertyName) {
     return getMessage(groupName, propertyName, this.props.context.language).Description;
   }
 
+  /**
+   *
+   * @param {string} groupName
+   * @param {string} propertyName
+   */
   getMessageCode(groupName, propertyName) {
     return getMessage(groupName, propertyName, this.props.context.language).Code;
   }
 
+  /**
+   *
+   * @param {string} childSnapKey
+   * @returns {string}
+   */
   getSnapKey(childSnapKey) {
     return this.props.snapKey ? `${this.props.snapKey}_${childSnapKey}` : childSnapKey;
   }
@@ -137,14 +156,23 @@ export default class ComponentBase extends Component {
     this.setState({ ...snapshot });
   }
 
+  /**
+   * @return {bool}
+   */
   isMobile() {
     return this.props.context.deviceSize <= DeviceSize.SMALL;
   }
 
+  /**
+   * @returns {bool}
+   */
   isMobileOrTablet() {
     return this.props.context.deviceSize <= DeviceSize.MEDIUM;
   }
 
+  /**
+   * @returns {bool}
+   */
   // eslint-disable-next-line class-methods-use-this
   validateConstraint() {
     return true;

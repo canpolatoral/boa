@@ -1,56 +1,62 @@
-import * as React from 'react';
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, EditorBase } from "@kuveytturk/boa-base";
 
 export interface InputProps extends ComponentBaseProps {
-  snapshot?: any;
-  size?: any; // TODO: propType handle edilemedi.
-  newLine?: boolean;
-  type?: string;
-  id?: string;
-  defaultValue?: string;
-  value?: string;
-  maxLength?: any;
-  onFocus?: (e: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
-  onBlur?: (e: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
-  onChange?: (e: object, value: string) => void;
-  onClearClick?: (e: any) => void;
-  onKeyDown?: (e: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
-  onBeforeInput?: () => void; // TODO: method parametre ve dönüş tipi eklenmeli!
-  hintText?: string;
+  bottomLeftInfo?: string;
+  bottomLeftInfoEnable?: boolean;
+  bottomRightInfo?: string;
+  bottomRightInfoEnable?: boolean;
+  defaultValue?: any;
+  disabledCounterCharacter?: string;
+  errorStyle?: object;
   errorText?: string;
-  helperText?: string;
+  floatingLabelStyle?: object;
   floatingLabelText?: string;
-  floatingLabelFixed?: boolean;
-  inputStyle?: any;
-  disabled?: boolean;
+  formControlStyle?: object;
   fullWidth?: boolean;
+  helperText?: string;
+  hintText?: string;
+  id?: string;
+  inlineGridMode?: boolean;
+  inputAlign?: "left" | "right" | "center";
+  inputProps?: object;
+  inputStyle?: object;
+  maskedMaxLength?: number;
+  maxLength?: number;
   multiLine?: boolean;
+  name?: string;
+  noWrap?: boolean;
+  onBlur?(): void;
+  onChange?(): void;
+  onChangeSync?(): void;
+  onClearClick?(): void;
+  onFocus?(): void;
+  onKeyDown?(): void;
+  onKeyUp?(): void;
+  onTimerFinished?(): void;
+  prefixText?: any;
   rows?: number;
   rowsMax?: number;
-  textareaStyle?: any;
-  noWrap?: boolean;
-  isVisible?: boolean;
-  errorStyle?: any;
-  floatingLabelFocusStyle?: any;
-  floatingLabelStyle?: any;
-  hintStyle?: any;
-  name?: string;
-  showClearButton: boolean;
-  style?: React.CSSProperties;
-  underlineDisabledStyle?: any;
-  underlineFocusStyle?: any;
-  underlineShow?: boolean;
-  underlineStyle?: any;
-  setValue?: () => void; // TODO: method parametre ve dönüş tipi eklenmeli!
+  showClearButton?: boolean;
+  showCounter?: boolean;
+  suffixText?: any;
+  textSelection?: object;
   timerDuration?: number;
-  onTimerFinished?: () => void;
-  valueConstraint?: any;
+  type?: "password" | "text" | "numeric";
+  underlineShow?: boolean;
+  value?: any;
 }
 
-export interface InputInstance extends ComponentBaseInstance {
+export default class Input extends EditorBase<InputProps> {
+  counterUpdate(props: any, value: any): any;
   getValue(): any;
-  resetValue(): void;
-  focus?: () => void;
+  setValue(value: any): any;
+  resetValue(): any;
+  setDisable(value: any): any;
+  onBlur(e: any): any;
+  onChange(e: any, v: any): any;
+  onFocus(e: any): any;
+  setTimer(duration: any): any;
+  focus(): any;
+  validationToString(): any;
 }
-
-export default class Input extends ComponentBase<InputProps, InputInstance> { }

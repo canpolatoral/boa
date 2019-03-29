@@ -1,23 +1,22 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface DocCodeProps extends ComponentBaseProps {
-  content: string;
+  content?: string;
   editorType?:
-    | 'androidStudio'
-    | 'atomOneDark'
-    | 'atomOneLight'
-    | 'github'
-    | 'monokaiSublime'
-    | 'raiinbow'
-    | 'vs'
-    | 'xcode';
-  highlight: boolean;
-  lang: string;
+    | "androidStudio"
+    | "atomOneDark"
+    | "atomOneLight"
+    | "github"
+    | "monokaiSublime"
+    | "rainbow"
+    | "vs"
+    | "xcode";
+  highlight?: boolean;
+  lang?: string;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface DocCodeInstance extends ComponentBaseInstance {
-// }
-
-export default class DocCode extends ComponentBase<DocCodeProps, ComponentBaseInstance> {}
+export default class DocCode extends ComponentBase<DocCodeProps> {
+  getMarkup(): any;
+  getHighlightCSS(): any;
+}

@@ -1,25 +1,30 @@
-import * as React from 'react';
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface ButtonProps extends ComponentBaseProps {
-  type: string;
-  text?: string;
-  textPosition?: string;
-  mini?: boolean;
-  textStyle?: any;
-  tooltip?: string;
-  fontIcon?: string;
-  svgIcon?: string;
-  iconProperties?: any;
-  colorType?: string;
-  style?: React.CSSProperties;
-  backgroundColor?: string;
-  disabled?: boolean;
-  onClick?: () => void;
-  fullWidth?: boolean;
-  dynamicIcon?: string;
   allowLabelCase?: boolean;
-  buttonSize?: string;
+  buttonSize?: "small" | "medium" | "large";
+  colorType?: "default" | "primary" | "secondary";
+  dynamicIcon?: string;
+  fontIcon?: string;
+  fullWidth?: boolean;
+  icon?: any;
+  iconProperties?: object;
+  mini?: boolean;
+  onClick?(): void;
+  svgIcon?: string;
+  text?: string;
+  textPosition?: "center" | "left" | "right";
+  textStyle?: object;
+  tooltip?: string;
+  tooltipPosition?: string;
+  type?: "contained" | "text" | "fab" | "icon";
 }
 
-export default class Button extends ComponentBase<ButtonProps, ComponentBaseInstance> {}
+export default class Button extends ComponentBase<ButtonProps> {
+  setDisable(value: any): any;
+  getLabel(): any;
+  createButtonElement(variant: any): any;
+  createIconButtonElement(): any;
+  createButton(): any;
+}

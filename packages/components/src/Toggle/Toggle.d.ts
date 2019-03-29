@@ -1,28 +1,28 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface ToggleProps extends ComponentBaseProps {
   defaultToggled?: boolean;
-  disabled?: boolean;
-  elementStyle?: any;
-  iconStyle?: any;
-  inputStyle?: any;
+  elementStyle?: object;
+  errorText?: string;
+  iconProperties?: object;
+  iconStyle?: object;
+  informationText?: string;
+  inputStyle?: object;
   label?: React.ReactNode;
-  labelPosition?: 'left' | 'right';
-  labelStyle?: any;
-  onToggle?: (event: object, value: boolean) => void;
-  rippleStyle?: any;
-  style?: React.CSSProperties;
-  thumbStyle?: any;
-  thumbSwitchedStyle?: any;
+  labelPosition?: "left" | "right";
+  labelStyle?: object;
+  onToggle?(): void;
+  rippleStyle?: object;
   toggled?: boolean;
-  trackStyle?: any;
-  trackSwitchedStyle?: any;
-  valueLink?: any;
+  trackSwitchedStyle?: object;
+  valueLink?: object;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface ToggleInstance extends ComponentBaseInstance {
-// }
-
-export default class Toggle extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> {}
+export default class Toggle extends ComponentBase<ToggleProps> {
+  getValue(): any;
+  setValue(value: any): any;
+  resetValue(): any;
+  setDisable(value: any): any;
+  handleOnToggle(event: any, value: any): any;
+}

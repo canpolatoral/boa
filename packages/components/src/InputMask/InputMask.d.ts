@@ -1,28 +1,31 @@
-import * as React from 'react';
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { InputProps } from "../Input/Input";
+import { EditorBase } from "@kuveytturk/boa-base";
 
-export interface InputMaskProps extends ComponentBaseProps {
-  defaultValue?: string;
-  value?: string;
-  onFocus?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
-  onBlur?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
-  onChange?: (e: object, value: string) => void;
-  hintText?: string;
+export interface InputMaskProps extends InputProps {
+  countryCode?: string;
+  fullWidth?: boolean;
+  inputType?: string;
   mask?: string;
-  type?: string;
-  errorText?: string;
-  floatingLabelText?: string;
-  valueConstraint?: any;
   maxLength?: number;
-  disabled?: boolean;
-  style?: React.CSSProperties;
-  inputStyle?: React.CSSProperties;
+  noWrap?: boolean;
+  showCounter?: boolean;
+  type?: "CreditCard" | "IBAN" | "MobilePhoneNumber" | "PhoneNumber" | "Custom";
 }
 
-export interface InputMaskInstance extends ComponentBaseInstance {
+export default class InputMask extends EditorBase<InputMaskProps> {
+  setProps(props: any): any;
+  isCorrectFormatText(mask: any, text: any): any;
+  onChange(e: any): any;
+  onClearClick(e: any): any;
+  onKeyDown(e: any): any;
+  setDisable(value: any): any;
   getValue(): any;
-  resetValue(): void;
-  focus?: () => void;
+  resetValue(): any;
+  onFocus(e: any): any;
+  onBlur(e: any): any;
+  setCounter(): any;
+  generateHelperText(): any;
+  runRender(): any;
+  setTestResult(value: any): any;
 }
-
-export default class InputMask extends ComponentBase<InputMaskProps, InputMaskInstance> {}

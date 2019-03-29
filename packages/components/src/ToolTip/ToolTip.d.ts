@@ -1,13 +1,12 @@
-import * as React from 'react';
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface ToolTipProps extends ComponentBaseProps {
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  theme?: any;
-  tooltip?: React.ReactNode;
-  tooltipPosition?: 'down' | 'up' | 'right' | 'left';
-  tooltipStyle?: any;
+  tooltip?: string;
+  tooltipPosition?: string;
 }
 
-export default class Button extends ComponentBase<ToolTipProps, ComponentBaseInstance> {}
+export default class ToolTip extends ComponentBase<ToolTipProps> {
+  setValue(value: any): any;
+  getValue(): any;
+}

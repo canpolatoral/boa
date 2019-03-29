@@ -1,25 +1,19 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface MenuProps extends ComponentBaseProps {
-  button?: boolean;
-  children?: any;
-  classes: any;
-  className?: string;
-  component?: any;
-  ContainerComponent?: any;
-  ContainerProps?: any;
-  dense?: boolean;
-  disabled?: boolean;
-  disableGutters?: boolean;
-  divider?: boolean;
-  selected?: boolean;
-  primaryText: string;
-  secondaryText?: string;
+  classes?: object;
+  isMenuItemList?: boolean;
+  items?: any[];
+  multiple?: boolean;
+  onChange?(event: object, value: any): void;
+  parentMenuItem?: object;
+  primaryTextPadding?: any;
+  value?: any;
+  width?: string | number;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface MenuInstance extends ComponentBaseInstance {
-// }
-
-export default class Menu extends ComponentBase<MenuProps, ComponentBaseInstance> {}
+export default class Menu extends ComponentBase<MenuProps> {
+  menuItemSelected(parameters: any): any;
+  getIcon(iconProp: any): any;
+}

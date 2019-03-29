@@ -268,7 +268,7 @@ class TabBar extends ComponentBase {
       visibility: isLeftIconButtonVisibile,
     };
 
-    if (this.props.leftIcon && typeof this.props.leftIcon === 'string') {
+    if (item.leftIcon && typeof (item.leftIcon) === 'string') {
       leftIconButton = (
         <Button
           context={this.props.context}
@@ -281,7 +281,7 @@ class TabBar extends ComponentBase {
           onClick={this.handleLeftIconClick.bind(this, item.value)}
         />
       );
-    } else if (this.props.leftIcon) {
+    } else if (item.leftIcon) {
       leftIconButton = this.props.leftIcon;
     } else {
       leftIconButton = (

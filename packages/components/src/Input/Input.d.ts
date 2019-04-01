@@ -42,7 +42,7 @@ export interface InputProps extends ComponentBaseProps {
   suffixText?: any;
   textSelection?: object;
   timerDuration?: number;
-  type?: "password" | "text" | "numeric";
+  type?: string; // todo: replaced with union! not used due to input mask uses this prop
   underlineShow?: boolean;
   value?: any;
 }

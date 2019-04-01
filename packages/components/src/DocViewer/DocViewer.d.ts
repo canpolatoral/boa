@@ -15,8 +15,7 @@ export interface DocViewerProps extends ComponentBaseProps {
 }
 
 export default class DocViewer extends ComponentBase<DocViewerProps> {
-  getTableOfContent(source: any): any;
+  getTableOfContent(source?: any): any;
   changeEditorType(event: any): any;
   getStyle(): any;
-  getTableOfContent(): any;
 }

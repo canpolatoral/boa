@@ -7,12 +7,12 @@ export interface MenuItemProps extends ComponentBaseProps {
   classes?: object;
   disabled?: boolean;
   isAddedDrawer?: boolean;
-  leftIcon?: React.ReactElement<any>;
+  leftIcon?: React.ReactElement;
   leftIconStyle?: object;
   onTouchTap?(event: object): void;
   primaryText?: React.ReactNode;
   primaryTextPadding?: any;
-  rightIcon?: React.ReactElement<any>;
+  rightIcon?: React.ReactElement;
   rightIconStyle?: object;
   secondaryText?: React.ReactNode;
   value?: any;

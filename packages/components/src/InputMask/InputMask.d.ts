@@ -10,7 +10,6 @@ export interface InputMaskProps extends InputProps {
   maxLength?: number;
   noWrap?: boolean;
   showCounter?: boolean;
-  type?: "CreditCard" | "IBAN" | "MobilePhoneNumber" | "PhoneNumber" | "Custom";
 }
 
 export default class InputMask extends EditorBase<InputMaskProps> {

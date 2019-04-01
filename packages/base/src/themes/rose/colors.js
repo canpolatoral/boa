@@ -13,6 +13,7 @@ export const base100 = '#F5F5F5';
 export const base50 = '#F8F9FA';
 export const base10 = '#FAFAFA';
 
+
 // Complementary Colors
 export const comp500 = '#FFFFFF'; // full
 export const comp450 = 'rgba(255,255,255,0.87)'; // dark
@@ -57,8 +58,9 @@ export const obli250 = '#F8EAEA';
 export const error500 = '#F34236';
 export const warning500 = '#FFCC00';
 export const success500 = '#4CAF50';
-export const info500 = '#0299E3';
+export const info500 = '#4FC3F7';
 export const more500 = '#FFA000';
+export const wait500 = '#0299E3';
 
 // Badge Colors
 export const badgePurple = '#911DAE';
@@ -69,6 +71,7 @@ export const badgeOrange = '#EC6A00';
 export const badgeOrangeLight = '#FFDEC5';
 export const badgeOlive = '#666F1F';
 export const badgeOliveLight = '#E0D8B2';
+
 
 // Calendar Colors
 export const calWorkDay = '#EDF6E3';

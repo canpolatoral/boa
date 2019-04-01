@@ -60,8 +60,9 @@ export const obli250 = '#F8EAEA';
 export const error500 = '#F34236';
 export const warning500 = '#FFCC00';
 export const success500 = '#4CAF50';
-export const info500 = '#0299E3';
+export const info500 = '#4FC3F7';
 export const more500 = '#FFA000';
+export const wait500 = '#0299E3';
 
 // Badge Colors
 export const badgePurple = '#911DAE';

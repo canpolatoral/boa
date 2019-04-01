@@ -259,13 +259,14 @@ export class Localization {
     if (value === null) {
       return '';
     }
+    let returnValue = value.toString();
     if (this.languageId === 1) {
       const letters = { İ: 'i', I: 'ı', Ş: 'ş', Ğ: 'ğ', Ü: 'ü', Ö: 'ö', Ç: 'ç' };
-      value = value.replace(/(([İIŞĞÜÇÖ]))/g, letter => {
+      returnValue = returnValue.replace(/(([İIŞĞÜÇÖ]))/g, letter => {
         return letters[letter];
       });
     }
-    return value.toLowerCase();
+    return returnValue.toLowerCase();
   }
 
   static getDelimiters() {

@@ -85,7 +85,6 @@ class IconButton extends ComponentBase {
 
   static defaultProps = {
     ...ComponentBase.defaultProps,
-    dynamicIcon: 'Home',
     color: 'default',
     disabled: false,
     disableRipple: false,

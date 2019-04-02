@@ -16,6 +16,11 @@ declare interface TransformOrigin {
   vertical?: any;
 }
 
+declare interface TransitionDuration {
+  enter?: number;
+  exit?: number;
+}
+
 export interface PopoverProps extends ComponentBaseProps {
   anchorEl?: any;
   anchorOrigin?: AnchorOrigin;

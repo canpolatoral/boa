@@ -85,6 +85,10 @@ class MenuItem extends ComponentBase {
      */
     secondaryText: PropTypes.node,
     /**
+     * Color of the menuItem.
+     */
+    textColor: PropTypes.string,
+    /**
      * The value of the menu item.
      */
     value: PropTypes.any,
@@ -179,7 +183,7 @@ class MenuItem extends ComponentBase {
               flexGrow: '1',
               width: 'calc(100% - 137px)',
               padding: this.props.primaryTextPadding,
-              color: this.props.context.theme.boaPalette.base400,
+              color: this.props.textColor || this.props.context.theme.boaPalette.base400,
               textAlign: this.props.context.localization.isRightToLeft ? 'right' : 'left',
               primary: this.props.classes.primary,
             }}

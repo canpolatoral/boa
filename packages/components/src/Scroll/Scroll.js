@@ -86,6 +86,24 @@ class Scroll extends ComponentBase {
 
   componentWillReceiveProps(nextProps) {
     this.setDisable(nextProps.disabled);
+    this.update();
+  }
+
+  /**
+   * Reset scroll position
+   */
+  resetScrollPosition() {
+    if (this.container) {
+      this.container.scrollTop = 0;
+      this.container.scrollLeft = 0;
+      this.ps.update(this.container);
+    }
+  }
+
+  update() {
+    if (this.ps && this.container) {
+      this.ps.update(this.container);
+    }
   }
 
   setDisable(value) {

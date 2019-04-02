@@ -35,7 +35,7 @@ const monthLongList = [
 ];
 const seperator = '.';
 
-String.prototype.replaceAll = function(target, replacement) {
+String.prototype.replaceAll = function (target, replacement) {
   return this.split(target).join(replacement);
 };
 
@@ -68,7 +68,7 @@ export function getLocalizedTime(value, datetimeOption, timeformat) {
   return '';
 }
 export function dateTimeFormat(options) {
-  this.format = function(date) {
+  this.format = function (date) {
     if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
       return `${dayList[date.getDay()]}, ${monthList[date.getMonth()]} ${date.getDate()}`;
     }
@@ -663,7 +663,8 @@ export function getDefaultDate(props) {
 export function getDateToString(propDate, defaultDate) {
   let returnDate = defaultDate;
   if (isString(propDate)) {
-    returnDate = new Date(propDate);
+    let clearedDate = clearTimeZone(propDate);
+    returnDate = clearedDate;
     if (isNaN(returnDate)) {
       returnDate = defaultDate;
     }
@@ -683,7 +684,9 @@ export function clearTime(returnDate) {
   return returnDate;
 }
 export function clearTimeZone(returnDate) {
-  return new Date(returnDate.getTime() - returnDate.getTimezoneOffset() * 60000);
+  if (isString(returnDate))
+    returnDate = new Date(returnDate);
+  return new Date((returnDate).getTime() + ((returnDate).getTimezoneOffset() * 60000));
 }
 export function clearJustTimeZone(returnDate) {
   return new Date(returnDate.getTime());

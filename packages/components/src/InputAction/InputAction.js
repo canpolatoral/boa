@@ -75,6 +75,7 @@ class InputAction extends ComponentBase {
     this.iconSize = 20;
     this.iconContainerSize = 24;
     this.iconMargin = 4;
+    this.displayedIcon = 1;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -165,22 +166,23 @@ class InputAction extends ComponentBase {
       paddingRight = rightIconList.length * this.iconSize + rightIconList.length * this.iconMargin;
     }
 
+    this.displayedIcon = 1;
     const isRtl = this.props.context.localization.isRightToLeft;
     const value = usePropValue ? this.props.value : this.getValue();
     const paddingLeft = value
       ? 0
       : leftIconList && leftIconList.length * this.iconSize + leftIconList.length * this.iconMargin;
 
+    const result =
+      this.displayedIcon > 1
+        ? this.displayedIcon * (this.iconSize + 2 * this.iconMargin)
+        : this.iconSize + 2 * this.iconMargin;
+    const widthStyle = `calc(100% - ${result}px)`;
+
     return Object.assign(
       isRtl
-        ? {
-          paddingRight: paddingLeft,
-          paddingLeft: paddingRight,
-        }
-        : {
-          paddingLeft,
-          paddingRight,
-        },
+        ? { width: widthStyle, paddingRight: paddingLeft, paddingLeft: paddingRight }
+        : { width: widthStyle, paddingLeft, paddingRight },
       this.props.floatingLabelStyle,
     );
   }
@@ -283,7 +285,7 @@ class InputAction extends ComponentBase {
           newRightIconList = [];
         }
       }
-
+      this.displayedIcon = newRightIconList.length;
       rightIcons = newRightIconList.map((icon, index) => {
         return (
           <div
@@ -356,7 +358,7 @@ class InputAction extends ComponentBase {
 
   renderBInput(type, leftIcons, rightIcons) {
     // eslint-disable-next-line no-unused-vars
-    const { context, snapshot, ...others } = this.props;
+    const { context, snapshot, floatingLabelStyle, ...others } = this.props;
     return (
       <Input
         ref={r => (this.binput = r)}
@@ -364,6 +366,7 @@ class InputAction extends ComponentBase {
         {...others}
         disabled={this.state.inputDisabled}
         type={type}
+        floatingLabelStyle={this.state.floatingLabelStyle}
         value={this.state.value}
         onChange={this.onChange}
         onBlur={this.onBlur}

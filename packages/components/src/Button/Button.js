@@ -10,10 +10,7 @@ import { IconButton } from '../IconButton';
 
 const styles = () => ({
   label: {
-    width: '100%',
-    display: 'inherit',
-    alignItems: 'inherit',
-    justifyContent: 'inherit',
+    pointerEvents: 'none',
   },
 });
 
@@ -161,6 +158,9 @@ class Button extends ComponentBase {
     return (
       <MuiButton
         id={this.props.id}
+        classes={{
+          label: props.classes.label,
+        }}
         style={buttonStyle}
         fullWidth={this.props.fullWidth}
         color={this.props.colorType}

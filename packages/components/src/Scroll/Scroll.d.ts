@@ -8,6 +8,8 @@ export interface ScrollProps extends ComponentBaseProps {
 }
 
 export default class Scroll extends ComponentBase<ScrollProps> {
+  resetScrollPosition(): any;
+  update(): any;
   setDisable(value: any): any;
   setScrollTop(top: any): any;
   setScrollLeft(left: any): any;

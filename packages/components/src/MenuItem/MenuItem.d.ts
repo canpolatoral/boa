@@ -15,6 +15,7 @@ export interface MenuItemProps extends ComponentBaseProps {
   rightIcon?: React.ReactElement;
   rightIconStyle?: object;
   secondaryText?: React.ReactNode;
+  textColor?: string;
   value?: any;
 }
 

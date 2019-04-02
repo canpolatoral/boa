@@ -1,6 +1,11 @@
 import * as React from "react";
 import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
+declare interface TransitionDuration {
+  enter?: number;
+  exit?: number;
+}
+
 export interface DialogProps extends ComponentBaseProps {
   autoDetectWindowHeight?: boolean;
   children?: React.ReactNode;
@@ -29,7 +34,7 @@ export interface DialogProps extends ComponentBaseProps {
   showHeader?: boolean;
   titleWithCloseButtonEnabled?: boolean;
   transition?: any;
-  transitionDuration?: any;
+  transitionDuration?: number | TransitionDuration;
 }
 
 export default class Dialog extends ComponentBase<DialogProps> {

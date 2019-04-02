@@ -1,25 +1,24 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface MenuItemProps extends ComponentBaseProps {
+  allProperties?: object;
   checked?: boolean;
+  classes?: object;
   disabled?: boolean;
-  focusState?: any; // tip handle edilemedi. özelleştirilebilir
-  insetChildren?: boolean;
-  leftIcon?: any;
-  menuItems?: React.ReactNode;
-  onTouchTap?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
-  itemSelected?: () => void; // method parametreleri ve dönüş tipi varsa eklenmeli
+  isAddedDrawer?: boolean;
+  leftIcon?: React.ReactElement;
+  leftIconStyle?: object;
+  onTouchTap?(event: object): void;
   primaryText?: React.ReactNode;
-  rightIcon?: any;
+  primaryTextPadding?: any;
+  rightIcon?: React.ReactElement;
+  rightIconStyle?: object;
   secondaryText?: React.ReactNode;
-  style?: React.CSSProperties;
-  innerDivStyle?: any;
   value?: any;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface MenuItemInstance extends ComponentBaseInstance {
-// }
-
-export default class MenuItem extends ComponentBase<MenuItemProps, ComponentBaseInstance> {}
+export default class MenuItem extends ComponentBase<MenuItemProps> {
+  handleClose(): any;
+  onTouchTap(event: any): any;
+}

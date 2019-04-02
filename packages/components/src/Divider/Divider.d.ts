@@ -1,13 +1,13 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface DividerProps extends ComponentBaseProps {
+  absolute?: boolean;
+  classes?: object;
+  className?: string;
+  component?: any;
   inset?: boolean;
-  style?: React.CSSProperties;
+  light?: boolean;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface DividerInstance extends ComponentBaseInstance {
-// }
-
-export default class Divider extends ComponentBase<DividerProps, ComponentBaseInstance> {}
+export default class Divider extends ComponentBase<DividerProps> {}

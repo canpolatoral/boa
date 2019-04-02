@@ -1,11 +1,14 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
-// export interface ResizableProps extends ComponentBaseProps {
-// }
+export interface ScrollProps extends ComponentBaseProps {
+  children: React.ReactNode;
+  divStyle?: object;
+  option?: object;
+}
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface ResizableInstance extends ComponentBaseInstance {
-// }
-
-export default class Scroll extends ComponentBase<ComponentBaseProps, ComponentBaseInstance> {}
+export default class Scroll extends ComponentBase<ScrollProps> {
+  setDisable(value: any): any;
+  setScrollTop(top: any): any;
+  setScrollLeft(left: any): any;
+}

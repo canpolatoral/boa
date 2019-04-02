@@ -1,22 +1,16 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
-
-export interface Content {
-  id: string;
-  level: number;
-  content: string;
-  children: Content[];
-}
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface DocTocProps extends ComponentBaseProps {
   activeItem?: string;
-  content: Content[];
-  linkOnClick?: (id: string) => void;
-  style?: object;
+  content?: any[];
+  header?: string;
+  linkOnClick?(): void;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface DocTocInstance extends ComponentBaseInstance {
-// }
-
-export default class DocToc extends ComponentBase<DocTocProps, ComponentBaseInstance> {}
+export default class DocToc extends ComponentBase<DocTocProps> {
+  onClick(id: any): any;
+  getLinkStyle(content: any, isHeader: any): any;
+  getListItemStyle(level: any, index: any): any;
+  populateContent(children: any, level: any): any;
+}

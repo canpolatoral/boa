@@ -1,32 +1,41 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface DialogProps extends ComponentBaseProps {
-  actions?: React.ReactNode;
-  actionsContainerClassName?: string;
-  actionsContainerStyle?: any;
   autoDetectWindowHeight?: boolean;
-  autoScrollBodyContent?: boolean;
-  bodyClassName?: string;
-  bodyStyle?: any;
   children?: React.ReactNode;
+  classes?: object;
   className?: string;
-  contentClassName?: string;
-  contentStyle?: any;
+  content?: any;
+  dialogBoxContentPadding?: any;
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  disableRestoreFocus?: boolean;
+  fullScreen?: boolean;
+  fullWidth?: boolean;
+  maxWidth?: "xs" | "sm" | "md" | false;
   modal?: boolean;
-  onRequestClose?: () => void; // TODO: method parametre ve dönüş tipi eklenmeli!
+  onClose?(event: object): void;
+  onEnter?(): void;
+  onEntered?(): void;
+  onEntering?(): void;
+  onEscapeKeyDown?(): void;
+  onExit?(): void;
+  onExited?(): void;
+  onExiting?(): void;
   open: boolean;
-  overlayClassName?: string;
-  overlayStyle?: any;
+  PaperProps?: object;
   repositionOnUpdate?: boolean;
-  style?: React.CSSProperties;
-  title?: React.ReactNode;
-  titleClassName?: string;
-  titleStyle?: any;
+  showHeader?: boolean;
+  titleWithCloseButtonEnabled?: boolean;
+  transition?: any;
+  transitionDuration?: any;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface DialogInstance extends ComponentBaseInstance {
-// }
-
-export default class Dialog extends ComponentBase<DialogProps, ComponentBaseInstance> {}
+export default class Dialog extends ComponentBase<DialogProps> {
+  setTitle(title: any): any;
+  setLeftTitleButton(value: any): any;
+  open(open: any): any;
+  fireClosable(): any;
+  onEnter(): any;
+}

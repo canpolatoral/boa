@@ -1,26 +1,52 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
+
+declare interface AnchorOrigin {
+  horizontal?: any;
+  vertical?: any;
+}
+
+declare interface AnchorPosition {
+  left?: number;
+  top?: number;
+}
+
+declare interface TransformOrigin {
+  horizontal?: any;
+  vertical?: any;
+}
 
 export interface PopoverProps extends ComponentBaseProps {
   anchorEl?: any;
-  isOriginSetted?: boolean;
-  anchorOrigin?: any;
-  animated?: boolean;
-  animation?: () => void; // TODO: method parametre ve dönüş tipi eklenmeli!
-  autoCloseWhenOffScreen?: boolean;
-  canAutoPosition?: boolean;
-  children?: any;
-  className?: string;
-  onRequestClose?: () => void; // TODO: method parametre ve dönüş tipi eklenmeli!
+  anchorOrigin?: AnchorOrigin;
+  anchorPosition?: AnchorPosition;
+  anchorReference?: "anchorEl" | "anchorPosition";
+  children?: React.ReactNode;
+  classes?: object;
+  container?: any;
+  disableRestoreFocus?: boolean;
+  elevation?: number;
+  getContentAnchorEl?(): void;
+  manager?: object;
+  marginThreshold?: number;
+  onClose?(event: object): void;
+  onEnter?(): void;
+  onEntered?(): void;
+  onEntering?(): void;
+  onExit?(): void;
+  onExited?(): void;
+  onExiting?(): void;
   open?: boolean;
-  style?: React.CSSProperties;
-  targetOrigin?: any;
-  useLayerForClickAway?: boolean;
-  zDepth?: 0 | 1 | 2 | 3 | 4 | 5;
+  PaperProps?: object;
+  role?: string;
+  transformOrigin?: TransformOrigin;
+  transition?: any;
+  transitionDuration?: any;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface PopoverInstance extends ComponentBaseInstance {
-// }
-
-export default class Popover extends ComponentBase<PopoverProps, ComponentBaseInstance> {}
+export default class Popover extends ComponentBase<PopoverProps> {
+  openPopover(): any;
+  manualOpen(openElement: any, width: any): any;
+  manualClose(): any;
+  onRequestClose(reason: any): any;
+}

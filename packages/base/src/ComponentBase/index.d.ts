@@ -1,43 +1,32 @@
-import * as React from 'react';
+import * as React from "react";
+import { ComponentSize } from "@kuveytturk/boa-base";
 
 export interface ComponentBaseProps {
+  componentSize?:
+    | ComponentSize.LARGE
+    | ComponentSize.MEDIUM
+    | ComponentSize.SMALL
+    | ComponentSize.XSMALL;
   context?: object;
   disabled?: boolean;
   id?: string;
-  isVisible?: boolean; // @deprecated
-  visible?: boolean;
+  isVisible?: boolean;
   newLine?: boolean;
-  componentSize?: number;
   snapKey?: string;
   snapshot?: object;
   style?: object;
   valueConstraint?: object;
+  visible?: boolean;
 }
 
-export class ComponentBaseInstance extends React.Component<any, any> {
-  state: any;
-  constructor(props: any, state?: any);
-  getSnapshot(): object;
-  setSnapshot(): object;
-  getValue(): any;
-  resetValue(): any;
-  getSelectedRowIndexes?: () => any;
-}
-
-export default class ComponentBase<TProps = any, TInstance = any> extends React.Component<
-  TProps,
-  any
-> {
-  state: any;
-  constructor(props: any, state?: any);
-
-  getInstance(): TInstance;
+export default class ComponentBase<T = any> extends React.Component<T> {
+  getInstance(): this;
   getMessage(groupName: string, propertyName: string): string;
-  getMessageCode(groupName: string, propertyName: string): string;
+  getMessageCode(groupName: string, propertyName: string): any;
   getSnapKey(childSnapKey: string): string;
-  getChildId(childName: string): string;
-  getSnapshot(): object;
-  setSnapshot(): object;
-  getValue(): any;
-  resetValue(): any;
+  getSnapshot(): any;
+  setSnapshot(snapshot: any): any;
+  isMobile(): boolean;
+  isMobileOrTablet(): boolean;
+  validateConstraint(): boolean;
 }

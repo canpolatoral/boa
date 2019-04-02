@@ -1,27 +1,38 @@
-import * as React from 'react';
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
-export interface IconMenuProps extends ComponentBaseProps {
-  iconType: 'vertical' | 'horizontal' | 'custom';
-  customIcon?: any;
-  items: any[]; // TODO: any yerine, yukarıda type tanımlanıp o verilebilir.
-  anchorOrigin?: any;
-  animated?: boolean;
-  className?: string;
-  iconStyle?: any;
-  menuStyle?: any;
-  multiple?: boolean;
-  open?: boolean;
-  style?: React.CSSProperties;
-  targetOrigin?: any;
-  touchTapCloseDelay?: number;
-  useLayerForClickAway?: boolean;
-  onChange?: (parameters?: any) => void; // TODO: method parametre ve dönüş tipi eklenmeli!
+declare interface AnchorOrigin {
+  horizontal: any;
+  vertical: any;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
+declare interface TransformOrigin {
+  horizontal: any;
+  vertical: any;
+}
 
-// export interface IconMenuInstance extends ComponentBaseInstance {
-// }
+export interface IconMenuProps extends ComponentBaseProps {
+  anchorOrigin?: AnchorOrigin;
+  animated?: boolean;
+  classes?: object;
+  className?: string;
+  customIcon?: object;
+  iconStyle?: object;
+  iconType?: "vertical" | "horizontal" | "custom";
+  isOriginSetted?: boolean;
+  items?: any[];
+  menuItems?: any[];
+  menuStyle?: object;
+  multiple?: boolean;
+  onChange?(): void;
+  onClick?(): void;
+  open?: boolean;
+  touchTapCloseDelay?: number;
+  transformOrigin?: TransformOrigin;
+}
 
-export default class IconMenu extends ComponentBase<IconMenuProps, ComponentBaseInstance> {}
+export default class IconMenu extends ComponentBase<IconMenuProps> {
+  onChange(parameters: any): any;
+  handleClick(event: any): any;
+  handleClose(): any;
+}

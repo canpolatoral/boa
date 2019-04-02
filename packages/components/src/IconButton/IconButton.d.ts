@@ -1,20 +1,17 @@
-import { ComponentBase, ComponentBaseInstance, ComponentBaseProps } from '@kuveytturk/boa-base';
+import * as React from "react";
+import { ComponentBaseProps, ComponentBase } from "@kuveytturk/boa-base";
 
 export interface IconButtonProps extends ComponentBaseProps {
-  tooltip?: string;
+  color?: "default" | "inherit" | "primary" | "secondary" | "disabled";
+  disableRipple?: boolean;
+  dynamicIcon?: string;
+  focusRipple?: boolean;
   fontIcon?: string;
+  iconProperties?: object;
+  onClick?(): void;
   svgIcon?: string;
-  onClick?: (event: any) => void; // method parametreleri ve dönüş tipi varsa eklenmeli
-  iconStyle?: any;
-  style?: React.CSSProperties;
-  dynamicIcon?: any;
-  iconProperties?: any;
-  disabled?: any;
+  tooltip?: string;
+  tooltipPosition?: string;
 }
 
-// Commented-Tslint: An interface declaring no members is equivalent to its supertype.
-
-// export interface IconButtonInstance extends ComponentBaseInstance {
-// }
-
-export default class IconButton extends ComponentBase<IconButtonProps, ComponentBaseInstance> {}
+export default class IconButton extends ComponentBase<IconButtonProps> {}

@@ -1,6 +1,7 @@
 /* eslint-disable import/order */
 /* Logos */
 import BOALogo from './logos/boa-logo';
+import KTAcademy from './logos/kt-academy';
 import KTLogo from './logos/kt-logo';
 import KFHLogo from './logos/kfh-logo';
 import KFHLogoWhite from './logos/kfh-logo-white';
@@ -113,6 +114,7 @@ import CountryFlags from './flags/country-flags';
 
 const logos = {
   BOALogo,
+  KTAcademy,
   KTLogo,
   KFHLogo,
   KFHLogoWhite,

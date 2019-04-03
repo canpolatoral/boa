@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import IconComposer from '../BIconComposer';
+import IconComposer from '../IconComposer';
 
 const KTAcademy = (props) => {
   // eslint-disable-next-line no-unused-vars

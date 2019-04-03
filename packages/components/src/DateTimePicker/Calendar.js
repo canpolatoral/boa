@@ -786,15 +786,11 @@ class Calendar extends ComponentBase {
 
     const weekTitleDayStyle = styles.weekTitleDay;
     const buttonStyle = {
-      marginTop: 6,
-      height: 36,
+      height: 48,
       minWidth: '100%',
       textAlign: 'center',
       borderStyle: 'solid',
-      borderLeftWidth: 0,
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      borderRightWidth: 0,
+      borderWidth: 0,
       borderRadius: 0,
       borderColor: this.props.context.theme.palette.borderColor,
     };
@@ -974,7 +970,7 @@ class Calendar extends ComponentBase {
                   </div>
                   <div style={Object.assign({}, style.transitionSlide, { minHeight })}>
                     {// TODO :SLIDE
-                    this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
+                      this.getCalendarMonth(DateTimeFormat, minDate, maxDate)}
                   </div>
 
                   {/* </Slide> */}
@@ -987,39 +983,35 @@ class Calendar extends ComponentBase {
         <div>
           {!this.state.displayMonthDay && this.renderYearAndMounthSelector(style)}
           {this.state.displayMonthDay && (
-            <div style={{ height: 48 }}>
+            <div>
               {this.props.noDialog === false && (
                 <div>
                   {divider}
-                  <div style={{ height: 48 }}>
-                    <Button
-                      context={this.props.context}
-                      type="text"
-                      text={todayLabel}
-                      colorType="primary"
-                      fullWidth
-                      onClick={this.todayButtonOnClick}
-                      style={buttonStyle}
-                      textStyle={buttonTextStyle}
-                    />
-                  </div>
+                  <Button
+                    context={this.props.context}
+                    type="text"
+                    text={todayLabel}
+                    colorType="primary"
+                    fullWidth
+                    onClick={this.todayButtonOnClick}
+                    style={buttonStyle}
+                    textStyle={buttonTextStyle}
+                  />
                 </div>
               )}
               {openBoaCalendar && (
                 <div>
                   {divider}
-                  <div style={{ height: 48 }}>
-                    <Button
-                      context={this.props.context}
-                      type="text"
-                      text="BOA TAKVİMİ AÇ"
-                      colorType="primary"
-                      fullWidth
-                      onClick={this.openBoaCalendar}
-                      style={buttonStyle}
-                      textStyle={buttonTextStyle}
-                    />
-                  </div>
+                  <Button
+                    context={this.props.context}
+                    type="text"
+                    text="BOA TAKVİMİ AÇ"
+                    colorType="primary"
+                    fullWidth
+                    onClick={this.openBoaCalendar}
+                    style={buttonStyle}
+                    textStyle={buttonTextStyle}
+                  />
                 </div>
               )}
             </div>

@@ -233,6 +233,7 @@ class Menu extends ComponentBase {
         onChange={this.props.onChange}
         value={this.state.value}
         width={this.props.width}
+        style={this.props.style}
       >
         {menuItems}
       </MuiMenuList>

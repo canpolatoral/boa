@@ -138,7 +138,7 @@ class Scroll extends ComponentBase {
     const childs = this.props.children;
     const context = this.props.context;
     const innerStyle = Object.assign({}, { direction: 'ltr' }, this.props.style);
-    let divStyle = Object.assign({}, this.props.divStyle, { position: 'relative' });
+    let divStyle = Object.assign({ height: '100%' }, this.props.divStyle, { position: 'relative' });
 
     if (context.platform === Platform.MOBILE || context.platform === Platform.TABLET) {
       divStyle = Object.assign({}, divStyle, { height: '100%', WebkitOverflowScrolling: 'touch' });

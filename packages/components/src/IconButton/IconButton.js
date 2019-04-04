@@ -91,10 +91,6 @@ class IconButton extends ComponentBase {
     focusRipple: true,
   };
 
-  state = {
-    disabled: this.props.disabled,
-  };
-
   render() {
     const { classes } = this.props;
     const tooltipTitle = this.props.tooltip;
@@ -102,7 +98,7 @@ class IconButton extends ComponentBase {
     const iconProperties = { ...this.props.iconProperties };
 
     /* istanbul ignore else */
-    if (iconProperties && this.state.disabled) {
+    if (iconProperties && this.props.disabled) {
       iconProperties.color = 'disabled';
     } else if (this.props.iconProperties) {
       iconProperties.color = this.props.iconProperties.color;
@@ -134,8 +130,8 @@ class IconButton extends ComponentBase {
         {iconButton}
       </ToolTip>
     ) : (
-      iconButton
-    );
+        iconButton
+      );
   }
 }
 

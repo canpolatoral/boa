@@ -33,6 +33,7 @@
     "iban": "^0.0.10",
     "infinite-tree": "^1.16.2",
     "jquery": "^3.3.1",
+    "keycode": "^2.2.0",
     "lodash": "^4.17.10",
     "perfect-scrollbar": "^1.4.0",
     "prop-types": "^15.6.2",

@@ -44,7 +44,6 @@ class Divider extends ComponentBase {
 
   render() {
     let innerStyle = {
-      width: 'calc(100% - 24px)',
       margin: 12,
     };
 

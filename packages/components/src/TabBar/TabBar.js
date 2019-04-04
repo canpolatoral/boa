@@ -374,7 +374,6 @@ class TabBar extends ComponentBase {
           style={{
             textAlign: 'center',
             height: 48,
-            marginLeft: 12,
             direction: this.props.context.localization.isRightToLeft ? 'rtl' : 'ltr',
           }}
         >

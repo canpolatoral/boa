@@ -269,13 +269,13 @@ class InputNumeric extends EditorBase {
   }
 
   onBlur(e) {
-    const self = this;
-    this.setState({ caretPosition: null }, () => {
+    e.persist();
+    this.setState({ caretPosition: null }, (() => {
       /* istanbul ignore else */
-      if (self.props.onBlur) {
-        self.props.onBlur(e);
+      if (this.props.onBlur) {
+        this.props.onBlur(e);
       }
-    });
+    }));
   }
 
   getValue() {

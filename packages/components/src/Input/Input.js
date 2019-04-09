@@ -501,7 +501,9 @@ class Input extends EditorBase {
 
     if (showClearButton && hasValue(value) && !disabled) {
       suffixText = (
-        <div>
+        <div style={{
+          display: 'inline-flex',
+        }}>
           <IconButton
             dynamicIcon="Close"
             iconProperties={{

@@ -308,7 +308,7 @@ class InputNumeric extends EditorBase {
   }
 
   checkNumberFormatIsValid(value) {
-    if (!value || value === '' || value === '-') {
+    if (!value || value === '' || value === '-' || value === '-0') {
       return true;
     }
 
@@ -377,14 +377,12 @@ class InputNumeric extends EditorBase {
         return '';
       }
     }
+    const delimiters = Localization.getDelimiters();
 
     if (typeof value === 'string') {
-      if (!value || value === '' || value === '-') {
+      if (!value || value === '' || value === '-' || value.indexOf('-0') !== -1) {
         return value;
       }
-
-      const delimiters = Localization.getDelimiters();
-
       if (nextFormat !== 'D') {
         let tempValue = value.replace(new RegExp(`[${delimiters.thousands}]`, 'g'), '');
         if (tempValue.indexOf(delimiters.decimal) !== -1) {

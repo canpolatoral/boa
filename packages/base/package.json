@@ -2,7 +2,7 @@
   "name": "@kuveytturk/boa-base",
   "private": true,
   "author": "Kuveyt Turk BOA One Team",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Composer, BaseComponent, Theme, ErrorBoundary for BOA Components",
   "keywords": [
     "react",

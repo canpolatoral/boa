@@ -43,6 +43,18 @@
 			"returns": null
 		},
 		{
+			"name": "onClearClick",
+			"docblock": null,
+			"modifiers": [],
+			"params": [
+				{
+					"name": "e",
+					"type": null
+				}
+			],
+			"returns": null
+		},
+		{
 			"name": "onKeyDown",
 			"docblock": null,
 			"modifiers": [],

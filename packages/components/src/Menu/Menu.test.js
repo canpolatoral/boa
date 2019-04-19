@@ -93,6 +93,19 @@ describe('<Menu />', () => {
     assert.strictEqual(wrapper.childAt(1).props().value, 3);
   });
 
+  it('should render fixed Items', () => {
+    const newItems = JSON.parse(JSON.stringify(items));
+    newItems[0].fixed = true;
+    newItems[3].fixed = true;
+
+    const wrapper = shallow(<Menu context={context} items={newItems} />);
+    assert.strictEqual(wrapper.type(), MuiMenuList);
+    assert.strictEqual(wrapper.childAt(0).type(), MenuItem);
+    assert.strictEqual(wrapper.childAt(0).props().value, 1);
+    assert.strictEqual(wrapper.childAt(1).type(), MenuItem);
+    assert.strictEqual(wrapper.childAt(1).props().value, 4);
+    assert.strictEqual(wrapper.childAt(2).type(), MuiDivider);
+  });
   describe('rightIcon', () => {
     it('should render icons', () => {
       const wrapper = shallow(<Menu context={context} items={items} />);
@@ -166,7 +179,7 @@ describe('<Menu />', () => {
   it('should handle selected', () => {
     const wrapper = mount(<Menu items={items} context={context} />);
     const menuItem = wrapper.find(MuiMenuItem).first();
-    menuItem.simulate('click', { persist: () => {}, value: 1 });
+    menuItem.simulate('click', { persist: () => { }, value: 1 });
     assert.strictEqual(wrapper.instance().getInstance().state.value, 1);
   });
 
@@ -176,7 +189,7 @@ describe('<Menu />', () => {
       <Menu items={items} context={context} menuItemSelected={menuItemSelected} />,
     );
     const menuItem = wrapper.find(MuiMenuItem).first();
-    menuItem.simulate('click', { persist: () => {}, value: 1 });
+    menuItem.simulate('click', { persist: () => { }, value: 1 });
     assert.strictEqual(wrapper.instance().getInstance().state.value, 1);
     assert.strictEqual(menuItemSelected.callCount, 1);
   });

@@ -30,7 +30,13 @@ describe('TreeView:NodeIcon', () => {
   });
 
   it('should render opened', () => {
-    const wrapper = shallow(<NodeIcon state="opened" context={context} rowHeight={10} />);
+    const wrapper = shallow(
+      <NodeIcon
+        state="opened"
+        context={context}
+        rowHeight={10}
+        showFolderIcon
+        hasChildren />);
     assert.strictEqual(
       wrapper
         .childAt(0)
@@ -41,7 +47,13 @@ describe('TreeView:NodeIcon', () => {
   });
 
   it('should render closed', () => {
-    const wrapper = shallow(<NodeIcon state="closed" context={context} rowHeight={10} />);
+    const wrapper = shallow(
+      <NodeIcon
+        state="closed"
+        context={context}
+        rowHeight={10}
+        showFolderIcon
+        hasChildren />);
     assert.strictEqual(
       wrapper
         .childAt(0)
@@ -52,13 +64,34 @@ describe('TreeView:NodeIcon', () => {
   });
 
   it('should render default', () => {
-    const wrapper = shallow(<NodeIcon context={context} rowHeight={10} />);
+    const wrapper = shallow(
+      <NodeIcon
+        context={context}
+        rowHeight={10}
+        showFolderIcon
+        hasChildren />);
     assert.strictEqual(
       wrapper
         .childAt(0)
         .childAt(0)
         .type(),
       FolderSpecial,
+    );
+  });
+
+
+  it('should render noFolderIcon', () => {
+    const wrapper = shallow(
+      <NodeIcon
+        context={context}
+        rowHeight={10}
+        showFolderIcon={false}
+        hasChildren={false} />);
+    assert.strictEqual(
+      wrapper
+        .childAt(0)
+        .type(),
+      'div',
     );
   });
 

@@ -33,17 +33,19 @@ class NodeIcon extends ComponentBase {
       content = this.props.icon;
     } else if (this.props.icon) {
       content = Icon.getIcon(this.props.icon);
-    } else {
+    } else if (this.props.hasChildren && this.props.showFolderIcon) {
       content = (
         <div>
           {{
             opened: <FolderOpen style={{ color: this.props.context.theme.boaPalette.pri500 }} />,
             closed: <FolderSpecial style={{ color: this.props.context.theme.boaPalette.pri500 }} />,
           }[this.props.state] || (
-            <FolderSpecial style={{ color: this.props.context.theme.boaPalette.pri500 }} />
-          )}
+              <FolderSpecial style={{ color: this.props.context.theme.boaPalette.pri500 }} />
+            )}
         </div>
       );
+    } else {
+      content = (<div />);
     }
     return <div style={this.getStyle()}>{content}</div>;
   }

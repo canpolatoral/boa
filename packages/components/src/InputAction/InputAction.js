@@ -389,9 +389,9 @@ class InputAction extends ComponentBase {
         disabled={this.state.inputDisabled}
         value={this.state.value}
         onChange={this.onChange}
-        onFocus={this.onFocus}
+        onFocus={this.props.onFocus}
         onBlur={this.onBlur}
-        onKeyDown={this.onKeyDown}
+        onKeyDown={this.props.onKeyDown}
         prefixText={leftIcons.length ? leftIcons : null}
         suffixText={rightIcons.length ? rightIcons : null}
       />

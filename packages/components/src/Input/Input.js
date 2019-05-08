@@ -501,7 +501,9 @@ class Input extends EditorBase {
 
     if (showClearButton && hasValue(value) && !disabled) {
       suffixText = (
-        <div>
+        <div style={{
+          display: 'inline-flex',
+        }}>
           <IconButton
             dynamicIcon="Close"
             iconProperties={{
@@ -662,7 +664,7 @@ class Input extends EditorBase {
       paddingTop: 10,
       marginTop: 0,
     };
-    const rootStyle = Object.assign(baseRootStyle, this.props.inputStyle);
+    const rootStyle = Object.assign(baseRootStyle, this.props.style);
     let visibleLabel = true;
 
     if (!focussed) {
@@ -765,7 +767,7 @@ class Input extends EditorBase {
             inputRef={this.props.inputRef}
             fullWidth={fullWidth}
             type={type}
-            style={this.props.inputStyle}
+            // style={this.props.inputStyle}
             value={this.state.value}
             disabled={this.state.disabled}
             disableUnderline={!underlineShow}

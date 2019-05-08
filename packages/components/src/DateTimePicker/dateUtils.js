@@ -210,9 +210,10 @@ export function getFormatDecomposition(format) {
       timeFormat: undefined,
     };
   }
-  formats.dateFormatHint = Localization.stringLowerCase(
-    Localization.getDateTimeFormat(formats.dateFormat),
-  );
+  if (formats.dateFormat)
+    formats.dateFormatHint = Localization.stringLowerCase(
+      Localization.getDateTimeFormat(formats.dateFormat),
+    );
   if (formats.timeFormat)
     formats.timeFormatHint = Localization.stringLowerCase(
       Localization.getDateTimeFormat(formats.timeFormat),
@@ -220,9 +221,11 @@ export function getFormatDecomposition(format) {
 
   let dateMask = formats.dateFormatHint;
   let timeMask = formats.timeFormatHint;
-  dateMask = dateMask.replaceAll('d', 'n');
-  dateMask = dateMask.replaceAll('m', 'n');
-  dateMask = dateMask.replaceAll('y', 'n');
+  if (dateMask) {
+    dateMask = dateMask.replaceAll('d', 'n');
+    dateMask = dateMask.replaceAll('m', 'n');
+    dateMask = dateMask.replaceAll('y', 'n');
+  }
   if (timeMask) {
     timeMask = timeMask.replaceAll('s', 'n');
     timeMask = timeMask.replaceAll('h', 'n');

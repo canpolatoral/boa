@@ -133,17 +133,22 @@ class Menu extends ComponentBase {
   }
 
   render() {
-    let menuItems = null;
+    let menuItems = [];
+    const fixedMenuItems = [];
     const isRightToLeft = this.props.context.localization.isRightToLeft;
-
+    const fixedItems = this.props.items.filter(items => items.fixed === true);
     /* istanbul ignore else */
     if (!this.props.isMenuItemList) {
-      menuItems = this.props.items.map(item => {
+      const allItems = this.props.items;
+      for (let i = 0; i < allItems.length; i++) {
+        const item = allItems[i];
+
         const allProperties = item.allProperties || {};
         const typeId = allProperties.typeId;
 
         if (typeId !== undefined && typeId !== 1 && typeId !== 2) {
-          return null;
+          // eslint-disable-next-line no-continue
+          continue;
         }
 
         const rightIcon =
@@ -176,30 +181,34 @@ class Menu extends ComponentBase {
 
         innerDivStyle = merge(innerDivStyle, item.innerDivStyle || {});
 
-        if (item.value) {
-          return (
-            <MenuItem
-              classes={this.props.classes}
-              context={this.props.context}
-              key={item.value}
-              value={item.value}
-              primaryText={item.text}
-              items={item.items}
-              rightIcon={rightIcon}
-              leftIcon={leftIcon}
-              leftIconStyle={leftIconStyle}
-              style={itemStyle}
-              primaryTextPadding={this.props.primaryTextPadding}
-              innerDivStyle={innerDivStyle}
-              itemSelected={this.menuItemSelected}
-              width={this.props.width}
-              allProperties={item.allProperties}
-            />
-          );
-        }
+        const menuItem = (item.value || item.text) ? (
+          <MenuItem
+            classes={this.props.classes}
+            context={this.props.context}
+            key={item.value}
+            value={item.value}
+            primaryText={item.text}
+            items={item.items}
+            rightIcon={rightIcon}
+            leftIcon={leftIcon}
+            leftIconStyle={leftIconStyle}
+            style={itemStyle}
+            primaryTextPadding={this.props.primaryTextPadding}
+            innerDivStyle={innerDivStyle}
+            itemSelected={this.menuItemSelected}
+            width={this.props.width}
+            allProperties={item.allProperties}
+          />
+        ) : <MuiDivider style={{ marginBottom: 12, marginTop: 12 }} key={Math.random()} />;
 
-        return <MuiDivider style={{ marginBottom: 12, marginTop: 12 }} key={Math.random()} />;
-      });
+        if (fixedItems &&
+          fixedItems.length > 0 &&
+          fixedItems.includes(item)) {
+          fixedMenuItems.push(menuItem);
+        } else {
+          menuItems.push(menuItem);
+        }
+      }
     } else {
       menuItems = this.props.items.map(item => {
         if (item.props.menuItems && item.props.menuItems.length > 0) {
@@ -235,6 +244,10 @@ class Menu extends ComponentBase {
         width={this.props.width}
         style={this.props.style}
       >
+        {fixedMenuItems}
+        {fixedItems && fixedItems.length > 0 ?
+          <MuiDivider style={{ marginBottom: 12, marginTop: 12 }} key={Math.random()} /> :
+          null}
         {menuItems}
       </MuiMenuList>
     );

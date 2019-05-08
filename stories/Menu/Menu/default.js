@@ -4,6 +4,7 @@ export default {
     {
       text: 'Istanbul',
       value: '34',
+      fixed: true,
       leftIcon: {
         dynamicIcon: 'EventNote',
         iconProperties: {
@@ -16,6 +17,20 @@ export default {
     {
       text: 'Ankara',
       value: '06',
+    },
+    {
+      text: 'Adana',
+      value: '01',
+    },
+    {
+      text: 'Erzurum',
+      fixed: true,
+      value: '25',
+    },
+    {
+      text: 'İzmir',
+      fixed: true,
+      value: '35',
     },
   ],
 };

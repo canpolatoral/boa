@@ -301,7 +301,7 @@ class DatePicker extends ComponentBase {
       return (
         <div
           style={{
-            width: timeFormat ? '65%' : '100%',
+            width: (!timeFormat && this.props.fullWidth) ? '100%' : '65%',
           }}
           ref={r => (this.rootDate = r)}
         >
@@ -416,7 +416,7 @@ class DatePicker extends ComponentBase {
       return (
         <div
           style={{
-            width: '35%',
+            width: (!dateFormat && this.props.fullWidth) ? '100%' : '35%',
             paddingLeft: 24,
           }}
         >

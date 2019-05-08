@@ -72,6 +72,11 @@ class TreeView extends ComponentBase {
      * Row height of the treeview nodes.
      */
     rowHeight: PropTypes.oneOfType([PropTypes.number]),
+
+    /**
+     * If `false`, the parent node hasn't icon.
+     */
+    showFolderIcon: PropTypes.bool,
     /**
      * If `true`, footer of the treeview is visible.
      */
@@ -88,6 +93,7 @@ class TreeView extends ComponentBase {
      * Width of the treeview.
      */
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
   };
 
   static defaultProps = {
@@ -104,6 +110,7 @@ class TreeView extends ComponentBase {
     showIcons: true,
     showSearch: true,
     canCheckChildsByParent: true,
+    showFolderIcon: true,
   };
 
   state = {
@@ -239,6 +246,8 @@ class TreeView extends ComponentBase {
         {this.props.showIcons && (
           <NodeIcon
             state={toggleState}
+            hasChildren={hasChildren}
+            showFolderIcon={this.props.showFolderIcon}
             context={this.props.context}
             icon={node.icon}
             rowHeight={this.props.rowHeight}
@@ -274,8 +283,8 @@ class TreeView extends ComponentBase {
               </span>
             </span>
           ) : (
-            this.highlightSearchTerm(node)
-          )}
+              this.highlightSearchTerm(node)
+            )}
         </span>
       </TreeNode>
     );
@@ -285,7 +294,7 @@ class TreeView extends ComponentBase {
     // eslint-disable-next-line max-len
     return `<span style="color: ${
       this.props.context.theme.boaPalette.pri500
-    }; background-color: #b618ce29">${match}</span>`;
+      }; background-color: #b618ce29">${match}</span>`;
   }
 
   highlightSearchTerm(node) {

@@ -173,6 +173,17 @@
 				"computed": false
 			}
 		},
+		"showFolderIcon": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `false`, the parent node hasn't icon.",
+			"defaultValue": {
+				"value": true,
+				"computed": true
+			}
+		},
 		"footerStyle": {
 			"type": {
 				"name": "object"

@@ -117,6 +117,7 @@ export class Localization {
   }
 
   static getDateTimeFormat(format) {
+    // eslint-disable-next-line no-underscore-dangle
     return moment.localeData()._longDateFormat[format];
   }
 
@@ -133,10 +134,12 @@ export class Localization {
   }
 
   static getFloatValue(value) {
+    // eslint-disable-next-line no-underscore-dangle
     return numeral(value)._value;
   }
 
   static getIntegerValue(value) {
+    // eslint-disable-next-line no-underscore-dangle
     return parseInt(numeral(value)._value, 10);
   }
 

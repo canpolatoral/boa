@@ -663,8 +663,7 @@ export function getDefaultDate(props) {
 export function getDateToString(propDate, defaultDate) {
   let returnDate = defaultDate;
   if (isString(propDate)) {
-    let clearedDate = clearTimeZone(propDate);
-    returnDate = clearedDate;
+    returnDate = new Date(propDate);
     if (isNaN(returnDate)) {
       returnDate = defaultDate;
     }
@@ -675,21 +674,6 @@ export function getDateToString(propDate, defaultDate) {
     return null;
   }
   return returnDate;
-}
-export function clearTime(returnDate) {
-  returnDate.setHours(0);
-  returnDate.setMinutes(0);
-  returnDate.setSeconds(0);
-
-  return returnDate;
-}
-export function clearTimeZone(returnDate) {
-  if (isString(returnDate))
-    returnDate = new Date(returnDate);
-  return new Date((returnDate).getTime() + ((returnDate).getTimezoneOffset() * 60000));
-}
-export function clearJustTimeZone(returnDate) {
-  return new Date(returnDate.getTime());
 }
 export function getDayList(calendarInfo, selectedDate, dayType, betweenDayCount) {
   // let monthFirstDate = cloneDate(getFirstDayOfMonth(selectedDate));

@@ -6,6 +6,12 @@ import phoneFormatter from 'phone-formatter';
 import 'numeral/locales';
 import { Language } from './language';
 
+/* eslint-disable */
+Date.prototype.toJSON = function() { 
+  return Moment(this).format(); 
+};
+/* eslint-enable  */
+
 export class Localization {
   static language = 'en';
 

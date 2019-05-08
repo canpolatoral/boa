@@ -11,9 +11,6 @@ import {
   getDatePickerStyle,
   getDefaultDate,
   getDateToString,
-  clearTime,
-  // clearTimeZone,
-  clearJustTimeZone,
   checkDateForBusiness,
 } from './dateUtils';
 
@@ -252,8 +249,6 @@ class DateTimePicker extends ComponentBase {
     } else {
       handleDate = new Date();
       handleDate.setDate(handleDate.getDate() - 1);
-      handleDate = clearTime(handleDate);
-      handleDate = clearJustTimeZone(handleDate);
       handleDate = this.dateUpdate(handleDate, handleDate, -1);
       this.dateOnChange(e, handleDate, true);
     }
@@ -270,8 +265,6 @@ class DateTimePicker extends ComponentBase {
     } else {
       handleDate = new Date();
       handleDate.setDate(handleDate.getDate() + 1);
-      handleDate = clearTime(handleDate);
-      handleDate = clearJustTimeZone(handleDate);
       handleDate = this.dateUpdate(handleDate, handleDate, 1);
       this.dateOnChange(e, handleDate, true);
     }
@@ -290,13 +283,9 @@ class DateTimePicker extends ComponentBase {
 
   getValue() {
     if (this.state.value) {
-      // TODO: timezone farkı kaldırılması gerekiyor.
-      // return  new Date((this.state.value).getTime());
       const formats = getFormatDecomposition(this.props.format);
       const returnDate = this.state.value;
-      // sadece tarih gösterilecek ise saat bilgileri temizleniyor.
       if (formats.timeFormat === undefined) {
-        clearTime(returnDate);
         return returnDate;
       }
       return returnDate;

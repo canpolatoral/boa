@@ -173,17 +173,6 @@
 				"computed": false
 			}
 		},
-		"showFolderIcon": {
-			"type": {
-				"name": "bool"
-			},
-			"required": false,
-			"description": "If `false`, the parent node hasn't icon.",
-			"defaultValue": {
-				"value": true,
-				"computed": true
-			}
-		},
 		"footerStyle": {
 			"type": {
 				"name": "object"
@@ -270,6 +259,17 @@
 			"description": "Row height of the treeview nodes.",
 			"defaultValue": {
 				"value": 36,
+				"computed": false
+			}
+		},
+		"showFolderIcon": {
+			"type": {
+				"name": "bool"
+			},
+			"required": false,
+			"description": "If `false`, the parent node hasn't icon.",
+			"defaultValue": {
+				"value": true,
 				"computed": false
 			}
 		},

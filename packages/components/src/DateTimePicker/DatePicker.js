@@ -235,8 +235,10 @@ class DatePicker extends ComponentBase {
 
   validateConstraint() {
     const { dateFormat, timeFormat } = this.props;
-    const instanceDate = this.bActionInputDate.getInstance();
-    const instanceTime = this.bActionInputTime.getInstance();
+    let instanceDate;
+    let instanceTime;
+    if (dateFormat) instanceDate = this.bActionInputDate.getInstance();
+    if (timeFormat) instanceTime = this.bActionInputTime.getInstance();
 
     const dateResult = dateFormat && instanceDate ? instanceDate.validateConstraint() : true;
     if (!dateResult) {

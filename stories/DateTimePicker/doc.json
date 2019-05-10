@@ -316,7 +316,7 @@
 				"name": "bool"
 			},
 			"required": false,
-			"description": "If `true`, width property of the field is assigned 100.",
+			"description": "If `false`, width property of the field is assigned 100.",
 			"defaultValue": {
 				"value": true,
 				"computed": false

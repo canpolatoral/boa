@@ -12,7 +12,7 @@ const PredefinedMask = {
   },
   MaskCharacter: ['n', 'l', 'a'],
   AllowSpecialKeys: [' ', '(', ')', '-'],
-  AllowKeys: [8, 13, 16, 17, 18, 32, 33, 34, 35, 36, 37, 38, 39, 40, 46],
+  AllowKeys: [8, 9, 13, 16, 17, 18, 32, 33, 34, 35, 36, 37, 38, 39, 40, 46],
   // 8  => backspace
   // 16 => shift
   // 17 => ctrl

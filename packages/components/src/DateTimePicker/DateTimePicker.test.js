@@ -2,6 +2,7 @@ import React from 'react';
 import { AppProvider } from '@kuveytturk/boa-base';
 import DateTimePicker from './DateTimePicker';
 import { context, createMount } from '@kuveytturk/boa-test/utils';
+import { assert } from 'chai';
 
 describe('<DateTimePicker />', () => {
   let mount;
@@ -37,5 +38,13 @@ describe('<DateTimePicker />', () => {
       .find('button')
       .last()
       .simulate('click');
+  });
+
+  it('should validateConstraint', () => {
+    const wrapper = mount(
+        <DateTimePicker context={context} />,
+    );
+    const dateInput = wrapper.instance();
+    assert.isTrue(dateInput.validateConstraint());
   });
 });

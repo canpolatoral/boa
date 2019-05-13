@@ -141,7 +141,7 @@ class CalendarMonth extends Component {
           onTouchTap={this.handleTouchTapDay}
           selected={selected}
           dayInfo={dayInfo}
-          isBusiness={isBusiness}
+          business={isBusiness}
           displayDate={this.props.displayDate}
           isFlexMode={isFlexMode}
         />

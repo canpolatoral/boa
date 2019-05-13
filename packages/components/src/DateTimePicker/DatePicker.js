@@ -311,16 +311,6 @@ class DatePicker extends ComponentBase {
           }}
           onClick={this.clearDate}
           disabled={this.state.disabled} />}
-        <IconButton
-          iconProperties={{ style: iconStyle }}
-          context={this.props.context}
-          dynamicIcon="Event"
-          style={{
-            width: 24,
-            height: 24,
-          }}
-          onClick={this.handleFocusDateInput}
-          disabled={this.state.disabled} />
         {cloneSuffixText}
       </div>;
     if (this.props.pageType !== 'browse' && this.props.suffixText) {
@@ -345,7 +335,7 @@ class DatePicker extends ComponentBase {
               valueConstraint={valueConstraint}
               hintText={hintTextDate}
               floatingLabelText={floatingLabelTextDate}
-              // onFocus={this.handleFocusDateInput}
+              onFocus={this.handleFocusDateInput}
               value={inputLocalizedDate}
               mask={this.props.formats.dateMask}
               prefixText={this.props.prefixText}
